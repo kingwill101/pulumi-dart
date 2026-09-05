@@ -6,45 +6,45 @@ import 'certificate_order_certificate.dart';
 /// Input properties used for looking up and filtering CertificateOrder resources.
 class CertificateOrderState {
   /// Reasons why App Service Certificate is not renewable at the current moment.
-  final pulumi.Input<List<String>>? appServiceCertificateNotRenewableReasons;
+  final pulumi.Input<List<String>?>? appServiceCertificateNotRenewableReasons;
   /// true if the certificate should be automatically renewed when it expires; otherwise, false. Defaults to `true`.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// State of the Key Vault secret. A `certificates` block as defined below.
-  final pulumi.Input<List<CertificateOrderCertificate>>? certificates;
+  final pulumi.Input<List<CertificateOrderCertificate>?>? certificates;
   /// Last CSR that was created for this order.
-  final pulumi.Input<String>? csr;
+  final pulumi.Input<String?>? csr;
   /// The Distinguished Name for the App Service Certificate Order.
   ///
   /// &gt; **Note:** Either `csr` or `distinguishedName` must be set - but not both.
-  final pulumi.Input<String>? distinguishedName;
+  final pulumi.Input<String?>? distinguishedName;
   /// Domain verification token.
-  final pulumi.Input<String>? domainVerificationToken;
+  final pulumi.Input<String?>? domainVerificationToken;
   /// Certificate expiration time.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// Certificate thumbprint intermediate certificate.
-  final pulumi.Input<String>? intermediateThumbprint;
+  final pulumi.Input<String?>? intermediateThumbprint;
   /// Whether the private key is external or not.
-  final pulumi.Input<bool>? isPrivateKeyExternal;
+  final pulumi.Input<bool?>? isPrivateKeyExternal;
   /// Certificate key size. Defaults to `2048`.
-  final pulumi.Input<int>? keySize;
+  final pulumi.Input<int?>? keySize;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. Currently the only valid value is `global`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Certificate product type, such as `Standard` or `WildCard`. Defaults to `Standard`.
-  final pulumi.Input<String>? productType;
+  final pulumi.Input<String?>? productType;
   /// The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Certificate thumbprint for root certificate.
-  final pulumi.Input<String>? rootThumbprint;
+  final pulumi.Input<String?>? rootThumbprint;
   /// Certificate thumbprint for signed certificate.
-  final pulumi.Input<String>? signedCertificateThumbprint;
+  final pulumi.Input<String?>? signedCertificateThumbprint;
   /// Current order status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// (Optional) A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Duration in years (must be between `1` and `3`). Defaults to `1`.
-  final pulumi.Input<int>? validityInYears;
+  final pulumi.Input<int?>? validityInYears;
 
   /// Creates a new [CertificateOrderState].
   /// [appServiceCertificateNotRenewableReasons] Reasons why App Service Certificate is not renewable at the current moment.
@@ -123,7 +123,7 @@ class CertificateOrderState {
       expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       intermediateThumbprint: (() { final guardedValue = map['intermediateThumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isPrivateKeyExternal: (() { final guardedValue = map['isPrivateKeyExternal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productType: (() { final guardedValue = map['productType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -132,7 +132,7 @@ class CertificateOrderState {
       signedCertificateThumbprint: (() { final guardedValue = map['signedCertificateThumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      validityInYears: (() { final guardedValue = map['validityInYears']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      validityInYears: (() { final guardedValue = map['validityInYears']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

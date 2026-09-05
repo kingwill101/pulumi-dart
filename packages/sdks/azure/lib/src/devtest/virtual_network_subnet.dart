@@ -5,13 +5,13 @@ import 'virtual_network_subnet_shared_public_ip_address.dart';
 
 class VirtualNetworkSubnet {
   /// Specifies the name of the Dev Test Virtual Network. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `sharedPublicIpAddress` block as defined below.
-  final pulumi.Input<VirtualNetworkSubnetSharedPublicIpAddress>? sharedPublicIpAddress;
+  final pulumi.Input<VirtualNetworkSubnetSharedPublicIpAddress?>? sharedPublicIpAddress;
   /// Can this subnet be used for creating Virtual Machines? Possible values are `Allow`, `Default` and `Deny`. Defaults to `Allow`.
-  final pulumi.Input<String>? useInVirtualMachineCreation;
+  final pulumi.Input<String?>? useInVirtualMachineCreation;
   /// Can Virtual Machines in this Subnet use Public IP Addresses? Possible values are `Allow`, `Default` and `Deny`. Defaults to `Allow`.
-  final pulumi.Input<String>? usePublicIpAddress;
+  final pulumi.Input<String?>? usePublicIpAddress;
 
   /// Creates a new [VirtualNetworkSubnet].
   /// [name] Specifies the name of the Dev Test Virtual Network. Changing this forces a new resource to be created.

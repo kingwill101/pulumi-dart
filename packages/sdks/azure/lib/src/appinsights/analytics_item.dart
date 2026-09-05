@@ -110,7 +110,7 @@ import 'analytics_item_state.dart';
 /// 		}
 /// 		_, err = appinsights.NewAnalyticsItem(ctx, "example", &appinsights.AnalyticsItemArgs{
 /// 			Name:                  pulumi.String("testquery"),
-/// 			ApplicationInsightsId: exampleInsights.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			Content:               pulumi.String("requests //simple example query"),
 /// 			Scope:                 pulumi.String("shared"),
 /// 			Type:                  pulumi.String("query"),
@@ -278,7 +278,7 @@ class AnalyticsItem extends pulumi.CustomResource {
           'azure:appinsights/analyticsItem:AnalyticsItem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     content = registerOutput<String>('content');
@@ -296,11 +296,12 @@ class AnalyticsItem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnalyticsItemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AnalyticsItem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -314,6 +315,26 @@ class AnalyticsItem extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    content = registerOutput<String>('content');
+    functionAlias = registerOutput<String?>('functionAlias');
+    this.name = registerOutput<String>('name');
+    scope = registerOutput<String>('scope');
+    timeCreated = registerOutput<String>('timeCreated');
+    timeModified = registerOutput<String>('timeModified');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [AnalyticsItem] resource.
+  AnalyticsItem.reference(String urn)
+    : super(
+        'azure:appinsights/analyticsItem:AnalyticsItem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     content = registerOutput<String>('content');
     functionAlias = registerOutput<String?>('functionAlias');

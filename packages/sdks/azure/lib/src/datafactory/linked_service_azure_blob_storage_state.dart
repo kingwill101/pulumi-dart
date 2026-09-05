@@ -10,37 +10,37 @@ class LinkedServiceAzureBlobStorageState {
   /// A map of additional properties to associate with the Data Factory Linked Service.
   ///
   /// The following supported arguments are specific to Azure Blob Storage Linked Service:
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The connection string. Conflicts with `connectionStringInsecure`, `sasUri` and `serviceEndpoint`.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// The connection string sent insecurely. Conflicts with `connectionString`, `sasUri` and `serviceEndpoint`.
   ///
   /// &gt; **Note:** `connectionString` uses the Azure [SecureString](https://learn.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datafactory.models.securestring) to encrypt the contents within the REST payload sent to Azure whilst the `connectionStringInsecure` is sent as a regular string. Both properties are still sent using SSL/HTTPS. At this time the portal will not decrypt Secure Strings so the `connectionString` property in the portal will show as `******` whilst `connectionStringInsecure` will be viewable in the portal.
-  final pulumi.Input<String>? connectionStringInsecure;
+  final pulumi.Input<String?>? connectionStringInsecure;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The description for the Data Factory Linked Service.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The integration runtime reference to associate with the Data Factory Linked Service.
-  final pulumi.Input<String>? integrationRuntimeName;
-  final pulumi.Input<LinkedServiceAzureBlobStorageKeyVaultSasToken>? keyVaultSasToken;
+  final pulumi.Input<String?>? integrationRuntimeName;
+  final pulumi.Input<LinkedServiceAzureBlobStorageKeyVaultSasToken?>? keyVaultSasToken;
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Linked Service.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// A `sasTokenLinkedKeyVaultKey` block as defined below. Use this argument to store SAS Token in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. A `sasUri` is required.
-  final pulumi.Input<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey>? sasTokenLinkedKeyVaultKey;
+  final pulumi.Input<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey?>? sasTokenLinkedKeyVaultKey;
   /// The SAS URI. Conflicts with `connectionStringInsecure`, `connectionString` and `serviceEndpoint`.
-  final pulumi.Input<String>? sasUri;
-  final pulumi.Input<String>? serviceEndpoint;
-  final pulumi.Input<String>? servicePrincipalId;
-  final pulumi.Input<String>? servicePrincipalKey;
-  final pulumi.Input<LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey>? servicePrincipalLinkedKeyVaultKey;
-  final pulumi.Input<String>? storageKind;
-  final pulumi.Input<String>? tenantId;
-  final pulumi.Input<bool>? useManagedIdentity;
+  final pulumi.Input<String?>? sasUri;
+  final pulumi.Input<String?>? serviceEndpoint;
+  final pulumi.Input<String?>? servicePrincipalId;
+  final pulumi.Input<String?>? servicePrincipalKey;
+  final pulumi.Input<LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?>? servicePrincipalLinkedKeyVaultKey;
+  final pulumi.Input<String?>? storageKind;
+  final pulumi.Input<String?>? tenantId;
+  final pulumi.Input<bool?>? useManagedIdentity;
 
   /// Creates a new [LinkedServiceAzureBlobStorageState].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Linked Service.

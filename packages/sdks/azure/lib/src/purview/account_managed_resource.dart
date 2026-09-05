@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountManagedResource {
   /// The ID of the managed event hub namespace.
-  final pulumi.Input<String>? eventHubNamespaceId;
+  final pulumi.Input<String?>? eventHubNamespaceId;
   /// The ID of the managed resource group.
-  final pulumi.Input<String>? resourceGroupId;
+  final pulumi.Input<String?>? resourceGroupId;
   /// The ID of the managed storage account.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
 
   /// Creates a new [AccountManagedResource].
   /// [eventHubNamespaceId] The ID of the managed event hub namespace.

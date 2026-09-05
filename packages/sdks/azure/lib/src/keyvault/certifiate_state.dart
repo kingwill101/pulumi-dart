@@ -8,37 +8,37 @@ import 'certifiate_certificate_policy.dart';
 /// Input properties used for looking up and filtering Certifiate resources.
 class CertifiateState {
   /// A `certificate` block as defined below, used to Import an existing certificate. Changing this will create a new version of the Key Vault Certificate.
-  final pulumi.Input<CertifiateCertificate>? certificate;
+  final pulumi.Input<CertifiateCertificate?>? certificate;
   /// A `certificateAttribute` block as defined below.
-  final pulumi.Input<List<CertifiateCertificateAttribute>>? certificateAttributes;
+  final pulumi.Input<List<CertifiateCertificateAttribute>?>? certificateAttributes;
   /// The raw Key Vault Certificate data represented as a hexadecimal string.
-  final pulumi.Input<String>? certificateData;
+  final pulumi.Input<String?>? certificateData;
   /// The Base64 encoded Key Vault Certificate data.
-  final pulumi.Input<String>? certificateDataBase64;
+  final pulumi.Input<String?>? certificateDataBase64;
   /// A `certificatePolicy` block as defined below. Changing this (except the `lifetimeAction` field) will create a new version of the Key Vault Certificate.
   ///
   /// &gt; **NOTE:** When creating a Key Vault Certificate, at least one of `certificate` or `certificatePolicy` is required. Provide `certificate` to import an existing certificate, `certificatePolicy` to generate a new certificate.
-  final pulumi.Input<CertifiateCertificatePolicy>? certificatePolicy;
+  final pulumi.Input<CertifiateCertificatePolicy?>? certificatePolicy;
   /// The ID of the Key Vault where the Certificate should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
   /// Specifies the name of the Key Vault Certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The (Versioned) ID for this Key Vault Certificate. This property points to a specific version of a Key Vault Certificate, as such using this won't auto-rotate values if used in other Azure Services.
-  final pulumi.Input<String>? resourceManagerId;
+  final pulumi.Input<String?>? resourceManagerId;
   /// The Versionless ID of the Key Vault Certificate. This property allows other Azure Services (that support it) to auto-rotate their value when the Key Vault Certificate is updated.
-  final pulumi.Input<String>? resourceManagerVersionlessId;
+  final pulumi.Input<String?>? resourceManagerVersionlessId;
   /// The ID of the associated Key Vault Secret.
-  final pulumi.Input<String>? secretId;
+  final pulumi.Input<String?>? secretId;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The X509 Thumbprint of the Key Vault Certificate represented as a hexadecimal string.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
   /// The current version of the Key Vault Certificate.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// The Base ID of the Key Vault Certificate.
-  final pulumi.Input<String>? versionlessId;
+  final pulumi.Input<String?>? versionlessId;
   /// The Base ID of the Key Vault Secret.
-  final pulumi.Input<String>? versionlessSecretId;
+  final pulumi.Input<String?>? versionlessSecretId;
 
   /// Creates a new [CertifiateState].
   /// [certificate] A `certificate` block as defined below, used to Import an existing certificate. Changing this will create a new version of the Key Vault Certificate.

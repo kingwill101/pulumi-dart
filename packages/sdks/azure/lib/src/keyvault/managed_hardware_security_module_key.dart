@@ -483,17 +483,17 @@ class ManagedHardwareSecurityModuleKey extends pulumi.CustomResource {
           'azure:keyvault/managedHardwareSecurityModuleKey:ManagedHardwareSecurityModuleKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     curve = registerOutput<String?>('curve');
     expirationDate = registerOutput<String?>('expirationDate');
-    keyOpts = registerOutput<List<String>>('keyOpts');
+    keyOpts = registerOutput<List<String>>('keyOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keySize = registerOutput<int?>('keySize');
     keyType = registerOutput<String>('keyType');
     managedHsmId = registerOutput<String>('managedHsmId');
     this.name = registerOutput<String>('name');
     notBeforeDate = registerOutput<String?>('notBeforeDate');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionedId = registerOutput<String>('versionedId');
   }
 
@@ -502,11 +502,12 @@ class ManagedHardwareSecurityModuleKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedHardwareSecurityModuleKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedHardwareSecurityModuleKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -522,13 +523,34 @@ class ManagedHardwareSecurityModuleKey extends pulumi.CustomResource {
         ) {
     curve = registerOutput<String?>('curve');
     expirationDate = registerOutput<String?>('expirationDate');
-    keyOpts = registerOutput<List<String>>('keyOpts');
+    keyOpts = registerOutput<List<String>>('keyOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keySize = registerOutput<int?>('keySize');
     keyType = registerOutput<String>('keyType');
     managedHsmId = registerOutput<String>('managedHsmId');
     this.name = registerOutput<String>('name');
     notBeforeDate = registerOutput<String?>('notBeforeDate');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    versionedId = registerOutput<String>('versionedId');
+  }
+
+  /// Creates a typed reference to an existing [ManagedHardwareSecurityModuleKey] resource.
+  ManagedHardwareSecurityModuleKey.reference(String urn)
+    : super(
+        'azure:keyvault/managedHardwareSecurityModuleKey:ManagedHardwareSecurityModuleKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    curve = registerOutput<String?>('curve');
+    expirationDate = registerOutput<String?>('expirationDate');
+    keyOpts = registerOutput<List<String>>('keyOpts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keySize = registerOutput<int?>('keySize');
+    keyType = registerOutput<String>('keyType');
+    managedHsmId = registerOutput<String>('managedHsmId');
+    this.name = registerOutput<String>('name');
+    notBeforeDate = registerOutput<String?>('notBeforeDate');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionedId = registerOutput<String>('versionedId');
   }
 }

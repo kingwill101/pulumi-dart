@@ -216,7 +216,7 @@ import 'profile_state.dart';
 /// 				IpConfigurations: network.ProfileContainerNetworkInterfaceIpConfigurationArray{
 /// 					&network.ProfileContainerNetworkInterfaceIpConfigurationArgs{
 /// 						Name:     pulumi.String("exampleipconfig"),
-/// 						SubnetId: exampleSubnet.ID(),
+/// 						SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -432,14 +432,14 @@ class Profile extends pulumi.CustomResource {
           'azure:network/profile:Profile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     containerNetworkInterface = registerOutput<ProfileContainerNetworkInterface>('containerNetworkInterface', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileContainerNetworkInterface.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    containerNetworkInterfaceIds = registerOutput<List<String>>('containerNetworkInterfaceIds');
+    containerNetworkInterfaceIds = registerOutput<List<String>>('containerNetworkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Profile] resource's state with the given [name] and [id].
@@ -447,11 +447,12 @@ class Profile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Profile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -466,10 +467,27 @@ class Profile extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     containerNetworkInterface = registerOutput<ProfileContainerNetworkInterface>('containerNetworkInterface', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileContainerNetworkInterface.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    containerNetworkInterfaceIds = registerOutput<List<String>>('containerNetworkInterfaceIds');
+    containerNetworkInterfaceIds = registerOutput<List<String>>('containerNetworkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Profile] resource.
+  Profile.reference(String urn)
+    : super(
+        'azure:network/profile:Profile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    containerNetworkInterface = registerOutput<ProfileContainerNetworkInterface>('containerNetworkInterface', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileContainerNetworkInterface.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    containerNetworkInterfaceIds = registerOutput<List<String>>('containerNetworkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

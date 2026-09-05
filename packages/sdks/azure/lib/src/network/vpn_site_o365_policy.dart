@@ -5,7 +5,7 @@ import 'vpn_site_o365_policy_traffic_category.dart';
 
 class VpnSiteO365Policy {
   /// A `trafficCategory` block as defined above.
-  final pulumi.Input<VpnSiteO365PolicyTrafficCategory>? trafficCategory;
+  final pulumi.Input<VpnSiteO365PolicyTrafficCategory?>? trafficCategory;
 
   /// Creates a new [VpnSiteO365Policy].
   /// [trafficCategory] A `trafficCategory` block as defined above.

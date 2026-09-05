@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_args.dart';
+import 'configuration_config_file.dart';
+import 'configuration_protected_file.dart';
 import 'configuration_state.dart';
 
 /// Manages the configuration for a Nginx Deployment.
@@ -382,12 +384,12 @@ import 'configuration_state.dart';
 /// 			Location:          example.Location,
 /// 			FrontendPublic: &nginx.DeploymentFrontendPublicArgs{
 /// 				IpAddresses: pulumi.StringArray{
-/// 					examplePublicIp.ID(),
+/// 					examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			NetworkInterfaces: nginx.DeploymentNetworkInterfaceArray{
 /// 				&nginx.DeploymentNetworkInterfaceArgs{
-/// 					SubnetId: exampleSubnet.ID(),
+/// 					SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -427,7 +429,7 @@ import 'configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = nginx.NewConfiguration(ctx, "example", &nginx.ConfigurationArgs{
-/// 			NginxDeploymentId: exampleDeployment.ID(),
+/// 			NginxDeploymentId: exampleDeployment.ID().ToIDOutput().ToStringOutput(),
 /// 			RootFile:          pulumi.String("/etc/nginx/nginx.conf"),
 /// 			ConfigFiles: nginx.ConfigurationConfigFileArray{
 /// 				&nginx.ConfigurationConfigFileArgs{
@@ -761,13 +763,13 @@ import 'configuration_state.dart';
 /// ```
 class Configuration extends pulumi.CustomResource {
   /// One or more `configFile` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> configFiles;
+  late final pulumi.Output<List<ConfigurationConfigFile>?> configFiles;
   /// The ID of the Nginx Deployment. Changing this forces a new Nginx Configuration to be created.
   late final pulumi.Output<String> nginxDeploymentId;
   /// Specifies the package data for this configuration.
   late final pulumi.Output<String?> packageData;
   /// One or more `protectedFile` blocks with sensitive information as defined below. If specified `configFile` must also be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> protectedFiles;
+  late final pulumi.Output<List<ConfigurationProtectedFile>?> protectedFiles;
   /// Specifies the root file path of this Nginx Configuration.
   late final pulumi.Output<String> rootFile;
 
@@ -783,12 +785,12 @@ class Configuration extends pulumi.CustomResource {
           'azure:nginx/configuration:Configuration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    configFiles = registerOutput<List<Map<String, dynamic>>?>('configFiles');
+    configFiles = registerOutput<List<ConfigurationConfigFile>?>('configFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationConfigFile>(guardedValue, (value) => ConfigurationConfigFile.fromMap((value as Map).cast<String, dynamic>())); });
     nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
     packageData = registerOutput<String?>('packageData');
-    protectedFiles = registerOutput<List<Map<String, dynamic>>?>('protectedFiles');
+    protectedFiles = registerOutput<List<ConfigurationProtectedFile>?>('protectedFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationProtectedFile>(guardedValue, (value) => ConfigurationProtectedFile.fromMap((value as Map).cast<String, dynamic>())); });
     rootFile = registerOutput<String>('rootFile');
   }
 
@@ -797,11 +799,12 @@ class Configuration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Configuration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -815,10 +818,26 @@ class Configuration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    configFiles = registerOutput<List<Map<String, dynamic>>?>('configFiles');
+    configFiles = registerOutput<List<ConfigurationConfigFile>?>('configFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationConfigFile>(guardedValue, (value) => ConfigurationConfigFile.fromMap((value as Map).cast<String, dynamic>())); });
     nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
     packageData = registerOutput<String?>('packageData');
-    protectedFiles = registerOutput<List<Map<String, dynamic>>?>('protectedFiles');
+    protectedFiles = registerOutput<List<ConfigurationProtectedFile>?>('protectedFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationProtectedFile>(guardedValue, (value) => ConfigurationProtectedFile.fromMap((value as Map).cast<String, dynamic>())); });
+    rootFile = registerOutput<String>('rootFile');
+  }
+
+  /// Creates a typed reference to an existing [Configuration] resource.
+  Configuration.reference(String urn)
+    : super(
+        'azure:nginx/configuration:Configuration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configFiles = registerOutput<List<ConfigurationConfigFile>?>('configFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationConfigFile>(guardedValue, (value) => ConfigurationConfigFile.fromMap((value as Map).cast<String, dynamic>())); });
+    nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
+    packageData = registerOutput<String?>('packageData');
+    protectedFiles = registerOutput<List<ConfigurationProtectedFile>?>('protectedFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationProtectedFile>(guardedValue, (value) => ConfigurationProtectedFile.fromMap((value as Map).cast<String, dynamic>())); });
     rootFile = registerOutput<String>('rootFile');
   }
 }

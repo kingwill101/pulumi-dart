@@ -355,7 +355,7 @@ import 'custom_dataset_state.dart';
 /// 		}
 /// 		exampleLinkedCustomService, err := datafactory.NewLinkedCustomService(ctx, "example", &datafactory.LinkedCustomServiceArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:          pulumi.String("AzureBlobStorage"),
 /// 			TypePropertiesJson: exampleAccount.PrimaryConnectionString.ApplyT(func(primaryConnectionString string) (string, error) {
 /// 				return fmt.Sprintf("{\n  \\\"connectionString\\\":\\\"%v\\\"\n}\n", primaryConnectionString), nil
@@ -374,7 +374,7 @@ import 'custom_dataset_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewCustomDataset(ctx, "example", &datafactory.CustomDatasetArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:          pulumi.String("Json"),
 /// 			LinkedService: &datafactory.CustomDatasetLinkedServiceArgs{
 /// 				Name: exampleLinkedCustomService.Name,
@@ -790,16 +790,16 @@ class CustomDataset extends pulumi.CustomResource {
           'azure:datafactory/customDataset:CustomDataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedService = registerOutput<CustomDatasetLinkedService>('linkedService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomDatasetLinkedService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     schemaJson = registerOutput<String?>('schemaJson');
     type = registerOutput<String>('type');
     typePropertiesJson = registerOutput<String>('typePropertiesJson');
@@ -810,11 +810,12 @@ class CustomDataset extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomDatasetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomDataset._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -828,14 +829,36 @@ class CustomDataset extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedService = registerOutput<CustomDatasetLinkedService>('linkedService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomDatasetLinkedService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaJson = registerOutput<String?>('schemaJson');
+    type = registerOutput<String>('type');
+    typePropertiesJson = registerOutput<String>('typePropertiesJson');
+  }
+
+  /// Creates a typed reference to an existing [CustomDataset] resource.
+  CustomDataset.reference(String urn)
+    : super(
+        'azure:datafactory/customDataset:CustomDataset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    linkedService = registerOutput<CustomDatasetLinkedService>('linkedService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomDatasetLinkedService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     schemaJson = registerOutput<String?>('schemaJson');
     type = registerOutput<String>('type');
     typePropertiesJson = registerOutput<String>('typePropertiesJson');

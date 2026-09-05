@@ -10,47 +10,47 @@ class NetworkInterfaceState {
   /// &gt; **Note:** Only certain Virtual Machine sizes are supported for Accelerated Networking - [more information can be found in this document](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).
   ///
   /// &gt; **Note:** To use Accelerated Networking in an Availability Set, the Availability Set must be deployed onto an Accelerated Networking enabled cluster.
-  final pulumi.Input<bool>? acceleratedNetworkingEnabled;
+  final pulumi.Input<bool?>? acceleratedNetworkingEnabled;
   /// If the Virtual Machine using this Network Interface is part of an Availability Set, then this list will have the union of all DNS servers from all Network Interfaces that are part of the Availability Set.
-  final pulumi.Input<List<String>>? appliedDnsServers;
+  final pulumi.Input<List<String>?>? appliedDnsServers;
   /// Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections`, `Floating`, `MaxConnections` and `None`.
   ///
   /// &gt; **Note:** `auxiliaryMode` is in **Preview** and requires that the preview is enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
-  final pulumi.Input<String>? auxiliaryMode;
+  final pulumi.Input<String?>? auxiliaryMode;
   /// Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A8`, `A4`, `A1`, `A2` and `None`.
   ///
   /// &gt; **Note:** `auxiliarySku` is in **Preview** and requires that the preview is enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
-  final pulumi.Input<String>? auxiliarySku;
+  final pulumi.Input<String?>? auxiliarySku;
   /// A list of IP Addresses defining the DNS Servers which should be used for this Network Interface.
   ///
   /// &gt; **Note:** Configuring DNS Servers on the Network Interface will override the DNS Servers defined on the Virtual Network.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Specifies the Edge Zone within the Azure Region where this Network Interface should exist. Changing this forces a new Network Interface to be created.
-  final pulumi.Input<String>? edgeZone;
+  final pulumi.Input<String?>? edgeZone;
   /// The (relative) DNS Name used for internal communications between Virtual Machines in the same Virtual Network.
-  final pulumi.Input<String>? internalDnsNameLabel;
+  final pulumi.Input<String?>? internalDnsNameLabel;
   /// Even if `internalDnsNameLabel` is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of `internalDomainNameSuffix`.
-  final pulumi.Input<String>? internalDomainNameSuffix;
+  final pulumi.Input<String?>? internalDomainNameSuffix;
   /// One or more `ipConfiguration` blocks as defined below.
-  final pulumi.Input<List<NetworkInterfaceIpConfiguration>>? ipConfigurations;
+  final pulumi.Input<List<NetworkInterfaceIpConfiguration>?>? ipConfigurations;
   /// Should IP Forwarding be enabled? Defaults to `false`.
-  final pulumi.Input<bool>? ipForwardingEnabled;
+  final pulumi.Input<bool?>? ipForwardingEnabled;
   /// The location where the Network Interface should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Media Access Control (MAC) Address of the Network Interface.
-  final pulumi.Input<String>? macAddress;
+  final pulumi.Input<String?>? macAddress;
   /// The name of the Network Interface. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The first private IP address of the network interface.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The private IP addresses of the network interface.
-  final pulumi.Input<List<String>>? privateIpAddresses;
+  final pulumi.Input<List<String>?>? privateIpAddresses;
   /// The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Virtual Machine which this Network Interface is connected to.
-  final pulumi.Input<String>? virtualMachineId;
+  final pulumi.Input<String?>? virtualMachineId;
 
   /// Creates a new [NetworkInterfaceState].
   /// [acceleratedNetworkingEnabled] Should Accelerated Networking be enabled? Defaults to `false`.

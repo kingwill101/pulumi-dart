@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountStaticWebsite {
   /// The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
-  final pulumi.Input<String>? error404Document;
+  final pulumi.Input<String?>? error404Document;
   /// The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html. The value is case-sensitive.
-  final pulumi.Input<String>? indexDocument;
+  final pulumi.Input<String?>? indexDocument;
 
   /// Creates a new [AccountStaticWebsite].
   /// [error404Document] The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.

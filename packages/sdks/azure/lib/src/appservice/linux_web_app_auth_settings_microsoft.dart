@@ -6,11 +6,11 @@ class LinuxWebAppAuthSettingsMicrosoft {
   /// The OAuth 2.0 client ID that was created for the app used for authentication.
   final pulumi.Input<String> clientId;
   /// The OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `clientSecretSettingName`.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `clientSecret`.
-  final pulumi.Input<String>? clientSecretSettingName;
+  final pulumi.Input<String?>? clientSecretSettingName;
   /// Specifies a list of OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. If not specified, "wl.basic" is used as the default scope.
-  final pulumi.Input<List<String>>? oauthScopes;
+  final pulumi.Input<List<String>?>? oauthScopes;
 
   /// Creates a new [LinuxWebAppAuthSettingsMicrosoft].
   /// [clientId] The OAuth 2.0 client ID that was created for the app used for authentication.

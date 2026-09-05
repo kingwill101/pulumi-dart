@@ -6,15 +6,15 @@ class DatasetDelimitedTextAzureBlobStorageLocation {
   /// The container on the Azure Blob Storage Account hosting the file.
   final pulumi.Input<String> container;
   /// Is the `container` using dynamic expression, function or system variables? Defaults to `false`.
-  final pulumi.Input<bool>? dynamicContainerEnabled;
+  final pulumi.Input<bool?>? dynamicContainerEnabled;
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
-  final pulumi.Input<bool>? dynamicFilenameEnabled;
+  final pulumi.Input<bool?>? dynamicFilenameEnabled;
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
-  final pulumi.Input<bool>? dynamicPathEnabled;
+  final pulumi.Input<bool?>? dynamicPathEnabled;
   /// The filename of the file.
-  final pulumi.Input<String>? filename;
+  final pulumi.Input<String?>? filename;
   /// The folder path to the file. This can be an empty string.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [DatasetDelimitedTextAzureBlobStorageLocation].
   /// [container] The container on the Azure Blob Storage Account hosting the file.

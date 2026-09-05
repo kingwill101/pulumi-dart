@@ -18,7 +18,7 @@ class RegistryCredentialSetArgs {
   /// The login server for the Credential Set. Changing this forces a new Container Registry Credential Set to be created.
   final pulumi.Input<String> loginServer;
   /// The name which should be used for this Container Registry Credential Set. Changing this forces a new Container Registry Credential Set to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [RegistryCredentialSetArgs].
   /// [authenticationCredentials] A `authenticationCredentials` block as defined below.

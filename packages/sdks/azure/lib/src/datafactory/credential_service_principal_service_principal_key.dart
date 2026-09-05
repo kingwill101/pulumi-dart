@@ -8,7 +8,7 @@ class CredentialServicePrincipalServicePrincipalKey {
   /// The name of the Secret in the Key Vault.
   final pulumi.Input<String> secretName;
   /// The version of the Secret in the Key Vault.
-  final pulumi.Input<String>? secretVersion;
+  final pulumi.Input<String?>? secretVersion;
 
   /// Creates a new [CredentialServicePrincipalServicePrincipalKey].
   /// [linkedServiceName] The name of the Linked Service to use for the Service Principal Key.

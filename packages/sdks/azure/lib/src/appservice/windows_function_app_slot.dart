@@ -3,9 +3,12 @@ import 'windows_function_app_slot_args.dart';
 import 'windows_function_app_slot_auth_settings.dart';
 import 'windows_function_app_slot_auth_settings_v2.dart';
 import 'windows_function_app_slot_backup.dart';
+import 'windows_function_app_slot_connection_string.dart';
 import 'windows_function_app_slot_identity.dart';
 import 'windows_function_app_slot_site_config.dart';
+import 'windows_function_app_slot_site_credential.dart';
 import 'windows_function_app_slot_state.dart';
+import 'windows_function_app_slot_storage_account.dart';
 
 /// Manages a Windows Function App Slot.
 ///
@@ -177,7 +180,7 @@ import 'windows_function_app_slot_state.dart';
 /// 			ResourceGroupName:  example.Name,
 /// 			Location:           example.Location,
 /// 			StorageAccountName: exampleAccount.Name,
-/// 			ServicePlanId:      exampleServicePlan.ID(),
+/// 			ServicePlanId:      exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:         &appservice.WindowsFunctionAppSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
@@ -185,7 +188,7 @@ import 'windows_function_app_slot_state.dart';
 /// 		}
 /// 		_, err = appservice.NewWindowsFunctionAppSlot(ctx, "example", &appservice.WindowsFunctionAppSlotArgs{
 /// 			Name:               pulumi.String("example-slot"),
-/// 			FunctionAppId:      exampleWindowsFunctionApp.ID(),
+/// 			FunctionAppId:      exampleWindowsFunctionApp.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName: exampleAccount.Name,
 /// 			SiteConfig:         &appservice.WindowsFunctionAppSlotSiteConfigArgs{},
 /// 		})
@@ -391,7 +394,7 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
   /// The mode of the Function App Slot's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. Defaults to `Optional`.
   late final pulumi.Output<String?> clientCertificateMode;
   /// a `connectionString` block as detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> connectionStrings;
+  late final pulumi.Output<List<WindowsFunctionAppSlotConnectionString>?> connectionStrings;
   /// Force disable the content share settings.
   late final pulumi.Output<bool?> contentShareForceDisabled;
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
@@ -435,13 +438,13 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
   /// a `siteConfig` block as detailed below.
   late final pulumi.Output<WindowsFunctionAppSlotSiteConfig> siteConfig;
   /// A `siteCredential` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
+  late final pulumi.Output<List<WindowsFunctionAppSlotSiteCredential>> siteCredentials;
   /// The access key which will be used to access the storage account for the Function App Slot.
   late final pulumi.Output<String?> storageAccountAccessKey;
   /// The backend storage account name which will be used by this Function App Slot.
   late final pulumi.Output<String?> storageAccountName;
   /// One or more `storageAccount` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
+  late final pulumi.Output<List<WindowsFunctionAppSlotStorageAccount>?> storageAccounts;
   /// The Key Vault Secret ID, optionally including version, that contains the Connection String to connect to the storage account for this Function App Slot.
   ///
   /// &gt; **Note:** `storageKeyVaultSecretId` cannot be used with `storageAccountName`.
@@ -481,9 +484,10 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
           'azure:appservice/windowsFunctionAppSlot:WindowsFunctionAppSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['customDomainVerificationId', 'siteCredentials', 'storageAccountAccessKey'],
         ) {
-    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<WindowsFunctionAppSlotAuthSettings?>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSettingsV2 = registerOutput<WindowsFunctionAppSlotAuthSettingsV2?>('authSettingsV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotAuthSettingsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backup = registerOutput<WindowsFunctionAppSlotBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -491,9 +495,9 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
     clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
     clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
     clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>?>('connectionStrings');
+    connectionStrings = registerOutput<List<WindowsFunctionAppSlotConnectionString>?>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsFunctionAppSlotConnectionString>(guardedValue, (value) => WindowsFunctionAppSlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
     contentShareForceDisabled = registerOutput<bool?>('contentShareForceDisabled');
-    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId', isSecret: true);
     dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
     defaultHostname = registerOutput<String>('defaultHostname');
     enabled = registerOutput<bool?>('enabled');
@@ -506,20 +510,20 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
     keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     servicePlanId = registerOutput<String?>('servicePlanId');
     siteConfig = registerOutput<WindowsFunctionAppSlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    siteCredentials = registerOutput<List<WindowsFunctionAppSlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsFunctionAppSlotSiteCredential>(guardedValue, (value) => WindowsFunctionAppSlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageAccountName = registerOutput<String?>('storageAccountName');
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
+    storageAccounts = registerOutput<List<WindowsFunctionAppSlotStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsFunctionAppSlotStorageAccount>(guardedValue, (value) => WindowsFunctionAppSlotStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
     storageKeyVaultSecretId = registerOutput<String?>('storageKeyVaultSecretId');
     storageUsesManagedIdentity = registerOutput<bool?>('storageUsesManagedIdentity');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkBackupRestoreEnabled = registerOutput<bool?>('virtualNetworkBackupRestoreEnabled');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
     vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');
@@ -531,11 +535,12 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WindowsFunctionAppSlotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WindowsFunctionAppSlot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -549,7 +554,7 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<WindowsFunctionAppSlotAuthSettings?>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSettingsV2 = registerOutput<WindowsFunctionAppSlotAuthSettingsV2?>('authSettingsV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotAuthSettingsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backup = registerOutput<WindowsFunctionAppSlotBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -557,9 +562,9 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
     clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
     clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
     clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>?>('connectionStrings');
+    connectionStrings = registerOutput<List<WindowsFunctionAppSlotConnectionString>?>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsFunctionAppSlotConnectionString>(guardedValue, (value) => WindowsFunctionAppSlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
     contentShareForceDisabled = registerOutput<bool?>('contentShareForceDisabled');
-    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId', isSecret: true);
     dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
     defaultHostname = registerOutput<String>('defaultHostname');
     enabled = registerOutput<bool?>('enabled');
@@ -572,20 +577,73 @@ class WindowsFunctionAppSlot extends pulumi.CustomResource {
     keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     servicePlanId = registerOutput<String?>('servicePlanId');
     siteConfig = registerOutput<WindowsFunctionAppSlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    siteCredentials = registerOutput<List<WindowsFunctionAppSlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsFunctionAppSlotSiteCredential>(guardedValue, (value) => WindowsFunctionAppSlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageAccountName = registerOutput<String?>('storageAccountName');
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
+    storageAccounts = registerOutput<List<WindowsFunctionAppSlotStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsFunctionAppSlotStorageAccount>(guardedValue, (value) => WindowsFunctionAppSlotStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
     storageKeyVaultSecretId = registerOutput<String?>('storageKeyVaultSecretId');
     storageUsesManagedIdentity = registerOutput<bool?>('storageUsesManagedIdentity');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkBackupRestoreEnabled = registerOutput<bool?>('virtualNetworkBackupRestoreEnabled');
+    virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
+    vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');
+    webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>('webdeployPublishBasicAuthenticationEnabled');
+  }
+
+  /// Creates a typed reference to an existing [WindowsFunctionAppSlot] resource.
+  WindowsFunctionAppSlot.reference(String urn)
+    : super(
+        'azure:appservice/windowsFunctionAppSlot:WindowsFunctionAppSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['customDomainVerificationId', 'siteCredentials', 'storageAccountAccessKey'],
+        isResourceReference: true,
+      ) {
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    authSettings = registerOutput<WindowsFunctionAppSlotAuthSettings?>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authSettingsV2 = registerOutput<WindowsFunctionAppSlotAuthSettingsV2?>('authSettingsV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotAuthSettingsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backup = registerOutput<WindowsFunctionAppSlotBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    builtinLoggingEnabled = registerOutput<bool?>('builtinLoggingEnabled');
+    clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
+    clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
+    clientCertificateMode = registerOutput<String?>('clientCertificateMode');
+    connectionStrings = registerOutput<List<WindowsFunctionAppSlotConnectionString>?>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsFunctionAppSlotConnectionString>(guardedValue, (value) => WindowsFunctionAppSlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
+    contentShareForceDisabled = registerOutput<bool?>('contentShareForceDisabled');
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId', isSecret: true);
+    dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
+    defaultHostname = registerOutput<String>('defaultHostname');
+    enabled = registerOutput<bool?>('enabled');
+    ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>('ftpPublishBasicAuthenticationEnabled');
+    functionAppId = registerOutput<String>('functionAppId');
+    functionsExtensionVersion = registerOutput<String?>('functionsExtensionVersion');
+    hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<WindowsFunctionAppSlotIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    servicePlanId = registerOutput<String?>('servicePlanId');
+    siteConfig = registerOutput<WindowsFunctionAppSlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsFunctionAppSlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<WindowsFunctionAppSlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsFunctionAppSlotSiteCredential>(guardedValue, (value) => WindowsFunctionAppSlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageAccountName = registerOutput<String?>('storageAccountName');
+    storageAccounts = registerOutput<List<WindowsFunctionAppSlotStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsFunctionAppSlotStorageAccount>(guardedValue, (value) => WindowsFunctionAppSlotStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    storageKeyVaultSecretId = registerOutput<String?>('storageKeyVaultSecretId');
+    storageUsesManagedIdentity = registerOutput<bool?>('storageUsesManagedIdentity');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkBackupRestoreEnabled = registerOutput<bool?>('virtualNetworkBackupRestoreEnabled');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
     vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');

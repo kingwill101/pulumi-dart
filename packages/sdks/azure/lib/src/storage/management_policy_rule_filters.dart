@@ -9,9 +9,9 @@ class ManagementPolicyRuleFilters {
   /// A `matchBlobIndexTag` block as defined below. The block defines the blob index tag based filtering for blob objects.
   ///
   /// &gt; **Note:** The `matchBlobIndexTag` property requires enabling the `blobIndex` feature with [PSH or CLI commands](https://azure.microsoft.com/en-us/blog/manage-and-find-data-with-blob-index-for-azure-storage-now-in-preview/).
-  final pulumi.Input<List<ManagementPolicyRuleFiltersMatchBlobIndexTag>>? matchBlobIndexTags;
+  final pulumi.Input<List<ManagementPolicyRuleFiltersMatchBlobIndexTag>?>? matchBlobIndexTags;
   /// An array of strings for prefixes to be matched.
-  final pulumi.Input<List<String>>? prefixMatches;
+  final pulumi.Input<List<String>?>? prefixMatches;
 
   /// Creates a new [ManagementPolicyRuleFilters].
   /// [blobTypes] An array of predefined values. Valid options are `blockBlob` and `appendBlob`.

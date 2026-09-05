@@ -267,11 +267,12 @@ class IdentityProviderGoogle extends pulumi.CustomResource {
           'azure:apimanagement/identityProviderGoogle:IdentityProviderGoogle',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['clientSecret'],
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     clientId = registerOutput<String>('clientId');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
@@ -280,11 +281,12 @@ class IdentityProviderGoogle extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityProviderGoogleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityProviderGoogle._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,7 +302,23 @@ class IdentityProviderGoogle extends pulumi.CustomResource {
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     clientId = registerOutput<String>('clientId');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [IdentityProviderGoogle] resource.
+  IdentityProviderGoogle.reference(String urn)
+    : super(
+        'azure:apimanagement/identityProviderGoogle:IdentityProviderGoogle',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['clientSecret'],
+        isResourceReference: true,
+      ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

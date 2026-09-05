@@ -5,9 +5,9 @@ import 'account_network_profile_node_management_access_ip_rule.dart';
 
 class AccountNetworkProfileNodeManagementAccess {
   /// Specifies the default action for the node management access. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<String?>? defaultAction;
   /// One or more `ipRule` blocks as defined below.
-  final pulumi.Input<List<AccountNetworkProfileNodeManagementAccessIpRule>>? ipRules;
+  final pulumi.Input<List<AccountNetworkProfileNodeManagementAccessIpRule>?>? ipRules;
 
   /// Creates a new [AccountNetworkProfileNodeManagementAccess].
   /// [defaultAction] Specifies the default action for the node management access. Possible values are `Allow` and `Deny`. Defaults to `Deny`.

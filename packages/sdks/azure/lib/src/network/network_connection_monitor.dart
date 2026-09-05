@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_connection_monitor_args.dart';
+import 'network_connection_monitor_endpoint.dart';
 import 'network_connection_monitor_state.dart';
+import 'network_connection_monitor_test_configuration.dart';
+import 'network_connection_monitor_test_group.dart';
 
 /// Manages a Network Connection Monitor.
 ///
@@ -480,7 +483,7 @@ import 'network_connection_monitor_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("testconfiguration1"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -493,7 +496,7 @@ import 'network_connection_monitor_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			VmSize: pulumi.String("Standard_D2s_v3"),
 /// 			StorageImageReference: &compute.VirtualMachineStorageImageReferenceArgs{
@@ -522,7 +525,7 @@ import 'network_connection_monitor_state.dart';
 /// 		}
 /// 		exampleExtension, err := compute.NewExtension(ctx, "example", &compute.ExtensionArgs{
 /// 			Name:                    pulumi.String("example-VMExtension"),
-/// 			VirtualMachineId:        exampleVirtualMachine.ID(),
+/// 			VirtualMachineId:        exampleVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			Publisher:               pulumi.String("Microsoft.Azure.NetworkWatcher"),
 /// 			Type:                    pulumi.String("NetworkWatcherAgentLinux"),
 /// 			TypeHandlerVersion:      pulumi.String("1.4"),
@@ -542,16 +545,16 @@ import 'network_connection_monitor_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkConnectionMonitor(ctx, "example", &network.NetworkConnectionMonitorArgs{
 /// 			Name:             pulumi.String("example-Monitor"),
-/// 			NetworkWatcherId: exampleNetworkWatcher.ID(),
+/// 			NetworkWatcherId: exampleNetworkWatcher.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:         exampleNetworkWatcher.Location,
 /// 			Endpoints: network.NetworkConnectionMonitorEndpointArray{
 /// 				&network.NetworkConnectionMonitorEndpointArgs{
 /// 					Name:             pulumi.String("source"),
-/// 					TargetResourceId: exampleVirtualMachine.ID(),
+/// 					TargetResourceId: exampleVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 					Filter: &network.NetworkConnectionMonitorEndpointFilterArgs{
 /// 						Items: network.NetworkConnectionMonitorEndpointFilterItemArray{
 /// 							&network.NetworkConnectionMonitorEndpointFilterItemArgs{
-/// 								Address: exampleVirtualMachine.ID(),
+/// 								Address: exampleVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 								Type:    pulumi.String("AgentAddress"),
 /// 							},
 /// 						},
@@ -589,7 +592,7 @@ import 'network_connection_monitor_state.dart';
 /// 			},
 /// 			Notes: pulumi.String("examplenote"),
 /// 			OutputWorkspaceResourceIds: pulumi.StringArray{
-/// 				exampleAnalyticsWorkspace.ID(),
+/// 				exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleExtension,
@@ -1035,7 +1038,7 @@ import 'network_connection_monitor_state.dart';
 /// ```
 class NetworkConnectionMonitor extends pulumi.CustomResource {
   /// A `endpoint` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+  late final pulumi.Output<List<NetworkConnectionMonitorEndpoint>> endpoints;
   /// The Azure Region where the Network Connection Monitor should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name which should be used for this Network Connection Monitor. Changing this forces a new resource to be created.
@@ -1049,9 +1052,9 @@ class NetworkConnectionMonitor extends pulumi.CustomResource {
   /// A mapping of tags which should be assigned to the Network Connection Monitor.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A `testConfiguration` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> testConfigurations;
+  late final pulumi.Output<List<NetworkConnectionMonitorTestConfiguration>> testConfigurations;
   /// A `testGroup` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> testGroups;
+  late final pulumi.Output<List<NetworkConnectionMonitorTestGroup>> testGroups;
 
   /// Creates a new [NetworkConnectionMonitor].
   /// [name] The Pulumi resource name.
@@ -1065,17 +1068,17 @@ class NetworkConnectionMonitor extends pulumi.CustomResource {
           'azure:network/networkConnectionMonitor:NetworkConnectionMonitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<NetworkConnectionMonitorEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConnectionMonitorEndpoint>(guardedValue, (value) => NetworkConnectionMonitorEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkWatcherId = registerOutput<String>('networkWatcherId');
     notes = registerOutput<String?>('notes');
-    outputWorkspaceResourceIds = registerOutput<List<String>?>('outputWorkspaceResourceIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    testConfigurations = registerOutput<List<Map<String, dynamic>>>('testConfigurations');
-    testGroups = registerOutput<List<Map<String, dynamic>>>('testGroups');
+    outputWorkspaceResourceIds = registerOutput<List<String>?>('outputWorkspaceResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    testConfigurations = registerOutput<List<NetworkConnectionMonitorTestConfiguration>>('testConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConnectionMonitorTestConfiguration>(guardedValue, (value) => NetworkConnectionMonitorTestConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    testGroups = registerOutput<List<NetworkConnectionMonitorTestGroup>>('testGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConnectionMonitorTestGroup>(guardedValue, (value) => NetworkConnectionMonitorTestGroup.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [NetworkConnectionMonitor] resource's state with the given [name] and [id].
@@ -1083,11 +1086,12 @@ class NetworkConnectionMonitor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkConnectionMonitorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkConnectionMonitor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1101,14 +1105,34 @@ class NetworkConnectionMonitor extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<NetworkConnectionMonitorEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConnectionMonitorEndpoint>(guardedValue, (value) => NetworkConnectionMonitorEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkWatcherId = registerOutput<String>('networkWatcherId');
     notes = registerOutput<String?>('notes');
-    outputWorkspaceResourceIds = registerOutput<List<String>?>('outputWorkspaceResourceIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    testConfigurations = registerOutput<List<Map<String, dynamic>>>('testConfigurations');
-    testGroups = registerOutput<List<Map<String, dynamic>>>('testGroups');
+    outputWorkspaceResourceIds = registerOutput<List<String>?>('outputWorkspaceResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    testConfigurations = registerOutput<List<NetworkConnectionMonitorTestConfiguration>>('testConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConnectionMonitorTestConfiguration>(guardedValue, (value) => NetworkConnectionMonitorTestConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    testGroups = registerOutput<List<NetworkConnectionMonitorTestGroup>>('testGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConnectionMonitorTestGroup>(guardedValue, (value) => NetworkConnectionMonitorTestGroup.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkConnectionMonitor] resource.
+  NetworkConnectionMonitor.reference(String urn)
+    : super(
+        'azure:network/networkConnectionMonitor:NetworkConnectionMonitor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    endpoints = registerOutput<List<NetworkConnectionMonitorEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConnectionMonitorEndpoint>(guardedValue, (value) => NetworkConnectionMonitorEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkWatcherId = registerOutput<String>('networkWatcherId');
+    notes = registerOutput<String?>('notes');
+    outputWorkspaceResourceIds = registerOutput<List<String>?>('outputWorkspaceResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    testConfigurations = registerOutput<List<NetworkConnectionMonitorTestConfiguration>>('testConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConnectionMonitorTestConfiguration>(guardedValue, (value) => NetworkConnectionMonitorTestConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    testGroups = registerOutput<List<NetworkConnectionMonitorTestGroup>>('testGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConnectionMonitorTestGroup>(guardedValue, (value) => NetworkConnectionMonitorTestGroup.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

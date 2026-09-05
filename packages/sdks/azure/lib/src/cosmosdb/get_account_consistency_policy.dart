@@ -31,8 +31,8 @@ class GetAccountConsistencyPolicy {
   factory GetAccountConsistencyPolicy.fromMap(Map<String, dynamic> map) {
     return GetAccountConsistencyPolicy(
       consistencyLevel: pulumi.Input.fromValue(map['consistencyLevel'] as String),
-      maxIntervalInSeconds: pulumi.Input.fromValue(map['maxIntervalInSeconds'] as int),
-      maxStalenessPrefix: pulumi.Input.fromValue(map['maxStalenessPrefix'] as int),
+      maxIntervalInSeconds: pulumi.Input.fromValue((map['maxIntervalInSeconds'] as num).toInt()),
+      maxStalenessPrefix: pulumi.Input.fromValue((map['maxStalenessPrefix'] as num).toInt()),
     );
   }
 }

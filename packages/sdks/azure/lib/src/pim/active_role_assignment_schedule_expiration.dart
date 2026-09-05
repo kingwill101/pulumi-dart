@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ActiveRoleAssignmentScheduleExpiration {
   /// The duration of the role assignment in days. Changing this forces a new resource to be created.
-  final pulumi.Input<int>? durationDays;
+  final pulumi.Input<int?>? durationDays;
   /// The duration of the role assignment in hours. Changing this forces a new resource to be created.
-  final pulumi.Input<int>? durationHours;
+  final pulumi.Input<int?>? durationHours;
   /// The end date/time of the role assignment. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Only one of `durationDays`, `durationHours` or `endDateTime` should be specified.
-  final pulumi.Input<String>? endDateTime;
+  final pulumi.Input<String?>? endDateTime;
 
   /// Creates a new [ActiveRoleAssignmentScheduleExpiration].
   /// [durationDays] The duration of the role assignment in days. Changing this forces a new resource to be created.
@@ -32,8 +32,8 @@ class ActiveRoleAssignmentScheduleExpiration {
 
   factory ActiveRoleAssignmentScheduleExpiration.fromMap(Map<String, dynamic> map) {
     return ActiveRoleAssignmentScheduleExpiration(
-      durationDays: (() { final guardedValue = map['durationDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      durationHours: (() { final guardedValue = map['durationHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      durationDays: (() { final guardedValue = map['durationDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      durationHours: (() { final guardedValue = map['durationHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       endDateTime: (() { final guardedValue = map['endDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

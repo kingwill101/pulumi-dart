@@ -145,10 +145,11 @@ class SourceCodeToken extends pulumi.CustomResource {
           'azure:appservice/sourceCodeToken:SourceCodeToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['token', 'tokenSecret'],
         ) {
-    token = registerOutput<String>('token');
-    tokenSecret = registerOutput<String?>('tokenSecret');
+    token = registerOutput<String>('token', isSecret: true);
+    tokenSecret = registerOutput<String?>('tokenSecret', isSecret: true);
     type = registerOutput<String>('type');
   }
 
@@ -157,11 +158,12 @@ class SourceCodeToken extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SourceCodeTokenState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SourceCodeToken._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -175,8 +177,23 @@ class SourceCodeToken extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    token = registerOutput<String>('token');
-    tokenSecret = registerOutput<String?>('tokenSecret');
+    token = registerOutput<String>('token', isSecret: true);
+    tokenSecret = registerOutput<String?>('tokenSecret', isSecret: true);
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SourceCodeToken] resource.
+  SourceCodeToken.reference(String urn)
+    : super(
+        'azure:appservice/sourceCodeToken:SourceCodeToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['token', 'tokenSecret'],
+        isResourceReference: true,
+      ) {
+    token = registerOutput<String>('token', isSecret: true);
+    tokenSecret = registerOutput<String?>('tokenSecret', isSecret: true);
     type = registerOutput<String>('type');
   }
 }

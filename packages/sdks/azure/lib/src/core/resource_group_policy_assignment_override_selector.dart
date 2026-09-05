@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceGroupPolicyAssignmentOverrideSelector {
-  final pulumi.Input<List<String>>? ins;
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<List<String>>? notIns;
+  final pulumi.Input<List<String>?>? ins;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<List<String>?>? notIns;
 
   /// Creates a new [ResourceGroupPolicyAssignmentOverrideSelector].
   /// [ins] Optional.

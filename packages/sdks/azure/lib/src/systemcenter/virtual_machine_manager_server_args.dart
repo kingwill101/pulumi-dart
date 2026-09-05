@@ -12,17 +12,17 @@ class VirtualMachineManagerServerArgs {
   /// The FQDN of the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> fqdn;
   /// The Azure Region where the System Center Virtual Machine Manager Server should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password that is used to connect to the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> password;
   /// The port on which the System Center Virtual Machine Manager Server is listening. Possible values are between `1` and `65535`. Changing this forces a new resource to be created.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The name of the Resource Group where the System Center Virtual Machine Manager should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the System Center Virtual Machine Manager Server.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The username that is used to connect to the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> username;
 
@@ -69,7 +69,7 @@ class VirtualMachineManagerServerArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       username: pulumi.Input.fromValue(map['username'] as String),

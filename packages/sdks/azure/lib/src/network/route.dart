@@ -261,7 +261,7 @@ class Route extends pulumi.CustomResource {
           'azure:network/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     addressPrefix = registerOutput<String>('addressPrefix');
     this.name = registerOutput<String>('name');
@@ -276,11 +276,12 @@ class Route extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Route._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,6 +295,23 @@ class Route extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    addressPrefix = registerOutput<String>('addressPrefix');
+    this.name = registerOutput<String>('name');
+    nextHopInIpAddress = registerOutput<String?>('nextHopInIpAddress');
+    nextHopType = registerOutput<String>('nextHopType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routeTableName = registerOutput<String>('routeTableName');
+  }
+
+  /// Creates a typed reference to an existing [Route] resource.
+  Route.reference(String urn)
+    : super(
+        'azure:network/route:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     addressPrefix = registerOutput<String>('addressPrefix');
     this.name = registerOutput<String>('name');
     nextHopInIpAddress = registerOutput<String?>('nextHopInIpAddress');

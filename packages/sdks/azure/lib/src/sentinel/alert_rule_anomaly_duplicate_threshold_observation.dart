@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleAnomalyDuplicateThresholdObservation {
   /// The description of the threshold observation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The max value of the threshold observation.
-  final pulumi.Input<String>? max;
+  final pulumi.Input<String?>? max;
   /// The min value of the threshold observation.
-  final pulumi.Input<String>? min;
+  final pulumi.Input<String?>? min;
   /// The name of the threshold observation.
   final pulumi.Input<String> name;
   /// The value of the threshold observation.

@@ -5,64 +5,64 @@ import 'get_volume_group_oracle_volume.dart';
 
 /// Result data returned by getVolumeGroupOracle.
 class GetVolumeGroupOracleResult {
-  final String accountName;
+  final String? accountName;
   /// The application identifier.
-  final String applicationIdentifier;
+  final String? applicationIdentifier;
   /// Volume group description.
-  final String groupDescription;
+  final String? groupDescription;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The Azure Region where the Application Volume Group exists.
-  final String location;
+  final String? location;
   /// The name of this volume.
-  final String name;
-  final String resourceGroupName;
+  final String? name;
+  final String? resourceGroupName;
   /// A `volume` block as defined below.
-  final List<GetVolumeGroupOracleVolume> volumes;
+  final List<GetVolumeGroupOracleVolume>? volumes;
 
   /// Creates a new [GetVolumeGroupOracleResult].
-  /// [accountName] Required.
+  /// [accountName] Optional.
   /// [applicationIdentifier] The application identifier.
   /// [groupDescription] Volume group description.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure Region where the Application Volume Group exists.
   /// [name] The name of this volume.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [volumes] A `volume` block as defined below.
   const GetVolumeGroupOracleResult({
-    required this.accountName,
-    required this.applicationIdentifier,
-    required this.groupDescription,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.resourceGroupName,
-    required this.volumes,
+    this.accountName,
+    this.applicationIdentifier,
+    this.groupDescription,
+    this.id,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.volumes,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountName': accountName,
-      'applicationIdentifier': applicationIdentifier,
-      'groupDescription': groupDescription,
-      'id': id,
-      'location': location,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'volumes': pulumi.Input.encodeList<GetVolumeGroupOracleVolume, Map<String, dynamic>>(volumes, (value) => value.toMap()),
+      'accountName': ?accountName,
+      'applicationIdentifier': ?applicationIdentifier,
+      'groupDescription': ?groupDescription,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'volumes': ?(() { final guardedValue = volumes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVolumeGroupOracleVolume, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetVolumeGroupOracleResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupOracleResult(
-      accountName: map['accountName'] as String,
-      applicationIdentifier: map['applicationIdentifier'] as String,
-      groupDescription: map['groupDescription'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      volumes: pulumi.Input.decodeList<GetVolumeGroupOracleVolume>(map['volumes']!, (value) => GetVolumeGroupOracleVolume.fromMap((value as Map).cast<String, dynamic>())),
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      applicationIdentifier: (() { final guardedValue = map['applicationIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      groupDescription: (() { final guardedValue = map['groupDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVolumeGroupOracleVolume>(guardedValue, (value) => GetVolumeGroupOracleVolume.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -365,18 +365,19 @@ class HybridConnectionAuthorizationRule extends pulumi.CustomResource {
           'azure:relay/hybridConnectionAuthorizationRule:HybridConnectionAuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryKey', 'secondaryConnectionString', 'secondaryKey'],
         ) {
     hybridConnectionName = registerOutput<String>('hybridConnectionName');
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
   }
 
@@ -385,11 +386,12 @@ class HybridConnectionAuthorizationRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HybridConnectionAuthorizationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HybridConnectionAuthorizationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -408,11 +410,34 @@ class HybridConnectionAuthorizationRule extends pulumi.CustomResource {
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    send = registerOutput<bool?>('send');
+  }
+
+  /// Creates a typed reference to an existing [HybridConnectionAuthorizationRule] resource.
+  HybridConnectionAuthorizationRule.reference(String urn)
+    : super(
+        'azure:relay/hybridConnectionAuthorizationRule:HybridConnectionAuthorizationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryKey', 'secondaryConnectionString', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    hybridConnectionName = registerOutput<String>('hybridConnectionName');
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
+    this.name = registerOutput<String>('name');
+    namespaceName = registerOutput<String>('namespaceName');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
   }
 }

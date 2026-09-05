@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProvisionedClusterAzureActiveDirectory {
   /// A list of IDs of Microsoft Entra ID Groups. All members of the specified Microsoft Entra ID Groups have the cluster administrator access to the Kubernetes cluster.
-  final pulumi.Input<List<String>>? adminGroupObjectIds;
+  final pulumi.Input<List<String>?>? adminGroupObjectIds;
   /// Whether to enable Azure RBAC for Kubernetes authorization. Defaults to `false`.
-  final pulumi.Input<bool>? azureRbacEnabled;
+  final pulumi.Input<bool?>? azureRbacEnabled;
   /// The Tenant ID to use for authentication. If not specified, the Tenant of the Arc Kubernetes Cluster will be used.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ProvisionedClusterAzureActiveDirectory].
   /// [adminGroupObjectIds] A list of IDs of Microsoft Entra ID Groups. All members of the specified Microsoft Entra ID Groups have the cluster administrator access to the Kubernetes cluster.

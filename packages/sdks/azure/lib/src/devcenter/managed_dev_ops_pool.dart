@@ -178,7 +178,7 @@ import 'managed_dev_ops_pool_virtual_machine_scale_set_fabric.dart';
 /// 			return err
 /// 		}
 /// 		exampleProject, err := devcenter.NewProject(ctx, "example", &devcenter.ProjectArgs{
-/// 			DevCenterId:       exampleDevCenter.ID(),
+/// 			DevCenterId:       exampleDevCenter.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:          example.Location,
 /// 			Name:              pulumi.String("example"),
 /// 			ResourceGroupName: example.Name,
@@ -190,7 +190,7 @@ import 'managed_dev_ops_pool_virtual_machine_scale_set_fabric.dart';
 /// 			Name:               pulumi.String("example-manageddevopspools"),
 /// 			ResourceGroupName:  example.Name,
 /// 			Location:           example.Location,
-/// 			DevCenterProjectId: exampleProject.ID(),
+/// 			DevCenterProjectId: exampleProject.ID().ToIDOutput().ToStringOutput(),
 /// 			MaximumConcurrency: pulumi.Int(1),
 /// 			AzureDevopsOrganization: &devcenter.ManagedDevOpsPoolAzureDevopsOrganizationArgs{
 /// 				Organizations: devcenter.ManagedDevOpsPoolAzureDevopsOrganizationOrganizationArray{
@@ -434,7 +434,7 @@ class ManagedDevOpsPool extends pulumi.CustomResource {
           'azure:devcenter/managedDevOpsPool:ManagedDevOpsPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     azureDevopsOrganization = registerOutput<ManagedDevOpsPoolAzureDevopsOrganization>('azureDevopsOrganization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolAzureDevopsOrganization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     devCenterProjectId = registerOutput<String>('devCenterProjectId');
@@ -445,7 +445,7 @@ class ManagedDevOpsPool extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     statefulAgent = registerOutput<ManagedDevOpsPoolStatefulAgent?>('statefulAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolStatefulAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statelessAgent = registerOutput<ManagedDevOpsPoolStatelessAgent?>('statelessAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolStatelessAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualMachineScaleSetFabric = registerOutput<ManagedDevOpsPoolVirtualMachineScaleSetFabric>('virtualMachineScaleSetFabric', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolVirtualMachineScaleSetFabric.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workFolder = registerOutput<String?>('workFolder');
   }
@@ -455,11 +455,12 @@ class ManagedDevOpsPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedDevOpsPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedDevOpsPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -482,7 +483,30 @@ class ManagedDevOpsPool extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     statefulAgent = registerOutput<ManagedDevOpsPoolStatefulAgent?>('statefulAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolStatefulAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statelessAgent = registerOutput<ManagedDevOpsPoolStatelessAgent?>('statelessAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolStatelessAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualMachineScaleSetFabric = registerOutput<ManagedDevOpsPoolVirtualMachineScaleSetFabric>('virtualMachineScaleSetFabric', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolVirtualMachineScaleSetFabric.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workFolder = registerOutput<String?>('workFolder');
+  }
+
+  /// Creates a typed reference to an existing [ManagedDevOpsPool] resource.
+  ManagedDevOpsPool.reference(String urn)
+    : super(
+        'azure:devcenter/managedDevOpsPool:ManagedDevOpsPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureDevopsOrganization = registerOutput<ManagedDevOpsPoolAzureDevopsOrganization>('azureDevopsOrganization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolAzureDevopsOrganization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    devCenterProjectId = registerOutput<String>('devCenterProjectId');
+    identity = registerOutput<ManagedDevOpsPoolIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maximumConcurrency = registerOutput<int>('maximumConcurrency');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    statefulAgent = registerOutput<ManagedDevOpsPoolStatefulAgent?>('statefulAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolStatefulAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    statelessAgent = registerOutput<ManagedDevOpsPoolStatelessAgent?>('statelessAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolStatelessAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualMachineScaleSetFabric = registerOutput<ManagedDevOpsPoolVirtualMachineScaleSetFabric>('virtualMachineScaleSetFabric', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolVirtualMachineScaleSetFabric.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workFolder = registerOutput<String?>('workFolder');
   }

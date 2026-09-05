@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventhub_namespace_schema_group_namespace_schema_group_args_doc}
 class NamespaceSchemaGroupArgs {
   /// Specifies the name of this schema group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the EventHub Namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String> namespaceId;
   /// Specifies the compatibility of this schema group. Possible values are `None`, `Backward`, `Forward`. Changing this forces a new resource to be created.

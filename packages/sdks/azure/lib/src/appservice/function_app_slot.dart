@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_app_slot_args.dart';
 import 'function_app_slot_auth_settings.dart';
+import 'function_app_slot_connection_string.dart';
 import 'function_app_slot_identity.dart';
 import 'function_app_slot_site_config.dart';
+import 'function_app_slot_site_credential.dart';
 import 'function_app_slot_state.dart';
 
 /// Manages a Function App deployment Slot.
@@ -196,7 +198,7 @@ import 'function_app_slot_state.dart';
 /// 			Name:                    pulumi.String("test-azure-functions"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			AppServicePlanId:        examplePlan.ID(),
+/// 			AppServicePlanId:        examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName:      exampleAccount.Name,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
 /// 		})
@@ -207,7 +209,7 @@ import 'function_app_slot_state.dart';
 /// 			Name:                    pulumi.String("test-azure-functions_slot"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			AppServicePlanId:        examplePlan.ID(),
+/// 			AppServicePlanId:        examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			FunctionAppName:         exampleFunctionApp.Name,
 /// 			StorageAccountName:      exampleAccount.Name,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
@@ -412,7 +414,7 @@ class FunctionAppSlot extends pulumi.CustomResource {
   /// An `authSettings` block as defined below.
   late final pulumi.Output<FunctionAppSlotAuthSettings> authSettings;
   /// A `connectionString` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
+  late final pulumi.Output<List<FunctionAppSlotConnectionString>> connectionStrings;
   /// The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps under the consumption plan.
   late final pulumi.Output<int?> dailyMemoryTimeQuota;
   /// The default hostname associated with the Function App - such as `mysite.azurewebsites.net`
@@ -446,7 +448,7 @@ class FunctionAppSlot extends pulumi.CustomResource {
   /// A `siteConfig` object as defined below.
   late final pulumi.Output<FunctionAppSlotSiteConfig> siteConfig;
   /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this Function App Slot.
-  late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
+  late final pulumi.Output<List<FunctionAppSlotSiteCredential>> siteCredentials;
   /// The access key which will be used to access the backend storage account for the Function App.
   late final pulumi.Output<String> storageAccountAccessKey;
   /// The backend storage account name which will be used by the Function App (such as the dashboard, logs). Changing this forces a new resource to be created.
@@ -468,12 +470,13 @@ class FunctionAppSlot extends pulumi.CustomResource {
           'azure:appservice/functionAppSlot:FunctionAppSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
-    appSettings = registerOutput<Map<String, String>>('appSettings');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<FunctionAppSlotAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppSlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    connectionStrings = registerOutput<List<FunctionAppSlotConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionAppSlotConnectionString>(guardedValue, (value) => FunctionAppSlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
     dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
     defaultHostname = registerOutput<String>('defaultHostname');
     enableBuiltinLogging = registerOutput<bool?>('enableBuiltinLogging');
@@ -489,10 +492,10 @@ class FunctionAppSlot extends pulumi.CustomResource {
     possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     siteConfig = registerOutput<FunctionAppSlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppSlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
-    storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
+    siteCredentials = registerOutput<List<FunctionAppSlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionAppSlotSiteCredential>(guardedValue, (value) => FunctionAppSlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey', isSecret: true);
     storageAccountName = registerOutput<String>('storageAccountName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String?>('version');
   }
 
@@ -501,11 +504,12 @@ class FunctionAppSlot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionAppSlotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionAppSlot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -520,9 +524,9 @@ class FunctionAppSlot extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
-    appSettings = registerOutput<Map<String, String>>('appSettings');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<FunctionAppSlotAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppSlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    connectionStrings = registerOutput<List<FunctionAppSlotConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionAppSlotConnectionString>(guardedValue, (value) => FunctionAppSlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
     dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
     defaultHostname = registerOutput<String>('defaultHostname');
     enableBuiltinLogging = registerOutput<bool?>('enableBuiltinLogging');
@@ -538,10 +542,46 @@ class FunctionAppSlot extends pulumi.CustomResource {
     possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     siteConfig = registerOutput<FunctionAppSlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppSlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
-    storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
+    siteCredentials = registerOutput<List<FunctionAppSlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionAppSlotSiteCredential>(guardedValue, (value) => FunctionAppSlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey', isSecret: true);
     storageAccountName = registerOutput<String>('storageAccountName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [FunctionAppSlot] resource.
+  FunctionAppSlot.reference(String urn)
+    : super(
+        'azure:appservice/functionAppSlot:FunctionAppSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
+        isResourceReference: true,
+      ) {
+    appServicePlanId = registerOutput<String>('appServicePlanId');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    authSettings = registerOutput<FunctionAppSlotAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppSlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionStrings = registerOutput<List<FunctionAppSlotConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionAppSlotConnectionString>(guardedValue, (value) => FunctionAppSlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
+    dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
+    defaultHostname = registerOutput<String>('defaultHostname');
+    enableBuiltinLogging = registerOutput<bool?>('enableBuiltinLogging');
+    enabled = registerOutput<bool?>('enabled');
+    functionAppName = registerOutput<String>('functionAppName');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<FunctionAppSlotIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppSlotIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    osType = registerOutput<String?>('osType');
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    siteConfig = registerOutput<FunctionAppSlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppSlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<FunctionAppSlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionAppSlotSiteCredential>(guardedValue, (value) => FunctionAppSlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey', isSecret: true);
+    storageAccountName = registerOutput<String>('storageAccountName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String?>('version');
   }
 }

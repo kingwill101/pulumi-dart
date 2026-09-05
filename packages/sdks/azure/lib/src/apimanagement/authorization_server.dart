@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorization_server_args.dart';
 import 'authorization_server_state.dart';
+import 'authorization_server_token_body_parameter.dart';
 
 /// Manages an Authorization Server within an API Management Service.
 ///
@@ -270,7 +271,7 @@ class AuthorizationServer extends pulumi.CustomResource {
   /// Does this Authorization Server support State? If this is set to `true` the client may use the state parameter to raise protocol security.
   late final pulumi.Output<bool?> supportState;
   /// A `tokenBodyParameter` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tokenBodyParameters;
+  late final pulumi.Output<List<AuthorizationServerTokenBodyParameter>?> tokenBodyParameters;
   /// The OAUTH Token Endpoint.
   late final pulumi.Output<String?> tokenEndpoint;
 
@@ -286,26 +287,27 @@ class AuthorizationServer extends pulumi.CustomResource {
           'azure:apimanagement/authorizationServer:AuthorizationServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['clientSecret', 'resourceOwnerPassword'],
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     authorizationEndpoint = registerOutput<String>('authorizationEndpoint');
-    authorizationMethods = registerOutput<List<String>>('authorizationMethods');
-    bearerTokenSendingMethods = registerOutput<List<String>?>('bearerTokenSendingMethods');
-    clientAuthenticationMethods = registerOutput<List<String>?>('clientAuthenticationMethods');
+    authorizationMethods = registerOutput<List<String>>('authorizationMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    bearerTokenSendingMethods = registerOutput<List<String>?>('bearerTokenSendingMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clientAuthenticationMethods = registerOutput<List<String>?>('clientAuthenticationMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clientId = registerOutput<String>('clientId');
     clientRegistrationEndpoint = registerOutput<String>('clientRegistrationEndpoint');
-    clientSecret = registerOutput<String?>('clientSecret');
+    clientSecret = registerOutput<String?>('clientSecret', isSecret: true);
     defaultScope = registerOutput<String?>('defaultScope');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    grantTypes = registerOutput<List<String>>('grantTypes');
+    grantTypes = registerOutput<List<String>>('grantTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    resourceOwnerPassword = registerOutput<String?>('resourceOwnerPassword');
+    resourceOwnerPassword = registerOutput<String?>('resourceOwnerPassword', isSecret: true);
     resourceOwnerUsername = registerOutput<String?>('resourceOwnerUsername');
     supportState = registerOutput<bool?>('supportState');
-    tokenBodyParameters = registerOutput<List<Map<String, dynamic>>?>('tokenBodyParameters');
+    tokenBodyParameters = registerOutput<List<AuthorizationServerTokenBodyParameter>?>('tokenBodyParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorizationServerTokenBodyParameter>(guardedValue, (value) => AuthorizationServerTokenBodyParameter.fromMap((value as Map).cast<String, dynamic>())); });
     tokenEndpoint = registerOutput<String?>('tokenEndpoint');
   }
 
@@ -314,11 +316,12 @@ class AuthorizationServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthorizationServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AuthorizationServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -334,22 +337,53 @@ class AuthorizationServer extends pulumi.CustomResource {
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     authorizationEndpoint = registerOutput<String>('authorizationEndpoint');
-    authorizationMethods = registerOutput<List<String>>('authorizationMethods');
-    bearerTokenSendingMethods = registerOutput<List<String>?>('bearerTokenSendingMethods');
-    clientAuthenticationMethods = registerOutput<List<String>?>('clientAuthenticationMethods');
+    authorizationMethods = registerOutput<List<String>>('authorizationMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    bearerTokenSendingMethods = registerOutput<List<String>?>('bearerTokenSendingMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clientAuthenticationMethods = registerOutput<List<String>?>('clientAuthenticationMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clientId = registerOutput<String>('clientId');
     clientRegistrationEndpoint = registerOutput<String>('clientRegistrationEndpoint');
-    clientSecret = registerOutput<String?>('clientSecret');
+    clientSecret = registerOutput<String?>('clientSecret', isSecret: true);
     defaultScope = registerOutput<String?>('defaultScope');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    grantTypes = registerOutput<List<String>>('grantTypes');
+    grantTypes = registerOutput<List<String>>('grantTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    resourceOwnerPassword = registerOutput<String?>('resourceOwnerPassword');
+    resourceOwnerPassword = registerOutput<String?>('resourceOwnerPassword', isSecret: true);
     resourceOwnerUsername = registerOutput<String?>('resourceOwnerUsername');
     supportState = registerOutput<bool?>('supportState');
-    tokenBodyParameters = registerOutput<List<Map<String, dynamic>>?>('tokenBodyParameters');
+    tokenBodyParameters = registerOutput<List<AuthorizationServerTokenBodyParameter>?>('tokenBodyParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorizationServerTokenBodyParameter>(guardedValue, (value) => AuthorizationServerTokenBodyParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    tokenEndpoint = registerOutput<String?>('tokenEndpoint');
+  }
+
+  /// Creates a typed reference to an existing [AuthorizationServer] resource.
+  AuthorizationServer.reference(String urn)
+    : super(
+        'azure:apimanagement/authorizationServer:AuthorizationServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['clientSecret', 'resourceOwnerPassword'],
+        isResourceReference: true,
+      ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    authorizationEndpoint = registerOutput<String>('authorizationEndpoint');
+    authorizationMethods = registerOutput<List<String>>('authorizationMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    bearerTokenSendingMethods = registerOutput<List<String>?>('bearerTokenSendingMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clientAuthenticationMethods = registerOutput<List<String>?>('clientAuthenticationMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clientId = registerOutput<String>('clientId');
+    clientRegistrationEndpoint = registerOutput<String>('clientRegistrationEndpoint');
+    clientSecret = registerOutput<String?>('clientSecret', isSecret: true);
+    defaultScope = registerOutput<String?>('defaultScope');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    grantTypes = registerOutput<List<String>>('grantTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceOwnerPassword = registerOutput<String?>('resourceOwnerPassword', isSecret: true);
+    resourceOwnerUsername = registerOutput<String?>('resourceOwnerUsername');
+    supportState = registerOutput<bool?>('supportState');
+    tokenBodyParameters = registerOutput<List<AuthorizationServerTokenBodyParameter>?>('tokenBodyParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorizationServerTokenBodyParameter>(guardedValue, (value) => AuthorizationServerTokenBodyParameter.fromMap((value as Map).cast<String, dynamic>())); });
     tokenEndpoint = registerOutput<String?>('tokenEndpoint');
   }
 }

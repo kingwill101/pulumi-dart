@@ -149,7 +149,7 @@ import 'static_site_custom_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewStaticSiteCustomDomain(ctx, "example", &appservice.StaticSiteCustomDomainArgs{
-/// 			StaticSiteId: exampleStaticSite.ID(),
+/// 			StaticSiteId: exampleStaticSite.ID().ToIDOutput().ToStringOutput(),
 /// 			DomainName: pulumi.All(exampleCNameRecord.Name, exampleCNameRecord.ZoneName).ApplyT(func(_args []interface{}) (string, error) {
 /// 				name := _args[0].(string)
 /// 				zoneName := _args[1].(string)
@@ -415,7 +415,7 @@ import 'static_site_custom_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleStaticSiteCustomDomain, err := appservice.NewStaticSiteCustomDomain(ctx, "example", &appservice.StaticSiteCustomDomainArgs{
-/// 			StaticSiteId:   exampleStaticSite.ID(),
+/// 			StaticSiteId:   exampleStaticSite.ID().ToIDOutput().ToStringOutput(),
 /// 			DomainName:     pulumi.String("my-domain.contoso.com"),
 /// 			ValidationType: pulumi.String("dns-txt-token"),
 /// 		})
@@ -594,11 +594,12 @@ class StaticSiteCustomDomain extends pulumi.CustomResource {
           'azure:appservice/staticSiteCustomDomain:StaticSiteCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['validationToken'],
         ) {
     domainName = registerOutput<String>('domainName');
     staticSiteId = registerOutput<String>('staticSiteId');
-    validationToken = registerOutput<String>('validationToken');
+    validationToken = registerOutput<String>('validationToken', isSecret: true);
     validationType = registerOutput<String?>('validationType');
   }
 
@@ -607,11 +608,12 @@ class StaticSiteCustomDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StaticSiteCustomDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StaticSiteCustomDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -627,7 +629,23 @@ class StaticSiteCustomDomain extends pulumi.CustomResource {
         ) {
     domainName = registerOutput<String>('domainName');
     staticSiteId = registerOutput<String>('staticSiteId');
-    validationToken = registerOutput<String>('validationToken');
+    validationToken = registerOutput<String>('validationToken', isSecret: true);
+    validationType = registerOutput<String?>('validationType');
+  }
+
+  /// Creates a typed reference to an existing [StaticSiteCustomDomain] resource.
+  StaticSiteCustomDomain.reference(String urn)
+    : super(
+        'azure:appservice/staticSiteCustomDomain:StaticSiteCustomDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['validationToken'],
+        isResourceReference: true,
+      ) {
+    domainName = registerOutput<String>('domainName');
+    staticSiteId = registerOutput<String>('staticSiteId');
+    validationToken = registerOutput<String>('validationToken', isSecret: true);
     validationType = registerOutput<String?>('validationType');
   }
 }

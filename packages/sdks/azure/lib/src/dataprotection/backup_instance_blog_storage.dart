@@ -201,18 +201,16 @@ import 'backup_instance_blog_storage_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAssignment, err := authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
-/// 			Scope:              exampleAccount.ID(),
+/// 			Scope:              exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Storage Account Backup Contributor"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleBackupPolicyBlobStorage, err := dataprotection.NewBackupPolicyBlobStorage(ctx, "example", &dataprotection.BackupPolicyBlobStorageArgs{
 /// 			Name:                                pulumi.String("example-backup-policy"),
-/// 			VaultId:                             exampleBackupVault.ID(),
+/// 			VaultId:                             exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
 /// 			OperationalDefaultRetentionDuration: pulumi.String("P30D"),
 /// 		})
 /// 		if err != nil {
@@ -220,10 +218,10 @@ import 'backup_instance_blog_storage_state.dart';
 /// 		}
 /// 		_, err = dataprotection.NewBackupInstanceBlogStorage(ctx, "example", &dataprotection.BackupInstanceBlogStorageArgs{
 /// 			Name:             pulumi.String("example-backup-instance"),
-/// 			VaultId:          exampleBackupVault.ID(),
+/// 			VaultId:          exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:         example.Location,
-/// 			StorageAccountId: exampleAccount.ID(),
-/// 			BackupPolicyId:   exampleBackupPolicyBlobStorage.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupPolicyId:   exampleBackupPolicyBlobStorage.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAssignment,
 /// 		}))
@@ -465,13 +463,13 @@ class BackupInstanceBlogStorage extends pulumi.CustomResource {
           'azure:dataprotection/backupInstanceBlogStorage:BackupInstanceBlogStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     protectionState = registerOutput<String>('protectionState');
-    storageAccountContainerNames = registerOutput<List<String>?>('storageAccountContainerNames');
+    storageAccountContainerNames = registerOutput<List<String>?>('storageAccountContainerNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageAccountId = registerOutput<String>('storageAccountId');
     vaultId = registerOutput<String>('vaultId');
   }
@@ -481,11 +479,12 @@ class BackupInstanceBlogStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupInstanceBlogStorageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupInstanceBlogStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -503,7 +502,25 @@ class BackupInstanceBlogStorage extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     protectionState = registerOutput<String>('protectionState');
-    storageAccountContainerNames = registerOutput<List<String>?>('storageAccountContainerNames');
+    storageAccountContainerNames = registerOutput<List<String>?>('storageAccountContainerNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storageAccountId = registerOutput<String>('storageAccountId');
+    vaultId = registerOutput<String>('vaultId');
+  }
+
+  /// Creates a typed reference to an existing [BackupInstanceBlogStorage] resource.
+  BackupInstanceBlogStorage.reference(String urn)
+    : super(
+        'azure:dataprotection/backupInstanceBlogStorage:BackupInstanceBlogStorage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    protectionState = registerOutput<String>('protectionState');
+    storageAccountContainerNames = registerOutput<List<String>?>('storageAccountContainerNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageAccountId = registerOutput<String>('storageAccountId');
     vaultId = registerOutput<String>('vaultId');
   }

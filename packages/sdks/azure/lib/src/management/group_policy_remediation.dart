@@ -122,8 +122,8 @@ import 'group_policy_remediation_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"listOfAllowedLocations": map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string][]string{
+/// 			"listOfAllowedLocations": map[string][]string{
 /// 				"value": []string{
 /// 					"East US",
 /// 				},
@@ -135,7 +135,7 @@ import 'group_policy_remediation_state.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		exampleGroupPolicyAssignment, err := management.NewGroupPolicyAssignment(ctx, "example", &management.GroupPolicyAssignmentArgs{
 /// 			Name:               pulumi.String("exampleAssignment"),
-/// 			ManagementGroupId:  exampleGroup.ID(),
+/// 			ManagementGroupId:  exampleGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			PolicyDefinitionId: pulumi.String(example.Id),
 /// 			Parameters:         pulumi.String(json0),
 /// 		})
@@ -144,8 +144,8 @@ import 'group_policy_remediation_state.dart';
 /// 		}
 /// 		_, err = management.NewGroupPolicyRemediation(ctx, "example", &management.GroupPolicyRemediationArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			ManagementGroupId:  exampleGroup.ID(),
-/// 			PolicyAssignmentId: exampleGroupPolicyAssignment.ID(),
+/// 			ManagementGroupId:  exampleGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyAssignmentId: exampleGroupPolicyAssignment.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -322,10 +322,10 @@ class GroupPolicyRemediation extends pulumi.CustomResource {
           'azure:management/groupPolicyRemediation:GroupPolicyRemediation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
-    locationFilters = registerOutput<List<String>?>('locationFilters');
+    locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
     parallelDeployments = registerOutput<int?>('parallelDeployments');
@@ -339,11 +339,12 @@ class GroupPolicyRemediation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupPolicyRemediationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupPolicyRemediation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -358,7 +359,26 @@ class GroupPolicyRemediation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
-    locationFilters = registerOutput<List<String>?>('locationFilters');
+    locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    managementGroupId = registerOutput<String>('managementGroupId');
+    this.name = registerOutput<String>('name');
+    parallelDeployments = registerOutput<int?>('parallelDeployments');
+    policyAssignmentId = registerOutput<String>('policyAssignmentId');
+    policyDefinitionReferenceId = registerOutput<String?>('policyDefinitionReferenceId');
+    resourceCount = registerOutput<int?>('resourceCount');
+  }
+
+  /// Creates a typed reference to an existing [GroupPolicyRemediation] resource.
+  GroupPolicyRemediation.reference(String urn)
+    : super(
+        'azure:management/groupPolicyRemediation:GroupPolicyRemediation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    failurePercentage = registerOutput<double?>('failurePercentage');
+    locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
     parallelDeployments = registerOutput<int?>('parallelDeployments');

@@ -8,81 +8,81 @@ import 'get_monitor_user.dart';
 
 /// Result data returned by getMonitor.
 class GetMonitorResult {
-  final List<GetMonitorEnvironmentProperty> environmentProperties;
+  final List<GetMonitorEnvironmentProperty>? environmentProperties;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The kind of managed identity assigned to this resource.  A `identity` block as defined below.
-  final List<GetMonitorIdentity> identities;
+  final List<GetMonitorIdentity>? identities;
   /// The Azure Region where the Dynatrace monitor should exist.
-  final String location;
+  final String? location;
   /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state.
-  final String marketplaceSubscription;
+  final String? marketplaceSubscription;
   /// Flag specifying if the resource monitoring is enabled or disabled.
-  final bool monitoringEnabled;
-  final String name;
+  final bool? monitoringEnabled;
+  final String? name;
   /// Plan id as published by Dynatrace.
-  final List<GetMonitorPlan> plans;
-  final String resourceGroupName;
+  final List<GetMonitorPlan>? plans;
+  final String? resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// User's information. A `user` block as defined below.
-  final List<GetMonitorUser> users;
+  final List<GetMonitorUser>? users;
 
   /// Creates a new [GetMonitorResult].
-  /// [environmentProperties] Required.
+  /// [environmentProperties] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] The kind of managed identity assigned to this resource.  A `identity` block as defined below.
   /// [location] The Azure Region where the Dynatrace monitor should exist.
   /// [marketplaceSubscription] Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state.
   /// [monitoringEnabled] Flag specifying if the resource monitoring is enabled or disabled.
-  /// [name] Required.
+  /// [name] Optional.
   /// [plans] Plan id as published by Dynatrace.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [tags] A mapping of tags to assign to the resource.
   /// [users] User's information. A `user` block as defined below.
   const GetMonitorResult({
-    required this.environmentProperties,
-    required this.id,
-    required this.identities,
-    required this.location,
-    required this.marketplaceSubscription,
-    required this.monitoringEnabled,
-    required this.name,
-    required this.plans,
-    required this.resourceGroupName,
-    required this.tags,
-    required this.users,
+    this.environmentProperties,
+    this.id,
+    this.identities,
+    this.location,
+    this.marketplaceSubscription,
+    this.monitoringEnabled,
+    this.name,
+    this.plans,
+    this.resourceGroupName,
+    this.tags,
+    this.users,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'environmentProperties': pulumi.Input.encodeList<GetMonitorEnvironmentProperty, Map<String, dynamic>>(environmentProperties, (value) => value.toMap()),
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetMonitorIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'location': location,
-      'marketplaceSubscription': marketplaceSubscription,
-      'monitoringEnabled': monitoringEnabled,
-      'name': name,
-      'plans': pulumi.Input.encodeList<GetMonitorPlan, Map<String, dynamic>>(plans, (value) => value.toMap()),
-      'resourceGroupName': resourceGroupName,
-      'tags': tags,
-      'users': pulumi.Input.encodeList<GetMonitorUser, Map<String, dynamic>>(users, (value) => value.toMap()),
+      'environmentProperties': ?(() { final guardedValue = environmentProperties; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMonitorEnvironmentProperty, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMonitorIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'marketplaceSubscription': ?marketplaceSubscription,
+      'monitoringEnabled': ?monitoringEnabled,
+      'name': ?name,
+      'plans': ?(() { final guardedValue = plans; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMonitorPlan, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resourceGroupName': ?resourceGroupName,
+      'tags': ?tags,
+      'users': ?(() { final guardedValue = users; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMonitorUser, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetMonitorResult.fromMap(Map<String, dynamic> map) {
     return GetMonitorResult(
-      environmentProperties: pulumi.Input.decodeList<GetMonitorEnvironmentProperty>(map['environmentProperties']!, (value) => GetMonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetMonitorIdentity>(map['identities']!, (value) => GetMonitorIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      marketplaceSubscription: map['marketplaceSubscription'] as String,
-      monitoringEnabled: map['monitoringEnabled'] as bool,
-      name: map['name'] as String,
-      plans: pulumi.Input.decodeList<GetMonitorPlan>(map['plans']!, (value) => GetMonitorPlan.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      users: pulumi.Input.decodeList<GetMonitorUser>(map['users']!, (value) => GetMonitorUser.fromMap((value as Map).cast<String, dynamic>())),
+      environmentProperties: (() { final guardedValue = map['environmentProperties']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMonitorEnvironmentProperty>(guardedValue, (value) => GetMonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMonitorIdentity>(guardedValue, (value) => GetMonitorIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      marketplaceSubscription: (() { final guardedValue = map['marketplaceSubscription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      monitoringEnabled: (() { final guardedValue = map['monitoringEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      plans: (() { final guardedValue = map['plans']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMonitorPlan>(guardedValue, (value) => GetMonitorPlan.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      users: (() { final guardedValue = map['users']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMonitorUser>(guardedValue, (value) => GetMonitorUser.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -153,7 +153,7 @@ import 'managed_private_endpoint_state.dart';
 /// 			Name:                       pulumi.String("exampleprivateendpoint"),
 /// 			ResourceGroupName:          example.Name,
 /// 			StreamAnalyticsClusterName: exampleCluster.Name,
-/// 			TargetResourceId:           exampleAccount.ID(),
+/// 			TargetResourceId:           exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			SubresourceName:            pulumi.String("blob"),
 /// 		})
 /// 		if err != nil {
@@ -335,7 +335,7 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
           'azure:streamanalytics/managedPrivateEndpoint:ManagedPrivateEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -349,11 +349,12 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedPrivateEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedPrivateEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -367,6 +368,22 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    streamAnalyticsClusterName = registerOutput<String>('streamAnalyticsClusterName');
+    subresourceName = registerOutput<String>('subresourceName');
+    targetResourceId = registerOutput<String>('targetResourceId');
+  }
+
+  /// Creates a typed reference to an existing [ManagedPrivateEndpoint] resource.
+  ManagedPrivateEndpoint.reference(String urn)
+    : super(
+        'azure:streamanalytics/managedPrivateEndpoint:ManagedPrivateEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     streamAnalyticsClusterName = registerOutput<String>('streamAnalyticsClusterName');

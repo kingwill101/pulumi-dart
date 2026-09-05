@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNetworkProfile {
   /// The outbound (egress) routing method. Possible values are `Loadbalancer` and `UserDefinedRouting`. Defaults to `Loadbalancer`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? outboundType;
+  final pulumi.Input<String?>? outboundType;
   /// The CIDR to use for pod IP addresses. Changing this forces a new resource to be created.
   final pulumi.Input<String> podCidr;
   /// Whether a preconfigured network security group is being used on the subnets. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? preconfiguredNetworkSecurityGroupEnabled;
+  final pulumi.Input<bool?>? preconfiguredNetworkSecurityGroupEnabled;
   /// The network range used by the OpenShift service. Changing this forces a new resource to be created.
   final pulumi.Input<String> serviceCidr;
 

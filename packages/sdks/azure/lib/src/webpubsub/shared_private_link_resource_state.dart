@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SharedPrivateLinkResource resources.
 class SharedPrivateLinkResourceState {
   /// Specify the name of the Web Pubsub Shared Private Link Resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specify the request message for requesting approval of the Shared Private Link Enabled Remote Resource.
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// The status of a private endpoint connection. Possible values are Pending, Approved, Rejected or Disconnected.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Specify the sub resource name which the Web Pubsub Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The available sub resource can be retrieved by using `azure.webpubsub.getPrivateLinkResource` data source.
-  final pulumi.Input<String>? subresourceName;
+  final pulumi.Input<String?>? subresourceName;
   /// Specify the ID of the Shared Private Link Enabled Remote Resource which this Web Pubsub Private Endpoint should be connected to. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The sub resource name should match with the type of the target resource id that's being specified.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
   /// Specify the id of the Web Pubsub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? webPubsubId;
+  final pulumi.Input<String?>? webPubsubId;
 
   /// Creates a new [SharedPrivateLinkResourceState].
   /// [name] Specify the name of the Web Pubsub Shared Private Link Resource. Changing this forces a new resource to be created.

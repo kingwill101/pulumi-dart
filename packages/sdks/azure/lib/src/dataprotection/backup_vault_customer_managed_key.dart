@@ -32,6 +32,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 ///     name: "example-key-vault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     enabledForDiskEncryption: true,
 ///     tenantId: current.then(current => current.tenantId),
 ///     softDeleteRetentionDays: 7,
@@ -116,6 +117,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 ///     name="example-key-vault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     enabled_for_disk_encryption=True,
 ///     tenant_id=current.tenant_id,
 ///     soft_delete_retention_days=7,
@@ -210,6 +212,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 ///         Name = "example-key-vault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         EnabledForDiskEncryption = true,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SoftDeleteRetentionDays = 7,
@@ -331,6 +334,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 /// 			Name:                     pulumi.String("example-key-vault"),
 /// 			Location:                 example.Location,
 /// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
 /// 			EnabledForDiskEncryption: pulumi.Bool(true),
 /// 			TenantId:                 pulumi.String(current.TenantId),
 /// 			SoftDeleteRetentionDays:  pulumi.Int(7),
@@ -358,12 +362,8 @@ import 'backup_vault_customer_managed_key_state.dart';
 /// 					},
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
-/// 					TenantId: exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 						return identity.TenantId, nil
-/// 					}).(pulumi.StringPtrOutput),
-/// 					ObjectId: exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 						return identity.PrincipalId, nil
-/// 					}).(pulumi.StringPtrOutput),
+/// 					TenantId: exampleBackupVault.Identity.TenantId(),
+/// 					ObjectId: exampleBackupVault.Identity.PrincipalId(),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Create"),
 /// 						pulumi.String("Decrypt"),
@@ -388,7 +388,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("example-key"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -404,8 +404,8 @@ import 'backup_vault_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = dataprotection.NewBackupVaultCustomerManagedKey(ctx, "example", &dataprotection.BackupVaultCustomerManagedKeyArgs{
-/// 			DataProtectionBackupVaultId: exampleBackupVault.ID(),
-/// 			KeyVaultKeyId:               exampleKey.ID(),
+/// 			DataProtectionBackupVaultId: exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultKeyId:               exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -444,6 +444,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 ///   name                        = "example-key-vault"
 ///   location                    = azure_core_resourcegroup.example.location
 ///   resource_group_name         = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
 ///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
 ///   soft_delete_retention_days  = 7
@@ -528,6 +529,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 ///             .name("example-key-vault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .enabledForDiskEncryption(true)
 ///             .tenantId(current.tenantId())
 ///             .softDeleteRetentionDays(7)
@@ -617,6 +619,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 ///       name: example-key-vault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       enabledForDiskEncryption: true
 ///       tenantId: ${current.tenantId}
 ///       softDeleteRetentionDays: 7
@@ -716,7 +719,7 @@ class BackupVaultCustomerManagedKey extends pulumi.CustomResource {
           'azure:dataprotection/backupVaultCustomerManagedKey:BackupVaultCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dataProtectionBackupVaultId = registerOutput<String>('dataProtectionBackupVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
@@ -727,11 +730,12 @@ class BackupVaultCustomerManagedKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupVaultCustomerManagedKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupVaultCustomerManagedKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -745,6 +749,19 @@ class BackupVaultCustomerManagedKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dataProtectionBackupVaultId = registerOutput<String>('dataProtectionBackupVaultId');
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+  }
+
+  /// Creates a typed reference to an existing [BackupVaultCustomerManagedKey] resource.
+  BackupVaultCustomerManagedKey.reference(String urn)
+    : super(
+        'azure:dataprotection/backupVaultCustomerManagedKey:BackupVaultCustomerManagedKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dataProtectionBackupVaultId = registerOutput<String>('dataProtectionBackupVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
   }

@@ -190,13 +190,13 @@ class ResourceAnchor extends pulumi.CustomResource {
           'azure:oracle/resourceAnchor:ResourceAnchor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     linkedCompartmentId = registerOutput<String>('linkedCompartmentId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ResourceAnchor] resource's state with the given [name] and [id].
@@ -204,11 +204,12 @@ class ResourceAnchor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceAnchorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceAnchor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -226,6 +227,22 @@ class ResourceAnchor extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ResourceAnchor] resource.
+  ResourceAnchor.reference(String urn)
+    : super(
+        'azure:oracle/resourceAnchor:ResourceAnchor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    linkedCompartmentId = registerOutput<String>('linkedCompartmentId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

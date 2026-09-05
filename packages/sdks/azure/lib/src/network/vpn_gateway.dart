@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_gateway_args.dart';
 import 'vpn_gateway_bgp_settings.dart';
+import 'vpn_gateway_ip_configuration.dart';
 import 'vpn_gateway_state.dart';
 
 /// Manages a VPN Gateway within a Virtual Hub, which enables Site-to-Site communication.
@@ -161,7 +162,7 @@ import 'vpn_gateway_state.dart';
 /// 			Name:              pulumi.String("example-hub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -171,7 +172,7 @@ import 'vpn_gateway_state.dart';
 /// 			Name:              pulumi.String("example-vpng"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			VirtualHubId:      exampleVirtualHub.ID(),
+/// 			VirtualHubId:      exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -346,7 +347,7 @@ class VpnGateway extends pulumi.CustomResource {
   /// A `bgpSettings` block as defined below.
   late final pulumi.Output<VpnGatewayBgpSettings> bgpSettings;
   /// An `ipConfiguration` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
+  late final pulumi.Output<List<VpnGatewayIpConfiguration>> ipConfigurations;
   /// The Azure location where this VPN Gateway should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The Name which should be used for this VPN Gateway. Changing this forces a new resource to be created.
@@ -374,17 +375,17 @@ class VpnGateway extends pulumi.CustomResource {
           'azure:network/vpnGateway:VpnGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     bgpRouteTranslationForNatEnabled = registerOutput<bool?>('bgpRouteTranslationForNatEnabled');
     bgpSettings = registerOutput<VpnGatewayBgpSettings>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnGatewayBgpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
+    ipConfigurations = registerOutput<List<VpnGatewayIpConfiguration>>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnGatewayIpConfiguration>(guardedValue, (value) => VpnGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routingPreference = registerOutput<String?>('routingPreference');
     scaleUnit = registerOutput<int?>('scaleUnit');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 
@@ -393,11 +394,12 @@ class VpnGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpnGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpnGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -413,13 +415,34 @@ class VpnGateway extends pulumi.CustomResource {
         ) {
     bgpRouteTranslationForNatEnabled = registerOutput<bool?>('bgpRouteTranslationForNatEnabled');
     bgpSettings = registerOutput<VpnGatewayBgpSettings>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnGatewayBgpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
+    ipConfigurations = registerOutput<List<VpnGatewayIpConfiguration>>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnGatewayIpConfiguration>(guardedValue, (value) => VpnGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routingPreference = registerOutput<String?>('routingPreference');
     scaleUnit = registerOutput<int?>('scaleUnit');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualHubId = registerOutput<String>('virtualHubId');
+  }
+
+  /// Creates a typed reference to an existing [VpnGateway] resource.
+  VpnGateway.reference(String urn)
+    : super(
+        'azure:network/vpnGateway:VpnGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bgpRouteTranslationForNatEnabled = registerOutput<bool?>('bgpRouteTranslationForNatEnabled');
+    bgpSettings = registerOutput<VpnGatewayBgpSettings>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnGatewayBgpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipConfigurations = registerOutput<List<VpnGatewayIpConfiguration>>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnGatewayIpConfiguration>(guardedValue, (value) => VpnGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routingPreference = registerOutput<String?>('routingPreference');
+    scaleUnit = registerOutput<int?>('scaleUnit');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 }

@@ -6,11 +6,11 @@ import 'point_to_point_vpn_gateway_connection_configuration_vpn_client_address_p
 
 class PointToPointVpnGatewayConnectionConfiguration {
   /// Should Internet Security be enabled to secure internet traffic? Defaults to `false`.
-  final pulumi.Input<bool>? internetSecurityEnabled;
+  final pulumi.Input<bool?>? internetSecurityEnabled;
   /// The Name which should be used for this Connection Configuration.
   final pulumi.Input<String> name;
   /// A `route` block as defined below.
-  final pulumi.Input<PointToPointVpnGatewayConnectionConfigurationRoute>? route;
+  final pulumi.Input<PointToPointVpnGatewayConnectionConfigurationRoute?>? route;
   /// A `vpnClientAddressPool` block as defined below.
   final pulumi.Input<PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool> vpnClientAddressPool;
 

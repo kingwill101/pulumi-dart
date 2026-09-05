@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ManagedInstanceActiveDirectoryAdministrator resources.
 class ManagedInstanceActiveDirectoryAdministratorState {
   /// When `true`, only permit logins from AAD users and administrators. When `false`, also allow local database users.
-  final pulumi.Input<bool>? azureadAuthenticationOnly;
+  final pulumi.Input<bool?>? azureadAuthenticationOnly;
   /// The login name of the principal to set as the Managed Instance Administrator.
-  final pulumi.Input<String>? loginUsername;
+  final pulumi.Input<String?>? loginUsername;
   /// The ID of the Azure SQL Managed Instance for which to set the administrator. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? managedInstanceId;
+  final pulumi.Input<String?>? managedInstanceId;
   /// The Object ID of the principal to set as the Managed Instance Administrator.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The Azure Active Directory Tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ManagedInstanceActiveDirectoryAdministratorState].
   /// [azureadAuthenticationOnly] When `true`, only permit logins from AAD users and administrators. When `false`, also allow local database users.

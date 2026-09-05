@@ -9,9 +9,9 @@ import 'protection_container_mapping_automatic_update.dart';
 /// {@macro pulumi_siterecovery_protection_container_mapping_protection_container_mapping_args_doc}
 class ProtectionContainerMappingArgs {
   /// a `automaticUpdate` block defined as below.
-  final pulumi.Input<ProtectionContainerMappingAutomaticUpdate>? automaticUpdate;
+  final pulumi.Input<ProtectionContainerMappingAutomaticUpdate?>? automaticUpdate;
   /// The name of the protection container mapping. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of fabric that should contains the protection container to map. Changing this forces a new resource to be created.
   final pulumi.Input<String> recoveryFabricName;
   /// Id of the policy to use for this mapping. Changing this forces a new resource to be created.

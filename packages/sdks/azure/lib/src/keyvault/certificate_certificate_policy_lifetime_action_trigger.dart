@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateCertificatePolicyLifetimeActionTrigger {
   /// The number of days before the Certificate expires that the action associated with this Trigger should run. Conflicts with `lifetimePercentage`.
-  final pulumi.Input<int>? daysBeforeExpiry;
+  final pulumi.Input<int?>? daysBeforeExpiry;
   /// The percentage at which during the Certificates Lifetime the action associated with this Trigger should run. Conflicts with `daysBeforeExpiry`.
-  final pulumi.Input<int>? lifetimePercentage;
+  final pulumi.Input<int?>? lifetimePercentage;
 
   /// Creates a new [CertificateCertificatePolicyLifetimeActionTrigger].
   /// [daysBeforeExpiry] The number of days before the Certificate expires that the action associated with this Trigger should run. Conflicts with `lifetimePercentage`.
@@ -25,8 +25,8 @@ class CertificateCertificatePolicyLifetimeActionTrigger {
 
   factory CertificateCertificatePolicyLifetimeActionTrigger.fromMap(Map<String, dynamic> map) {
     return CertificateCertificatePolicyLifetimeActionTrigger(
-      daysBeforeExpiry: (() { final guardedValue = map['daysBeforeExpiry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      lifetimePercentage: (() { final guardedValue = map['lifetimePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      daysBeforeExpiry: (() { final guardedValue = map['daysBeforeExpiry']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      lifetimePercentage: (() { final guardedValue = map['lifetimePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

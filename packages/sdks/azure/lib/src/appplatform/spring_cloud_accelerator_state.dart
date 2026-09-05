@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SpringCloudAccelerator resources.
 class SpringCloudAcceleratorState {
   /// The name which should be used for this Spring Cloud Accelerator. Changing this forces a new Spring Cloud Accelerator to be created. The only possible value is `default`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Accelerator to be created.
-  final pulumi.Input<String>? springCloudServiceId;
+  final pulumi.Input<String?>? springCloudServiceId;
 
   /// Creates a new [SpringCloudAcceleratorState].
   /// [name] The name which should be used for this Spring Cloud Accelerator. Changing this forces a new Spring Cloud Accelerator to be created. The only possible value is `default`.

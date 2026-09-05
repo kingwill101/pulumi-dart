@@ -8,7 +8,7 @@ class SlotStorageAccount {
   /// The name of the storage account.
   final pulumi.Input<String> accountName;
   /// The path to mount the storage within the site's runtime environment.
-  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String?>? mountPath;
   /// The name of the storage account identifier.
   final pulumi.Input<String> name;
   /// The name of the file share (container name, for Blob storage).

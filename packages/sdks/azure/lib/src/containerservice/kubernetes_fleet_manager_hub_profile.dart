@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesFleetManagerHubProfile {
   final pulumi.Input<String> dnsPrefix;
-  final pulumi.Input<String>? fqdn;
-  final pulumi.Input<String>? kubernetesVersion;
+  final pulumi.Input<String?>? fqdn;
+  final pulumi.Input<String?>? kubernetesVersion;
 
   /// Creates a new [KubernetesFleetManagerHubProfile].
   /// [dnsPrefix] Required.

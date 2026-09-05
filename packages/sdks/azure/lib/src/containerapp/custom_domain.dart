@@ -313,14 +313,14 @@ import 'custom_domain_state.dart';
 /// 			Name:                    pulumi.String("Example-Environment"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleApp, err := containerapp.NewApp(ctx, "example", &containerapp.AppArgs{
 /// 			Name:                      pulumi.String("example-app"),
-/// 			ContainerAppEnvironmentId: exampleEnvironment.ID(),
+/// 			ContainerAppEnvironmentId: exampleEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 			ResourceGroupName:         example.Name,
 /// 			RevisionMode:              pulumi.String("Single"),
 /// 			Template: &containerapp.AppTemplateArgs{
@@ -371,7 +371,7 @@ import 'custom_domain_state.dart';
 /// 		}
 /// 		exampleEnvironmentCertificate, err := containerapp.NewEnvironmentCertificate(ctx, "example", &containerapp.EnvironmentCertificateArgs{
 /// 			Name:                      pulumi.String("myfriendlyname"),
-/// 			ContainerAppEnvironmentId: exampleEnvironment.ID(),
+/// 			ContainerAppEnvironmentId: exampleEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 			CertificateBlob:           invokeFilebase64.Result,
 /// 			CertificatePassword:       pulumi.String("$3cretSqu1rreL"),
 /// 		})
@@ -379,7 +379,7 @@ import 'custom_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		invokeTrimsuffix1, err := std.Trimsuffix(ctx, &std.TrimsuffixArgs{
-/// 			Input: std.Trimprefix(ctx, &std.TrimprefixArgs{
+/// 			Input: std.Trimprefix(ctx, std.TrimprefixArgs{
 /// 				Input:  api.Fqdn,
 /// 				Prefix: "asuid.",
 /// 			}, nil).Result,
@@ -390,8 +390,8 @@ import 'custom_domain_state.dart';
 /// 		}
 /// 		_, err = containerapp.NewCustomDomain(ctx, "example", &containerapp.CustomDomainArgs{
 /// 			Name:                                 pulumi.String(invokeTrimsuffix1.Result),
-/// 			ContainerAppId:                       exampleApp.ID(),
-/// 			ContainerAppEnvironmentCertificateId: exampleEnvironmentCertificate.ID(),
+/// 			ContainerAppId:                       exampleApp.ID().ToIDOutput().ToStringOutput(),
+/// 			ContainerAppEnvironmentCertificateId: exampleEnvironmentCertificate.ID().ToIDOutput().ToStringOutput(),
 /// 			CertificateBindingType:               pulumi.String("SniEnabled"),
 /// 		})
 /// 		if err != nil {
@@ -774,7 +774,7 @@ import 'custom_domain_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		invokeTrimsuffix, err := std.Trimsuffix(ctx, &std.TrimsuffixArgs{
-/// 			Input: std.Trimprefix(ctx, &std.TrimprefixArgs{
+/// 			Input: std.Trimprefix(ctx, std.TrimprefixArgs{
 /// 				Input:  api.Fqdn,
 /// 				Prefix: "asuid.",
 /// 			}, nil).Result,
@@ -915,7 +915,7 @@ class CustomDomain extends pulumi.CustomResource {
           'azure:containerapp/customDomain:CustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     certificateBindingType = registerOutput<String?>('certificateBindingType');
     containerAppEnvironmentCertificateId = registerOutput<String?>('containerAppEnvironmentCertificateId');
@@ -929,11 +929,12 @@ class CustomDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -947,6 +948,22 @@ class CustomDomain extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateBindingType = registerOutput<String?>('certificateBindingType');
+    containerAppEnvironmentCertificateId = registerOutput<String?>('containerAppEnvironmentCertificateId');
+    containerAppEnvironmentManagedCertificateId = registerOutput<String>('containerAppEnvironmentManagedCertificateId');
+    containerAppId = registerOutput<String>('containerAppId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [CustomDomain] resource.
+  CustomDomain.reference(String urn)
+    : super(
+        'azure:containerapp/customDomain:CustomDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateBindingType = registerOutput<String?>('certificateBindingType');
     containerAppEnvironmentCertificateId = registerOutput<String?>('containerAppEnvironmentCertificateId');
     containerAppEnvironmentManagedCertificateId = registerOutput<String>('containerAppEnvironmentManagedCertificateId');

@@ -249,7 +249,7 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
           'azure:monitoring/dataCollectionEndpoint:DataCollectionEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     configurationAccessEndpoint = registerOutput<String>('configurationAccessEndpoint');
     description = registerOutput<String?>('description');
@@ -261,7 +261,7 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DataCollectionEndpoint] resource's state with the given [name] and [id].
@@ -269,11 +269,12 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataCollectionEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataCollectionEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -297,6 +298,28 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DataCollectionEndpoint] resource.
+  DataCollectionEndpoint.reference(String urn)
+    : super(
+        'azure:monitoring/dataCollectionEndpoint:DataCollectionEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configurationAccessEndpoint = registerOutput<String>('configurationAccessEndpoint');
+    description = registerOutput<String?>('description');
+    immutableId = registerOutput<String>('immutableId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    logsIngestionEndpoint = registerOutput<String>('logsIngestionEndpoint');
+    metricsIngestionEndpoint = registerOutput<String>('metricsIngestionEndpoint');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

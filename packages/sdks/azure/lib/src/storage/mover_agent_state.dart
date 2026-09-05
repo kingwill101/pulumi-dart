@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering MoverAgent resources.
 class MoverAgentState {
   /// Specifies the fully qualified ID of the Hybrid Compute resource for the Storage Mover Agent. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? arcVirtualMachineId;
+  final pulumi.Input<String?>? arcVirtualMachineId;
   /// Specifies the Hybrid Compute resource's unique SMBIOS ID. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? arcVirtualMachineUuid;
+  final pulumi.Input<String?>? arcVirtualMachineUuid;
   /// Specifies a description for this Storage Mover Agent.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name which should be used for this Storage Mover Agent. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the Storage Mover that this Agent should be connected to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageMoverId;
+  final pulumi.Input<String?>? storageMoverId;
 
   /// Creates a new [MoverAgentState].
   /// [arcVirtualMachineId] Specifies the fully qualified ID of the Hybrid Compute resource for the Storage Mover Agent. Changing this forces a new resource to be created.

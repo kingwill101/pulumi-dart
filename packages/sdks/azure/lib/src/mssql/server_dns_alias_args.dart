@@ -10,7 +10,7 @@ class ServerDnsAliasArgs {
   /// The ID of the mssql server. Changing this forces a new MSSQL Server DNS Alias to be created.
   final pulumi.Input<String> mssqlServerId;
   /// The name which should be used for this MSSQL Server DNS Alias. Changing this forces a new MSSQL Server DNS Alias to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ServerDnsAliasArgs].
   /// [mssqlServerId] The ID of the mssql server. Changing this forces a new MSSQL Server DNS Alias to be created.

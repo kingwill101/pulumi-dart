@@ -15,7 +15,7 @@ class GetAppTemplate {
   final pulumi.Input<List<GetAppTemplateContainer>> containers;
   /// The number of seconds to wait before scaling down the number of instances again.
   final pulumi.Input<int> cooldownPeriodInSeconds;
-  final pulumi.Input<List<GetAppTemplateCustomScaleRule>>? customScaleRules;
+  final pulumi.Input<List<GetAppTemplateCustomScaleRule>?>? customScaleRules;
   final pulumi.Input<List<GetAppTemplateHttpScaleRule>> httpScaleRules;
   /// One or more `initContainer` blocks as detailed below.
   final pulumi.Input<List<GetAppTemplateInitContainer>> initContainers;
@@ -85,16 +85,16 @@ class GetAppTemplate {
     return GetAppTemplate(
       azureQueueScaleRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateAzureQueueScaleRule>(map['azureQueueScaleRules']!, (value) => GetAppTemplateAzureQueueScaleRule.fromMap((value as Map).cast<String, dynamic>()))),
       containers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateContainer>(map['containers']!, (value) => GetAppTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))),
-      cooldownPeriodInSeconds: pulumi.Input.fromValue(map['cooldownPeriodInSeconds'] as int),
+      cooldownPeriodInSeconds: pulumi.Input.fromValue((map['cooldownPeriodInSeconds'] as num).toInt()),
       customScaleRules: (() { final guardedValue = map['customScaleRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateCustomScaleRule>(guardedValue, (value) => GetAppTemplateCustomScaleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       httpScaleRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateHttpScaleRule>(map['httpScaleRules']!, (value) => GetAppTemplateHttpScaleRule.fromMap((value as Map).cast<String, dynamic>()))),
       initContainers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateInitContainer>(map['initContainers']!, (value) => GetAppTemplateInitContainer.fromMap((value as Map).cast<String, dynamic>()))),
-      maxReplicas: pulumi.Input.fromValue(map['maxReplicas'] as int),
-      minReplicas: pulumi.Input.fromValue(map['minReplicas'] as int),
-      pollingIntervalInSeconds: pulumi.Input.fromValue(map['pollingIntervalInSeconds'] as int),
+      maxReplicas: pulumi.Input.fromValue((map['maxReplicas'] as num).toInt()),
+      minReplicas: pulumi.Input.fromValue((map['minReplicas'] as num).toInt()),
+      pollingIntervalInSeconds: pulumi.Input.fromValue((map['pollingIntervalInSeconds'] as num).toInt()),
       revisionSuffix: pulumi.Input.fromValue(map['revisionSuffix'] as String),
       tcpScaleRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateTcpScaleRule>(map['tcpScaleRules']!, (value) => GetAppTemplateTcpScaleRule.fromMap((value as Map).cast<String, dynamic>()))),
-      terminationGracePeriodSeconds: pulumi.Input.fromValue(map['terminationGracePeriodSeconds'] as int),
+      terminationGracePeriodSeconds: pulumi.Input.fromValue((map['terminationGracePeriodSeconds'] as num).toInt()),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateVolume>(map['volumes']!, (value) => GetAppTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

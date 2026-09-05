@@ -50,7 +50,7 @@ import 'output_cosmosdb_state.dart';
 /// });
 /// const exampleOutputCosmosdb = new azure.streamanalytics.OutputCosmosdb("example", {
 ///     name: "output-to-cosmosdb",
-///     streamAnalyticsJobId: example.apply(example => example.id),
+///     streamAnalyticsJobId: example.id,
 ///     cosmosdbAccountKey: exampleAccount.primaryKey,
 ///     cosmosdbSqlDatabaseId: exampleSqlDatabase.id,
 ///     containerName: exampleSqlContainer.name,
@@ -236,12 +236,10 @@ import 'output_cosmosdb_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = streamanalytics.NewOutputCosmosdb(ctx, "example", &streamanalytics.OutputCosmosdbArgs{
-/// 			Name: pulumi.String("output-to-cosmosdb"),
-/// 			StreamAnalyticsJobId: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:                  pulumi.String("output-to-cosmosdb"),
+/// 			StreamAnalyticsJobId:  example.Id(),
 /// 			CosmosdbAccountKey:    exampleAccount.PrimaryKey,
-/// 			CosmosdbSqlDatabaseId: exampleSqlDatabase.ID(),
+/// 			CosmosdbSqlDatabaseId: exampleSqlDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 			ContainerName:         exampleSqlContainer.Name,
 /// 			DocumentId:            pulumi.String("exampledocumentid"),
 /// 		})
@@ -500,11 +498,12 @@ class OutputCosmosdb extends pulumi.CustomResource {
           'azure:streamanalytics/outputCosmosdb:OutputCosmosdb',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['cosmosdbAccountKey'],
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     containerName = registerOutput<String>('containerName');
-    cosmosdbAccountKey = registerOutput<String>('cosmosdbAccountKey');
+    cosmosdbAccountKey = registerOutput<String>('cosmosdbAccountKey', isSecret: true);
     cosmosdbSqlDatabaseId = registerOutput<String>('cosmosdbSqlDatabaseId');
     documentId = registerOutput<String?>('documentId');
     this.name = registerOutput<String>('name');
@@ -517,11 +516,12 @@ class OutputCosmosdb extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutputCosmosdbState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutputCosmosdb._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -537,7 +537,27 @@ class OutputCosmosdb extends pulumi.CustomResource {
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     containerName = registerOutput<String>('containerName');
-    cosmosdbAccountKey = registerOutput<String>('cosmosdbAccountKey');
+    cosmosdbAccountKey = registerOutput<String>('cosmosdbAccountKey', isSecret: true);
+    cosmosdbSqlDatabaseId = registerOutput<String>('cosmosdbSqlDatabaseId');
+    documentId = registerOutput<String?>('documentId');
+    this.name = registerOutput<String>('name');
+    partitionKey = registerOutput<String?>('partitionKey');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+  }
+
+  /// Creates a typed reference to an existing [OutputCosmosdb] resource.
+  OutputCosmosdb.reference(String urn)
+    : super(
+        'azure:streamanalytics/outputCosmosdb:OutputCosmosdb',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['cosmosdbAccountKey'],
+        isResourceReference: true,
+      ) {
+    authenticationMode = registerOutput<String?>('authenticationMode');
+    containerName = registerOutput<String>('containerName');
+    cosmosdbAccountKey = registerOutput<String>('cosmosdbAccountKey', isSecret: true);
     cosmosdbSqlDatabaseId = registerOutput<String>('cosmosdbSqlDatabaseId');
     documentId = registerOutput<String?>('documentId');
     this.name = registerOutput<String>('name');

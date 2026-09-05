@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_frontdoor_batch_rule_set_args.dart';
+import 'get_frontdoor_batch_rule_set_result.dart';
 import 'get_frontdoor_custom_domain_args.dart';
 import 'get_frontdoor_custom_domain_result.dart';
 import 'get_frontdoor_endpoint_args.dart';
@@ -17,6 +19,159 @@ import 'get_frontdoor_security_policy_args.dart';
 import 'get_frontdoor_security_policy_result.dart';
 import 'get_profile_args.dart';
 import 'get_profile_result.dart';
+
+/// Gets information about an existing Front Door (standard/premium) Batch Rule Set.
+///
+/// &gt; **Note:** This data source can only read Rule Sets that were provisioned in batch mode. Use the `azure.cdn.FrontdoorRuleSet` data source for Rule Sets that were not provisioned in batch mode.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure from "@pulumi/azure";
+///
+/// const example = azure.cdn.getFrontdoorBatchRuleSet({
+///     name: "existing",
+///     profileName: "existing-profile",
+///     resourceGroupName: "existing-resources",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azure as azure
+///
+/// example = azure.cdn.get_frontdoor_batch_rule_set(name="existing",
+///     profile_name="existing-profile",
+///     resource_group_name="existing-resources")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Azure = Pulumi.Azure;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Azure.Cdn.GetFrontdoorBatchRuleSet.Invoke(new()
+///     {
+///         Name = "existing",
+///         ProfileName = "existing-profile",
+///         ResourceGroupName = "existing-resources",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/cdn"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cdn.LookupFrontdoorBatchRuleSet(ctx, &cdn.LookupFrontdoorBatchRuleSetArgs{
+/// 			Name:              "existing",
+/// 			ProfileName:       "existing-profile",
+/// 			ResourceGroupName: "existing-resources",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     azure = {
+///       source = "pulumi/azure"
+///     }
+///   }
+/// }
+///
+/// data "azure_cdn_getfrontdoorbatchruleset" "example" {
+///   name                = "existing"
+///   profile_name        = "existing-profile"
+///   resource_group_name = "existing-resources"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azure.cdn.CdnFunctions;
+/// import com.pulumi.azure.cdn.inputs.GetFrontdoorBatchRuleSetArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = CdnFunctions.getFrontdoorBatchRuleSet(GetFrontdoorBatchRuleSetArgs.builder()
+///             .name("existing")
+///             .profileName("existing-profile")
+///             .resourceGroupName("existing-resources")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: azure:cdn:getFrontdoorBatchRuleSet
+///       arguments:
+///         name: existing
+///         profileName: existing-profile
+///         resourceGroupName: existing-resources
+/// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.Cdn` - 2025-12-01
+/// [args] Arguments passed to this invoke. {@macro pulumi_cdn_get_frontdoor_batch_rule_set_get_frontdoor_batch_rule_set_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetFrontdoorBatchRuleSetResult> getFrontdoorBatchRuleSet(
+  GetFrontdoorBatchRuleSetArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azure:cdn/getFrontdoorBatchRuleSet:getFrontdoorBatchRuleSet',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetFrontdoorBatchRuleSetResult.fromMap(result);
+}
+
+pulumi.Output<GetFrontdoorBatchRuleSetResult> getFrontdoorBatchRuleSetOutput(
+  GetFrontdoorBatchRuleSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cdn/getFrontdoorBatchRuleSet:getFrontdoorBatchRuleSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrontdoorBatchRuleSetResult.fromMap);
+}
 
 /// Gets information about an existing Front Door (standard/premium) Custom Domain.
 ///
@@ -142,7 +297,7 @@ import 'get_profile_result.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Cdn` - 2025-04-15
+/// * `Microsoft.Cdn` - 2025-12-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_cdn_get_frontdoor_custom_domain_get_frontdoor_custom_domain_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFrontdoorCustomDomainResult> getFrontdoorCustomDomain(
@@ -156,6 +311,17 @@ Future<GetFrontdoorCustomDomainResult> getFrontdoorCustomDomain(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFrontdoorCustomDomainResult.fromMap(result);
+}
+
+pulumi.Output<GetFrontdoorCustomDomainResult> getFrontdoorCustomDomainOutput(
+  GetFrontdoorCustomDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cdn/getFrontdoorCustomDomain:getFrontdoorCustomDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrontdoorCustomDomainResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Front Door (standard/premium) Endpoint.
@@ -275,6 +441,14 @@ Future<GetFrontdoorCustomDomainResult> getFrontdoorCustomDomain(
 ///         profileName: existing-cdn-profile
 ///         resourceGroupName: existing-resources
 /// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.Cdn` - 2025-12-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_cdn_get_frontdoor_endpoint_get_frontdoor_endpoint_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFrontdoorEndpointResult> getFrontdoorEndpoint(
@@ -288,6 +462,17 @@ Future<GetFrontdoorEndpointResult> getFrontdoorEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFrontdoorEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetFrontdoorEndpointResult> getFrontdoorEndpointOutput(
+  GetFrontdoorEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cdn/getFrontdoorEndpoint:getFrontdoorEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrontdoorEndpointResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Front Door (standard/premium) Firewall Policy.
@@ -413,6 +598,17 @@ Future<GetFrontdoorFirewallPolicyResult> getFrontdoorFirewallPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFrontdoorFirewallPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetFrontdoorFirewallPolicyResult> getFrontdoorFirewallPolicyOutput(
+  GetFrontdoorFirewallPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cdn/getFrontdoorFirewallPolicy:getFrontdoorFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrontdoorFirewallPolicyResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Front Door (standard/premium) Origin Group.
@@ -545,6 +741,17 @@ Future<GetFrontdoorOriginGroupResult> getFrontdoorOriginGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFrontdoorOriginGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetFrontdoorOriginGroupResult> getFrontdoorOriginGroupOutput(
+  GetFrontdoorOriginGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cdn/getFrontdoorOriginGroup:getFrontdoorOriginGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrontdoorOriginGroupResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Front Door (standard/premium) Profile.
@@ -687,7 +894,7 @@ Future<GetFrontdoorOriginGroupResult> getFrontdoorOriginGroup(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Cdn` - 2024-02-01
+/// * `Microsoft.Cdn` - 2025-12-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_cdn_get_frontdoor_profile_get_frontdoor_profile_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFrontdoorProfileResult> getFrontdoorProfile(
@@ -703,7 +910,20 @@ Future<GetFrontdoorProfileResult> getFrontdoorProfile(
   return GetFrontdoorProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetFrontdoorProfileResult> getFrontdoorProfileOutput(
+  GetFrontdoorProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cdn/getFrontdoorProfile:getFrontdoorProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrontdoorProfileResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Front Door (standard/premium) Rule Set.
+///
+/// &gt; **Note:** This data source can only read Rule Sets that were not provisioned in batch mode. Use the `azure.cdn.FrontdoorBatchRuleSet` data source for Rule Sets that were provisioned in batch mode.
 ///
 /// ## Example Usage
 ///
@@ -827,7 +1047,7 @@ Future<GetFrontdoorProfileResult> getFrontdoorProfile(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Cdn` - 2024-02-01
+/// * `Microsoft.Cdn` - 2025-12-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_cdn_get_frontdoor_rule_set_get_frontdoor_rule_set_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFrontdoorRuleSetResult> getFrontdoorRuleSet(
@@ -841,6 +1061,17 @@ Future<GetFrontdoorRuleSetResult> getFrontdoorRuleSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFrontdoorRuleSetResult.fromMap(result);
+}
+
+pulumi.Output<GetFrontdoorRuleSetResult> getFrontdoorRuleSetOutput(
+  GetFrontdoorRuleSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cdn/getFrontdoorRuleSet:getFrontdoorRuleSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrontdoorRuleSetResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Front Door (standard/premium) Secret.
@@ -973,6 +1204,17 @@ Future<GetFrontdoorSecretResult> getFrontdoorSecret(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFrontdoorSecretResult.fromMap(result);
+}
+
+pulumi.Output<GetFrontdoorSecretResult> getFrontdoorSecretOutput(
+  GetFrontdoorSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cdn/getFrontdoorSecret:getFrontdoorSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrontdoorSecretResult.fromMap);
 }
 
 /// Gets information about an existing Front Door (standard/premium) Security Policy.
@@ -1291,8 +1533,8 @@ Future<GetFrontdoorSecretResult> getFrontdoorSecret(
 /// 		}
 /// 		exampleFrontdoorCustomDomain, err := cdn.NewFrontdoorCustomDomain(ctx, "example", &cdn.FrontdoorCustomDomainArgs{
 /// 			Name:                  pulumi.String("example-custom-domain"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
-/// 			DnsZoneId:             exampleZone.ID(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
+/// 			DnsZoneId:             exampleZone.ID().ToIDOutput().ToStringOutput(),
 /// 			HostName:              pulumi.String("www.example-frontdoor.com"),
 /// 			Tls: &cdn.FrontdoorCustomDomainTlsArgs{
 /// 				CertificateType:   pulumi.String("ManagedCertificate"),
@@ -1304,14 +1546,14 @@ Future<GetFrontdoorSecretResult> getFrontdoorSecret(
 /// 		}
 /// 		exampleFrontdoorSecurityPolicy, err := cdn.NewFrontdoorSecurityPolicy(ctx, "example", &cdn.FrontdoorSecurityPolicyArgs{
 /// 			Name:                  pulumi.String("example-security-policy"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			SecurityPolicies: &cdn.FrontdoorSecurityPolicySecurityPoliciesArgs{
 /// 				Firewall: &cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallArgs{
-/// 					CdnFrontdoorFirewallPolicyId: exampleFrontdoorFirewallPolicy.ID(),
+/// 					CdnFrontdoorFirewallPolicyId: exampleFrontdoorFirewallPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 					Association: &cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationArgs{
 /// 						Domains: cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomainArray{
 /// 							&cdn.FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomainArgs{
-/// 								CdnFrontdoorDomainId: exampleFrontdoorCustomDomain.ID(),
+/// 								CdnFrontdoorDomainId: exampleFrontdoorCustomDomain.ID().ToIDOutput().ToStringOutput(),
 /// 							},
 /// 						},
 /// 						PatternsToMatch: pulumi.String("/*"),
@@ -1609,7 +1851,7 @@ Future<GetFrontdoorSecretResult> getFrontdoorSecret(
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
-/// * `Microsoft.Cdn` - 2024-02-01
+/// * `Microsoft.Cdn` - 2025-12-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_cdn_get_frontdoor_security_policy_get_frontdoor_security_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetFrontdoorSecurityPolicyResult> getFrontdoorSecurityPolicy(
@@ -1623,6 +1865,17 @@ Future<GetFrontdoorSecurityPolicyResult> getFrontdoorSecurityPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFrontdoorSecurityPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetFrontdoorSecurityPolicyResult> getFrontdoorSecurityPolicyOutput(
+  GetFrontdoorSecurityPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cdn/getFrontdoorSecurityPolicy:getFrontdoorSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrontdoorSecurityPolicyResult.fromMap);
 }
 
 /// Use this data source to access information about an existing CDN Profile.
@@ -1762,4 +2015,15 @@ Future<GetProfileResult> getProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetProfileResult> getProfileOutput(
+  GetProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cdn/getProfile:getProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProfileResult.fromMap);
 }

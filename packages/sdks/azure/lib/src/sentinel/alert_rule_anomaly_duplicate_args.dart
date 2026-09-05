@@ -22,15 +22,15 @@ class AlertRuleAnomalyDuplicateArgs {
   /// mode of the Duplicated Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   final pulumi.Input<String> mode;
   /// A list of `multiSelectObservation` blocks as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyDuplicateMultiSelectObservation>>? multiSelectObservations;
+  final pulumi.Input<List<AlertRuleAnomalyDuplicateMultiSelectObservation>?>? multiSelectObservations;
   /// A list of `prioritizedExcludeObservation` blocks as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>>? prioritizedExcludeObservations;
+  final pulumi.Input<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>?>? prioritizedExcludeObservations;
   /// A list of `singleSelectObservation` blocks as defined below.
-  final pulumi.Input<List<AlertRuleAnomalyDuplicateSingleSelectObservation>>? singleSelectObservations;
+  final pulumi.Input<List<AlertRuleAnomalyDuplicateSingleSelectObservation>?>? singleSelectObservations;
   /// A list of `thresholdObservation` blocks as defined below.
   ///
   /// &gt; **Note:** un-specified `multiSelectObservation`, `singleSelectObservation`, `prioritizedExcludeObservation` and `thresholdObservation` will be inherited from the built-in Anomaly Alert Rule.
-  final pulumi.Input<List<AlertRuleAnomalyDuplicateThresholdObservation>>? thresholdObservations;
+  final pulumi.Input<List<AlertRuleAnomalyDuplicateThresholdObservation>?>? thresholdObservations;
 
   /// Creates a new [AlertRuleAnomalyDuplicateArgs].
   /// [builtInRuleId] The ID of the built-in Anomaly Alert Rule. Changing this forces a new Duplicated Anomaly Alert Rule to be created.

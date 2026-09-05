@@ -119,14 +119,14 @@ import 'network_security_perimeter_access_rule_state.dart';
 /// 		}
 /// 		exampleNetworkSecurityPerimeterProfile, err := network.NewNetworkSecurityPerimeterProfile(ctx, "example", &network.NetworkSecurityPerimeterProfileArgs{
 /// 			Name:                       pulumi.String("example"),
-/// 			NetworkSecurityPerimeterId: exampleNetworkSecurityPerimeter.ID(),
+/// 			NetworkSecurityPerimeterId: exampleNetworkSecurityPerimeter.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkSecurityPerimeterAccessRule(ctx, "example", &network.NetworkSecurityPerimeterAccessRuleArgs{
 /// 			Name:                              pulumi.String("example"),
-/// 			NetworkSecurityPerimeterProfileId: exampleNetworkSecurityPerimeterProfile.ID(),
+/// 			NetworkSecurityPerimeterProfileId: exampleNetworkSecurityPerimeterProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			Direction:                         pulumi.String("Inbound"),
 /// 			AddressPrefixes: pulumi.StringArray{
 /// 				pulumi.String("8.8.8.8/32"),
@@ -295,15 +295,15 @@ class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
           'azure:network/networkSecurityPerimeterAccessRule:NetworkSecurityPerimeterAccessRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     direction = registerOutput<String>('direction');
-    fqdns = registerOutput<List<String>?>('fqdns');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     networkSecurityPerimeterProfileId = registerOutput<String>('networkSecurityPerimeterProfileId');
-    serviceTags = registerOutput<List<String>?>('serviceTags');
-    subscriptionIds = registerOutput<List<String>?>('subscriptionIds');
+    serviceTags = registerOutput<List<String>?>('serviceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subscriptionIds = registerOutput<List<String>?>('subscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [NetworkSecurityPerimeterAccessRule] resource's state with the given [name] and [id].
@@ -311,11 +311,12 @@ class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkSecurityPerimeterAccessRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkSecurityPerimeterAccessRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -329,12 +330,30 @@ class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     direction = registerOutput<String>('direction');
-    fqdns = registerOutput<List<String>?>('fqdns');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     networkSecurityPerimeterProfileId = registerOutput<String>('networkSecurityPerimeterProfileId');
-    serviceTags = registerOutput<List<String>?>('serviceTags');
-    subscriptionIds = registerOutput<List<String>?>('subscriptionIds');
+    serviceTags = registerOutput<List<String>?>('serviceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subscriptionIds = registerOutput<List<String>?>('subscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkSecurityPerimeterAccessRule] resource.
+  NetworkSecurityPerimeterAccessRule.reference(String urn)
+    : super(
+        'azure:network/networkSecurityPerimeterAccessRule:NetworkSecurityPerimeterAccessRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    direction = registerOutput<String>('direction');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    networkSecurityPerimeterProfileId = registerOutput<String>('networkSecurityPerimeterProfileId');
+    serviceTags = registerOutput<List<String>?>('serviceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subscriptionIds = registerOutput<List<String>?>('subscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

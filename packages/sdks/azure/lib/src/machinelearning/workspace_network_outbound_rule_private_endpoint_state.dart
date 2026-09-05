@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering WorkspaceNetworkOutboundRulePrivateEndpoint resources.
 class WorkspaceNetworkOutboundRulePrivateEndpointState {
   /// Specifies the name of the Machine Learning Workspace Network Outbound Rule Private Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the Service Resource ID to connect. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Supported service resources: **Key Vault**, **Storage Account**, **Machine Learning Workspace**, **Redis**.
-  final pulumi.Input<String>? serviceResourceId;
+  final pulumi.Input<String?>? serviceResourceId;
   /// Whether to enable an additional private endpoint to be used by jobs running on Spark. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? sparkEnabled;
+  final pulumi.Input<bool?>? sparkEnabled;
   /// Specifies the Sub Resource of the service resource to connect to. Possible values are `vault`,`amlworkspace`,`blob`,`table`,`queue`,`file`,`web`,`dfs`, `redisCache`. Changing this forces a new resource to be created.
   ///
   /// | Service                    | Sub Resource Type                         |
@@ -20,9 +20,9 @@ class WorkspaceNetworkOutboundRulePrivateEndpointState {
   /// | Redis                      | `redisCache`                              |
   /// | Storage Account            | `blob`,`table`,`queue`,`file`,`web`,`dfs` |
   /// | Key Vault                  | `vault`                                   |
-  final pulumi.Input<String>? subResourceTarget;
+  final pulumi.Input<String?>? subResourceTarget;
   /// Specifies the ID of the Machine Learning Workspace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [WorkspaceNetworkOutboundRulePrivateEndpointState].
   /// [name] Specifies the name of the Machine Learning Workspace Network Outbound Rule Private Endpoint. Changing this forces a new resource to be created.

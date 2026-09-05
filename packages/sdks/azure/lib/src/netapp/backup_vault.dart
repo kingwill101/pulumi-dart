@@ -248,13 +248,13 @@ class BackupVault extends pulumi.CustomResource {
           'azure:netapp/backupVault:BackupVault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [BackupVault] resource's state with the given [name] and [id].
@@ -262,11 +262,12 @@ class BackupVault extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupVaultState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupVault._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -284,6 +285,22 @@ class BackupVault extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [BackupVault] resource.
+  BackupVault.reference(String urn)
+    : super(
+        'azure:netapp/backupVault:BackupVault',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

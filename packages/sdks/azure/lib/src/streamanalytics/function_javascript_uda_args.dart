@@ -12,7 +12,7 @@ class FunctionJavascriptUdaArgs {
   /// One or more `input` blocks as defined below.
   final pulumi.Input<List<FunctionJavascriptUdaInput>> inputs;
   /// The name of the JavaScript UDA Function. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An `output` block as defined below.
   final pulumi.Input<FunctionJavascriptUdaOutput> output;
   /// The JavaScript of this UDA Function.

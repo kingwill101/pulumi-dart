@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory {
   /// The physical path for the Virtual Application.
-  final pulumi.Input<String>? physicalPath;
+  final pulumi.Input<String?>? physicalPath;
   /// The Virtual Path for the Virtual Application.
-  final pulumi.Input<String>? virtualPath;
+  final pulumi.Input<String?>? virtualPath;
 
   /// Creates a new [WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory].
   /// [physicalPath] The physical path for the Virtual Application.

@@ -6,19 +6,19 @@ import 'scheduled_query_rules_alert_v2_criteria_failing_periods.dart';
 
 class ScheduledQueryRulesAlertV2Criteria {
   /// A `dimension` block as defined below.
-  final pulumi.Input<List<ScheduledQueryRulesAlertV2CriteriaDimension>>? dimensions;
+  final pulumi.Input<List<ScheduledQueryRulesAlertV2CriteriaDimension>?>? dimensions;
   /// A `failingPeriods` block as defined below.
-  final pulumi.Input<ScheduledQueryRulesAlertV2CriteriaFailingPeriods>? failingPeriods;
+  final pulumi.Input<ScheduledQueryRulesAlertV2CriteriaFailingPeriods?>? failingPeriods;
   /// Specifies the column containing the metric measure number.
   ///
   /// &gt; **Note:** `metricMeasureColumn` is required if `timeAggregationMethod` is `Average`, `Maximum`, `Minimum`, or `Total`. And `metricMeasureColumn` can not be specified if `timeAggregationMethod` is `Count`.
-  final pulumi.Input<String>? metricMeasureColumn;
+  final pulumi.Input<String?>? metricMeasureColumn;
   /// Specifies the criteria operator. Possible values are `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan`,and `LessThanOrEqual`.
   final pulumi.Input<String> operator;
   /// The query to run on logs. The results returned by this query are used to populate the alert.
   final pulumi.Input<String> query;
   /// Specifies the column containing the resource ID. The content of the column must be an uri formatted as resource ID.
-  final pulumi.Input<String>? resourceIdColumn;
+  final pulumi.Input<String?>? resourceIdColumn;
   /// Specifies the criteria threshold value that activates the alert.
   final pulumi.Input<double> threshold;
   /// The type of aggregation to apply to the data points in aggregation granularity. Possible values are `Average`, `Count`, `Maximum`, `Minimum`,and `Total`.
@@ -65,7 +65,7 @@ class ScheduledQueryRulesAlertV2Criteria {
       operator: pulumi.Input.fromValue(map['operator'] as String),
       query: pulumi.Input.fromValue(map['query'] as String),
       resourceIdColumn: (() { final guardedValue = map['resourceIdColumn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
       timeAggregationMethod: pulumi.Input.fromValue(map['timeAggregationMethod'] as String),
     );
   }

@@ -5,13 +5,13 @@ import 'kubernetes_cluster_node_pool_node_network_profile_allowed_host_port.dart
 
 class KubernetesClusterNodePoolNodeNetworkProfile {
   /// One or more `allowedHostPorts` blocks as defined below.
-  final pulumi.Input<List<KubernetesClusterNodePoolNodeNetworkProfileAllowedHostPort>>? allowedHostPorts;
+  final pulumi.Input<List<KubernetesClusterNodePoolNodeNetworkProfileAllowedHostPort>?>? allowedHostPorts;
   /// A list of Application Security Group IDs which should be associated with this Node Pool.
-  final pulumi.Input<List<String>>? applicationSecurityGroupIds;
+  final pulumi.Input<List<String>?>? applicationSecurityGroupIds;
   /// Specifies a mapping of tags to the instance-level public IPs. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** To set the application security group, you must allow at least one host port. Without this, the configuration will fail silently. [Learn More](https://learn.microsoft.com/en-us/azure/aks/use-node-public-ips#allow-host-port-connections-and-add-node-pools-to-application-security-groups).
-  final pulumi.Input<Map<String, String>>? nodePublicIpTags;
+  final pulumi.Input<Map<String, String>?>? nodePublicIpTags;
 
   /// Creates a new [KubernetesClusterNodePoolNodeNetworkProfile].
   /// [allowedHostPorts] One or more `allowedHostPorts` blocks as defined below.

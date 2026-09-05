@@ -12,31 +12,31 @@ class StandardWebTestArgs {
   /// The ID of the Application Insights instance on which the WebTest operates. Changing this forces a new Application Insights Standard WebTest to be created.
   final pulumi.Input<String> applicationInsightsId;
   /// Purpose/user defined descriptive test for this WebTest.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Should the WebTest be enabled?
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Interval in seconds between test runs for this WebTest. Valid options are `300`, `600` and `900`. Defaults to `300`.
-  final pulumi.Input<int>? frequency;
+  final pulumi.Input<int?>? frequency;
   /// Specifies a list of where to physically run the tests from to give global coverage for accessibility of your application.
   ///
   /// &gt; **Note:** [Valid options for geo locations are described here](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability#location-population-tags)
   final pulumi.Input<List<String>> geoLocations;
   /// The Azure Region where the Application Insights Standard WebTest should exist. Changing this forces a new Application Insights Standard WebTest to be created. It needs to correlate with location of the parent resource (azurerm_application_insights)
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Application Insights Standard WebTest. Changing this forces a new Application Insights Standard WebTest to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `request` block as defined below.
   final pulumi.Input<StandardWebTestRequest> request;
   /// The name of the Resource Group where the Application Insights Standard WebTest should exist. Changing this forces a new Application Insights Standard WebTest to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Should the retry on WebTest failure be enabled?
-  final pulumi.Input<bool>? retryEnabled;
+  final pulumi.Input<bool?>? retryEnabled;
   /// A mapping of tags which should be assigned to the Application Insights Standard WebTest.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Seconds until this WebTest will timeout and fail. Default is `30`.
-  final pulumi.Input<int>? timeout;
+  final pulumi.Input<int?>? timeout;
   /// A `validationRules` block as defined below.
-  final pulumi.Input<StandardWebTestValidationRules>? validationRules;
+  final pulumi.Input<StandardWebTestValidationRules?>? validationRules;
 
   /// Creates a new [StandardWebTestArgs].
   /// [applicationInsightsId] The ID of the Application Insights instance on which the WebTest operates. Changing this forces a new Application Insights Standard WebTest to be created.
@@ -91,7 +91,7 @@ class StandardWebTestArgs {
       applicationInsightsId: pulumi.Input.fromValue(map['applicationInsightsId'] as String),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       geoLocations: pulumi.Input.fromValue((map['geoLocations'] as List).cast<String>()),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -99,7 +99,7 @@ class StandardWebTestArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       retryEnabled: (() { final guardedValue = map['retryEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       validationRules: (() { final guardedValue = map['validationRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardWebTestValidationRules.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

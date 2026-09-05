@@ -10,11 +10,11 @@ import 'network_manager_routing_rule_next_hop.dart';
 /// {@macro pulumi_network_network_manager_routing_rule_network_manager_routing_rule_args_doc}
 class NetworkManagerRoutingRuleArgs {
   /// A description for the routing rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A `destination` block as defined below.
   final pulumi.Input<NetworkManagerRoutingRuleDestination> destination;
   /// The name of the Network Manager Routing Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `nextHop` block as defined below.
   final pulumi.Input<NetworkManagerRoutingRuleNextHop> nextHop;
   /// The ID of the Network Manager Routing Rule Collection to which this rule belongs. Changing this forces a new resource to be created.

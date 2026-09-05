@@ -6,11 +6,11 @@ import 'spark_cluster_roles_worker_node_autoscale_recurrence.dart';
 
 class SparkClusterRolesWorkerNodeAutoscale {
   /// A `capacity` block as defined below.
-  final pulumi.Input<SparkClusterRolesWorkerNodeAutoscaleCapacity>? capacity;
+  final pulumi.Input<SparkClusterRolesWorkerNodeAutoscaleCapacity?>? capacity;
   /// A `recurrence` block as defined below.
   ///
   /// &gt; **Note:** Either a `capacity` or `recurrence` block must be specified - but not both.
-  final pulumi.Input<SparkClusterRolesWorkerNodeAutoscaleRecurrence>? recurrence;
+  final pulumi.Input<SparkClusterRolesWorkerNodeAutoscaleRecurrence?>? recurrence;
 
   /// Creates a new [SparkClusterRolesWorkerNodeAutoscale].
   /// [capacity] A `capacity` block as defined below.

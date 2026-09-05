@@ -155,6 +155,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:batch/getAccount:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Batch Application instance.
 ///
 /// ## Example Usage
@@ -307,6 +318,17 @@ Future<GetApplicationResult> getApplication(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:batch/getApplication:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
 }
 
 /// Use this data source to access information about an existing certificate in a Batch Account.
@@ -465,6 +487,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:batch/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Batch pool
 ///
 /// ## Example Usage
@@ -603,4 +636,15 @@ Future<GetPoolResult> getPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetPoolResult> getPoolOutput(
+  GetPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:batch/getPool:getPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPoolResult.fromMap);
 }

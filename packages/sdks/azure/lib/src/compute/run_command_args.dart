@@ -13,29 +13,29 @@ import 'run_command_source.dart';
 /// {@macro pulumi_compute_run_command_run_command_args_doc}
 class RunCommandArgs {
   /// An `errorBlobManagedIdentity` block as defined below. User-assigned managed Identity that has access to errorBlobUri storage blob.
-  final pulumi.Input<RunCommandErrorBlobManagedIdentity>? errorBlobManagedIdentity;
+  final pulumi.Input<RunCommandErrorBlobManagedIdentity?>? errorBlobManagedIdentity;
   /// Specifies the Azure storage blob where script error stream will be uploaded.
-  final pulumi.Input<String>? errorBlobUri;
+  final pulumi.Input<String?>? errorBlobUri;
   /// The Azure Region where the Virtual Machine Run Command should exist. Changing this forces a new Virtual Machine Run Command to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this Virtual Machine Run Command. Changing this forces a new Virtual Machine Run Command to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An `outputBlobManagedIdentity` block as defined below. User-assigned managed Identity that has access to outputBlobUri storage blob.
-  final pulumi.Input<RunCommandOutputBlobManagedIdentity>? outputBlobManagedIdentity;
+  final pulumi.Input<RunCommandOutputBlobManagedIdentity?>? outputBlobManagedIdentity;
   /// Specifies the Azure storage blob where script output stream will be uploaded. It can be basic blob URI with SAS token.
-  final pulumi.Input<String>? outputBlobUri;
+  final pulumi.Input<String?>? outputBlobUri;
   /// A list of `parameter` blocks as defined below. The parameters used by the script.
-  final pulumi.Input<List<RunCommandParameter>>? parameters;
+  final pulumi.Input<List<RunCommandParameter>?>? parameters;
   /// A list of `protectedParameter` blocks as defined below. The protected parameters used by the script.
-  final pulumi.Input<List<RunCommandProtectedParameter>>? protectedParameters;
+  final pulumi.Input<List<RunCommandProtectedParameter>?>? protectedParameters;
   /// Specifies the user account password on the VM when executing the Virtual Machine Run Command.
-  final pulumi.Input<String>? runAsPassword;
+  final pulumi.Input<String?>? runAsPassword;
   /// Specifies the user account on the VM when executing the Virtual Machine Run Command.
-  final pulumi.Input<String>? runAsUser;
+  final pulumi.Input<String?>? runAsUser;
   /// A `source` block as defined below. The source of the run command script.
   final pulumi.Input<RunCommandSource> source;
   /// A mapping of tags which should be assigned to the Virtual Machine Run Command.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the Virtual Machine ID within which this Virtual Machine Run Command should exist. Changing this forces a new Virtual Machine Run Command to be created.
   final pulumi.Input<String> virtualMachineId;
 

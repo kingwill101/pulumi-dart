@@ -8,7 +8,7 @@ class BastionHostIpConfiguration {
   /// Reference to a Public IP Address to associate with this Bastion Host. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `publicIpAddressId` is required when `sku` is `Basic` or `Standard`. When `sku` is `Premium` and `publicIpAddressId` is omitted, the Bastion Host is deployed in Private-Only mode (`privateOnlyEnabled` will be `true`).
-  final pulumi.Input<String>? publicIpAddressId;
+  final pulumi.Input<String?>? publicIpAddressId;
   /// Reference to a subnet in which this Bastion Host has been created. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The Subnet used for the Bastion Host must have the name `AzureBastionSubnet` and the subnet mask must be at least a `/26`.

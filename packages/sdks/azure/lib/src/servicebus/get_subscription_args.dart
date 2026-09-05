@@ -9,11 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubscriptionArgs {
   /// Specifies the name of the ServiceBus Subscription.
   final pulumi.Input<String> name;
-  final pulumi.Input<String>? namespaceName;
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? namespaceName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The ID of the ServiceBus Topic where the Service Bus Subscription exists.
-  final pulumi.Input<String>? topicId;
-  final pulumi.Input<String>? topicName;
+  final pulumi.Input<String?>? topicId;
+  final pulumi.Input<String?>? topicName;
 
   /// Creates a new [GetSubscriptionArgs].
   /// [name] Specifies the name of the ServiceBus Subscription.

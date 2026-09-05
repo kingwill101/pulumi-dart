@@ -6,19 +6,19 @@ import 'get_medtech_service_identity.dart';
 /// Result data returned by getMedtechService.
 class GetMedtechServiceResult {
   /// The Device Mappings of the Med Tech Service.
-  final String deviceMappingJson;
+  final String? deviceMappingJson;
   /// The Consumer Group of the Event Hub of the Healthcare Med Tech Service.
-  final String eventhubConsumerGroupName;
+  final String? eventhubConsumerGroupName;
   /// The name of the Event Hub of the Healthcare Med Tech Service.
-  final String eventhubName;
+  final String? eventhubName;
   /// The namespace name of the Event Hub of the Healthcare Med Tech Service.
-  final String eventhubNamespaceName;
+  final String? eventhubNamespaceName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The `identity` block as defined below.
-  final List<GetMedtechServiceIdentity> identities;
-  final String name;
-  final String workspaceId;
+  final List<GetMedtechServiceIdentity>? identities;
+  final String? name;
+  final String? workspaceId;
 
   /// Creates a new [GetMedtechServiceResult].
   /// [deviceMappingJson] The Device Mappings of the Med Tech Service.
@@ -27,42 +27,42 @@ class GetMedtechServiceResult {
   /// [eventhubNamespaceName] The namespace name of the Event Hub of the Healthcare Med Tech Service.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] The `identity` block as defined below.
-  /// [name] Required.
-  /// [workspaceId] Required.
+  /// [name] Optional.
+  /// [workspaceId] Optional.
   const GetMedtechServiceResult({
-    required this.deviceMappingJson,
-    required this.eventhubConsumerGroupName,
-    required this.eventhubName,
-    required this.eventhubNamespaceName,
-    required this.id,
-    required this.identities,
-    required this.name,
-    required this.workspaceId,
+    this.deviceMappingJson,
+    this.eventhubConsumerGroupName,
+    this.eventhubName,
+    this.eventhubNamespaceName,
+    this.id,
+    this.identities,
+    this.name,
+    this.workspaceId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deviceMappingJson': deviceMappingJson,
-      'eventhubConsumerGroupName': eventhubConsumerGroupName,
-      'eventhubName': eventhubName,
-      'eventhubNamespaceName': eventhubNamespaceName,
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetMedtechServiceIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'name': name,
-      'workspaceId': workspaceId,
+      'deviceMappingJson': ?deviceMappingJson,
+      'eventhubConsumerGroupName': ?eventhubConsumerGroupName,
+      'eventhubName': ?eventhubName,
+      'eventhubNamespaceName': ?eventhubNamespaceName,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMedtechServiceIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'workspaceId': ?workspaceId,
     };
   }
 
   factory GetMedtechServiceResult.fromMap(Map<String, dynamic> map) {
     return GetMedtechServiceResult(
-      deviceMappingJson: map['deviceMappingJson'] as String,
-      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] as String,
-      eventhubName: map['eventhubName'] as String,
-      eventhubNamespaceName: map['eventhubNamespaceName'] as String,
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetMedtechServiceIdentity>(map['identities']!, (value) => GetMedtechServiceIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      workspaceId: map['workspaceId'] as String,
+      deviceMappingJson: (() { final guardedValue = map['deviceMappingJson']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eventhubConsumerGroupName: (() { final guardedValue = map['eventhubConsumerGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eventhubName: (() { final guardedValue = map['eventhubName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eventhubNamespaceName: (() { final guardedValue = map['eventhubNamespaceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMedtechServiceIdentity>(guardedValue, (value) => GetMedtechServiceIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

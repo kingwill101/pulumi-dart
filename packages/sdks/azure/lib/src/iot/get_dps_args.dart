@@ -11,7 +11,7 @@ class GetDpsArgs {
   final pulumi.Input<String> name;
   /// The name of the resource group under which the Iot Device Provisioning Service is located in.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetDpsArgs].
   /// [name] Specifies the name of the Iot Device Provisioning Service resource.

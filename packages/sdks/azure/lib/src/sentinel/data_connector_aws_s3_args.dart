@@ -14,7 +14,7 @@ class DataConnectorAwsS3Args {
   /// The ID of the Log Analytics Workspace that this AWS S3 Data Connector resides in. Changing this forces a new AWS S3 Data Connector to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
   /// The name which should be used for this AWS S3 Data Connector. Changing this forces a new AWS S3 Data Connector to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies a list of AWS SQS urls for the AWS S3 Data Connector.
   final pulumi.Input<List<String>> sqsUrls;
 

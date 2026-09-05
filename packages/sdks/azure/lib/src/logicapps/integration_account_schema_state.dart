@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IntegrationAccountSchema resources.
 class IntegrationAccountSchemaState {
   /// The content of the Logic App Integration Account Schema.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The file name of the Logic App Integration Account Schema.
-  final pulumi.Input<String>? fileName;
+  final pulumi.Input<String?>? fileName;
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Schema to be created.
-  final pulumi.Input<String>? integrationAccountName;
+  final pulumi.Input<String?>? integrationAccountName;
   /// The metadata of the Logic App Integration Account Schema.
-  final pulumi.Input<String>? metadata;
+  final pulumi.Input<String?>? metadata;
   /// The name which should be used for this Logic App Integration Account Schema. Changing this forces a new Logic App Integration Account Schema to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Logic App Integration Account Schema should exist. Changing this forces a new Logic App Integration Account Schema to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [IntegrationAccountSchemaState].
   /// [content] The content of the Logic App Integration Account Schema.

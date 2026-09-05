@@ -6,11 +6,11 @@ import 'configuration_install_patches_window.dart';
 
 class ConfigurationInstallPatches {
   /// A `linux` block as defined above. This property only applies when `scope` is set to `InGuestPatch`
-  final pulumi.Input<List<ConfigurationInstallPatchesLinux>>? linuxes;
+  final pulumi.Input<List<ConfigurationInstallPatchesLinux>?>? linuxes;
   /// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. Possible values are `Always`, `IfRequired` and `Never`. This property only applies when `scope` is set to `InGuestPatch`.
-  final pulumi.Input<String>? reboot;
+  final pulumi.Input<String?>? reboot;
   /// A `windows` block as defined above. This property only applies when `scope` is set to `InGuestPatch`
-  final pulumi.Input<List<ConfigurationInstallPatchesWindow>>? windows;
+  final pulumi.Input<List<ConfigurationInstallPatchesWindow>?>? windows;
 
   /// Creates a new [ConfigurationInstallPatches].
   /// [linuxes] A `linux` block as defined above. This property only applies when `scope` is set to `InGuestPatch`

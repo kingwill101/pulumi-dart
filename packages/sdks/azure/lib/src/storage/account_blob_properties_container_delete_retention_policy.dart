@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountBlobPropertiesContainerDeleteRetentionPolicy {
   /// Specifies the number of days that the container should be retained, between `1` and `365` days. Defaults to `7`.
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
 
   /// Creates a new [AccountBlobPropertiesContainerDeleteRetentionPolicy].
   /// [days] Specifies the number of days that the container should be retained, between `1` and `365` days. Defaults to `7`.
@@ -20,7 +20,7 @@ class AccountBlobPropertiesContainerDeleteRetentionPolicy {
 
   factory AccountBlobPropertiesContainerDeleteRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return AccountBlobPropertiesContainerDeleteRetentionPolicy(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

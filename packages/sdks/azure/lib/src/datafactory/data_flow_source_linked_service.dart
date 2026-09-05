@@ -6,7 +6,7 @@ class DataFlowSourceLinkedService {
   /// The name for the Data Factory Linked Service.
   final pulumi.Input<String> name;
   /// A map of parameters to associate with the Data Factory Linked Service.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [DataFlowSourceLinkedService].
   /// [name] The name for the Data Factory Linked Service.

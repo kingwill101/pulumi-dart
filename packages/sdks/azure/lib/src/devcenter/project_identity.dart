@@ -6,11 +6,11 @@ class ProjectIdentity {
   /// The ID of the User Assigned Identity which should be assigned to this Dev Center Project.
   ///
   /// &gt; **Note:** `identityIds` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// The Principal ID for the Service Principal associated with the Identity of this Dev Center Project.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The Tenant ID for the Service Principal associated with the Identity of this Dev Center Project.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The type of identity used for this Dev Center Project. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
   final pulumi.Input<String> type;
 

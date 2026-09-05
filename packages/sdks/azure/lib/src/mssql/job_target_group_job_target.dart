@@ -6,21 +6,21 @@ class JobTargetGroupJobTarget {
   /// The name of the MS SQL Database.
   ///
   /// &gt; **Note:** This cannot be set in combination with `elasticPoolName`.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The name of the MS SQL Elastic Pool.
   ///
   /// &gt; **Note:** This cannot be set in combination with `databaseName`.
-  final pulumi.Input<String>? elasticPoolName;
+  final pulumi.Input<String?>? elasticPoolName;
   /// The ID of the job credential to use during execution of jobs.
   ///
   /// &gt; **Note:** This is required when `membershipType` is `Include`, unless `databaseName` is set or the target resource is configured to use a managed identity for authentication.
-  final pulumi.Input<String>? jobCredentialId;
+  final pulumi.Input<String?>? jobCredentialId;
   /// The membership type for this job target. Possible values are `Include` and `Exclude`. Defaults to `Include`.
-  final pulumi.Input<String>? membershipType;
+  final pulumi.Input<String?>? membershipType;
   /// The name of the MS SQL Server.
   final pulumi.Input<String> serverName;
   /// The job target type. This value is computed based on `serverName`, `databaseName`, and `elasticPoolName`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [JobTargetGroupJobTarget].
   /// [databaseName] The name of the MS SQL Database.

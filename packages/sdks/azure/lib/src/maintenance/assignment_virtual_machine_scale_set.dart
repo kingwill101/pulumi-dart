@@ -538,7 +538,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String("internal"),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -547,14 +547,14 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// 		}
 /// 		exampleBackendAddressPool, err := lb.NewBackendAddressPool(ctx, "example", &lb.BackendAddressPoolArgs{
 /// 			Name:           pulumi.String("example"),
-/// 			LoadbalancerId: exampleLoadBalancer.ID(),
+/// 			LoadbalancerId: exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleProbe, err := lb.NewProbe(ctx, "example", &lb.ProbeArgs{
 /// 			Name:           pulumi.String("example"),
-/// 			LoadbalancerId: exampleLoadBalancer.ID(),
+/// 			LoadbalancerId: exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Port:           pulumi.Int(22),
 /// 			Protocol:       pulumi.String("Tcp"),
 /// 		})
@@ -563,8 +563,8 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// 		}
 /// 		exampleRule, err := lb.NewRule(ctx, "example", &lb.RuleArgs{
 /// 			Name:                        pulumi.String("example"),
-/// 			LoadbalancerId:              exampleLoadBalancer.ID(),
-/// 			ProbeId:                     exampleProbe.ID(),
+/// 			LoadbalancerId:              exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+/// 			ProbeId:                     exampleProbe.ID().ToIDOutput().ToStringOutput(),
 /// 			FrontendIpConfigurationName: pulumi.String("internal"),
 /// 			Protocol:                    pulumi.String("Tcp"),
 /// 			FrontendPort:                pulumi.Int(22),
@@ -611,7 +611,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// 			Size:              pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			OsDisk: &compute.LinuxVirtualMachineOsDiskArgs{
 /// 				Caching:            pulumi.String("ReadWrite"),
@@ -630,7 +630,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// 			AdminUsername:                 pulumi.String("adminuser"),
 /// 			AdminPassword:                 pulumi.String("P@ssword1234!"),
 /// 			UpgradeMode:                   pulumi.String("Automatic"),
-/// 			HealthProbeId:                 exampleProbe.ID(),
+/// 			HealthProbeId:                 exampleProbe.ID().ToIDOutput().ToStringOutput(),
 /// 			DisablePasswordAuthentication: pulumi.Bool(false),
 /// 			SourceImageReference: &compute.LinuxVirtualMachineScaleSetSourceImageReferenceArgs{
 /// 				Publisher: pulumi.String("Canonical"),
@@ -650,9 +650,9 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// 						&compute.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs{
 /// 							Name:     pulumi.String("internal"),
 /// 							Primary:  pulumi.Bool(true),
-/// 							SubnetId: exampleSubnet.ID(),
+/// 							SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 							LoadBalancerBackendAddressPoolIds: pulumi.StringArray{
-/// 								exampleBackendAddressPool.ID(),
+/// 								exampleBackendAddressPool.ID().ToIDOutput().ToStringOutput(),
 /// 							},
 /// 						},
 /// 					},
@@ -676,8 +676,8 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// 		}
 /// 		_, err = maintenance.NewAssignmentVirtualMachineScaleSet(ctx, "example", &maintenance.AssignmentVirtualMachineScaleSetArgs{
 /// 			Location:                   example.Location,
-/// 			MaintenanceConfigurationId: exampleConfiguration.ID(),
-/// 			VirtualMachineScaleSetId:   exampleLinuxVirtualMachine.ID(),
+/// 			MaintenanceConfigurationId: exampleConfiguration.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualMachineScaleSetId:   exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1228,7 +1228,7 @@ class AssignmentVirtualMachineScaleSet extends pulumi.CustomResource {
           'azure:maintenance/assignmentVirtualMachineScaleSet:AssignmentVirtualMachineScaleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
@@ -1240,11 +1240,12 @@ class AssignmentVirtualMachineScaleSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssignmentVirtualMachineScaleSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssignmentVirtualMachineScaleSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1258,6 +1259,20 @@ class AssignmentVirtualMachineScaleSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    location = registerOutput<String>('location');
+    maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
+    virtualMachineScaleSetId = registerOutput<String>('virtualMachineScaleSetId');
+  }
+
+  /// Creates a typed reference to an existing [AssignmentVirtualMachineScaleSet] resource.
+  AssignmentVirtualMachineScaleSet.reference(String urn)
+    : super(
+        'azure:maintenance/assignmentVirtualMachineScaleSet:AssignmentVirtualMachineScaleSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
     virtualMachineScaleSetId = registerOutput<String>('virtualMachineScaleSetId');

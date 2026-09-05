@@ -15,15 +15,15 @@ class SqlRoleDefinitionArgs {
   /// &gt; **Note:** The resources referenced in assignable scopes need not exist.
   final pulumi.Input<List<String>> assignableScopes;
   /// An user-friendly name for the Cosmos DB SQL Role Definition which must be unique for the Database Account.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `permissions` block as defined below.
   final pulumi.Input<List<SqlRoleDefinitionPermission>> permissions;
   /// The name of the Resource Group in which the Cosmos DB SQL Role Definition is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The GUID as the name of the Cosmos DB SQL Role Definition - one will be generated if not specified. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
   /// The type of the Cosmos DB SQL Role Definition. Possible values are `BuiltInRole` and `CustomRole`. Defaults to `CustomRole`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SqlRoleDefinitionArgs].
   /// [accountName] The name of the Cosmos DB Account. Changing this forces a new resource to be created.

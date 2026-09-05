@@ -8,7 +8,7 @@ class LocalNetworkGatewayBgpSettings {
   /// The BGP peering address and BGP identifier of this BGP speaker.
   final pulumi.Input<String> bgpPeeringAddress;
   /// The weight added to routes learned from this BGP speaker.
-  final pulumi.Input<int>? peerWeight;
+  final pulumi.Input<int?>? peerWeight;
 
   /// Creates a new [LocalNetworkGatewayBgpSettings].
   /// [asn] The BGP speaker's ASN.
@@ -30,9 +30,9 @@ class LocalNetworkGatewayBgpSettings {
 
   factory LocalNetworkGatewayBgpSettings.fromMap(Map<String, dynamic> map) {
     return LocalNetworkGatewayBgpSettings(
-      asn: pulumi.Input.fromValue(map['asn'] as int),
+      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
       bgpPeeringAddress: pulumi.Input.fromValue(map['bgpPeeringAddress'] as String),
-      peerWeight: (() { final guardedValue = map['peerWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      peerWeight: (() { final guardedValue = map['peerWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

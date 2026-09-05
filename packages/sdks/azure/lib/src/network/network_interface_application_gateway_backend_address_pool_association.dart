@@ -104,7 +104,7 @@ import 'network_interface_application_gateway_backend_address_pool_association_s
 /// const exampleNetworkInterfaceApplicationGatewayBackendAddressPoolAssociation = new azure.network.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation("example", {
 ///     networkInterfaceId: exampleNetworkInterface.id,
 ///     ipConfigurationName: "testconfiguration1",
-///     backendAddressPoolId: network.backendAddressPools.apply(backendAddressPools => backendAddressPools[0].id),
+///     backendAddressPoolId: network.backendAddressPools[0].id,
 /// });
 /// ```
 /// ```python
@@ -460,7 +460,7 @@ import 'network_interface_application_gateway_backend_address_pool_association_s
 /// 			GatewayIpConfigurations: network.ApplicationGatewayGatewayIpConfigurationArray{
 /// 				&network.ApplicationGatewayGatewayIpConfigurationArgs{
 /// 					Name:     pulumi.String("my-gateway-ip-configuration"),
-/// 					SubnetId: backend.ID(),
+/// 					SubnetId: backend.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			FrontendPorts: network.ApplicationGatewayFrontendPortArray{
@@ -472,7 +472,7 @@ import 'network_interface_application_gateway_backend_address_pool_association_s
 /// 			FrontendIpConfigurations: network.ApplicationGatewayFrontendIpConfigurationArray{
 /// 				&network.ApplicationGatewayFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String(frontendIpConfigurationName),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			BackendAddressPools: network.ApplicationGatewayBackendAddressPoolArray{
@@ -518,7 +518,7 @@ import 'network_interface_application_gateway_backend_address_pool_association_s
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("testconfiguration1"),
-/// 					SubnetId:                   frontend.ID(),
+/// 					SubnetId:                   frontend.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -527,11 +527,11 @@ import 'network_interface_application_gateway_backend_address_pool_association_s
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkInterfaceApplicationGatewayBackendAddressPoolAssociation(ctx, "example", &network.NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs{
-/// 			NetworkInterfaceId:  exampleNetworkInterface.ID(),
+/// 			NetworkInterfaceId:  exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			IpConfigurationName: pulumi.String("testconfiguration1"),
-/// 			BackendAddressPoolId: pulumi.String(network2.BackendAddressPools.ApplyT(func(backendAddressPools []network.ApplicationGatewayBackendAddressPool) (*string, error) {
+/// 			BackendAddressPoolId: network2.BackendAddressPools.ApplyT(func(backendAddressPools []network.ApplicationGatewayBackendAddressPool) (*string, error) {
 /// 				return backendAddressPools[0].Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -954,7 +954,7 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation extends pu
           'azure:network/networkInterfaceApplicationGatewayBackendAddressPoolAssociation:NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
     ipConfigurationName = registerOutput<String>('ipConfigurationName');
@@ -966,11 +966,12 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation extends pu
     String name,
     pulumi.Input<String> id, {
     NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -984,6 +985,20 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation extends pu
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
+    ipConfigurationName = registerOutput<String>('ipConfigurationName');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation] resource.
+  NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation.reference(String urn)
+    : super(
+        'azure:network/networkInterfaceApplicationGatewayBackendAddressPoolAssociation:NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
     ipConfigurationName = registerOutput<String>('ipConfigurationName');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');

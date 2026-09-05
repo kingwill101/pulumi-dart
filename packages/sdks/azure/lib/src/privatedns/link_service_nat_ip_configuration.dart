@@ -8,9 +8,9 @@ class LinkServiceNatIpConfiguration {
   /// Is this is the Primary IP Configuration?
   final pulumi.Input<bool> primary;
   /// Specifies a Private Static IP Address for this IP Configuration.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The version of the IP Protocol which should be used. At this time the only supported value is `IPv4`. Defaults to `IPv4`.
-  final pulumi.Input<String>? privateIpAddressVersion;
+  final pulumi.Input<String?>? privateIpAddressVersion;
   /// Specifies the ID of the Subnet which should be used for the Private Link Service.
   ///
   /// &gt; **Note:** Verify that the Subnet's `enforcePrivateLinkServiceNetworkPolicies` attribute is set to `true`.

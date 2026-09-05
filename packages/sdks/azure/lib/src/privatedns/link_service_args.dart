@@ -9,30 +9,30 @@ import 'link_service_nat_ip_configuration.dart';
 /// {@macro pulumi_privatedns_link_service_link_service_args_doc}
 class LinkServiceArgs {
   /// A list of Subscription UUID/GUID's that will be automatically be able to use this Private Link Service.
-  final pulumi.Input<List<String>>? autoApprovalSubscriptionIds;
+  final pulumi.Input<List<String>?>? autoApprovalSubscriptionIds;
   /// The destination IP address of the Private Link Service.
-  final pulumi.Input<String>? destinationIpAddress;
-  final pulumi.Input<bool>? enableProxyProtocol;
+  final pulumi.Input<String?>? destinationIpAddress;
+  final pulumi.Input<bool?>? enableProxyProtocol;
   /// List of FQDNs allowed for the Private Link Service.
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   /// A list of Frontend IP Configuration IDs from a Standard Load Balancer, where traffic from the Private Link Service should be routed. You can use Load Balancer Rules to direct this traffic to appropriate backend pools where your applications are running. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? loadBalancerFrontendIpConfigurationIds;
+  final pulumi.Input<List<String>?>? loadBalancerFrontendIpConfigurationIds;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this Private Link Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more (up to 8) `natIpConfiguration` block as defined below.
   final pulumi.Input<List<LinkServiceNatIpConfiguration>> natIpConfigurations;
   /// Should the Private Link Service support the Proxy Protocol? Defaults to `false`.
-  final pulumi.Input<bool>? proxyProtocolEnabled;
+  final pulumi.Input<bool?>? proxyProtocolEnabled;
   /// The name of the Resource Group where the Private Link Service should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of Subscription UUID/GUID's that will be able to see this Private Link Service.
   ///
   /// &gt; **Note:** If no Subscription IDs are specified then Azure allows every Subscription to see this Private Link Service.
-  final pulumi.Input<List<String>>? visibilitySubscriptionIds;
+  final pulumi.Input<List<String>?>? visibilitySubscriptionIds;
 
   /// Creates a new [LinkServiceArgs].
   /// [autoApprovalSubscriptionIds] A list of Subscription UUID/GUID's that will be automatically be able to use this Private Link Service.

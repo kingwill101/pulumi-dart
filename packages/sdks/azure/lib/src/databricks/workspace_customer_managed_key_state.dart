@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering WorkspaceCustomerManagedKey resources.
 class WorkspaceCustomerManagedKeyState {
-  final pulumi.Input<String>? keyVaultKeyId;
+  final pulumi.Input<String?>? keyVaultKeyId;
   /// The unique identifier of the databricks workspace in Databricks control plane.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [WorkspaceCustomerManagedKeyState].
   /// [keyVaultKeyId] Optional.

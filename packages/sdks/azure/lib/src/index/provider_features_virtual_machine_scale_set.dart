@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderFeaturesVirtualMachineScaleSet {
-  final pulumi.Input<bool>? forceDelete;
-  final pulumi.Input<bool>? reimageOnManualUpgrade;
-  final pulumi.Input<bool>? rollInstancesWhenRequired;
-  final pulumi.Input<bool>? scaleToZeroBeforeDeletion;
+  final pulumi.Input<bool?>? forceDelete;
+  final pulumi.Input<bool?>? reimageOnManualUpgrade;
+  final pulumi.Input<bool?>? rollInstancesWhenRequired;
+  final pulumi.Input<bool?>? scaleToZeroBeforeDeletion;
 
   /// Creates a new [ProviderFeaturesVirtualMachineScaleSet].
   /// [forceDelete] Optional.

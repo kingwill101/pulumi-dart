@@ -151,8 +151,8 @@ import 'linked_service_state.dart';
 /// 		}
 /// 		_, err = loganalytics.NewLinkedService(ctx, "example", &loganalytics.LinkedServiceArgs{
 /// 			ResourceGroupName: example.Name,
-/// 			WorkspaceId:       exampleAnalyticsWorkspace.ID(),
-/// 			ReadAccessId:      exampleAccount.ID(),
+/// 			WorkspaceId:       exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			ReadAccessId:      exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -334,7 +334,7 @@ class LinkedService extends pulumi.CustomResource {
           'azure:loganalytics/linkedService:LinkedService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     readAccessId = registerOutput<String>('readAccessId');
@@ -348,11 +348,12 @@ class LinkedService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -366,6 +367,22 @@ class LinkedService extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    readAccessId = registerOutput<String>('readAccessId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    workspaceId = registerOutput<String>('workspaceId');
+    writeAccessId = registerOutput<String?>('writeAccessId');
+  }
+
+  /// Creates a typed reference to an existing [LinkedService] resource.
+  LinkedService.reference(String urn)
+    : super(
+        'azure:loganalytics/linkedService:LinkedService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     readAccessId = registerOutput<String>('readAccessId');
     resourceGroupName = registerOutput<String>('resourceGroupName');

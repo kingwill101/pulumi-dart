@@ -134,16 +134,16 @@ import 'virtual_machine_manager_virtual_machine_template_state.dart';
 /// 		}
 /// 		example := systemcenter.GetVirtualMachineManagerInventoryItemsOutput(ctx, systemcenter.GetVirtualMachineManagerInventoryItemsOutputArgs{
 /// 			InventoryType: pulumi.String("VirtualMachineTemplate"),
-/// 			SystemCenterVirtualMachineManagerServerId: exampleVirtualMachineManagerServer.ID(),
+/// 			SystemCenterVirtualMachineManagerServerId: exampleVirtualMachineManagerServer.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		_, err = systemcenter.NewVirtualMachineManagerVirtualMachineTemplate(ctx, "example", &systemcenter.VirtualMachineManagerVirtualMachineTemplateArgs{
 /// 			Name:              pulumi.String("example-scvmmvmtemplate"),
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			Location:          exampleResourceGroup.Location,
 /// 			CustomLocationId:  exampleVirtualMachineManagerServer.CustomLocationId,
-/// 			SystemCenterVirtualMachineManagerServerInventoryItemId: pulumi.String(example.ApplyT(func(example systemcenter.GetVirtualMachineManagerInventoryItemsResult) (*string, error) {
+/// 			SystemCenterVirtualMachineManagerServerInventoryItemId: example.ApplyT(func(example systemcenter.GetVirtualMachineManagerInventoryItemsResult) (*string, error) {
 /// 				return example.InventoryItems[0].Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -323,14 +323,14 @@ class VirtualMachineManagerVirtualMachineTemplate extends pulumi.CustomResource 
           'azure:systemcenter/virtualMachineManagerVirtualMachineTemplate:VirtualMachineManagerVirtualMachineTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customLocationId = registerOutput<String>('customLocationId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     systemCenterVirtualMachineManagerServerInventoryItemId = registerOutput<String>('systemCenterVirtualMachineManagerServerInventoryItemId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VirtualMachineManagerVirtualMachineTemplate] resource's state with the given [name] and [id].
@@ -338,11 +338,12 @@ class VirtualMachineManagerVirtualMachineTemplate extends pulumi.CustomResource 
     String name,
     pulumi.Input<String> id, {
     VirtualMachineManagerVirtualMachineTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualMachineManagerVirtualMachineTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,6 +362,23 @@ class VirtualMachineManagerVirtualMachineTemplate extends pulumi.CustomResource 
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     systemCenterVirtualMachineManagerServerInventoryItemId = registerOutput<String>('systemCenterVirtualMachineManagerServerInventoryItemId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineManagerVirtualMachineTemplate] resource.
+  VirtualMachineManagerVirtualMachineTemplate.reference(String urn)
+    : super(
+        'azure:systemcenter/virtualMachineManagerVirtualMachineTemplate:VirtualMachineManagerVirtualMachineTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    systemCenterVirtualMachineManagerServerInventoryItemId = registerOutput<String>('systemCenterVirtualMachineManagerServerInventoryItemId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

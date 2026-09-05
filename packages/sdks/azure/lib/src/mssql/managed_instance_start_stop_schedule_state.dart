@@ -6,17 +6,17 @@ import 'managed_instance_start_stop_schedule_schedule.dart';
 /// Input properties used for looking up and filtering ManagedInstanceStartStopSchedule resources.
 class ManagedInstanceStartStopScheduleState {
   /// Specifies the description of the schedule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the ID of the Managed Instance. Changing this forces a new Sql Start Stop Managed Instance Schedule to be created.
-  final pulumi.Input<String>? managedInstanceId;
+  final pulumi.Input<String?>? managedInstanceId;
   /// Timestamp when the next action will be executed in the corresponding schedule time zone.
-  final pulumi.Input<String>? nextExecutionTime;
+  final pulumi.Input<String?>? nextExecutionTime;
   /// Next action to be executed (Start or Stop).
-  final pulumi.Input<String>? nextRunAction;
+  final pulumi.Input<String?>? nextRunAction;
   /// A `schedule` block as defined below.
-  final pulumi.Input<List<ManagedInstanceStartStopScheduleSchedule>>? schedules;
+  final pulumi.Input<List<ManagedInstanceStartStopScheduleSchedule>?>? schedules;
   /// Specifies the time zone of the schedule. Defaults to `UTC`.
-  final pulumi.Input<String>? timezoneId;
+  final pulumi.Input<String?>? timezoneId;
 
   /// Creates a new [ManagedInstanceStartStopScheduleState].
   /// [description] Specifies the description of the schedule.

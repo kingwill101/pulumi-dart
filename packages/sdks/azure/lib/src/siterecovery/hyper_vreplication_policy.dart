@@ -111,7 +111,7 @@ import 'hyper_vreplication_policy_state.dart';
 /// 		}
 /// 		_, err = siterecovery.NewHyperVReplicationPolicy(ctx, "policy", &siterecovery.HyperVReplicationPolicyArgs{
 /// 			Name:                          pulumi.String("policy"),
-/// 			RecoveryVaultId:               vault.ID(),
+/// 			RecoveryVaultId:               vault.ID().ToIDOutput().ToStringOutput(),
 /// 			RecoveryPointRetentionInHours: pulumi.Int(2),
 /// 			ApplicationConsistentSnapshotFrequencyInHours: pulumi.Int(1),
 /// 			ReplicationIntervalInSeconds:                  pulumi.Int(300),
@@ -261,7 +261,7 @@ class HyperVReplicationPolicy extends pulumi.CustomResource {
           'azure:siterecovery/hyperVReplicationPolicy:HyperVReplicationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationConsistentSnapshotFrequencyInHours = registerOutput<int>('applicationConsistentSnapshotFrequencyInHours');
     this.name = registerOutput<String>('name');
@@ -275,11 +275,12 @@ class HyperVReplicationPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HyperVReplicationPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HyperVReplicationPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -293,6 +294,22 @@ class HyperVReplicationPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationConsistentSnapshotFrequencyInHours = registerOutput<int>('applicationConsistentSnapshotFrequencyInHours');
+    this.name = registerOutput<String>('name');
+    recoveryPointRetentionInHours = registerOutput<int>('recoveryPointRetentionInHours');
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
+    replicationIntervalInSeconds = registerOutput<int>('replicationIntervalInSeconds');
+  }
+
+  /// Creates a typed reference to an existing [HyperVReplicationPolicy] resource.
+  HyperVReplicationPolicy.reference(String urn)
+    : super(
+        'azure:siterecovery/hyperVReplicationPolicy:HyperVReplicationPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationConsistentSnapshotFrequencyInHours = registerOutput<int>('applicationConsistentSnapshotFrequencyInHours');
     this.name = registerOutput<String>('name');
     recoveryPointRetentionInHours = registerOutput<int>('recoveryPointRetentionInHours');

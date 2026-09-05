@@ -6,57 +6,57 @@ import 'get_workspace_identity.dart';
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// An `identity` block as defined below.
-  final List<GetWorkspaceIdentity> identities;
+  final List<GetWorkspaceIdentity>? identities;
   /// The location where the Machine Learning Workspace exists.
-  final String location;
-  final String name;
-  final String resourceGroupName;
+  final String? location;
+  final String? name;
+  final String? resourceGroupName;
   /// The access type for the system storage account.
-  final String storageAccountAccessType;
+  final String? storageAccountAccessType;
   /// A mapping of tags assigned to the Machine Learning Workspace.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetWorkspaceResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below.
   /// [location] The location where the Machine Learning Workspace exists.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
   /// [storageAccountAccessType] The access type for the system storage account.
   /// [tags] A mapping of tags assigned to the Machine Learning Workspace.
   const GetWorkspaceResult({
-    required this.id,
-    required this.identities,
-    required this.location,
-    required this.name,
-    required this.resourceGroupName,
-    required this.storageAccountAccessType,
-    required this.tags,
+    this.id,
+    this.identities,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.storageAccountAccessType,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetWorkspaceIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'location': location,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'storageAccountAccessType': storageAccountAccessType,
-      'tags': tags,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetWorkspaceIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'storageAccountAccessType': ?storageAccountAccessType,
+      'tags': ?tags,
     };
   }
 
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceResult(
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetWorkspaceIdentity>(map['identities']!, (value) => GetWorkspaceIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      storageAccountAccessType: map['storageAccountAccessType'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetWorkspaceIdentity>(guardedValue, (value) => GetWorkspaceIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageAccountAccessType: (() { final guardedValue = map['storageAccountAccessType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

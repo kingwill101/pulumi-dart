@@ -9,13 +9,13 @@ import 'managed_instance_start_stop_schedule_schedule.dart';
 /// {@macro pulumi_mssql_managed_instance_start_stop_schedule_managed_instance_start_stop_schedule_args_doc}
 class ManagedInstanceStartStopScheduleArgs {
   /// Specifies the description of the schedule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the ID of the Managed Instance. Changing this forces a new Sql Start Stop Managed Instance Schedule to be created.
   final pulumi.Input<String> managedInstanceId;
   /// A `schedule` block as defined below.
   final pulumi.Input<List<ManagedInstanceStartStopScheduleSchedule>> schedules;
   /// Specifies the time zone of the schedule. Defaults to `UTC`.
-  final pulumi.Input<String>? timezoneId;
+  final pulumi.Input<String?>? timezoneId;
 
   /// Creates a new [ManagedInstanceStartStopScheduleArgs].
   /// [description] Specifies the description of the schedule.

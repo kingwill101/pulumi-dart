@@ -122,7 +122,7 @@ import 'flexible_server_configuration_state.dart';
 /// 		}
 /// 		_, err = postgresql.NewFlexibleServerConfiguration(ctx, "example", &postgresql.FlexibleServerConfigurationArgs{
 /// 			Name:     pulumi.String("backslash_quote"),
-/// 			ServerId: exampleFlexibleServer.ID(),
+/// 			ServerId: exampleFlexibleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			Value:    pulumi.String("on"),
 /// 		})
 /// 		if err != nil {
@@ -356,7 +356,7 @@ import 'flexible_server_configuration_state.dart';
 /// 		}
 /// 		_, err = postgresql.NewFlexibleServerConfiguration(ctx, "example", &postgresql.FlexibleServerConfigurationArgs{
 /// 			Name:     pulumi.String("azure.extensions"),
-/// 			ServerId: exampleFlexibleServer.ID(),
+/// 			ServerId: exampleFlexibleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			Value:    pulumi.String("CUBE,CITEXT,BTREE_GIST"),
 /// 		})
 /// 		if err != nil {
@@ -510,7 +510,7 @@ class FlexibleServerConfiguration extends pulumi.CustomResource {
           'azure:postgresql/flexibleServerConfiguration:FlexibleServerConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
@@ -522,11 +522,12 @@ class FlexibleServerConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlexibleServerConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlexibleServerConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -540,6 +541,20 @@ class FlexibleServerConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    serverId = registerOutput<String>('serverId');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [FlexibleServerConfiguration] resource.
+  FlexibleServerConfiguration.reference(String urn)
+    : super(
+        'azure:postgresql/flexibleServerConfiguration:FlexibleServerConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');
     value = registerOutput<String>('value');

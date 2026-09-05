@@ -335,17 +335,18 @@ class AutonomousDatabase extends pulumi.CustomResource {
           'azure:oracle/autonomousDatabase:AutonomousDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['adminPassword'],
         ) {
-    adminPassword = registerOutput<String>('adminPassword');
-    allowedIps = registerOutput<List<String>?>('allowedIps');
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
+    allowedIps = registerOutput<List<String>?>('allowedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoScalingEnabled = registerOutput<bool>('autoScalingEnabled');
     autoScalingForStorageEnabled = registerOutput<bool>('autoScalingForStorageEnabled');
     backupRetentionPeriodInDays = registerOutput<int>('backupRetentionPeriodInDays');
     characterSet = registerOutput<String>('characterSet');
     computeCount = registerOutput<double>('computeCount');
     computeModel = registerOutput<String>('computeModel');
-    customerContacts = registerOutput<List<String>>('customerContacts');
+    customerContacts = registerOutput<List<String>>('customerContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataStorageSizeInTbs = registerOutput<int>('dataStorageSizeInTbs');
     dbVersion = registerOutput<String>('dbVersion');
     dbWorkload = registerOutput<String>('dbWorkload');
@@ -358,7 +359,7 @@ class AutonomousDatabase extends pulumi.CustomResource {
     nationalCharacterSet = registerOutput<String>('nationalCharacterSet');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkId = registerOutput<String?>('virtualNetworkId');
   }
 
@@ -367,11 +368,12 @@ class AutonomousDatabase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutonomousDatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutonomousDatabase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -385,15 +387,15 @@ class AutonomousDatabase extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    adminPassword = registerOutput<String>('adminPassword');
-    allowedIps = registerOutput<List<String>?>('allowedIps');
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
+    allowedIps = registerOutput<List<String>?>('allowedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoScalingEnabled = registerOutput<bool>('autoScalingEnabled');
     autoScalingForStorageEnabled = registerOutput<bool>('autoScalingForStorageEnabled');
     backupRetentionPeriodInDays = registerOutput<int>('backupRetentionPeriodInDays');
     characterSet = registerOutput<String>('characterSet');
     computeCount = registerOutput<double>('computeCount');
     computeModel = registerOutput<String>('computeModel');
-    customerContacts = registerOutput<List<String>>('customerContacts');
+    customerContacts = registerOutput<List<String>>('customerContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataStorageSizeInTbs = registerOutput<int>('dataStorageSizeInTbs');
     dbVersion = registerOutput<String>('dbVersion');
     dbWorkload = registerOutput<String>('dbWorkload');
@@ -406,7 +408,42 @@ class AutonomousDatabase extends pulumi.CustomResource {
     nationalCharacterSet = registerOutput<String>('nationalCharacterSet');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkId = registerOutput<String?>('virtualNetworkId');
+  }
+
+  /// Creates a typed reference to an existing [AutonomousDatabase] resource.
+  AutonomousDatabase.reference(String urn)
+    : super(
+        'azure:oracle/autonomousDatabase:AutonomousDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['adminPassword'],
+        isResourceReference: true,
+      ) {
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
+    allowedIps = registerOutput<List<String>?>('allowedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    autoScalingEnabled = registerOutput<bool>('autoScalingEnabled');
+    autoScalingForStorageEnabled = registerOutput<bool>('autoScalingForStorageEnabled');
+    backupRetentionPeriodInDays = registerOutput<int>('backupRetentionPeriodInDays');
+    characterSet = registerOutput<String>('characterSet');
+    computeCount = registerOutput<double>('computeCount');
+    computeModel = registerOutput<String>('computeModel');
+    customerContacts = registerOutput<List<String>>('customerContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataStorageSizeInTbs = registerOutput<int>('dataStorageSizeInTbs');
+    dbVersion = registerOutput<String>('dbVersion');
+    dbWorkload = registerOutput<String>('dbWorkload');
+    displayName = registerOutput<String>('displayName');
+    licenseModel = registerOutput<String>('licenseModel');
+    location = registerOutput<String>('location');
+    longTermBackupSchedule = registerOutput<AutonomousDatabaseLongTermBackupSchedule?>('longTermBackupSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutonomousDatabaseLongTermBackupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mtlsConnectionRequired = registerOutput<bool>('mtlsConnectionRequired');
+    this.name = registerOutput<String>('name');
+    nationalCharacterSet = registerOutput<String>('nationalCharacterSet');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkId = registerOutput<String?>('virtualNetworkId');
   }
 }

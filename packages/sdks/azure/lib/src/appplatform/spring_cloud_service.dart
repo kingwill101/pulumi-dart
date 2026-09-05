@@ -1,9 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_service_args.dart';
 import 'spring_cloud_service_config_server_git_setting.dart';
+import 'spring_cloud_service_container_registry.dart';
 import 'spring_cloud_service_default_build_service.dart';
 import 'spring_cloud_service_marketplace.dart';
 import 'spring_cloud_service_network.dart';
+import 'spring_cloud_service_required_network_traffic_rule.dart';
 import 'spring_cloud_service_state.dart';
 import 'spring_cloud_service_trace.dart';
 
@@ -339,7 +341,7 @@ class SpringCloudService extends pulumi.CustomResource {
   /// A `configServerGitSetting` block as defined below. This field is applicable only for Spring Cloud Service with basic and standard tier.
   late final pulumi.Output<SpringCloudServiceConfigServerGitSetting?> configServerGitSetting;
   /// One or more `containerRegistry` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
-  late final pulumi.Output<List<Map<String, dynamic>>?> containerRegistries;
+  late final pulumi.Output<List<SpringCloudServiceContainerRegistry>?> containerRegistries;
   /// A `defaultBuildService` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
   late final pulumi.Output<SpringCloudServiceDefaultBuildService?> defaultBuildService;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
@@ -357,7 +359,7 @@ class SpringCloudService extends pulumi.CustomResource {
   /// A list of the outbound Public IP Addresses used by this Spring Cloud Service.
   late final pulumi.Output<List<String>> outboundPublicIpAddresses;
   /// A list of `requiredNetworkTrafficRules` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> requiredNetworkTrafficRules;
+  late final pulumi.Output<List<SpringCloudServiceRequiredNetworkTrafficRule>> requiredNetworkTrafficRules;
   /// Specifies The name of the resource group in which to create the Spring Cloud Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// Whether enable the default Service Registry. This field is applicable only for Spring Cloud Service with enterprise tier.
@@ -387,11 +389,11 @@ class SpringCloudService extends pulumi.CustomResource {
           'azure:appplatform/springCloudService:SpringCloudService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     buildAgentPoolSize = registerOutput<String?>('buildAgentPoolSize');
     configServerGitSetting = registerOutput<SpringCloudServiceConfigServerGitSetting?>('configServerGitSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceConfigServerGitSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    containerRegistries = registerOutput<List<Map<String, dynamic>>?>('containerRegistries');
+    containerRegistries = registerOutput<List<SpringCloudServiceContainerRegistry>?>('containerRegistries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudServiceContainerRegistry>(guardedValue, (value) => SpringCloudServiceContainerRegistry.fromMap((value as Map).cast<String, dynamic>())); });
     defaultBuildService = registerOutput<SpringCloudServiceDefaultBuildService?>('defaultBuildService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceDefaultBuildService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     logStreamPublicEndpointEnabled = registerOutput<bool?>('logStreamPublicEndpointEnabled');
@@ -399,14 +401,14 @@ class SpringCloudService extends pulumi.CustomResource {
     marketplace = registerOutput<SpringCloudServiceMarketplace>('marketplace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceMarketplace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     network = registerOutput<SpringCloudServiceNetwork?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses');
-    requiredNetworkTrafficRules = registerOutput<List<Map<String, dynamic>>>('requiredNetworkTrafficRules');
+    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requiredNetworkTrafficRules = registerOutput<List<SpringCloudServiceRequiredNetworkTrafficRule>>('requiredNetworkTrafficRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudServiceRequiredNetworkTrafficRule>(guardedValue, (value) => SpringCloudServiceRequiredNetworkTrafficRule.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serviceRegistryEnabled = registerOutput<bool?>('serviceRegistryEnabled');
     serviceRegistryId = registerOutput<String>('serviceRegistryId');
     skuName = registerOutput<String?>('skuName');
     skuTier = registerOutput<String>('skuTier');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trace = registerOutput<SpringCloudServiceTrace?>('trace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceTrace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
@@ -416,11 +418,12 @@ class SpringCloudService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -436,7 +439,7 @@ class SpringCloudService extends pulumi.CustomResource {
         ) {
     buildAgentPoolSize = registerOutput<String?>('buildAgentPoolSize');
     configServerGitSetting = registerOutput<SpringCloudServiceConfigServerGitSetting?>('configServerGitSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceConfigServerGitSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    containerRegistries = registerOutput<List<Map<String, dynamic>>?>('containerRegistries');
+    containerRegistries = registerOutput<List<SpringCloudServiceContainerRegistry>?>('containerRegistries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudServiceContainerRegistry>(guardedValue, (value) => SpringCloudServiceContainerRegistry.fromMap((value as Map).cast<String, dynamic>())); });
     defaultBuildService = registerOutput<SpringCloudServiceDefaultBuildService?>('defaultBuildService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceDefaultBuildService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     logStreamPublicEndpointEnabled = registerOutput<bool?>('logStreamPublicEndpointEnabled');
@@ -444,14 +447,45 @@ class SpringCloudService extends pulumi.CustomResource {
     marketplace = registerOutput<SpringCloudServiceMarketplace>('marketplace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceMarketplace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     network = registerOutput<SpringCloudServiceNetwork?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses');
-    requiredNetworkTrafficRules = registerOutput<List<Map<String, dynamic>>>('requiredNetworkTrafficRules');
+    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requiredNetworkTrafficRules = registerOutput<List<SpringCloudServiceRequiredNetworkTrafficRule>>('requiredNetworkTrafficRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudServiceRequiredNetworkTrafficRule>(guardedValue, (value) => SpringCloudServiceRequiredNetworkTrafficRule.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serviceRegistryEnabled = registerOutput<bool?>('serviceRegistryEnabled');
     serviceRegistryId = registerOutput<String>('serviceRegistryId');
     skuName = registerOutput<String?>('skuName');
     skuTier = registerOutput<String>('skuTier');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trace = registerOutput<SpringCloudServiceTrace?>('trace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceTrace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudService] resource.
+  SpringCloudService.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudService:SpringCloudService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    buildAgentPoolSize = registerOutput<String?>('buildAgentPoolSize');
+    configServerGitSetting = registerOutput<SpringCloudServiceConfigServerGitSetting?>('configServerGitSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceConfigServerGitSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    containerRegistries = registerOutput<List<SpringCloudServiceContainerRegistry>?>('containerRegistries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudServiceContainerRegistry>(guardedValue, (value) => SpringCloudServiceContainerRegistry.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultBuildService = registerOutput<SpringCloudServiceDefaultBuildService?>('defaultBuildService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceDefaultBuildService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    logStreamPublicEndpointEnabled = registerOutput<bool?>('logStreamPublicEndpointEnabled');
+    managedEnvironmentId = registerOutput<String?>('managedEnvironmentId');
+    marketplace = registerOutput<SpringCloudServiceMarketplace>('marketplace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceMarketplace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<SpringCloudServiceNetwork?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requiredNetworkTrafficRules = registerOutput<List<SpringCloudServiceRequiredNetworkTrafficRule>>('requiredNetworkTrafficRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudServiceRequiredNetworkTrafficRule>(guardedValue, (value) => SpringCloudServiceRequiredNetworkTrafficRule.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceRegistryEnabled = registerOutput<bool?>('serviceRegistryEnabled');
+    serviceRegistryId = registerOutput<String>('serviceRegistryId');
+    skuName = registerOutput<String?>('skuName');
+    skuTier = registerOutput<String>('skuTier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trace = registerOutput<SpringCloudServiceTrace?>('trace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceTrace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }

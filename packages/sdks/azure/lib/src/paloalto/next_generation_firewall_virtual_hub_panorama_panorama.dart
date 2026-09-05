@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualHubPanoramaPanorama {
-  final pulumi.Input<String>? deviceGroupName;
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? deviceGroupName;
+  final pulumi.Input<String?>? hostName;
   /// The name which should be used for this Palo Alto Next Generation Firewall VHub Panorama. Changing this forces a new Palo Alto Next Generation Firewall VHub Panorama to be created.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? panoramaServer1;
-  final pulumi.Input<String>? panoramaServer2;
-  final pulumi.Input<String>? templateName;
-  final pulumi.Input<String>? virtualMachineSshKey;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? panoramaServer1;
+  final pulumi.Input<String?>? panoramaServer2;
+  final pulumi.Input<String?>? templateName;
+  final pulumi.Input<String?>? virtualMachineSshKey;
 
   /// Creates a new [NextGenerationFirewallVirtualHubPanoramaPanorama].
   /// [deviceGroupName] Optional.

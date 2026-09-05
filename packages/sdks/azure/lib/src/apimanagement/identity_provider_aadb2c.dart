@@ -407,14 +407,15 @@ class IdentityProviderAadb2c extends pulumi.CustomResource {
           'azure:apimanagement/identityProviderAadb2c:IdentityProviderAadb2c',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['clientSecret'],
         ) {
     allowedTenant = registerOutput<String>('allowedTenant');
     apiManagementName = registerOutput<String>('apiManagementName');
     authority = registerOutput<String>('authority');
     clientId = registerOutput<String>('clientId');
     clientLibrary = registerOutput<String?>('clientLibrary');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     passwordResetPolicy = registerOutput<String?>('passwordResetPolicy');
     profileEditingPolicy = registerOutput<String?>('profileEditingPolicy');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -428,11 +429,12 @@ class IdentityProviderAadb2c extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityProviderAadb2cState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityProviderAadb2c._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -451,7 +453,31 @@ class IdentityProviderAadb2c extends pulumi.CustomResource {
     authority = registerOutput<String>('authority');
     clientId = registerOutput<String>('clientId');
     clientLibrary = registerOutput<String?>('clientLibrary');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
+    passwordResetPolicy = registerOutput<String?>('passwordResetPolicy');
+    profileEditingPolicy = registerOutput<String?>('profileEditingPolicy');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    signinPolicy = registerOutput<String>('signinPolicy');
+    signinTenant = registerOutput<String>('signinTenant');
+    signupPolicy = registerOutput<String>('signupPolicy');
+  }
+
+  /// Creates a typed reference to an existing [IdentityProviderAadb2c] resource.
+  IdentityProviderAadb2c.reference(String urn)
+    : super(
+        'azure:apimanagement/identityProviderAadb2c:IdentityProviderAadb2c',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['clientSecret'],
+        isResourceReference: true,
+      ) {
+    allowedTenant = registerOutput<String>('allowedTenant');
+    apiManagementName = registerOutput<String>('apiManagementName');
+    authority = registerOutput<String>('authority');
+    clientId = registerOutput<String>('clientId');
+    clientLibrary = registerOutput<String?>('clientLibrary');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     passwordResetPolicy = registerOutput<String?>('passwordResetPolicy');
     profileEditingPolicy = registerOutput<String?>('profileEditingPolicy');
     resourceGroupName = registerOutput<String>('resourceGroupName');

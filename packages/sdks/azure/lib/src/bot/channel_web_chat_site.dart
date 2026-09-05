@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelWebChatSite {
   /// Is the endpoint parameters enabled for this site?
-  final pulumi.Input<bool>? endpointParametersEnabled;
+  final pulumi.Input<bool?>? endpointParametersEnabled;
   /// The name of the site.
   final pulumi.Input<String> name;
   /// Is the storage site enabled for detailed logging? Defaults to `true`.
-  final pulumi.Input<bool>? storageEnabled;
+  final pulumi.Input<bool?>? storageEnabled;
   /// Is the user upload enabled for this site? Defaults to `true`.
-  final pulumi.Input<bool>? userUploadEnabled;
+  final pulumi.Input<bool?>? userUploadEnabled;
 
   /// Creates a new [ChannelWebChatSite].
   /// [endpointParametersEnabled] Is the endpoint parameters enabled for this site?

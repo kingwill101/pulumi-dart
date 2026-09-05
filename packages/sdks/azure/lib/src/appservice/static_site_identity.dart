@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StaticSiteIdentity {
   /// A list of Managed Identity IDs which should be assigned to this Static Site resource.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// (Optional) The Principal ID associated with this Managed Service Identity.
-  final pulumi.Input<String>? principalId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? principalId;
+  final pulumi.Input<String?>? tenantId;
   /// The Type of Managed Identity assigned to this Static Site resource. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
   final pulumi.Input<String> type;
 

@@ -157,3 +157,14 @@ Future<GetElasticsearchResult> getElasticsearch(
   );
   return GetElasticsearchResult.fromMap(result);
 }
+
+pulumi.Output<GetElasticsearchResult> getElasticsearchOutput(
+  GetElasticsearchArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:elasticcloud/getElasticsearch:getElasticsearch',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetElasticsearchResult.fromMap);
+}

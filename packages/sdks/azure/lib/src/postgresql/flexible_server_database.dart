@@ -125,7 +125,7 @@ import 'flexible_server_database_state.dart';
 /// 		}
 /// 		_, err = postgresql.NewFlexibleServerDatabase(ctx, "example", &postgresql.FlexibleServerDatabaseArgs{
 /// 			Name:      pulumi.String("exampledb"),
-/// 			ServerId:  exampleFlexibleServer.ID(),
+/// 			ServerId:  exampleFlexibleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			Collation: pulumi.String("en_US.utf8"),
 /// 			Charset:   pulumi.String("UTF8"),
 /// 		})
@@ -283,7 +283,7 @@ class FlexibleServerDatabase extends pulumi.CustomResource {
           'azure:postgresql/flexibleServerDatabase:FlexibleServerDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     charset = registerOutput<String?>('charset');
     collation = registerOutput<String?>('collation');
@@ -296,11 +296,12 @@ class FlexibleServerDatabase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlexibleServerDatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlexibleServerDatabase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -314,6 +315,21 @@ class FlexibleServerDatabase extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    charset = registerOutput<String?>('charset');
+    collation = registerOutput<String?>('collation');
+    this.name = registerOutput<String>('name');
+    serverId = registerOutput<String>('serverId');
+  }
+
+  /// Creates a typed reference to an existing [FlexibleServerDatabase] resource.
+  FlexibleServerDatabase.reference(String urn)
+    : super(
+        'azure:postgresql/flexibleServerDatabase:FlexibleServerDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     charset = registerOutput<String?>('charset');
     collation = registerOutput<String?>('collation');
     this.name = registerOutput<String>('name');

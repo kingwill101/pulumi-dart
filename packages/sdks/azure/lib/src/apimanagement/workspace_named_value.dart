@@ -148,7 +148,7 @@ import 'workspace_named_value_value_from_key_vault.dart';
 /// 		}
 /// 		exampleWorkspace, err := apimanagement.NewWorkspace(ctx, "example", &apimanagement.WorkspaceArgs{
 /// 			Name:            pulumi.String("example-workspace"),
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:     pulumi.String("ExampleWorkspace"),
 /// 		})
 /// 		if err != nil {
@@ -156,7 +156,7 @@ import 'workspace_named_value_value_from_key_vault.dart';
 /// 		}
 /// 		_, err = apimanagement.NewWorkspaceNamedValue(ctx, "example", &apimanagement.WorkspaceNamedValueArgs{
 /// 			Name:                     pulumi.String("example-named-value"),
-/// 			ApiManagementWorkspaceId: exampleWorkspace.ID(),
+/// 			ApiManagementWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:              pulumi.String("ExampleProperty"),
 /// 			Value:                    pulumi.String("Example Value"),
 /// 			Tags: pulumi.StringArray{
@@ -354,14 +354,15 @@ class WorkspaceNamedValue extends pulumi.CustomResource {
           'azure:apimanagement/workspaceNamedValue:WorkspaceNamedValue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['value'],
         ) {
     apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     secret = registerOutput<bool?>('secret');
-    tags = registerOutput<List<String>?>('tags');
-    value = registerOutput<String?>('value');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    value = registerOutput<String?>('value', isSecret: true);
     valueFromKeyVault = registerOutput<WorkspaceNamedValueValueFromKeyVault?>('valueFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceNamedValueValueFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -370,11 +371,12 @@ class WorkspaceNamedValue extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceNamedValueState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceNamedValue._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -392,8 +394,27 @@ class WorkspaceNamedValue extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     secret = registerOutput<bool?>('secret');
-    tags = registerOutput<List<String>?>('tags');
-    value = registerOutput<String?>('value');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    value = registerOutput<String?>('value', isSecret: true);
+    valueFromKeyVault = registerOutput<WorkspaceNamedValueValueFromKeyVault?>('valueFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceNamedValueValueFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceNamedValue] resource.
+  WorkspaceNamedValue.reference(String urn)
+    : super(
+        'azure:apimanagement/workspaceNamedValue:WorkspaceNamedValue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value'],
+        isResourceReference: true,
+      ) {
+    apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    secret = registerOutput<bool?>('secret');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    value = registerOutput<String?>('value', isSecret: true);
     valueFromKeyVault = registerOutput<WorkspaceNamedValueValueFromKeyVault?>('valueFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceNamedValueValueFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

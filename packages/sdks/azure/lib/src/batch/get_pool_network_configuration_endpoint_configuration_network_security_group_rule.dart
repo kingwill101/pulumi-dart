@@ -36,7 +36,7 @@ class GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule {
   factory GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule.fromMap(Map<String, dynamic> map) {
     return GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule(
       access: pulumi.Input.fromValue(map['access'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       sourceAddressPrefix: pulumi.Input.fromValue(map['sourceAddressPrefix'] as String),
       sourcePortRanges: pulumi.Input.fromValue((map['sourcePortRanges'] as List).cast<String>()),
     );

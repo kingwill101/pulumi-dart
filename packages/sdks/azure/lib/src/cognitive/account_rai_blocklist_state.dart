@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccountRaiBlocklist resources.
 class AccountRaiBlocklistState {
   /// The ID of the Cognitive Services Account. Changing this forces a new Cognitive Account Rai Blocklist to be created.
-  final pulumi.Input<String>? cognitiveAccountId;
+  final pulumi.Input<String?>? cognitiveAccountId;
   /// A short description for the Cognitive Account Rai Blocklist.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the Cognitive Account Rai Blocklist. Changing this forces a new Cognitive Account Rai Blocklist to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountRaiBlocklistState].
   /// [cognitiveAccountId] The ID of the Cognitive Services Account. Changing this forces a new Cognitive Account Rai Blocklist to be created.

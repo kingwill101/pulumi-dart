@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to this Firewall Policy.
-  final pulumi.Input<List<String>>? identityIds;
-  final pulumi.Input<String>? principalId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<List<String>?>? identityIds;
+  final pulumi.Input<String?>? principalId;
+  final pulumi.Input<String?>? tenantId;
   /// Specifies the type of Managed Service Identity that should be configured on this Firewall Policy. Only possible value is `UserAssigned`.
   final pulumi.Input<String> type;
 

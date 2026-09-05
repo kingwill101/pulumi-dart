@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicebus_namespace_disaster_recovery_config_namespace_disaster_recovery_config_args_doc}
 class NamespaceDisasterRecoveryConfigArgs {
   /// The Shared access policies used to access the connection string for the alias.
-  final pulumi.Input<String>? aliasAuthorizationRuleId;
+  final pulumi.Input<String?>? aliasAuthorizationRuleId;
   /// Specifies the name of the Disaster Recovery Config. This is the alias DNS name that will be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Service Bus Namespace to replicate to.
   final pulumi.Input<String> partnerNamespaceId;
   /// The ID of the primary Service Bus Namespace to replicate. Changing this forces a new resource to be created.

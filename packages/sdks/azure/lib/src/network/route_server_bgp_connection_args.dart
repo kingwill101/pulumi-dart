@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_route_server_bgp_connection_route_server_bgp_connection_args_doc}
 class RouteServerBgpConnectionArgs {
   /// The name which should be used for this Route Server Bgp Connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The peer autonomous system number for the Route Server Bgp Connection. Changing this forces a new resource to be created.
   final pulumi.Input<int> peerAsn;
   /// The peer ip address for the Route Server Bgp Connection. Changing this forces a new resource to be created.
@@ -40,7 +40,7 @@ class RouteServerBgpConnectionArgs {
   factory RouteServerBgpConnectionArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerBgpConnectionArgs(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      peerAsn: pulumi.Input.fromValue(map['peerAsn'] as int),
+      peerAsn: pulumi.Input.fromValue((map['peerAsn'] as num).toInt()),
       peerIp: pulumi.Input.fromValue(map['peerIp'] as String),
       routeServerId: pulumi.Input.fromValue(map['routeServerId'] as String),
     );

@@ -10,7 +10,7 @@ class DatabaseImport {
   /// Specifies the type of authentication used to access the server. Valid values are `SQL` or `ADPassword`.
   final pulumi.Input<String> authenticationType;
   /// The resource id for the storage account used to store BACPAC file. If set, private endpoint connection will be created for the storage account. Must match storage account used for storageUri parameter.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// Specifies the access key for the storage account.
   final pulumi.Input<String> storageKey;
   /// Specifies the type of access key for the storage account. Valid values are `StorageAccessKey` or `SharedAccessKey`.

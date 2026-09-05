@@ -26,6 +26,7 @@ import 'credential_service_principal_state.dart';
 ///     name: "example",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     softDeleteRetentionDays: 7,
@@ -88,6 +89,7 @@ import 'credential_service_principal_state.dart';
 ///     name="example",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     soft_delete_retention_days=7,
@@ -158,6 +160,7 @@ import 'credential_service_principal_state.dart';
 ///         Name = "example",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         SoftDeleteRetentionDays = 7,
@@ -252,12 +255,13 @@ import 'credential_service_principal_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("example"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("premium"),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
+/// 			Name:                     pulumi.String("example"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(current.TenantId),
@@ -282,15 +286,15 @@ import 'credential_service_principal_state.dart';
 /// 		exampleSecret, err := keyvault.NewSecret(ctx, "example", &keyvault.SecretArgs{
 /// 			Name:       pulumi.String("example"),
 /// 			Value:      pulumi.String("example-secret"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleLinkedServiceKeyVault, err := datafactory.NewLinkedServiceKeyVault(ctx, "example", &datafactory.LinkedServiceKeyVaultArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
-/// 			KeyVaultId:    exampleKeyVault.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId:    exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -298,7 +302,7 @@ import 'credential_service_principal_state.dart';
 /// 		_, err = datafactory.NewCredentialServicePrincipal(ctx, "example", &datafactory.CredentialServicePrincipalArgs{
 /// 			Name:               pulumi.String("example"),
 /// 			Description:        pulumi.String("example description"),
-/// 			DataFactoryId:      exampleFactory.ID(),
+/// 			DataFactoryId:      exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:           pulumi.String(current.TenantId),
 /// 			ServicePrincipalId: pulumi.String(current.ClientId),
 /// 			ServicePrincipalKey: &datafactory.CredentialServicePrincipalServicePrincipalKeyArgs{
@@ -343,6 +347,7 @@ import 'credential_service_principal_state.dart';
 ///   name                       = "example"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                   = "premium"
 ///   soft_delete_retention_days = 7
@@ -428,6 +433,7 @@ import 'credential_service_principal_state.dart';
 ///             .name("example")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .softDeleteRetentionDays(7)
@@ -498,6 +504,7 @@ import 'credential_service_principal_state.dart';
 ///       name: example
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       softDeleteRetentionDays: 7
@@ -593,9 +600,9 @@ class CredentialServicePrincipal extends pulumi.CustomResource {
           'azure:datafactory/credentialServicePrincipal:CredentialServicePrincipal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    annotations = registerOutput<List<String>?>('annotations');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -609,11 +616,12 @@ class CredentialServicePrincipal extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CredentialServicePrincipalState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CredentialServicePrincipal._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -627,7 +635,25 @@ class CredentialServicePrincipal extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<List<String>?>('annotations');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    servicePrincipalKey = registerOutput<CredentialServicePrincipalServicePrincipalKey?>('servicePrincipalKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CredentialServicePrincipalServicePrincipalKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [CredentialServicePrincipal] resource.
+  CredentialServicePrincipal.reference(String urn)
+    : super(
+        'azure:datafactory/credentialServicePrincipal:CredentialServicePrincipal',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

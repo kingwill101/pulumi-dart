@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'namespace_args.dart';
 import 'namespace_identity.dart';
+import 'namespace_inbound_ip_rule.dart';
 import 'namespace_state.dart';
+import 'namespace_topic_spaces_configuration.dart';
 
 /// Manages an EventGrid Namespace
 ///
@@ -199,7 +201,7 @@ class Namespace extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<NamespaceIdentity?> identity;
   /// One or more `inboundIpRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
+  late final pulumi.Output<List<NamespaceInboundIpRule>?> inboundIpRules;
   /// Specifies the supported Azure location where the resource should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// Specifies the name of the Event Grid Namespace resource. Changing this forces a new resource to be created.
@@ -213,7 +215,7 @@ class Namespace extends pulumi.CustomResource {
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A `topicSpacesConfiguration` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> topicSpacesConfigurations;
+  late final pulumi.Output<List<NamespaceTopicSpacesConfiguration>?> topicSpacesConfigurations;
 
   /// Creates a new [Namespace].
   /// [name] The Pulumi resource name.
@@ -227,18 +229,18 @@ class Namespace extends pulumi.CustomResource {
           'azure:eventgrid/namespace:Namespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     capacity = registerOutput<int?>('capacity');
     identity = registerOutput<NamespaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    inboundIpRules = registerOutput<List<NamespaceInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamespaceInboundIpRule>(guardedValue, (value) => NamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
-    topicSpacesConfigurations = registerOutput<List<Map<String, dynamic>>?>('topicSpacesConfigurations');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topicSpacesConfigurations = registerOutput<List<NamespaceTopicSpacesConfiguration>?>('topicSpacesConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamespaceTopicSpacesConfiguration>(guardedValue, (value) => NamespaceTopicSpacesConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Namespace] resource's state with the given [name] and [id].
@@ -246,11 +248,12 @@ class Namespace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamespaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Namespace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -266,13 +269,34 @@ class Namespace extends pulumi.CustomResource {
         ) {
     capacity = registerOutput<int?>('capacity');
     identity = registerOutput<NamespaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    inboundIpRules = registerOutput<List<NamespaceInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamespaceInboundIpRule>(guardedValue, (value) => NamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
-    topicSpacesConfigurations = registerOutput<List<Map<String, dynamic>>?>('topicSpacesConfigurations');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topicSpacesConfigurations = registerOutput<List<NamespaceTopicSpacesConfiguration>?>('topicSpacesConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamespaceTopicSpacesConfiguration>(guardedValue, (value) => NamespaceTopicSpacesConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Namespace] resource.
+  Namespace.reference(String urn)
+    : super(
+        'azure:eventgrid/namespace:Namespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    capacity = registerOutput<int?>('capacity');
+    identity = registerOutput<NamespaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundIpRules = registerOutput<List<NamespaceInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamespaceInboundIpRule>(guardedValue, (value) => NamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topicSpacesConfigurations = registerOutput<List<NamespaceTopicSpacesConfiguration>?>('topicSpacesConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamespaceTopicSpacesConfiguration>(guardedValue, (value) => NamespaceTopicSpacesConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

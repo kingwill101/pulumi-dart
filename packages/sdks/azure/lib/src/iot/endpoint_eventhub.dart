@@ -196,7 +196,7 @@ import 'endpoint_eventhub_state.dart';
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("exampleEventHub"),
-/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			NamespaceId:      exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(2),
 /// 			MessageRetention: pulumi.Int(1),
 /// 		})
@@ -232,7 +232,7 @@ import 'endpoint_eventhub_state.dart';
 /// 		}
 /// 		_, err = iot.NewEndpointEventhub(ctx, "example", &iot.EndpointEventhubArgs{
 /// 			ResourceGroupName: example.Name,
-/// 			IothubId:          exampleIoTHub.ID(),
+/// 			IothubId:          exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:              pulumi.String("example"),
 /// 			ConnectionString:  exampleAuthorizationRule.PrimaryConnectionString,
 /// 		})
@@ -478,10 +478,11 @@ class EndpointEventhub extends pulumi.CustomResource {
           'azure:iot/endpointEventhub:EndpointEventhub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['connectionString'],
         ) {
     authenticationType = registerOutput<String?>('authenticationType');
-    connectionString = registerOutput<String?>('connectionString');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     endpointUri = registerOutput<String?>('endpointUri');
     entityPath = registerOutput<String?>('entityPath');
     identityId = registerOutput<String?>('identityId');
@@ -496,11 +497,12 @@ class EndpointEventhub extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointEventhubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointEventhub._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -515,7 +517,28 @@ class EndpointEventhub extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authenticationType = registerOutput<String?>('authenticationType');
-    connectionString = registerOutput<String?>('connectionString');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
+    endpointUri = registerOutput<String?>('endpointUri');
+    entityPath = registerOutput<String?>('entityPath');
+    identityId = registerOutput<String?>('identityId');
+    iothubId = registerOutput<String>('iothubId');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [EndpointEventhub] resource.
+  EndpointEventhub.reference(String urn)
+    : super(
+        'azure:iot/endpointEventhub:EndpointEventhub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connectionString'],
+        isResourceReference: true,
+      ) {
+    authenticationType = registerOutput<String?>('authenticationType');
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     endpointUri = registerOutput<String?>('endpointUri');
     entityPath = registerOutput<String?>('entityPath');
     identityId = registerOutput<String?>('identityId');

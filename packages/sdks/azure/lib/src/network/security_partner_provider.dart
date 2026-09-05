@@ -168,7 +168,7 @@ import 'security_partner_provider_state.dart';
 /// 			Name:              pulumi.String("example-vhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.2.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -178,7 +178,7 @@ import 'security_partner_provider_state.dart';
 /// 			Name:              pulumi.String("example-vpngw"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			VirtualHubId:      exampleVirtualHub.ID(),
+/// 			VirtualHubId:      exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -187,7 +187,7 @@ import 'security_partner_provider_state.dart';
 /// 			Name:                 pulumi.String("example-spp"),
 /// 			ResourceGroupName:    example.Name,
 /// 			Location:             example.Location,
-/// 			VirtualHubId:         exampleVirtualHub.ID(),
+/// 			VirtualHubId:         exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 			SecurityProviderName: pulumi.String("IBoss"),
 /// 			Tags: pulumi.StringMap{
 /// 				"ENV": pulumi.String("Prod"),
@@ -403,13 +403,13 @@ class SecurityPartnerProvider extends pulumi.CustomResource {
           'azure:network/securityPartnerProvider:SecurityPartnerProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     securityProviderName = registerOutput<String>('securityProviderName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualHubId = registerOutput<String?>('virtualHubId');
   }
 
@@ -418,11 +418,12 @@ class SecurityPartnerProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityPartnerProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityPartnerProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -440,7 +441,24 @@ class SecurityPartnerProvider extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     securityProviderName = registerOutput<String>('securityProviderName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualHubId = registerOutput<String?>('virtualHubId');
+  }
+
+  /// Creates a typed reference to an existing [SecurityPartnerProvider] resource.
+  SecurityPartnerProvider.reference(String urn)
+    : super(
+        'azure:network/securityPartnerProvider:SecurityPartnerProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    securityProviderName = registerOutput<String>('securityProviderName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualHubId = registerOutput<String?>('virtualHubId');
   }
 }

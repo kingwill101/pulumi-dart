@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aad_diagnostic_setting_args.dart';
+import 'aad_diagnostic_setting_enabled_log.dart';
 import 'aad_diagnostic_setting_state.dart';
 
 /// Manages an Azure Active Directory Diagnostic Setting for Azure Monitor.
@@ -159,7 +160,7 @@ import 'aad_diagnostic_setting_state.dart';
 /// 		}
 /// 		_, err = monitoring.NewAadDiagnosticSetting(ctx, "example", &monitoring.AadDiagnosticSettingArgs{
 /// 			Name:             pulumi.String("setting1"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			EnabledLogs: monitoring.AadDiagnosticSettingEnabledLogArray{
 /// 				&monitoring.AadDiagnosticSettingEnabledLogArgs{
 /// 					Category: pulumi.String("SignInLogs"),
@@ -328,7 +329,7 @@ import 'aad_diagnostic_setting_state.dart';
 /// ```
 class AadDiagnosticSetting extends pulumi.CustomResource {
   /// One or more `enabledLog` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> enabledLogs;
+  late final pulumi.Output<List<AadDiagnosticSettingEnabledLog>?> enabledLogs;
   /// Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This can be sourced from the `azure.eventhub.EventHubNamespaceAuthorizationRule` resource and is different from a `azure.eventhub.AuthorizationRule` resource.
@@ -356,9 +357,9 @@ class AadDiagnosticSetting extends pulumi.CustomResource {
           'azure:monitoring/aadDiagnosticSetting:AadDiagnosticSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    enabledLogs = registerOutput<List<Map<String, dynamic>>?>('enabledLogs');
+    enabledLogs = registerOutput<List<AadDiagnosticSettingEnabledLog>?>('enabledLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AadDiagnosticSettingEnabledLog>(guardedValue, (value) => AadDiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>())); });
     eventhubAuthorizationRuleId = registerOutput<String?>('eventhubAuthorizationRuleId');
     eventhubName = registerOutput<String?>('eventhubName');
     logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
@@ -371,11 +372,12 @@ class AadDiagnosticSetting extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AadDiagnosticSettingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AadDiagnosticSetting._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -389,7 +391,24 @@ class AadDiagnosticSetting extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    enabledLogs = registerOutput<List<Map<String, dynamic>>?>('enabledLogs');
+    enabledLogs = registerOutput<List<AadDiagnosticSettingEnabledLog>?>('enabledLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AadDiagnosticSettingEnabledLog>(guardedValue, (value) => AadDiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>())); });
+    eventhubAuthorizationRuleId = registerOutput<String?>('eventhubAuthorizationRuleId');
+    eventhubName = registerOutput<String?>('eventhubName');
+    logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [AadDiagnosticSetting] resource.
+  AadDiagnosticSetting.reference(String urn)
+    : super(
+        'azure:monitoring/aadDiagnosticSetting:AadDiagnosticSetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabledLogs = registerOutput<List<AadDiagnosticSettingEnabledLog>?>('enabledLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AadDiagnosticSettingEnabledLog>(guardedValue, (value) => AadDiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>())); });
     eventhubAuthorizationRuleId = registerOutput<String?>('eventhubAuthorizationRuleId');
     eventhubName = registerOutput<String?>('eventhubName');
     logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');

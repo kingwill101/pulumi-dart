@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_type_args.dart';
+import 'connection_type_field.dart';
 import 'connection_type_state.dart';
 
 /// Manages anAutomation Connection Type.
@@ -282,7 +283,7 @@ class ConnectionType extends pulumi.CustomResource {
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
   /// One or more `field` blocks as defined below. Changing this forces a new Automation to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>> fields;
+  late final pulumi.Output<List<ConnectionTypeField>> fields;
   /// Whether the connection type is global. Changing this forces a new Automation to be created.
   late final pulumi.Output<bool?> isGlobal;
   /// The name which should be used for this Automation Connection Type. Changing this forces a new Automation to be created.
@@ -302,10 +303,10 @@ class ConnectionType extends pulumi.CustomResource {
           'azure:automation/connectionType:ConnectionType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
-    fields = registerOutput<List<Map<String, dynamic>>>('fields');
+    fields = registerOutput<List<ConnectionTypeField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionTypeField>(guardedValue, (value) => ConnectionTypeField.fromMap((value as Map).cast<String, dynamic>())); });
     isGlobal = registerOutput<bool?>('isGlobal');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -316,11 +317,12 @@ class ConnectionType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectionType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,7 +337,23 @@ class ConnectionType extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
-    fields = registerOutput<List<Map<String, dynamic>>>('fields');
+    fields = registerOutput<List<ConnectionTypeField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionTypeField>(guardedValue, (value) => ConnectionTypeField.fromMap((value as Map).cast<String, dynamic>())); });
+    isGlobal = registerOutput<bool?>('isGlobal');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ConnectionType] resource.
+  ConnectionType.reference(String urn)
+    : super(
+        'azure:automation/connectionType:ConnectionType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    fields = registerOutput<List<ConnectionTypeField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionTypeField>(guardedValue, (value) => ConnectionTypeField.fromMap((value as Map).cast<String, dynamic>())); });
     isGlobal = registerOutput<bool?>('isGlobal');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

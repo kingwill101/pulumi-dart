@@ -7,7 +7,7 @@ class SharedImageGallerySharing {
   /// A `communityGallery` block as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `communityGallery` must be set when `permission` is set to `Community`.
-  final pulumi.Input<SharedImageGallerySharingCommunityGallery>? communityGallery;
+  final pulumi.Input<SharedImageGallerySharingCommunityGallery?>? communityGallery;
   /// The permission of the Shared Image Gallery when sharing. Possible values are `Community`, `Groups` and `Private`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This requires that the Preview Feature `Microsoft.Compute/CommunityGalleries` is enabled, see [the documentation](https://learn.microsoft.com/azure/virtual-machines/share-gallery-community?tabs=cli) for more information.

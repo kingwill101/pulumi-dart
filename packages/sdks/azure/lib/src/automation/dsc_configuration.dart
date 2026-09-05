@@ -269,7 +269,7 @@ class DscConfiguration extends pulumi.CustomResource {
           'azure:automation/dscConfiguration:DscConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     contentEmbedded = registerOutput<String>('contentEmbedded');
@@ -279,7 +279,7 @@ class DscConfiguration extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DscConfiguration] resource's state with the given [name] and [id].
@@ -287,11 +287,12 @@ class DscConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DscConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DscConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -313,6 +314,26 @@ class DscConfiguration extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DscConfiguration] resource.
+  DscConfiguration.reference(String urn)
+    : super(
+        'azure:automation/dscConfiguration:DscConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    contentEmbedded = registerOutput<String>('contentEmbedded');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    logVerbose = registerOutput<bool?>('logVerbose');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -194,7 +194,7 @@ import 'static_web_app_function_app_registration_state.dart';
 /// 			Name:                    pulumi.String("example-function-app"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			ServicePlanId:           exampleServicePlan.ID(),
+/// 			ServicePlanId:           exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName:      exampleAccount.Name,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
 /// 			SiteConfig:              &appservice.LinuxFunctionAppSiteConfigArgs{},
@@ -203,8 +203,8 @@ import 'static_web_app_function_app_registration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewStaticWebAppFunctionAppRegistration(ctx, "example", &appservice.StaticWebAppFunctionAppRegistrationArgs{
-/// 			StaticWebAppId: exampleStaticWebApp.ID(),
-/// 			FunctionAppId:  exampleLinuxFunctionApp.ID(),
+/// 			StaticWebAppId: exampleStaticWebApp.ID().ToIDOutput().ToStringOutput(),
+/// 			FunctionAppId:  exampleLinuxFunctionApp.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -425,7 +425,7 @@ class StaticWebAppFunctionAppRegistration extends pulumi.CustomResource {
           'azure:appservice/staticWebAppFunctionAppRegistration:StaticWebAppFunctionAppRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     functionAppId = registerOutput<String>('functionAppId');
     staticWebAppId = registerOutput<String>('staticWebAppId');
@@ -436,11 +436,12 @@ class StaticWebAppFunctionAppRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StaticWebAppFunctionAppRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StaticWebAppFunctionAppRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -454,6 +455,19 @@ class StaticWebAppFunctionAppRegistration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    functionAppId = registerOutput<String>('functionAppId');
+    staticWebAppId = registerOutput<String>('staticWebAppId');
+  }
+
+  /// Creates a typed reference to an existing [StaticWebAppFunctionAppRegistration] resource.
+  StaticWebAppFunctionAppRegistration.reference(String urn)
+    : super(
+        'azure:appservice/staticWebAppFunctionAppRegistration:StaticWebAppFunctionAppRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     functionAppId = registerOutput<String>('functionAppId');
     staticWebAppId = registerOutput<String>('staticWebAppId');
   }

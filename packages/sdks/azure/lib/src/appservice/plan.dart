@@ -836,7 +836,7 @@ class Plan extends pulumi.CustomResource {
           'azure:appservice/plan:Plan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServiceEnvironmentId = registerOutput<String?>('appServiceEnvironmentId');
     isXenon = registerOutput<bool?>('isXenon');
@@ -849,7 +849,7 @@ class Plan extends pulumi.CustomResource {
     reserved = registerOutput<bool?>('reserved');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<PlanSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 
@@ -858,11 +858,12 @@ class Plan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Plan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -887,7 +888,31 @@ class Plan extends pulumi.CustomResource {
     reserved = registerOutput<bool?>('reserved');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<PlanSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
+  }
+
+  /// Creates a typed reference to an existing [Plan] resource.
+  Plan.reference(String urn)
+    : super(
+        'azure:appservice/plan:Plan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appServiceEnvironmentId = registerOutput<String?>('appServiceEnvironmentId');
+    isXenon = registerOutput<bool?>('isXenon');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    maximumElasticWorkerCount = registerOutput<int>('maximumElasticWorkerCount');
+    maximumNumberOfWorkers = registerOutput<int>('maximumNumberOfWorkers');
+    this.name = registerOutput<String>('name');
+    perSiteScaling = registerOutput<bool?>('perSiteScaling');
+    reserved = registerOutput<bool?>('reserved');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<PlanSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

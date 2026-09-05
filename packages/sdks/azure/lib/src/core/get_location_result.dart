@@ -6,40 +6,40 @@ import 'get_location_zone_mapping.dart';
 /// Result data returned by getLocation.
 class GetLocationResult {
   /// The display name of the location.
-  final String displayName;
+  final String? displayName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
+  final String? id;
+  final String? location;
   /// A `zoneMappings` block as defined below.
-  final List<GetLocationZoneMapping> zoneMappings;
+  final List<GetLocationZoneMapping>? zoneMappings;
 
   /// Creates a new [GetLocationResult].
   /// [displayName] The display name of the location.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
+  /// [location] Optional.
   /// [zoneMappings] A `zoneMappings` block as defined below.
   const GetLocationResult({
-    required this.displayName,
-    required this.id,
-    required this.location,
-    required this.zoneMappings,
+    this.displayName,
+    this.id,
+    this.location,
+    this.zoneMappings,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'displayName': displayName,
-      'id': id,
-      'location': location,
-      'zoneMappings': pulumi.Input.encodeList<GetLocationZoneMapping, Map<String, dynamic>>(zoneMappings, (value) => value.toMap()),
+      'displayName': ?displayName,
+      'id': ?id,
+      'location': ?location,
+      'zoneMappings': ?(() { final guardedValue = zoneMappings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLocationZoneMapping, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetLocationResult.fromMap(Map<String, dynamic> map) {
     return GetLocationResult(
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      zoneMappings: pulumi.Input.decodeList<GetLocationZoneMapping>(map['zoneMappings']!, (value) => GetLocationZoneMapping.fromMap((value as Map).cast<String, dynamic>())),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zoneMappings: (() { final guardedValue = map['zoneMappings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLocationZoneMapping>(guardedValue, (value) => GetLocationZoneMapping.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

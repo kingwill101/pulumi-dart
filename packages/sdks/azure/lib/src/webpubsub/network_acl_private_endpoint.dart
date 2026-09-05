@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkAclPrivateEndpoint {
   /// The allowed request types for the Private Endpoint Connection. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
-  final pulumi.Input<List<String>>? allowedRequestTypes;
+  final pulumi.Input<List<String>?>? allowedRequestTypes;
   /// The denied request types for the Private Endpoint Connection. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
   ///
   /// &gt; **Note:** When `defaultAction` is `Allow`, `allowedRequestTypes`cannot be set. When `defaultAction` is `Deny`, `deniedRequestTypes`cannot be set.
-  final pulumi.Input<List<String>>? deniedRequestTypes;
+  final pulumi.Input<List<String>?>? deniedRequestTypes;
   /// The ID of the Private Endpoint which is based on the Web Pubsub service.
   final pulumi.Input<String> id;
 

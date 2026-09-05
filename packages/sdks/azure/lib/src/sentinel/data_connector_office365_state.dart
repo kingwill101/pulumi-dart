@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DataConnectorOffice365 resources.
 class DataConnectorOffice365State {
   /// Should the Exchange data connector be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? exchangeEnabled;
+  final pulumi.Input<bool?>? exchangeEnabled;
   /// The ID of the Log Analytics Workspace that this Office 365 Data Connector resides in. Changing this forces a new Office 365 Data Connector to be created.
-  final pulumi.Input<String>? logAnalyticsWorkspaceId;
+  final pulumi.Input<String?>? logAnalyticsWorkspaceId;
   /// The name which should be used for this Office 365 Data Connector. Changing this forces a new Office 365 Data Connector to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Should the SharePoint data connector be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? sharepointEnabled;
+  final pulumi.Input<bool?>? sharepointEnabled;
   /// Should the Microsoft Teams data connector be enabled? Defaults to `true`.
   ///
   /// &gt; **Note:** At least one of `exchangeEnabled`, `sharedpointEnabled` and `teamsEnabled` has to be specified.
-  final pulumi.Input<bool>? teamsEnabled;
+  final pulumi.Input<bool?>? teamsEnabled;
   /// The ID of the Tenant that this Office 365 Data Connector connects to. Changing this forces a new Office 365 Data Connector to be created.
   ///
   /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [DataConnectorOffice365State].
   /// [exchangeEnabled] Should the Exchange data connector be enabled? Defaults to `true`.

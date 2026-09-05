@@ -9,29 +9,29 @@ import 'get_account_blob_container_saspermissions.dart';
 /// {@macro pulumi_storage_get_account_blob_container_sas_get_account_blob_container_sasargs_doc}
 class GetAccountBlobContainerSASArgs {
   /// The `Cache-Control` response header that is sent when this SAS token is used.
-  final pulumi.Input<String>? cacheControl;
+  final pulumi.Input<String?>? cacheControl;
   /// The connection string for the storage account to which this SAS applies. Typically directly from the `primaryConnectionString` attribute of an `azure.storage.Account` resource.
   final pulumi.Input<String> connectionString;
   /// Name of the container.
   final pulumi.Input<String> containerName;
   /// The `Content-Disposition` response header that is sent when this SAS token is used.
-  final pulumi.Input<String>? contentDisposition;
+  final pulumi.Input<String?>? contentDisposition;
   /// The `Content-Encoding` response header that is sent when this SAS token is used.
-  final pulumi.Input<String>? contentEncoding;
+  final pulumi.Input<String?>? contentEncoding;
   /// The `Content-Language` response header that is sent when this SAS token is used.
-  final pulumi.Input<String>? contentLanguage;
+  final pulumi.Input<String?>? contentLanguage;
   /// The `Content-Type` response header that is sent when this SAS token is used.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
   ///
   /// &gt; **Note:** The [ISO-8601 Time offset from UTC](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC) is currently not supported by the service, which will result into 409 error.
   final pulumi.Input<String> expiry;
   /// Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// Single IPv4 address or range (connected with a dash) of IPv4 addresses.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Should Permissions permissions be enabled for this SAS?
-  final pulumi.Input<GetAccountBlobContainerSASPermissions>? permissions;
+  final pulumi.Input<GetAccountBlobContainerSASPermissions?>? permissions;
   /// The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
   final pulumi.Input<String> start;
 

@@ -11,15 +11,15 @@ class BackendAddressPoolArgs {
   /// The ID of the Load Balancer in which to create the Backend Address Pool. Changing this forces a new resource to be created.
   final pulumi.Input<String> loadbalancerId;
   /// Specifies the name of the Backend Address Pool. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The backend address synchronous mode for the Backend Address Pool. Possible values are `Automatic` and `Manual`. This is required with `virtualNetworkId`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `synchronousMode` can set only for Load Balancer with `Standard` SKU.
-  final pulumi.Input<String>? synchronousMode;
+  final pulumi.Input<String?>? synchronousMode;
   /// One or more `tunnelInterface` blocks as defined below.
-  final pulumi.Input<List<BackendAddressPoolTunnelInterface>>? tunnelInterfaces;
+  final pulumi.Input<List<BackendAddressPoolTunnelInterface>?>? tunnelInterfaces;
   /// The ID of the Virtual Network within which the Backend Address Pool should exist.
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
 
   /// Creates a new [BackendAddressPoolArgs].
   /// [loadbalancerId] The ID of the Load Balancer in which to create the Backend Address Pool. Changing this forces a new resource to be created.

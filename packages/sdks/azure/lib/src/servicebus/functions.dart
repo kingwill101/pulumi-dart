@@ -163,6 +163,17 @@ Future<GetNamespaceResult> getNamespace(
   return GetNamespaceResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:servicebus/getNamespace:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
+}
+
 /// Use this data source to access information about an existing ServiceBus Namespace Authorization Rule.
 ///
 /// ## Example Usage
@@ -308,6 +319,17 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceAuthorizationRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRuleOutput(
+  GetNamespaceAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:servicebus/getNamespaceAuthorizationRule:getNamespaceAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceAuthorizationRuleResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Service Bus Disaster Recovery Config.
@@ -457,6 +479,17 @@ Future<GetNamespaceDisasterRecoveryConfigResult> getNamespaceDisasterRecoveryCon
   return GetNamespaceDisasterRecoveryConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceDisasterRecoveryConfigResult> getNamespaceDisasterRecoveryConfigOutput(
+  GetNamespaceDisasterRecoveryConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:servicebus/getNamespaceDisasterRecoveryConfig:getNamespaceDisasterRecoveryConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceDisasterRecoveryConfigResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Service Bus Queue.
 ///
 /// ## Example Usage
@@ -602,6 +635,17 @@ Future<GetQueueResult> getQueue(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetQueueResult.fromMap(result);
+}
+
+pulumi.Output<GetQueueResult> getQueueOutput(
+  GetQueueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:servicebus/getQueue:getQueue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueueResult.fromMap);
 }
 
 /// Use this data source to access information about an existing ServiceBus Queue Authorisation Rule within a ServiceBus Queue.
@@ -765,6 +809,17 @@ Future<GetQueueAuthorizationRuleResult> getQueueAuthorizationRule(
   return GetQueueAuthorizationRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetQueueAuthorizationRuleResult> getQueueAuthorizationRuleOutput(
+  GetQueueAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:servicebus/getQueueAuthorizationRule:getQueueAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueueAuthorizationRuleResult.fromMap);
+}
+
 /// Use this data source to access information about an existing ServiceBus Subscription.
 ///
 /// ## Example Usage
@@ -912,6 +967,17 @@ Future<GetSubscriptionResult> getSubscription(
   return GetSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
+  GetSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:servicebus/getSubscription:getSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Service Bus Topic.
 ///
 /// ## Example Usage
@@ -1057,6 +1123,17 @@ Future<GetTopicResult> getTopic(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicResult.fromMap(result);
+}
+
+pulumi.Output<GetTopicResult> getTopicOutput(
+  GetTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:servicebus/getTopic:getTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicResult.fromMap);
 }
 
 /// Use this data source to access information about a ServiceBus Topic Authorization Rule within a ServiceBus Topic.
@@ -1218,4 +1295,15 @@ Future<GetTopicAuthorizationRuleResult> getTopicAuthorizationRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicAuthorizationRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetTopicAuthorizationRuleResult> getTopicAuthorizationRuleOutput(
+  GetTopicAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:servicebus/getTopicAuthorizationRule:getTopicAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicAuthorizationRuleResult.fromMap);
 }

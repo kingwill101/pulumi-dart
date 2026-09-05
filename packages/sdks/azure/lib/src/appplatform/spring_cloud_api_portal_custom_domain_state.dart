@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SpringCloudApiPortalCustomDomain resources.
 class SpringCloudApiPortalCustomDomainState {
   /// The name which should be used for this Spring Cloud API Portal Domain. Changing this forces a new Spring Cloud API Portal Domain to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Spring Cloud API Portal. Changing this forces a new Spring Cloud API Portal Domain to be created.
-  final pulumi.Input<String>? springCloudApiPortalId;
+  final pulumi.Input<String?>? springCloudApiPortalId;
   /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud API Portal Domain.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [SpringCloudApiPortalCustomDomainState].
   /// [name] The name which should be used for this Spring Cloud API Portal Domain. Changing this forces a new Spring Cloud API Portal Domain to be created.

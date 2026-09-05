@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'srv_record_args.dart';
+import 'srv_record_record.dart';
 import 'srv_record_state.dart';
 
 /// Enables you to manage DNS SRV Records within Azure DNS.
@@ -292,7 +293,7 @@ class SrvRecord extends pulumi.CustomResource {
   /// The name of the DNS SRV Record. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// A list of values that make up the SRV record. Each `record` block supports fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> records;
+  late final pulumi.Output<List<SrvRecordRecord>> records;
   /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
@@ -314,13 +315,13 @@ class SrvRecord extends pulumi.CustomResource {
           'azure:dns/srvRecord:SrvRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<Map<String, dynamic>>>('records');
+    records = registerOutput<List<SrvRecordRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SrvRecordRecord>(guardedValue, (value) => SrvRecordRecord.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
   }
@@ -330,11 +331,12 @@ class SrvRecord extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SrvRecordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SrvRecord._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -350,9 +352,27 @@ class SrvRecord extends pulumi.CustomResource {
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<Map<String, dynamic>>>('records');
+    records = registerOutput<List<SrvRecordRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SrvRecordRecord>(guardedValue, (value) => SrvRecordRecord.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
+  }
+
+  /// Creates a typed reference to an existing [SrvRecord] resource.
+  SrvRecord.reference(String urn)
+    : super(
+        'azure:dns/srvRecord:SrvRecord',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    fqdn = registerOutput<String>('fqdn');
+    this.name = registerOutput<String>('name');
+    records = registerOutput<List<SrvRecordRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SrvRecordRecord>(guardedValue, (value) => SrvRecordRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
   }

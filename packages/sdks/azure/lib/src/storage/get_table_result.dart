@@ -6,50 +6,50 @@ import 'get_table_acl.dart';
 /// Result data returned by getTable.
 class GetTableResult {
   /// A mapping of ACLs for this Table.
-  final List<GetTableAcl> acls;
+  final List<GetTableAcl>? acls;
   /// The ID of the Storage Table.
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   /// The Resource Manager ID of this Storage Table.
-  final String resourceManagerId;
-  final String storageAccountId;
-  final String storageAccountName;
+  final String? resourceManagerId;
+  final String? storageAccountId;
+  final String? storageAccountName;
 
   /// Creates a new [GetTableResult].
   /// [acls] A mapping of ACLs for this Table.
   /// [id] The ID of the Storage Table.
-  /// [name] Required.
+  /// [name] Optional.
   /// [resourceManagerId] The Resource Manager ID of this Storage Table.
-  /// [storageAccountId] Required.
-  /// [storageAccountName] Required.
+  /// [storageAccountId] Optional.
+  /// [storageAccountName] Optional.
   const GetTableResult({
-    required this.acls,
-    required this.id,
-    required this.name,
-    required this.resourceManagerId,
-    required this.storageAccountId,
-    required this.storageAccountName,
+    this.acls,
+    this.id,
+    this.name,
+    this.resourceManagerId,
+    this.storageAccountId,
+    this.storageAccountName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acls': pulumi.Input.encodeList<GetTableAcl, Map<String, dynamic>>(acls, (value) => value.toMap()),
-      'id': id,
-      'name': name,
-      'resourceManagerId': resourceManagerId,
-      'storageAccountId': storageAccountId,
-      'storageAccountName': storageAccountName,
+      'acls': ?(() { final guardedValue = acls; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTableAcl, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'name': ?name,
+      'resourceManagerId': ?resourceManagerId,
+      'storageAccountId': ?storageAccountId,
+      'storageAccountName': ?storageAccountName,
     };
   }
 
   factory GetTableResult.fromMap(Map<String, dynamic> map) {
     return GetTableResult(
-      acls: pulumi.Input.decodeList<GetTableAcl>(map['acls']!, (value) => GetTableAcl.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      resourceManagerId: map['resourceManagerId'] as String,
-      storageAccountId: map['storageAccountId'] as String,
-      storageAccountName: map['storageAccountName'] as String,
+      acls: (() { final guardedValue = map['acls']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTableAcl>(guardedValue, (value) => GetTableAcl.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceManagerId: (() { final guardedValue = map['resourceManagerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

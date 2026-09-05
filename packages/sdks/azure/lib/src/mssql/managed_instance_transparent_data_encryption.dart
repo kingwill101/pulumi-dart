@@ -244,7 +244,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// 			LicenseType:                pulumi.String("BasePrice"),
 /// 			SkuName:                    pulumi.String("GP_Gen5"),
 /// 			StorageSizeInGb:            pulumi.Int(32),
-/// 			SubnetId:                   exampleSubnet.ID(),
+/// 			SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Vcores:                     pulumi.Int(4),
 /// 			AdministratorLogin:         pulumi.String("missadministrator"),
 /// 			AdministratorLoginPassword: pulumi.String("NCC-1701-D"),
@@ -256,7 +256,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewManagedInstanceTransparentDataEncryption(ctx, "example", &mssql.ManagedInstanceTransparentDataEncryptionArgs{
-/// 			ManagedInstanceId: exampleManagedInstance.ID(),
+/// 			ManagedInstanceId: exampleManagedInstance.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -513,6 +513,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///     name: "example",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     enabledForDiskEncryption: true,
 ///     tenantId: current.then(current => current.tenantId),
 ///     softDeleteRetentionDays: 7,
@@ -609,6 +610,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///     name="example",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     enabled_for_disk_encryption=True,
 ///     tenant_id=current.tenant_id,
 ///     soft_delete_retention_days=7,
@@ -732,6 +734,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///         Name = "example",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         EnabledForDiskEncryption = true,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SoftDeleteRetentionDays = 7,
@@ -862,7 +865,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// 			LicenseType:                pulumi.String("BasePrice"),
 /// 			SkuName:                    pulumi.String("GP_Gen5"),
 /// 			StorageSizeInGb:            pulumi.Int(32),
-/// 			SubnetId:                   exampleSubnet.ID(),
+/// 			SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Vcores:                     pulumi.Int(4),
 /// 			AdministratorLogin:         pulumi.String("missadministrator"),
 /// 			AdministratorLoginPassword: pulumi.String("NCC-1701-D"),
@@ -878,6 +881,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// 			Name:                     pulumi.String("example"),
 /// 			Location:                 example.Location,
 /// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
 /// 			EnabledForDiskEncryption: pulumi.Bool(true),
 /// 			TenantId:                 pulumi.String(current.TenantId),
 /// 			SoftDeleteRetentionDays:  pulumi.Int(7),
@@ -899,12 +903,8 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// 					},
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
-/// 					TenantId: exampleManagedInstance.Identity.ApplyT(func(identity mssql.ManagedInstanceIdentity) (*string, error) {
-/// 						return identity.TenantId, nil
-/// 					}).(pulumi.StringPtrOutput),
-/// 					ObjectId: exampleManagedInstance.Identity.ApplyT(func(identity mssql.ManagedInstanceIdentity) (*string, error) {
-/// 						return identity.PrincipalId, nil
-/// 					}).(pulumi.StringPtrOutput),
+/// 					TenantId: exampleManagedInstance.Identity.TenantId(),
+/// 					ObjectId: exampleManagedInstance.Identity.PrincipalId(),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Get"),
 /// 						pulumi.String("WrapKey"),
@@ -918,7 +918,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("byok"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -932,8 +932,8 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewManagedInstanceTransparentDataEncryption(ctx, "example", &mssql.ManagedInstanceTransparentDataEncryptionArgs{
-/// 			ManagedInstanceId: exampleManagedInstance.ID(),
-/// 			KeyVaultKeyId:     exampleKey.ID(),
+/// 			ManagedInstanceId: exampleManagedInstance.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultKeyId:     exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -997,6 +997,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///   name                        = "example"
 ///   location                    = azure_core_resourcegroup.example.location
 ///   resource_group_name         = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
 ///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
 ///   soft_delete_retention_days  = 7
@@ -1117,6 +1118,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///             .name("example")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .enabledForDiskEncryption(true)
 ///             .tenantId(current.tenantId())
 ///             .softDeleteRetentionDays(7)
@@ -1223,6 +1225,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///       name: example
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       enabledForDiskEncryption: true
 ///       tenantId: ${current.tenantId}
 ///       softDeleteRetentionDays: 7
@@ -1317,7 +1320,7 @@ class ManagedInstanceTransparentDataEncryption extends pulumi.CustomResource {
           'azure:mssql/managedInstanceTransparentDataEncryption:ManagedInstanceTransparentDataEncryption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
@@ -1330,11 +1333,12 @@ class ManagedInstanceTransparentDataEncryption extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedInstanceTransparentDataEncryptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedInstanceTransparentDataEncryption._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1348,6 +1352,21 @@ class ManagedInstanceTransparentDataEncryption extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
+    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+    managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
+    managedInstanceId = registerOutput<String>('managedInstanceId');
+  }
+
+  /// Creates a typed reference to an existing [ManagedInstanceTransparentDataEncryption] resource.
+  ManagedInstanceTransparentDataEncryption.reference(String urn)
+    : super(
+        'azure:mssql/managedInstanceTransparentDataEncryption:ManagedInstanceTransparentDataEncryption',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');

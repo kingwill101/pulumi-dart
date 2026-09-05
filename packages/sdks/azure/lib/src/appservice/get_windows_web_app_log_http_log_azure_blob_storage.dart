@@ -25,7 +25,7 @@ class GetWindowsWebAppLogHttpLogAzureBlobStorage {
 
   factory GetWindowsWebAppLogHttpLogAzureBlobStorage.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppLogHttpLogAzureBlobStorage(
-      retentionInDays: pulumi.Input.fromValue(map['retentionInDays'] as int),
+      retentionInDays: pulumi.Input.fromValue((map['retentionInDays'] as num).toInt()),
       sasUrl: pulumi.Input.fromValue(map['sasUrl'] as String),
     );
   }

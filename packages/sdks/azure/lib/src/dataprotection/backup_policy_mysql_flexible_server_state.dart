@@ -7,17 +7,17 @@ import 'backup_policy_mysql_flexible_server_retention_rule.dart';
 /// Input properties used for looking up and filtering BackupPolicyMysqlFlexibleServer resources.
 class BackupPolicyMysqlFlexibleServerState {
   /// Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval format. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? backupRepeatingTimeIntervals;
+  final pulumi.Input<List<String>?>? backupRepeatingTimeIntervals;
   /// A `defaultRetentionRule` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<BackupPolicyMysqlFlexibleServerDefaultRetentionRule>? defaultRetentionRule;
+  final pulumi.Input<BackupPolicyMysqlFlexibleServerDefaultRetentionRule?>? defaultRetentionRule;
   /// Specifies the name of the Backup Policy for the MySQL Flexible Server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `retentionRule` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<BackupPolicyMysqlFlexibleServerRetentionRule>>? retentionRules;
+  final pulumi.Input<List<BackupPolicyMysqlFlexibleServerRetentionRule>?>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// The ID of the Backup Vault where the Backup Policy MySQL Flexible Server should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? vaultId;
+  final pulumi.Input<String?>? vaultId;
 
   /// Creates a new [BackupPolicyMysqlFlexibleServerState].
   /// [backupRepeatingTimeIntervals] Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval format. Changing this forces a new resource to be created.

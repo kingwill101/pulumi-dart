@@ -146,7 +146,7 @@ import 'workspace_application_group_association_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			Type:              pulumi.String("RemoteApp"),
-/// 			HostPoolId:        pooledbreadthfirst.ID(),
+/// 			HostPoolId:        pooledbreadthfirst.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -160,8 +160,8 @@ import 'workspace_application_group_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = desktopvirtualization.NewWorkspaceApplicationGroupAssociation(ctx, "workspaceremoteapp", &desktopvirtualization.WorkspaceApplicationGroupAssociationArgs{
-/// 			WorkspaceId:        workspace.ID(),
-/// 			ApplicationGroupId: remoteapp.ID(),
+/// 			WorkspaceId:        workspace.ID().ToIDOutput().ToStringOutput(),
+/// 			ApplicationGroupId: remoteapp.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -342,7 +342,7 @@ class WorkspaceApplicationGroupAssociation extends pulumi.CustomResource {
           'azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationGroupId = registerOutput<String>('applicationGroupId');
     workspaceId = registerOutput<String>('workspaceId');
@@ -353,11 +353,12 @@ class WorkspaceApplicationGroupAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceApplicationGroupAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceApplicationGroupAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -371,6 +372,19 @@ class WorkspaceApplicationGroupAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationGroupId = registerOutput<String>('applicationGroupId');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceApplicationGroupAssociation] resource.
+  WorkspaceApplicationGroupAssociation.reference(String urn)
+    : super(
+        'azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationGroupId = registerOutput<String>('applicationGroupId');
     workspaceId = registerOutput<String>('workspaceId');
   }

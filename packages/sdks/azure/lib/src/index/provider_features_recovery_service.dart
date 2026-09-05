@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderFeaturesRecoveryService {
-  final pulumi.Input<bool>? purgeProtectedItemsFromVaultOnDestroy;
-  final pulumi.Input<bool>? vmBackupStopProtectionAndRetainDataOnDestroy;
-  final pulumi.Input<bool>? vmBackupSuspendProtectionAndRetainDataOnDestroy;
+  final pulumi.Input<bool?>? purgeProtectedItemsFromVaultOnDestroy;
+  final pulumi.Input<bool?>? vmBackupStopProtectionAndRetainDataOnDestroy;
+  final pulumi.Input<bool?>? vmBackupSuspendProtectionAndRetainDataOnDestroy;
 
   /// Creates a new [ProviderFeaturesRecoveryService].
   /// [purgeProtectedItemsFromVaultOnDestroy] Optional.

@@ -4,18 +4,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualHubPanoramaNetworkProfile {
   /// Specifies a list of Public IP IDs to use for Egress NAT.
-  final pulumi.Input<List<String>>? egressNatIpAddressIds;
-  final pulumi.Input<List<String>>? egressNatIpAddresses;
-  final pulumi.Input<String>? ipOfTrustForUserDefinedRoutes;
+  final pulumi.Input<List<String>?>? egressNatIpAddressIds;
+  final pulumi.Input<List<String>?>? egressNatIpAddresses;
+  final pulumi.Input<String?>? ipOfTrustForUserDefinedRoutes;
   /// The ID of the Palo Alto Network Virtual Appliance in the VHub. Changing this forces a new Palo Alto Next Generation Firewall VHub Panorama to be created.
   final pulumi.Input<String> networkVirtualApplianceId;
   /// Specifies a list of Public IP IDs to use for this Next Generation Firewall.
   final pulumi.Input<List<String>> publicIpAddressIds;
-  final pulumi.Input<List<String>>? publicIpAddresses;
+  final pulumi.Input<List<String>?>? publicIpAddresses;
   /// Specifies a list of trusted ranges to use for the Network.
-  final pulumi.Input<List<String>>? trustedAddressRanges;
-  final pulumi.Input<String>? trustedSubnetId;
-  final pulumi.Input<String>? untrustedSubnetId;
+  final pulumi.Input<List<String>?>? trustedAddressRanges;
+  final pulumi.Input<String?>? trustedSubnetId;
+  final pulumi.Input<String?>? untrustedSubnetId;
   /// The ID of the Virtual Hub this Next generation Fireall will be deployed in. Changing this forces a new Palo Alto Next Generation Firewall VHub Local Rulestack to be created.
   final pulumi.Input<String> virtualHubId;
 

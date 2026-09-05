@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'outbound_rule_args.dart';
+import 'outbound_rule_frontend_ip_configuration.dart';
 import 'outbound_rule_state.dart';
 
 /// Manages a Load Balancer Outbound Rule.
@@ -173,7 +174,7 @@ import 'outbound_rule_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String("PublicIPAddress"),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -182,16 +183,16 @@ import 'outbound_rule_state.dart';
 /// 		}
 /// 		exampleBackendAddressPool, err := lb.NewBackendAddressPool(ctx, "example", &lb.BackendAddressPoolArgs{
 /// 			Name:           pulumi.String("example"),
-/// 			LoadbalancerId: exampleLoadBalancer.ID(),
+/// 			LoadbalancerId: exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = lb.NewOutboundRule(ctx, "example", &lb.OutboundRuleArgs{
 /// 			Name:                 pulumi.String("OutboundRule"),
-/// 			LoadbalancerId:       exampleLoadBalancer.ID(),
+/// 			LoadbalancerId:       exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Protocol:             pulumi.String("Tcp"),
-/// 			BackendAddressPoolId: exampleBackendAddressPool.ID(),
+/// 			BackendAddressPoolId: exampleBackendAddressPool.ID().ToIDOutput().ToStringOutput(),
 /// 			FrontendIpConfigurations: lb.OutboundRuleFrontendIpConfigurationArray{
 /// 				&lb.OutboundRuleFrontendIpConfigurationArgs{
 /// 					Name: pulumi.String("PublicIPAddress"),
@@ -383,7 +384,7 @@ class OutboundRule extends pulumi.CustomResource {
   late final pulumi.Output<String> backendAddressPoolId;
   late final pulumi.Output<bool> enableTcpReset;
   /// One or more `frontendIpConfiguration` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> frontendIpConfigurations;
+  late final pulumi.Output<List<OutboundRuleFrontendIpConfiguration>?> frontendIpConfigurations;
   /// The timeout for the TCP idle connection Defaults to `4`.
   late final pulumi.Output<int?> idleTimeoutInMinutes;
   /// The ID of the Load Balancer in which to create the Outbound Rule. Changing this forces a new resource to be created.
@@ -407,12 +408,12 @@ class OutboundRule extends pulumi.CustomResource {
           'azure:lb/outboundRule:OutboundRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     allocatedOutboundPorts = registerOutput<int?>('allocatedOutboundPorts');
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
     enableTcpReset = registerOutput<bool>('enableTcpReset');
-    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>('frontendIpConfigurations');
+    frontendIpConfigurations = registerOutput<List<OutboundRuleFrontendIpConfiguration>?>('frontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OutboundRuleFrontendIpConfiguration>(guardedValue, (value) => OutboundRuleFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
@@ -425,11 +426,12 @@ class OutboundRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutboundRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutboundRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -446,7 +448,27 @@ class OutboundRule extends pulumi.CustomResource {
     allocatedOutboundPorts = registerOutput<int?>('allocatedOutboundPorts');
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
     enableTcpReset = registerOutput<bool>('enableTcpReset');
-    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>('frontendIpConfigurations');
+    frontendIpConfigurations = registerOutput<List<OutboundRuleFrontendIpConfiguration>?>('frontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OutboundRuleFrontendIpConfiguration>(guardedValue, (value) => OutboundRuleFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
+    this.name = registerOutput<String>('name');
+    protocol = registerOutput<String>('protocol');
+    tcpResetEnabled = registerOutput<bool>('tcpResetEnabled');
+  }
+
+  /// Creates a typed reference to an existing [OutboundRule] resource.
+  OutboundRule.reference(String urn)
+    : super(
+        'azure:lb/outboundRule:OutboundRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocatedOutboundPorts = registerOutput<int?>('allocatedOutboundPorts');
+    backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
+    enableTcpReset = registerOutput<bool>('enableTcpReset');
+    frontendIpConfigurations = registerOutput<List<OutboundRuleFrontendIpConfiguration>?>('frontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OutboundRuleFrontendIpConfiguration>(guardedValue, (value) => OutboundRuleFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');

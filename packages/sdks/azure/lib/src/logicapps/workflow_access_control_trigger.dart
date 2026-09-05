@@ -5,9 +5,9 @@ import 'workflow_access_control_trigger_open_authentication_policy.dart';
 
 class WorkflowAccessControlTrigger {
   /// A list of the allowed caller IP address ranges.
-  final pulumi.Input<List<String>>? allowedCallerIpAddressRanges;
+  final pulumi.Input<List<String>?>? allowedCallerIpAddressRanges;
   /// A `openAuthenticationPolicy` block as defined below.
-  final pulumi.Input<List<WorkflowAccessControlTriggerOpenAuthenticationPolicy>>? openAuthenticationPolicies;
+  final pulumi.Input<List<WorkflowAccessControlTriggerOpenAuthenticationPolicy>?>? openAuthenticationPolicies;
 
   /// Creates a new [WorkflowAccessControlTrigger].
   /// [allowedCallerIpAddressRanges] A list of the allowed caller IP address ranges.

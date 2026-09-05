@@ -148,3 +148,14 @@ Future<GetInsightsResult> getInsights(
   );
   return GetInsightsResult.fromMap(result);
 }
+
+pulumi.Output<GetInsightsResult> getInsightsOutput(
+  GetInsightsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appinsights/getInsights:getInsights',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInsightsResult.fromMap);
+}

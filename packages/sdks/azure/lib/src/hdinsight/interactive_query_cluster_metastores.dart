@@ -7,11 +7,11 @@ import 'interactive_query_cluster_metastores_oozie.dart';
 
 class InteractiveQueryClusterMetastores {
   /// An `ambari` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterMetastoresAmbari>? ambari;
+  final pulumi.Input<InteractiveQueryClusterMetastoresAmbari?>? ambari;
   /// A `hive` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterMetastoresHive>? hive;
+  final pulumi.Input<InteractiveQueryClusterMetastoresHive?>? hive;
   /// An `oozie` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterMetastoresOozie>? oozie;
+  final pulumi.Input<InteractiveQueryClusterMetastoresOozie?>? oozie;
 
   /// Creates a new [InteractiveQueryClusterMetastores].
   /// [ambari] An `ambari` block as defined below.

@@ -50,7 +50,7 @@ class GetAppIngressCor {
       allowedMethods: pulumi.Input.fromValue((map['allowedMethods'] as List).cast<String>()),
       allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
       exposedHeaders: pulumi.Input.fromValue((map['exposedHeaders'] as List).cast<String>()),
-      maxAgeInSeconds: pulumi.Input.fromValue(map['maxAgeInSeconds'] as int),
+      maxAgeInSeconds: pulumi.Input.fromValue((map['maxAgeInSeconds'] as num).toInt()),
     );
   }
 }

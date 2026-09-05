@@ -281,7 +281,7 @@ class DataSourceWindowsPerformanceCounter extends pulumi.CustomResource {
           'azure:loganalytics/dataSourceWindowsPerformanceCounter:DataSourceWindowsPerformanceCounter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     counterName = registerOutput<String>('counterName');
     instanceName = registerOutput<String>('instanceName');
@@ -297,11 +297,12 @@ class DataSourceWindowsPerformanceCounter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataSourceWindowsPerformanceCounterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataSourceWindowsPerformanceCounter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -315,6 +316,24 @@ class DataSourceWindowsPerformanceCounter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    counterName = registerOutput<String>('counterName');
+    instanceName = registerOutput<String>('instanceName');
+    intervalSeconds = registerOutput<int>('intervalSeconds');
+    this.name = registerOutput<String>('name');
+    objectName = registerOutput<String>('objectName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    workspaceName = registerOutput<String>('workspaceName');
+  }
+
+  /// Creates a typed reference to an existing [DataSourceWindowsPerformanceCounter] resource.
+  DataSourceWindowsPerformanceCounter.reference(String urn)
+    : super(
+        'azure:loganalytics/dataSourceWindowsPerformanceCounter:DataSourceWindowsPerformanceCounter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     counterName = registerOutput<String>('counterName');
     instanceName = registerOutput<String>('instanceName');
     intervalSeconds = registerOutput<int>('intervalSeconds');

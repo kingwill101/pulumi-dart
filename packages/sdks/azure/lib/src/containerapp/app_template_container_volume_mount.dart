@@ -8,7 +8,7 @@ class AppTemplateContainerVolumeMount {
   /// The path in the container at which to mount this volume.
   final pulumi.Input<String> path;
   /// The sub path of the volume to be mounted in the container.
-  final pulumi.Input<String>? subPath;
+  final pulumi.Input<String?>? subPath;
 
   /// Creates a new [AppTemplateContainerVolumeMount].
   /// [name] The name of the Volume to be mounted in the container.

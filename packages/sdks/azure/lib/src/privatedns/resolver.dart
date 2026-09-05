@@ -115,7 +115,7 @@ import 'resolver_state.dart';
 /// 			Name:              pulumi.String("example"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualNetworkId:  exampleVirtualNetwork.ID(),
+/// 			VirtualNetworkId:  exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -261,12 +261,12 @@ class Resolver extends pulumi.CustomResource {
           'azure:privatedns/resolver:Resolver',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
 
@@ -275,11 +275,12 @@ class Resolver extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Resolver._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -296,7 +297,23 @@ class Resolver extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
+  }
+
+  /// Creates a typed reference to an existing [Resolver] resource.
+  Resolver.reference(String urn)
+    : super(
+        'azure:privatedns/resolver:Resolver',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
 }

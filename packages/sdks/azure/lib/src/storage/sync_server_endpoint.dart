@@ -207,7 +207,7 @@ import 'sync_server_endpoint_state.dart';
 /// 		}
 /// 		exampleSyncGroup, err := storage.NewSyncGroup(ctx, "example", &storage.SyncGroupArgs{
 /// 			Name:          pulumi.String("example-storage-sync-group"),
-/// 			StorageSyncId: exampleSync.ID(),
+/// 			StorageSyncId: exampleSync.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -242,16 +242,16 @@ import 'sync_server_endpoint_state.dart';
 /// 		}
 /// 		exampleSyncCloudEndpoint, err := storage.NewSyncCloudEndpoint(ctx, "example", &storage.SyncCloudEndpointArgs{
 /// 			Name:               pulumi.String("example-ss-ce"),
-/// 			StorageSyncGroupId: exampleSyncGroup.ID(),
+/// 			StorageSyncGroupId: exampleSyncGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			FileShareName:      exampleShare.Name,
-/// 			StorageAccountId:   exampleAccount.ID(),
+/// 			StorageAccountId:   exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = storage.NewSyncServerEndpoint(ctx, "example", &storage.SyncServerEndpointArgs{
 /// 			Name:               pulumi.String("example-storage-sync-server-endpoint"),
-/// 			StorageSyncGroupId: exampleSyncGroup.ID(),
+/// 			StorageSyncGroupId: exampleSyncGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			RegisteredServerId: exampleSync.RegisteredServers.ApplyT(func(registeredServers []string) (string, error) {
 /// 				return registeredServers[0], nil
 /// 			}).(pulumi.StringOutput),
@@ -517,7 +517,7 @@ class SyncServerEndpoint extends pulumi.CustomResource {
           'azure:storage/syncServerEndpoint:SyncServerEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cloudTieringEnabled = registerOutput<bool?>('cloudTieringEnabled');
     initialDownloadPolicy = registerOutput<String?>('initialDownloadPolicy');
@@ -535,11 +535,12 @@ class SyncServerEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SyncServerEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SyncServerEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -553,6 +554,26 @@ class SyncServerEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cloudTieringEnabled = registerOutput<bool?>('cloudTieringEnabled');
+    initialDownloadPolicy = registerOutput<String?>('initialDownloadPolicy');
+    localCacheMode = registerOutput<String?>('localCacheMode');
+    this.name = registerOutput<String>('name');
+    registeredServerId = registerOutput<String>('registeredServerId');
+    serverLocalPath = registerOutput<String>('serverLocalPath');
+    storageSyncGroupId = registerOutput<String>('storageSyncGroupId');
+    tierFilesOlderThanDays = registerOutput<int?>('tierFilesOlderThanDays');
+    volumeFreeSpacePercent = registerOutput<int?>('volumeFreeSpacePercent');
+  }
+
+  /// Creates a typed reference to an existing [SyncServerEndpoint] resource.
+  SyncServerEndpoint.reference(String urn)
+    : super(
+        'azure:storage/syncServerEndpoint:SyncServerEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cloudTieringEnabled = registerOutput<bool?>('cloudTieringEnabled');
     initialDownloadPolicy = registerOutput<String?>('initialDownloadPolicy');
     localCacheMode = registerOutput<String?>('localCacheMode');

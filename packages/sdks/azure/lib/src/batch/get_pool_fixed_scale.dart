@@ -31,8 +31,8 @@ class GetPoolFixedScale {
   factory GetPoolFixedScale.fromMap(Map<String, dynamic> map) {
     return GetPoolFixedScale(
       resizeTimeout: pulumi.Input.fromValue(map['resizeTimeout'] as String),
-      targetDedicatedNodes: pulumi.Input.fromValue(map['targetDedicatedNodes'] as int),
-      targetLowPriorityNodes: pulumi.Input.fromValue(map['targetLowPriorityNodes'] as int),
+      targetDedicatedNodes: pulumi.Input.fromValue((map['targetDedicatedNodes'] as num).toInt()),
+      targetLowPriorityNodes: pulumi.Input.fromValue((map['targetLowPriorityNodes'] as num).toInt()),
     );
   }
 }

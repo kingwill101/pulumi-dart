@@ -176,6 +176,17 @@ Future<GetAdbsCharacterSetsResult> getAdbsCharacterSets(
   return GetAdbsCharacterSetsResult.fromMap(result);
 }
 
+pulumi.Output<GetAdbsCharacterSetsResult> getAdbsCharacterSetsOutput(
+  GetAdbsCharacterSetsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getAdbsCharacterSets:getAdbsCharacterSets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAdbsCharacterSetsResult.fromMap);
+}
+
 /// Gets a list of supported national character sets.
 ///
 /// ## Example Usage
@@ -318,6 +329,17 @@ Future<GetAdbsNationalCharacterSetsResult> getAdbsNationalCharacterSets(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAdbsNationalCharacterSetsResult.fromMap(result);
+}
+
+pulumi.Output<GetAdbsNationalCharacterSetsResult> getAdbsNationalCharacterSetsOutput(
+  GetAdbsNationalCharacterSetsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getAdbsNationalCharacterSets:getAdbsNationalCharacterSets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAdbsNationalCharacterSetsResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Autonomous Database.
@@ -467,6 +489,17 @@ Future<GetAutonomousDatabaseResult> getAutonomousDatabase(
   return GetAutonomousDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetAutonomousDatabaseResult> getAutonomousDatabaseOutput(
+  GetAutonomousDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getAutonomousDatabase:getAutonomousDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutonomousDatabaseResult.fromMap);
+}
+
 /// Use this data source to access information about existing Autonomous Database Backups.
 ///
 /// ## Example Usage
@@ -593,6 +626,17 @@ Future<GetAutonomousDatabaseBackupResult> getAutonomousDatabaseBackup(
   return GetAutonomousDatabaseBackupResult.fromMap(result);
 }
 
+pulumi.Output<GetAutonomousDatabaseBackupResult> getAutonomousDatabaseBackupOutput(
+  GetAutonomousDatabaseBackupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getAutonomousDatabaseBackup:getAutonomousDatabaseBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutonomousDatabaseBackupResult.fromMap);
+}
+
 /// Use this data source to access information about existing Autonomous Database Backups.
 ///
 /// ## Example Usage
@@ -717,6 +761,17 @@ Future<GetAutonomousDatabaseBackupsResult> getAutonomousDatabaseBackups(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAutonomousDatabaseBackupsResult.fromMap(result);
+}
+
+pulumi.Output<GetAutonomousDatabaseBackupsResult> getAutonomousDatabaseBackupsOutput(
+  GetAutonomousDatabaseBackupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getAutonomousDatabaseBackups:getAutonomousDatabaseBackups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutonomousDatabaseBackupsResult.fromMap);
 }
 
 /// Use this data source to access information about an existing autonomous database clone from backup.
@@ -866,6 +921,17 @@ Future<GetAutonomousDatabaseCloneFromBackupResult> getAutonomousDatabaseCloneFro
   return GetAutonomousDatabaseCloneFromBackupResult.fromMap(result);
 }
 
+pulumi.Output<GetAutonomousDatabaseCloneFromBackupResult> getAutonomousDatabaseCloneFromBackupOutput(
+  GetAutonomousDatabaseCloneFromBackupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getAutonomousDatabaseCloneFromBackup:getAutonomousDatabaseCloneFromBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutonomousDatabaseCloneFromBackupResult.fromMap);
+}
+
 /// Use this data source to access information about an existing autonomous database clone from database.
 ///
 /// ## Example Usage
@@ -1011,6 +1077,17 @@ Future<GetAutonomousDatabaseCloneFromDatabaseResult> getAutonomousDatabaseCloneF
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAutonomousDatabaseCloneFromDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetAutonomousDatabaseCloneFromDatabaseResult> getAutonomousDatabaseCloneFromDatabaseOutput(
+  GetAutonomousDatabaseCloneFromDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getAutonomousDatabaseCloneFromDatabase:getAutonomousDatabaseCloneFromDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutonomousDatabaseCloneFromDatabaseResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Cloud VM Cluster.
@@ -1160,6 +1237,17 @@ Future<GetCloudVmClusterResult> getCloudVmCluster(
   return GetCloudVmClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudVmClusterResult> getCloudVmClusterOutput(
+  GetCloudVmClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getCloudVmCluster:getCloudVmCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudVmClusterResult.fromMap);
+}
+
 /// Use this data source to access information about existing Oracle Database Systems Versions.
 ///
 /// ## Example Usage
@@ -1298,6 +1386,17 @@ Future<GetDatabaseSystemVersionsResult> getDatabaseSystemVersions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseSystemVersionsResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseSystemVersionsResult> getDatabaseSystemVersionsOutput(
+  GetDatabaseSystemVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getDatabaseSystemVersions:getDatabaseSystemVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseSystemVersionsResult.fromMap);
 }
 
 /// Lists the database nodes for the specified Cloud VM Cluster.
@@ -1442,6 +1541,17 @@ Future<GetDbNodesResult> getDbNodes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDbNodesResult.fromMap(result);
+}
+
+pulumi.Output<GetDbNodesResult> getDbNodesOutput(
+  GetDbNodesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getDbNodes:getDbNodes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDbNodesResult.fromMap);
 }
 
 /// Use this data source to access information about existing DB Servers.
@@ -1589,6 +1699,17 @@ Future<GetDbServersResult> getDbServers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDbServersResult.fromMap(result);
+}
+
+pulumi.Output<GetDbServersResult> getDbServersOutput(
+  GetDbServersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getDbServers:getDbServers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDbServersResult.fromMap);
 }
 
 /// This data source provides the list of DB System Shapes in Oracle Cloud Infrastructure Database service.
@@ -1744,6 +1865,17 @@ Future<GetDbSystemShapesResult> getDbSystemShapes(
   return GetDbSystemShapesResult.fromMap(result);
 }
 
+pulumi.Output<GetDbSystemShapesResult> getDbSystemShapesOutput(
+  GetDbSystemShapesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getDbSystemShapes:getDbSystemShapes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDbSystemShapesResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Cloud Exadata Infrastructure.
 ///
 /// ## Example Usage
@@ -1891,6 +2023,17 @@ Future<GetExadataInfrastructureResult> getExadataInfrastructure(
   return GetExadataInfrastructureResult.fromMap(result);
 }
 
+pulumi.Output<GetExadataInfrastructureResult> getExadataInfrastructureOutput(
+  GetExadataInfrastructureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getExadataInfrastructure:getExadataInfrastructure',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExadataInfrastructureResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Exadata Database Storage Vault
 ///
 /// ## Example Usage
@@ -2036,6 +2179,17 @@ Future<GetExascaleDatabaseStorageVaultResult> getExascaleDatabaseStorageVault(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExascaleDatabaseStorageVaultResult.fromMap(result);
+}
+
+pulumi.Output<GetExascaleDatabaseStorageVaultResult> getExascaleDatabaseStorageVaultOutput(
+  GetExascaleDatabaseStorageVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getExascaleDatabaseStorageVault:getExascaleDatabaseStorageVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExascaleDatabaseStorageVaultResult.fromMap);
 }
 
 /// This data source provides the list of GI Versions in Oracle Cloud Infrastructure Database service.
@@ -2198,6 +2352,17 @@ Future<GetGiVersionsResult> getGiVersions(
   return GetGiVersionsResult.fromMap(result);
 }
 
+pulumi.Output<GetGiVersionsResult> getGiVersionsOutput(
+  GetGiVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getGiVersions:getGiVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGiVersionsResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Oracle Resource Anchor.
 ///
 /// ## Example Usage
@@ -2343,4 +2508,15 @@ Future<GetResourceAnchorResult> getResourceAnchor(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceAnchorResult.fromMap(result);
+}
+
+pulumi.Output<GetResourceAnchorResult> getResourceAnchorOutput(
+  GetResourceAnchorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:oracle/getResourceAnchor:getResourceAnchor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceAnchorResult.fromMap);
 }

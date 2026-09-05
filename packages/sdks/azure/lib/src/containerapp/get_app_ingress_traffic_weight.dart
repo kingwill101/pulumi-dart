@@ -37,7 +37,7 @@ class GetAppIngressTrafficWeight {
     return GetAppIngressTrafficWeight(
       label: pulumi.Input.fromValue(map['label'] as String),
       latestRevision: pulumi.Input.fromValue(map['latestRevision'] as bool),
-      percentage: pulumi.Input.fromValue(map['percentage'] as int),
+      percentage: pulumi.Input.fromValue((map['percentage'] as num).toInt()),
       revisionSuffix: pulumi.Input.fromValue(map['revisionSuffix'] as String),
     );
   }

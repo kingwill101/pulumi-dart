@@ -9,19 +9,19 @@ class PolicyCustomRule {
   /// &gt; **Note:** If the `ruleType` is specified as `RateLimitRule`, the `Allow` is not supported.
   final pulumi.Input<String> action;
   /// Describes if the policy is in enabled state or disabled state. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies what grouping the rate limit will count requests by. Possible values are `ClientAddr`, `ClientAddrXFFHeader`, `GeoLocation`, `GeoLocationXFFHeader` and `None`.
-  final pulumi.Input<String>? groupRateLimitBy;
+  final pulumi.Input<String?>? groupRateLimitBy;
   /// One or more `matchConditions` blocks as defined below.
   final pulumi.Input<List<PolicyCustomRuleMatchCondition>> matchConditions;
   /// Gets name of the resource that is unique within a policy. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
   final pulumi.Input<int> priority;
   /// Specifies the duration at which the rate limit policy will be applied. Should be used with `RateLimitRule` rule type. Possible values are `FiveMins` and `OneMin`.
-  final pulumi.Input<String>? rateLimitDuration;
+  final pulumi.Input<String?>? rateLimitDuration;
   /// Specifies the threshold value for the rate limit policy. Must be greater than or equal to 1 if provided.
-  final pulumi.Input<int>? rateLimitThreshold;
+  final pulumi.Input<int?>? rateLimitThreshold;
   /// Describes the type of rule. Possible values are `MatchRule`, `RateLimitRule` and `Invalid`.
   final pulumi.Input<String> ruleType;
 
@@ -68,9 +68,9 @@ class PolicyCustomRule {
       groupRateLimitBy: (() { final guardedValue = map['groupRateLimitBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       matchConditions: pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyCustomRuleMatchCondition>(map['matchConditions']!, (value) => PolicyCustomRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       rateLimitDuration: (() { final guardedValue = map['rateLimitDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rateLimitThreshold: (() { final guardedValue = map['rateLimitThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rateLimitThreshold: (() { final guardedValue = map['rateLimitThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
     );
   }

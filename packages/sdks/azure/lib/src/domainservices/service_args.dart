@@ -12,29 +12,29 @@ import 'service_security.dart';
 /// {@macro pulumi_domainservices_service_service_args_doc}
 class ServiceArgs {
   /// The configuration type of this Active Directory Domain. Possible values are `FullySynced` and `ResourceTrusting`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? domainConfigurationType;
+  final pulumi.Input<String?>? domainConfigurationType;
   /// The Active Directory domain to use. See [official documentation](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#create-a-managed-domain) for constraints and recommendations. Changing this forces a new resource to be created.
   final pulumi.Input<String> domainName;
   /// Whether to enable group-based filtered sync (also called scoped synchronisation). Defaults to `false`.
-  final pulumi.Input<bool>? filteredSyncEnabled;
+  final pulumi.Input<bool?>? filteredSyncEnabled;
   /// An `initialReplicaSet` block as defined below. The initial replica set inherits the same location as the Domain Service resource.
   final pulumi.Input<ServiceInitialReplicaSet> initialReplicaSet;
   /// The Azure location where the Domain Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The display name for your managed Active Directory Domain Service resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `notifications` block as defined below.
-  final pulumi.Input<ServiceNotifications>? notifications;
+  final pulumi.Input<ServiceNotifications?>? notifications;
   /// The name of the Resource Group in which the Domain Service should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `secureLdap` block as defined below.
-  final pulumi.Input<ServiceSecureLdap>? secureLdap;
+  final pulumi.Input<ServiceSecureLdap?>? secureLdap;
   /// A `security` block as defined below.
-  final pulumi.Input<ServiceSecurity>? security;
+  final pulumi.Input<ServiceSecurity?>? security;
   /// The SKU to use when provisioning the Domain Service resource. One of `Standard`, `Enterprise` or `Premium`.
   final pulumi.Input<String> sku;
   /// A mapping of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServiceArgs].
   /// [domainConfigurationType] The configuration type of this Active Directory Domain. Possible values are `FullySynced` and `ResourceTrusting`. Changing this forces a new resource to be created.

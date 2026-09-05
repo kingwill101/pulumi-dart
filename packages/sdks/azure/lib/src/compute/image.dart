@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_args.dart';
+import 'image_data_disk.dart';
 import 'image_os_disk.dart';
 import 'image_state.dart';
 
@@ -188,7 +189,7 @@ class Image extends pulumi.CustomResource {
   /// One or more `dataDisk` blocks as defined below.
   ///
   /// &gt; **Note:** `dataDisk` cannot be set together with `sourceVirtualMachineId`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
+  late final pulumi.Output<List<ImageDataDisk>?> dataDisks;
   /// The Hyper-V Generation Type of the Virtual Machine created from the image as `V1`, `V2`. Defaults to `V1`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> hyperVGeneration;
   /// Specified the supported Azure location where the resource exists. Changing this forces a new resource to be created.
@@ -224,16 +225,16 @@ class Image extends pulumi.CustomResource {
           'azure:compute/image:Image',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    dataDisks = registerOutput<List<ImageDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageDataDisk>(guardedValue, (value) => ImageDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osDisk = registerOutput<ImageOsDisk?>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneResilient = registerOutput<bool?>('zoneResilient');
   }
 
@@ -242,11 +243,12 @@ class Image extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ImageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Image._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -260,14 +262,34 @@ class Image extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    dataDisks = registerOutput<List<ImageDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageDataDisk>(guardedValue, (value) => ImageDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     osDisk = registerOutput<ImageOsDisk?>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zoneResilient = registerOutput<bool?>('zoneResilient');
+  }
+
+  /// Creates a typed reference to an existing [Image] resource.
+  Image.reference(String urn)
+    : super(
+        'azure:compute/image:Image',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataDisks = registerOutput<List<ImageDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageDataDisk>(guardedValue, (value) => ImageDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    osDisk = registerOutput<ImageOsDisk?>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceVirtualMachineId = registerOutput<String?>('sourceVirtualMachineId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneResilient = registerOutput<bool?>('zoneResilient');
   }
 }

@@ -186,7 +186,7 @@ import 'managed_database_state.dart';
 /// 			LicenseType:                pulumi.String("BasePrice"),
 /// 			SkuName:                    pulumi.String("GP_Gen5"),
 /// 			StorageSizeInGb:            pulumi.Int(32),
-/// 			SubnetId:                   exampleSubnet.ID(),
+/// 			SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Vcores:                     pulumi.Int(4),
 /// 			AdministratorLogin:         pulumi.String("msadministrator"),
 /// 			AdministratorLoginPassword: pulumi.String("thisIsDog11"),
@@ -196,7 +196,7 @@ import 'managed_database_state.dart';
 /// 		}
 /// 		_, err = mssql.NewManagedDatabase(ctx, "example", &mssql.ManagedDatabaseArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			ManagedInstanceId: exampleManagedInstance.ID(),
+/// 			ManagedInstanceId: exampleManagedInstance.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -404,14 +404,14 @@ class ManagedDatabase extends pulumi.CustomResource {
           'azure:mssql/managedDatabase:ManagedDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     longTermRetentionPolicy = registerOutput<ManagedDatabaseLongTermRetentionPolicy>('longTermRetentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDatabaseLongTermRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managedInstanceId = registerOutput<String>('managedInstanceId');
     this.name = registerOutput<String>('name');
     pointInTimeRestore = registerOutput<ManagedDatabasePointInTimeRestore?>('pointInTimeRestore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDatabasePointInTimeRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     shortTermRetentionDays = registerOutput<int?>('shortTermRetentionDays');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ManagedDatabase] resource's state with the given [name] and [id].
@@ -419,11 +419,12 @@ class ManagedDatabase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedDatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedDatabase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -442,6 +443,23 @@ class ManagedDatabase extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     pointInTimeRestore = registerOutput<ManagedDatabasePointInTimeRestore?>('pointInTimeRestore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDatabasePointInTimeRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     shortTermRetentionDays = registerOutput<int?>('shortTermRetentionDays');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ManagedDatabase] resource.
+  ManagedDatabase.reference(String urn)
+    : super(
+        'azure:mssql/managedDatabase:ManagedDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    longTermRetentionPolicy = registerOutput<ManagedDatabaseLongTermRetentionPolicy>('longTermRetentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDatabaseLongTermRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedInstanceId = registerOutput<String>('managedInstanceId');
+    this.name = registerOutput<String>('name');
+    pointInTimeRestore = registerOutput<ManagedDatabasePointInTimeRestore?>('pointInTimeRestore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDatabasePointInTimeRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    shortTermRetentionDays = registerOutput<int?>('shortTermRetentionDays');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -10,7 +10,7 @@ class HubEncryption {
   /// The user assigned identity ID that has access to the encryption key.
   ///
   /// &gt; **Note:** `userAssignedIdentityId` must be set when`identity.type` is `UserAssigned` in order for the service to find the assigned permissions.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
 
   /// Creates a new [HubEncryption].
   /// [keyId] The Key Vault URI to access the encryption key.

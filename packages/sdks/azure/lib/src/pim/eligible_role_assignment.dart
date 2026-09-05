@@ -440,7 +440,7 @@ import 'eligible_role_assignment_ticket.dart';
 /// 			return err
 /// 		}
 /// 		_, err = pim.NewEligibleRoleAssignment(ctx, "example", &pim.EligibleRoleAssignmentArgs{
-/// 			Scope:            exampleGroup.ID(),
+/// 			Scope:            exampleGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionId: pulumi.String(exampleGetRoleDefinition.Id),
 /// 			PrincipalId:      pulumi.String(example.ObjectId),
 /// 			Schedule: &pim.EligibleRoleAssignmentScheduleArgs{
@@ -652,7 +652,7 @@ class EligibleRoleAssignment extends pulumi.CustomResource {
           'azure:pim/eligibleRoleAssignment:EligibleRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     condition = registerOutput<String?>('condition');
     conditionVersion = registerOutput<String?>('conditionVersion');
@@ -670,11 +670,12 @@ class EligibleRoleAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EligibleRoleAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EligibleRoleAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -688,6 +689,26 @@ class EligibleRoleAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<String?>('condition');
+    conditionVersion = registerOutput<String?>('conditionVersion');
+    justification = registerOutput<String>('justification');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    schedule = registerOutput<EligibleRoleAssignmentSchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EligibleRoleAssignmentSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scope = registerOutput<String>('scope');
+    ticket = registerOutput<EligibleRoleAssignmentTicket>('ticket', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EligibleRoleAssignmentTicket.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EligibleRoleAssignment] resource.
+  EligibleRoleAssignment.reference(String urn)
+    : super(
+        'azure:pim/eligibleRoleAssignment:EligibleRoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<String?>('condition');
     conditionVersion = registerOutput<String?>('conditionVersion');
     justification = registerOutput<String>('justification');

@@ -837,8 +837,8 @@ import 'managed_instance_security_alert_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnetNetworkSecurityGroupAssociation, err := network.NewSubnetNetworkSecurityGroupAssociation(ctx, "example", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               exampleSubnet.ID(),
-/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID(),
+/// 			SubnetId:               exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -855,8 +855,8 @@ import 'managed_instance_security_alert_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnetRouteTableAssociation, err := network.NewSubnetRouteTableAssociation(ctx, "example", &network.SubnetRouteTableAssociationArgs{
-/// 			SubnetId:     exampleSubnet.ID(),
-/// 			RouteTableId: exampleRouteTable.ID(),
+/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			RouteTableId: exampleRouteTable.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -868,7 +868,7 @@ import 'managed_instance_security_alert_policy_state.dart';
 /// 			LicenseType:                pulumi.String("BasePrice"),
 /// 			SkuName:                    pulumi.String("GP_Gen5"),
 /// 			StorageSizeInGb:            pulumi.Int(32),
-/// 			SubnetId:                   exampleSubnet.ID(),
+/// 			SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Vcores:                     pulumi.Int(4),
 /// 			AdministratorLogin:         pulumi.String("mradministrator"),
 /// 			AdministratorLoginPassword: pulumi.String("thisIsDog11"),
@@ -1598,16 +1598,17 @@ class ManagedInstanceSecurityAlertPolicy extends pulumi.CustomResource {
           'azure:mssql/managedInstanceSecurityAlertPolicy:ManagedInstanceSecurityAlertPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
-    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailAccountAdminsEnabled = registerOutput<bool?>('emailAccountAdminsEnabled');
-    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     managedInstanceName = registerOutput<String>('managedInstanceName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDays = registerOutput<int?>('retentionDays');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 
@@ -1616,11 +1617,12 @@ class ManagedInstanceSecurityAlertPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedInstanceSecurityAlertPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedInstanceSecurityAlertPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1634,14 +1636,35 @@ class ManagedInstanceSecurityAlertPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailAccountAdminsEnabled = registerOutput<bool?>('emailAccountAdminsEnabled');
-    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     managedInstanceName = registerOutput<String>('managedInstanceName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDays = registerOutput<int?>('retentionDays');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+  }
+
+  /// Creates a typed reference to an existing [ManagedInstanceSecurityAlertPolicy] resource.
+  ManagedInstanceSecurityAlertPolicy.reference(String urn)
+    : super(
+        'azure:mssql/managedInstanceSecurityAlertPolicy:ManagedInstanceSecurityAlertPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
+        isResourceReference: true,
+      ) {
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    emailAccountAdminsEnabled = registerOutput<bool?>('emailAccountAdminsEnabled');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enabled = registerOutput<bool?>('enabled');
+    managedInstanceName = registerOutput<String>('managedInstanceName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionDays = registerOutput<int?>('retentionDays');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 }

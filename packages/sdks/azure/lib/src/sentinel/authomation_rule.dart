@@ -1,4 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'authomation_rule_action_incident.dart';
+import 'authomation_rule_action_incident_task.dart';
+import 'authomation_rule_action_playbook.dart';
 import 'authomation_rule_args.dart';
 import 'authomation_rule_state.dart';
 
@@ -130,7 +133,7 @@ import 'authomation_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -295,13 +298,13 @@ import 'authomation_rule_state.dart';
 /// ```
 class AuthomationRule extends pulumi.CustomResource {
   /// One or more `actionIncidentTask` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actionIncidentTasks;
+  late final pulumi.Output<List<AuthomationRuleActionIncidentTask>?> actionIncidentTasks;
   /// One or more `actionIncident` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actionIncidents;
+  late final pulumi.Output<List<AuthomationRuleActionIncident>?> actionIncidents;
   /// One or more `actionPlaybook` blocks as defined below.
   ///
   /// &gt; **Note:** Either one `actionIncident` block or `actionPlaybook` block has to be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actionPlaybooks;
+  late final pulumi.Output<List<AuthomationRuleActionPlaybook>?> actionPlaybooks;
   /// A JSON array of one or more condition JSON objects as is defined [here](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/create-or-update?tabs=HTTP#automationruletriggeringlogic).
   late final pulumi.Output<String?> conditionJson;
   /// The display name which should be used for this Sentinel Automation Rule.
@@ -333,11 +336,11 @@ class AuthomationRule extends pulumi.CustomResource {
           'azure:sentinel/authomationRule:AuthomationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    actionIncidentTasks = registerOutput<List<Map<String, dynamic>>?>('actionIncidentTasks');
-    actionIncidents = registerOutput<List<Map<String, dynamic>>?>('actionIncidents');
-    actionPlaybooks = registerOutput<List<Map<String, dynamic>>?>('actionPlaybooks');
+    actionIncidentTasks = registerOutput<List<AuthomationRuleActionIncidentTask>?>('actionIncidentTasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthomationRuleActionIncidentTask>(guardedValue, (value) => AuthomationRuleActionIncidentTask.fromMap((value as Map).cast<String, dynamic>())); });
+    actionIncidents = registerOutput<List<AuthomationRuleActionIncident>?>('actionIncidents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthomationRuleActionIncident>(guardedValue, (value) => AuthomationRuleActionIncident.fromMap((value as Map).cast<String, dynamic>())); });
+    actionPlaybooks = registerOutput<List<AuthomationRuleActionPlaybook>?>('actionPlaybooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthomationRuleActionPlaybook>(guardedValue, (value) => AuthomationRuleActionPlaybook.fromMap((value as Map).cast<String, dynamic>())); });
     conditionJson = registerOutput<String?>('conditionJson');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
@@ -354,11 +357,12 @@ class AuthomationRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthomationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AuthomationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -372,9 +376,32 @@ class AuthomationRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actionIncidentTasks = registerOutput<List<Map<String, dynamic>>?>('actionIncidentTasks');
-    actionIncidents = registerOutput<List<Map<String, dynamic>>?>('actionIncidents');
-    actionPlaybooks = registerOutput<List<Map<String, dynamic>>?>('actionPlaybooks');
+    actionIncidentTasks = registerOutput<List<AuthomationRuleActionIncidentTask>?>('actionIncidentTasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthomationRuleActionIncidentTask>(guardedValue, (value) => AuthomationRuleActionIncidentTask.fromMap((value as Map).cast<String, dynamic>())); });
+    actionIncidents = registerOutput<List<AuthomationRuleActionIncident>?>('actionIncidents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthomationRuleActionIncident>(guardedValue, (value) => AuthomationRuleActionIncident.fromMap((value as Map).cast<String, dynamic>())); });
+    actionPlaybooks = registerOutput<List<AuthomationRuleActionPlaybook>?>('actionPlaybooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthomationRuleActionPlaybook>(guardedValue, (value) => AuthomationRuleActionPlaybook.fromMap((value as Map).cast<String, dynamic>())); });
+    conditionJson = registerOutput<String?>('conditionJson');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    expiration = registerOutput<String?>('expiration');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    order = registerOutput<int>('order');
+    triggersOn = registerOutput<String?>('triggersOn');
+    triggersWhen = registerOutput<String?>('triggersWhen');
+  }
+
+  /// Creates a typed reference to an existing [AuthomationRule] resource.
+  AuthomationRule.reference(String urn)
+    : super(
+        'azure:sentinel/authomationRule:AuthomationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionIncidentTasks = registerOutput<List<AuthomationRuleActionIncidentTask>?>('actionIncidentTasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthomationRuleActionIncidentTask>(guardedValue, (value) => AuthomationRuleActionIncidentTask.fromMap((value as Map).cast<String, dynamic>())); });
+    actionIncidents = registerOutput<List<AuthomationRuleActionIncident>?>('actionIncidents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthomationRuleActionIncident>(guardedValue, (value) => AuthomationRuleActionIncident.fromMap((value as Map).cast<String, dynamic>())); });
+    actionPlaybooks = registerOutput<List<AuthomationRuleActionPlaybook>?>('actionPlaybooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthomationRuleActionPlaybook>(guardedValue, (value) => AuthomationRuleActionPlaybook.fromMap((value as Map).cast<String, dynamic>())); });
     conditionJson = registerOutput<String?>('conditionJson');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');

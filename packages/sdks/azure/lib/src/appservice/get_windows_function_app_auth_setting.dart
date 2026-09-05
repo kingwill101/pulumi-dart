@@ -107,7 +107,7 @@ class GetWindowsFunctionAppAuthSetting {
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
       microsofts: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingMicrosoft>(map['microsofts']!, (value) => GetWindowsFunctionAppAuthSettingMicrosoft.fromMap((value as Map).cast<String, dynamic>()))),
       runtimeVersion: pulumi.Input.fromValue(map['runtimeVersion'] as String),
-      tokenRefreshExtensionHours: pulumi.Input.fromValue(map['tokenRefreshExtensionHours'] as double),
+      tokenRefreshExtensionHours: pulumi.Input.fromValue((map['tokenRefreshExtensionHours'] as num).toDouble()),
       tokenStoreEnabled: pulumi.Input.fromValue(map['tokenStoreEnabled'] as bool),
       twitters: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsFunctionAppAuthSettingTwitter>(map['twitters']!, (value) => GetWindowsFunctionAppAuthSettingTwitter.fromMap((value as Map).cast<String, dynamic>()))),
       unauthenticatedClientAction: pulumi.Input.fromValue(map['unauthenticatedClientAction'] as String),

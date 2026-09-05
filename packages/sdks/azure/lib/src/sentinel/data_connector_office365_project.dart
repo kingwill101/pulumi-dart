@@ -108,7 +108,7 @@ import 'data_connector_office365_project_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -260,7 +260,7 @@ class DataConnectorOffice365Project extends pulumi.CustomResource {
           'azure:sentinel/dataConnectorOffice365Project:DataConnectorOffice365Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
@@ -272,11 +272,12 @@ class DataConnectorOffice365Project extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataConnectorOffice365ProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataConnectorOffice365Project._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,6 +291,20 @@ class DataConnectorOffice365Project extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [DataConnectorOffice365Project] resource.
+  DataConnectorOffice365Project.reference(String urn)
+    : super(
+        'azure:sentinel/dataConnectorOffice365Project:DataConnectorOffice365Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     tenantId = registerOutput<String>('tenantId');

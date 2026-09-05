@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_provider_registration_args.dart';
+import 'resource_provider_registration_feature.dart';
 import 'resource_provider_registration_state.dart';
 
 /// Manages the registration of a Resource Provider - which allows access to the API's supported by this Resource Provider.
@@ -266,7 +267,7 @@ class ResourceProviderRegistration extends pulumi.CustomResource {
   /// A list of `feature` blocks as defined below.
   ///
   /// &gt; **Note:** The `feature` block allows a Preview Feature to be explicitly Registered or Unregistered for this Resource Provider - once a Feature has been explicitly Registered or Unregistered, it must be specified in the Terraform Configuration (it's not possible to reset this to the default, unspecified, state).
-  late final pulumi.Output<List<Map<String, dynamic>>?> features;
+  late final pulumi.Output<List<ResourceProviderRegistrationFeature>?> features;
   /// The namespace of the Resource Provider which should be registered. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
 
@@ -282,9 +283,9 @@ class ResourceProviderRegistration extends pulumi.CustomResource {
           'azure:core/resourceProviderRegistration:ResourceProviderRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    features = registerOutput<List<Map<String, dynamic>>?>('features');
+    features = registerOutput<List<ResourceProviderRegistrationFeature>?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceProviderRegistrationFeature>(guardedValue, (value) => ResourceProviderRegistrationFeature.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 
@@ -293,11 +294,12 @@ class ResourceProviderRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceProviderRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceProviderRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -311,7 +313,20 @@ class ResourceProviderRegistration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    features = registerOutput<List<Map<String, dynamic>>?>('features');
+    features = registerOutput<List<ResourceProviderRegistrationFeature>?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceProviderRegistrationFeature>(guardedValue, (value) => ResourceProviderRegistrationFeature.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [ResourceProviderRegistration] resource.
+  ResourceProviderRegistration.reference(String urn)
+    : super(
+        'azure:core/resourceProviderRegistration:ResourceProviderRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    features = registerOutput<List<ResourceProviderRegistrationFeature>?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceProviderRegistrationFeature>(guardedValue, (value) => ResourceProviderRegistrationFeature.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 }

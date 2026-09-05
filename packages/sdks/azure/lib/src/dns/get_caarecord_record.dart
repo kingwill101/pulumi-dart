@@ -30,7 +30,7 @@ class GetCAARecordRecord {
 
   factory GetCAARecordRecord.fromMap(Map<String, dynamic> map) {
     return GetCAARecordRecord(
-      flags: pulumi.Input.fromValue(map['flags'] as int),
+      flags: pulumi.Input.fromValue((map['flags'] as num).toInt()),
       tag: pulumi.Input.fromValue(map['tag'] as String),
       value: pulumi.Input.fromValue(map['value'] as String),
     );

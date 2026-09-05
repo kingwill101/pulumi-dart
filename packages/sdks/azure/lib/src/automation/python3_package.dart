@@ -301,7 +301,7 @@ class Python3Package extends pulumi.CustomResource {
           'azure:automation/python3Package:Python3Package',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     contentUri = registerOutput<String>('contentUri');
@@ -310,7 +310,7 @@ class Python3Package extends pulumi.CustomResource {
     hashValue = registerOutput<String?>('hashValue');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Python3Package] resource's state with the given [name] and [id].
@@ -318,11 +318,12 @@ class Python3Package extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Python3PackageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Python3Package._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -343,6 +344,25 @@ class Python3Package extends pulumi.CustomResource {
     hashValue = registerOutput<String?>('hashValue');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Python3Package] resource.
+  Python3Package.reference(String urn)
+    : super(
+        'azure:automation/python3Package:Python3Package',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    contentUri = registerOutput<String>('contentUri');
+    contentVersion = registerOutput<String?>('contentVersion');
+    hashAlgorithm = registerOutput<String?>('hashAlgorithm');
+    hashValue = registerOutput<String?>('hashValue');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

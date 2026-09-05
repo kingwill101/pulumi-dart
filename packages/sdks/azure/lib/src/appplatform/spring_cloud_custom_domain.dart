@@ -34,8 +34,8 @@ import 'spring_cloud_custom_domain_state.dart';
 /// });
 /// const exampleCNameRecord = new azure.dns.CNameRecord("example", {
 ///     name: "record1",
-///     zoneName: example.apply(example => example.name),
-///     resourceGroupName: example.apply(example => example.resourceGroupName),
+///     zoneName: example.name,
+///     resourceGroupName: example.resourceGroupName,
 ///     ttl: 300,
 ///     record: exampleSpringCloudApp.fqdn,
 /// });
@@ -46,7 +46,7 @@ import 'spring_cloud_custom_domain_state.dart';
 ///             exampleCNameRecord.name,
 ///             exampleCNameRecord.zoneName,
 ///         ],
-///     }).apply(invoke => invoke.result),
+///     }).result,
 ///     springCloudAppId: exampleSpringCloudApp.id,
 /// });
 /// ```
@@ -79,7 +79,7 @@ import 'spring_cloud_custom_domain_state.dart';
 ///         input=[
 ///             example_c_name_record.name,
 ///             example_c_name_record.zone_name,
-///         ]).apply(lambda invoke: invoke.result),
+///         ]).result,
 ///     spring_cloud_app_id=example_spring_cloud_app.id)
 /// ```
 /// ```csharp
@@ -183,31 +183,24 @@ import 'spring_cloud_custom_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleCNameRecord, err := dns.NewCNameRecord(ctx, "example", &dns.CNameRecordArgs{
-/// 			Name: pulumi.String("record1"),
-/// 			ZoneName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return example.ResourceGroupName, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Ttl:    pulumi.Int(300),
-/// 			Record: exampleSpringCloudApp.Fqdn,
+/// 			Name:              pulumi.String("record1"),
+/// 			ZoneName:          example.Name(),
+/// 			ResourceGroupName: example.ResourceGroupName(),
+/// 			Ttl:               pulumi.Int(300),
+/// 			Record:            exampleSpringCloudApp.Fqdn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudCustomDomain(ctx, "example", &appplatform.SpringCloudCustomDomainArgs{
-/// 			Name: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 			Name: std.JoinOutput(ctx, std.JoinOutputArgs{
 /// 				Separator: pulumi.String("."),
 /// 				Input: pulumi.StringArray{
 /// 					exampleCNameRecord.Name,
 /// 					exampleCNameRecord.ZoneName,
 /// 				},
-/// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				val := invoke.Result
-/// 				return &val, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			SpringCloudAppId: exampleSpringCloudApp.ID(),
+/// 			}, nil).Result(),
+/// 			SpringCloudAppId: exampleSpringCloudApp.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -419,7 +412,7 @@ class SpringCloudCustomDomain extends pulumi.CustomResource {
           'azure:appplatform/springCloudCustomDomain:SpringCloudCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     certificateName = registerOutput<String?>('certificateName');
     this.name = registerOutput<String>('name');
@@ -432,11 +425,12 @@ class SpringCloudCustomDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudCustomDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudCustomDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -450,6 +444,21 @@ class SpringCloudCustomDomain extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateName = registerOutput<String?>('certificateName');
+    this.name = registerOutput<String>('name');
+    springCloudAppId = registerOutput<String>('springCloudAppId');
+    thumbprint = registerOutput<String?>('thumbprint');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudCustomDomain] resource.
+  SpringCloudCustomDomain.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudCustomDomain:SpringCloudCustomDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateName = registerOutput<String?>('certificateName');
     this.name = registerOutput<String>('name');
     springCloudAppId = registerOutput<String>('springCloudAppId');

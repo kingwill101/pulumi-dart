@@ -44,7 +44,7 @@ class GetWindowsWebAppSiteConfigAutoHealSettingTrigger {
 
   factory GetWindowsWebAppSiteConfigAutoHealSettingTrigger.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppSiteConfigAutoHealSettingTrigger(
-      privateMemoryKb: pulumi.Input.fromValue(map['privateMemoryKb'] as int),
+      privateMemoryKb: pulumi.Input.fromValue((map['privateMemoryKb'] as num).toInt()),
       requests: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsWebAppSiteConfigAutoHealSettingTriggerRequest>(map['requests']!, (value) => GetWindowsWebAppSiteConfigAutoHealSettingTriggerRequest.fromMap((value as Map).cast<String, dynamic>()))),
       slowRequestWithPaths: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>(map['slowRequestWithPaths']!, (value) => GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap((value as Map).cast<String, dynamic>()))),
       slowRequests: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest>(map['slowRequests']!, (value) => GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap((value as Map).cast<String, dynamic>()))),

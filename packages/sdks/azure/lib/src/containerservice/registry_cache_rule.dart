@@ -115,10 +115,10 @@ import 'registry_cache_rule_state.dart';
 /// 		}
 /// 		_, err = containerservice.NewRegistryCacheRule(ctx, "cache_rule", &containerservice.RegistryCacheRuleArgs{
 /// 			Name:                pulumi.String("cacherule"),
-/// 			ContainerRegistryId: acr.ID(),
+/// 			ContainerRegistryId: acr.ID().ToIDOutput().ToStringOutput(),
 /// 			TargetRepo:          pulumi.String("target"),
 /// 			SourceRepo:          pulumi.String("docker.io/hello-world"),
-/// 			CredentialSetId: acr.ID().ApplyT(func(id string) (string, error) {
+/// 			CredentialSetId: acr.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("%v/credentialSets/example", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
@@ -268,7 +268,7 @@ class RegistryCacheRule extends pulumi.CustomResource {
           'azure:containerservice/registryCacheRule:RegistryCacheRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     containerRegistryId = registerOutput<String>('containerRegistryId');
     credentialSetId = registerOutput<String?>('credentialSetId');
@@ -282,11 +282,12 @@ class RegistryCacheRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryCacheRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryCacheRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,6 +301,22 @@ class RegistryCacheRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    credentialSetId = registerOutput<String?>('credentialSetId');
+    this.name = registerOutput<String>('name');
+    sourceRepo = registerOutput<String>('sourceRepo');
+    targetRepo = registerOutput<String>('targetRepo');
+  }
+
+  /// Creates a typed reference to an existing [RegistryCacheRule] resource.
+  RegistryCacheRule.reference(String urn)
+    : super(
+        'azure:containerservice/registryCacheRule:RegistryCacheRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     containerRegistryId = registerOutput<String>('containerRegistryId');
     credentialSetId = registerOutput<String?>('credentialSetId');
     this.name = registerOutput<String>('name');

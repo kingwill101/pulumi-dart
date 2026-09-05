@@ -7,25 +7,25 @@ import 'integration_account_agreement_host_identity.dart';
 /// Input properties used for looking up and filtering IntegrationAccountAgreement resources.
 class IntegrationAccountAgreementState {
   /// The type of the Logic App Integration Account Agreement. Possible values are `AS2`, `X12` and `Edifact`.
-  final pulumi.Input<String>? agreementType;
+  final pulumi.Input<String?>? agreementType;
   /// The content of the Logic App Integration Account Agreement.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// A `guestIdentity` block as documented below.
-  final pulumi.Input<IntegrationAccountAgreementGuestIdentity>? guestIdentity;
+  final pulumi.Input<IntegrationAccountAgreementGuestIdentity?>? guestIdentity;
   /// The name of the guest Logic App Integration Account Partner.
-  final pulumi.Input<String>? guestPartnerName;
+  final pulumi.Input<String?>? guestPartnerName;
   /// A `hostIdentity` block as documented below.
-  final pulumi.Input<IntegrationAccountAgreementHostIdentity>? hostIdentity;
+  final pulumi.Input<IntegrationAccountAgreementHostIdentity?>? hostIdentity;
   /// The name of the host Logic App Integration Account Partner.
-  final pulumi.Input<String>? hostPartnerName;
+  final pulumi.Input<String?>? hostPartnerName;
   /// The name of the Logic App Integration Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? integrationAccountName;
+  final pulumi.Input<String?>? integrationAccountName;
   /// The metadata of the Logic App Integration Account Agreement.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name which should be used for this Logic App Integration Account Agreement. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Logic App Integration Account Agreement should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [IntegrationAccountAgreementState].
   /// [agreementType] The type of the Logic App Integration Account Agreement. Possible values are `AS2`, `X12` and `Edifact`.

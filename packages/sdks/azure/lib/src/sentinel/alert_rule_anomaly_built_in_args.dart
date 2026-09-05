@@ -10,7 +10,7 @@ class AlertRuleAnomalyBuiltInArgs {
   /// The Display Name of the built-in Anomaly Alert Rule.
   ///
   /// &gt; **Note:** One of `name` or `displayName` block must be specified.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Should the Built-in Anomaly Alert Rule be enabled?
   final pulumi.Input<bool> enabled;
   /// The ID of the Log Analytics Workspace. Changing this forces a new Built-in Anomaly Alert Rule to be created.
@@ -18,7 +18,7 @@ class AlertRuleAnomalyBuiltInArgs {
   /// mode of the Built-in Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   final pulumi.Input<String> mode;
   /// The Name of the built-in Anomaly Alert Rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AlertRuleAnomalyBuiltInArgs].
   /// [displayName] The Display Name of the built-in Anomaly Alert Rule.

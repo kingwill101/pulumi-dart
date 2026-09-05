@@ -145,7 +145,7 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewServerMicrosoftSupportAuditingPolicy(ctx, "example", &mssql.ServerMicrosoftSupportAuditingPolicyArgs{
-/// 			ServerId:                exampleServer.ID(),
+/// 			ServerId:                exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			BlobStorageEndpoint:     exampleAccount.PrimaryBlobEndpoint,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
 /// 		})
@@ -662,9 +662,7 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 /// 		exampleAssignment, err := authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
 /// 			Scope:              pulumi.String(primary.Id),
 /// 			RoleDefinitionName: pulumi.String("Storage Blob Data Contributor"),
-/// 			PrincipalId: pulumi.String(exampleServer.Identity.ApplyT(func(identity mssql.ServerIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleServer.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -702,7 +700,7 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 /// 					pulumi.String("127.0.0.1"),
 /// 				},
 /// 				VirtualNetworkSubnetIds: pulumi.StringArray{
-/// 					exampleSubnet.ID(),
+/// 					exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				Bypasses: pulumi.StringArray{
 /// 					pulumi.String("AzureServices"),
@@ -717,7 +715,7 @@ import 'server_microsoft_support_auditing_policy_state.dart';
 /// 		}
 /// 		_, err = mssql.NewServerMicrosoftSupportAuditingPolicy(ctx, "example", &mssql.ServerMicrosoftSupportAuditingPolicyArgs{
 /// 			BlobStorageEndpoint:          exampleAccount.PrimaryBlobEndpoint,
-/// 			ServerId:                     exampleServer.ID(),
+/// 			ServerId:                     exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			LogMonitoringEnabled:         pulumi.Bool(false),
 /// 			StorageAccountSubscriptionId: pulumi.Any(primaryAzurermSubscription.SubscriptionId),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -1110,14 +1108,15 @@ class ServerMicrosoftSupportAuditingPolicy extends pulumi.CustomResource {
           'azure:mssql/serverMicrosoftSupportAuditingPolicy:ServerMicrosoftSupportAuditingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountAccessKey', 'storageAccountSubscriptionId'],
         ) {
     blobStorageEndpoint = registerOutput<String?>('blobStorageEndpoint');
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     serverId = registerOutput<String>('serverId');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
-    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId', isSecret: true);
   }
 
   /// Gets an existing [ServerMicrosoftSupportAuditingPolicy] resource's state with the given [name] and [id].
@@ -1125,11 +1124,12 @@ class ServerMicrosoftSupportAuditingPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerMicrosoftSupportAuditingPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerMicrosoftSupportAuditingPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1147,7 +1147,25 @@ class ServerMicrosoftSupportAuditingPolicy extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     serverId = registerOutput<String>('serverId');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
-    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ServerMicrosoftSupportAuditingPolicy] resource.
+  ServerMicrosoftSupportAuditingPolicy.reference(String urn)
+    : super(
+        'azure:mssql/serverMicrosoftSupportAuditingPolicy:ServerMicrosoftSupportAuditingPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountAccessKey', 'storageAccountSubscriptionId'],
+        isResourceReference: true,
+      ) {
+    blobStorageEndpoint = registerOutput<String?>('blobStorageEndpoint');
+    enabled = registerOutput<bool?>('enabled');
+    logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
+    serverId = registerOutput<String>('serverId');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId', isSecret: true);
   }
 }

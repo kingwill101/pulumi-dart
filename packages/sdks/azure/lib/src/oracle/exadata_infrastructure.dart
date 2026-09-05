@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'exadata_infrastructure_args.dart';
+import 'exadata_infrastructure_maintenance_window.dart';
 import 'exadata_infrastructure_state.dart';
 
 /// Manages a Cloud Exadata Infrastructure.
@@ -240,7 +241,7 @@ class ExadataInfrastructure extends pulumi.CustomResource {
   /// The Azure Region where the Cloud Exadata Infrastructure should exist. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<String> location;
   /// One or more `maintenanceWindow` blocks as defined below. Changing this forces a new Cloud Exadata Infrastructure to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>> maintenanceWindows;
+  late final pulumi.Output<List<ExadataInfrastructureMaintenanceWindow>> maintenanceWindows;
   /// The name which should be used for this Cloud Exadata Infrastructure. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<String> name;
   /// The name of the Resource Group where the ODB@A Infrastructure should exist. Changing this forces a new Cloud Exadata Infrastructure to be created.
@@ -268,21 +269,21 @@ class ExadataInfrastructure extends pulumi.CustomResource {
           'azure:oracle/exadataInfrastructure:ExadataInfrastructure',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     computeCount = registerOutput<int>('computeCount');
-    customerContacts = registerOutput<List<String>>('customerContacts');
+    customerContacts = registerOutput<List<String>>('customerContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     databaseServerType = registerOutput<String>('databaseServerType');
     displayName = registerOutput<String>('displayName');
     location = registerOutput<String>('location');
-    maintenanceWindows = registerOutput<List<Map<String, dynamic>>>('maintenanceWindows');
+    maintenanceWindows = registerOutput<List<ExadataInfrastructureMaintenanceWindow>>('maintenanceWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExadataInfrastructureMaintenanceWindow>(guardedValue, (value) => ExadataInfrastructureMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     shape = registerOutput<String>('shape');
     storageCount = registerOutput<int>('storageCount');
     storageServerType = registerOutput<String>('storageServerType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ExadataInfrastructure] resource's state with the given [name] and [id].
@@ -290,11 +291,12 @@ class ExadataInfrastructure extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExadataInfrastructureState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExadataInfrastructure._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -309,17 +311,41 @@ class ExadataInfrastructure extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     computeCount = registerOutput<int>('computeCount');
-    customerContacts = registerOutput<List<String>>('customerContacts');
+    customerContacts = registerOutput<List<String>>('customerContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     databaseServerType = registerOutput<String>('databaseServerType');
     displayName = registerOutput<String>('displayName');
     location = registerOutput<String>('location');
-    maintenanceWindows = registerOutput<List<Map<String, dynamic>>>('maintenanceWindows');
+    maintenanceWindows = registerOutput<List<ExadataInfrastructureMaintenanceWindow>>('maintenanceWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExadataInfrastructureMaintenanceWindow>(guardedValue, (value) => ExadataInfrastructureMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     shape = registerOutput<String>('shape');
     storageCount = registerOutput<int>('storageCount');
     storageServerType = registerOutput<String>('storageServerType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ExadataInfrastructure] resource.
+  ExadataInfrastructure.reference(String urn)
+    : super(
+        'azure:oracle/exadataInfrastructure:ExadataInfrastructure',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    computeCount = registerOutput<int>('computeCount');
+    customerContacts = registerOutput<List<String>>('customerContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    databaseServerType = registerOutput<String>('databaseServerType');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    maintenanceWindows = registerOutput<List<ExadataInfrastructureMaintenanceWindow>>('maintenanceWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExadataInfrastructureMaintenanceWindow>(guardedValue, (value) => ExadataInfrastructureMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    shape = registerOutput<String>('shape');
+    storageCount = registerOutput<int>('storageCount');
+    storageServerType = registerOutput<String>('storageServerType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -140,7 +140,7 @@ import 'workspace_certificate_state.dart';
 /// 		}
 /// 		exampleWorkspace, err := apimanagement.NewWorkspace(ctx, "example", &apimanagement.WorkspaceArgs{
 /// 			Name:            pulumi.String("example-workspace"),
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:     pulumi.String("Example Workspace"),
 /// 		})
 /// 		if err != nil {
@@ -154,7 +154,7 @@ import 'workspace_certificate_state.dart';
 /// 		}
 /// 		_, err = apimanagement.NewWorkspaceCertificate(ctx, "example", &apimanagement.WorkspaceCertificateArgs{
 /// 			Name:                     pulumi.String("example-cert"),
-/// 			ApiManagementWorkspaceId: exampleWorkspace.ID(),
+/// 			ApiManagementWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			CertificateDataBase64:    pulumi.String(invokeFilebase64.Result),
 /// 			Password:                 pulumi.String("terraform"),
 /// 		})
@@ -352,14 +352,15 @@ class WorkspaceCertificate extends pulumi.CustomResource {
           'azure:apimanagement/workspaceCertificate:WorkspaceCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['certificateDataBase64', 'password'],
         ) {
     apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
-    certificateDataBase64 = registerOutput<String?>('certificateDataBase64');
+    certificateDataBase64 = registerOutput<String?>('certificateDataBase64', isSecret: true);
     expiration = registerOutput<String>('expiration');
     keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     subject = registerOutput<String>('subject');
     thumbprint = registerOutput<String>('thumbprint');
     userAssignedIdentityClientId = registerOutput<String?>('userAssignedIdentityClientId');
@@ -370,11 +371,12 @@ class WorkspaceCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -389,11 +391,32 @@ class WorkspaceCertificate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
-    certificateDataBase64 = registerOutput<String?>('certificateDataBase64');
+    certificateDataBase64 = registerOutput<String?>('certificateDataBase64', isSecret: true);
     expiration = registerOutput<String>('expiration');
     keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
+    subject = registerOutput<String>('subject');
+    thumbprint = registerOutput<String>('thumbprint');
+    userAssignedIdentityClientId = registerOutput<String?>('userAssignedIdentityClientId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceCertificate] resource.
+  WorkspaceCertificate.reference(String urn)
+    : super(
+        'azure:apimanagement/workspaceCertificate:WorkspaceCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['certificateDataBase64', 'password'],
+        isResourceReference: true,
+      ) {
+    apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
+    certificateDataBase64 = registerOutput<String?>('certificateDataBase64', isSecret: true);
+    expiration = registerOutput<String>('expiration');
+    keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password', isSecret: true);
     subject = registerOutput<String>('subject');
     thumbprint = registerOutput<String>('thumbprint');
     userAssignedIdentityClientId = registerOutput<String?>('userAssignedIdentityClientId');

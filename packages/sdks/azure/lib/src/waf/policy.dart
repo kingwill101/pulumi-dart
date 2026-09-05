@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_args.dart';
+import 'policy_custom_rule.dart';
 import 'policy_managed_rules.dart';
 import 'policy_policy_settings.dart';
 import 'policy_state.dart';
@@ -790,7 +791,7 @@ import 'policy_state.dart';
 /// ```
 class Policy extends pulumi.CustomResource {
   /// One or more `customRules` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
+  late final pulumi.Output<List<PolicyCustomRule>?> customRules;
   /// A list of HTTP Listener IDs from an `azure.network.ApplicationGateway`.
   late final pulumi.Output<List<String>> httpListenerIds;
   /// Resource location. Changing this forces a new resource to be created.
@@ -820,17 +821,17 @@ class Policy extends pulumi.CustomResource {
           'azure:waf/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
-    httpListenerIds = registerOutput<List<String>>('httpListenerIds');
+    customRules = registerOutput<List<PolicyCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyCustomRule>(guardedValue, (value) => PolicyCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
+    httpListenerIds = registerOutput<List<String>>('httpListenerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     managedRules = registerOutput<PolicyManagedRules>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyManagedRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    pathBasedRuleIds = registerOutput<List<String>>('pathBasedRuleIds');
+    pathBasedRuleIds = registerOutput<List<String>>('pathBasedRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     policySettings = registerOutput<PolicyPolicySettings?>('policySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPolicySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Policy] resource's state with the given [name] and [id].
@@ -838,11 +839,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -856,14 +858,34 @@ class Policy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
-    httpListenerIds = registerOutput<List<String>>('httpListenerIds');
+    customRules = registerOutput<List<PolicyCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyCustomRule>(guardedValue, (value) => PolicyCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
+    httpListenerIds = registerOutput<List<String>>('httpListenerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     managedRules = registerOutput<PolicyManagedRules>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyManagedRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    pathBasedRuleIds = registerOutput<List<String>>('pathBasedRuleIds');
+    pathBasedRuleIds = registerOutput<List<String>>('pathBasedRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     policySettings = registerOutput<PolicyPolicySettings?>('policySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPolicySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'azure:waf/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customRules = registerOutput<List<PolicyCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyCustomRule>(guardedValue, (value) => PolicyCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
+    httpListenerIds = registerOutput<List<String>>('httpListenerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    managedRules = registerOutput<PolicyManagedRules>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyManagedRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    pathBasedRuleIds = registerOutput<List<String>>('pathBasedRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    policySettings = registerOutput<PolicyPolicySettings?>('policySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPolicySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

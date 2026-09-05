@@ -6,7 +6,7 @@ class FrontdoorRuleActionsUrlRewriteAction {
   /// The destination path to use in the rewrite. The destination path overwrites the source pattern.
   final pulumi.Input<String> destination;
   /// Append the remaining path after the source pattern to the new destination path? Possible values `true` or `false`. Defaults to `false`.
-  final pulumi.Input<bool>? preserveUnmatchedPath;
+  final pulumi.Input<bool?>? preserveUnmatchedPath;
   /// The source pattern in the URL path to replace. This uses prefix-based matching. For example, to match all URL paths use a forward slash `"/"` as the source pattern value.
   final pulumi.Input<String> sourcePattern;
 

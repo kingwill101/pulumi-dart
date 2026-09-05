@@ -9,9 +9,9 @@ import 'action_http_run_after.dart';
 /// {@macro pulumi_logicapps_action_http_action_http_args_doc}
 class ActionHttpArgs {
   /// Specifies the HTTP Body that should be sent to the `uri` when this HTTP Action is triggered.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
-  final pulumi.Input<Map<String, String>>? headers;
+  final pulumi.Input<Map<String, String>?>? headers;
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   final pulumi.Input<String> logicAppId;
   /// Specifies the HTTP Method which should be used for this HTTP Action. Possible values include `DELETE`, `GET`, `PATCH`, `POST` and `PUT`.
@@ -19,11 +19,11 @@ class ActionHttpArgs {
   /// Specifies the name of the HTTP Action to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Actions within the Logic App Workflow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
-  final pulumi.Input<Map<String, String>>? queries;
+  final pulumi.Input<Map<String, String>?>? queries;
   /// Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `runAfter` block is as defined below.
-  final pulumi.Input<List<ActionHttpRunAfter>>? runAfters;
+  final pulumi.Input<List<ActionHttpRunAfter>?>? runAfters;
   /// Specifies the URI which will be called when this HTTP Action is triggered.
   final pulumi.Input<String> uri;
 

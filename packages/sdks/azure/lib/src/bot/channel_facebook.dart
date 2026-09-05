@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_facebook_args.dart';
+import 'channel_facebook_page.dart';
 import 'channel_facebook_state.dart';
 
 /// Manages a Facebook integration for a Bot Channel
@@ -303,7 +304,7 @@ class ChannelFacebook extends pulumi.CustomResource {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// One or more `page` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> pages;
+  late final pulumi.Output<List<ChannelFacebookPage>> pages;
   /// The name of the resource group where the Facebook Channel should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -319,13 +320,14 @@ class ChannelFacebook extends pulumi.CustomResource {
           'azure:bot/channelFacebook:ChannelFacebook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['facebookApplicationSecret'],
         ) {
     botName = registerOutput<String>('botName');
     facebookApplicationId = registerOutput<String>('facebookApplicationId');
-    facebookApplicationSecret = registerOutput<String>('facebookApplicationSecret');
+    facebookApplicationSecret = registerOutput<String>('facebookApplicationSecret', isSecret: true);
     location = registerOutput<String>('location');
-    pages = registerOutput<List<Map<String, dynamic>>>('pages');
+    pages = registerOutput<List<ChannelFacebookPage>>('pages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelFacebookPage>(guardedValue, (value) => ChannelFacebookPage.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
@@ -334,11 +336,12 @@ class ChannelFacebook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelFacebookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ChannelFacebook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -354,9 +357,27 @@ class ChannelFacebook extends pulumi.CustomResource {
         ) {
     botName = registerOutput<String>('botName');
     facebookApplicationId = registerOutput<String>('facebookApplicationId');
-    facebookApplicationSecret = registerOutput<String>('facebookApplicationSecret');
+    facebookApplicationSecret = registerOutput<String>('facebookApplicationSecret', isSecret: true);
     location = registerOutput<String>('location');
-    pages = registerOutput<List<Map<String, dynamic>>>('pages');
+    pages = registerOutput<List<ChannelFacebookPage>>('pages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelFacebookPage>(guardedValue, (value) => ChannelFacebookPage.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ChannelFacebook] resource.
+  ChannelFacebook.reference(String urn)
+    : super(
+        'azure:bot/channelFacebook:ChannelFacebook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['facebookApplicationSecret'],
+        isResourceReference: true,
+      ) {
+    botName = registerOutput<String>('botName');
+    facebookApplicationId = registerOutput<String>('facebookApplicationId');
+    facebookApplicationSecret = registerOutput<String>('facebookApplicationSecret', isSecret: true);
+    location = registerOutput<String>('location');
+    pages = registerOutput<List<ChannelFacebookPage>>('pages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelFacebookPage>(guardedValue, (value) => ChannelFacebookPage.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

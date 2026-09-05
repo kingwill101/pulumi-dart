@@ -10,21 +10,21 @@ import 'provisioned_cluster_identity.dart';
 /// {@macro pulumi_arckubernetes_provisioned_cluster_provisioned_cluster_args_doc}
 class ProvisionedClusterArgs {
   /// Whether the Arc agents will be upgraded automatically to the latest version. Defaults to `true`.
-  final pulumi.Input<bool>? arcAgentAutoUpgradeEnabled;
+  final pulumi.Input<bool?>? arcAgentAutoUpgradeEnabled;
   /// The version of the Arc agents to be installed on the cluster.
-  final pulumi.Input<String>? arcAgentDesiredVersion;
+  final pulumi.Input<String?>? arcAgentDesiredVersion;
   /// An `azureActiveDirectory` block as defined below.
-  final pulumi.Input<ProvisionedClusterAzureActiveDirectory>? azureActiveDirectory;
+  final pulumi.Input<ProvisionedClusterAzureActiveDirectory?>? azureActiveDirectory;
   /// An `identity` block as defined below. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   final pulumi.Input<ProvisionedClusterIdentity> identity;
   /// The Azure Region where the Arc Kubernetes Provisioned Cluster should exist. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Arc Kubernetes Provisioned Cluster. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Arc Kubernetes Provisioned Cluster should exist. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Arc Kubernetes Provisioned Cluster.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ProvisionedClusterArgs].
   /// [arcAgentAutoUpgradeEnabled] Whether the Arc agents will be upgraded automatically to the latest version. Defaults to `true`.

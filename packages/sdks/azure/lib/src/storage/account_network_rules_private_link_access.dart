@@ -6,7 +6,7 @@ class AccountNetworkRulesPrivateLinkAccess {
   /// The ID of the Azure resource that should be allowed access to the target storage account.
   final pulumi.Input<String> endpointResourceId;
   /// The tenant id of the resource of the resource access rule to be granted access. Defaults to the current tenant id.
-  final pulumi.Input<String>? endpointTenantId;
+  final pulumi.Input<String?>? endpointTenantId;
 
   /// Creates a new [AccountNetworkRulesPrivateLinkAccess].
   /// [endpointResourceId] The ID of the Azure resource that should be allowed access to the target storage account.

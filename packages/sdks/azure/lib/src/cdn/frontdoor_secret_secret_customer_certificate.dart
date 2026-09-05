@@ -8,7 +8,7 @@ class FrontdoorSecretSecretCustomerCertificate {
   /// &gt; **Note:** If you would like to use the **latest version** of the Key Vault Certificate use the Key Vault Certificates `versionlessId` attribute as the `keyVaultCertificateId` fields value(e.g. `keyVaultCertificateId = azurerm_key_vault_certificate.example.versionless_id`).
   final pulumi.Input<String> keyVaultCertificateId;
   /// One or more `subject alternative names` contained within the key vault certificate.
-  final pulumi.Input<List<String>>? subjectAlternativeNames;
+  final pulumi.Input<List<String>?>? subjectAlternativeNames;
 
   /// Creates a new [FrontdoorSecretSecretCustomerCertificate].
   /// [keyVaultCertificateId] The ID of the Key Vault certificate resource to use. Changing this forces a new Front Door Secret to be created.

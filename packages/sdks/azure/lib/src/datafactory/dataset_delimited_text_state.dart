@@ -11,49 +11,49 @@ class DatasetDelimitedTextState {
   /// A map of additional properties to associate with the Data Factory Dataset.
   ///
   /// The following supported locations for a Delimited Text Dataset (exactly one of them must be set):
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Dataset.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// An `azureBlobFsLocation` block as defined below.
-  final pulumi.Input<DatasetDelimitedTextAzureBlobFsLocation>? azureBlobFsLocation;
+  final pulumi.Input<DatasetDelimitedTextAzureBlobFsLocation?>? azureBlobFsLocation;
   /// An `azureBlobStorageLocation` block as defined below.
-  final pulumi.Input<DatasetDelimitedTextAzureBlobStorageLocation>? azureBlobStorageLocation;
+  final pulumi.Input<DatasetDelimitedTextAzureBlobStorageLocation?>? azureBlobStorageLocation;
   /// The column delimiter. Defaults to `,`.
-  final pulumi.Input<String>? columnDelimiter;
+  final pulumi.Input<String?>? columnDelimiter;
   /// The compression codec used to read/write text files. Valid values are `None`, `bzip2`, `gzip`, `deflate`, `ZipDeflate`, `TarGzip`, `Tar`, `snappy` and `lz4`. Please note these values are case sensitive.
-  final pulumi.Input<String>? compressionCodec;
+  final pulumi.Input<String?>? compressionCodec;
   /// The compression ratio for the Data Factory Dataset. Valid values are `Fastest` or `Optimal`. Please note these values are case sensitive.
-  final pulumi.Input<String>? compressionLevel;
+  final pulumi.Input<String?>? compressionLevel;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The description for the Data Factory Dataset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encoding format for the file.
-  final pulumi.Input<String>? encoding;
+  final pulumi.Input<String?>? encoding;
   /// The escape character. Defaults to `\`.
-  final pulumi.Input<String>? escapeCharacter;
+  final pulumi.Input<String?>? escapeCharacter;
   /// When used as input, treat the first row of data as headers. When used as output, write the headers into the output as the first row of data. Defaults to `false`.
-  final pulumi.Input<bool>? firstRowAsHeader;
+  final pulumi.Input<bool?>? firstRowAsHeader;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// A `httpServerLocation` block as defined below.
   ///
   /// The following supported arguments are specific to Delimited Text Dataset:
-  final pulumi.Input<DatasetDelimitedTextHttpServerLocation>? httpServerLocation;
+  final pulumi.Input<DatasetDelimitedTextHttpServerLocation?>? httpServerLocation;
   /// The Data Factory Linked Service name in which to associate the Dataset with.
-  final pulumi.Input<String>? linkedServiceName;
+  final pulumi.Input<String?>? linkedServiceName;
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The null value string. Defaults to `""`.
-  final pulumi.Input<String>? nullValue;
+  final pulumi.Input<String?>? nullValue;
   /// A map of parameters to associate with the Data Factory Dataset.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The quote character. Defaults to `"`.
-  final pulumi.Input<String>? quoteCharacter;
+  final pulumi.Input<String?>? quoteCharacter;
   /// The row delimiter. Defaults to any of the following values on read: `\r\n`, `\r`, `\n`, and `\n` or `\r\n` on write by mapping data flow and Copy activity respectively.
-  final pulumi.Input<String>? rowDelimiter;
+  final pulumi.Input<String?>? rowDelimiter;
   /// A `schemaColumn` block as defined below.
-  final pulumi.Input<List<DatasetDelimitedTextSchemaColumn>>? schemaColumns;
+  final pulumi.Input<List<DatasetDelimitedTextSchemaColumn>?>? schemaColumns;
 
   /// Creates a new [DatasetDelimitedTextState].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Dataset.

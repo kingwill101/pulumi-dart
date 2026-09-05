@@ -6,21 +6,21 @@ import 'resource_bridge_appliance_identity.dart';
 /// Input properties used for looking up and filtering ResourceBridgeAppliance resources.
 class ResourceBridgeApplianceState {
   /// Specifies a supported Fabric/Infrastructure for this Arc Resource Bridge Appliance. The possible value is `AKSEdge`.
-  final pulumi.Input<String>? distro;
+  final pulumi.Input<String?>? distro;
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ResourceBridgeApplianceIdentity>? identity;
+  final pulumi.Input<ResourceBridgeApplianceIdentity?>? identity;
   /// The infrastructure provider about the connected Arc Resource Bridge Appliance. Possible values are `HCI`,`SCVMM` and `VMWare`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? infrastructureProvider;
+  final pulumi.Input<String?>? infrastructureProvider;
   /// The Azure Region where the Arc Resource Bridge Appliance should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Name which should be used for this Arc Resource Bridge Appliance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The `publicKeyBase64` is an RSA public key in PKCS1 format encoded in base64. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? publicKeyBase64;
+  final pulumi.Input<String?>? publicKeyBase64;
   /// Specifies the resource group where the Arc Resource Bridge Appliance exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Arc Resource Bridge Appliance.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ResourceBridgeApplianceState].
   /// [distro] Specifies a supported Fabric/Infrastructure for this Arc Resource Bridge Appliance. The possible value is `AKSEdge`.

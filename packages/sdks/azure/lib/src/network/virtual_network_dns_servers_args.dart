@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_virtual_network_dns_servers_virtual_network_dns_servers_args_doc}
 class VirtualNetworkDnsServersArgs {
   /// List of IP addresses of DNS servers
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualNetworkId;
 

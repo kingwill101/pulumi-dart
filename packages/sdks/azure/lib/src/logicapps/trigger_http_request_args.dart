@@ -10,15 +10,15 @@ class TriggerHttpRequestArgs {
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   final pulumi.Input<String> logicAppId;
   /// Specifies the HTTP Method which the request be using. Possible values include `DELETE`, `GET`, `PATCH`, `POST` or `PUT`.
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
   /// Specifies the name of the HTTP Request Trigger to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Triggers within the Logic App Workflow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the Relative Path used for this Request.
   ///
   /// &gt; **NOTE:** When `relativePath` is set a `method` must also be set.
-  final pulumi.Input<String>? relativePath;
+  final pulumi.Input<String?>? relativePath;
   /// A JSON Blob defining the Schema of the incoming request. This needs to be valid JSON.
   final pulumi.Input<String> schema;
 

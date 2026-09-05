@@ -14,11 +14,11 @@ class SlotCustomHostnameBindingArgs {
   /// &gt; **Note:** A CNAME needs to be configured from this Hostname to the Azure Website - otherwise Azure will reject the Hostname Binding.
   final pulumi.Input<String> hostname;
   /// The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sslState;
+  final pulumi.Input<String?>? sslState;
   /// The SSL certificate thumbprint. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `thumbprint` must be specified when `sslState` is set.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [SlotCustomHostnameBindingArgs].
   /// [appServiceSlotId] The ID of the App Service Slot. Changing this forces a new resource to be created.

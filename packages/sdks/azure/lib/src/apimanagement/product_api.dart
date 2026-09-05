@@ -15,16 +15,16 @@ import 'product_api_state.dart';
 ///     name: "example-api",
 ///     resourceGroupName: "example-resources",
 /// });
-/// const exampleGetApi = Promise.all([example, example]).then(([example, example1]) => azure.apimanagement.getApi({
+/// const exampleGetApi = example.then(example => azure.apimanagement.getApi({
 ///     name: "search-api",
 ///     apiManagementName: example.name,
-///     resourceGroupName: example1.resourceGroupName,
+///     resourceGroupName: example.resourceGroupName,
 ///     revision: "2",
 /// }));
-/// const exampleGetProduct = Promise.all([example, example]).then(([example, example1]) => azure.apimanagement.getProduct({
+/// const exampleGetProduct = example.then(example => azure.apimanagement.getProduct({
 ///     productId: "my-product",
 ///     apiManagementName: example.name,
-///     resourceGroupName: example1.resourceGroupName,
+///     resourceGroupName: example.resourceGroupName,
 /// }));
 /// const exampleProductApi = new azure.apimanagement.ProductApi("example", {
 ///     apiName: exampleGetApi.then(exampleGetApi => exampleGetApi.name),
@@ -294,7 +294,7 @@ class ProductApi extends pulumi.CustomResource {
           'azure:apimanagement/productApi:ProductApi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
@@ -307,11 +307,12 @@ class ProductApi extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProductApiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProductApi._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,6 +326,21 @@ class ProductApi extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiName = registerOutput<String>('apiName');
+    productId = registerOutput<String>('productId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ProductApi] resource.
+  ProductApi.reference(String urn)
+    : super(
+        'azure:apimanagement/productApi:ProductApi',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
     productId = registerOutput<String>('productId');

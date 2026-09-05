@@ -223,6 +223,17 @@ Future<GetApplicationGatewayResult> getApplicationGateway(
   return GetApplicationGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationGatewayResult> getApplicationGatewayOutput(
+  GetApplicationGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getApplicationGateway:getApplicationGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationGatewayResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Application Security Group.
 ///
 /// ## Example Usage
@@ -368,6 +379,17 @@ Future<GetApplicationSecurityGroupResult> getApplicationSecurityGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationSecurityGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationSecurityGroupResult> getApplicationSecurityGroupOutput(
+  GetApplicationSecurityGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getApplicationSecurityGroup:getApplicationSecurityGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationSecurityGroupResult.fromMap);
 }
 
 /// Use this data source to access information about an existing ExpressRoute circuit.
@@ -526,6 +548,17 @@ Future<GetExpressRouteCircuitResult> getExpressRouteCircuit(
   return GetExpressRouteCircuitResult.fromMap(result);
 }
 
+pulumi.Output<GetExpressRouteCircuitResult> getExpressRouteCircuitOutput(
+  GetExpressRouteCircuitArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getExpressRouteCircuit:getExpressRouteCircuit',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRouteCircuitResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Azure Firewall.
 ///
 /// ## Example Usage
@@ -671,6 +704,17 @@ Future<GetFirewallResult> getFirewall(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallResult.fromMap(result);
+}
+
+pulumi.Output<GetFirewallResult> getFirewallOutput(
+  GetFirewallArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getFirewall:getFirewall',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Firewall Policy.
@@ -820,6 +864,17 @@ Future<GetFirewallPolicyResult> getFirewallPolicy(
   return GetFirewallPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallPolicyResult> getFirewallPolicyOutput(
+  GetFirewallPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getFirewallPolicy:getFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Virtual Network Gateway Connection.
 ///
 /// ## Example Usage
@@ -965,6 +1020,17 @@ Future<GetGatewayConnectionResult> getGatewayConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGatewayConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetGatewayConnectionResult> getGatewayConnectionOutput(
+  GetGatewayConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getGatewayConnection:getGatewayConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayConnectionResult.fromMap);
 }
 
 /// Use this data source to access information about an existing IP Group.
@@ -1114,6 +1180,17 @@ Future<GetIpGroupResult> getIpGroup(
   return GetIpGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetIpGroupResult> getIpGroupOutput(
+  GetIpGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getIpGroup:getIpGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpGroupResult.fromMap);
+}
+
 /// Use this data source to access information about existing IP Groups.
 ///
 /// ## Example Usage
@@ -1259,6 +1336,17 @@ Future<GetIpGroupsResult> getIpGroups(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIpGroupsResult.fromMap(result);
+}
+
+pulumi.Output<GetIpGroupsResult> getIpGroupsOutput(
+  GetIpGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getIpGroups:getIpGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpGroupsResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Local Network Gateway.
@@ -1408,6 +1496,17 @@ Future<GetLocalNetworkGatewayResult> getLocalNetworkGateway(
   return GetLocalNetworkGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetLocalNetworkGatewayResult> getLocalNetworkGatewayOutput(
+  GetLocalNetworkGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getLocalNetworkGateway:getLocalNetworkGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocalNetworkGatewayResult.fromMap);
+}
+
 /// Use this data source to access information about an existing NAT Gateway.
 ///
 /// ## API Providers
@@ -1429,6 +1528,17 @@ Future<GetNatGatewayResult> getNatGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNatGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetNatGatewayResult> getNatGatewayOutput(
+  GetNatGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getNatGateway:getNatGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNatGatewayResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Azure Network DDoS Protection Plan.
@@ -1578,6 +1688,17 @@ Future<GetNetworkDdosProtectionPlanResult> getNetworkDdosProtectionPlan(
   return GetNetworkDdosProtectionPlanResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkDdosProtectionPlanResult> getNetworkDdosProtectionPlanOutput(
+  GetNetworkDdosProtectionPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getNetworkDdosProtectionPlan:getNetworkDdosProtectionPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkDdosProtectionPlanResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Network Interface.
 ///
 /// ## Example Usage
@@ -1723,6 +1844,17 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkInterfaceResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
+  GetNetworkInterfaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getNetworkInterface:getNetworkInterface',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkInterfaceResult.fromMap);
 }
 
 /// Use this data source to access information about a Network Manager.
@@ -2017,6 +2149,17 @@ Future<GetNetworkManagerResult> getNetworkManager(
   return GetNetworkManagerResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkManagerResult> getNetworkManagerOutput(
+  GetNetworkManagerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getNetworkManager:getNetworkManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkManagerResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Network Manager Connectivity Configuration.
 ///
 /// ## Example Usage
@@ -2164,6 +2307,17 @@ Future<GetNetworkManagerConnectivityConfigurationResult> getNetworkManagerConnec
   return GetNetworkManagerConnectivityConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkManagerConnectivityConfigurationResult> getNetworkManagerConnectivityConfigurationOutput(
+  GetNetworkManagerConnectivityConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getNetworkManagerConnectivityConfiguration:getNetworkManagerConnectivityConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkManagerConnectivityConfigurationResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Network Manager IPAM Pool.
 ///
 /// ## Example Usage
@@ -2197,7 +2351,7 @@ Future<GetNetworkManagerConnectivityConfigurationResult> getNetworkManagerConnec
 ///     name: exampleNetworkManagerIpamPool.name,
 ///     networkManagerId: exampleNetworkManager.id,
 /// });
-/// export const id = example.apply(example => example.id);
+/// export const id = example.id;
 /// ```
 /// ```python
 /// import pulumi
@@ -2316,7 +2470,7 @@ Future<GetNetworkManagerConnectivityConfigurationResult> getNetworkManagerConnec
 /// 		exampleNetworkManagerIpamPool, err := network.NewNetworkManagerIpamPool(ctx, "example", &network.NetworkManagerIpamPoolArgs{
 /// 			Name:             pulumi.String("example-ipam-pool"),
 /// 			Location:         pulumi.String("West Europe"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:      pulumi.String("example-pool"),
 /// 			AddressPrefixes: pulumi.StringArray{
 /// 				pulumi.String("10.0.0.0/24"),
@@ -2327,11 +2481,9 @@ Future<GetNetworkManagerConnectivityConfigurationResult> getNetworkManagerConnec
 /// 		}
 /// 		example := network.LookupNetworkManagerIpamPoolOutput(ctx, network.GetNetworkManagerIpamPoolOutputArgs{
 /// 			Name:             exampleNetworkManagerIpamPool.Name,
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
-/// 		ctx.Export("id", example.ApplyT(func(example network.GetNetworkManagerIpamPoolResult) (*string, error) {
-/// 			return example.Id, nil
-/// 		}).(pulumi.StringPtrOutput))
+/// 		ctx.Export("id", example.Id())
 /// 		return nil
 /// 	})
 /// }
@@ -2504,6 +2656,17 @@ Future<GetNetworkManagerIpamPoolResult> getNetworkManagerIpamPool(
   return GetNetworkManagerIpamPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkManagerIpamPoolResult> getNetworkManagerIpamPoolOutput(
+  GetNetworkManagerIpamPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getNetworkManagerIpamPool:getNetworkManagerIpamPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkManagerIpamPoolResult.fromMap);
+}
+
 /// Use this data source to access information about a Network Manager Network Group.
 ///
 /// ## Example Usage
@@ -2658,14 +2821,14 @@ Future<GetNetworkManagerIpamPoolResult> getNetworkManagerIpamPool(
 /// 		}
 /// 		exampleNetworkManagerNetworkGroup, err := network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_ = network.LookupNetworkManagerNetworkGroupOutput(ctx, network.GetNetworkManagerNetworkGroupOutputArgs{
 /// 			Name:             exampleNetworkManagerNetworkGroup.Name,
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		return nil
 /// 	})
@@ -2833,6 +2996,17 @@ Future<GetNetworkManagerNetworkGroupResult> getNetworkManagerNetworkGroup(
   return GetNetworkManagerNetworkGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkManagerNetworkGroupResult> getNetworkManagerNetworkGroupOutput(
+  GetNetworkManagerNetworkGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getNetworkManagerNetworkGroup:getNetworkManagerNetworkGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkManagerNetworkGroupResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Network Security Group.
 ///
 /// ## Example Usage
@@ -2980,6 +3154,17 @@ Future<GetNetworkSecurityGroupResult> getNetworkSecurityGroup(
   return GetNetworkSecurityGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkSecurityGroupResult> getNetworkSecurityGroupOutput(
+  GetNetworkSecurityGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getNetworkSecurityGroup:getNetworkSecurityGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkSecurityGroupResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Network Security Perimeter.
 ///
 /// ## Example Usage
@@ -3125,6 +3310,17 @@ Future<GetNetworkSecurityPerimeterResult> getNetworkSecurityPerimeter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkSecurityPerimeterResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkSecurityPerimeterResult> getNetworkSecurityPerimeterOutput(
+  GetNetworkSecurityPerimeterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getNetworkSecurityPerimeter:getNetworkSecurityPerimeter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkSecurityPerimeterResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Network Security Perimeter Profile.
@@ -3309,6 +3505,17 @@ Future<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerimeterProf
   return GetNetworkSecurityPerimeterProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerimeterProfileOutput(
+  GetNetworkSecurityPerimeterProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getNetworkSecurityPerimeterProfile:getNetworkSecurityPerimeterProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkSecurityPerimeterProfileResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Network Watcher.
 ///
 /// ## Example Usage
@@ -3454,6 +3661,17 @@ Future<GetNetworkWatcherResult> getNetworkWatcher(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkWatcherResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkWatcherResult> getNetworkWatcherOutput(
+  GetNetworkWatcherArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getNetworkWatcher:getNetworkWatcher',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkWatcherResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Public IP Address.
@@ -3649,7 +3867,7 @@ Future<GetNetworkWatcherResult> getNetworkWatcher(
 ///     name: examplePublicIp.name,
 ///     resourceGroupName: exampleVirtualMachine.resourceGroupName,
 /// });
-/// export const publicIpAddress = example.apply(example => example.ipAddress);
+/// export const publicIpAddress = example.ipAddress;
 /// ```
 /// ```python
 /// import pulumi
@@ -3848,10 +4066,10 @@ Future<GetNetworkWatcherResult> getNetworkWatcher(
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("testconfiguration1"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Static"),
 /// 					PrivateIpAddress:           pulumi.String("10.0.2.5"),
-/// 					PublicIpAddressId:          examplePublicIp.ID(),
+/// 					PublicIpAddressId:          examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -3863,7 +4081,7 @@ Future<GetNetworkWatcherResult> getNetworkWatcher(
 /// 			Location:          exampleResourceGroup.Location,
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -3873,9 +4091,7 @@ Future<GetNetworkWatcherResult> getNetworkWatcher(
 /// 			Name:              examplePublicIp.Name,
 /// 			ResourceGroupName: exampleVirtualMachine.ResourceGroupName,
 /// 		}, nil)
-/// 		ctx.Export("publicIpAddress", example.ApplyT(func(example network.GetPublicIPResult) (*string, error) {
-/// 			return example.IpAddress, nil
-/// 		}).(pulumi.StringPtrOutput))
+/// 		ctx.Export("publicIpAddress", example.IpAddress())
 /// 		return nil
 /// 	})
 /// }
@@ -4125,6 +4341,17 @@ Future<GetPublicIPResult> getPublicIP(
   return GetPublicIPResult.fromMap(result);
 }
 
+pulumi.Output<GetPublicIPResult> getPublicIPOutput(
+  GetPublicIPArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getPublicIP:getPublicIP',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicIPResult.fromMap);
+}
+
 /// Use this data source to access information about a set of existing Public IP Addresses.
 ///
 /// ## Example Usage
@@ -4256,6 +4483,17 @@ Future<GetPublicIPsResult> getPublicIPs(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublicIPsResult.fromMap(result);
+}
+
+pulumi.Output<GetPublicIPsResult> getPublicIPsOutput(
+  GetPublicIPsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getPublicIPs:getPublicIPs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicIPsResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Public IP Prefix.
@@ -4407,6 +4645,17 @@ Future<GetPublicIpPrefixResult> getPublicIpPrefix(
   return GetPublicIpPrefixResult.fromMap(result);
 }
 
+pulumi.Output<GetPublicIpPrefixResult> getPublicIpPrefixOutput(
+  GetPublicIpPrefixArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getPublicIpPrefix:getPublicIpPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicIpPrefixResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Route Filter.
 ///
 /// ## Example Usage
@@ -4554,6 +4803,17 @@ Future<GetRouteFilterResult> getRouteFilter(
   return GetRouteFilterResult.fromMap(result);
 }
 
+pulumi.Output<GetRouteFilterResult> getRouteFilterOutput(
+  GetRouteFilterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getRouteFilter:getRouteFilter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteFilterResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Route Table.
 ///
 /// ## Example Usage
@@ -4685,6 +4945,17 @@ Future<GetRouteTableResult> getRouteTable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouteTableResult.fromMap(result);
+}
+
+pulumi.Output<GetRouteTableResult> getRouteTableOutput(
+  GetRouteTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getRouteTable:getRouteTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteTableResult.fromMap);
 }
 
 /// Use this data source to access information about Service Tags.
@@ -4850,6 +5121,17 @@ Future<GetServiceTagsResult> getServiceTags(
   return GetServiceTagsResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceTagsResult> getServiceTagsOutput(
+  GetServiceTagsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getServiceTags:getServiceTags',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceTagsResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Subnet within a Virtual Network.
 ///
 /// ## Example Usage
@@ -5004,6 +5286,17 @@ Future<GetSubnetResult> getSubnet(
   return GetSubnetResult.fromMap(result);
 }
 
+pulumi.Output<GetSubnetResult> getSubnetOutput(
+  GetSubnetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getSubnet:getSubnet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetResult.fromMap);
+}
+
 /// Use this data source to access the ID of a specified Traffic Manager Geographical Location within the Geographical Hierarchy.
 ///
 /// ## Example Usage
@@ -5144,6 +5437,17 @@ Future<GetTrafficManagerResult> getTrafficManager(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTrafficManagerResult.fromMap(result);
+}
+
+pulumi.Output<GetTrafficManagerResult> getTrafficManagerOutput(
+  GetTrafficManagerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getTrafficManager:getTrafficManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrafficManagerResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Traffic Manager Profile.
@@ -5293,6 +5597,17 @@ Future<GetTrafficManagerProfileResult> getTrafficManagerProfile(
   return GetTrafficManagerProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetTrafficManagerProfileResult> getTrafficManagerProfileOutput(
+  GetTrafficManagerProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getTrafficManagerProfile:getTrafficManagerProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrafficManagerProfileResult.fromMap);
+}
+
 /// Uses this data source to access information about an existing Virtual Hub.
 ///
 /// ## Virtual Hub Usage
@@ -5438,6 +5753,17 @@ Future<GetVirtualHubResult> getVirtualHub(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualHubResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualHubResult> getVirtualHubOutput(
+  GetVirtualHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getVirtualHub:getVirtualHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualHubResult.fromMap);
 }
 
 /// Uses this data source to access information about an existing Virtual Hub Connection.
@@ -5594,6 +5920,17 @@ Future<GetVirtualHubConnectionResult> getVirtualHubConnection(
   return GetVirtualHubConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualHubConnectionResult> getVirtualHubConnectionOutput(
+  GetVirtualHubConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getVirtualHubConnection:getVirtualHubConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualHubConnectionResult.fromMap);
+}
+
 /// Uses this data source to access information about an existing Virtual Hub Route Table.
 ///
 /// ## Virtual Hub Route Table Usage
@@ -5748,6 +6085,17 @@ Future<GetVirtualHubRouteTableResult> getVirtualHubRouteTable(
   return GetVirtualHubRouteTableResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualHubRouteTableResult> getVirtualHubRouteTableOutput(
+  GetVirtualHubRouteTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getVirtualHubRouteTable:getVirtualHubRouteTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualHubRouteTableResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Virtual Network.
 ///
 /// ## Example Usage
@@ -5895,6 +6243,17 @@ Future<GetVirtualNetworkResult> getVirtualNetwork(
   return GetVirtualNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkResult> getVirtualNetworkOutput(
+  GetVirtualNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getVirtualNetwork:getVirtualNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Virtual Network Gateway.
 ///
 /// ## Example Usage
@@ -6040,6 +6399,17 @@ Future<GetVirtualNetworkGatewayResult> getVirtualNetworkGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkGatewayResult> getVirtualNetworkGatewayOutput(
+  GetVirtualNetworkGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getVirtualNetworkGateway:getVirtualNetworkGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayResult.fromMap);
 }
 
 /// Use this data source to access information about an existing virtual network peering.
@@ -6222,6 +6592,17 @@ Future<GetVirtualNetworkPeeringResult> getVirtualNetworkPeering(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkPeeringResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkPeeringResult> getVirtualNetworkPeeringOutput(
+  GetVirtualNetworkPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getVirtualNetworkPeering:getVirtualNetworkPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkPeeringResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Virtual Wan.
@@ -6443,6 +6824,17 @@ Future<GetVirtualWanResult> getVirtualWan(
   return GetVirtualWanResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualWanResult> getVirtualWanOutput(
+  GetVirtualWanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getVirtualWan:getVirtualWan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualWanResult.fromMap);
+}
+
 /// Use this data source to access information about an existing VPN Gateway within a Virtual Hub.
 ///
 /// ## Example Usage
@@ -6590,6 +6982,17 @@ Future<GetVpnGatewayResult> getVpnGateway(
   return GetVpnGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetVpnGatewayResult> getVpnGatewayOutput(
+  GetVpnGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getVpnGateway:getVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnGatewayResult.fromMap);
+}
+
 /// Use this data source to access information about an existing VPN Server Configuration.
 ///
 /// ## Example Usage
@@ -6735,4 +7138,15 @@ Future<GetVpnServerConfigurationResult> getVpnServerConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpnServerConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetVpnServerConfigurationResult> getVpnServerConfigurationOutput(
+  GetVpnServerConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:network/getVpnServerConfiguration:getVpnServerConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnServerConfigurationResult.fromMap);
 }

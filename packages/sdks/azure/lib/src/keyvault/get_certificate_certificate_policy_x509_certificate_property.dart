@@ -45,7 +45,7 @@ class GetCertificateCertificatePolicyX509CertificateProperty {
       keyUsages: pulumi.Input.fromValue((map['keyUsages'] as List).cast<String>()),
       subject: pulumi.Input.fromValue(map['subject'] as String),
       subjectAlternativeNames: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName>(map['subjectAlternativeNames']!, (value) => GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName.fromMap((value as Map).cast<String, dynamic>()))),
-      validityInMonths: pulumi.Input.fromValue(map['validityInMonths'] as int),
+      validityInMonths: pulumi.Input.fromValue((map['validityInMonths'] as num).toInt()),
     );
   }
 }

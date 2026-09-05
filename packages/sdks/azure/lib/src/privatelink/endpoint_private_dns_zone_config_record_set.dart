@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointPrivateDnsZoneConfigRecordSet {
   /// The fully qualified domain name to the `privateDnsZone`.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// A list of all IP Addresses that map to the `privateDnsZone` fqdn.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
   /// Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The time to live for each connection to the `privateDnsZone`.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
   /// The type of DNS record.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EndpointPrivateDnsZoneConfigRecordSet].
   /// [fqdn] The fully qualified domain name to the `privateDnsZone`.
@@ -43,7 +43,7 @@ class EndpointPrivateDnsZoneConfigRecordSet {
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddresses: (() { final guardedValue = map['ipAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'factory_args.dart';
 import 'factory_github_configuration.dart';
+import 'factory_global_parameter.dart';
 import 'factory_identity.dart';
 import 'factory_state.dart';
 import 'factory_vsts_configuration.dart';
@@ -184,7 +185,7 @@ class Factory extends pulumi.CustomResource {
   /// A `githubConfiguration` block as defined below.
   late final pulumi.Output<FactoryGithubConfiguration?> githubConfiguration;
   /// A list of `globalParameter` blocks as defined above.
-  late final pulumi.Output<List<Map<String, dynamic>>?> globalParameters;
+  late final pulumi.Output<List<FactoryGlobalParameter>?> globalParameters;
   /// An `identity` block as defined below.
   late final pulumi.Output<FactoryIdentity?> identity;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
@@ -216,12 +217,12 @@ class Factory extends pulumi.CustomResource {
           'azure:datafactory/factory:Factory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
     customerManagedKeyIdentityId = registerOutput<String>('customerManagedKeyIdentityId');
     githubConfiguration = registerOutput<FactoryGithubConfiguration?>('githubConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryGithubConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    globalParameters = registerOutput<List<Map<String, dynamic>>?>('globalParameters');
+    globalParameters = registerOutput<List<FactoryGlobalParameter>?>('globalParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FactoryGlobalParameter>(guardedValue, (value) => FactoryGlobalParameter.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<FactoryIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     managedVirtualNetworkEnabled = registerOutput<bool?>('managedVirtualNetworkEnabled');
@@ -229,7 +230,7 @@ class Factory extends pulumi.CustomResource {
     publicNetworkEnabled = registerOutput<bool?>('publicNetworkEnabled');
     purviewId = registerOutput<String?>('purviewId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vstsConfiguration = registerOutput<FactoryVstsConfiguration?>('vstsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryVstsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -238,11 +239,12 @@ class Factory extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FactoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Factory._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -259,7 +261,7 @@ class Factory extends pulumi.CustomResource {
     customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
     customerManagedKeyIdentityId = registerOutput<String>('customerManagedKeyIdentityId');
     githubConfiguration = registerOutput<FactoryGithubConfiguration?>('githubConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryGithubConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    globalParameters = registerOutput<List<Map<String, dynamic>>?>('globalParameters');
+    globalParameters = registerOutput<List<FactoryGlobalParameter>?>('globalParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FactoryGlobalParameter>(guardedValue, (value) => FactoryGlobalParameter.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<FactoryIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     managedVirtualNetworkEnabled = registerOutput<bool?>('managedVirtualNetworkEnabled');
@@ -267,7 +269,31 @@ class Factory extends pulumi.CustomResource {
     publicNetworkEnabled = registerOutput<bool?>('publicNetworkEnabled');
     purviewId = registerOutput<String?>('purviewId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vstsConfiguration = registerOutput<FactoryVstsConfiguration?>('vstsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryVstsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Factory] resource.
+  Factory.reference(String urn)
+    : super(
+        'azure:datafactory/factory:Factory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
+    customerManagedKeyIdentityId = registerOutput<String>('customerManagedKeyIdentityId');
+    githubConfiguration = registerOutput<FactoryGithubConfiguration?>('githubConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryGithubConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    globalParameters = registerOutput<List<FactoryGlobalParameter>?>('globalParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FactoryGlobalParameter>(guardedValue, (value) => FactoryGlobalParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<FactoryIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managedVirtualNetworkEnabled = registerOutput<bool?>('managedVirtualNetworkEnabled');
+    this.name = registerOutput<String>('name');
+    publicNetworkEnabled = registerOutput<bool?>('publicNetworkEnabled');
+    purviewId = registerOutput<String?>('purviewId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vstsConfiguration = registerOutput<FactoryVstsConfiguration?>('vstsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryVstsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

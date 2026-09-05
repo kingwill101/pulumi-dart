@@ -388,7 +388,7 @@ import 'volume_quota_rule_state.dart';
 /// 			PoolName:          examplePool.Name,
 /// 			VolumePath:        pulumi.String("my-unique-file-path"),
 /// 			ServiceLevel:      pulumi.String("Premium"),
-/// 			SubnetId:          exampleSubnet.ID(),
+/// 			SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkFeatures:   pulumi.String("Basic"),
 /// 			Protocols: pulumi.StringArray{
 /// 				pulumi.String("NFSv4.1"),
@@ -403,7 +403,7 @@ import 'volume_quota_rule_state.dart';
 /// 		_, err = netapp.NewVolumeQuotaRule(ctx, "quota1", &netapp.VolumeQuotaRuleArgs{
 /// 			Name:           pulumi.String("example-quota-rule-1"),
 /// 			Location:       example.Location,
-/// 			VolumeId:       exampleVolume.ID(),
+/// 			VolumeId:       exampleVolume.ID().ToIDOutput().ToStringOutput(),
 /// 			QuotaTarget:    pulumi.String("3001"),
 /// 			QuotaSizeInKib: pulumi.Int(1024),
 /// 			QuotaType:      pulumi.String("IndividualGroupQuota"),
@@ -414,7 +414,7 @@ import 'volume_quota_rule_state.dart';
 /// 		_, err = netapp.NewVolumeQuotaRule(ctx, "quota2", &netapp.VolumeQuotaRuleArgs{
 /// 			Name:           pulumi.String("example-quota-rule-2"),
 /// 			Location:       example.Location,
-/// 			VolumeId:       exampleVolume.ID(),
+/// 			VolumeId:       exampleVolume.ID().ToIDOutput().ToStringOutput(),
 /// 			QuotaTarget:    pulumi.String("2001"),
 /// 			QuotaSizeInKib: pulumi.Int(1024),
 /// 			QuotaType:      pulumi.String("IndividualUserQuota"),
@@ -425,7 +425,7 @@ import 'volume_quota_rule_state.dart';
 /// 		_, err = netapp.NewVolumeQuotaRule(ctx, "quota3", &netapp.VolumeQuotaRuleArgs{
 /// 			Name:           pulumi.String("example-quota-rule-3"),
 /// 			Location:       example.Location,
-/// 			VolumeId:       exampleVolume.ID(),
+/// 			VolumeId:       exampleVolume.ID().ToIDOutput().ToStringOutput(),
 /// 			QuotaSizeInKib: pulumi.Int(1024),
 /// 			QuotaType:      pulumi.String("DefaultUserQuota"),
 /// 		})
@@ -435,7 +435,7 @@ import 'volume_quota_rule_state.dart';
 /// 		_, err = netapp.NewVolumeQuotaRule(ctx, "quota4", &netapp.VolumeQuotaRuleArgs{
 /// 			Name:           pulumi.String("example-quota-rule-4"),
 /// 			Location:       example.Location,
-/// 			VolumeId:       exampleVolume.ID(),
+/// 			VolumeId:       exampleVolume.ID().ToIDOutput().ToStringOutput(),
 /// 			QuotaSizeInKib: pulumi.Int(1024),
 /// 			QuotaType:      pulumi.String("DefaultGroupQuota"),
 /// 		})
@@ -819,7 +819,7 @@ class VolumeQuotaRule extends pulumi.CustomResource {
           'azure:netapp/volumeQuotaRule:VolumeQuotaRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -834,11 +834,12 @@ class VolumeQuotaRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeQuotaRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeQuotaRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -852,6 +853,23 @@ class VolumeQuotaRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    quotaSizeInKib = registerOutput<int>('quotaSizeInKib');
+    quotaTarget = registerOutput<String?>('quotaTarget');
+    quotaType = registerOutput<String>('quotaType');
+    volumeId = registerOutput<String>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [VolumeQuotaRule] resource.
+  VolumeQuotaRule.reference(String urn)
+    : super(
+        'azure:netapp/volumeQuotaRule:VolumeQuotaRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     quotaSizeInKib = registerOutput<int>('quotaSizeInKib');

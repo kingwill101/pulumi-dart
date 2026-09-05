@@ -1,6 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_rule_anomaly_built_in_args.dart';
+import 'alert_rule_anomaly_built_in_multi_select_observation.dart';
+import 'alert_rule_anomaly_built_in_prioritized_exclude_observation.dart';
+import 'alert_rule_anomaly_built_in_required_data_connector.dart';
+import 'alert_rule_anomaly_built_in_single_select_observation.dart';
 import 'alert_rule_anomaly_built_in_state.dart';
+import 'alert_rule_anomaly_built_in_threshold_observation.dart';
 
 /// ## Disclaimers
 ///
@@ -136,7 +141,7 @@ import 'alert_rule_anomaly_built_in_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId:               exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId:               exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			CustomerManagedKeyEnabled: pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
@@ -148,7 +153,7 @@ import 'alert_rule_anomaly_built_in_state.dart';
 /// 		}, nil)
 /// 		_, err = sentinel.NewAlertRuleAnomalyBuiltIn(ctx, "example", &sentinel.AlertRuleAnomalyBuiltInArgs{
 /// 			DisplayName:             pulumi.String("Potential data staging"),
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Mode:                    pulumi.String("Production"),
 /// 			Enabled:                 pulumi.Bool(false),
 /// 		})
@@ -322,23 +327,23 @@ class AlertRuleAnomalyBuiltIn extends pulumi.CustomResource {
   /// mode of the Built-in Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   late final pulumi.Output<String> mode;
   /// A list of `multiSelectObservation` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> multiSelectObservations;
+  late final pulumi.Output<List<AlertRuleAnomalyBuiltInMultiSelectObservation>> multiSelectObservations;
   /// The Name of the built-in Anomaly Alert Rule.
   late final pulumi.Output<String> name;
   /// A list of `prioritizedExcludeObservation` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> prioritizedExcludeObservations;
+  late final pulumi.Output<List<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>> prioritizedExcludeObservations;
   /// A `requiredDataConnector` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> requiredDataConnectors;
+  late final pulumi.Output<List<AlertRuleAnomalyBuiltInRequiredDataConnector>> requiredDataConnectors;
   /// The ID of the anomaly settings definition Id.
   late final pulumi.Output<String> settingsDefinitionId;
   /// A list of `singleSelectObservation` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> singleSelectObservations;
+  late final pulumi.Output<List<AlertRuleAnomalyBuiltInSingleSelectObservation>> singleSelectObservations;
   /// A list of categories of attacks by which to classify the rule.
   late final pulumi.Output<List<String>> tactics;
   /// A list of techniques of attacks by which to classify the rule.
   late final pulumi.Output<List<String>> techniques;
   /// A list of `thresholdObservation` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> thresholdObservations;
+  late final pulumi.Output<List<AlertRuleAnomalyBuiltInThresholdObservation>> thresholdObservations;
 
   /// Creates a new [AlertRuleAnomalyBuiltIn].
   /// [name] The Pulumi resource name.
@@ -352,7 +357,7 @@ class AlertRuleAnomalyBuiltIn extends pulumi.CustomResource {
           'azure:sentinel/alertRuleAnomalyBuiltIn:AlertRuleAnomalyBuiltIn',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     anomalySettingsVersion = registerOutput<int>('anomalySettingsVersion');
     anomalyVersion = registerOutput<String>('anomalyVersion');
@@ -362,15 +367,15 @@ class AlertRuleAnomalyBuiltIn extends pulumi.CustomResource {
     frequency = registerOutput<String>('frequency');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     mode = registerOutput<String>('mode');
-    multiSelectObservations = registerOutput<List<Map<String, dynamic>>>('multiSelectObservations');
+    multiSelectObservations = registerOutput<List<AlertRuleAnomalyBuiltInMultiSelectObservation>>('multiSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInMultiSelectObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInMultiSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    prioritizedExcludeObservations = registerOutput<List<Map<String, dynamic>>>('prioritizedExcludeObservations');
-    requiredDataConnectors = registerOutput<List<Map<String, dynamic>>>('requiredDataConnectors');
+    prioritizedExcludeObservations = registerOutput<List<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>>('prioritizedExcludeObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInPrioritizedExcludeObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    requiredDataConnectors = registerOutput<List<AlertRuleAnomalyBuiltInRequiredDataConnector>>('requiredDataConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInRequiredDataConnector>(guardedValue, (value) => AlertRuleAnomalyBuiltInRequiredDataConnector.fromMap((value as Map).cast<String, dynamic>())); });
     settingsDefinitionId = registerOutput<String>('settingsDefinitionId');
-    singleSelectObservations = registerOutput<List<Map<String, dynamic>>>('singleSelectObservations');
-    tactics = registerOutput<List<String>>('tactics');
-    techniques = registerOutput<List<String>>('techniques');
-    thresholdObservations = registerOutput<List<Map<String, dynamic>>>('thresholdObservations');
+    singleSelectObservations = registerOutput<List<AlertRuleAnomalyBuiltInSingleSelectObservation>>('singleSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInSingleSelectObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInSingleSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    tactics = registerOutput<List<String>>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    thresholdObservations = registerOutput<List<AlertRuleAnomalyBuiltInThresholdObservation>>('thresholdObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInThresholdObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInThresholdObservation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AlertRuleAnomalyBuiltIn] resource's state with the given [name] and [id].
@@ -378,11 +383,12 @@ class AlertRuleAnomalyBuiltIn extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlertRuleAnomalyBuiltInState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AlertRuleAnomalyBuiltIn._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -404,14 +410,42 @@ class AlertRuleAnomalyBuiltIn extends pulumi.CustomResource {
     frequency = registerOutput<String>('frequency');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     mode = registerOutput<String>('mode');
-    multiSelectObservations = registerOutput<List<Map<String, dynamic>>>('multiSelectObservations');
+    multiSelectObservations = registerOutput<List<AlertRuleAnomalyBuiltInMultiSelectObservation>>('multiSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInMultiSelectObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInMultiSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    prioritizedExcludeObservations = registerOutput<List<Map<String, dynamic>>>('prioritizedExcludeObservations');
-    requiredDataConnectors = registerOutput<List<Map<String, dynamic>>>('requiredDataConnectors');
+    prioritizedExcludeObservations = registerOutput<List<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>>('prioritizedExcludeObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInPrioritizedExcludeObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    requiredDataConnectors = registerOutput<List<AlertRuleAnomalyBuiltInRequiredDataConnector>>('requiredDataConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInRequiredDataConnector>(guardedValue, (value) => AlertRuleAnomalyBuiltInRequiredDataConnector.fromMap((value as Map).cast<String, dynamic>())); });
     settingsDefinitionId = registerOutput<String>('settingsDefinitionId');
-    singleSelectObservations = registerOutput<List<Map<String, dynamic>>>('singleSelectObservations');
-    tactics = registerOutput<List<String>>('tactics');
-    techniques = registerOutput<List<String>>('techniques');
-    thresholdObservations = registerOutput<List<Map<String, dynamic>>>('thresholdObservations');
+    singleSelectObservations = registerOutput<List<AlertRuleAnomalyBuiltInSingleSelectObservation>>('singleSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInSingleSelectObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInSingleSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    tactics = registerOutput<List<String>>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    thresholdObservations = registerOutput<List<AlertRuleAnomalyBuiltInThresholdObservation>>('thresholdObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInThresholdObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInThresholdObservation.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AlertRuleAnomalyBuiltIn] resource.
+  AlertRuleAnomalyBuiltIn.reference(String urn)
+    : super(
+        'azure:sentinel/alertRuleAnomalyBuiltIn:AlertRuleAnomalyBuiltIn',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    anomalySettingsVersion = registerOutput<int>('anomalySettingsVersion');
+    anomalyVersion = registerOutput<String>('anomalyVersion');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    frequency = registerOutput<String>('frequency');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    mode = registerOutput<String>('mode');
+    multiSelectObservations = registerOutput<List<AlertRuleAnomalyBuiltInMultiSelectObservation>>('multiSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInMultiSelectObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInMultiSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    prioritizedExcludeObservations = registerOutput<List<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>>('prioritizedExcludeObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInPrioritizedExcludeObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInPrioritizedExcludeObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    requiredDataConnectors = registerOutput<List<AlertRuleAnomalyBuiltInRequiredDataConnector>>('requiredDataConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInRequiredDataConnector>(guardedValue, (value) => AlertRuleAnomalyBuiltInRequiredDataConnector.fromMap((value as Map).cast<String, dynamic>())); });
+    settingsDefinitionId = registerOutput<String>('settingsDefinitionId');
+    singleSelectObservations = registerOutput<List<AlertRuleAnomalyBuiltInSingleSelectObservation>>('singleSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInSingleSelectObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInSingleSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    tactics = registerOutput<List<String>>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    thresholdObservations = registerOutput<List<AlertRuleAnomalyBuiltInThresholdObservation>>('thresholdObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyBuiltInThresholdObservation>(guardedValue, (value) => AlertRuleAnomalyBuiltInThresholdObservation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

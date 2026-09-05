@@ -14,7 +14,7 @@ class CertificateArgs {
   /// The format of the certificate. Possible values are `Cer` or `Pfx`.
   final pulumi.Input<String> format;
   /// The password to access the certificate's private key. This can only be specified when `format` is `Pfx`.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The name of the resource group in which to create the Batch account. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The thumbprint of the certificate. Changing this forces a new resource to be created.

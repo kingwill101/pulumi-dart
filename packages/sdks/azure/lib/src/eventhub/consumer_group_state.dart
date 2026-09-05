@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ConsumerGroup resources.
 class ConsumerGroupState {
   /// Specifies the name of the EventHub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventhubName;
+  final pulumi.Input<String?>? eventhubName;
   /// Specifies the name of the EventHub Consumer Group resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the grandparent EventHub Namespace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Specifies the user metadata.
-  final pulumi.Input<String>? userMetadata;
+  final pulumi.Input<String?>? userMetadata;
 
   /// Creates a new [ConsumerGroupState].
   /// [eventhubName] Specifies the name of the EventHub. Changing this forces a new resource to be created.

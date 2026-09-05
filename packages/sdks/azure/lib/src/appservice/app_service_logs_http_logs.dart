@@ -6,9 +6,9 @@ import 'app_service_logs_http_logs_file_system.dart';
 
 class AppServiceLogsHttpLogs {
   /// An `azureBlobStorage` block as defined below.
-  final pulumi.Input<AppServiceLogsHttpLogsAzureBlobStorage>? azureBlobStorage;
+  final pulumi.Input<AppServiceLogsHttpLogsAzureBlobStorage?>? azureBlobStorage;
   /// A `fileSystem` block as defined below.
-  final pulumi.Input<AppServiceLogsHttpLogsFileSystem>? fileSystem;
+  final pulumi.Input<AppServiceLogsHttpLogsFileSystem?>? fileSystem;
 
   /// Creates a new [AppServiceLogsHttpLogs].
   /// [azureBlobStorage] An `azureBlobStorage` block as defined below.

@@ -10,11 +10,11 @@ class EventHubAuthorizationRuleArgs {
   /// Specifies the name of the EventHub. Changing this forces a new resource to be created.
   final pulumi.Input<String> eventhubName;
   /// Does this Authorization Rule have permissions to Listen to the Event Hub? Defaults to `false`.
-  final pulumi.Input<bool>? listen;
+  final pulumi.Input<bool?>? listen;
   /// Does this Authorization Rule have permissions to Manage to the Event Hub? When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
-  final pulumi.Input<bool>? manage;
+  final pulumi.Input<bool?>? manage;
   /// Specifies the name of the EventHub Authorization Rule resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the grandparent EventHub Namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String> namespaceName;
   /// The name of the resource group in which the EventHub Namespace exists. Changing this forces a new resource to be created.
@@ -22,7 +22,7 @@ class EventHubAuthorizationRuleArgs {
   /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
   final pulumi.Input<String> resourceGroupName;
   /// Does this Authorization Rule have permissions to Send to the Event Hub? Defaults to `false`.
-  final pulumi.Input<bool>? send;
+  final pulumi.Input<bool?>? send;
 
   /// Creates a new [EventHubAuthorizationRuleArgs].
   /// [eventhubName] Specifies the name of the EventHub. Changing this forces a new resource to be created.

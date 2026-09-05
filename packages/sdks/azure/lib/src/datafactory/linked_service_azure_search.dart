@@ -37,7 +37,7 @@ import 'linked_service_azure_search_state.dart';
 ///             exampleService.name,
 ///             ".search.windows.net",
 ///         ],
-///     }).apply(invoke => invoke.result),
+///     }).result,
 ///     searchServiceKey: exampleService.primaryKey,
 /// });
 /// ```
@@ -66,7 +66,7 @@ import 'linked_service_azure_search_state.dart';
 ///             "https://",
 ///             example_service.name,
 ///             ".search.windows.net",
-///         ]).apply(lambda invoke: invoke.result),
+///         ]).result,
 ///     search_service_key=example_service.primary_key)
 /// ```
 /// ```csharp
@@ -157,18 +157,15 @@ import 'linked_service_azure_search_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceAzureSearch(ctx, "test", &datafactory.LinkedServiceAzureSearchArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
-/// 			Url: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			Url: std.JoinOutput(ctx, std.JoinOutputArgs{
 /// 				Separator: pulumi.String(""),
 /// 				Input: pulumi.StringArray{
 /// 					pulumi.String("https://"),
 /// 					exampleService.Name,
 /// 					pulumi.String(".search.windows.net"),
 /// 				},
-/// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				val := invoke.Result
-/// 				return &val, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}, nil).Result(),
 /// 			SearchServiceKey: exampleService.PrimaryKey,
 /// 		})
 /// 		if err != nil {
@@ -359,16 +356,16 @@ class LinkedServiceAzureSearch extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceAzureSearch:LinkedServiceAzureSearch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     encryptedCredential = registerOutput<String>('encryptedCredential');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     searchServiceKey = registerOutput<String>('searchServiceKey');
     url = registerOutput<String>('url');
   }
@@ -378,11 +375,12 @@ class LinkedServiceAzureSearch extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceAzureSearchState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceAzureSearch._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -396,14 +394,35 @@ class LinkedServiceAzureSearch extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     encryptedCredential = registerOutput<String>('encryptedCredential');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    searchServiceKey = registerOutput<String>('searchServiceKey');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceAzureSearch] resource.
+  LinkedServiceAzureSearch.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceAzureSearch:LinkedServiceAzureSearch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    encryptedCredential = registerOutput<String>('encryptedCredential');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     searchServiceKey = registerOutput<String>('searchServiceKey');
     url = registerOutput<String>('url');
   }

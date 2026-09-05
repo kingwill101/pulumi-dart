@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkSubnetSharedPublicIpAddressAllowedPort {
   /// The port on the Virtual Machine that the traffic will be sent to.
-  final pulumi.Input<int>? backendPort;
+  final pulumi.Input<int?>? backendPort;
   /// The transport protocol that the traffic will use. Possible values are `TCP` and `UDP`.
-  final pulumi.Input<String>? transportProtocol;
+  final pulumi.Input<String?>? transportProtocol;
 
   /// Creates a new [VirtualNetworkSubnetSharedPublicIpAddressAllowedPort].
   /// [backendPort] The port on the Virtual Machine that the traffic will be sent to.
@@ -25,7 +25,7 @@ class VirtualNetworkSubnetSharedPublicIpAddressAllowedPort {
 
   factory VirtualNetworkSubnetSharedPublicIpAddressAllowedPort.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetSharedPublicIpAddressAllowedPort(
-      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       transportProtocol: (() { final guardedValue = map['transportProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

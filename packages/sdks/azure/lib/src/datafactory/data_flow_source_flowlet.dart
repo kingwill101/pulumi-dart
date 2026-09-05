@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataFlowSourceFlowlet {
   /// Specifies the reference data flow parameters from dataset.
-  final pulumi.Input<String>? datasetParameters;
+  final pulumi.Input<String?>? datasetParameters;
   /// The name for the Data Factory Flowlet.
   final pulumi.Input<String> name;
   /// A map of parameters to associate with the Data Factory Flowlet.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [DataFlowSourceFlowlet].
   /// [datasetParameters] Specifies the reference data flow parameters from dataset.

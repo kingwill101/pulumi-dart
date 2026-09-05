@@ -120,7 +120,7 @@ import 'account_static_website_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = storage.NewAccountStaticWebsite(ctx, "example", &storage.AccountStaticWebsiteArgs{
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Error404Document: pulumi.String("custom_not_found.html"),
 /// 			IndexDocument:    pulumi.String("custom_index.html"),
 /// 		})
@@ -263,7 +263,7 @@ class AccountStaticWebsiteStorage extends pulumi.CustomResource {
           'azure:storage/accountStaticWebsite:AccountStaticWebsite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     error404Document = registerOutput<String?>('error404Document');
     indexDocument = registerOutput<String?>('indexDocument');
@@ -275,11 +275,12 @@ class AccountStaticWebsiteStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountStaticWebsiteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountStaticWebsiteStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -293,6 +294,20 @@ class AccountStaticWebsiteStorage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    error404Document = registerOutput<String?>('error404Document');
+    indexDocument = registerOutput<String?>('indexDocument');
+    storageAccountId = registerOutput<String>('storageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [AccountStaticWebsiteStorage] resource.
+  AccountStaticWebsiteStorage.reference(String urn)
+    : super(
+        'azure:storage/accountStaticWebsite:AccountStaticWebsite',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     error404Document = registerOutput<String?>('error404Document');
     indexDocument = registerOutput<String?>('indexDocument');
     storageAccountId = registerOutput<String>('storageAccountId');

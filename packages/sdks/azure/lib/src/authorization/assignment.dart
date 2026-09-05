@@ -1453,7 +1453,7 @@ class Assignment extends pulumi.CustomResource {
           'azure:authorization/assignment:Assignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     condition = registerOutput<String?>('condition');
     conditionVersion = registerOutput<String>('conditionVersion');
@@ -1473,11 +1473,12 @@ class Assignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Assignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1491,6 +1492,28 @@ class Assignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<String?>('condition');
+    conditionVersion = registerOutput<String>('conditionVersion');
+    delegatedManagedIdentityResourceId = registerOutput<String?>('delegatedManagedIdentityResourceId');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    roleDefinitionName = registerOutput<String>('roleDefinitionName');
+    scope = registerOutput<String>('scope');
+    skipServicePrincipalAadCheck = registerOutput<bool>('skipServicePrincipalAadCheck');
+  }
+
+  /// Creates a typed reference to an existing [Assignment] resource.
+  Assignment.reference(String urn)
+    : super(
+        'azure:authorization/assignment:Assignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<String?>('condition');
     conditionVersion = registerOutput<String>('conditionVersion');
     delegatedManagedIdentityResourceId = registerOutput<String?>('delegatedManagedIdentityResourceId');

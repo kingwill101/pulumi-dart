@@ -11,21 +11,21 @@ class ExascaleDatabaseStorageVaultArgs {
   /// The size of additional Flash Cache in percentage of High Capacity database storage. Changing this forces a new Exadata Database Storage Vault to be created.
   final pulumi.Input<int> additionalFlashCachePercentage;
   /// Exadata Database Storage Vault description. Changing this forces a new Exadata Database Storage Vault to be created.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The user-friendly name for the Exadata Database Storage Vault resource. The name does not need to be unique. Changing this forces a new Exadata Database Storage Vault to be created.
   final pulumi.Input<String> displayName;
   /// A `highCapacityDatabaseStorage` block as defined below. Changing this forces a new Exadata Database Storage Vault to be created.
   final pulumi.Input<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage> highCapacityDatabaseStorage;
   /// The Azure Region where the Exadata Database Storage Vault should exist. Changing this forces a new Exadata Database Storage Vault to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Exadata Database Storage Vault. Changing this forces a new Exadata Database Storage Vault to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Exadata Database Storage Vault should exist. Changing this forces a new Exadata Database Storage Vault to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Exadata Database Storage Vault.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The time zone that you want to use for the Exadata Database Storage Vault. Changing this forces a new Exadata Database Storage Vault to be created. For details, see [Time Zones](https://docs.oracle.com/en/cloud/paas/base-database/time-zone/).
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// Exadata Database Storage Vault zones. Changing this forces a new Exadata Database Storage Vault to be created.
   final pulumi.Input<List<String>> zones;
 
@@ -70,7 +70,7 @@ class ExascaleDatabaseStorageVaultArgs {
 
   factory ExascaleDatabaseStorageVaultArgs.fromMap(Map<String, dynamic> map) {
     return ExascaleDatabaseStorageVaultArgs(
-      additionalFlashCachePercentage: pulumi.Input.fromValue(map['additionalFlashCachePercentage'] as int),
+      additionalFlashCachePercentage: pulumi.Input.fromValue((map['additionalFlashCachePercentage'] as num).toInt()),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       highCapacityDatabaseStorage: pulumi.Input.fromValue(ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((map['highCapacityDatabaseStorage']! as Map).cast<String, dynamic>())),

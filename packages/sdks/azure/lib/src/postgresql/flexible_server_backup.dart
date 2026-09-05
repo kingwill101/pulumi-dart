@@ -117,7 +117,7 @@ import 'flexible_server_backup_state.dart';
 /// 		}
 /// 		_, err = postgresql.NewFlexibleServerBackup(ctx, "example", &postgresql.FlexibleServerBackupArgs{
 /// 			Name:     pulumi.String("example-pfsb"),
-/// 			ServerId: exampleFlexibleServer.ID(),
+/// 			ServerId: exampleFlexibleServer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -265,7 +265,7 @@ class FlexibleServerBackup extends pulumi.CustomResource {
           'azure:postgresql/flexibleServerBackup:FlexibleServerBackup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     completedTime = registerOutput<String>('completedTime');
     this.name = registerOutput<String>('name');
@@ -277,11 +277,12 @@ class FlexibleServerBackup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlexibleServerBackupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlexibleServerBackup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -295,6 +296,20 @@ class FlexibleServerBackup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    completedTime = registerOutput<String>('completedTime');
+    this.name = registerOutput<String>('name');
+    serverId = registerOutput<String>('serverId');
+  }
+
+  /// Creates a typed reference to an existing [FlexibleServerBackup] resource.
+  FlexibleServerBackup.reference(String urn)
+    : super(
+        'azure:postgresql/flexibleServerBackup:FlexibleServerBackup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     completedTime = registerOutput<String>('completedTime');
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');

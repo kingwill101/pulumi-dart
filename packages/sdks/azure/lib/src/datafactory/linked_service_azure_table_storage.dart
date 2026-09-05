@@ -28,7 +28,7 @@ import 'linked_service_azure_table_storage_state.dart';
 /// const exampleLinkedServiceAzureTableStorage = new azure.datafactory.LinkedServiceAzureTableStorage("example", {
 ///     name: "example",
 ///     dataFactoryId: exampleFactory.id,
-///     connectionString: example.apply(example => example.primaryConnectionString),
+///     connectionString: example.primaryConnectionString,
 /// });
 /// ```
 /// ```python
@@ -117,11 +117,9 @@ import 'linked_service_azure_table_storage_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceAzureTableStorage(ctx, "example", &datafactory.LinkedServiceAzureTableStorageArgs{
-/// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
-/// 			ConnectionString: pulumi.String(example.ApplyT(func(example storage.GetAccountResult) (*string, error) {
-/// 				return example.PrimaryConnectionString, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:             pulumi.String("example"),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			ConnectionString: example.PrimaryConnectionString(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -282,16 +280,17 @@ class LinkedServiceAzureTableStorage extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceAzureTableStorage:LinkedServiceAzureTableStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['connectionString'],
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String>('connectionString');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LinkedServiceAzureTableStorage] resource's state with the given [name] and [id].
@@ -299,11 +298,12 @@ class LinkedServiceAzureTableStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceAzureTableStorageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceAzureTableStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -317,13 +317,33 @@ class LinkedServiceAzureTableStorage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String>('connectionString');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceAzureTableStorage] resource.
+  LinkedServiceAzureTableStorage.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceAzureTableStorage:LinkedServiceAzureTableStorage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connectionString'],
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

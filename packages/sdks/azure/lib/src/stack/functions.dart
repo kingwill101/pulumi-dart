@@ -169,6 +169,17 @@ Future<GetHciClusterResult> getHciCluster(
   return GetHciClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetHciClusterResult> getHciClusterOutput(
+  GetHciClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:stack/getHciCluster:getHciCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHciClusterResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Stack HCI Storage Path.
 ///
 /// ## Example Usage
@@ -314,4 +325,15 @@ Future<GetHciStoragePathResult> getHciStoragePath(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHciStoragePathResult.fromMap(result);
+}
+
+pulumi.Output<GetHciStoragePathResult> getHciStoragePathOutput(
+  GetHciStoragePathArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:stack/getHciStoragePath:getHciStoragePath',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHciStoragePathResult.fromMap);
 }

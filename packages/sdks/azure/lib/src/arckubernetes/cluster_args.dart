@@ -13,13 +13,13 @@ class ClusterArgs {
   /// An `identity` block as defined below. Changing this forces a new Arc Kubernetes Cluster to be created.
   final pulumi.Input<ClusterIdentity> identity;
   /// Specifies the Azure Region where the Arc Kubernetes Cluster should exist. Changing this forces a new Arc Kubernetes Cluster to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this Arc Kubernetes Cluster. Changing this forces a new Arc Kubernetes Cluster to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group where the Arc Kubernetes Cluster should exist. Changing this forces a new Arc Kubernetes Cluster to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Arc Kubernetes Cluster.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ClusterArgs].
   /// [agentPublicKeyCertificate] Specifies the base64-encoded public certificate used by the agent to do the initial handshake to the backend services in Azure. Changing this forces a new Arc Kubernetes Cluster to be created.

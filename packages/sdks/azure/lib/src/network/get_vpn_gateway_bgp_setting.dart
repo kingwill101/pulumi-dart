@@ -42,11 +42,11 @@ class GetVpnGatewayBgpSetting {
 
   factory GetVpnGatewayBgpSetting.fromMap(Map<String, dynamic> map) {
     return GetVpnGatewayBgpSetting(
-      asn: pulumi.Input.fromValue(map['asn'] as int),
+      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
       bgpPeeringAddress: pulumi.Input.fromValue(map['bgpPeeringAddress'] as String),
       instance0BgpPeeringAddresses: pulumi.Input.fromValue(pulumi.Input.decodeList<GetVpnGatewayBgpSettingInstance0BgpPeeringAddress>(map['instance0BgpPeeringAddresses']!, (value) => GetVpnGatewayBgpSettingInstance0BgpPeeringAddress.fromMap((value as Map).cast<String, dynamic>()))),
       instance1BgpPeeringAddresses: pulumi.Input.fromValue(pulumi.Input.decodeList<GetVpnGatewayBgpSettingInstance1BgpPeeringAddress>(map['instance1BgpPeeringAddresses']!, (value) => GetVpnGatewayBgpSettingInstance1BgpPeeringAddress.fromMap((value as Map).cast<String, dynamic>()))),
-      peerWeight: pulumi.Input.fromValue(map['peerWeight'] as int),
+      peerWeight: pulumi.Input.fromValue((map['peerWeight'] as num).toInt()),
     );
   }
 }

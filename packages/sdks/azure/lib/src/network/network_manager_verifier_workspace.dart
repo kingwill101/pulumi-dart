@@ -151,7 +151,7 @@ import 'network_manager_verifier_workspace_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkManagerVerifierWorkspace(ctx, "example", &network.NetworkManagerVerifierWorkspaceArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:         example.Location,
 /// 			Description:      pulumi.String("This is an example verifier workspace"),
 /// 			Tags: pulumi.StringMap{
@@ -338,13 +338,13 @@ class NetworkManagerVerifierWorkspace extends pulumi.CustomResource {
           'azure:network/networkManagerVerifierWorkspace:NetworkManagerVerifierWorkspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkManagerId = registerOutput<String>('networkManagerId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NetworkManagerVerifierWorkspace] resource's state with the given [name] and [id].
@@ -352,11 +352,12 @@ class NetworkManagerVerifierWorkspace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerVerifierWorkspaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerVerifierWorkspace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -374,6 +375,22 @@ class NetworkManagerVerifierWorkspace extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkManagerId = registerOutput<String>('networkManagerId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerVerifierWorkspace] resource.
+  NetworkManagerVerifierWorkspace.reference(String urn)
+    : super(
+        'azure:network/networkManagerVerifierWorkspace:NetworkManagerVerifierWorkspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

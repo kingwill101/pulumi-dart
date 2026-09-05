@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceSecureLdap {
   /// The expiry time of the certificate.
-  final pulumi.Input<String>? certificateExpiry;
+  final pulumi.Input<String?>? certificateExpiry;
   /// The thumbprint of the certificate.
-  final pulumi.Input<String>? certificateThumbprint;
+  final pulumi.Input<String?>? certificateThumbprint;
   /// Whether to enable secure LDAP for the managed domain. For more information, please see [official documentation on enabling LDAPS](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-ldaps), paying particular attention to the section on network security to avoid unnecessarily exposing your service to Internet-borne bruteforce attacks.
   final pulumi.Input<bool> enabled;
   /// Whether to enable external access to LDAPS over the Internet. Defaults to `false`.
-  final pulumi.Input<bool>? externalAccessEnabled;
+  final pulumi.Input<bool?>? externalAccessEnabled;
   /// The certificate/private key to use for LDAPS, as a base64-encoded TripleDES-SHA1 encrypted PKCS#12 bundle (PFX file).
   final pulumi.Input<String> pfxCertificate;
   /// The password to use for decrypting the PKCS#12 bundle (PFX file).
   final pulumi.Input<String> pfxCertificatePassword;
   /// The public certificate.
-  final pulumi.Input<String>? publicCertificate;
+  final pulumi.Input<String?>? publicCertificate;
 
   /// Creates a new [ServiceSecureLdap].
   /// [certificateExpiry] The expiry time of the certificate.

@@ -5,7 +5,7 @@ import 'data_collection_rule_data_sources_prometheus_forwarder_label_include_fil
 
 class DataCollectionRuleDataSourcesPrometheusForwarder {
   /// One or more `labelIncludeFilter` blocks as defined above.
-  final pulumi.Input<List<DataCollectionRuleDataSourcesPrometheusForwarderLabelIncludeFilter>>? labelIncludeFilters;
+  final pulumi.Input<List<DataCollectionRuleDataSourcesPrometheusForwarderLabelIncludeFilter>?>? labelIncludeFilters;
   /// The name which should be used for this data source. This name should be unique across all data sources regardless of type within the Data Collection Rule.
   final pulumi.Input<String> name;
   /// Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to. Possible value is `Microsoft-PrometheusMetrics`.

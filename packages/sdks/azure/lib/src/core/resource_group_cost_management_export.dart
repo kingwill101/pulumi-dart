@@ -165,13 +165,13 @@ import 'resource_group_cost_management_export_state.dart';
 /// 		}
 /// 		_, err = core.NewResourceGroupCostManagementExport(ctx, "example", &core.ResourceGroupCostManagementExportArgs{
 /// 			Name:                      pulumi.String("example"),
-/// 			ResourceGroupId:           example.ID(),
+/// 			ResourceGroupId:           example.ID().ToIDOutput().ToStringOutput(),
 /// 			RecurrenceType:            pulumi.String("Monthly"),
 /// 			RecurrencePeriodStartDate: pulumi.String("2020-08-18T00:00:00Z"),
 /// 			RecurrencePeriodEndDate:   pulumi.String("2020-09-18T00:00:00Z"),
 /// 			FileFormat:                pulumi.String("Csv"),
 /// 			ExportDataStorageLocation: &core.ResourceGroupCostManagementExportExportDataStorageLocationArgs{
-/// 				ContainerId:    exampleContainer.ID(),
+/// 				ContainerId:    exampleContainer.ID().ToIDOutput().ToStringOutput(),
 /// 				RootFolderPath: pulumi.String("/root/updated"),
 /// 			},
 /// 			ExportDataOptions: &core.ResourceGroupCostManagementExportExportDataOptionsArgs{
@@ -381,7 +381,7 @@ class ResourceGroupCostManagementExport extends pulumi.CustomResource {
           'azure:core/resourceGroupCostManagementExport:ResourceGroupCostManagementExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     exportDataOptions = registerOutput<ResourceGroupCostManagementExportExportDataOptions>('exportDataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGroupCostManagementExportExportDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -399,11 +399,12 @@ class ResourceGroupCostManagementExport extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceGroupCostManagementExportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceGroupCostManagementExport._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -417,6 +418,26 @@ class ResourceGroupCostManagementExport extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    active = registerOutput<bool?>('active');
+    exportDataOptions = registerOutput<ResourceGroupCostManagementExportExportDataOptions>('exportDataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGroupCostManagementExportExportDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exportDataStorageLocation = registerOutput<ResourceGroupCostManagementExportExportDataStorageLocation>('exportDataStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGroupCostManagementExportExportDataStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileFormat = registerOutput<String?>('fileFormat');
+    this.name = registerOutput<String>('name');
+    recurrencePeriodEndDate = registerOutput<String>('recurrencePeriodEndDate');
+    recurrencePeriodStartDate = registerOutput<String>('recurrencePeriodStartDate');
+    recurrenceType = registerOutput<String>('recurrenceType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+  }
+
+  /// Creates a typed reference to an existing [ResourceGroupCostManagementExport] resource.
+  ResourceGroupCostManagementExport.reference(String urn)
+    : super(
+        'azure:core/resourceGroupCostManagementExport:ResourceGroupCostManagementExport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     active = registerOutput<bool?>('active');
     exportDataOptions = registerOutput<ResourceGroupCostManagementExportExportDataOptions>('exportDataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGroupCostManagementExportExportDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     exportDataStorageLocation = registerOutput<ResourceGroupCostManagementExportExportDataStorageLocation>('exportDataStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGroupCostManagementExportExportDataStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });

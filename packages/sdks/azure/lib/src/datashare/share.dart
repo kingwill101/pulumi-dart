@@ -149,7 +149,7 @@ import 'share_state.dart';
 /// 		}
 /// 		_, err = datashare.NewShare(ctx, "example", &datashare.ShareArgs{
 /// 			Name:        pulumi.String("example_dss"),
-/// 			AccountId:   exampleAccount.ID(),
+/// 			AccountId:   exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Kind:        pulumi.String("CopyBased"),
 /// 			Description: pulumi.String("example desc"),
 /// 			Terms:       pulumi.String("example terms"),
@@ -335,7 +335,7 @@ class Share extends pulumi.CustomResource {
           'azure:datashare/share:Share',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');
@@ -350,11 +350,12 @@ class Share extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ShareState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Share._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,6 +369,23 @@ class Share extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String?>('description');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    snapshotSchedule = registerOutput<ShareSnapshotSchedule?>('snapshotSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShareSnapshotSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    terms = registerOutput<String?>('terms');
+  }
+
+  /// Creates a typed reference to an existing [Share] resource.
+  Share.reference(String urn)
+    : super(
+        'azure:datashare/share:Share',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');
     kind = registerOutput<String>('kind');

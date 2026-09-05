@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProvisionedClusterIdentity {
   /// The Principal ID associated with this Managed Service Identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The Tenant ID associated with this Managed Service Identity.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The type of the Managed Identity. The only possible value is `SystemAssigned`. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   final pulumi.Input<String> type;
 

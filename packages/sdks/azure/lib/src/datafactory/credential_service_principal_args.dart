@@ -9,17 +9,17 @@ import 'credential_service_principal_service_principal_key.dart';
 /// {@macro pulumi_datafactory_credential_service_principal_credential_service_principal_args_doc}
 class CredentialServicePrincipalArgs {
   /// List of tags that can be used for describing the Data Factory Credential.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The Data Factory ID in which to associate the Credential with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
   /// The description for the Data Factory Credential.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name of the Credential. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Client ID of the Service Principal.
   final pulumi.Input<String> servicePrincipalId;
   /// A `servicePrincipalKey` block as defined below.
-  final pulumi.Input<CredentialServicePrincipalServicePrincipalKey>? servicePrincipalKey;
+  final pulumi.Input<CredentialServicePrincipalServicePrincipalKey?>? servicePrincipalKey;
   /// The Tenant ID of the Service Principal.
   final pulumi.Input<String> tenantId;
 

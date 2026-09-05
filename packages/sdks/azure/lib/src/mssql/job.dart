@@ -166,7 +166,7 @@ import 'job_state.dart';
 /// 		}
 /// 		exampleDatabase, err := mssql.NewDatabase(ctx, "example", &mssql.DatabaseArgs{
 /// 			Name:      pulumi.String("example-db"),
-/// 			ServerId:  exampleServer.ID(),
+/// 			ServerId:  exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			Collation: pulumi.String("SQL_Latin1_General_CP1_CI_AS"),
 /// 			SkuName:   pulumi.String("S1"),
 /// 		})
@@ -176,14 +176,14 @@ import 'job_state.dart';
 /// 		exampleJobAgent, err := mssql.NewJobAgent(ctx, "example", &mssql.JobAgentArgs{
 /// 			Name:       pulumi.String("example-job-agent"),
 /// 			Location:   example.Location,
-/// 			DatabaseId: exampleDatabase.ID(),
+/// 			DatabaseId: exampleDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewJobCredential(ctx, "example", &mssql.JobCredentialArgs{
 /// 			Name:       pulumi.String("example-job-credential"),
-/// 			JobAgentId: exampleJobAgent.ID(),
+/// 			JobAgentId: exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
 /// 			Username:   pulumi.String("my-username"),
 /// 			Password:   pulumi.String("MyP4ssw0rd!!!"),
 /// 		})
@@ -192,7 +192,7 @@ import 'job_state.dart';
 /// 		}
 /// 		_, err = mssql.NewJob(ctx, "example", &mssql.JobArgs{
 /// 			Name:        pulumi.String("example-job"),
-/// 			JobAgentId:  exampleJobAgent.ID(),
+/// 			JobAgentId:  exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
 /// 			Description: pulumi.String("example description"),
 /// 		})
 /// 		if err != nil {
@@ -404,7 +404,7 @@ class Job extends pulumi.CustomResource {
           'azure:mssql/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     jobAgentId = registerOutput<String>('jobAgentId');
@@ -416,11 +416,12 @@ class Job extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Job._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -434,6 +435,20 @@ class Job extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    jobAgentId = registerOutput<String>('jobAgentId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'azure:mssql/job:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     jobAgentId = registerOutput<String>('jobAgentId');
     this.name = registerOutput<String>('name');

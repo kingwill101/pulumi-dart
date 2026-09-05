@@ -140,7 +140,7 @@ import 'query_pack_query_state.dart';
 /// 		}
 /// 		_, err = operationalinsights.NewQueryPackQuery(ctx, "example", &operationalinsights.QueryPackQueryArgs{
 /// 			Name:        pulumi.String("19952bc3-0bf9-49eb-b713-6b80e7a41847"),
-/// 			QueryPackId: exampleQueryPack.ID(),
+/// 			QueryPackId: exampleQueryPack.ID().ToIDOutput().ToStringOutput(),
 /// 			Body: pulumi.String(`let newExceptionsTimeRange = 1d;
 /// let timeRangeToCheckBefore = 7d;
 /// exceptions
@@ -320,18 +320,18 @@ class QueryPackQuery extends pulumi.CustomResource {
           'azure:operationalinsights/queryPackQuery:QueryPackQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     additionalSettingsJson = registerOutput<String?>('additionalSettingsJson');
     body = registerOutput<String>('body');
-    categories = registerOutput<List<String>?>('categories');
+    categories = registerOutput<List<String>?>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     queryPackId = registerOutput<String>('queryPackId');
-    resourceTypes = registerOutput<List<String>?>('resourceTypes');
-    solutions = registerOutput<List<String>?>('solutions');
-    tags = registerOutput<Map<String, String>?>('tags');
+    resourceTypes = registerOutput<List<String>?>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    solutions = registerOutput<List<String>?>('solutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [QueryPackQuery] resource's state with the given [name] and [id].
@@ -339,11 +339,12 @@ class QueryPackQuery extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QueryPackQueryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return QueryPackQuery._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -359,13 +360,34 @@ class QueryPackQuery extends pulumi.CustomResource {
         ) {
     additionalSettingsJson = registerOutput<String?>('additionalSettingsJson');
     body = registerOutput<String>('body');
-    categories = registerOutput<List<String>?>('categories');
+    categories = registerOutput<List<String>?>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     queryPackId = registerOutput<String>('queryPackId');
-    resourceTypes = registerOutput<List<String>?>('resourceTypes');
-    solutions = registerOutput<List<String>?>('solutions');
-    tags = registerOutput<Map<String, String>?>('tags');
+    resourceTypes = registerOutput<List<String>?>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    solutions = registerOutput<List<String>?>('solutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [QueryPackQuery] resource.
+  QueryPackQuery.reference(String urn)
+    : super(
+        'azure:operationalinsights/queryPackQuery:QueryPackQuery',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalSettingsJson = registerOutput<String?>('additionalSettingsJson');
+    body = registerOutput<String>('body');
+    categories = registerOutput<List<String>?>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    queryPackId = registerOutput<String>('queryPackId');
+    resourceTypes = registerOutput<List<String>?>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    solutions = registerOutput<List<String>?>('solutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

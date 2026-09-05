@@ -207,7 +207,7 @@ class LocalRulestack extends pulumi.CustomResource {
           'azure:paloalto/localRulestack:LocalRulestack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     antiSpywareProfile = registerOutput<String?>('antiSpywareProfile');
     antiVirusProfile = registerOutput<String?>('antiVirusProfile');
@@ -226,11 +226,12 @@ class LocalRulestack extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocalRulestackState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocalRulestack._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -244,6 +245,27 @@ class LocalRulestack extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    antiSpywareProfile = registerOutput<String?>('antiSpywareProfile');
+    antiVirusProfile = registerOutput<String?>('antiVirusProfile');
+    description = registerOutput<String?>('description');
+    dnsSubscription = registerOutput<String?>('dnsSubscription');
+    fileBlockingProfile = registerOutput<String?>('fileBlockingProfile');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    urlFilteringProfile = registerOutput<String?>('urlFilteringProfile');
+    vulnerabilityProfile = registerOutput<String?>('vulnerabilityProfile');
+  }
+
+  /// Creates a typed reference to an existing [LocalRulestack] resource.
+  LocalRulestack.reference(String urn)
+    : super(
+        'azure:paloalto/localRulestack:LocalRulestack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     antiSpywareProfile = registerOutput<String?>('antiSpywareProfile');
     antiVirusProfile = registerOutput<String?>('antiVirusProfile');
     description = registerOutput<String?>('description');

@@ -153,6 +153,17 @@ Future<GetResult> get(
   return GetResult.fromMap(result);
 }
 
+pulumi.Output<GetResult> getOutput(
+  GetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:elasticsan/get:get',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Elastic SAN Volume Group.
 ///
 /// ## Example Usage
@@ -333,6 +344,17 @@ Future<GetVolumeGroupResult> getVolumeGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumeGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetVolumeGroupResult> getVolumeGroupOutput(
+  GetVolumeGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:elasticsan/getVolumeGroup:getVolumeGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeGroupResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Elastic SAN Volume Snapshot.
@@ -550,4 +572,15 @@ Future<GetVolumeSnapshotResult> getVolumeSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumeSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetVolumeSnapshotResult> getVolumeSnapshotOutput(
+  GetVolumeSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:elasticsan/getVolumeSnapshot:getVolumeSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeSnapshotResult.fromMap);
 }

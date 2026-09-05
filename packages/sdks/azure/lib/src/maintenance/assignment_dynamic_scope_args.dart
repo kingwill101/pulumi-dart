@@ -15,7 +15,7 @@ class AssignmentDynamicScopeArgs {
   /// The name which should be used for this Dynamic Maintenance Assignment. Changing this forces a new Dynamic Maintenance Assignment to be created.
   ///
   /// &gt; **Note:** The `name` must be unique per subscription.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AssignmentDynamicScopeArgs].
   /// [filter] A `filter` block as defined below.

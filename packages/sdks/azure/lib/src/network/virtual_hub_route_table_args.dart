@@ -9,11 +9,11 @@ import 'virtual_hub_route_table_route.dart';
 /// {@macro pulumi_network_virtual_hub_route_table_virtual_hub_route_table_args_doc}
 class VirtualHubRouteTableArgs {
   /// List of labels associated with this route table.
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// The name which should be used for Virtual Hub Route Table. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `route` blocks as defined below.
-  final pulumi.Input<List<VirtualHubRouteTableRoute>>? routes;
+  final pulumi.Input<List<VirtualHubRouteTableRoute>?>? routes;
   /// The ID of the Virtual Hub within which this route table should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualHubId;
 

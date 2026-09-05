@@ -5,23 +5,23 @@ import 'api_operation_request_query_parameter_example.dart';
 
 class ApiOperationRequestQueryParameter {
   /// The default value for this Query Parameter.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// A description of this Query Parameter.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// One or more `example` blocks as defined above.
-  final pulumi.Input<List<ApiOperationRequestQueryParameterExample>>? examples;
+  final pulumi.Input<List<ApiOperationRequestQueryParameterExample>?>? examples;
   /// The Name of this Query Parameter.
   final pulumi.Input<String> name;
   /// Is this Query Parameter Required?
   final pulumi.Input<bool> required;
   /// The name of the Schema.
-  final pulumi.Input<String>? schemaId;
+  final pulumi.Input<String?>? schemaId;
   /// The Type of this Query Parameter, such as a `string`.
   final pulumi.Input<String> type;
   /// The type name defined by the Schema.
-  final pulumi.Input<String>? typeName;
+  final pulumi.Input<String?>? typeName;
   /// One or more acceptable values for this Query Parameter.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ApiOperationRequestQueryParameter].
   /// [defaultValue] The default value for this Query Parameter.

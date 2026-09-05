@@ -12,7 +12,7 @@ class GetZoneArgs {
   /// The Name of the Resource Group where the DNS Zone exists.
   /// If the Name of the Resource Group is not provided, the first DNS Zone from the list of DNS Zones
   /// in your subscription that matches `name` will be returned.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [GetZoneArgs].
   /// [name] The name of the DNS Zone.

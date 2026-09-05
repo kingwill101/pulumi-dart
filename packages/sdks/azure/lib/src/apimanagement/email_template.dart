@@ -343,7 +343,7 @@ class EmailTemplate extends pulumi.CustomResource {
           'azure:apimanagement/emailTemplate:EmailTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     body = registerOutput<String>('body');
@@ -359,11 +359,12 @@ class EmailTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EmailTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EmailTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -377,6 +378,24 @@ class EmailTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    body = registerOutput<String>('body');
+    description = registerOutput<String>('description');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subject = registerOutput<String>('subject');
+    templateName = registerOutput<String>('templateName');
+    title = registerOutput<String>('title');
+  }
+
+  /// Creates a typed reference to an existing [EmailTemplate] resource.
+  EmailTemplate.reference(String urn)
+    : super(
+        'azure:apimanagement/emailTemplate:EmailTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     body = registerOutput<String>('body');
     description = registerOutput<String>('description');

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_network_manager_routing_rule_collection_network_manager_routing_rule_collection_args_doc}
 class NetworkManagerRoutingRuleCollectionArgs {
   /// Whether to enable the BGP route propagation. Defaults to `false`.
-  final pulumi.Input<bool>? bgpRoutePropagationEnabled;
+  final pulumi.Input<bool?>? bgpRoutePropagationEnabled;
   /// The description of the Network Manager Routing Rule Collection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name which should be used for this Network Manager Routing Rule Collection. Changing this forces a new Network Manager Routing Rule Collection to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of Network Group IDs which this Network Manager Routing Rule Collection applies to.
   final pulumi.Input<List<String>> networkGroupIds;
   /// The ID of the Network Manager Routing Configuration. Changing this forces a new Network Manager Routing Rule Collection to be created.

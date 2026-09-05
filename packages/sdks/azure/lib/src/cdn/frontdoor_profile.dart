@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontdoor_profile_args.dart';
 import 'frontdoor_profile_identity.dart';
+import 'frontdoor_profile_log_scrubbing_rule.dart';
 import 'frontdoor_profile_state.dart';
 
 /// Manages a Front Door (standard/premium) Profile which contains a collection of endpoints and origin groups.
@@ -150,7 +151,7 @@ import 'frontdoor_profile_state.dart';
 /// 			Identity: &cdn.FrontdoorProfileIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned, UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			LogScrubbingRules: cdn.FrontdoorProfileLogScrubbingRuleArray{
@@ -298,7 +299,7 @@ import 'frontdoor_profile_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Cdn` - 2024-02-01
+/// * `Microsoft.Cdn` - 2025-12-01
 ///
 /// ## Import
 ///
@@ -313,7 +314,7 @@ class FrontdoorProfile extends pulumi.CustomResource {
   /// One or more `logScrubbingRule` blocks as defined below.
   ///
   /// &gt; **Note:** When no `logScrubbingRule` blocks are defined, log scrubbing will be automatically `disabled`. When one or more `logScrubbingRule` blocks are present, log scrubbing will be `enabled`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> logScrubbingRules;
+  late final pulumi.Output<List<FrontdoorProfileLogScrubbingRule>?> logScrubbingRules;
   /// Specifies the name of the Front Door Profile. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// The name of the Resource Group where this Front Door Profile should exist. Changing this forces a new resource to be created.
@@ -339,16 +340,16 @@ class FrontdoorProfile extends pulumi.CustomResource {
           'azure:cdn/frontdoorProfile:FrontdoorProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     identity = registerOutput<FrontdoorProfileIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorProfileIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    logScrubbingRules = registerOutput<List<Map<String, dynamic>>?>('logScrubbingRules');
+    logScrubbingRules = registerOutput<List<FrontdoorProfileLogScrubbingRule>?>('logScrubbingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(guardedValue, (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceGuid = registerOutput<String>('resourceGuid');
     responseTimeoutSeconds = registerOutput<int?>('responseTimeoutSeconds');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [FrontdoorProfile] resource's state with the given [name] and [id].
@@ -356,11 +357,12 @@ class FrontdoorProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrontdoorProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FrontdoorProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -375,12 +377,31 @@ class FrontdoorProfile extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     identity = registerOutput<FrontdoorProfileIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorProfileIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    logScrubbingRules = registerOutput<List<Map<String, dynamic>>?>('logScrubbingRules');
+    logScrubbingRules = registerOutput<List<FrontdoorProfileLogScrubbingRule>?>('logScrubbingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(guardedValue, (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceGuid = registerOutput<String>('resourceGuid');
     responseTimeoutSeconds = registerOutput<int?>('responseTimeoutSeconds');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FrontdoorProfile] resource.
+  FrontdoorProfile.reference(String urn)
+    : super(
+        'azure:cdn/frontdoorProfile:FrontdoorProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    identity = registerOutput<FrontdoorProfileIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorProfileIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logScrubbingRules = registerOutput<List<FrontdoorProfileLogScrubbingRule>?>('logScrubbingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(guardedValue, (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    responseTimeoutSeconds = registerOutput<int?>('responseTimeoutSeconds');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

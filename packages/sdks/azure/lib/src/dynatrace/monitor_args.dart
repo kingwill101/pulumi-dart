@@ -12,23 +12,23 @@ import 'monitor_user.dart';
 /// {@macro pulumi_dynatrace_monitor_monitor_args_doc}
 class MonitorArgs {
   /// Properties of the Dynatrace environment. An `environmentProperties` block as defined below.
-  final pulumi.Input<List<MonitorEnvironmentProperty>>? environmentProperties;
+  final pulumi.Input<List<MonitorEnvironmentProperty>?>? environmentProperties;
   /// The kind of managed identity assigned to this resource. A `identity` block as defined below.
   final pulumi.Input<MonitorIdentity> identity;
   /// The Azure Region where the Dynatrace monitor should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state. Possible values are `Active` and `Suspended`. Changing this forces a new resource to be created.
   final pulumi.Input<String> marketplaceSubscription;
   /// Flag specifying if the resource monitoring is enabled or disabled. Default is `true`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? monitoringEnabled;
+  final pulumi.Input<bool?>? monitoringEnabled;
   /// Name of the Dynatrace monitor. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Billing plan information. A `plan` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<MonitorPlan> plan;
   /// The name of the Resource Group where the Dynatrace monitor should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// User's information. A `user` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<MonitorUser> user;
 

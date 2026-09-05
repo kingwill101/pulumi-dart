@@ -7,27 +7,27 @@ import 'volume_bucket_key_vault.dart';
 /// Input properties used for looking up and filtering VolumeBucket resources.
 class VolumeBucketState {
   /// The CIFS username used by the bucket when accessing volume data over SMB. Exactly one of `fileSystemNfsUser` or `fileSystemCifsUsername` must be specified.
-  final pulumi.Input<String>? fileSystemCifsUsername;
+  final pulumi.Input<String?>? fileSystemCifsUsername;
   /// A `fileSystemNfsUser` block as defined below. Exactly one of `fileSystemNfsUser` or `fileSystemCifsUsername` must be specified.
-  final pulumi.Input<VolumeBucketFileSystemNfsUser>? fileSystemNfsUser;
+  final pulumi.Input<VolumeBucketFileSystemNfsUser?>? fileSystemNfsUser;
   /// A `keyVault` block as defined below. Used to store the generated bucket credentials in Azure Key Vault.
-  final pulumi.Input<VolumeBucketKeyVault>? keyVault;
+  final pulumi.Input<VolumeBucketKeyVault?>? keyVault;
   /// The S3-compatible name of the bucket. Must be 3-63 characters long, DNS-compliant (lowercase letters, digits, hyphens or periods), must start and end with a letter or number and must not look like an IPv4 address. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The volume sub-path mounted inside the bucket. Defaults to `/`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The bucket permission level. Possible values are `ReadOnly` and `ReadWrite`. Defaults to `ReadOnly`.
-  final pulumi.Input<String>? permissions;
+  final pulumi.Input<String?>? permissions;
   /// The Common Name (CN) of the bucket server certificate.
-  final pulumi.Input<String>? serverCertificateCommonName;
+  final pulumi.Input<String?>? serverCertificateCommonName;
   /// The expiry date of the bucket server certificate, in RFC3339 format.
-  final pulumi.Input<String>? serverCertificateExpiryDate;
+  final pulumi.Input<String?>? serverCertificateExpiryDate;
   /// The IP address that backs the bucket endpoint.
-  final pulumi.Input<String>? serverIpAddress;
+  final pulumi.Input<String?>? serverIpAddress;
   /// The credentials status of the bucket. Possible values are `NoCredentialsSet`, `CredentialsExpired` and `Active`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The ARM ID of the parent NetApp Volume the bucket attaches to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? volumeId;
+  final pulumi.Input<String?>? volumeId;
 
   /// Creates a new [VolumeBucketState].
   /// [fileSystemCifsUsername] The CIFS username used by the bucket when accessing volume data over SMB. Exactly one of `fileSystemNfsUser` or `fileSystemCifsUsername` must be specified.

@@ -197,7 +197,7 @@ import 'linked_custom_service_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedCustomService(ctx, "example", &datafactory.LinkedCustomServiceArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:          pulumi.String("AzureBlobStorage"),
 /// 			Description:   pulumi.String("test description"),
 /// 			TypePropertiesJson: exampleAccount.PrimaryConnectionString.ApplyT(func(primaryConnectionString string) (string, error) {
@@ -427,15 +427,15 @@ class LinkedCustomService extends pulumi.CustomResource {
           'azure:datafactory/linkedCustomService:LinkedCustomService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntime = registerOutput<LinkedCustomServiceIntegrationRuntime?>('integrationRuntime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedCustomServiceIntegrationRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     typePropertiesJson = registerOutput<String>('typePropertiesJson');
   }
@@ -445,11 +445,12 @@ class LinkedCustomService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedCustomServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedCustomService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -463,13 +464,33 @@ class LinkedCustomService extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntime = registerOutput<LinkedCustomServiceIntegrationRuntime?>('integrationRuntime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedCustomServiceIntegrationRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    typePropertiesJson = registerOutput<String>('typePropertiesJson');
+  }
+
+  /// Creates a typed reference to an existing [LinkedCustomService] resource.
+  LinkedCustomService.reference(String urn)
+    : super(
+        'azure:datafactory/linkedCustomService:LinkedCustomService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntime = registerOutput<LinkedCustomServiceIntegrationRuntime?>('integrationRuntime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedCustomServiceIntegrationRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     typePropertiesJson = registerOutput<String>('typePropertiesJson');
   }

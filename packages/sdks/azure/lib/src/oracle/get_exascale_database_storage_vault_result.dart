@@ -6,33 +6,33 @@ import 'get_exascale_database_storage_vault_high_capacity_database_storage.dart'
 /// Result data returned by getExascaleDatabaseStorageVault.
 class GetExascaleDatabaseStorageVaultResult {
   /// The size of additional Flash Cache in percentage of High Capacity database storage.
-  final int additionalFlashCachePercentage;
+  final int? additionalFlashCachePercentage;
   /// Exadata Database Storage Vault description.
-  final String description;
+  final String? description;
   /// The user-friendly name for the Exadata Database Storage Vault.
-  final String displayName;
+  final String? displayName;
   /// A `highCapacityDatabaseStorage` block as defined below.
-  final List<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage> highCapacityDatabaseStorages;
+  final List<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>? highCapacityDatabaseStorages;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Additional information about the current lifecycle state.
-  final String lifecycleDetails;
+  final String? lifecycleDetails;
   /// Exadata Database Storage Vault lifecycle state enum.
-  final String lifecycleState;
+  final String? lifecycleState;
   /// The Azure Region where the Exadata Database Storage Vault exists.
-  final String location;
-  final String name;
+  final String? location;
+  final String? name;
   /// The URL of the resource in the OCI console.
-  final String ociUrl;
+  final String? ociUrl;
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the Exadata Database Storage Vault.
-  final String ocid;
-  final String resourceGroupName;
+  final String? ocid;
+  final String? resourceGroupName;
   /// The time zone of the Exadata Database Storage Vault.
-  final String timeZone;
+  final String? timeZone;
   /// The number of Exadata virtual machine clusters used the Exadata Database Storage Vault.
-  final int virtualMachineClusterCount;
+  final int? virtualMachineClusterCount;
   /// The Exadata Database Storage Vault Azure zones.
-  final List<String> zones;
+  final List<String>? zones;
 
   /// Creates a new [GetExascaleDatabaseStorageVaultResult].
   /// [additionalFlashCachePercentage] The size of additional Flash Cache in percentage of High Capacity database storage.
@@ -43,68 +43,68 @@ class GetExascaleDatabaseStorageVaultResult {
   /// [lifecycleDetails] Additional information about the current lifecycle state.
   /// [lifecycleState] Exadata Database Storage Vault lifecycle state enum.
   /// [location] The Azure Region where the Exadata Database Storage Vault exists.
-  /// [name] Required.
+  /// [name] Optional.
   /// [ociUrl] The URL of the resource in the OCI console.
   /// [ocid] The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the Exadata Database Storage Vault.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [timeZone] The time zone of the Exadata Database Storage Vault.
   /// [virtualMachineClusterCount] The number of Exadata virtual machine clusters used the Exadata Database Storage Vault.
   /// [zones] The Exadata Database Storage Vault Azure zones.
   const GetExascaleDatabaseStorageVaultResult({
-    required this.additionalFlashCachePercentage,
-    required this.description,
-    required this.displayName,
-    required this.highCapacityDatabaseStorages,
-    required this.id,
-    required this.lifecycleDetails,
-    required this.lifecycleState,
-    required this.location,
-    required this.name,
-    required this.ociUrl,
-    required this.ocid,
-    required this.resourceGroupName,
-    required this.timeZone,
-    required this.virtualMachineClusterCount,
-    required this.zones,
+    this.additionalFlashCachePercentage,
+    this.description,
+    this.displayName,
+    this.highCapacityDatabaseStorages,
+    this.id,
+    this.lifecycleDetails,
+    this.lifecycleState,
+    this.location,
+    this.name,
+    this.ociUrl,
+    this.ocid,
+    this.resourceGroupName,
+    this.timeZone,
+    this.virtualMachineClusterCount,
+    this.zones,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalFlashCachePercentage': additionalFlashCachePercentage,
-      'description': description,
-      'displayName': displayName,
-      'highCapacityDatabaseStorages': pulumi.Input.encodeList<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage, Map<String, dynamic>>(highCapacityDatabaseStorages, (value) => value.toMap()),
-      'id': id,
-      'lifecycleDetails': lifecycleDetails,
-      'lifecycleState': lifecycleState,
-      'location': location,
-      'name': name,
-      'ociUrl': ociUrl,
-      'ocid': ocid,
-      'resourceGroupName': resourceGroupName,
-      'timeZone': timeZone,
-      'virtualMachineClusterCount': virtualMachineClusterCount,
-      'zones': zones,
+      'additionalFlashCachePercentage': ?additionalFlashCachePercentage,
+      'description': ?description,
+      'displayName': ?displayName,
+      'highCapacityDatabaseStorages': ?(() { final guardedValue = highCapacityDatabaseStorages; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'lifecycleDetails': ?lifecycleDetails,
+      'lifecycleState': ?lifecycleState,
+      'location': ?location,
+      'name': ?name,
+      'ociUrl': ?ociUrl,
+      'ocid': ?ocid,
+      'resourceGroupName': ?resourceGroupName,
+      'timeZone': ?timeZone,
+      'virtualMachineClusterCount': ?virtualMachineClusterCount,
+      'zones': ?zones,
     };
   }
 
   factory GetExascaleDatabaseStorageVaultResult.fromMap(Map<String, dynamic> map) {
     return GetExascaleDatabaseStorageVaultResult(
-      additionalFlashCachePercentage: map['additionalFlashCachePercentage'] as int,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      highCapacityDatabaseStorages: pulumi.Input.decodeList<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>(map['highCapacityDatabaseStorages']!, (value) => GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      lifecycleDetails: map['lifecycleDetails'] as String,
-      lifecycleState: map['lifecycleState'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      ociUrl: map['ociUrl'] as String,
-      ocid: map['ocid'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      timeZone: map['timeZone'] as String,
-      virtualMachineClusterCount: map['virtualMachineClusterCount'] as int,
-      zones: (map['zones'] as List).cast<String>(),
+      additionalFlashCachePercentage: (() { final guardedValue = map['additionalFlashCachePercentage']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      highCapacityDatabaseStorages: (() { final guardedValue = map['highCapacityDatabaseStorages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>(guardedValue, (value) => GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lifecycleDetails: (() { final guardedValue = map['lifecycleDetails']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lifecycleState: (() { final guardedValue = map['lifecycleState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ociUrl: (() { final guardedValue = map['ociUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ocid: (() { final guardedValue = map['ocid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      virtualMachineClusterCount: (() { final guardedValue = map['virtualMachineClusterCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

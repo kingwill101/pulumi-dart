@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudCustomizedAcceleratorGitRepositorySshAuth {
   /// Specifies the Public SSH Key of git repository basic auth.
-  final pulumi.Input<String>? hostKey;
+  final pulumi.Input<String?>? hostKey;
   /// Specifies the SSH Key algorithm of git repository basic auth.
-  final pulumi.Input<String>? hostKeyAlgorithm;
+  final pulumi.Input<String?>? hostKeyAlgorithm;
   /// Specifies the Private SSH Key of git repository basic auth.
   final pulumi.Input<String> privateKey;
 

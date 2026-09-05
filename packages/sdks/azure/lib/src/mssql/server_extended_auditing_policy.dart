@@ -150,7 +150,7 @@ import 'server_extended_auditing_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewServerExtendedAuditingPolicy(ctx, "example", &mssql.ServerExtendedAuditingPolicyArgs{
-/// 			ServerId:                           exampleServer.ID(),
+/// 			ServerId:                           exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageEndpoint:                    exampleAccount.PrimaryBlobEndpoint,
 /// 			StorageAccountAccessKey:            exampleAccount.PrimaryAccessKey,
 /// 			StorageAccountAccessKeyIsSecondary: pulumi.Bool(false),
@@ -679,9 +679,7 @@ import 'server_extended_auditing_policy_state.dart';
 /// 		exampleAssignment, err := authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
 /// 			Scope:              pulumi.String(primary.Id),
 /// 			RoleDefinitionName: pulumi.String("Storage Blob Data Contributor"),
-/// 			PrincipalId: pulumi.String(exampleServer.Identity.ApplyT(func(identity mssql.ServerIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleServer.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -719,7 +717,7 @@ import 'server_extended_auditing_policy_state.dart';
 /// 					pulumi.String("127.0.0.1"),
 /// 				},
 /// 				VirtualNetworkSubnetIds: pulumi.StringArray{
-/// 					exampleSubnet.ID(),
+/// 					exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				Bypasses: pulumi.StringArray{
 /// 					pulumi.String("AzureServices"),
@@ -734,7 +732,7 @@ import 'server_extended_auditing_policy_state.dart';
 /// 		}
 /// 		_, err = mssql.NewServerExtendedAuditingPolicy(ctx, "example", &mssql.ServerExtendedAuditingPolicyArgs{
 /// 			StorageEndpoint:              exampleAccount.PrimaryBlobEndpoint,
-/// 			ServerId:                     exampleServer.ID(),
+/// 			ServerId:                     exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			RetentionInDays:              pulumi.Int(6),
 /// 			LogMonitoringEnabled:         pulumi.Bool(false),
 /// 			StorageAccountSubscriptionId: pulumi.Any(primaryAzurermSubscription.SubscriptionId),
@@ -1133,17 +1131,18 @@ class ServerExtendedAuditingPolicy extends pulumi.CustomResource {
           'azure:mssql/serverExtendedAuditingPolicy:ServerExtendedAuditingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountAccessKey', 'storageAccountSubscriptionId'],
         ) {
-    auditActionsAndGroups = registerOutput<List<String>>('auditActionsAndGroups');
+    auditActionsAndGroups = registerOutput<List<String>>('auditActionsAndGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     predicateExpression = registerOutput<String?>('predicateExpression');
     retentionInDays = registerOutput<int?>('retentionInDays');
     serverId = registerOutput<String>('serverId');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
-    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId');
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId', isSecret: true);
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 
@@ -1152,11 +1151,12 @@ class ServerExtendedAuditingPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerExtendedAuditingPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerExtendedAuditingPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1170,15 +1170,37 @@ class ServerExtendedAuditingPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    auditActionsAndGroups = registerOutput<List<String>>('auditActionsAndGroups');
+    auditActionsAndGroups = registerOutput<List<String>>('auditActionsAndGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
     predicateExpression = registerOutput<String?>('predicateExpression');
     retentionInDays = registerOutput<int?>('retentionInDays');
     serverId = registerOutput<String>('serverId');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
-    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId');
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId', isSecret: true);
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+  }
+
+  /// Creates a typed reference to an existing [ServerExtendedAuditingPolicy] resource.
+  ServerExtendedAuditingPolicy.reference(String urn)
+    : super(
+        'azure:mssql/serverExtendedAuditingPolicy:ServerExtendedAuditingPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountAccessKey', 'storageAccountSubscriptionId'],
+        isResourceReference: true,
+      ) {
+    auditActionsAndGroups = registerOutput<List<String>>('auditActionsAndGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enabled = registerOutput<bool?>('enabled');
+    logMonitoringEnabled = registerOutput<bool?>('logMonitoringEnabled');
+    predicateExpression = registerOutput<String?>('predicateExpression');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    serverId = registerOutput<String>('serverId');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageAccountAccessKeyIsSecondary = registerOutput<bool?>('storageAccountAccessKeyIsSecondary');
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId', isSecret: true);
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 }

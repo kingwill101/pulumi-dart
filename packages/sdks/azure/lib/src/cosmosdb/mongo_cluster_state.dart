@@ -9,59 +9,59 @@ import 'mongo_cluster_restore.dart';
 /// Input properties used for looking up and filtering MongoCluster resources.
 class MongoClusterState {
   /// The Password associated with the `administratorUsername` for the MongoDB Cluster.
-  final pulumi.Input<String>? administratorPassword;
+  final pulumi.Input<String?>? administratorPassword;
   /// The administrator username of the MongoDB Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? administratorUsername;
+  final pulumi.Input<String?>? administratorUsername;
   /// A list of allowed authentication modes for the MongoDB Cluster. Possible values are `NativeAuth` and `MicrosoftEntraID`.
-  final pulumi.Input<List<String>>? authenticationMethods;
+  final pulumi.Input<List<String>?>? authenticationMethods;
   /// The compute tier to assign to the MongoDB Cluster. Possible values are `Free`, `M10`, `M20`, `M25`, `M30`, `M40`, `M50`, `M60`, `M80`, and `M200`.
-  final pulumi.Input<String>? computeTier;
+  final pulumi.Input<String?>? computeTier;
   /// One or more `connectionStrings` blocks as defined below.
-  final pulumi.Input<List<MongoClusterConnectionString>>? connectionStrings;
+  final pulumi.Input<List<MongoClusterConnectionString>?>? connectionStrings;
   /// The creation mode for the MongoDB Cluster. Possible values are `Default`, `GeoReplica` and `PointInTimeRestore`. Defaults to `Default`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<String?>? createMode;
   /// A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<MongoClusterCustomerManagedKey>? customerManagedKey;
+  final pulumi.Input<MongoClusterCustomerManagedKey?>? customerManagedKey;
   /// Is the Data API for the MongoDB Cluster enabled? Defaults to `false`.
   ///
   /// &gt; **Note:** `dataApiModeEnabled` can only be set when `createMode` is `Default`. Once enabled, it can only be disabled by recreating the resource.
-  final pulumi.Input<bool>? dataApiModeEnabled;
+  final pulumi.Input<bool?>? dataApiModeEnabled;
   /// The high availability mode for the MongoDB Cluster. Possibles values are `Disabled` and `ZoneRedundantPreferred`.
-  final pulumi.Input<String>? highAvailabilityMode;
+  final pulumi.Input<String?>? highAvailabilityMode;
   /// An `identity` block as detailed below.
   ///
   /// &gt; **Note:** When adding or removing `identity`, a resource recreation will be triggered.
-  final pulumi.Input<MongoClusterIdentity>? identity;
+  final pulumi.Input<MongoClusterIdentity?>? identity;
   /// The supported Azure location where the MongoDB Cluster exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for the MongoDB Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The preview features that can be enabled on the MongoDB Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? previewFeatures;
+  final pulumi.Input<List<String>?>? previewFeatures;
   /// The Public Network Access setting for the MongoDB Cluster. Possibles values are `Disabled` and `Enabled`. Defaults to `Enabled`.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The name of the resource group in which to create the MongoDB Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `restore` block as defined below. Required when `createMode` is set to `PointInTimeRestore`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** When `PointInTimeRestore` is enabled, service API will also assign a value to `sourceServerId`. The user has to explicitly set this property in the Terraform configuration or handle it using `ignoreChanges`.
-  final pulumi.Input<MongoClusterRestore>? restore;
+  final pulumi.Input<MongoClusterRestore?>? restore;
   /// The Number of shards to provision on the MongoDB Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<int>? shardCount;
+  final pulumi.Input<int?>? shardCount;
   /// The location of the source MongoDB Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sourceLocation;
+  final pulumi.Input<String?>? sourceLocation;
   /// The ID of the replication source MongoDB Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sourceServerId;
+  final pulumi.Input<String?>? sourceServerId;
   /// The size of the data disk space for the MongoDB Cluster.
-  final pulumi.Input<int>? storageSizeInGb;
+  final pulumi.Input<int?>? storageSizeInGb;
   /// The storage type for the MongoDB Cluster. Possible values are `PremiumSSD` and `PremiumSSDv2`. Defaults to `PremiumSSD`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
   /// A mapping of tags to assign to the MongoDB Cluster.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The version for the MongoDB Cluster. Possibles values are `5.0`, `6.0`, `7.0` and `8.0`.
   ///
   /// &gt; **Note:** `version` is required when `createMode` is `Default`.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MongoClusterState].
   /// [administratorPassword] The Password associated with the `administratorUsername` for the MongoDB Cluster.
@@ -159,10 +159,10 @@ class MongoClusterState {
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restore: (() { final guardedValue = map['restore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MongoClusterRestore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      shardCount: (() { final guardedValue = map['shardCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      shardCount: (() { final guardedValue = map['shardCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sourceLocation: (() { final guardedValue = map['sourceLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceServerId: (() { final guardedValue = map['sourceServerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageSizeInGb: (() { final guardedValue = map['storageSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageSizeInGb: (() { final guardedValue = map['storageSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

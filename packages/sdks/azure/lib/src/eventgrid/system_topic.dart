@@ -131,7 +131,7 @@ import 'system_topic_state.dart';
 /// 			Name:              pulumi.String("example-topic"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			SourceResourceId:  exampleAccount.ID(),
+/// 			SourceResourceId:  exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			TopicType:         pulumi.String("Microsoft.Storage.StorageAccounts"),
 /// 		})
 /// 		if err != nil {
@@ -302,7 +302,7 @@ class SystemTopic extends pulumi.CustomResource {
           'azure:eventgrid/systemTopic:SystemTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     identity = registerOutput<SystemTopicIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -312,7 +312,7 @@ class SystemTopic extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceArmResourceId = registerOutput<String>('sourceArmResourceId');
     sourceResourceId = registerOutput<String>('sourceResourceId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     topicType = registerOutput<String>('topicType');
   }
 
@@ -321,11 +321,12 @@ class SystemTopic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SystemTopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SystemTopic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -347,7 +348,28 @@ class SystemTopic extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceArmResourceId = registerOutput<String>('sourceArmResourceId');
     sourceResourceId = registerOutput<String>('sourceResourceId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topicType = registerOutput<String>('topicType');
+  }
+
+  /// Creates a typed reference to an existing [SystemTopic] resource.
+  SystemTopic.reference(String urn)
+    : super(
+        'azure:eventgrid/systemTopic:SystemTopic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    identity = registerOutput<SystemTopicIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    metricArmResourceId = registerOutput<String>('metricArmResourceId');
+    metricResourceId = registerOutput<String>('metricResourceId');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceArmResourceId = registerOutput<String>('sourceArmResourceId');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     topicType = registerOutput<String>('topicType');
   }
 }

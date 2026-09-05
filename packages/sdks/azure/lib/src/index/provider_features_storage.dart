@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderFeaturesStorage {
-  final pulumi.Input<bool>? dataPlaneAvailable;
+  final pulumi.Input<bool?>? dataPlaneAvailable;
 
   /// Creates a new [ProviderFeaturesStorage].
   /// [dataPlaneAvailable] Optional.

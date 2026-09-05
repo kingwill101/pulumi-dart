@@ -8,11 +8,11 @@ class StandardIdentity {
   /// &gt; **Note:** When `type` is set to `SystemAssigned`, The assigned `principalId` and `tenantId` can be retrieved after the Logic App has been created. More details are available below.
   ///
   /// &gt; **Note:** The `identityIds` is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// The Principal ID for the Service Principal associated with the Managed Service Identity of this App Service.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The Tenant ID for the Service Principal associated with the Managed Service Identity of this App Service.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Specifies the type of Managed Service Identity that should be configured on this Logic App Standard. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned` (to enable both).
   final pulumi.Input<String> type;
 

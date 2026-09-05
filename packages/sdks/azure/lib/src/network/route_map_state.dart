@@ -6,11 +6,11 @@ import 'route_map_rule.dart';
 /// Input properties used for looking up and filtering RouteMap resources.
 class RouteMapState {
   /// The name which should be used for this Route Map. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `rule` block as defined below.
-  final pulumi.Input<List<RouteMapRule>>? rules;
+  final pulumi.Input<List<RouteMapRule>?>? rules;
   /// The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualHubId;
+  final pulumi.Input<String?>? virtualHubId;
 
   /// Creates a new [RouteMapState].
   /// [name] The name which should be used for this Route Map. Changing this forces a new resource to be created.

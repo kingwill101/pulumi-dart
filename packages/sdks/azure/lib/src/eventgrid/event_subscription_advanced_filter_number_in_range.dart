@@ -28,7 +28,7 @@ class EventSubscriptionAdvancedFilterNumberInRange {
   factory EventSubscriptionAdvancedFilterNumberInRange.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionAdvancedFilterNumberInRange(
       key: pulumi.Input.fromValue(map['key'] as String),
-      values: pulumi.Input.fromValue((map['values'] as List).cast<List<double>>()),
+      values: pulumi.Input.fromValue(pulumi.Input.decodeList<List<double>>(map['values']!, (value) => (value as List).cast<double>())),
     );
   }
 }

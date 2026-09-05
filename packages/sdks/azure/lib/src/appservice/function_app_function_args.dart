@@ -11,19 +11,19 @@ class FunctionAppFunctionArgs {
   /// The config for this Function in JSON format.
   final pulumi.Input<String> configJson;
   /// Should this function be enabled. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A `file` block as detailed below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<FunctionAppFunctionFile>>? files;
+  final pulumi.Input<List<FunctionAppFunctionFile>?>? files;
   /// The ID of the Function App in which this function should reside. Changing this forces a new resource to be created.
   final pulumi.Input<String> functionAppId;
   /// The language the Function is written in. Possible values are `CSharp`, `Custom`, `Java`, `Javascript`, `Python`, `PowerShell`, and `TypeScript`.
   ///
   /// &gt; **Note:** when using `Custom` language, you must specify the code handler in the `host.json` file for your function. See the [official docs](https://docs.microsoft.com/azure/azure-functions/functions-custom-handlers#hostjson) for more information.
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// The name of the function. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The test data for the function.
-  final pulumi.Input<String>? testData;
+  final pulumi.Input<String?>? testData;
 
   /// Creates a new [FunctionAppFunctionArgs].
   /// [configJson] The config for this Function in JSON format.

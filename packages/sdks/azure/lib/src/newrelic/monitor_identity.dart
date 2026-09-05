@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorIdentity {
   /// The Principal ID for the Service Principal associated with the Identity of this Azure Native New Relic Monitor.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The Tenant ID for the Service Principal associated with the Identity of this Azure Native New Relic Monitor.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Specifies the identity type of the Azure Native New Relic Monitor. The only possible value is `SystemAssigned`. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<String> type;
 

@@ -86,19 +86,19 @@ class GetPolicyRuleActionBaseBlob {
   factory GetPolicyRuleActionBaseBlob.fromMap(Map<String, dynamic> map) {
     return GetPolicyRuleActionBaseBlob(
       autoTierToHotFromCoolEnabled: pulumi.Input.fromValue(map['autoTierToHotFromCoolEnabled'] as bool),
-      deleteAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(map['deleteAfterDaysSinceCreationGreaterThan'] as int),
-      deleteAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue(map['deleteAfterDaysSinceLastAccessTimeGreaterThan'] as int),
-      deleteAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue(map['deleteAfterDaysSinceModificationGreaterThan'] as int),
-      tierToArchiveAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(map['tierToArchiveAfterDaysSinceCreationGreaterThan'] as int),
-      tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue(map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan'] as int),
-      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: pulumi.Input.fromValue(map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as int),
-      tierToArchiveAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue(map['tierToArchiveAfterDaysSinceModificationGreaterThan'] as int),
-      tierToColdAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(map['tierToColdAfterDaysSinceCreationGreaterThan'] as int),
-      tierToColdAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue(map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan'] as int),
-      tierToColdAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue(map['tierToColdAfterDaysSinceModificationGreaterThan'] as int),
-      tierToCoolAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(map['tierToCoolAfterDaysSinceCreationGreaterThan'] as int),
-      tierToCoolAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue(map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan'] as int),
-      tierToCoolAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue(map['tierToCoolAfterDaysSinceModificationGreaterThan'] as int),
+      deleteAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue((map['deleteAfterDaysSinceCreationGreaterThan'] as num).toInt()),
+      deleteAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue((map['deleteAfterDaysSinceLastAccessTimeGreaterThan'] as num).toInt()),
+      deleteAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue((map['deleteAfterDaysSinceModificationGreaterThan'] as num).toInt()),
+      tierToArchiveAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue((map['tierToArchiveAfterDaysSinceCreationGreaterThan'] as num).toInt()),
+      tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue((map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan'] as num).toInt()),
+      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: pulumi.Input.fromValue((map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as num).toInt()),
+      tierToArchiveAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue((map['tierToArchiveAfterDaysSinceModificationGreaterThan'] as num).toInt()),
+      tierToColdAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue((map['tierToColdAfterDaysSinceCreationGreaterThan'] as num).toInt()),
+      tierToColdAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue((map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan'] as num).toInt()),
+      tierToColdAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue((map['tierToColdAfterDaysSinceModificationGreaterThan'] as num).toInt()),
+      tierToCoolAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue((map['tierToCoolAfterDaysSinceCreationGreaterThan'] as num).toInt()),
+      tierToCoolAfterDaysSinceLastAccessTimeGreaterThan: pulumi.Input.fromValue((map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan'] as num).toInt()),
+      tierToCoolAfterDaysSinceModificationGreaterThan: pulumi.Input.fromValue((map['tierToCoolAfterDaysSinceModificationGreaterThan'] as num).toInt()),
     );
   }
 }

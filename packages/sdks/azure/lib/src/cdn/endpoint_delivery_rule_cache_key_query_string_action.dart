@@ -6,7 +6,7 @@ class EndpointDeliveryRuleCacheKeyQueryStringAction {
   /// The behavior of the cache key for query strings. Valid values are `Exclude`, `ExcludeAll`, `Include` and `IncludeAll`.
   final pulumi.Input<String> behavior;
   /// Comma separated list of parameter values.
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
 
   /// Creates a new [EndpointDeliveryRuleCacheKeyQueryStringAction].
   /// [behavior] The behavior of the cache key for query strings. Valid values are `Exclude`, `ExcludeAll`, `Include` and `IncludeAll`.

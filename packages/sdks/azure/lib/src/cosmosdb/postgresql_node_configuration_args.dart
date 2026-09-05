@@ -10,7 +10,7 @@ class PostgresqlNodeConfigurationArgs {
   /// The resource ID of the Azure Cosmos DB for PostgreSQL Cluster where we want to change configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterId;
   /// The name of the Node Configuration on Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the Node Configuration on Azure Cosmos DB for PostgreSQL Cluster.
   final pulumi.Input<String> value;
 

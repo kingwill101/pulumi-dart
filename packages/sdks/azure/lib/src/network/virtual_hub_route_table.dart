@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_hub_route_table_args.dart';
+import 'virtual_hub_route_table_route.dart';
 import 'virtual_hub_route_table_state.dart';
 
 /// Manages a Virtual Hub Route Table.
@@ -263,8 +264,8 @@ import 'virtual_hub_route_table_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewSubnetNetworkSecurityGroupAssociation(ctx, "example", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               exampleSubnet.ID(),
-/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID(),
+/// 			SubnetId:               exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -281,7 +282,7 @@ import 'virtual_hub_route_table_state.dart';
 /// 			Name:              pulumi.String("example-vhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.2.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -289,15 +290,15 @@ import 'virtual_hub_route_table_state.dart';
 /// 		}
 /// 		exampleVirtualHubConnection, err := network.NewVirtualHubConnection(ctx, "example", &network.VirtualHubConnectionArgs{
 /// 			Name:                   pulumi.String("example-vhubconn"),
-/// 			VirtualHubId:           exampleVirtualHub.ID(),
-/// 			RemoteVirtualNetworkId: exampleVirtualNetwork.ID(),
+/// 			VirtualHubId:           exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
+/// 			RemoteVirtualNetworkId: exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = network.NewVirtualHubRouteTable(ctx, "example", &network.VirtualHubRouteTableArgs{
 /// 			Name:         pulumi.String("example-vhubroutetable"),
-/// 			VirtualHubId: exampleVirtualHub.ID(),
+/// 			VirtualHubId: exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Labels: pulumi.StringArray{
 /// 				pulumi.String("label1"),
 /// 			},
@@ -309,7 +310,7 @@ import 'virtual_hub_route_table_state.dart';
 /// 						pulumi.String("10.0.0.0/16"),
 /// 					},
 /// 					NextHopType: pulumi.String("ResourceId"),
-/// 					NextHop:     exampleVirtualHubConnection.ID(),
+/// 					NextHop:     exampleVirtualHubConnection.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -587,7 +588,7 @@ class VirtualHubRouteTable extends pulumi.CustomResource {
   /// The name which should be used for Virtual Hub Route Table. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// One or more `route` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+  late final pulumi.Output<List<VirtualHubRouteTableRoute>> routes;
   /// The ID of the Virtual Hub within which this route table should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
 
@@ -603,11 +604,11 @@ class VirtualHubRouteTable extends pulumi.CustomResource {
           'azure:network/virtualHubRouteTable:VirtualHubRouteTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    labels = registerOutput<List<String>?>('labels');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    routes = registerOutput<List<VirtualHubRouteTableRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualHubRouteTableRoute>(guardedValue, (value) => VirtualHubRouteTableRoute.fromMap((value as Map).cast<String, dynamic>())); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 
@@ -616,11 +617,12 @@ class VirtualHubRouteTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualHubRouteTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualHubRouteTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -634,9 +636,24 @@ class VirtualHubRouteTable extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    labels = registerOutput<List<String>?>('labels');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    routes = registerOutput<List<VirtualHubRouteTableRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualHubRouteTableRoute>(guardedValue, (value) => VirtualHubRouteTableRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    virtualHubId = registerOutput<String>('virtualHubId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualHubRouteTable] resource.
+  VirtualHubRouteTable.reference(String urn)
+    : super(
+        'azure:network/virtualHubRouteTable:VirtualHubRouteTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    routes = registerOutput<List<VirtualHubRouteTableRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualHubRouteTableRoute>(guardedValue, (value) => VirtualHubRouteTableRoute.fromMap((value as Map).cast<String, dynamic>())); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 }

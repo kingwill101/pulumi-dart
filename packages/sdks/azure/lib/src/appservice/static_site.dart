@@ -205,10 +205,11 @@ class StaticSite extends pulumi.CustomResource {
           'azure:appservice/staticSite:StaticSite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['apiKey'],
         ) {
-    apiKey = registerOutput<String>('apiKey');
-    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     defaultHostName = registerOutput<String>('defaultHostName');
     identity = registerOutput<StaticSiteIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticSiteIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -216,7 +217,7 @@ class StaticSite extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuSize = registerOutput<String?>('skuSize');
     skuTier = registerOutput<String?>('skuTier');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [StaticSite] resource's state with the given [name] and [id].
@@ -224,11 +225,12 @@ class StaticSite extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StaticSiteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StaticSite._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -242,8 +244,8 @@ class StaticSite extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiKey = registerOutput<String>('apiKey');
-    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     defaultHostName = registerOutput<String>('defaultHostName');
     identity = registerOutput<StaticSiteIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticSiteIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -251,6 +253,28 @@ class StaticSite extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuSize = registerOutput<String?>('skuSize');
     skuTier = registerOutput<String?>('skuTier');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [StaticSite] resource.
+  StaticSite.reference(String urn)
+    : super(
+        'azure:appservice/staticSite:StaticSite',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['apiKey'],
+        isResourceReference: true,
+      ) {
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    defaultHostName = registerOutput<String>('defaultHostName');
+    identity = registerOutput<StaticSiteIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticSiteIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuSize = registerOutput<String?>('skuSize');
+    skuTier = registerOutput<String?>('skuTier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

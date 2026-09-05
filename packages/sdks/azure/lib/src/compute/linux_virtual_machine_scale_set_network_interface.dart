@@ -7,27 +7,27 @@ class LinuxVirtualMachineScaleSetNetworkInterface {
   /// Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections` and `Floating`.
   ///
   /// &gt; **Note:** `auxiliaryMode` is in **Preview** and requires that the prerequisites are enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
-  final pulumi.Input<String>? auxiliaryMode;
+  final pulumi.Input<String?>? auxiliaryMode;
   /// Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A1`, `A2`, `A4` and `A8`.
   ///
   /// &gt; **Note:** `auxiliarySku` is in **Preview** and requires that the prerequisites are enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
-  final pulumi.Input<String>? auxiliarySku;
+  final pulumi.Input<String?>? auxiliarySku;
   /// A list of IP Addresses of DNS Servers which should be assigned to the Network Interface.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Does this Network Interface support Accelerated Networking? Defaults to `false`.
-  final pulumi.Input<bool>? enableAcceleratedNetworking;
+  final pulumi.Input<bool?>? enableAcceleratedNetworking;
   /// Does this Network Interface support IP Forwarding? Defaults to `false`.
-  final pulumi.Input<bool>? enableIpForwarding;
+  final pulumi.Input<bool?>? enableIpForwarding;
   /// One or more `ipConfiguration` blocks as defined above.
   final pulumi.Input<List<LinuxVirtualMachineScaleSetNetworkInterfaceIpConfiguration>> ipConfigurations;
   /// The Name which should be used for this Network Interface. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// The ID of a Network Security Group which should be assigned to this Network Interface.
-  final pulumi.Input<String>? networkSecurityGroupId;
+  final pulumi.Input<String?>? networkSecurityGroupId;
   /// Is this the Primary IP Configuration?
   ///
   /// &gt; **Note:** If multiple `networkInterface` blocks are specified, one must be set to `primary`.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
 
   /// Creates a new [LinuxVirtualMachineScaleSetNetworkInterface].
   /// [auxiliaryMode] Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections` and `Floating`.

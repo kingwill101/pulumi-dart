@@ -272,7 +272,7 @@ class ChannelTeams extends pulumi.CustomResource {
           'azure:bot/channelTeams:ChannelTeams',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     botName = registerOutput<String>('botName');
     callingEnabled = registerOutput<bool>('callingEnabled');
@@ -288,11 +288,12 @@ class ChannelTeams extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelTeamsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ChannelTeams._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -306,6 +307,24 @@ class ChannelTeams extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    botName = registerOutput<String>('botName');
+    callingEnabled = registerOutput<bool>('callingEnabled');
+    callingWebHook = registerOutput<String>('callingWebHook');
+    deploymentEnvironment = registerOutput<String?>('deploymentEnvironment');
+    enableCalling = registerOutput<bool>('enableCalling');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ChannelTeams] resource.
+  ChannelTeams.reference(String urn)
+    : super(
+        'azure:bot/channelTeams:ChannelTeams',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     botName = registerOutput<String>('botName');
     callingEnabled = registerOutput<bool>('callingEnabled');
     callingWebHook = registerOutput<String>('callingWebHook');

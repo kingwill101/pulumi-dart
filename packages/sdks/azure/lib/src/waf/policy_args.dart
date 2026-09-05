@@ -11,19 +11,19 @@ import 'policy_policy_settings.dart';
 /// {@macro pulumi_waf_policy_policy_args_doc}
 class PolicyArgs {
   /// One or more `customRules` blocks as defined below.
-  final pulumi.Input<List<PolicyCustomRule>>? customRules;
+  final pulumi.Input<List<PolicyCustomRule>?>? customRules;
   /// Resource location. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `managedRules` blocks as defined below.
   final pulumi.Input<PolicyManagedRules> managedRules;
   /// The name of the policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `policySettings` block as defined below.
-  final pulumi.Input<PolicyPolicySettings>? policySettings;
+  final pulumi.Input<PolicyPolicySettings?>? policySettings;
   /// The name of the resource group. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the Web Application Firewall Policy.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PolicyArgs].
   /// [customRules] One or more `customRules` blocks as defined below.

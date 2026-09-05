@@ -11,13 +11,13 @@ class CapacityReservationArgs {
   /// The ID of the Capacity Reservation Group where the Capacity Reservation exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> capacityReservationGroupId;
   /// Specifies the name of this Capacity Reservation. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `sku` block as defined below.
   final pulumi.Input<CapacityReservationSku> sku;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the Availability Zone for this Capacity Reservation. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [CapacityReservationArgs].
   /// [capacityReservationGroupId] The ID of the Capacity Reservation Group where the Capacity Reservation exists. Changing this forces a new resource to be created.

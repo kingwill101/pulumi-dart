@@ -311,20 +311,20 @@ class Schedule extends pulumi.CustomResource {
           'azure:automation/schedule:Schedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');
     expiryTime = registerOutput<String>('expiryTime');
     frequency = registerOutput<String>('frequency');
     interval = registerOutput<int>('interval');
-    monthDays = registerOutput<List<int>?>('monthDays');
+    monthDays = registerOutput<List<int>?>('monthDays', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     monthlyOccurrence = registerOutput<ScheduleMonthlyOccurrence?>('monthlyOccurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleMonthlyOccurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     startTime = registerOutput<String>('startTime');
     timezone = registerOutput<String?>('timezone');
-    weekDays = registerOutput<List<String>?>('weekDays');
+    weekDays = registerOutput<List<String>?>('weekDays', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Schedule] resource's state with the given [name] and [id].
@@ -332,11 +332,12 @@ class Schedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Schedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -355,12 +356,35 @@ class Schedule extends pulumi.CustomResource {
     expiryTime = registerOutput<String>('expiryTime');
     frequency = registerOutput<String>('frequency');
     interval = registerOutput<int>('interval');
-    monthDays = registerOutput<List<int>?>('monthDays');
+    monthDays = registerOutput<List<int>?>('monthDays', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     monthlyOccurrence = registerOutput<ScheduleMonthlyOccurrence?>('monthlyOccurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleMonthlyOccurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     startTime = registerOutput<String>('startTime');
     timezone = registerOutput<String?>('timezone');
-    weekDays = registerOutput<List<String>?>('weekDays');
+    weekDays = registerOutput<List<String>?>('weekDays', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Schedule] resource.
+  Schedule.reference(String urn)
+    : super(
+        'azure:automation/schedule:Schedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    description = registerOutput<String?>('description');
+    expiryTime = registerOutput<String>('expiryTime');
+    frequency = registerOutput<String>('frequency');
+    interval = registerOutput<int>('interval');
+    monthDays = registerOutput<List<int>?>('monthDays', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    monthlyOccurrence = registerOutput<ScheduleMonthlyOccurrence?>('monthlyOccurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleMonthlyOccurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    startTime = registerOutput<String>('startTime');
+    timezone = registerOutput<String?>('timezone');
+    weekDays = registerOutput<List<String>?>('weekDays', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

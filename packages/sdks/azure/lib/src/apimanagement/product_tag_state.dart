@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ProductTag resources.
 class ProductTagState {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// The name of the API Management product. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementProductId;
+  final pulumi.Input<String?>? apiManagementProductId;
   /// The name which should be used for this API Management Tag. Changing this forces a new API Management Tag to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group in which the API Management Service should be exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ProductTagState].
   /// [apiManagementName] The name of the API Management Service. Changing this forces a new resource to be created.

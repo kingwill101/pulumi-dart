@@ -41,7 +41,7 @@ class GetManagedDatabaseLongTermRetentionPolicy {
     return GetManagedDatabaseLongTermRetentionPolicy(
       immutableBackupsEnabled: pulumi.Input.fromValue(map['immutableBackupsEnabled'] as bool),
       monthlyRetention: pulumi.Input.fromValue(map['monthlyRetention'] as String),
-      weekOfYear: pulumi.Input.fromValue(map['weekOfYear'] as int),
+      weekOfYear: pulumi.Input.fromValue((map['weekOfYear'] as num).toInt()),
       weeklyRetention: pulumi.Input.fromValue(map['weeklyRetention'] as String),
       yearlyRetention: pulumi.Input.fromValue(map['yearlyRetention'] as String),
     );

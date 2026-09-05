@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiOperationTemplateParameterExample {
   /// A long description for this example.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A URL that points to the literal example.
-  final pulumi.Input<String>? externalValue;
+  final pulumi.Input<String?>? externalValue;
   /// The name of this example.
   final pulumi.Input<String> name;
   /// A short description for this example.
-  final pulumi.Input<String>? summary;
+  final pulumi.Input<String?>? summary;
   /// The example of the representation.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ApiOperationTemplateParameterExample].
   /// [description] A long description for this example.

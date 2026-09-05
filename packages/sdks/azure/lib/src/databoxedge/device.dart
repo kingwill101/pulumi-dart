@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'device_args.dart';
+import 'device_device_property.dart';
 import 'device_state.dart';
 
 /// Manages a Databox Edge Device.
@@ -182,7 +183,7 @@ import 'device_state.dart';
 /// ```
 class Device extends pulumi.CustomResource {
   /// A `deviceProperties` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> deviceProperties;
+  late final pulumi.Output<List<DeviceDeviceProperty>> deviceProperties;
   /// The Azure Region where the Databox Edge Device should exist. Changing this forces a new Databox Edge Device to be created.
   late final pulumi.Output<String> location;
   /// The name which should be used for this Databox Edge Device. Changing this forces a new Databox Edge Device to be created.
@@ -206,14 +207,14 @@ class Device extends pulumi.CustomResource {
           'azure:databoxedge/device:Device',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    deviceProperties = registerOutput<List<Map<String, dynamic>>>('deviceProperties');
+    deviceProperties = registerOutput<List<DeviceDeviceProperty>>('deviceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeviceDeviceProperty>(guardedValue, (value) => DeviceDeviceProperty.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Device] resource's state with the given [name] and [id].
@@ -221,11 +222,12 @@ class Device extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeviceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Device._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -239,11 +241,28 @@ class Device extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    deviceProperties = registerOutput<List<Map<String, dynamic>>>('deviceProperties');
+    deviceProperties = registerOutput<List<DeviceDeviceProperty>>('deviceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeviceDeviceProperty>(guardedValue, (value) => DeviceDeviceProperty.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Device] resource.
+  Device.reference(String urn)
+    : super(
+        'azure:databoxedge/device:Device',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deviceProperties = registerOutput<List<DeviceDeviceProperty>>('deviceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeviceDeviceProperty>(guardedValue, (value) => DeviceDeviceProperty.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -8,7 +8,7 @@ class EndpointGlobalDeliveryRuleModifyRequestHeaderAction {
   /// The header name.
   final pulumi.Input<String> name;
   /// The value of the header. Only needed when `action` is set to `Append` or `overwrite`.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EndpointGlobalDeliveryRuleModifyRequestHeaderAction].
   /// [action] Action to be executed on a header value. Valid values are `Append`, `Delete` and `Overwrite`.

@@ -20,6 +20,7 @@ import 'shared_private_link_resource_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     softDeleteRetentionDays: 7,
@@ -57,6 +58,7 @@ import 'shared_private_link_resource_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     soft_delete_retention_days=7,
@@ -100,6 +102,7 @@ import 'shared_private_link_resource_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         SoftDeleteRetentionDays = 7,
@@ -168,12 +171,13 @@ import 'shared_private_link_resource_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("examplekeyvault"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("standard"),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
+/// 			Name:                     pulumi.String("examplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(current.TenantId),
@@ -205,9 +209,9 @@ import 'shared_private_link_resource_state.dart';
 /// 		}
 /// 		_, err = webpubsub.NewSharedPrivateLinkResource(ctx, "example", &webpubsub.SharedPrivateLinkResourceArgs{
 /// 			Name:             pulumi.String("tfex-webpubsub-splr"),
-/// 			WebPubsubId:      exampleService.ID(),
+/// 			WebPubsubId:      exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			SubresourceName:  pulumi.String("vault"),
-/// 			TargetResourceId: exampleKeyVault.ID(),
+/// 			TargetResourceId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -236,6 +240,7 @@ import 'shared_private_link_resource_state.dart';
 ///   name                       = "examplekeyvault"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
@@ -301,6 +306,7 @@ import 'shared_private_link_resource_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .softDeleteRetentionDays(7)
@@ -345,6 +351,7 @@ import 'shared_private_link_resource_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       softDeleteRetentionDays: 7
@@ -426,7 +433,7 @@ class SharedPrivateLinkResource extends pulumi.CustomResource {
           'azure:webpubsub/sharedPrivateLinkResource:SharedPrivateLinkResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     requestMessage = registerOutput<String?>('requestMessage');
@@ -441,11 +448,12 @@ class SharedPrivateLinkResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SharedPrivateLinkResourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SharedPrivateLinkResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -459,6 +467,23 @@ class SharedPrivateLinkResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    requestMessage = registerOutput<String?>('requestMessage');
+    status = registerOutput<String>('status');
+    subresourceName = registerOutput<String>('subresourceName');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    webPubsubId = registerOutput<String>('webPubsubId');
+  }
+
+  /// Creates a typed reference to an existing [SharedPrivateLinkResource] resource.
+  SharedPrivateLinkResource.reference(String urn)
+    : super(
+        'azure:webpubsub/sharedPrivateLinkResource:SharedPrivateLinkResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     requestMessage = registerOutput<String?>('requestMessage');
     status = registerOutput<String>('status');

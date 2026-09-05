@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountNetworkProfileNodeManagementAccessIpRule {
   /// Specifies the action of the ip rule. The only possible value is `Allow`. Defaults to `Allow`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The CIDR block from which requests will match the rule.
   final pulumi.Input<String> ipRange;
 

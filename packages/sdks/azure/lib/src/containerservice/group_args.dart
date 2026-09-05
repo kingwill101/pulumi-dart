@@ -17,38 +17,38 @@ class GroupArgs {
   /// The definition of a container that is part of the group as documented in the `container` block below. Changing this forces a new resource to be created.
   final pulumi.Input<List<GroupContainer>> containers;
   /// A `diagnostics` block as documented below. Changing this forces a new resource to be created.
-  final pulumi.Input<GroupDiagnostics>? diagnostics;
+  final pulumi.Input<GroupDiagnostics?>? diagnostics;
   /// A `dnsConfig` block as documented below. Changing this forces a new resource to be created.
-  final pulumi.Input<GroupDnsConfig>? dnsConfig;
+  final pulumi.Input<GroupDnsConfig?>? dnsConfig;
   /// The DNS label/name for the container group's IP. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** DNS label/name is not supported when deploying to virtual networks.
-  final pulumi.Input<String>? dnsNameLabel;
+  final pulumi.Input<String?>? dnsNameLabel;
   /// The value representing the security enum. `Noreuse`, `ResourceGroupReuse`, `SubscriptionReuse`, `TenantReuse` or `Unsecure`. Defaults to `Unsecure`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? dnsNameLabelReusePolicy;
+  final pulumi.Input<String?>? dnsNameLabelReusePolicy;
   /// Zero or more `exposedPort` blocks as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `exposedPort` can only contain ports that are also exposed on one or more containers in the group.
-  final pulumi.Input<List<GroupExposedPort>>? exposedPorts;
+  final pulumi.Input<List<GroupExposedPort>?>? exposedPorts;
   /// An `identity` block as defined below.
-  final pulumi.Input<GroupIdentity>? identity;
+  final pulumi.Input<GroupIdentity?>? identity;
   /// An `imageRegistryCredential` block as documented below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<GroupImageRegistryCredential>>? imageRegistryCredentials;
+  final pulumi.Input<List<GroupImageRegistryCredential>?>? imageRegistryCredentials;
   /// The definition of an init container that is part of the group as documented in the `initContainer` block below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<GroupInitContainer>>? initContainers;
+  final pulumi.Input<List<GroupInitContainer>?>? initContainers;
   /// Specifies the IP address type of the container. `Public`, `Private` or `None`. Changing this forces a new resource to be created. If set to `Private`, `subnetIds` also needs to be set. Defaults to `Public`.
   ///
   /// &gt; **Note:** `dnsNameLabel` and `osType` set to `windows` are not compatible with `Private` `ipAddressType`
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// The Key Vault key URI for CMK encryption. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? keyVaultKeyId;
+  final pulumi.Input<String?>? keyVaultKeyId;
   /// The user assigned identity that has access to the Key Vault Key. If not specified, the RP principal named "Azure Container Instance Service" will be used instead. Make sure the identity has the proper `keyPermissions` set, at least with `Get`, `UnwrapKey`, `WrapKey` and `GetRotationPolicy`.
-  final pulumi.Input<String>? keyVaultUserAssignedIdentityId;
+  final pulumi.Input<String?>? keyVaultUserAssignedIdentityId;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Container Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? networkProfileId;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? networkProfileId;
   /// The OS for the container group. Allowed values are `Linux` and `Windows`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** if `osType` is set to `Windows` currently only a single `container` block is supported. Windows containers are not supported in virtual networks.
@@ -56,19 +56,19 @@ class GroupArgs {
   /// The priority of the Container Group. Possible values are `Regular` and `Spot`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** When `priority` is set to `Spot`, the `ipAddressType` has to be `None`.
-  final pulumi.Input<String>? priority;
+  final pulumi.Input<String?>? priority;
   /// The name of the resource group in which to create the Container Group. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Restart policy for the container group. Allowed values are `Always`, `Never`, `OnFailure`. Defaults to `Always`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? restartPolicy;
+  final pulumi.Input<String?>? restartPolicy;
   /// Specifies the sku of the Container Group. Possible values are `Confidential`, `Dedicated` and `Standard`. Defaults to `Standard`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// The subnet resource IDs for a container group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subnetIds;
+  final pulumi.Input<String?>? subnetIds;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of Availability Zones in which this Container Group is located. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [GroupArgs].
   /// [containers] The definition of a container that is part of the group as documented in the `container` block below. Changing this forces a new resource to be created.

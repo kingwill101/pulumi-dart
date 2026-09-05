@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MongoCollectionSystemIndex {
   /// The list of system keys which are not settable for each Cosmos DB Mongo Collection.
-  final pulumi.Input<List<String>>? keys;
+  final pulumi.Input<List<String>?>? keys;
   /// Identifies whether the table contains no duplicate values.
-  final pulumi.Input<bool>? unique;
+  final pulumi.Input<bool?>? unique;
 
   /// Creates a new [MongoCollectionSystemIndex].
   /// [keys] The list of system keys which are not settable for each Cosmos DB Mongo Collection.

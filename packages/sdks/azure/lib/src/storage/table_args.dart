@@ -9,15 +9,15 @@ import 'table_acl.dart';
 /// {@macro pulumi_storage_table_table_args_doc}
 class TableArgs {
   /// One or more `acl` blocks as defined below.
-  final pulumi.Input<List<TableAcl>>? acls;
+  final pulumi.Input<List<TableAcl>?>? acls;
   /// The name of the storage table. Only Alphanumeric characters allowed, starting with a letter. Must be unique within the storage account the table is located. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the storage account in which to create the storage table. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// Specifies the storage account in which to create the storage table. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This property is deprecated in favour of `storageAccountId` and will be removed in version 5.0 of the AzureRM Provider.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [TableArgs].
   /// [acls] One or more `acl` blocks as defined below.

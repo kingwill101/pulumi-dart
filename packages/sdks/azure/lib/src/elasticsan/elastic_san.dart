@@ -256,7 +256,7 @@ class ElasticSan extends pulumi.CustomResource {
           'azure:elasticsan/elasticSan:ElasticSan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     baseSizeInTib = registerOutput<int>('baseSizeInTib');
     extendedSizeInTib = registerOutput<int?>('extendedSizeInTib');
@@ -264,13 +264,13 @@ class ElasticSan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<ElasticSanSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticSanSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     totalIops = registerOutput<int>('totalIops');
     totalMbps = registerOutput<int>('totalMbps');
     totalSizeInTib = registerOutput<int>('totalSizeInTib');
     totalVolumeSizeInGib = registerOutput<int>('totalVolumeSizeInGib');
     volumeGroupCount = registerOutput<int>('volumeGroupCount');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ElasticSan] resource's state with the given [name] and [id].
@@ -278,11 +278,12 @@ class ElasticSan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ElasticSanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ElasticSan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -302,12 +303,36 @@ class ElasticSan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<ElasticSanSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticSanSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     totalIops = registerOutput<int>('totalIops');
     totalMbps = registerOutput<int>('totalMbps');
     totalSizeInTib = registerOutput<int>('totalSizeInTib');
     totalVolumeSizeInGib = registerOutput<int>('totalVolumeSizeInGib');
     volumeGroupCount = registerOutput<int>('volumeGroupCount');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ElasticSan] resource.
+  ElasticSan.reference(String urn)
+    : super(
+        'azure:elasticsan/elasticSan:ElasticSan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    baseSizeInTib = registerOutput<int>('baseSizeInTib');
+    extendedSizeInTib = registerOutput<int?>('extendedSizeInTib');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<ElasticSanSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticSanSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    totalIops = registerOutput<int>('totalIops');
+    totalMbps = registerOutput<int>('totalMbps');
+    totalSizeInTib = registerOutput<int>('totalSizeInTib');
+    totalVolumeSizeInGib = registerOutput<int>('totalVolumeSizeInGib');
+    volumeGroupCount = registerOutput<int>('volumeGroupCount');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

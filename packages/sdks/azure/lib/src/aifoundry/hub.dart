@@ -26,6 +26,7 @@ import 'hub_state.dart';
 ///     name: "examplekv",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     purgeProtectionEnabled: true,
@@ -72,6 +73,7 @@ import 'hub_state.dart';
 ///     name="examplekv",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     purge_protection_enabled=True)
@@ -123,6 +125,7 @@ import 'hub_state.dart';
 ///         Name = "examplekv",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         PurgeProtectionEnabled = true,
@@ -192,18 +195,19 @@ import 'hub_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("examplekv"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("standard"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("examplekv"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "test", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -231,8 +235,8 @@ import 'hub_state.dart';
 /// 			Name:              pulumi.String("exampleaihub"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			StorageAccountId:  exampleAccount.ID(),
-/// 			KeyVaultId:        exampleKeyVault.ID(),
+/// 			StorageAccountId:  exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId:        exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &aifoundry.HubIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -261,12 +265,13 @@ import 'hub_state.dart';
 ///   location = "westeurope"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "examplekv"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "standard"
-///   purge_protection_enabled = true
+///   name                       = "examplekv"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   purge_protection_enabled   = true
 /// }
 /// resource "azure_keyvault_accesspolicy" "test" {
 ///   key_vault_id    = azure_keyvault_keyvault.example.id
@@ -334,6 +339,7 @@ import 'hub_state.dart';
 ///             .name("examplekv")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .purgeProtectionEnabled(true)
@@ -387,6 +393,7 @@ import 'hub_state.dart';
 ///       name: examplekv
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       purgeProtectionEnabled: true
@@ -496,7 +503,7 @@ class Hub extends pulumi.CustomResource {
           'azure:aifoundry/hub:Hub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationInsightsId = registerOutput<String?>('applicationInsightsId');
     containerRegistryId = registerOutput<String?>('containerRegistryId');
@@ -514,7 +521,7 @@ class Hub extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageAccountId = registerOutput<String>('storageAccountId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 
@@ -523,11 +530,12 @@ class Hub extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Hub._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -557,7 +565,36 @@ class Hub extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageAccountId = registerOutput<String>('storageAccountId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [Hub] resource.
+  Hub.reference(String urn)
+    : super(
+        'azure:aifoundry/hub:Hub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationInsightsId = registerOutput<String?>('applicationInsightsId');
+    containerRegistryId = registerOutput<String?>('containerRegistryId');
+    description = registerOutput<String?>('description');
+    discoveryUrl = registerOutput<String>('discoveryUrl');
+    encryption = registerOutput<HubEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    friendlyName = registerOutput<String?>('friendlyName');
+    highBusinessImpactEnabled = registerOutput<bool>('highBusinessImpactEnabled');
+    identity = registerOutput<HubIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultId = registerOutput<String>('keyVaultId');
+    location = registerOutput<String>('location');
+    managedNetwork = registerOutput<HubManagedNetwork>('managedNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubManagedNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 }

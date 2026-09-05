@@ -6,9 +6,9 @@ class NamespaceIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to this Event Grid Namespace.
   ///
   /// &gt; **Note:** This is required when `type` is set to `UserAssigned`
-  final pulumi.Input<List<String>>? identityIds;
-  final pulumi.Input<String>? principalId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<List<String>?>? identityIds;
+  final pulumi.Input<String?>? principalId;
+  final pulumi.Input<String?>? tenantId;
   /// Specifies the type of Managed Service Identity that should be configured on this Event Grid Namespace. Possible values are `SystemAssigned`, `UserAssigned`.
   final pulumi.Input<String> type;
 

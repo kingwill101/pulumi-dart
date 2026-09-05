@@ -399,7 +399,7 @@ class DatabasePrincipalAssignment extends pulumi.CustomResource {
           'azure:kusto/databasePrincipalAssignment:DatabasePrincipalAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clusterName = registerOutput<String>('clusterName');
     databaseName = registerOutput<String>('databaseName');
@@ -418,11 +418,12 @@ class DatabasePrincipalAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabasePrincipalAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabasePrincipalAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -436,6 +437,27 @@ class DatabasePrincipalAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clusterName = registerOutput<String>('clusterName');
+    databaseName = registerOutput<String>('databaseName');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    principalName = registerOutput<String>('principalName');
+    principalType = registerOutput<String>('principalType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    role = registerOutput<String>('role');
+    tenantId = registerOutput<String>('tenantId');
+    tenantName = registerOutput<String>('tenantName');
+  }
+
+  /// Creates a typed reference to an existing [DatabasePrincipalAssignment] resource.
+  DatabasePrincipalAssignment.reference(String urn)
+    : super(
+        'azure:kusto/databasePrincipalAssignment:DatabasePrincipalAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clusterName = registerOutput<String>('clusterName');
     databaseName = registerOutput<String>('databaseName');
     this.name = registerOutput<String>('name');

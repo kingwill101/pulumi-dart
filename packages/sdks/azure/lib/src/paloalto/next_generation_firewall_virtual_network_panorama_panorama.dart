@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualNetworkPanoramaPanorama {
   /// The Device Group Name to which this Firewall Resource is registered.
-  final pulumi.Input<String>? deviceGroupName;
+  final pulumi.Input<String?>? deviceGroupName;
   /// The Host Name of this Firewall Resource.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// The name which should be used for this Palo Alto Next Generation Firewall Virtual Network Panorama. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Panorama to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the First Panorana server.
-  final pulumi.Input<String>? panoramaServer1;
+  final pulumi.Input<String?>? panoramaServer1;
   /// The name of the Second Panorana server.
-  final pulumi.Input<String>? panoramaServer2;
+  final pulumi.Input<String?>? panoramaServer2;
   /// The name of the Panorama Template applied to this Firewall Resource.
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
   /// The SSH Key to connect to the Firewall Resource.
-  final pulumi.Input<String>? virtualMachineSshKey;
+  final pulumi.Input<String?>? virtualMachineSshKey;
 
   /// Creates a new [NextGenerationFirewallVirtualNetworkPanoramaPanorama].
   /// [deviceGroupName] The Device Group Name to which this Firewall Resource is registered.

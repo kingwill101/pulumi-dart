@@ -170,9 +170,9 @@ import 'virtual_network_peering_state.dart';
 /// 		exampleVirtualNetworkPeering, err := databricks.NewVirtualNetworkPeering(ctx, "example", &databricks.VirtualNetworkPeeringArgs{
 /// 			Name:                       pulumi.String("databricks-vnet-peer"),
 /// 			ResourceGroupName:          example.Name,
-/// 			WorkspaceId:                exampleWorkspace.ID(),
+/// 			WorkspaceId:                exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			RemoteAddressSpacePrefixes: remote.AddressSpaces,
-/// 			RemoteVirtualNetworkId:     remote.ID(),
+/// 			RemoteVirtualNetworkId:     remote.ID().ToIDOutput().ToStringOutput(),
 /// 			AllowVirtualNetworkAccess:  pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -398,14 +398,14 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
           'azure:databricks/virtualNetworkPeering:VirtualNetworkPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    addressSpacePrefixes = registerOutput<List<String>>('addressSpacePrefixes');
+    addressSpacePrefixes = registerOutput<List<String>>('addressSpacePrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
     allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
     allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
     this.name = registerOutput<String>('name');
-    remoteAddressSpacePrefixes = registerOutput<List<String>>('remoteAddressSpacePrefixes');
+    remoteAddressSpacePrefixes = registerOutput<List<String>>('remoteAddressSpacePrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
@@ -418,11 +418,12 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNetworkPeeringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNetworkPeering._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -436,12 +437,34 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addressSpacePrefixes = registerOutput<List<String>>('addressSpacePrefixes');
+    addressSpacePrefixes = registerOutput<List<String>>('addressSpacePrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
     allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
     allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
     this.name = registerOutput<String>('name');
-    remoteAddressSpacePrefixes = registerOutput<List<String>>('remoteAddressSpacePrefixes');
+    remoteAddressSpacePrefixes = registerOutput<List<String>>('remoteAddressSpacePrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkPeering] resource.
+  VirtualNetworkPeering.reference(String urn)
+    : super(
+        'azure:databricks/virtualNetworkPeering:VirtualNetworkPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressSpacePrefixes = registerOutput<List<String>>('addressSpacePrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
+    allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
+    allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
+    this.name = registerOutput<String>('name');
+    remoteAddressSpacePrefixes = registerOutput<List<String>>('remoteAddressSpacePrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     remoteVirtualNetworkId = registerOutput<String>('remoteVirtualNetworkId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     useRemoteGateways = registerOutput<bool?>('useRemoteGateways');

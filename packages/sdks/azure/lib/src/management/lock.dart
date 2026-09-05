@@ -228,7 +228,7 @@ import 'lock_state.dart';
 /// 		}
 /// 		_, err = management.NewLock(ctx, "resource-group-level", &management.LockArgs{
 /// 			Name:      pulumi.String("resource-group-level"),
-/// 			Scope:     example.ID(),
+/// 			Scope:     example.ID().ToIDOutput().ToStringOutput(),
 /// 			LockLevel: pulumi.String("ReadOnly"),
 /// 			Notes:     pulumi.String("This Resource Group is Read-Only"),
 /// 		})
@@ -423,7 +423,7 @@ import 'lock_state.dart';
 /// 		}
 /// 		_, err = management.NewLock(ctx, "public-ip", &management.LockArgs{
 /// 			Name:      pulumi.String("resource-ip"),
-/// 			Scope:     examplePublicIp.ID(),
+/// 			Scope:     examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 			LockLevel: pulumi.String("CanNotDelete"),
 /// 			Notes:     pulumi.String("Locked because it's needed by a third-party"),
 /// 		})
@@ -573,7 +573,7 @@ class Lock extends pulumi.CustomResource {
           'azure:management/lock:Lock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     lockLevel = registerOutput<String>('lockLevel');
     this.name = registerOutput<String>('name');
@@ -586,11 +586,12 @@ class Lock extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LockState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Lock._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -604,6 +605,21 @@ class Lock extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    lockLevel = registerOutput<String>('lockLevel');
+    this.name = registerOutput<String>('name');
+    notes = registerOutput<String?>('notes');
+    scope = registerOutput<String>('scope');
+  }
+
+  /// Creates a typed reference to an existing [Lock] resource.
+  Lock.reference(String urn)
+    : super(
+        'azure:management/lock:Lock',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     lockLevel = registerOutput<String>('lockLevel');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');

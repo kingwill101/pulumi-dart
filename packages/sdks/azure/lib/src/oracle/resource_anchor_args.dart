@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_oracle_resource_anchor_resource_anchor_args_doc}
 class ResourceAnchorArgs {
   /// The name which should be used for this Oracle Resource Anchor. Changing this forces a new Oracle Resource Anchor to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Oracle Resource Anchor should exist. Changing this forces a new Oracle Resource Anchor to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Oracle Resource Anchor.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ResourceAnchorArgs].
   /// [name] The name which should be used for this Oracle Resource Anchor. Changing this forces a new Oracle Resource Anchor to be created.

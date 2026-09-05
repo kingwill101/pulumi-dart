@@ -4,39 +4,39 @@
 /// Result data returned by getGroupTemplateDeployment.
 class GetGroupTemplateDeploymentResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String managementGroupId;
-  final String name;
+  final String? id;
+  final String? managementGroupId;
+  final String? name;
   /// The JSON Content of the Outputs of the ARM Template Deployment.
-  final String outputContent;
+  final String? outputContent;
 
   /// Creates a new [GetGroupTemplateDeploymentResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [managementGroupId] Required.
-  /// [name] Required.
+  /// [managementGroupId] Optional.
+  /// [name] Optional.
   /// [outputContent] The JSON Content of the Outputs of the ARM Template Deployment.
   const GetGroupTemplateDeploymentResult({
-    required this.id,
-    required this.managementGroupId,
-    required this.name,
-    required this.outputContent,
+    this.id,
+    this.managementGroupId,
+    this.name,
+    this.outputContent,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'managementGroupId': managementGroupId,
-      'name': name,
-      'outputContent': outputContent,
+      'id': ?id,
+      'managementGroupId': ?managementGroupId,
+      'name': ?name,
+      'outputContent': ?outputContent,
     };
   }
 
   factory GetGroupTemplateDeploymentResult.fromMap(Map<String, dynamic> map) {
     return GetGroupTemplateDeploymentResult(
-      id: map['id'] as String,
-      managementGroupId: map['managementGroupId'] as String,
-      name: map['name'] as String,
-      outputContent: map['outputContent'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managementGroupId: (() { final guardedValue = map['managementGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputContent: (() { final guardedValue = map['outputContent']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

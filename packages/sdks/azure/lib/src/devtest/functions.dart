@@ -151,6 +151,17 @@ Future<GetLabResult> getLab(
   return GetLabResult.fromMap(result);
 }
 
+pulumi.Output<GetLabResult> getLabOutput(
+  GetLabArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devtest/getLab:getLab',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLabResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Dev Test Lab Virtual Network.
 ///
 /// ## Example Usage
@@ -303,4 +314,15 @@ Future<GetVirtualNetworkResult> getVirtualNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkResult> getVirtualNetworkOutput(
+  GetVirtualNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:devtest/getVirtualNetwork:getVirtualNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkResult.fromMap);
 }

@@ -147,7 +147,7 @@ import 'organization_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleParent, err := iotcentral.NewOrganization(ctx, "example_parent", &iotcentral.OrganizationArgs{
-/// 			IotcentralApplicationId: exampleApplication.ID(),
+/// 			IotcentralApplicationId: exampleApplication.ID().ToIDOutput().ToStringOutput(),
 /// 			OrganizationId:          pulumi.String("example-parent-organization-id"),
 /// 			DisplayName:             pulumi.String("Org example parent"),
 /// 		})
@@ -155,7 +155,7 @@ import 'organization_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = iotcentral.NewOrganization(ctx, "example", &iotcentral.OrganizationArgs{
-/// 			IotcentralApplicationId: exampleApplication.ID(),
+/// 			IotcentralApplicationId: exampleApplication.ID().ToIDOutput().ToStringOutput(),
 /// 			OrganizationId:          pulumi.String("example-child-organization-id"),
 /// 			DisplayName:             pulumi.String("Org example"),
 /// 			ParentOrganizationId:    exampleParent.OrganizationId,
@@ -328,7 +328,7 @@ class Organization extends pulumi.CustomResource {
           'azure:iotcentral/organization:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
@@ -341,11 +341,12 @@ class Organization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Organization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -359,6 +360,21 @@ class Organization extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    displayName = registerOutput<String>('displayName');
+    iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
+    organizationId = registerOutput<String>('organizationId');
+    parentOrganizationId = registerOutput<String?>('parentOrganizationId');
+  }
+
+  /// Creates a typed reference to an existing [Organization] resource.
+  Organization.reference(String urn)
+    : super(
+        'azure:iotcentral/organization:Organization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
     organizationId = registerOutput<String>('organizationId');

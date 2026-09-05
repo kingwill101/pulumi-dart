@@ -6,11 +6,11 @@ class SubscriptionPolicyAssignmentIdentity {
   /// A list of User Managed Identity IDs which should be assigned to the Policy Definition.
   ///
   /// &gt; **Note:** This is required when `type` is set to `UserAssigned`.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// The Principal ID of the Policy Assignment for this Subscription.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The Tenant ID of the Policy Assignment for this Subscription.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The Type of Managed Identity which should be added to this Policy Definition. Possible values are `SystemAssigned` or `UserAssigned`.
   final pulumi.Input<String> type;
 

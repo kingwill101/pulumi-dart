@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering MonitorSsoConfiguration resources.
 class MonitorSsoConfigurationState {
   /// The Datadog Monitor Id which should be used for this Datadog Monitor SSO Configuration. Changing this forces a new Datadog Monitor SSO Configuration to be created.
-  final pulumi.Input<String>? datadogMonitorId;
+  final pulumi.Input<String?>? datadogMonitorId;
   /// The application Id to perform SSO operation.
-  final pulumi.Input<String>? enterpriseApplicationId;
+  final pulumi.Input<String?>? enterpriseApplicationId;
   /// The SingleSignOn URL to login to Datadog org.
-  final pulumi.Input<String>? loginUrl;
+  final pulumi.Input<String?>? loginUrl;
   /// The name of the SingleSignOn configuration. Defaults to `default`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The state of SingleSignOn configuration. Possible values are `Enable`, `Disable`, `Initial` and `Existing`.
-  final pulumi.Input<String>? singleSignOn;
-  final pulumi.Input<String>? singleSignOnEnabled;
+  final pulumi.Input<String?>? singleSignOn;
+  final pulumi.Input<String?>? singleSignOnEnabled;
 
   /// Creates a new [MonitorSsoConfigurationState].
   /// [datadogMonitorId] The Datadog Monitor Id which should be used for this Datadog Monitor SSO Configuration. Changing this forces a new Datadog Monitor SSO Configuration to be created.

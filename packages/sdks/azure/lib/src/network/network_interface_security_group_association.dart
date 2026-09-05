@@ -203,7 +203,7 @@ import 'network_interface_security_group_association_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("testconfiguration1"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -212,8 +212,8 @@ import 'network_interface_security_group_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkInterfaceSecurityGroupAssociation(ctx, "example", &network.NetworkInterfaceSecurityGroupAssociationArgs{
-/// 			NetworkInterfaceId:     exampleNetworkInterface.ID(),
-/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID(),
+/// 			NetworkInterfaceId:     exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -429,7 +429,7 @@ class NetworkInterfaceSecurityGroupAssociation extends pulumi.CustomResource {
           'azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
@@ -440,11 +440,12 @@ class NetworkInterfaceSecurityGroupAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkInterfaceSecurityGroupAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkInterfaceSecurityGroupAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -458,6 +459,19 @@ class NetworkInterfaceSecurityGroupAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkInterfaceSecurityGroupAssociation] resource.
+  NetworkInterfaceSecurityGroupAssociation.reference(String urn)
+    : super(
+        'azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
   }

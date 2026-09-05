@@ -2,12 +2,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_analytical_storage.dart';
 import 'account_args.dart';
 import 'account_backup.dart';
+import 'account_capability.dart';
 import 'account_capacity.dart';
 import 'account_consistency_policy.dart';
 import 'account_cors_rule.dart';
+import 'account_geo_location.dart';
 import 'account_identity.dart';
 import 'account_restore.dart';
 import 'account_state.dart';
+import 'account_virtual_network_rule.dart';
 
 /// Manages a CosmosDB (formally DocumentDB) Account.
 ///
@@ -446,7 +449,7 @@ import 'account_state.dart';
 ///             "UserAssignedIdentity",
 ///             example.id,
 ///         ],
-///     }).apply(invoke => invoke.result),
+///     }).result,
 ///     offerType: "Standard",
 ///     kind: "MongoDB",
 ///     capabilities: [{
@@ -482,7 +485,7 @@ import 'account_state.dart';
 ///         input=[
 ///             "UserAssignedIdentity",
 ///             example.id,
-///         ]).apply(lambda invoke: invoke.result),
+///         ]).result,
 ///     offer_type="Standard",
 ///     kind="MongoDB",
 ///     capabilities=[{
@@ -587,16 +590,13 @@ import 'account_state.dart';
 /// 			Name:              pulumi.String("example-resource"),
 /// 			Location:          pulumi.Any(exampleAzurermResourceGroup.Location),
 /// 			ResourceGroupName: pulumi.Any(exampleAzurermResourceGroup.Name),
-/// 			DefaultIdentityType: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 			DefaultIdentityType: std.JoinOutput(ctx, std.JoinOutputArgs{
 /// 				Separator: pulumi.String("="),
 /// 				Input: pulumi.StringArray{
 /// 					pulumi.String("UserAssignedIdentity"),
-/// 					example.ID(),
+/// 					example.ID().ToIDOutput().ToStringOutput(),
 /// 				},
-/// 			}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 				val := invoke.Result
-/// 				return &val, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}, nil).Result(),
 /// 			OfferType: pulumi.String("Standard"),
 /// 			Kind:      pulumi.String("MongoDB"),
 /// 			Capabilities: cosmosdb.AccountCapabilityArray{
@@ -616,7 +616,7 @@ import 'account_state.dart';
 /// 			Identity: &cosmosdb.AccountIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					example.ID(),
+/// 					example.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -794,7 +794,7 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<bool?> automaticFailoverEnabled;
   late final pulumi.Output<AccountBackup> backup;
   late final pulumi.Output<bool?> burstCapacityEnabled;
-  late final pulumi.Output<List<Map<String, dynamic>>> capabilities;
+  late final pulumi.Output<List<AccountCapability>> capabilities;
   /// A `capacity` block as defined below.
   late final pulumi.Output<AccountCapacity> capacity;
   late final pulumi.Output<AccountConsistencyPolicy> consistencyPolicy;
@@ -808,7 +808,7 @@ class Account extends pulumi.CustomResource {
   /// The endpoint used to connect to the CosmosDB account.
   late final pulumi.Output<String> endpoint;
   late final pulumi.Output<bool?> freeTierEnabled;
-  late final pulumi.Output<List<Map<String, dynamic>>> geoLocations;
+  late final pulumi.Output<List<AccountGeoLocation>> geoLocations;
   late final pulumi.Output<AccountIdentity?> identity;
   late final pulumi.Output<List<String>?> ipRangeFilters;
   late final pulumi.Output<bool?> isVirtualNetworkFilterEnabled;
@@ -864,7 +864,7 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> secondarySqlConnectionString;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworkRules;
+  late final pulumi.Output<List<AccountVirtualNetworkRule>?> virtualNetworkRules;
   /// A list of write endpoints available for this CosmosDB account.
   late final pulumi.Output<List<String>> writeEndpoints;
 
@@ -880,7 +880,8 @@ class Account extends pulumi.CustomResource {
           'azure:cosmosdb/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryKey', 'primaryMongodbConnectionString', 'primaryReadonlyKey', 'primaryReadonlyMongodbConnectionString', 'primaryReadonlySqlConnectionString', 'primarySqlConnectionString', 'secondaryKey', 'secondaryMongodbConnectionString', 'secondaryReadonlyKey', 'secondaryReadonlyMongodbConnectionString', 'secondaryReadonlySqlConnectionString', 'secondarySqlConnectionString'],
         ) {
     accessKeyMetadataWritesEnabled = registerOutput<bool?>('accessKeyMetadataWritesEnabled');
     analyticalStorage = registerOutput<AccountAnalyticalStorage>('analyticalStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountAnalyticalStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -888,7 +889,7 @@ class Account extends pulumi.CustomResource {
     automaticFailoverEnabled = registerOutput<bool?>('automaticFailoverEnabled');
     backup = registerOutput<AccountBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     burstCapacityEnabled = registerOutput<bool?>('burstCapacityEnabled');
-    capabilities = registerOutput<List<Map<String, dynamic>>>('capabilities');
+    capabilities = registerOutput<List<AccountCapability>>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountCapability>(guardedValue, (value) => AccountCapability.fromMap((value as Map).cast<String, dynamic>())); });
     capacity = registerOutput<AccountCapacity>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consistencyPolicy = registerOutput<AccountConsistencyPolicy>('consistencyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountConsistencyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     corsRule = registerOutput<AccountCorsRule?>('corsRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCorsRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -896,9 +897,9 @@ class Account extends pulumi.CustomResource {
     defaultIdentityType = registerOutput<String?>('defaultIdentityType');
     endpoint = registerOutput<String>('endpoint');
     freeTierEnabled = registerOutput<bool?>('freeTierEnabled');
-    geoLocations = registerOutput<List<Map<String, dynamic>>>('geoLocations');
+    geoLocations = registerOutput<List<AccountGeoLocation>>('geoLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountGeoLocation>(guardedValue, (value) => AccountGeoLocation.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ipRangeFilters = registerOutput<List<String>?>('ipRangeFilters');
+    ipRangeFilters = registerOutput<List<String>?>('ipRangeFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     isVirtualNetworkFilterEnabled = registerOutput<bool?>('isVirtualNetworkFilterEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     kind = registerOutput<String?>('kind');
@@ -911,28 +912,28 @@ class Account extends pulumi.CustomResource {
     multipleWriteLocationsEnabled = registerOutput<bool?>('multipleWriteLocationsEnabled');
     this.name = registerOutput<String>('name');
     networkAclBypassForAzureServices = registerOutput<bool?>('networkAclBypassForAzureServices');
-    networkAclBypassIds = registerOutput<List<String>?>('networkAclBypassIds');
+    networkAclBypassIds = registerOutput<List<String>?>('networkAclBypassIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     offerType = registerOutput<String>('offerType');
     partitionMergeEnabled = registerOutput<bool?>('partitionMergeEnabled');
-    primaryKey = registerOutput<String>('primaryKey');
-    primaryMongodbConnectionString = registerOutput<String>('primaryMongodbConnectionString');
-    primaryReadonlyKey = registerOutput<String>('primaryReadonlyKey');
-    primaryReadonlyMongodbConnectionString = registerOutput<String>('primaryReadonlyMongodbConnectionString');
-    primaryReadonlySqlConnectionString = registerOutput<String>('primaryReadonlySqlConnectionString');
-    primarySqlConnectionString = registerOutput<String>('primarySqlConnectionString');
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    primaryMongodbConnectionString = registerOutput<String>('primaryMongodbConnectionString', isSecret: true);
+    primaryReadonlyKey = registerOutput<String>('primaryReadonlyKey', isSecret: true);
+    primaryReadonlyMongodbConnectionString = registerOutput<String>('primaryReadonlyMongodbConnectionString', isSecret: true);
+    primaryReadonlySqlConnectionString = registerOutput<String>('primaryReadonlySqlConnectionString', isSecret: true);
+    primarySqlConnectionString = registerOutput<String>('primarySqlConnectionString', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    readEndpoints = registerOutput<List<String>>('readEndpoints');
+    readEndpoints = registerOutput<List<String>>('readEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     restore = registerOutput<AccountRestore?>('restore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secondaryKey = registerOutput<String>('secondaryKey');
-    secondaryMongodbConnectionString = registerOutput<String>('secondaryMongodbConnectionString');
-    secondaryReadonlyKey = registerOutput<String>('secondaryReadonlyKey');
-    secondaryReadonlyMongodbConnectionString = registerOutput<String>('secondaryReadonlyMongodbConnectionString');
-    secondaryReadonlySqlConnectionString = registerOutput<String>('secondaryReadonlySqlConnectionString');
-    secondarySqlConnectionString = registerOutput<String>('secondarySqlConnectionString');
-    tags = registerOutput<Map<String, String>?>('tags');
-    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>('virtualNetworkRules');
-    writeEndpoints = registerOutput<List<String>>('writeEndpoints');
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    secondaryMongodbConnectionString = registerOutput<String>('secondaryMongodbConnectionString', isSecret: true);
+    secondaryReadonlyKey = registerOutput<String>('secondaryReadonlyKey', isSecret: true);
+    secondaryReadonlyMongodbConnectionString = registerOutput<String>('secondaryReadonlyMongodbConnectionString', isSecret: true);
+    secondaryReadonlySqlConnectionString = registerOutput<String>('secondaryReadonlySqlConnectionString', isSecret: true);
+    secondarySqlConnectionString = registerOutput<String>('secondarySqlConnectionString', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkRules = registerOutput<List<AccountVirtualNetworkRule>?>('virtualNetworkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountVirtualNetworkRule>(guardedValue, (value) => AccountVirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>())); });
+    writeEndpoints = registerOutput<List<String>>('writeEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -940,11 +941,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -964,7 +966,7 @@ class Account extends pulumi.CustomResource {
     automaticFailoverEnabled = registerOutput<bool?>('automaticFailoverEnabled');
     backup = registerOutput<AccountBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     burstCapacityEnabled = registerOutput<bool?>('burstCapacityEnabled');
-    capabilities = registerOutput<List<Map<String, dynamic>>>('capabilities');
+    capabilities = registerOutput<List<AccountCapability>>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountCapability>(guardedValue, (value) => AccountCapability.fromMap((value as Map).cast<String, dynamic>())); });
     capacity = registerOutput<AccountCapacity>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consistencyPolicy = registerOutput<AccountConsistencyPolicy>('consistencyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountConsistencyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     corsRule = registerOutput<AccountCorsRule?>('corsRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCorsRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -972,9 +974,9 @@ class Account extends pulumi.CustomResource {
     defaultIdentityType = registerOutput<String?>('defaultIdentityType');
     endpoint = registerOutput<String>('endpoint');
     freeTierEnabled = registerOutput<bool?>('freeTierEnabled');
-    geoLocations = registerOutput<List<Map<String, dynamic>>>('geoLocations');
+    geoLocations = registerOutput<List<AccountGeoLocation>>('geoLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountGeoLocation>(guardedValue, (value) => AccountGeoLocation.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ipRangeFilters = registerOutput<List<String>?>('ipRangeFilters');
+    ipRangeFilters = registerOutput<List<String>?>('ipRangeFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     isVirtualNetworkFilterEnabled = registerOutput<bool?>('isVirtualNetworkFilterEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     kind = registerOutput<String?>('kind');
@@ -987,27 +989,90 @@ class Account extends pulumi.CustomResource {
     multipleWriteLocationsEnabled = registerOutput<bool?>('multipleWriteLocationsEnabled');
     this.name = registerOutput<String>('name');
     networkAclBypassForAzureServices = registerOutput<bool?>('networkAclBypassForAzureServices');
-    networkAclBypassIds = registerOutput<List<String>?>('networkAclBypassIds');
+    networkAclBypassIds = registerOutput<List<String>?>('networkAclBypassIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     offerType = registerOutput<String>('offerType');
     partitionMergeEnabled = registerOutput<bool?>('partitionMergeEnabled');
-    primaryKey = registerOutput<String>('primaryKey');
-    primaryMongodbConnectionString = registerOutput<String>('primaryMongodbConnectionString');
-    primaryReadonlyKey = registerOutput<String>('primaryReadonlyKey');
-    primaryReadonlyMongodbConnectionString = registerOutput<String>('primaryReadonlyMongodbConnectionString');
-    primaryReadonlySqlConnectionString = registerOutput<String>('primaryReadonlySqlConnectionString');
-    primarySqlConnectionString = registerOutput<String>('primarySqlConnectionString');
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    primaryMongodbConnectionString = registerOutput<String>('primaryMongodbConnectionString', isSecret: true);
+    primaryReadonlyKey = registerOutput<String>('primaryReadonlyKey', isSecret: true);
+    primaryReadonlyMongodbConnectionString = registerOutput<String>('primaryReadonlyMongodbConnectionString', isSecret: true);
+    primaryReadonlySqlConnectionString = registerOutput<String>('primaryReadonlySqlConnectionString', isSecret: true);
+    primarySqlConnectionString = registerOutput<String>('primarySqlConnectionString', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    readEndpoints = registerOutput<List<String>>('readEndpoints');
+    readEndpoints = registerOutput<List<String>>('readEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     restore = registerOutput<AccountRestore?>('restore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secondaryKey = registerOutput<String>('secondaryKey');
-    secondaryMongodbConnectionString = registerOutput<String>('secondaryMongodbConnectionString');
-    secondaryReadonlyKey = registerOutput<String>('secondaryReadonlyKey');
-    secondaryReadonlyMongodbConnectionString = registerOutput<String>('secondaryReadonlyMongodbConnectionString');
-    secondaryReadonlySqlConnectionString = registerOutput<String>('secondaryReadonlySqlConnectionString');
-    secondarySqlConnectionString = registerOutput<String>('secondarySqlConnectionString');
-    tags = registerOutput<Map<String, String>?>('tags');
-    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>('virtualNetworkRules');
-    writeEndpoints = registerOutput<List<String>>('writeEndpoints');
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    secondaryMongodbConnectionString = registerOutput<String>('secondaryMongodbConnectionString', isSecret: true);
+    secondaryReadonlyKey = registerOutput<String>('secondaryReadonlyKey', isSecret: true);
+    secondaryReadonlyMongodbConnectionString = registerOutput<String>('secondaryReadonlyMongodbConnectionString', isSecret: true);
+    secondaryReadonlySqlConnectionString = registerOutput<String>('secondaryReadonlySqlConnectionString', isSecret: true);
+    secondarySqlConnectionString = registerOutput<String>('secondarySqlConnectionString', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkRules = registerOutput<List<AccountVirtualNetworkRule>?>('virtualNetworkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountVirtualNetworkRule>(guardedValue, (value) => AccountVirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>())); });
+    writeEndpoints = registerOutput<List<String>>('writeEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'azure:cosmosdb/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryKey', 'primaryMongodbConnectionString', 'primaryReadonlyKey', 'primaryReadonlyMongodbConnectionString', 'primaryReadonlySqlConnectionString', 'primarySqlConnectionString', 'secondaryKey', 'secondaryMongodbConnectionString', 'secondaryReadonlyKey', 'secondaryReadonlyMongodbConnectionString', 'secondaryReadonlySqlConnectionString', 'secondarySqlConnectionString'],
+        isResourceReference: true,
+      ) {
+    accessKeyMetadataWritesEnabled = registerOutput<bool?>('accessKeyMetadataWritesEnabled');
+    analyticalStorage = registerOutput<AccountAnalyticalStorage>('analyticalStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountAnalyticalStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    analyticalStorageEnabled = registerOutput<bool?>('analyticalStorageEnabled');
+    automaticFailoverEnabled = registerOutput<bool?>('automaticFailoverEnabled');
+    backup = registerOutput<AccountBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    burstCapacityEnabled = registerOutput<bool?>('burstCapacityEnabled');
+    capabilities = registerOutput<List<AccountCapability>>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountCapability>(guardedValue, (value) => AccountCapability.fromMap((value as Map).cast<String, dynamic>())); });
+    capacity = registerOutput<AccountCapacity>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consistencyPolicy = registerOutput<AccountConsistencyPolicy>('consistencyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountConsistencyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    corsRule = registerOutput<AccountCorsRule?>('corsRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCorsRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createMode = registerOutput<String>('createMode');
+    defaultIdentityType = registerOutput<String?>('defaultIdentityType');
+    endpoint = registerOutput<String>('endpoint');
+    freeTierEnabled = registerOutput<bool?>('freeTierEnabled');
+    geoLocations = registerOutput<List<AccountGeoLocation>>('geoLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountGeoLocation>(guardedValue, (value) => AccountGeoLocation.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipRangeFilters = registerOutput<List<String>?>('ipRangeFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    isVirtualNetworkFilterEnabled = registerOutput<bool?>('isVirtualNetworkFilterEnabled');
+    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+    kind = registerOutput<String?>('kind');
+    localAuthenticationDisabled = registerOutput<bool>('localAuthenticationDisabled');
+    localAuthenticationEnabled = registerOutput<bool>('localAuthenticationEnabled');
+    location = registerOutput<String>('location');
+    managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
+    minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+    mongoServerVersion = registerOutput<String>('mongoServerVersion');
+    multipleWriteLocationsEnabled = registerOutput<bool?>('multipleWriteLocationsEnabled');
+    this.name = registerOutput<String>('name');
+    networkAclBypassForAzureServices = registerOutput<bool?>('networkAclBypassForAzureServices');
+    networkAclBypassIds = registerOutput<List<String>?>('networkAclBypassIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    offerType = registerOutput<String>('offerType');
+    partitionMergeEnabled = registerOutput<bool?>('partitionMergeEnabled');
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    primaryMongodbConnectionString = registerOutput<String>('primaryMongodbConnectionString', isSecret: true);
+    primaryReadonlyKey = registerOutput<String>('primaryReadonlyKey', isSecret: true);
+    primaryReadonlyMongodbConnectionString = registerOutput<String>('primaryReadonlyMongodbConnectionString', isSecret: true);
+    primaryReadonlySqlConnectionString = registerOutput<String>('primaryReadonlySqlConnectionString', isSecret: true);
+    primarySqlConnectionString = registerOutput<String>('primarySqlConnectionString', isSecret: true);
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    readEndpoints = registerOutput<List<String>>('readEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restore = registerOutput<AccountRestore?>('restore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    secondaryMongodbConnectionString = registerOutput<String>('secondaryMongodbConnectionString', isSecret: true);
+    secondaryReadonlyKey = registerOutput<String>('secondaryReadonlyKey', isSecret: true);
+    secondaryReadonlyMongodbConnectionString = registerOutput<String>('secondaryReadonlyMongodbConnectionString', isSecret: true);
+    secondaryReadonlySqlConnectionString = registerOutput<String>('secondaryReadonlySqlConnectionString', isSecret: true);
+    secondarySqlConnectionString = registerOutput<String>('secondarySqlConnectionString', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkRules = registerOutput<List<AccountVirtualNetworkRule>?>('virtualNetworkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountVirtualNetworkRule>(guardedValue, (value) => AccountVirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>())); });
+    writeEndpoints = registerOutput<List<String>>('writeEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

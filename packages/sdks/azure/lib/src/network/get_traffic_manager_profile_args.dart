@@ -12,9 +12,9 @@ class GetTrafficManagerProfileArgs {
   /// Specifies the name of the resource group the Traffic Manager Profile is located in.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Indicates whether Traffic View is enabled for the Traffic Manager profile.
-  final pulumi.Input<bool>? trafficViewEnabled;
+  final pulumi.Input<bool?>? trafficViewEnabled;
 
   /// Creates a new [GetTrafficManagerProfileArgs].
   /// [name] Specifies the name of the Traffic Manager Profile.

@@ -6,19 +6,19 @@ import 'virtual_hub_connection_routing_static_vnet_route.dart';
 
 class VirtualHubConnectionRouting {
   /// The ID of the route table associated with this Virtual Hub connection.
-  final pulumi.Input<String>? associatedRouteTableId;
+  final pulumi.Input<String?>? associatedRouteTableId;
   /// The resource ID of the Route Map associated with this Routing Configuration for inbound learned routes.
-  final pulumi.Input<String>? inboundRouteMapId;
+  final pulumi.Input<String?>? inboundRouteMapId;
   /// The resource ID of the Route Map associated with this Routing Configuration for outbound advertised routes.
-  final pulumi.Input<String>? outboundRouteMapId;
+  final pulumi.Input<String?>? outboundRouteMapId;
   /// A `propagatedRouteTable` block as defined below.
-  final pulumi.Input<VirtualHubConnectionRoutingPropagatedRouteTable>? propagatedRouteTable;
+  final pulumi.Input<VirtualHubConnectionRoutingPropagatedRouteTable?>? propagatedRouteTable;
   /// The static VNet local route override criteria that is used to determine whether NVA in spoke VNet is bypassed for traffic with destination in spoke VNet. Possible values are `Contains` and `Equal`. Defaults to `Contains`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? staticVnetLocalRouteOverrideCriteria;
+  final pulumi.Input<String?>? staticVnetLocalRouteOverrideCriteria;
   /// Whether the static routes should be propagated to the Virtual Hub. Defaults to `true`.
-  final pulumi.Input<bool>? staticVnetPropagateStaticRoutesEnabled;
+  final pulumi.Input<bool?>? staticVnetPropagateStaticRoutesEnabled;
   /// A `staticVnetRoute` block as defined below.
-  final pulumi.Input<List<VirtualHubConnectionRoutingStaticVnetRoute>>? staticVnetRoutes;
+  final pulumi.Input<List<VirtualHubConnectionRoutingStaticVnetRoute>?>? staticVnetRoutes;
 
   /// Creates a new [VirtualHubConnectionRouting].
   /// [associatedRouteTableId] The ID of the route table associated with this Virtual Hub connection.

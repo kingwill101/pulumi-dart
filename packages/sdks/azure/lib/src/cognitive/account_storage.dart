@@ -6,7 +6,7 @@ class AccountStorage {
   /// The client ID of the managed identity associated with the storage resource.
   ///
   /// &gt; **Note:** Not all `kind` support a `storage` block. For example the `kind` `OpenAI` does not support it.
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// Full resource id of a Microsoft.Storage resource.
   final pulumi.Input<String> storageAccountId;
 

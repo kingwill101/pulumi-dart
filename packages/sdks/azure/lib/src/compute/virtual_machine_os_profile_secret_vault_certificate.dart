@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineOsProfileSecretVaultCertificate {
   /// (Required, on windows machines) Specifies the certificate store on the Virtual Machine where the certificate should be added to, such as `My`.
-  final pulumi.Input<String>? certificateStore;
+  final pulumi.Input<String?>? certificateStore;
   /// The ID of the Key Vault Secret. Stored secret is the Base64 encoding of a JSON Object that which is encoded in UTF-8 of which the contents need to be:
   ///
   /// ```json

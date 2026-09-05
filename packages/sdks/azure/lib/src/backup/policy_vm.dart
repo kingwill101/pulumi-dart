@@ -518,7 +518,7 @@ class PolicyVM extends pulumi.CustomResource {
           'azure:backup/policyVM:PolicyVM',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backup = registerOutput<PolicyVMBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consistencyType = registerOutput<String?>('consistencyType');
@@ -541,11 +541,12 @@ class PolicyVM extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyVMState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PolicyVM._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -559,6 +560,31 @@ class PolicyVM extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backup = registerOutput<PolicyVMBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consistencyType = registerOutput<String?>('consistencyType');
+    instantRestoreResourceGroup = registerOutput<PolicyVMInstantRestoreResourceGroup?>('instantRestoreResourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMInstantRestoreResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instantRestoreRetentionDays = registerOutput<int>('instantRestoreRetentionDays');
+    this.name = registerOutput<String>('name');
+    policyType = registerOutput<String?>('policyType');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionDaily = registerOutput<PolicyVMRetentionDaily?>('retentionDaily', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMRetentionDaily.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionMonthly = registerOutput<PolicyVMRetentionMonthly?>('retentionMonthly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMRetentionMonthly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionWeekly = registerOutput<PolicyVMRetentionWeekly?>('retentionWeekly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMRetentionWeekly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionYearly = registerOutput<PolicyVMRetentionYearly?>('retentionYearly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMRetentionYearly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tieringPolicy = registerOutput<PolicyVMTieringPolicy?>('tieringPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMTieringPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timezone = registerOutput<String?>('timezone');
+  }
+
+  /// Creates a typed reference to an existing [PolicyVM] resource.
+  PolicyVM.reference(String urn)
+    : super(
+        'azure:backup/policyVM:PolicyVM',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backup = registerOutput<PolicyVMBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consistencyType = registerOutput<String?>('consistencyType');
     instantRestoreResourceGroup = registerOutput<PolicyVMInstantRestoreResourceGroup?>('instantRestoreResourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMInstantRestoreResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });

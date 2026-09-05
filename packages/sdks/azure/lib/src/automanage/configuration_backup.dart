@@ -6,15 +6,15 @@ import 'configuration_backup_schedule_policy.dart';
 
 class ConfigurationBackup {
   /// The retention range in days of the backup policy. Defaults to `5`.
-  final pulumi.Input<int>? instantRpRetentionRangeInDays;
+  final pulumi.Input<int?>? instantRpRetentionRangeInDays;
   /// The name of the backup policy.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// A `retentionPolicy` block as defined below.
-  final pulumi.Input<ConfigurationBackupRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<ConfigurationBackupRetentionPolicy?>? retentionPolicy;
   /// A `schedulePolicy` block as defined below.
-  final pulumi.Input<ConfigurationBackupSchedulePolicy>? schedulePolicy;
+  final pulumi.Input<ConfigurationBackupSchedulePolicy?>? schedulePolicy;
   /// The timezone of the backup policy. Defaults to `UTC`.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [ConfigurationBackup].
   /// [instantRpRetentionRangeInDays] The retention range in days of the backup policy. Defaults to `5`.
@@ -42,7 +42,7 @@ class ConfigurationBackup {
 
   factory ConfigurationBackup.fromMap(Map<String, dynamic> map) {
     return ConfigurationBackup(
-      instantRpRetentionRangeInDays: (() { final guardedValue = map['instantRpRetentionRangeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instantRpRetentionRangeInDays: (() { final guardedValue = map['instantRpRetentionRangeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       retentionPolicy: (() { final guardedValue = map['retentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationBackupRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       schedulePolicy: (() { final guardedValue = map['schedulePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationBackupSchedulePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

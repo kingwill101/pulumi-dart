@@ -200,7 +200,7 @@ import 'integration_runtime_self_hosted_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -209,7 +209,7 @@ import 'integration_runtime_self_hosted_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			Location:                        example.Location,
 /// 			ResourceGroupName:               example.Name,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			ManagedVirtualNetworkEnabled:    pulumi.Bool(true),
@@ -222,7 +222,7 @@ import 'integration_runtime_self_hosted_state.dart';
 /// 		}
 /// 		_, err = synapse.NewFirewallRule(ctx, "example", &synapse.FirewallRuleArgs{
 /// 			Name:               pulumi.String("AllowAll"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			StartIpAddress:     pulumi.String("0.0.0.0"),
 /// 			EndIpAddress:       pulumi.String("255.255.255.255"),
 /// 		})
@@ -231,7 +231,7 @@ import 'integration_runtime_self_hosted_state.dart';
 /// 		}
 /// 		_, err = synapse.NewIntegrationRuntimeSelfHosted(ctx, "example", &synapse.IntegrationRuntimeSelfHostedArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -468,7 +468,7 @@ class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
           'azure:synapse/integrationRuntimeSelfHosted:IntegrationRuntimeSelfHosted',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     authorizationKeyPrimary = registerOutput<String>('authorizationKeyPrimary');
     authorizationKeySecondary = registerOutput<String>('authorizationKeySecondary');
@@ -482,11 +482,12 @@ class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationRuntimeSelfHostedState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationRuntimeSelfHosted._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -500,6 +501,22 @@ class IntegrationRuntimeSelfHosted extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    authorizationKeyPrimary = registerOutput<String>('authorizationKeyPrimary');
+    authorizationKeySecondary = registerOutput<String>('authorizationKeySecondary');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationRuntimeSelfHosted] resource.
+  IntegrationRuntimeSelfHosted.reference(String urn)
+    : super(
+        'azure:synapse/integrationRuntimeSelfHosted:IntegrationRuntimeSelfHosted',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     authorizationKeyPrimary = registerOutput<String>('authorizationKeyPrimary');
     authorizationKeySecondary = registerOutput<String>('authorizationKeySecondary');
     description = registerOutput<String?>('description');

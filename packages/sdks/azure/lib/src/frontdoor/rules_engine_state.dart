@@ -6,17 +6,17 @@ import 'rules_engine_rule.dart';
 /// Input properties used for looking up and filtering RulesEngine resources.
 class RulesEngineState {
   /// Whether this Rules engine configuration is enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name of the Front Door instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? frontdoorName;
+  final pulumi.Input<String?>? frontdoorName;
   /// The location in which the Front Door Rules Engine exists.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Rules engine configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `rule` block as defined below.
-  final pulumi.Input<List<RulesEngineRule>>? rules;
+  final pulumi.Input<List<RulesEngineRule>?>? rules;
 
   /// Creates a new [RulesEngineState].
   /// [enabled] Whether this Rules engine configuration is enabled? Defaults to `true`.

@@ -9,83 +9,83 @@ import 'windows_function_app_slot_site_config_scm_ip_restriction.dart';
 
 class WindowsFunctionAppSlotSiteConfig {
   /// If this Windows Web App is Always On enabled. Defaults to `false`.
-  final pulumi.Input<bool>? alwaysOn;
+  final pulumi.Input<bool?>? alwaysOn;
   /// The URL of the API definition that describes this Windows Function App.
-  final pulumi.Input<String>? apiDefinitionUrl;
+  final pulumi.Input<String?>? apiDefinitionUrl;
   /// The ID of the API Management API for this Windows Function App.
-  final pulumi.Input<String>? apiManagementApiId;
+  final pulumi.Input<String?>? apiManagementApiId;
   /// The program and any arguments used to launch this app via the command line. (Example `node myapp.js`).
-  final pulumi.Input<String>? appCommandLine;
+  final pulumi.Input<String?>? appCommandLine;
   /// The number of workers this function app can scale out to. Only applicable to apps on the Consumption and Premium plan.
-  final pulumi.Input<int>? appScaleLimit;
+  final pulumi.Input<int?>? appScaleLimit;
   /// an `appServiceLogs` block as detailed below.
-  final pulumi.Input<WindowsFunctionAppSlotSiteConfigAppServiceLogs>? appServiceLogs;
+  final pulumi.Input<WindowsFunctionAppSlotSiteConfigAppServiceLogs?>? appServiceLogs;
   /// The Connection String for linking the Windows Function App to Application Insights.
-  final pulumi.Input<String>? applicationInsightsConnectionString;
+  final pulumi.Input<String?>? applicationInsightsConnectionString;
   /// The Instrumentation Key for connecting the Windows Function App to Application Insights.
-  final pulumi.Input<String>? applicationInsightsKey;
+  final pulumi.Input<String?>? applicationInsightsKey;
   /// an `applicationStack` block as detailed below.
-  final pulumi.Input<WindowsFunctionAppSlotSiteConfigApplicationStack>? applicationStack;
+  final pulumi.Input<WindowsFunctionAppSlotSiteConfigApplicationStack?>? applicationStack;
   /// The name of the slot to automatically swap with when this slot is successfully deployed.
-  final pulumi.Input<String>? autoSwapSlotName;
+  final pulumi.Input<String?>? autoSwapSlotName;
   /// a `cors` block as detailed below.
-  final pulumi.Input<WindowsFunctionAppSlotSiteConfigCors>? cors;
+  final pulumi.Input<WindowsFunctionAppSlotSiteConfigCors?>? cors;
   /// Specifies a list of Default Documents for the Windows Web App.
-  final pulumi.Input<List<String>>? defaultDocuments;
+  final pulumi.Input<List<String>?>? defaultDocuments;
   /// Is detailed error logging enabled
-  final pulumi.Input<bool>? detailedErrorLoggingEnabled;
+  final pulumi.Input<bool?>? detailedErrorLoggingEnabled;
   /// The number of minimum instances for this Windows Function App. Only affects apps on Elastic Premium plans.
-  final pulumi.Input<int>? elasticInstanceMinimum;
+  final pulumi.Input<int?>? elasticInstanceMinimum;
   /// State of FTP / FTPS service for this function app. Possible values include: `AllAllowed`, `FtpsOnly` and `Disabled`. Defaults to `Disabled`.
-  final pulumi.Input<String>? ftpsState;
+  final pulumi.Input<String?>? ftpsState;
   /// The amount of time in minutes that a node is unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Defaults to `0`. Only valid in conjunction with `healthCheckPath`.
-  final pulumi.Input<int>? healthCheckEvictionTimeInMin;
+  final pulumi.Input<int?>? healthCheckEvictionTimeInMin;
   /// The path to be checked for this function app health.
-  final pulumi.Input<String>? healthCheckPath;
+  final pulumi.Input<String?>? healthCheckPath;
   /// Specifies if the HTTP2 protocol should be enabled. Defaults to `false`.
-  final pulumi.Input<bool>? http2Enabled;
+  final pulumi.Input<bool?>? http2Enabled;
   /// The Default action for traffic that does not match any `ipRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  final pulumi.Input<String>? ipRestrictionDefaultAction;
+  final pulumi.Input<String?>? ipRestrictionDefaultAction;
   /// an `ipRestriction` block as detailed below.
-  final pulumi.Input<List<WindowsFunctionAppSlotSiteConfigIpRestriction>>? ipRestrictions;
+  final pulumi.Input<List<WindowsFunctionAppSlotSiteConfigIpRestriction>?>? ipRestrictions;
   /// The Site load balancing mode. Possible values include: `WeightedRoundRobin`, `LeastRequests`, `LeastResponseTime`, `WeightedTotalTraffic`, `RequestHash`, `PerSiteRoundRobin`. Defaults to `LeastRequests` if omitted.
-  final pulumi.Input<String>? loadBalancingMode;
+  final pulumi.Input<String?>? loadBalancingMode;
   /// The Managed Pipeline mode. Possible values include: `Integrated`, `Classic`. Defaults to `Integrated`.
-  final pulumi.Input<String>? managedPipelineMode;
+  final pulumi.Input<String?>? managedPipelineMode;
   /// The configures the minimum cipher suite of TLS required for SSL requests. Possible values include: `TLS_AES_128_GCM_SHA256`,`TLS_AES_256_GCM_SHA384"`,`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"`, `TLS_RSA_WITH_AES_128_CBC_SHA"`,`TLS_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_RSA_WITH_AES_256_CBC_SHA"`,`TLS_RSA_WITH_AES_256_CBC_SHA256"`,`TLS_RSA_WITH_AES_256_GCM_SHA384"`.
-  final pulumi.Input<String>? minimumTlsCipherSuite;
+  final pulumi.Input<String?>? minimumTlsCipherSuite;
   /// The configures the minimum version of TLS required for SSL requests. Possible values include: `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
-  final pulumi.Input<String>? minimumTlsVersion;
+  final pulumi.Input<String?>? minimumTlsVersion;
   /// The number of pre-warmed instances for this function app. Only affects apps on an Elastic Premium plan.
-  final pulumi.Input<int>? preWarmedInstanceCount;
+  final pulumi.Input<int?>? preWarmedInstanceCount;
   /// Should Remote Debugging be enabled. Defaults to `false`.
-  final pulumi.Input<bool>? remoteDebuggingEnabled;
+  final pulumi.Input<bool?>? remoteDebuggingEnabled;
   /// The Remote Debugging Version. Currently only `VS2022` is supported.
-  final pulumi.Input<String>? remoteDebuggingVersion;
+  final pulumi.Input<String?>? remoteDebuggingVersion;
   /// Should Scale Monitoring of the Functions Runtime be enabled?
   ///
   /// &gt; **Note:** Functions runtime scale monitoring can only be enabled for Elastic Premium Function Apps or Workflow Standard Logic Apps and requires a minimum prewarmed instance count of 1.
-  final pulumi.Input<bool>? runtimeScaleMonitoringEnabled;
+  final pulumi.Input<bool?>? runtimeScaleMonitoringEnabled;
   /// The Default action for traffic that does not match any `scmIpRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  final pulumi.Input<String>? scmIpRestrictionDefaultAction;
+  final pulumi.Input<String?>? scmIpRestrictionDefaultAction;
   /// a `scmIpRestriction` block as detailed below.
-  final pulumi.Input<List<WindowsFunctionAppSlotSiteConfigScmIpRestriction>>? scmIpRestrictions;
+  final pulumi.Input<List<WindowsFunctionAppSlotSiteConfigScmIpRestriction>?>? scmIpRestrictions;
   /// Configures the minimum version of TLS required for SSL requests to the SCM site Possible values include: `1.0`, `1.1`, `1.2` and `1.3`. Defaults to `1.2`.
-  final pulumi.Input<String>? scmMinimumTlsVersion;
+  final pulumi.Input<String?>? scmMinimumTlsVersion;
   /// The SCM Type in use by the Windows Function App.
-  final pulumi.Input<String>? scmType;
+  final pulumi.Input<String?>? scmType;
   /// Should the Windows Function App `ipRestriction` configuration be used for the SCM also.
-  final pulumi.Input<bool>? scmUseMainIpRestriction;
+  final pulumi.Input<bool?>? scmUseMainIpRestriction;
   /// Should the Windows Web App use a 32-bit worker. Defaults to `true`.
-  final pulumi.Input<bool>? use32BitWorker;
+  final pulumi.Input<bool?>? use32BitWorker;
   /// Should all outbound traffic to have NAT Gateways, Network Security Groups and User Defined Routes applied? Defaults to `false`.
-  final pulumi.Input<bool>? vnetRouteAllEnabled;
+  final pulumi.Input<bool?>? vnetRouteAllEnabled;
   /// Should Web Sockets be enabled. Defaults to `false`.
-  final pulumi.Input<bool>? websocketsEnabled;
+  final pulumi.Input<bool?>? websocketsEnabled;
   /// The Windows FX Version string.
-  final pulumi.Input<String>? windowsFxVersion;
+  final pulumi.Input<String?>? windowsFxVersion;
   /// The number of Workers for this Windows Function App.
-  final pulumi.Input<int>? workerCount;
+  final pulumi.Input<int?>? workerCount;
 
   /// Creates a new [WindowsFunctionAppSlotSiteConfig].
   /// [alwaysOn] If this Windows Web App is Always On enabled. Defaults to `false`.
@@ -216,7 +216,7 @@ class WindowsFunctionAppSlotSiteConfig {
       apiDefinitionUrl: (() { final guardedValue = map['apiDefinitionUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       apiManagementApiId: (() { final guardedValue = map['apiManagementApiId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       appCommandLine: (() { final guardedValue = map['appCommandLine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      appScaleLimit: (() { final guardedValue = map['appScaleLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      appScaleLimit: (() { final guardedValue = map['appScaleLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       appServiceLogs: (() { final guardedValue = map['appServiceLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsFunctionAppSlotSiteConfigAppServiceLogs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       applicationInsightsConnectionString: (() { final guardedValue = map['applicationInsightsConnectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       applicationInsightsKey: (() { final guardedValue = map['applicationInsightsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -225,9 +225,9 @@ class WindowsFunctionAppSlotSiteConfig {
       cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsFunctionAppSlotSiteConfigCors.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       defaultDocuments: (() { final guardedValue = map['defaultDocuments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       detailedErrorLoggingEnabled: (() { final guardedValue = map['detailedErrorLoggingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      elasticInstanceMinimum: (() { final guardedValue = map['elasticInstanceMinimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      elasticInstanceMinimum: (() { final guardedValue = map['elasticInstanceMinimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ftpsState: (() { final guardedValue = map['ftpsState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      healthCheckEvictionTimeInMin: (() { final guardedValue = map['healthCheckEvictionTimeInMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      healthCheckEvictionTimeInMin: (() { final guardedValue = map['healthCheckEvictionTimeInMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       healthCheckPath: (() { final guardedValue = map['healthCheckPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       http2Enabled: (() { final guardedValue = map['http2Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ipRestrictionDefaultAction: (() { final guardedValue = map['ipRestrictionDefaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -236,7 +236,7 @@ class WindowsFunctionAppSlotSiteConfig {
       managedPipelineMode: (() { final guardedValue = map['managedPipelineMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minimumTlsCipherSuite: (() { final guardedValue = map['minimumTlsCipherSuite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minimumTlsVersion: (() { final guardedValue = map['minimumTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      preWarmedInstanceCount: (() { final guardedValue = map['preWarmedInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      preWarmedInstanceCount: (() { final guardedValue = map['preWarmedInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       remoteDebuggingEnabled: (() { final guardedValue = map['remoteDebuggingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       remoteDebuggingVersion: (() { final guardedValue = map['remoteDebuggingVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       runtimeScaleMonitoringEnabled: (() { final guardedValue = map['runtimeScaleMonitoringEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -249,7 +249,7 @@ class WindowsFunctionAppSlotSiteConfig {
       vnetRouteAllEnabled: (() { final guardedValue = map['vnetRouteAllEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       websocketsEnabled: (() { final guardedValue = map['websocketsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       windowsFxVersion: (() { final guardedValue = map['windowsFxVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      workerCount: (() { final guardedValue = map['workerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      workerCount: (() { final guardedValue = map['workerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

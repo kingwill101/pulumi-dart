@@ -14,53 +14,53 @@ import 'io_thub_sku.dart';
 
 /// Input properties used for looking up and filtering IoTHub resources.
 class IoTHubState {
-  final pulumi.Input<IoTHubCloudToDevice>? cloudToDevice;
+  final pulumi.Input<IoTHubCloudToDevice?>? cloudToDevice;
   /// An `endpoint` block as defined below.
-  final pulumi.Input<List<IoTHubEndpoint>>? endpoints;
-  final pulumi.Input<List<IoTHubEnrichment>>? enrichments;
+  final pulumi.Input<List<IoTHubEndpoint>?>? endpoints;
+  final pulumi.Input<List<IoTHubEnrichment>?>? enrichments;
   /// The EventHub compatible endpoint for events data
-  final pulumi.Input<String>? eventHubEventsEndpoint;
+  final pulumi.Input<String?>? eventHubEventsEndpoint;
   /// The EventHub namespace for events data
-  final pulumi.Input<String>? eventHubEventsNamespace;
+  final pulumi.Input<String?>? eventHubEventsNamespace;
   /// The EventHub compatible path for events data
-  final pulumi.Input<String>? eventHubEventsPath;
+  final pulumi.Input<String?>? eventHubEventsPath;
   /// The EventHub compatible endpoint for operational data
-  final pulumi.Input<String>? eventHubOperationsEndpoint;
+  final pulumi.Input<String?>? eventHubOperationsEndpoint;
   /// The EventHub compatible path for operational data
-  final pulumi.Input<String>? eventHubOperationsPath;
+  final pulumi.Input<String?>? eventHubOperationsPath;
   /// The number of device-to-cloud partitions used by backing event hubs. Must be between `2` and `128`. Defaults to `4`.
-  final pulumi.Input<int>? eventHubPartitionCount;
+  final pulumi.Input<int?>? eventHubPartitionCount;
   /// The event hub retention to use in days. Must be between `1` and `7`. Defaults to `1`.
-  final pulumi.Input<int>? eventHubRetentionInDays;
+  final pulumi.Input<int?>? eventHubRetentionInDays;
   /// A `fallbackRoute` block as defined below. If the fallback route is enabled, messages that don't match any of the supplied routes are automatically sent to this route. Defaults to messages/events.
   ///
   /// &gt; **Note:** If `fallbackRoute` isn't explicitly specified, the fallback route wouldn't be enabled by default.
-  final pulumi.Input<IoTHubFallbackRoute>? fallbackRoute;
+  final pulumi.Input<IoTHubFallbackRoute?>? fallbackRoute;
   /// A `fileUpload` block as defined below.
-  final pulumi.Input<IoTHubFileUpload>? fileUpload;
+  final pulumi.Input<IoTHubFileUpload?>? fileUpload;
   /// The hostname of the IotHub Resource.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// An `identity` block as defined below.
-  final pulumi.Input<IoTHubIdentity>? identity;
+  final pulumi.Input<IoTHubIdentity?>? identity;
   /// If false, SAS tokens with Iot hub scoped SAS keys cannot be used for authentication. Defaults to `true`.
-  final pulumi.Input<bool>? localAuthenticationEnabled;
+  final pulumi.Input<bool?>? localAuthenticationEnabled;
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? minTlsVersion;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? minTlsVersion;
   /// Specifies the name of the IotHub resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `networkRuleSet` block as defined below.
-  final pulumi.Input<List<IoTHubNetworkRuleSet>>? networkRuleSets;
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<List<IoTHubNetworkRuleSet>?>? networkRuleSets;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The name of the resource group under which the IotHub resource has to be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
-  final pulumi.Input<List<IoTHubRoute>>? routes;
+  final pulumi.Input<String?>? resourceGroupName;
+  final pulumi.Input<List<IoTHubRoute>?>? routes;
   /// One or more `sharedAccessPolicy` blocks as defined below.
-  final pulumi.Input<List<IoTHubSharedAccessPolicy>>? sharedAccessPolicies;
+  final pulumi.Input<List<IoTHubSharedAccessPolicy>?>? sharedAccessPolicies;
   /// A `sku` block as defined below.
-  final pulumi.Input<IoTHubSku>? sku;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<IoTHubSku?>? sku;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IoTHubState].
   /// [cloudToDevice] Optional.
@@ -159,8 +159,8 @@ class IoTHubState {
       eventHubEventsPath: (() { final guardedValue = map['eventHubEventsPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventHubOperationsEndpoint: (() { final guardedValue = map['eventHubOperationsEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventHubOperationsPath: (() { final guardedValue = map['eventHubOperationsPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      eventHubPartitionCount: (() { final guardedValue = map['eventHubPartitionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      eventHubRetentionInDays: (() { final guardedValue = map['eventHubRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      eventHubPartitionCount: (() { final guardedValue = map['eventHubPartitionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      eventHubRetentionInDays: (() { final guardedValue = map['eventHubRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       fallbackRoute: (() { final guardedValue = map['fallbackRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IoTHubFallbackRoute.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fileUpload: (() { final guardedValue = map['fileUpload']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IoTHubFileUpload.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

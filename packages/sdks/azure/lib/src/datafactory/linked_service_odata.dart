@@ -132,7 +132,7 @@ import 'linked_service_odata_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceOdata(ctx, "anonymous", &datafactory.LinkedServiceOdataArgs{
 /// 			Name:          pulumi.String("anonymous"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Url:           pulumi.String("https://services.odata.org/v4/TripPinServiceRW/People"),
 /// 		})
 /// 		if err != nil {
@@ -140,7 +140,7 @@ import 'linked_service_odata_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceOdata(ctx, "basic_auth", &datafactory.LinkedServiceOdataArgs{
 /// 			Name:          pulumi.String("basic_auth"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Url:           pulumi.String("https://services.odata.org/v4/TripPinServiceRW/People"),
 /// 			BasicAuthentication: &datafactory.LinkedServiceOdataBasicAuthenticationArgs{
 /// 				Username: pulumi.String("emma"),
@@ -315,16 +315,16 @@ class LinkedServiceOdata extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceOdata:LinkedServiceOdata',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     basicAuthentication = registerOutput<LinkedServiceOdataBasicAuthentication?>('basicAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceOdataBasicAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
   }
 
@@ -333,11 +333,12 @@ class LinkedServiceOdata extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceOdataState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceOdata._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -351,14 +352,34 @@ class LinkedServiceOdata extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     basicAuthentication = registerOutput<LinkedServiceOdataBasicAuthentication?>('basicAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceOdataBasicAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceOdata] resource.
+  LinkedServiceOdata.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceOdata:LinkedServiceOdata',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    basicAuthentication = registerOutput<LinkedServiceOdataBasicAuthentication?>('basicAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceOdataBasicAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
   }
 }

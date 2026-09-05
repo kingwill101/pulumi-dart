@@ -12,7 +12,7 @@ class CustomCertificateArgs {
   /// &gt; **Note:** Self assigned certificate is not supported and the provisioning status will fail.
   final pulumi.Input<String> customCertificateId;
   /// The name of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Web PubSub ID of the Web PubSub Custom Certificate. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** custom certificate is only available for Web PubSub Premium tier. Please enable managed identity in the corresponding Web PubSub Service and give the managed identity access to the key vault, the required permission is Get Certificate and Secret.

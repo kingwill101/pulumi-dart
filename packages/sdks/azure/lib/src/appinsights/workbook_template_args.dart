@@ -9,21 +9,21 @@ import 'workbook_template_gallery.dart';
 /// {@macro pulumi_appinsights_workbook_template_workbook_template_args_doc}
 class WorkbookTemplateArgs {
   /// Information about the author of the workbook template.
-  final pulumi.Input<String>? author;
+  final pulumi.Input<String?>? author;
   /// A `galleries` block as defined below.
   final pulumi.Input<List<WorkbookTemplateGallery>> galleries;
   /// Key value pairs of localized gallery. Each key is the locale code of languages supported by the Azure portal.
-  final pulumi.Input<String>? localized;
+  final pulumi.Input<String?>? localized;
   /// Specifies the Azure Region where the Application Insights Workbook Template should exist. Changing this forces a new Application Insights Workbook Template to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this Application Insights Workbook Template. Changing this forces a new Application Insights Workbook Template to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of the template. Determines which template to open when a workbook gallery is opened in viewer mode. Defaults to `0`.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Specifies the name of the Resource Group where the Application Insights Workbook Template should exist. Changing this forces a new Application Insights Workbook Template to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Application Insights Workbook Template.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Valid JSON object containing workbook template payload.
   final pulumi.Input<String> templateData;
 
@@ -70,7 +70,7 @@ class WorkbookTemplateArgs {
       localized: (() { final guardedValue = map['localized']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       templateData: pulumi.Input.fromValue(map['templateData'] as String),

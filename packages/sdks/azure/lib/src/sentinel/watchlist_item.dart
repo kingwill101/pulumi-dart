@@ -140,7 +140,7 @@ import 'watchlist_item_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -156,7 +156,7 @@ import 'watchlist_item_state.dart';
 /// 		}
 /// 		_, err = sentinel.NewWatchlistItem(ctx, "example", &sentinel.WatchlistItemArgs{
 /// 			Name:        pulumi.String("0aac6fa5-223e-49cf-9bfd-3554dc9d2b76"),
-/// 			WatchlistId: exampleWatchlist.ID(),
+/// 			WatchlistId: exampleWatchlist.ID().ToIDOutput().ToStringOutput(),
 /// 			Properties: pulumi.StringMap{
 /// 				"k1": pulumi.String("v1"),
 /// 				"k2": pulumi.String("v2"),
@@ -344,10 +344,10 @@ class WatchlistItem extends pulumi.CustomResource {
           'azure:sentinel/watchlistItem:WatchlistItem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
-    properties = registerOutput<Map<String, String>>('properties');
+    properties = registerOutput<Map<String, String>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     watchlistId = registerOutput<String>('watchlistId');
   }
 
@@ -356,11 +356,12 @@ class WatchlistItem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WatchlistItemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WatchlistItem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -375,7 +376,21 @@ class WatchlistItem extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
-    properties = registerOutput<Map<String, String>>('properties');
+    properties = registerOutput<Map<String, String>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    watchlistId = registerOutput<String>('watchlistId');
+  }
+
+  /// Creates a typed reference to an existing [WatchlistItem] resource.
+  WatchlistItem.reference(String urn)
+    : super(
+        'azure:sentinel/watchlistItem:WatchlistItem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<Map<String, String>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     watchlistId = registerOutput<String>('watchlistId');
   }
 }

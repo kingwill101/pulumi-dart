@@ -10,9 +10,9 @@ class DataConnectorAzureSecurityCenterArgs {
   /// The ID of the Log Analytics Workspace that this Azure Security Center Data Connector resides in. Changing this forces a new Azure Security Center Data Connector to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
   /// The name which should be used for this Azure Security Center Data Connector. Changing this forces a new Azure Security Center Data Connector to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the subscription that this Azure Security Center Data Connector connects to. Changing this forces a new Azure Security Center Data Connector to be created.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [DataConnectorAzureSecurityCenterArgs].
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace that this Azure Security Center Data Connector resides in. Changing this forces a new Azure Security Center Data Connector to be created.

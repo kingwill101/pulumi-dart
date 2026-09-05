@@ -6,10 +6,10 @@ class VirtualMachineIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to this Virtual Machine.
   ///
   /// &gt; **NOTE:** This is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// The Principal ID associated with this Managed Service Identity.
-  final pulumi.Input<String>? principalId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? principalId;
+  final pulumi.Input<String?>? tenantId;
   /// Specifies the type of Managed Service Identity that should be configured on this Virtual Machine. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
   ///
   /// &gt; **NOTE:** Managed Service Identity previously required the installation of a VM Extension, but this information [is now available via the Azure Instance Metadata Service](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview#how-does-it-work).

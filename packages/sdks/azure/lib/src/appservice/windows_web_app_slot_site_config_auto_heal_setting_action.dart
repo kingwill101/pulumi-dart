@@ -7,9 +7,9 @@ class WindowsWebAppSlotSiteConfigAutoHealSettingAction {
   /// Predefined action to be taken to an Auto Heal trigger. Possible values are `CustomAction`, `LogEvent` and `Recycle`.
   final pulumi.Input<String> actionType;
   /// A `customAction` block as defined below.
-  final pulumi.Input<WindowsWebAppSlotSiteConfigAutoHealSettingActionCustomAction>? customAction;
+  final pulumi.Input<WindowsWebAppSlotSiteConfigAutoHealSettingActionCustomAction?>? customAction;
   /// The minimum amount of time in `hh:mm:ss` the Windows Web App Slot must have been running before the defined action will be run in the event of a trigger.
-  final pulumi.Input<String>? minimumProcessExecutionTime;
+  final pulumi.Input<String?>? minimumProcessExecutionTime;
 
   /// Creates a new [WindowsWebAppSlotSiteConfigAutoHealSettingAction].
   /// [actionType] Predefined action to be taken to an Auto Heal trigger. Possible values are `CustomAction`, `LogEvent` and `Recycle`.

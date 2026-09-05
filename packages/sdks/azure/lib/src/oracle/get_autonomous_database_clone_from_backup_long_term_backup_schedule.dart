@@ -37,7 +37,7 @@ class GetAutonomousDatabaseCloneFromBackupLongTermBackupSchedule {
     return GetAutonomousDatabaseCloneFromBackupLongTermBackupSchedule(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       repeatCadence: pulumi.Input.fromValue(map['repeatCadence'] as String),
-      retentionPeriodInDays: pulumi.Input.fromValue(map['retentionPeriodInDays'] as int),
+      retentionPeriodInDays: pulumi.Input.fromValue((map['retentionPeriodInDays'] as num).toInt()),
       timeOfBackupInUtc: pulumi.Input.fromValue(map['timeOfBackupInUtc'] as String),
     );
   }

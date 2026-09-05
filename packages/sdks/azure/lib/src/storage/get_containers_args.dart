@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_get_containers_get_containers_args_doc}
 class GetContainersArgs {
   /// A prefix match used for the Storage Container `name` field.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// The ID of the Storage Account that the Storage Containers reside in.
   final pulumi.Input<String> storageAccountId;
 

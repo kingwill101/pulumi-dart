@@ -158,7 +158,7 @@ import 'logger_state.dart';
 /// 			Name:              pulumi.String("example-logger"),
 /// 			ApiManagementName: exampleService.Name,
 /// 			ResourceGroupName: example.Name,
-/// 			ResourceId:        exampleInsights.ID(),
+/// 			ResourceId:        exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			ApplicationInsights: &apimanagement.LoggerApplicationInsightsArgs{
 /// 				InstrumentationKey: exampleInsights.InstrumentationKey,
 /// 			},
@@ -351,7 +351,7 @@ class Logger extends pulumi.CustomResource {
           'azure:apimanagement/logger:Logger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     applicationInsights = registerOutput<LoggerApplicationInsights?>('applicationInsights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggerApplicationInsights.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -368,11 +368,12 @@ class Logger extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoggerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Logger._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -386,6 +387,25 @@ class Logger extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    applicationInsights = registerOutput<LoggerApplicationInsights?>('applicationInsights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggerApplicationInsights.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    buffered = registerOutput<bool?>('buffered');
+    description = registerOutput<String?>('description');
+    eventhub = registerOutput<LoggerEventhub?>('eventhub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggerEventhub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceId = registerOutput<String?>('resourceId');
+  }
+
+  /// Creates a typed reference to an existing [Logger] resource.
+  Logger.reference(String urn)
+    : super(
+        'azure:apimanagement/logger:Logger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     applicationInsights = registerOutput<LoggerApplicationInsights?>('applicationInsights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggerApplicationInsights.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     buffered = registerOutput<bool?>('buffered');

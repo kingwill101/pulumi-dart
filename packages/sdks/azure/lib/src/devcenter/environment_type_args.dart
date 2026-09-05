@@ -10,9 +10,9 @@ class EnvironmentTypeArgs {
   /// The ID of the associated Dev Center. Changing this forces a new resource to be created.
   final pulumi.Input<String> devCenterId;
   /// Specifies the name of this Dev Center Environment Type. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags which should be assigned to the Dev Center Environment Type.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnvironmentTypeArgs].
   /// [devCenterId] The ID of the associated Dev Center. Changing this forces a new resource to be created.

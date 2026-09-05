@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_address_pool_address_args.dart';
+import 'backend_address_pool_address_inbound_nat_rule_port_mapping.dart';
 import 'backend_address_pool_address_state.dart';
 
 /// Manages a Backend Address within a Backend Address Pool.
@@ -379,7 +380,7 @@ class BackendAddressPoolAddress extends pulumi.CustomResource {
   /// The ID of the Backend Address Pool. Changing this forces a new Backend Address Pool Address to be created.
   late final pulumi.Output<String> backendAddressPoolId;
   /// A list of `inboundNatRulePortMapping` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> inboundNatRulePortMappings;
+  late final pulumi.Output<List<BackendAddressPoolAddressInboundNatRulePortMapping>> inboundNatRulePortMappings;
   /// The Static IP Address which should be allocated to this Backend Address Pool.
   late final pulumi.Output<String?> ipAddress;
   /// The name which should be used for this Backend Address Pool Address. Changing this forces a new Backend Address Pool Address to be created.
@@ -399,11 +400,11 @@ class BackendAddressPoolAddress extends pulumi.CustomResource {
           'azure:lb/backendAddressPoolAddress:BackendAddressPoolAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backendAddressIpConfigurationId = registerOutput<String?>('backendAddressIpConfigurationId');
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
-    inboundNatRulePortMappings = registerOutput<List<Map<String, dynamic>>>('inboundNatRulePortMappings');
+    inboundNatRulePortMappings = registerOutput<List<BackendAddressPoolAddressInboundNatRulePortMapping>>('inboundNatRulePortMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendAddressPoolAddressInboundNatRulePortMapping>(guardedValue, (value) => BackendAddressPoolAddressInboundNatRulePortMapping.fromMap((value as Map).cast<String, dynamic>())); });
     ipAddress = registerOutput<String?>('ipAddress');
     this.name = registerOutput<String>('name');
     virtualNetworkId = registerOutput<String?>('virtualNetworkId');
@@ -414,11 +415,12 @@ class BackendAddressPoolAddress extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackendAddressPoolAddressState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackendAddressPoolAddress._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -434,7 +436,24 @@ class BackendAddressPoolAddress extends pulumi.CustomResource {
         ) {
     backendAddressIpConfigurationId = registerOutput<String?>('backendAddressIpConfigurationId');
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
-    inboundNatRulePortMappings = registerOutput<List<Map<String, dynamic>>>('inboundNatRulePortMappings');
+    inboundNatRulePortMappings = registerOutput<List<BackendAddressPoolAddressInboundNatRulePortMapping>>('inboundNatRulePortMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendAddressPoolAddressInboundNatRulePortMapping>(guardedValue, (value) => BackendAddressPoolAddressInboundNatRulePortMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    ipAddress = registerOutput<String?>('ipAddress');
+    this.name = registerOutput<String>('name');
+    virtualNetworkId = registerOutput<String?>('virtualNetworkId');
+  }
+
+  /// Creates a typed reference to an existing [BackendAddressPoolAddress] resource.
+  BackendAddressPoolAddress.reference(String urn)
+    : super(
+        'azure:lb/backendAddressPoolAddress:BackendAddressPoolAddress',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backendAddressIpConfigurationId = registerOutput<String?>('backendAddressIpConfigurationId');
+    backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
+    inboundNatRulePortMappings = registerOutput<List<BackendAddressPoolAddressInboundNatRulePortMapping>>('inboundNatRulePortMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendAddressPoolAddressInboundNatRulePortMapping>(guardedValue, (value) => BackendAddressPoolAddressInboundNatRulePortMapping.fromMap((value as Map).cast<String, dynamic>())); });
     ipAddress = registerOutput<String?>('ipAddress');
     this.name = registerOutput<String>('name');
     virtualNetworkId = registerOutput<String?>('virtualNetworkId');

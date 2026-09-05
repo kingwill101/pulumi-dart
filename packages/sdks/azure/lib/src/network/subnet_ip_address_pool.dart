@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubnetIpAddressPool {
   /// The list of IP address prefixes allocated to the subnet.
-  final pulumi.Input<List<String>>? allocatedIpAddressPrefixes;
+  final pulumi.Input<List<String>?>? allocatedIpAddressPrefixes;
   /// The ID of the Network Manager IP Address Management (IPAM) Pool.
   final pulumi.Input<String> id;
   /// The number of IP addresses to allocated to the subnet. The value must be a string that represents a positive number, e.g., `"100"`.

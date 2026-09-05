@@ -18,25 +18,25 @@ class FrontdoorArgs {
   /// A `backendPoolLoadBalancing` block as defined below.
   final pulumi.Input<List<FrontdoorBackendPoolLoadBalancing>> backendPoolLoadBalancings;
   /// A `backendPoolSettings` block as defined below.
-  final pulumi.Input<List<FrontdoorBackendPoolSetting>>? backendPoolSettings;
+  final pulumi.Input<List<FrontdoorBackendPoolSetting>?>? backendPoolSettings;
   /// A `backendPool` block as defined below.
   ///
   /// &gt; Azure by default allows specifying up to 50 Backend Pools - but this quota can be increased via Microsoft Support.
   final pulumi.Input<List<FrontdoorBackendPool>> backendPools;
   /// A friendly name for the Front Door service.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// A `frontendEndpoint` block as defined below.
   final pulumi.Input<List<FrontdoorFrontendEndpoint>> frontendEndpoints;
   /// Should the Front Door Load Balancer be Enabled? Defaults to `true`.
-  final pulumi.Input<bool>? loadBalancerEnabled;
+  final pulumi.Input<bool?>? loadBalancerEnabled;
   /// Specifies the name of the Front Door service. Must be globally unique. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group in which the Front Door service should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `routingRule` block as defined below.
   final pulumi.Input<List<FrontdoorRoutingRule>> routingRules;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FrontdoorArgs].
   /// [backendPoolHealthProbes] A `backendPoolHealthProbe` block as defined below.

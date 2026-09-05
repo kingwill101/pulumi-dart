@@ -12,13 +12,13 @@ import 'role_management_policy_notification_rules.dart';
 /// {@macro pulumi_pim_role_management_policy_role_management_policy_args_doc}
 class RoleManagementPolicyArgs {
   /// An `activationRules` block as defined below.
-  final pulumi.Input<RoleManagementPolicyActivationRules>? activationRules;
+  final pulumi.Input<RoleManagementPolicyActivationRules?>? activationRules;
   /// An `activeAssignmentRules` block as defined below.
-  final pulumi.Input<RoleManagementPolicyActiveAssignmentRules>? activeAssignmentRules;
+  final pulumi.Input<RoleManagementPolicyActiveAssignmentRules?>? activeAssignmentRules;
   /// An `eligibleAssignmentRules` block as defined below.
-  final pulumi.Input<RoleManagementPolicyEligibleAssignmentRules>? eligibleAssignmentRules;
+  final pulumi.Input<RoleManagementPolicyEligibleAssignmentRules?>? eligibleAssignmentRules;
   /// A `notificationRules` block as defined below.
-  final pulumi.Input<RoleManagementPolicyNotificationRules>? notificationRules;
+  final pulumi.Input<RoleManagementPolicyNotificationRules?>? notificationRules;
   /// The scoped Role Definition ID of the role for which this policy will apply. Changing this forces a new resource to be created.
   final pulumi.Input<String> roleDefinitionId;
   /// The scope to which this Role Management Policy will apply. Can refer to a management group, a subscription, a resource group or a resource. Changing this forces a new resource to be created.

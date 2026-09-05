@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IoTHubNetworkRuleSetIpRule {
   /// The desired action for requests captured by this rule. Possible values are `Allow`. Defaults to `Allow`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The IP address range in CIDR notation for the ip rule.
   final pulumi.Input<String> ipMask;
   /// The name of the ip rule.

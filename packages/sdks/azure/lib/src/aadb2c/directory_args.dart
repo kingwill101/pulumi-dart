@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_aadb2c_directory_directory_args_doc}
 class DirectoryArgs {
   /// Country code of the B2C tenant. The `countryCode` should be valid for the specified `dataResidencyLocation`. See [official docs](https://aka.ms/B2CDataResidency) for valid country codes. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.
-  final pulumi.Input<String>? countryCode;
+  final pulumi.Input<String?>? countryCode;
   /// Location in which the B2C tenant is hosted and data resides. The `dataResidencyLocation` should be valid for the specified `countryCode`. See [official docs](https://aka.ms/B2CDataResidenc) for more information. Changing this forces a new AAD B2C Directory to be created. Possible values are `Asia Pacific`, `Australia`, `Europe`, `Global` and `United States`.
   final pulumi.Input<String> dataResidencyLocation;
   /// The initial display name of the B2C tenant. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Domain name of the B2C tenant, including the `.onmicrosoft.com` suffix. Changing this forces a new AAD B2C Directory to be created.
   final pulumi.Input<String> domainName;
   /// The name of the Resource Group where the AAD B2C Directory should exist. Changing this forces a new AAD B2C Directory to be created.
@@ -20,7 +20,7 @@ class DirectoryArgs {
   /// Billing SKU for the B2C tenant. Must be one of: `PremiumP1` or `PremiumP2` (`Standard` is not supported). See [official docs](https://aka.ms/b2cBilling) for more information.
   final pulumi.Input<String> skuName;
   /// A mapping of tags which should be assigned to the AAD B2C Directory.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DirectoryArgs].
   /// [countryCode] Country code of the B2C tenant. The `countryCode` should be valid for the specified `dataResidencyLocation`. See [official docs](https://aka.ms/B2CDataResidency) for valid country codes. Required when creating a new resource. Changing this forces a new AAD B2C Directory to be created.

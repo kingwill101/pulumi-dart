@@ -3,63 +3,63 @@
 
 /// Result data returned by getGroup.
 class GetGroupResult {
-  final String apiManagementName;
+  final String? apiManagementName;
   /// The description of this API Management Group.
-  final String description;
+  final String? description;
   /// The display name of this API Management Group.
-  final String displayName;
+  final String? displayName;
   /// The identifier of the external Group.
-  final String externalId;
+  final String? externalId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String resourceGroupName;
+  final String? id;
+  final String? name;
+  final String? resourceGroupName;
   /// The type of this API Management Group, such as `custom` or `external`.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetGroupResult].
-  /// [apiManagementName] Required.
+  /// [apiManagementName] Optional.
   /// [description] The description of this API Management Group.
   /// [displayName] The display name of this API Management Group.
   /// [externalId] The identifier of the external Group.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
   /// [type] The type of this API Management Group, such as `custom` or `external`.
   const GetGroupResult({
-    required this.apiManagementName,
-    required this.description,
-    required this.displayName,
-    required this.externalId,
-    required this.id,
-    required this.name,
-    required this.resourceGroupName,
-    required this.type,
+    this.apiManagementName,
+    this.description,
+    this.displayName,
+    this.externalId,
+    this.id,
+    this.name,
+    this.resourceGroupName,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiManagementName': apiManagementName,
-      'description': description,
-      'displayName': displayName,
-      'externalId': externalId,
-      'id': id,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'type': type,
+      'apiManagementName': ?apiManagementName,
+      'description': ?description,
+      'displayName': ?displayName,
+      'externalId': ?externalId,
+      'id': ?id,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'type': ?type,
     };
   }
 
   factory GetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetGroupResult(
-      apiManagementName: map['apiManagementName'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      externalId: map['externalId'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      type: map['type'] as String,
+      apiManagementName: (() { final guardedValue = map['apiManagementName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalId: (() { final guardedValue = map['externalId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

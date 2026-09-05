@@ -6,19 +6,19 @@ import 'analytics_solution_plan.dart';
 /// Input properties used for looking up and filtering AnalyticsSolution resources.
 class AnalyticsSolutionState {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `plan` block as documented below.
-  final pulumi.Input<AnalyticsSolutionPlan>? plan;
+  final pulumi.Input<AnalyticsSolutionPlan?>? plan;
   /// The name of the resource group in which the Log Analytics solution is created. Changing this forces a new resource to be created. Note: The solution and its related workspace can only exist in the same resource group.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Specifies the name of the solution to be deployed. See [here for options](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions).Changing this forces a new resource to be created.
-  final pulumi.Input<String>? solutionName;
+  final pulumi.Input<String?>? solutionName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The full name of the Log Analytics workspace with which the solution will be linked. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
   /// The full resource ID of the Log Analytics workspace with which the solution will be linked. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? workspaceResourceId;
+  final pulumi.Input<String?>? workspaceResourceId;
 
   /// Creates a new [AnalyticsSolutionState].
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.

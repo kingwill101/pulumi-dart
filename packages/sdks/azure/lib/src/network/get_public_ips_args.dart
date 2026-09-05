@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_public_ips_get_public_ips_args_doc}
 class GetPublicIPsArgs {
   /// The Allocation Type for the Public IP Address. Possible values include `Static` or `Dynamic`.
-  final pulumi.Input<String>? allocationType;
+  final pulumi.Input<String?>? allocationType;
   /// Filter to include IP Addresses which are attached to a device, such as a VM/LB (`Attached`) or unattached (`Unattached`).
-  final pulumi.Input<String>? attachmentStatus;
+  final pulumi.Input<String?>? attachmentStatus;
   /// A prefix match used for the IP Addresses `name` field, case sensitive.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Specifies the name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

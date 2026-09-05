@@ -35,6 +35,7 @@ import 'workspace_key_state.dart';
 ///     name: "example",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     purgeProtectionEnabled: true,
@@ -123,6 +124,7 @@ import 'workspace_key_state.dart';
 ///     name="example",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     purge_protection_enabled=True)
@@ -218,6 +220,7 @@ import 'workspace_key_state.dart';
 ///         Name = "example",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         PurgeProtectionEnabled = true,
@@ -343,7 +346,7 @@ import 'workspace_key_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -353,18 +356,19 @@ import 'workspace_key_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("example"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("standard"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("example"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		deployer, err := keyvault.NewAccessPolicy(ctx, "deployer", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -380,7 +384,7 @@ import 'workspace_key_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("workspaceEncryptionKey"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -397,7 +401,7 @@ import 'workspace_key_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			CustomerManagedKey: &synapse.WorkspaceCustomerManagedKeyArgs{
@@ -415,13 +419,9 @@ import 'workspace_key_state.dart';
 /// 			return err
 /// 		}
 /// 		workspacePolicy, err := keyvault.NewAccessPolicy(ctx, "workspace_policy", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
-/// 			TenantId: pulumi.String(exampleWorkspace.Identity.ApplyT(func(identity synapse.WorkspaceIdentity) (*string, error) {
-/// 				return identity.TenantId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ObjectId: pulumi.String(exampleWorkspace.Identity.ApplyT(func(identity synapse.WorkspaceIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			TenantId:   exampleWorkspace.Identity.TenantId(),
+/// 			ObjectId:   exampleWorkspace.Identity.PrincipalId(),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
 /// 				pulumi.String("WrapKey"),
@@ -433,7 +433,7 @@ import 'workspace_key_state.dart';
 /// 		}
 /// 		_, err = synapse.NewWorkspaceKey(ctx, "example", &synapse.WorkspaceKeyArgs{
 /// 			CustomerManagedKeyVersionlessId: exampleKey.VersionlessId,
-/// 			SynapseWorkspaceId:              exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId:              exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Active:                          pulumi.Bool(true),
 /// 			CustomerManagedKeyName:          pulumi.String("enckey"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -476,12 +476,13 @@ import 'workspace_key_state.dart';
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "example"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "standard"
-///   purge_protection_enabled = true
+///   name                       = "example"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   purge_protection_enabled   = true
 /// }
 /// resource "azure_keyvault_accesspolicy" "deployer" {
 ///   key_vault_id    = azure_keyvault_keyvault.example.id
@@ -594,6 +595,7 @@ import 'workspace_key_state.dart';
 ///             .name("example")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .purgeProtectionEnabled(true)
@@ -693,6 +695,7 @@ import 'workspace_key_state.dart';
 ///       name: example
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       purgeProtectionEnabled: true
@@ -800,7 +803,7 @@ class WorkspaceKey extends pulumi.CustomResource {
           'azure:synapse/workspaceKey:WorkspaceKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     active = registerOutput<bool>('active');
     customerManagedKeyName = registerOutput<String>('customerManagedKeyName');
@@ -813,11 +816,12 @@ class WorkspaceKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -831,6 +835,21 @@ class WorkspaceKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    active = registerOutput<bool>('active');
+    customerManagedKeyName = registerOutput<String>('customerManagedKeyName');
+    customerManagedKeyVersionlessId = registerOutput<String?>('customerManagedKeyVersionlessId');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceKey] resource.
+  WorkspaceKey.reference(String urn)
+    : super(
+        'azure:synapse/workspaceKey:WorkspaceKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     active = registerOutput<bool>('active');
     customerManagedKeyName = registerOutput<String>('customerManagedKeyName');
     customerManagedKeyVersionlessId = registerOutput<String?>('customerManagedKeyVersionlessId');

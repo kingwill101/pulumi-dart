@@ -177,6 +177,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getAccount:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Use this data source to obtain a Shared Access Signature (SAS Token) for an existing Storage Account Blob Container.
 ///
 /// Shared access signatures allow fine-grained, ephemeral access control to various aspects of an Azure Storage Account Blob Container.
@@ -225,7 +236,7 @@ Future<GetAccountResult> getAccount(
 ///     contentLanguage: "en-US",
 ///     contentType: "application/json",
 /// });
-/// export const sasUrlQueryString = example.apply(example => example.sas);
+/// export const sasUrlQueryString = example.sas;
 /// ```
 /// ```python
 /// import pulumi
@@ -382,9 +393,7 @@ Future<GetAccountResult> getAccount(
 /// 			ContentLanguage:    pulumi.String("en-US"),
 /// 			ContentType:        pulumi.String("application/json"),
 /// 		}, nil)
-/// 		ctx.Export("sasUrlQueryString", example.ApplyT(func(example storage.GetAccountBlobContainerSASResult) (*string, error) {
-/// 			return example.Sas, nil
-/// 		}).(pulumi.StringPtrOutput))
+/// 		ctx.Export("sasUrlQueryString", example.Sas())
 /// 		return nil
 /// 	})
 /// }
@@ -575,6 +584,17 @@ Future<GetAccountBlobContainerSASResult> getAccountBlobContainerSAS(
   return GetAccountBlobContainerSASResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountBlobContainerSASResult> getAccountBlobContainerSASOutput(
+  GetAccountBlobContainerSASArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getAccountBlobContainerSAS:getAccountBlobContainerSAS',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountBlobContainerSASResult.fromMap);
+}
+
 /// Use this data source to obtain a Shared Access Signature (SAS Token) for an existing Storage Account.
 ///
 /// Shared access signatures allow fine-grained, ephemeral access control to various aspects of an Azure Storage Account.
@@ -633,7 +653,7 @@ Future<GetAccountBlobContainerSASResult> getAccountBlobContainerSAS(
 ///         filter: false,
 ///     },
 /// });
-/// export const sasUrlQueryString = example.apply(example => example.sas);
+/// export const sasUrlQueryString = example.sas;
 /// ```
 /// ```python
 /// import pulumi
@@ -810,9 +830,7 @@ Future<GetAccountBlobContainerSASResult> getAccountBlobContainerSAS(
 /// 				Filter:  pulumi.Bool(false),
 /// 			},
 /// 		}, nil)
-/// 		ctx.Export("sasUrlQueryString", example.ApplyT(func(example storage.GetAccountSASResult) (*string, error) {
-/// 			return example.Sas, nil
-/// 		}).(pulumi.StringPtrOutput))
+/// 		ctx.Export("sasUrlQueryString", example.Sas())
 /// 		return nil
 /// 	})
 /// }
@@ -1019,6 +1037,17 @@ Future<GetAccountSASResult> getAccountSAS(
   return GetAccountSASResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountSASResult> getAccountSASOutput(
+  GetAccountSASArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getAccountSAS:getAccountSAS',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountSASResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Storage Blob.
 ///
 /// ## Example Usage
@@ -1142,6 +1171,17 @@ Future<GetBlobResult> getBlob(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBlobResult.fromMap(result);
+}
+
+pulumi.Output<GetBlobResult> getBlobOutput(
+  GetBlobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getBlob:getBlob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlobResult.fromMap);
 }
 
 /// Use this data source to access information about the existing Storage Containers within a Storage Account.
@@ -1274,6 +1314,17 @@ Future<GetContainersResult> getContainers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContainersResult.fromMap(result);
+}
+
+pulumi.Output<GetContainersResult> getContainersOutput(
+  GetContainersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getContainers:getContainers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainersResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Storage Encryption Scope.
@@ -1458,6 +1509,17 @@ Future<GetEncryptionScopeResult> getEncryptionScope(
   return GetEncryptionScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetEncryptionScopeResult> getEncryptionScopeOutput(
+  GetEncryptionScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getEncryptionScope:getEncryptionScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEncryptionScopeResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Storage Management Policy.
 ///
 /// ## Example Usage
@@ -1619,6 +1681,17 @@ Future<GetPolicyResult> getPolicy(
   return GetPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyResult> getPolicyOutput(
+  GetPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getPolicy:getPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Storage Queue.
 ///
 /// ## Example Usage
@@ -1750,6 +1823,17 @@ Future<GetQueueResult> getQueue(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetQueueResult.fromMap(result);
+}
+
+pulumi.Output<GetQueueResult> getQueueOutput(
+  GetQueueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getQueue:getQueue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueueResult.fromMap);
 }
 
 /// Use this data source to access information about an existing File Share.
@@ -1922,6 +2006,17 @@ Future<GetShareResult> getShare(
   return GetShareResult.fromMap(result);
 }
 
+pulumi.Output<GetShareResult> getShareOutput(
+  GetShareArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getShare:getShare',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetShareResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Storage Container.
 ///
 /// ## Example Usage
@@ -2090,6 +2185,17 @@ Future<GetStorageContainerResult> getStorageContainer(
   return GetStorageContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageContainerResult> getStorageContainerOutput(
+  GetStorageContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getStorageContainer:getStorageContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageContainerResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Storage Sync.
 ///
 /// ## Example Usage
@@ -2235,6 +2341,17 @@ Future<GetSyncResult> getSync(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSyncResult.fromMap(result);
+}
+
+pulumi.Output<GetSyncResult> getSyncOutput(
+  GetSyncArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getSync:getSync',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSyncResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Storage Sync Group.
@@ -2384,6 +2501,17 @@ Future<GetSyncGroupResult> getSyncGroup(
   return GetSyncGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetSyncGroupResult> getSyncGroupOutput(
+  GetSyncGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getSyncGroup:getSyncGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSyncGroupResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Storage Table.
 ///
 /// ## Example Usage
@@ -2509,6 +2637,17 @@ Future<GetTableResult> getTable(
   return GetTableResult.fromMap(result);
 }
 
+pulumi.Output<GetTableResult> getTableOutput(
+  GetTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getTable:getTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Storage Table Entity.
 ///
 /// ## Example Usage
@@ -2632,6 +2771,17 @@ Future<GetTableEntitiesResult> getTableEntities(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTableEntitiesResult.fromMap(result);
+}
+
+pulumi.Output<GetTableEntitiesResult> getTableEntitiesOutput(
+  GetTableEntitiesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getTableEntities:getTableEntities',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableEntitiesResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Storage Table Entity.
@@ -2764,4 +2914,15 @@ Future<GetTableEntityResult> getTableEntity(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTableEntityResult.fromMap(result);
+}
+
+pulumi.Output<GetTableEntityResult> getTableEntityOutput(
+  GetTableEntityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:storage/getTableEntity:getTableEntity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableEntityResult.fromMap);
 }

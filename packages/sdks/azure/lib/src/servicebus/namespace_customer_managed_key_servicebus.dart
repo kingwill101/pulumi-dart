@@ -35,6 +35,7 @@ import 'namespace_customer_managed_key_state.dart';
 ///     name: "example-key-vault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     enabledForDiskEncryption: true,
 ///     tenantId: current.then(current => current.tenantId),
 ///     softDeleteRetentionDays: 7,
@@ -120,6 +121,7 @@ import 'namespace_customer_managed_key_state.dart';
 ///     name="example-key-vault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     enabled_for_disk_encryption=True,
 ///     tenant_id=current.tenant_id,
 ///     soft_delete_retention_days=7,
@@ -215,6 +217,7 @@ import 'namespace_customer_managed_key_state.dart';
 ///         Name = "example-key-vault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         EnabledForDiskEncryption = true,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SoftDeleteRetentionDays = 7,
@@ -337,6 +340,7 @@ import 'namespace_customer_managed_key_state.dart';
 /// 			Name:                     pulumi.String("example-key-vault"),
 /// 			Location:                 example.Location,
 /// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
 /// 			EnabledForDiskEncryption: pulumi.Bool(true),
 /// 			TenantId:                 pulumi.String(current.TenantId),
 /// 			SoftDeleteRetentionDays:  pulumi.Int(7),
@@ -364,12 +368,8 @@ import 'namespace_customer_managed_key_state.dart';
 /// 					},
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
-/// 					TenantId: exampleNamespace.Identity.ApplyT(func(identity servicebus.NamespaceIdentity) (*string, error) {
-/// 						return identity.TenantId, nil
-/// 					}).(pulumi.StringPtrOutput),
-/// 					ObjectId: exampleNamespace.Identity.ApplyT(func(identity servicebus.NamespaceIdentity) (*string, error) {
-/// 						return identity.PrincipalId, nil
-/// 					}).(pulumi.StringPtrOutput),
+/// 					TenantId: exampleNamespace.Identity.TenantId(),
+/// 					ObjectId: exampleNamespace.Identity.PrincipalId(),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Create"),
 /// 						pulumi.String("Decrypt"),
@@ -394,7 +394,7 @@ import 'namespace_customer_managed_key_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("example-key-vault-key"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -410,8 +410,8 @@ import 'namespace_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = servicebus.NewNamespaceCustomerManagedKey(ctx, "example", &servicebus.NamespaceCustomerManagedKeyArgs{
-/// 			NamespaceId:   exampleNamespace.ID(),
-/// 			KeyVaultKeyId: exampleKey.ID(),
+/// 			NamespaceId:   exampleNamespace.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -451,6 +451,7 @@ import 'namespace_customer_managed_key_state.dart';
 ///   name                        = "example-key-vault"
 ///   location                    = azure_core_resourcegroup.example.location
 ///   resource_group_name         = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
 ///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
 ///   soft_delete_retention_days  = 7
@@ -536,6 +537,7 @@ import 'namespace_customer_managed_key_state.dart';
 ///             .name("example-key-vault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .enabledForDiskEncryption(true)
 ///             .tenantId(current.tenantId())
 ///             .softDeleteRetentionDays(7)
@@ -626,6 +628,7 @@ import 'namespace_customer_managed_key_state.dart';
 ///       name: example-key-vault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       enabledForDiskEncryption: true
 ///       tenantId: ${current.tenantId}
 ///       softDeleteRetentionDays: 7
@@ -727,7 +730,7 @@ class NamespaceCustomerManagedKeyServicebus extends pulumi.CustomResource {
           'azure:servicebus/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
@@ -739,11 +742,12 @@ class NamespaceCustomerManagedKeyServicebus extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamespaceCustomerManagedKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NamespaceCustomerManagedKeyServicebus._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -757,6 +761,20 @@ class NamespaceCustomerManagedKeyServicebus extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    namespaceId = registerOutput<String>('namespaceId');
+  }
+
+  /// Creates a typed reference to an existing [NamespaceCustomerManagedKeyServicebus] resource.
+  NamespaceCustomerManagedKeyServicebus.reference(String urn)
+    : super(
+        'azure:servicebus/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     namespaceId = registerOutput<String>('namespaceId');

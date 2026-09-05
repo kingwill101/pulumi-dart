@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spacecraft_args.dart';
+import 'spacecraft_link.dart';
 import 'spacecraft_state.dart';
 
 /// Manages a Spacecraft.
@@ -289,7 +290,7 @@ import 'spacecraft_state.dart';
 /// ```
 class Spacecraft extends pulumi.CustomResource {
   /// A `links` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>> links;
+  late final pulumi.Output<List<SpacecraftLink>> links;
   /// The location where the Spacecraft exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name of the Spacecraft. Changing this forces a new resource to be created.
@@ -317,16 +318,16 @@ class Spacecraft extends pulumi.CustomResource {
           'azure:orbital/spacecraft:Spacecraft',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    links = registerOutput<List<Map<String, dynamic>>>('links');
+    links = registerOutput<List<SpacecraftLink>>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacecraftLink>(guardedValue, (value) => SpacecraftLink.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     noradId = registerOutput<String>('noradId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     titleLine = registerOutput<String>('titleLine');
-    twoLineElements = registerOutput<List<String>>('twoLineElements');
+    twoLineElements = registerOutput<List<String>>('twoLineElements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Spacecraft] resource's state with the given [name] and [id].
@@ -334,11 +335,12 @@ class Spacecraft extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpacecraftState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Spacecraft._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -352,13 +354,32 @@ class Spacecraft extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    links = registerOutput<List<Map<String, dynamic>>>('links');
+    links = registerOutput<List<SpacecraftLink>>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacecraftLink>(guardedValue, (value) => SpacecraftLink.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     noradId = registerOutput<String>('noradId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     titleLine = registerOutput<String>('titleLine');
-    twoLineElements = registerOutput<List<String>>('twoLineElements');
+    twoLineElements = registerOutput<List<String>>('twoLineElements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Spacecraft] resource.
+  Spacecraft.reference(String urn)
+    : super(
+        'azure:orbital/spacecraft:Spacecraft',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    links = registerOutput<List<SpacecraftLink>>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacecraftLink>(guardedValue, (value) => SpacecraftLink.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    noradId = registerOutput<String>('noradId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    titleLine = registerOutput<String>('titleLine');
+    twoLineElements = registerOutput<List<String>>('twoLineElements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -124,7 +124,7 @@ import 'trigger_http_request_state.dart';
 /// 		}
 /// 		_, err = logicapps.NewTriggerHttpRequest(ctx, "example", &logicapps.TriggerHttpRequestArgs{
 /// 			Name:       pulumi.String("some-http-trigger"),
-/// 			LogicAppId: exampleWorkflow.ID(),
+/// 			LogicAppId: exampleWorkflow.ID().ToIDOutput().ToStringOutput(),
 /// 			Schema: pulumi.String(`{
 ///     \"type\": \"object\",
 ///     \"properties\": {
@@ -291,7 +291,7 @@ class TriggerHttpRequest extends pulumi.CustomResource {
           'azure:logicapps/triggerHttpRequest:TriggerHttpRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     callbackUrl = registerOutput<String>('callbackUrl');
     logicAppId = registerOutput<String>('logicAppId');
@@ -306,11 +306,12 @@ class TriggerHttpRequest extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TriggerHttpRequestState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TriggerHttpRequest._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -324,6 +325,23 @@ class TriggerHttpRequest extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    callbackUrl = registerOutput<String>('callbackUrl');
+    logicAppId = registerOutput<String>('logicAppId');
+    method = registerOutput<String?>('method');
+    this.name = registerOutput<String>('name');
+    relativePath = registerOutput<String?>('relativePath');
+    schema = registerOutput<String>('schema');
+  }
+
+  /// Creates a typed reference to an existing [TriggerHttpRequest] resource.
+  TriggerHttpRequest.reference(String urn)
+    : super(
+        'azure:logicapps/triggerHttpRequest:TriggerHttpRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     callbackUrl = registerOutput<String>('callbackUrl');
     logicAppId = registerOutput<String>('logicAppId');
     method = registerOutput<String?>('method');

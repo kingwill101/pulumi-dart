@@ -134,3 +134,14 @@ Future<GetVirtualMachineManagerInventoryItemsResult> getVirtualMachineManagerInv
   );
   return GetVirtualMachineManagerInventoryItemsResult.fromMap(result);
 }
+
+pulumi.Output<GetVirtualMachineManagerInventoryItemsResult> getVirtualMachineManagerInventoryItemsOutput(
+  GetVirtualMachineManagerInventoryItemsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:systemcenter/getVirtualMachineManagerInventoryItems:getVirtualMachineManagerInventoryItems',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineManagerInventoryItemsResult.fromMap);
+}

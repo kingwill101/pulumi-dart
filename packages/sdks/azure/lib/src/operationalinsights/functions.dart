@@ -148,3 +148,14 @@ Future<GetAnalyticsWorkspaceResult> getAnalyticsWorkspace(
   );
   return GetAnalyticsWorkspaceResult.fromMap(result);
 }
+
+pulumi.Output<GetAnalyticsWorkspaceResult> getAnalyticsWorkspaceOutput(
+  GetAnalyticsWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:operationalinsights/getAnalyticsWorkspace:getAnalyticsWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAnalyticsWorkspaceResult.fromMap);
+}

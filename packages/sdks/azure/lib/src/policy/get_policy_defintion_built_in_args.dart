@@ -10,11 +10,11 @@ class GetPolicyDefintionBuiltInArgs {
   /// Specifies the display name of the Policy Definition. Conflicts with `name`.
   ///
   /// &gt; **Note:** As `displayName` is not unique errors may occur when there are multiple policy definitions with same display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Only retrieve Policy Definitions from this Management Group.
-  final pulumi.Input<String>? managementGroupName;
+  final pulumi.Input<String?>? managementGroupName;
   /// Specifies the name of the Policy Definition. Conflicts with `displayName`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetPolicyDefintionBuiltInArgs].
   /// [displayName] Specifies the display name of the Policy Definition. Conflicts with `name`.

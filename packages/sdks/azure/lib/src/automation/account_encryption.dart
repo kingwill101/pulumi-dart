@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountEncryption {
-  final pulumi.Input<String>? keySource;
+  final pulumi.Input<String?>? keySource;
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Automation Account.
   final pulumi.Input<String> keyVaultKeyId;
   /// The User Assigned Managed Identity ID to be used for accessing the Customer Managed Key for encryption.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
 
   /// Creates a new [AccountEncryption].
   /// [keySource] Optional.

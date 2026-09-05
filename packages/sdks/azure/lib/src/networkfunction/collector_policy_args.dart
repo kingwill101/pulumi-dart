@@ -14,11 +14,11 @@ class CollectorPolicyArgs {
   /// An `ipfxIngestion` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
   final pulumi.Input<CollectorPolicyIpfxIngestion> ipfxIngestion;
   /// Specifies the Azure Region where the Network Function Collector Policy should exist. Changing this forces a new Network Function Collector Policy to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this Network Function Collector Policy. Changing this forces a new Network Function Collector Policy to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags which should be assigned to the Network Function Collector Policy.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the Azure Traffic Collector ID of the Network Function Collector Policy. Changing this forces a new Network Function Collector Policy to be created.
   final pulumi.Input<String> trafficCollectorId;
 

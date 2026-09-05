@@ -9,17 +9,17 @@ import 'get_share_acl.dart';
 /// {@macro pulumi_storage_get_share_get_share_args_doc}
 class GetShareArgs {
   /// One or more acl blocks as defined below.
-  final pulumi.Input<List<GetShareAcl>>? acls;
+  final pulumi.Input<List<GetShareAcl>?>? acls;
   /// A map of custom file share metadata.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name of the share.
   final pulumi.Input<String> name;
   /// The ID of the storage account in which the share exists.
   ///
   /// &gt; **Note:** One of `storageAccountName` or `storageAccountId` must be specified. When specifying `storageAccountId` the resource will use the Resource Manager API, rather than the Data Plane API.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// The name of the storage account in which the share exists. This property is deprecated in favour of `storageAccountId`.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [GetShareArgs].
   /// [acls] One or more acl blocks as defined below.

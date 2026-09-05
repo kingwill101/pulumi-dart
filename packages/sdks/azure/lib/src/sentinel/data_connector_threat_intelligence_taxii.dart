@@ -117,7 +117,7 @@ import 'data_connector_threat_intelligence_taxii_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -302,7 +302,8 @@ class DataConnectorThreatIntelligenceTaxii extends pulumi.CustomResource {
           'azure:sentinel/dataConnectorThreatIntelligenceTaxii:DataConnectorThreatIntelligenceTaxii',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password', 'userName'],
         ) {
     apiRootUrl = registerOutput<String>('apiRootUrl');
     collectionId = registerOutput<String>('collectionId');
@@ -310,10 +311,10 @@ class DataConnectorThreatIntelligenceTaxii extends pulumi.CustomResource {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     lookbackDate = registerOutput<String?>('lookbackDate');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     pollingFrequency = registerOutput<String?>('pollingFrequency');
     tenantId = registerOutput<String>('tenantId');
-    userName = registerOutput<String?>('userName');
+    userName = registerOutput<String?>('userName', isSecret: true);
   }
 
   /// Gets an existing [DataConnectorThreatIntelligenceTaxii] resource's state with the given [name] and [id].
@@ -321,11 +322,12 @@ class DataConnectorThreatIntelligenceTaxii extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataConnectorThreatIntelligenceTaxiiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataConnectorThreatIntelligenceTaxii._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -345,9 +347,31 @@ class DataConnectorThreatIntelligenceTaxii extends pulumi.CustomResource {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     lookbackDate = registerOutput<String?>('lookbackDate');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     pollingFrequency = registerOutput<String?>('pollingFrequency');
     tenantId = registerOutput<String>('tenantId');
-    userName = registerOutput<String?>('userName');
+    userName = registerOutput<String?>('userName', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [DataConnectorThreatIntelligenceTaxii] resource.
+  DataConnectorThreatIntelligenceTaxii.reference(String urn)
+    : super(
+        'azure:sentinel/dataConnectorThreatIntelligenceTaxii:DataConnectorThreatIntelligenceTaxii',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'userName'],
+        isResourceReference: true,
+      ) {
+    apiRootUrl = registerOutput<String>('apiRootUrl');
+    collectionId = registerOutput<String>('collectionId');
+    displayName = registerOutput<String>('displayName');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    lookbackDate = registerOutput<String?>('lookbackDate');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password', isSecret: true);
+    pollingFrequency = registerOutput<String?>('pollingFrequency');
+    tenantId = registerOutput<String>('tenantId');
+    userName = registerOutput<String?>('userName', isSecret: true);
   }
 }

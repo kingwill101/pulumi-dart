@@ -19,31 +19,31 @@ import 'cluster_upgrade_policy.dart';
 /// {@macro pulumi_servicefabric_cluster_cluster_args_doc}
 class ClusterArgs {
   /// A List of one or more features which should be enabled, such as `DnsService`.
-  final pulumi.Input<List<String>>? addOnFeatures;
+  final pulumi.Input<List<String>?>? addOnFeatures;
   /// An `azureActiveDirectory` block as defined below.
-  final pulumi.Input<ClusterAzureActiveDirectory>? azureActiveDirectory;
+  final pulumi.Input<ClusterAzureActiveDirectory?>? azureActiveDirectory;
   /// A `certificate` block as defined below. Conflicts with `certificateCommonNames`.
-  final pulumi.Input<ClusterCertificate>? certificate;
+  final pulumi.Input<ClusterCertificate?>? certificate;
   /// A `certificateCommonNames` block as defined below. Conflicts with `certificate`.
-  final pulumi.Input<ClusterCertificateCommonNames>? certificateCommonNames;
+  final pulumi.Input<ClusterCertificateCommonNames?>? certificateCommonNames;
   /// A `clientCertificateCommonName` block as defined below.
   ///
   /// &gt; **Note:** If Client Certificates are enabled then at a Certificate must be configured on the cluster.
-  final pulumi.Input<List<ClusterClientCertificateCommonName>>? clientCertificateCommonNames;
+  final pulumi.Input<List<ClusterClientCertificateCommonName>?>? clientCertificateCommonNames;
   /// One or more `clientCertificateThumbprint` blocks as defined below.
-  final pulumi.Input<List<ClusterClientCertificateThumbprint>>? clientCertificateThumbprints;
+  final pulumi.Input<List<ClusterClientCertificateThumbprint>?>? clientCertificateThumbprints;
   /// Required if Upgrade Mode set to `Manual`, Specifies the Version of the Cluster Code of the cluster.
-  final pulumi.Input<String>? clusterCodeVersion;
+  final pulumi.Input<String?>? clusterCodeVersion;
   /// A `diagnosticsConfig` block as defined below.
-  final pulumi.Input<ClusterDiagnosticsConfig>? diagnosticsConfig;
+  final pulumi.Input<ClusterDiagnosticsConfig?>? diagnosticsConfig;
   /// One or more `fabricSettings` blocks as defined below.
-  final pulumi.Input<List<ClusterFabricSetting>>? fabricSettings;
+  final pulumi.Input<List<ClusterFabricSetting>?>? fabricSettings;
   /// Specifies the Azure Region where the Service Fabric Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the Management Endpoint of the cluster such as `http://example.com`. Changing this forces a new resource to be created.
   final pulumi.Input<String> managementEndpoint;
   /// The name of the Service Fabric Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `nodeType` blocks as defined below.
   final pulumi.Input<List<ClusterNodeType>> nodeTypes;
   /// Specifies the Reliability Level of the Cluster. Possible values include `None`, `Bronze`, `Silver`, `Gold` and `Platinum`.
@@ -53,21 +53,21 @@ class ClusterArgs {
   /// The name of the Resource Group in which the Service Fabric Cluster exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `reverseProxyCertificate` block as defined below. Conflicts with `reverseProxyCertificateCommonNames`.
-  final pulumi.Input<ClusterReverseProxyCertificate>? reverseProxyCertificate;
+  final pulumi.Input<ClusterReverseProxyCertificate?>? reverseProxyCertificate;
   /// A `reverseProxyCertificateCommonNames` block as defined below. Conflicts with `reverseProxyCertificate`.
-  final pulumi.Input<ClusterReverseProxyCertificateCommonNames>? reverseProxyCertificateCommonNames;
+  final pulumi.Input<ClusterReverseProxyCertificateCommonNames?>? reverseProxyCertificateCommonNames;
   /// Specifies the logical grouping of VMs in upgrade domains. Possible values are `Hierarchical` or `Parallel`.
-  final pulumi.Input<String>? serviceFabricZonalUpgradeMode;
+  final pulumi.Input<String?>? serviceFabricZonalUpgradeMode;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the Upgrade Mode of the cluster. Possible values are `Automatic` or `Manual`.
   final pulumi.Input<String> upgradeMode;
   /// A `upgradePolicy` block as defined below.
-  final pulumi.Input<ClusterUpgradePolicy>? upgradePolicy;
+  final pulumi.Input<ClusterUpgradePolicy?>? upgradePolicy;
   /// Specifies the Image expected for the Service Fabric Cluster, such as `Windows`. Changing this forces a new resource to be created.
   final pulumi.Input<String> vmImage;
   /// Specifies the upgrade mode for the virtual machine scale set updates that happen in all availability zones at once. Possible values are `Hierarchical` or `Parallel`.
-  final pulumi.Input<String>? vmssZonalUpgradeMode;
+  final pulumi.Input<String?>? vmssZonalUpgradeMode;
 
   /// Creates a new [ClusterArgs].
   /// [addOnFeatures] A List of one or more features which should be enabled, such as `DnsService`.

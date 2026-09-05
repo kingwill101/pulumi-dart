@@ -9,17 +9,17 @@ import 'dev_center_identity.dart';
 /// {@macro pulumi_devcenter_dev_center_dev_center_args_doc}
 class DevCenterArgs {
   /// An `identity` block as defined below. Specifies the Managed Identity which should be assigned to this Dev Center.
-  final pulumi.Input<DevCenterIdentity>? identity;
+  final pulumi.Input<DevCenterIdentity?>? identity;
   /// The Azure Region where the Dev Center should exist. Changing this forces a new Dev Center to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this Dev Center. Changing this forces a new Dev Center to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether the project catalogs associated with projects in this Dev Center are allowed to sync catalog items. Defaults to `false`.
-  final pulumi.Input<bool>? projectCatalogItemSyncEnabled;
+  final pulumi.Input<bool?>? projectCatalogItemSyncEnabled;
   /// Specifies the name of the Resource Group within which this Dev Center should exist. Changing this forces a new Dev Center to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Dev Center.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DevCenterArgs].
   /// [identity] An `identity` block as defined below. Specifies the Managed Identity which should be assigned to this Dev Center.

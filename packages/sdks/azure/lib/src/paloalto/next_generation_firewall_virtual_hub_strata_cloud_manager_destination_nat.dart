@@ -6,9 +6,9 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_destination_na
 
 class NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat {
   /// One or more `backendConfig` block as defined below.
-  final pulumi.Input<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatBackendConfig>? backendConfig;
+  final pulumi.Input<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatBackendConfig?>? backendConfig;
   /// One or more `frontendConfig` block as defined below.
-  final pulumi.Input<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatFrontendConfig>? frontendConfig;
+  final pulumi.Input<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatFrontendConfig?>? frontendConfig;
   /// The name which should be used for this Destination NAT rule.
   final pulumi.Input<String> name;
   /// The protocol used for this Destination NAT. Possible values include `TCP` and `UDP`.

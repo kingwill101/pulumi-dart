@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_kusto_script_script_args_doc}
 class ScriptArgs {
   /// Flag that indicates whether to continue if one of the command fails.
-  final pulumi.Input<bool>? continueOnErrorsEnabled;
+  final pulumi.Input<bool?>? continueOnErrorsEnabled;
   /// The ID of the Kusto Database. Changing this forces a new Kusto Script to be created.
   final pulumi.Input<String> databaseId;
   /// A unique string. If changed the script will be applied again.
-  final pulumi.Input<String>? forceAnUpdateWhenValueChanged;
+  final pulumi.Input<String?>? forceAnUpdateWhenValueChanged;
   /// The name which should be used for this Kusto Script. Changing this forces a new Kusto Script to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether the script caller’s permissions remain in effect after the script has finished running? Possible values are `RemovePermissionOnScriptCompletion` and `RetainPermissionOnScriptCompletion`.
-  final pulumi.Input<String>? principalPermissionsAction;
+  final pulumi.Input<String?>? principalPermissionsAction;
   /// The SAS token used to access the script. Must be provided when using scriptUrl property. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sasToken;
+  final pulumi.Input<String?>? sasToken;
   /// The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with `url` and `sasToken` properties. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? scriptContent;
+  final pulumi.Input<String?>? scriptContent;
   /// The type of script commands. Possible values are `Database` or `Cluster`. Defaults to `Database`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? scriptLevel;
+  final pulumi.Input<String?>? scriptLevel;
   /// The url to the KQL script blob file. Must not be used together with scriptContent property. Please reference [this documentation](https://docs.microsoft.com/azure/data-explorer/database-script) that describes the commands that are allowed in the script.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ScriptArgs].
   /// [continueOnErrorsEnabled] Flag that indicates whether to continue if one of the command fails.

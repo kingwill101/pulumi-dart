@@ -5,33 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AuthorizationRule resources.
 class AuthorizationRuleState {
   /// Specifies the name of the EventHub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventhubName;
+  final pulumi.Input<String?>? eventhubName;
   /// Does this Authorization Rule have permissions to Listen to the Event Hub? Defaults to `false`.
-  final pulumi.Input<bool>? listen;
+  final pulumi.Input<bool?>? listen;
   /// Does this Authorization Rule have permissions to Manage to the Event Hub? When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
-  final pulumi.Input<bool>? manage;
+  final pulumi.Input<bool?>? manage;
   /// Specifies the name of the EventHub Authorization Rule resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the grandparent EventHub Namespace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// The Primary Connection String for the Event Hubs authorization Rule.
-  final pulumi.Input<String>? primaryConnectionString;
+  final pulumi.Input<String?>? primaryConnectionString;
   /// The alias of the Primary Connection String for the Event Hubs authorization Rule, which is generated when disaster recovery is enabled.
-  final pulumi.Input<String>? primaryConnectionStringAlias;
+  final pulumi.Input<String?>? primaryConnectionStringAlias;
   /// The Primary Key for the Event Hubs authorization Rule.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The name of the resource group in which the EventHub Namespace exists. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The Secondary Connection String for the Event Hubs Authorization Rule.
-  final pulumi.Input<String>? secondaryConnectionString;
+  final pulumi.Input<String?>? secondaryConnectionString;
   /// The alias of the Secondary Connection String for the Event Hubs Authorization Rule, which is generated when disaster recovery is enabled.
-  final pulumi.Input<String>? secondaryConnectionStringAlias;
+  final pulumi.Input<String?>? secondaryConnectionStringAlias;
   /// The Secondary Key for the Event Hubs Authorization Rule.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
   /// Does this Authorization Rule have permissions to Send to the Event Hub? Defaults to `false`.
-  final pulumi.Input<bool>? send;
+  final pulumi.Input<bool?>? send;
 
   /// Creates a new [AuthorizationRuleState].
   /// [eventhubName] Specifies the name of the EventHub. Changing this forces a new resource to be created.

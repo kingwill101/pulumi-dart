@@ -175,7 +175,7 @@ import 'spring_cloud_container_deployment_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudContainerDeployment(ctx, "example", &appplatform.SpringCloudContainerDeploymentArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			SpringCloudAppId: exampleSpringCloudApp.ID(),
+/// 			SpringCloudAppId: exampleSpringCloudApp.ID().ToIDOutput().ToStringOutput(),
 /// 			InstanceCount:    pulumi.Int(2),
 /// 			Arguments: pulumi.StringArray{
 /// 				pulumi.String("-cp"),
@@ -394,13 +394,13 @@ class SpringCloudContainerDeployment extends pulumi.CustomResource {
           'azure:appplatform/springCloudContainerDeployment:SpringCloudContainerDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     addonJson = registerOutput<String>('addonJson');
-    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds');
-    arguments = registerOutput<List<String>?>('arguments');
-    commands = registerOutput<List<String>?>('commands');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arguments = registerOutput<List<String>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    commands = registerOutput<List<String>?>('commands', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     image = registerOutput<String>('image');
     instanceCount = registerOutput<int?>('instanceCount');
     languageFramework = registerOutput<String?>('languageFramework');
@@ -415,11 +415,12 @@ class SpringCloudContainerDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudContainerDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudContainerDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -434,10 +435,33 @@ class SpringCloudContainerDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     addonJson = registerOutput<String>('addonJson');
-    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds');
-    arguments = registerOutput<List<String>?>('arguments');
-    commands = registerOutput<List<String>?>('commands');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arguments = registerOutput<List<String>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    commands = registerOutput<List<String>?>('commands', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    image = registerOutput<String>('image');
+    instanceCount = registerOutput<int?>('instanceCount');
+    languageFramework = registerOutput<String?>('languageFramework');
+    this.name = registerOutput<String>('name');
+    quota = registerOutput<SpringCloudContainerDeploymentQuota>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudContainerDeploymentQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    server = registerOutput<String>('server');
+    springCloudAppId = registerOutput<String>('springCloudAppId');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudContainerDeployment] resource.
+  SpringCloudContainerDeployment.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudContainerDeployment:SpringCloudContainerDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addonJson = registerOutput<String>('addonJson');
+    applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arguments = registerOutput<List<String>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    commands = registerOutput<List<String>?>('commands', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     image = registerOutput<String>('image');
     instanceCount = registerOutput<int?>('instanceCount');
     languageFramework = registerOutput<String?>('languageFramework');

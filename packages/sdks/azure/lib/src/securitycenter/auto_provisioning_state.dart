@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AutoProvisioning resources.
 class AutoProvisioningState {
   /// Should the security agent be automatically provisioned on Virtual Machines in this subscription? Possible values are `On` (to install the security agent automatically, if it's missing) or `Off` (to not install the security agent automatically).
-  final pulumi.Input<String>? autoProvision;
+  final pulumi.Input<String?>? autoProvision;
 
   /// Creates a new [AutoProvisioningState].
   /// [autoProvision] Should the security agent be automatically provisioned on Virtual Machines in this subscription? Possible values are `On` (to install the security agent automatically, if it's missing) or `Off` (to not install the security agent automatically).

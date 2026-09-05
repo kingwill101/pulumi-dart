@@ -169,6 +169,17 @@ Future<GetApiConnectionResult> getApiConnection(
   return GetApiConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetApiConnectionResult> getApiConnectionOutput(
+  GetApiConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:connections/getApiConnection:getApiConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiConnectionResult.fromMap);
+}
+
 /// Uses this data source to access information about an existing Managed API.
 ///
 /// ## Example Usage
@@ -314,4 +325,15 @@ Future<GetManagedApiResult> getManagedApi(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedApiResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedApiResult> getManagedApiOutput(
+  GetManagedApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:connections/getManagedApi:getManagedApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedApiResult.fromMap);
 }

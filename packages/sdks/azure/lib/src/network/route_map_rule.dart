@@ -6,13 +6,13 @@ import 'route_map_rule_match_criterion.dart';
 
 class RouteMapRule {
   /// An `action` block as defined below.
-  final pulumi.Input<List<RouteMapRuleAction>>? actions;
+  final pulumi.Input<List<RouteMapRuleAction>?>? actions;
   /// A `matchCriterion` block as defined below.
-  final pulumi.Input<List<RouteMapRuleMatchCriterion>>? matchCriterions;
+  final pulumi.Input<List<RouteMapRuleMatchCriterion>?>? matchCriterions;
   /// The unique name for the rule.
   final pulumi.Input<String> name;
   /// The next step after the rule is evaluated. Possible values are `Continue`, `Terminate` and `Unknown`. Defaults to `Unknown`.
-  final pulumi.Input<String>? nextStepIfMatched;
+  final pulumi.Input<String?>? nextStepIfMatched;
 
   /// Creates a new [RouteMapRule].
   /// [actions] An `action` block as defined below.

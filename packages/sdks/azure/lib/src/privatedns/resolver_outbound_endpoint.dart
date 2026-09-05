@@ -217,16 +217,16 @@ import 'resolver_outbound_endpoint_state.dart';
 /// 			Name:              pulumi.String("example-resolver"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualNetworkId:  exampleVirtualNetwork.ID(),
+/// 			VirtualNetworkId:  exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = privatedns.NewResolverOutboundEndpoint(ctx, "example", &privatedns.ResolverOutboundEndpointArgs{
 /// 			Name:                 pulumi.String("example-endpoint"),
-/// 			PrivateDnsResolverId: exampleResolver.ID(),
+/// 			PrivateDnsResolverId: exampleResolver.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:             exampleResolver.Location,
-/// 			SubnetId:             exampleSubnet.ID(),
+/// 			SubnetId:             exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"key": pulumi.String("value"),
 /// 			},
@@ -451,13 +451,13 @@ class ResolverOutboundEndpoint extends pulumi.CustomResource {
           'azure:privatedns/resolverOutboundEndpoint:ResolverOutboundEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ResolverOutboundEndpoint] resource's state with the given [name] and [id].
@@ -465,11 +465,12 @@ class ResolverOutboundEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverOutboundEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverOutboundEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -487,6 +488,22 @@ class ResolverOutboundEndpoint extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ResolverOutboundEndpoint] resource.
+  ResolverOutboundEndpoint.reference(String urn)
+    : super(
+        'azure:privatedns/resolverOutboundEndpoint:ResolverOutboundEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

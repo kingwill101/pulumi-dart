@@ -6,17 +6,17 @@ import 'scale_set_network_profile_ip_configuration.dart';
 
 class ScaleSetNetworkProfile {
   /// Specifies whether to enable accelerated networking or not.
-  final pulumi.Input<bool>? acceleratedNetworking;
+  final pulumi.Input<bool?>? acceleratedNetworking;
   /// A `dnsSettings` block as documented below.
-  final pulumi.Input<ScaleSetNetworkProfileDnsSettings>? dnsSettings;
+  final pulumi.Input<ScaleSetNetworkProfileDnsSettings?>? dnsSettings;
   /// An `ipConfiguration` block as documented below.
   final pulumi.Input<List<ScaleSetNetworkProfileIpConfiguration>> ipConfigurations;
   /// Whether IP forwarding is enabled on this NIC. Defaults to `false`.
-  final pulumi.Input<bool>? ipForwarding;
+  final pulumi.Input<bool?>? ipForwarding;
   /// Specifies the name of the network interface configuration.
   final pulumi.Input<String> name;
   /// Specifies the identifier for the network security group.
-  final pulumi.Input<String>? networkSecurityGroupId;
+  final pulumi.Input<String?>? networkSecurityGroupId;
   /// Indicates whether network interfaces created from the network interface configuration will be the primary NIC of the VM.
   final pulumi.Input<bool> primary;
 

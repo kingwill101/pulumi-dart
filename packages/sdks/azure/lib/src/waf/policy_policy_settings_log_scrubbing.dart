@@ -5,9 +5,9 @@ import 'policy_policy_settings_log_scrubbing_rule.dart';
 
 class PolicyPolicySettingsLogScrubbing {
   /// Whether the log scrubbing is enabled or disabled. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// One or more `scrubbingRule` blocks as define below.
-  final pulumi.Input<List<PolicyPolicySettingsLogScrubbingRule>>? rules;
+  final pulumi.Input<List<PolicyPolicySettingsLogScrubbingRule>?>? rules;
 
   /// Creates a new [PolicyPolicySettingsLogScrubbing].
   /// [enabled] Whether the log scrubbing is enabled or disabled. Defaults to `true`.

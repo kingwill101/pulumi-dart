@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GlobalSchema resources.
 class GlobalSchemaState {
   /// The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// The description of the schema.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A unique identifier for this Schema. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? schemaId;
+  final pulumi.Input<String?>? schemaId;
   /// The content type of the Schema. Possible values are `xml` and `json`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The string defining the document representing the Schema.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GlobalSchemaState].
   /// [apiManagementName] The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.

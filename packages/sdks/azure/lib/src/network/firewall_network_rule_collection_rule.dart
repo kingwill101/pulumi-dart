@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallNetworkRuleCollectionRule {
   /// Specifies a description for the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Either a list of destination IP addresses and/or IP ranges, or a list of destination [Service Tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags).
-  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<List<String>?>? destinationAddresses;
   /// A list of destination FQDNS for the rule.
   ///
   /// &gt; **Note:** [You must enable DNS Proxy to use FQDNs in your network rules](https://docs.microsoft.com/azure/firewall/fqdn-filtering-network-rules).
   ///
   /// &gt; **Note:** At least one of `destinationAddresses`, `destinationIpGroups` and `destinationFqdns` must be specified for a rule.
-  final pulumi.Input<List<String>>? destinationFqdns;
+  final pulumi.Input<List<String>?>? destinationFqdns;
   /// A list of destination IP Group IDs for the rule.
-  final pulumi.Input<List<String>>? destinationIpGroups;
+  final pulumi.Input<List<String>?>? destinationIpGroups;
   /// A list of destination ports.
   final pulumi.Input<List<String>> destinationPorts;
   /// Specifies the name of the rule.
@@ -22,11 +22,11 @@ class FirewallNetworkRuleCollectionRule {
   /// A list of protocols. Possible values are `Any`, `ICMP`, `TCP` and `UDP`.
   final pulumi.Input<List<String>> protocols;
   /// A list of source IP addresses and/or IP ranges.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// A list of IP Group IDs for the rule.
   ///
   /// &gt; **Note:** At least one of `sourceAddresses` and `sourceIpGroups` must be specified for a rule.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
 
   /// Creates a new [FirewallNetworkRuleCollectionRule].
   /// [description] Specifies a description for the rule.

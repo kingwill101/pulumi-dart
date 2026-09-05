@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ComputeInstanceAssignToUser {
   /// User’s AAD Object Id.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// User’s AAD Tenant Id.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ComputeInstanceAssignToUser].
   /// [objectId] User’s AAD Object Id.

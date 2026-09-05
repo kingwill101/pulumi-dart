@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskEncodedStep {
   /// The token (Git PAT or SAS token of storage account blob) associated with the context for this step.
-  final pulumi.Input<String>? contextAccessToken;
+  final pulumi.Input<String?>? contextAccessToken;
   /// The URL (absolute or relative) of the source context for this step.
-  final pulumi.Input<String>? contextPath;
+  final pulumi.Input<String?>? contextPath;
   /// Specifies a map of secret values that can be passed when running a task.
-  final pulumi.Input<Map<String, String>>? secretValues;
+  final pulumi.Input<Map<String, String>?>? secretValues;
   /// The (optionally base64 encoded) content of the build template.
   final pulumi.Input<String> taskContent;
   /// The (optionally base64 encoded) content of the build parameters.
-  final pulumi.Input<String>? valueContent;
+  final pulumi.Input<String?>? valueContent;
   /// Specifies a map of values that can be passed when running a task.
-  final pulumi.Input<Map<String, String>>? values;
+  final pulumi.Input<Map<String, String>?>? values;
 
   /// Creates a new [RegistryTaskEncodedStep].
   /// [contextAccessToken] The token (Git PAT or SAS token of storage account blob) associated with the context for this step.

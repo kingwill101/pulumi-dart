@@ -27,6 +27,7 @@ import 'account_encryption_state.dart';
 ///     name: "anfcmkakv",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     enabledForDiskEncryption: true,
 ///     enabledForDeployment: true,
 ///     enabledForTemplateDeployment: true,
@@ -104,6 +105,7 @@ import 'account_encryption_state.dart';
 ///     name="anfcmkakv",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     enabled_for_disk_encryption=True,
 ///     enabled_for_deployment=True,
 ///     enabled_for_template_deployment=True,
@@ -189,6 +191,7 @@ import 'account_encryption_state.dart';
 ///         Name = "anfcmkakv",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         EnabledForDiskEncryption = true,
 ///         EnabledForDeployment = true,
 ///         EnabledForTemplateDeployment = true,
@@ -304,6 +307,7 @@ import 'account_encryption_state.dart';
 /// 			Name:                         pulumi.String("anfcmkakv"),
 /// 			Location:                     example.Location,
 /// 			ResourceGroupName:            example.Name,
+/// 			RbacAuthorizationEnabled:     pulumi.Bool(false),
 /// 			EnabledForDiskEncryption:     pulumi.Bool(true),
 /// 			EnabledForDeployment:         pulumi.Bool(true),
 /// 			EnabledForTemplateDeployment: pulumi.Bool(true),
@@ -340,7 +344,7 @@ import 'account_encryption_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("anfencryptionkey"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -362,7 +366,7 @@ import 'account_encryption_state.dart';
 /// 			Identity: &netapp.AccountIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -370,8 +374,8 @@ import 'account_encryption_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = netapp.NewAccountEncryption(ctx, "example", &netapp.AccountEncryptionArgs{
-/// 			NetappAccountId:        exampleAccount.ID(),
-/// 			UserAssignedIdentityId: exampleUserAssignedIdentity.ID(),
+/// 			NetappAccountId:        exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			UserAssignedIdentityId: exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 			EncryptionKey:          exampleKey.VersionlessId,
 /// 			FederatedClientId:      exampleUserAssignedIdentity.ClientId,
 /// 		})
@@ -407,6 +411,7 @@ import 'account_encryption_state.dart';
 ///   name                            = "anfcmkakv"
 ///   location                        = azure_core_resourcegroup.example.location
 ///   resource_group_name             = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled      = false
 ///   enabled_for_disk_encryption     = true
 ///   enabled_for_deployment          = true
 ///   enabled_for_template_deployment = true
@@ -498,6 +503,7 @@ import 'account_encryption_state.dart';
 ///             .name("anfcmkakv")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .enabledForDiskEncryption(true)
 ///             .enabledForDeployment(true)
 ///             .enabledForTemplateDeployment(true)
@@ -582,6 +588,7 @@ import 'account_encryption_state.dart';
 ///       name: anfcmkakv
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       enabledForDiskEncryption: true
 ///       enabledForDeployment: true
 ///       enabledForTemplateDeployment: true
@@ -821,7 +828,7 @@ class AccountEncryption extends pulumi.CustomResource {
           'azure:netapp/accountEncryption:AccountEncryption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     crossTenantKeyVaultResourceId = registerOutput<String?>('crossTenantKeyVaultResourceId');
     encryptionKey = registerOutput<String>('encryptionKey');
@@ -836,11 +843,12 @@ class AccountEncryption extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountEncryptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountEncryption._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -854,6 +862,23 @@ class AccountEncryption extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    crossTenantKeyVaultResourceId = registerOutput<String?>('crossTenantKeyVaultResourceId');
+    encryptionKey = registerOutput<String>('encryptionKey');
+    federatedClientId = registerOutput<String?>('federatedClientId');
+    netappAccountId = registerOutput<String>('netappAccountId');
+    systemAssignedIdentityPrincipalId = registerOutput<String?>('systemAssignedIdentityPrincipalId');
+    userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
+  }
+
+  /// Creates a typed reference to an existing [AccountEncryption] resource.
+  AccountEncryption.reference(String urn)
+    : super(
+        'azure:netapp/accountEncryption:AccountEncryption',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     crossTenantKeyVaultResourceId = registerOutput<String?>('crossTenantKeyVaultResourceId');
     encryptionKey = registerOutput<String>('encryptionKey');
     federatedClientId = registerOutput<String?>('federatedClientId');

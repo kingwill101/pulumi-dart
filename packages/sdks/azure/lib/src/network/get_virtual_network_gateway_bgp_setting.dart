@@ -33,8 +33,8 @@ class GetVirtualNetworkGatewayBgpSetting {
 
   factory GetVirtualNetworkGatewayBgpSetting.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayBgpSetting(
-      asn: pulumi.Input.fromValue(map['asn'] as int),
-      peerWeight: pulumi.Input.fromValue(map['peerWeight'] as int),
+      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
+      peerWeight: pulumi.Input.fromValue((map['peerWeight'] as num).toInt()),
       peeringAddress: pulumi.Input.fromValue(map['peeringAddress'] as String),
     );
   }

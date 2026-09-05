@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterMonitorMetrics {
   /// Specifies a comma-separated list of Kubernetes annotation keys that will be used in the resource's labels metric.
-  final pulumi.Input<String>? annotationsAllowed;
+  final pulumi.Input<String?>? annotationsAllowed;
   /// Specifies a Comma-separated list of additional Kubernetes label keys that will be used in the resource's labels metric.
   ///
   /// &gt; **Note:** Both properties `annotationsAllowed` and `labelsAllowed` are required if you are enabling Managed Prometheus with an existing Azure Monitor Workspace.
-  final pulumi.Input<String>? labelsAllowed;
+  final pulumi.Input<String?>? labelsAllowed;
 
   /// Creates a new [KubernetesClusterMonitorMetrics].
   /// [annotationsAllowed] Specifies a comma-separated list of Kubernetes annotation keys that will be used in the resource's labels metric.

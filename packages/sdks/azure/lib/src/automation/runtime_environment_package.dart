@@ -126,7 +126,7 @@ import 'runtime_environment_package_state.dart';
 /// 		}
 /// 		exampleRuntimeEnvironment, err := automation.NewRuntimeEnvironment(ctx, "example", &automation.RuntimeEnvironmentArgs{
 /// 			Name:                pulumi.String("example-runtime-env"),
-/// 			AutomationAccountId: exampleAccount.ID(),
+/// 			AutomationAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			RuntimeLanguage:     pulumi.String("PowerShell"),
 /// 			RuntimeVersion:      pulumi.String("7.2"),
 /// 			Location:            example.Location,
@@ -136,7 +136,7 @@ import 'runtime_environment_package_state.dart';
 /// 		}
 /// 		_, err = automation.NewRuntimeEnvironmentPackage(ctx, "example", &automation.RuntimeEnvironmentPackageArgs{
 /// 			Name:                           pulumi.String("example-package"),
-/// 			AutomationRuntimeEnvironmentId: exampleRuntimeEnvironment.ID(),
+/// 			AutomationRuntimeEnvironmentId: exampleRuntimeEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 			ContentUri:                     pulumi.String("https://www.powershellgallery.com/api/v2/package/example-package/1.0.0"),
 /// 		})
 /// 		if err != nil {
@@ -320,7 +320,7 @@ class RuntimeEnvironmentPackage extends pulumi.CustomResource {
           'azure:automation/runtimeEnvironmentPackage:RuntimeEnvironmentPackage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationRuntimeEnvironmentId = registerOutput<String>('automationRuntimeEnvironmentId');
     contentUri = registerOutput<String>('contentUri');
@@ -338,11 +338,12 @@ class RuntimeEnvironmentPackage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuntimeEnvironmentPackageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RuntimeEnvironmentPackage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -356,6 +357,26 @@ class RuntimeEnvironmentPackage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automationRuntimeEnvironmentId = registerOutput<String>('automationRuntimeEnvironmentId');
+    contentUri = registerOutput<String>('contentUri');
+    contentVersion = registerOutput<String?>('contentVersion');
+    default_ = registerOutput<bool>('default');
+    hashAlgorithm = registerOutput<String?>('hashAlgorithm');
+    hashValue = registerOutput<String?>('hashValue');
+    this.name = registerOutput<String>('name');
+    sizeInBytes = registerOutput<int>('sizeInBytes');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [RuntimeEnvironmentPackage] resource.
+  RuntimeEnvironmentPackage.reference(String urn)
+    : super(
+        'azure:automation/runtimeEnvironmentPackage:RuntimeEnvironmentPackage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automationRuntimeEnvironmentId = registerOutput<String>('automationRuntimeEnvironmentId');
     contentUri = registerOutput<String>('contentUri');
     contentVersion = registerOutput<String?>('contentVersion');

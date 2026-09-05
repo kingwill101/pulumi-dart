@@ -153,7 +153,7 @@ import 'public_certificate_state.dart';
 /// 			Name:              pulumi.String("example-app-service"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -364,7 +364,7 @@ class PublicCertificate extends pulumi.CustomResource {
           'azure:appservice/publicCertificate:PublicCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     blob = registerOutput<String>('blob');
@@ -379,11 +379,12 @@ class PublicCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PublicCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PublicCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -397,6 +398,23 @@ class PublicCertificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    blob = registerOutput<String>('blob');
+    certificateLocation = registerOutput<String>('certificateLocation');
+    certificateName = registerOutput<String>('certificateName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    thumbprint = registerOutput<String>('thumbprint');
+  }
+
+  /// Creates a typed reference to an existing [PublicCertificate] resource.
+  PublicCertificate.reference(String urn)
+    : super(
+        'azure:appservice/publicCertificate:PublicCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appServiceName = registerOutput<String>('appServiceName');
     blob = registerOutput<String>('blob');
     certificateLocation = registerOutput<String>('certificateLocation');

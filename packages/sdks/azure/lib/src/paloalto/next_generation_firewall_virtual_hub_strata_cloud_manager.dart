@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'next_generation_firewall_virtual_hub_strata_cloud_manager_args.dart';
+import 'next_generation_firewall_virtual_hub_strata_cloud_manager_destination_nat.dart';
 import 'next_generation_firewall_virtual_hub_strata_cloud_manager_dns_settings.dart';
 import 'next_generation_firewall_virtual_hub_strata_cloud_manager_identity.dart';
 import 'next_generation_firewall_virtual_hub_strata_cloud_manager_network_profile.dart';
@@ -214,7 +215,7 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_state.dart';
 /// 			Name:              pulumi.String("example-virtualhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.0.0/23"),
 /// 			Tags: pulumi.StringMap{
 /// 				"hubSaaSPreview": pulumi.String("true"),
@@ -225,7 +226,7 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_state.dart';
 /// 		}
 /// 		exampleVirtualNetworkAppliance, err := paloalto.NewVirtualNetworkAppliance(ctx, "example", &paloalto.VirtualNetworkApplianceArgs{
 /// 			Name:         pulumi.String("example-appliance"),
-/// 			VirtualHubId: exampleVirtualHub.ID(),
+/// 			VirtualHubId: exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -237,10 +238,10 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_state.dart';
 /// 			StrataCloudManagerTenantName: pulumi.String("example"),
 /// 			NetworkProfile: &paloalto.NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfileArgs{
 /// 				PublicIpAddressIds: pulumi.StringArray{
-/// 					examplePublicIp.ID(),
+/// 					examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
-/// 				VirtualHubId:              exampleVirtualHub.ID(),
-/// 				NetworkVirtualApplianceId: exampleVirtualNetworkAppliance.ID(),
+/// 				VirtualHubId:              exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
+/// 				NetworkVirtualApplianceId: exampleVirtualNetworkAppliance.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -456,7 +457,7 @@ import 'next_generation_firewall_virtual_hub_strata_cloud_manager_state.dart';
 /// ```
 class NextGenerationFirewallVirtualHubStrataCloudManager extends pulumi.CustomResource {
   /// One or more `destinationNat` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> destinationNats;
+  late final pulumi.Output<List<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>?> destinationNats;
   /// A `dnsSettings` block as defined below.
   late final pulumi.Output<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings?> dnsSettings;
   /// A `identity` block as defined below.
@@ -490,9 +491,9 @@ class NextGenerationFirewallVirtualHubStrataCloudManager extends pulumi.CustomRe
           'azure:paloalto/nextGenerationFirewallVirtualHubStrataCloudManager:NextGenerationFirewallVirtualHubStrataCloudManager',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    destinationNats = registerOutput<List<Map<String, dynamic>>?>('destinationNats');
+    destinationNats = registerOutput<List<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>?>('destinationNats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>(guardedValue, (value) => NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat.fromMap((value as Map).cast<String, dynamic>())); });
     dnsSettings = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubStrataCloudManagerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -502,7 +503,7 @@ class NextGenerationFirewallVirtualHubStrataCloudManager extends pulumi.CustomRe
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     strataCloudManagerTenantName = registerOutput<String>('strataCloudManagerTenantName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NextGenerationFirewallVirtualHubStrataCloudManager] resource's state with the given [name] and [id].
@@ -510,11 +511,12 @@ class NextGenerationFirewallVirtualHubStrataCloudManager extends pulumi.CustomRe
     String name,
     pulumi.Input<String> id, {
     NextGenerationFirewallVirtualHubStrataCloudManagerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NextGenerationFirewallVirtualHubStrataCloudManager._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -528,7 +530,7 @@ class NextGenerationFirewallVirtualHubStrataCloudManager extends pulumi.CustomRe
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    destinationNats = registerOutput<List<Map<String, dynamic>>?>('destinationNats');
+    destinationNats = registerOutput<List<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>?>('destinationNats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>(guardedValue, (value) => NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat.fromMap((value as Map).cast<String, dynamic>())); });
     dnsSettings = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubStrataCloudManagerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -538,6 +540,28 @@ class NextGenerationFirewallVirtualHubStrataCloudManager extends pulumi.CustomRe
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     strataCloudManagerTenantName = registerOutput<String>('strataCloudManagerTenantName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NextGenerationFirewallVirtualHubStrataCloudManager] resource.
+  NextGenerationFirewallVirtualHubStrataCloudManager.reference(String urn)
+    : super(
+        'azure:paloalto/nextGenerationFirewallVirtualHubStrataCloudManager:NextGenerationFirewallVirtualHubStrataCloudManager',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    destinationNats = registerOutput<List<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>?>('destinationNats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat>(guardedValue, (value) => NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsSettings = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubStrataCloudManagerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    planId = registerOutput<String?>('planId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    strataCloudManagerTenantName = registerOutput<String>('strataCloudManagerTenantName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

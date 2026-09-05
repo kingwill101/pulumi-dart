@@ -9,49 +9,49 @@ import 'account_network_profile.dart';
 /// Input properties used for looking up and filtering Account resources.
 class AccountState {
   /// The account endpoint used to interact with the Batch service.
-  final pulumi.Input<String>? accountEndpoint;
+  final pulumi.Input<String?>? accountEndpoint;
   /// Specifies the allowed authentication mode for the Batch account. Possible values include `AAD`, `SharedKey` or `TaskAuthenticationToken`.
-  final pulumi.Input<List<String>>? allowedAuthenticationModes;
+  final pulumi.Input<List<String>?>? allowedAuthenticationModes;
   /// Specifies if customer managed key encryption should be used to encrypt batch account data. One `encryption` block as defined below.
-  final pulumi.Input<AccountEncryption>? encryption;
+  final pulumi.Input<AccountEncryption?>? encryption;
   /// An `identity` block as defined below.
-  final pulumi.Input<AccountIdentity>? identity;
+  final pulumi.Input<AccountIdentity?>? identity;
   /// A `keyVaultReference` block, as defined below, that describes the Azure KeyVault reference to use when deploying the Azure Batch account using the `UserSubscription` pool allocation mode.
-  final pulumi.Input<AccountKeyVaultReference>? keyVaultReference;
+  final pulumi.Input<AccountKeyVaultReference?>? keyVaultReference;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Batch account. Only lowercase Alphanumeric characters allowed. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `networkProfile` block as defined below.
-  final pulumi.Input<AccountNetworkProfile>? networkProfile;
+  final pulumi.Input<AccountNetworkProfile?>? networkProfile;
   /// Specifies the mode to use for pool allocation. Possible values are `BatchService` or `UserSubscription`. Defaults to `BatchService`.
-  final pulumi.Input<String>? poolAllocationMode;
+  final pulumi.Input<String?>? poolAllocationMode;
   /// The Batch account primary access key.
-  final pulumi.Input<String>? primaryAccessKey;
+  final pulumi.Input<String?>? primaryAccessKey;
   /// Whether public network access is allowed for this server. Defaults to `true`.
   ///
   /// &gt; **NOTE:** When using `UserSubscription` mode, an Azure KeyVault reference has to be specified. See `keyVaultReference` below.
   ///
   /// &gt; **NOTE:** When using `UserSubscription` mode, the `Microsoft Azure Batch` service principal has to have `Contributor` role on your subscription scope, as documented [here](https://docs.microsoft.com/azure/batch/batch-account-create-portal#additional-configuration-for-user-subscription-mode).
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The name of the resource group in which to create the Batch account. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** To work around [a bug in the Azure API](https://github.com/Azure/azure-rest-api-specs/issues/5574) this property is currently treated as case-insensitive. A future version of this provider will require that the casing is correct.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The Batch account secondary access key.
-  final pulumi.Input<String>? secondaryAccessKey;
+  final pulumi.Input<String?>? secondaryAccessKey;
   /// Specifies the storage account authentication mode. Possible values include `StorageKeys`, `BatchAccountManagedIdentity`.
   ///
   /// &gt; **NOTE:** When using `BatchAccountManagedIdentity` mod, the `identity.type` must set to `UserAssigned` or `SystemAssigned`.
-  final pulumi.Input<String>? storageAccountAuthenticationMode;
+  final pulumi.Input<String?>? storageAccountAuthenticationMode;
   /// Specifies the storage account to use for the Batch account. If not specified, Azure Batch will manage the storage.
   ///
   /// &gt; **NOTE:** When using `storageAccountId`, the `storageAccountAuthenticationMode` must be specified as well.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// Specifies the user assigned identity for the storage account.
-  final pulumi.Input<String>? storageAccountNodeIdentity;
+  final pulumi.Input<String?>? storageAccountNodeIdentity;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountState].
   /// [accountEndpoint] The account endpoint used to interact with the Batch service.

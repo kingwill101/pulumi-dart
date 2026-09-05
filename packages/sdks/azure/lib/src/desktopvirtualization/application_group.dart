@@ -187,7 +187,7 @@ import 'application_group_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			Type:              pulumi.String("RemoteApp"),
-/// 			HostPoolId:        pooledbreadthfirst.ID(),
+/// 			HostPoolId:        pooledbreadthfirst.ID().ToIDOutput().ToStringOutput(),
 /// 			FriendlyName:      pulumi.String("TestAppGroup"),
 /// 			Description:       pulumi.String("Acceptance Test: An application group"),
 /// 		})
@@ -199,7 +199,7 @@ import 'application_group_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			Type:              pulumi.String("Desktop"),
-/// 			HostPoolId:        personalautomatic.ID(),
+/// 			HostPoolId:        personalautomatic.ID().ToIDOutput().ToStringOutput(),
 /// 			FriendlyName:      pulumi.String("TestAppGroup"),
 /// 			Description:       pulumi.String("Acceptance Test: An application group"),
 /// 		})
@@ -420,7 +420,7 @@ class ApplicationGroup extends pulumi.CustomResource {
           'azure:desktopvirtualization/applicationGroup:ApplicationGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     defaultDesktopDisplayName = registerOutput<String?>('defaultDesktopDisplayName');
     description = registerOutput<String?>('description');
@@ -429,7 +429,7 @@ class ApplicationGroup extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -438,11 +438,12 @@ class ApplicationGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -463,7 +464,27 @@ class ApplicationGroup extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationGroup] resource.
+  ApplicationGroup.reference(String urn)
+    : super(
+        'azure:desktopvirtualization/applicationGroup:ApplicationGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    defaultDesktopDisplayName = registerOutput<String?>('defaultDesktopDisplayName');
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String?>('friendlyName');
+    hostPoolId = registerOutput<String>('hostPoolId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

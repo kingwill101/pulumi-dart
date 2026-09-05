@@ -41,7 +41,7 @@ class GetPoolNetworkConfigurationEndpointConfiguration {
 
   factory GetPoolNetworkConfigurationEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return GetPoolNetworkConfigurationEndpointConfiguration(
-      backendPort: pulumi.Input.fromValue(map['backendPort'] as int),
+      backendPort: pulumi.Input.fromValue((map['backendPort'] as num).toInt()),
       frontendPortRange: pulumi.Input.fromValue(map['frontendPortRange'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       networkSecurityGroupRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule>(map['networkSecurityGroupRules']!, (value) => GetPoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule.fromMap((value as Map).cast<String, dynamic>()))),

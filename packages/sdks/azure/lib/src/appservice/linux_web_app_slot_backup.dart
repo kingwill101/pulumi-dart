@@ -5,7 +5,7 @@ import 'linux_web_app_slot_backup_schedule.dart';
 
 class LinuxWebAppSlotBackup {
   /// Should this backup job be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name which should be used for this Backup.
   final pulumi.Input<String> name;
   /// An `schedule` block as defined below.

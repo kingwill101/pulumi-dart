@@ -83,17 +83,17 @@ class GetApplicationGatewayProbe {
     return GetApplicationGatewayProbe(
       host: pulumi.Input.fromValue(map['host'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
-      interval: pulumi.Input.fromValue(map['interval'] as int),
+      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
       matches: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationGatewayProbeMatch>(map['matches']!, (value) => GetApplicationGatewayProbeMatch.fromMap((value as Map).cast<String, dynamic>()))),
-      minimumServers: pulumi.Input.fromValue(map['minimumServers'] as int),
+      minimumServers: pulumi.Input.fromValue((map['minimumServers'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
       pickHostNameFromBackendHttpSettings: pulumi.Input.fromValue(map['pickHostNameFromBackendHttpSettings'] as bool),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       proxyProtocolHeaderEnabled: pulumi.Input.fromValue(map['proxyProtocolHeaderEnabled'] as bool),
-      timeout: pulumi.Input.fromValue(map['timeout'] as int),
-      unhealthyThreshold: pulumi.Input.fromValue(map['unhealthyThreshold'] as int),
+      timeout: pulumi.Input.fromValue((map['timeout'] as num).toInt()),
+      unhealthyThreshold: pulumi.Input.fromValue((map['unhealthyThreshold'] as num).toInt()),
     );
   }
 }

@@ -5,23 +5,23 @@ import 'app_template_container_liveness_probe_header.dart';
 
 class AppTemplateContainerLivenessProbe {
   /// The number of consecutive failures required to consider this probe as failed. Possible values are between `1` and `30`. Defaults to `3`.
-  final pulumi.Input<int>? failureCountThreshold;
+  final pulumi.Input<int?>? failureCountThreshold;
   /// A `header` block as detailed below.
-  final pulumi.Input<List<AppTemplateContainerLivenessProbeHeader>>? headers;
+  final pulumi.Input<List<AppTemplateContainerLivenessProbeHeader>?>? headers;
   /// The probe hostname. Defaults to the pod IP address. Setting a value for `Host` in `headers` can be used to override this for `HTTP` and `HTTPS` type probes.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The number of seconds elapsed after the container has started before the probe is initiated. Possible values are between `0` and `60`. Defaults to `1` seconds.
-  final pulumi.Input<int>? initialDelay;
+  final pulumi.Input<int?>? initialDelay;
   /// How often, in seconds, the probe should run. Possible values are in the range `1` - `240`. Defaults to `10`.
-  final pulumi.Input<int>? intervalSeconds;
+  final pulumi.Input<int?>? intervalSeconds;
   /// The URI to use with the `host` for http type probes. Not valid for `TCP` type probes. Defaults to `/`.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The port number on which to connect. Possible values are between `1` and `65535`.
   final pulumi.Input<int> port;
   /// The time in seconds after the container is sent the termination signal before the process if forcibly killed.
-  final pulumi.Input<int>? terminationGracePeriodSeconds;
+  final pulumi.Input<int?>? terminationGracePeriodSeconds;
   /// Time in seconds after which the probe times out. Possible values are in the range `1` - `240`. Defaults to `1`.
-  final pulumi.Input<int>? timeout;
+  final pulumi.Input<int?>? timeout;
   /// Type of probe. Possible values are `TCP`, `HTTP`, and `HTTPS`.
   final pulumi.Input<String> transport;
 
@@ -66,15 +66,15 @@ class AppTemplateContainerLivenessProbe {
 
   factory AppTemplateContainerLivenessProbe.fromMap(Map<String, dynamic> map) {
     return AppTemplateContainerLivenessProbe(
-      failureCountThreshold: (() { final guardedValue = map['failureCountThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      failureCountThreshold: (() { final guardedValue = map['failureCountThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppTemplateContainerLivenessProbeHeader>(guardedValue, (value) => AppTemplateContainerLivenessProbeHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      initialDelay: (() { final guardedValue = map['initialDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      intervalSeconds: (() { final guardedValue = map['intervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      initialDelay: (() { final guardedValue = map['initialDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      intervalSeconds: (() { final guardedValue = map['intervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
-      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       transport: pulumi.Input.fromValue(map['transport'] as String),
     );
   }

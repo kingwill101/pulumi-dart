@@ -8,7 +8,7 @@ class AutomationRuleActionPlaybook {
   /// The execution order of this action.
   final pulumi.Input<int> order;
   /// The ID of the Tenant that owns the playbook.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [AutomationRuleActionPlaybook].
   /// [logicAppId] The ID of the Logic App that defines the playbook's logic.
@@ -31,7 +31,7 @@ class AutomationRuleActionPlaybook {
   factory AutomationRuleActionPlaybook.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionPlaybook(
       logicAppId: pulumi.Input.fromValue(map['logicAppId'] as String),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

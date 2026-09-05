@@ -10,23 +10,23 @@ import 'scaling_plan_schedule.dart';
 /// {@macro pulumi_desktopvirtualization_scaling_plan_scaling_plan_args_doc}
 class ScalingPlanArgs {
   /// A description of the Scaling Plan.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the tag associated with the VMs you want to exclude from autoscaling.
-  final pulumi.Input<String>? exclusionTag;
+  final pulumi.Input<String?>? exclusionTag;
   /// Friendly name of the Scaling Plan.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// One or more `hostPool` blocks as defined below.
-  final pulumi.Input<List<ScalingPlanHostPool>>? hostPools;
+  final pulumi.Input<List<ScalingPlanHostPool>?>? hostPools;
   /// The Azure Region where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Virtual Desktop Scaling Plan . Changing this forces a new Virtual Desktop Scaling Plan to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
   final pulumi.Input<String> resourceGroupName;
   /// One or more `schedule` blocks as defined below.
   final pulumi.Input<List<ScalingPlanSchedule>> schedules;
   /// A mapping of tags which should be assigned to the Virtual Desktop Scaling Plan .
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the Time Zone which should be used by the Scaling Plan for time based events, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
   final pulumi.Input<String> timeZone;
 

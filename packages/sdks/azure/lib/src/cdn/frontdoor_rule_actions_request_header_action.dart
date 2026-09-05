@@ -12,7 +12,7 @@ class FrontdoorRuleActionsRequestHeaderAction {
   /// The value to append or overwrite.
   ///
   /// &gt; **Note:** `value` is required if the `headerAction` is set to `Append` or `Overwrite`.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [FrontdoorRuleActionsRequestHeaderAction].
   /// [headerAction] The action to be taken on the specified `headerName`. Possible values include `Append`, `Overwrite` or `Delete`.

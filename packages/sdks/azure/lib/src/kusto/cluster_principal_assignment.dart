@@ -325,7 +325,7 @@ class ClusterPrincipalAssignment extends pulumi.CustomResource {
           'azure:kusto/clusterPrincipalAssignment:ClusterPrincipalAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clusterName = registerOutput<String>('clusterName');
     this.name = registerOutput<String>('name');
@@ -343,11 +343,12 @@ class ClusterPrincipalAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterPrincipalAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterPrincipalAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,6 +362,26 @@ class ClusterPrincipalAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clusterName = registerOutput<String>('clusterName');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    principalName = registerOutput<String>('principalName');
+    principalType = registerOutput<String>('principalType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    role = registerOutput<String>('role');
+    tenantId = registerOutput<String>('tenantId');
+    tenantName = registerOutput<String>('tenantName');
+  }
+
+  /// Creates a typed reference to an existing [ClusterPrincipalAssignment] resource.
+  ClusterPrincipalAssignment.reference(String urn)
+    : super(
+        'azure:kusto/clusterPrincipalAssignment:ClusterPrincipalAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clusterName = registerOutput<String>('clusterName');
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');

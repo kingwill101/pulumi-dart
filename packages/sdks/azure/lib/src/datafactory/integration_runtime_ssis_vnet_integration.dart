@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IntegrationRuntimeSsisVnetIntegration {
   /// Static public IP addresses for the Azure-SSIS Integration Runtime. The size must be 2.
-  final pulumi.Input<List<String>>? publicIps;
+  final pulumi.Input<List<String>?>? publicIps;
   /// id of the subnet to which the nodes of the Azure-SSIS Integration Runtime will be added.
   ///
   /// &gt; **Note:** Only one of `subnetId` and `subnetName` can be specified. If `subnetName` is specified, `vnetId` must be provided.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// Name of the subnet to which the nodes of the Azure-SSIS Integration Runtime will be added.
-  final pulumi.Input<String>? subnetName;
+  final pulumi.Input<String?>? subnetName;
   /// ID of the virtual network to which the nodes of the Azure-SSIS Integration Runtime will be added.
-  final pulumi.Input<String>? vnetId;
+  final pulumi.Input<String?>? vnetId;
 
   /// Creates a new [IntegrationRuntimeSsisVnetIntegration].
   /// [publicIps] Static public IP addresses for the Azure-SSIS Integration Runtime. The size must be 2.

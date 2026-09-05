@@ -10,7 +10,7 @@ class GlobalSchemaArgs {
   /// The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
   /// The description of the schema.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A unique identifier for this Schema. Changing this forces a new resource to be created.

@@ -6,34 +6,34 @@ import 'get_autonomous_database_backups_autonomous_database_backup.dart';
 /// Result data returned by getAutonomousDatabaseBackups.
 class GetAutonomousDatabaseBackupsResult {
   /// An `autonomousDatabaseBackups` block as defined below.
-  final List<GetAutonomousDatabaseBackupsAutonomousDatabaseBackup> autonomousDatabaseBackups;
-  final String autonomousDatabaseId;
+  final List<GetAutonomousDatabaseBackupsAutonomousDatabaseBackup>? autonomousDatabaseBackups;
+  final String? autonomousDatabaseId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
 
   /// Creates a new [GetAutonomousDatabaseBackupsResult].
   /// [autonomousDatabaseBackups] An `autonomousDatabaseBackups` block as defined below.
-  /// [autonomousDatabaseId] Required.
+  /// [autonomousDatabaseId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   const GetAutonomousDatabaseBackupsResult({
-    required this.autonomousDatabaseBackups,
-    required this.autonomousDatabaseId,
-    required this.id,
+    this.autonomousDatabaseBackups,
+    this.autonomousDatabaseId,
+    this.id,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autonomousDatabaseBackups': pulumi.Input.encodeList<GetAutonomousDatabaseBackupsAutonomousDatabaseBackup, Map<String, dynamic>>(autonomousDatabaseBackups, (value) => value.toMap()),
-      'autonomousDatabaseId': autonomousDatabaseId,
-      'id': id,
+      'autonomousDatabaseBackups': ?(() { final guardedValue = autonomousDatabaseBackups; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAutonomousDatabaseBackupsAutonomousDatabaseBackup, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'autonomousDatabaseId': ?autonomousDatabaseId,
+      'id': ?id,
     };
   }
 
   factory GetAutonomousDatabaseBackupsResult.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabaseBackupsResult(
-      autonomousDatabaseBackups: pulumi.Input.decodeList<GetAutonomousDatabaseBackupsAutonomousDatabaseBackup>(map['autonomousDatabaseBackups']!, (value) => GetAutonomousDatabaseBackupsAutonomousDatabaseBackup.fromMap((value as Map).cast<String, dynamic>())),
-      autonomousDatabaseId: map['autonomousDatabaseId'] as String,
-      id: map['id'] as String,
+      autonomousDatabaseBackups: (() { final guardedValue = map['autonomousDatabaseBackups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAutonomousDatabaseBackupsAutonomousDatabaseBackup>(guardedValue, (value) => GetAutonomousDatabaseBackupsAutonomousDatabaseBackup.fromMap((value as Map).cast<String, dynamic>())); })(),
+      autonomousDatabaseId: (() { final guardedValue = map['autonomousDatabaseId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

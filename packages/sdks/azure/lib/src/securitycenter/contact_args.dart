@@ -14,9 +14,9 @@ class ContactArgs {
   /// The email of the Security Center Contact.
   final pulumi.Input<String> email;
   /// The name of the Security Center Contact. Changing this forces a new Security Center Contact to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The phone number of the Security Center Contact.
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? phone;
 
   /// Creates a new [ContactArgs].
   /// [alertNotifications] Whether to send security alerts notifications to the security contact.

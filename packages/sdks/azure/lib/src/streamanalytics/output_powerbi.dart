@@ -255,7 +255,7 @@ class OutputPowerbi extends pulumi.CustomResource {
           'azure:streamanalytics/outputPowerbi:OutputPowerbi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dataset = registerOutput<String>('dataset');
     groupId = registerOutput<String>('groupId');
@@ -272,11 +272,12 @@ class OutputPowerbi extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutputPowerbiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutputPowerbi._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,6 +291,25 @@ class OutputPowerbi extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dataset = registerOutput<String>('dataset');
+    groupId = registerOutput<String>('groupId');
+    groupName = registerOutput<String>('groupName');
+    this.name = registerOutput<String>('name');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+    table = registerOutput<String>('table');
+    tokenUserDisplayName = registerOutput<String?>('tokenUserDisplayName');
+    tokenUserPrincipalName = registerOutput<String?>('tokenUserPrincipalName');
+  }
+
+  /// Creates a typed reference to an existing [OutputPowerbi] resource.
+  OutputPowerbi.reference(String urn)
+    : super(
+        'azure:streamanalytics/outputPowerbi:OutputPowerbi',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dataset = registerOutput<String>('dataset');
     groupId = registerOutput<String>('groupId');
     groupName = registerOutput<String>('groupName');

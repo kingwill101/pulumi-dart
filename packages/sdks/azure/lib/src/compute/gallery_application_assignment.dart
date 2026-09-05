@@ -252,7 +252,7 @@ import 'gallery_application_assignment_state.dart';
 /// 		}
 /// 		exampleGalleryApplication, err := compute.NewGalleryApplication(ctx, "example", &compute.GalleryApplicationArgs{
 /// 			Name:            pulumi.String("example-app"),
-/// 			GalleryId:       exampleSharedImageGallery.ID(),
+/// 			GalleryId:       exampleSharedImageGallery.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:        exampleResourceGroup.Location,
 /// 			SupportedOsType: pulumi.String("Linux"),
 /// 		})
@@ -289,14 +289,14 @@ import 'gallery_application_assignment_state.dart';
 /// 		}
 /// 		exampleGalleryApplicationVersion, err := compute.NewGalleryApplicationVersion(ctx, "example", &compute.GalleryApplicationVersionArgs{
 /// 			Name:                 pulumi.String("0.0.1"),
-/// 			GalleryApplicationId: exampleGalleryApplication.ID(),
+/// 			GalleryApplicationId: exampleGalleryApplication.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:             exampleGalleryApplication.Location,
 /// 			ManageAction: &compute.GalleryApplicationVersionManageActionArgs{
 /// 				Install: pulumi.String("[install command]"),
 /// 				Remove:  pulumi.String("[remove command]"),
 /// 			},
 /// 			Source: &compute.GalleryApplicationVersionSourceArgs{
-/// 				MediaLink: exampleBlob.ID(),
+/// 				MediaLink: exampleBlob.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			TargetRegions: compute.GalleryApplicationVersionTargetRegionArray{
 /// 				&compute.GalleryApplicationVersionTargetRegionArgs{
@@ -309,7 +309,7 @@ import 'gallery_application_assignment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewGalleryApplicationAssignment(ctx, "example", &compute.GalleryApplicationAssignmentArgs{
-/// 			GalleryApplicationVersionId: exampleGalleryApplicationVersion.ID(),
+/// 			GalleryApplicationVersionId: exampleGalleryApplicationVersion.ID().ToIDOutput().ToStringOutput(),
 /// 			VirtualMachineId:            pulumi.String(example.Id),
 /// 		})
 /// 		if err != nil {
@@ -615,7 +615,7 @@ class GalleryApplicationAssignment extends pulumi.CustomResource {
           'azure:compute/galleryApplicationAssignment:GalleryApplicationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     configurationBlobUri = registerOutput<String?>('configurationBlobUri');
     galleryApplicationVersionId = registerOutput<String>('galleryApplicationVersionId');
@@ -629,11 +629,12 @@ class GalleryApplicationAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GalleryApplicationAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GalleryApplicationAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -647,6 +648,22 @@ class GalleryApplicationAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    configurationBlobUri = registerOutput<String?>('configurationBlobUri');
+    galleryApplicationVersionId = registerOutput<String>('galleryApplicationVersionId');
+    order = registerOutput<int?>('order');
+    tag = registerOutput<String?>('tag');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+  }
+
+  /// Creates a typed reference to an existing [GalleryApplicationAssignment] resource.
+  GalleryApplicationAssignment.reference(String urn)
+    : super(
+        'azure:compute/galleryApplicationAssignment:GalleryApplicationAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configurationBlobUri = registerOutput<String?>('configurationBlobUri');
     galleryApplicationVersionId = registerOutput<String>('galleryApplicationVersionId');
     order = registerOutput<int?>('order');

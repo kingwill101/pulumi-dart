@@ -12,11 +12,11 @@ class EmailServiceDomainArgs {
   /// The resource ID of the Email Communication Service where the Domain belongs to. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String> emailServiceId;
   /// The name of the Email Communication Service resource. If `domainManagement` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags which should be assigned to the Email Communication Service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Describes user engagement tracking is enabled or disabled. Defaults to `false`.
-  final pulumi.Input<bool>? userEngagementTrackingEnabled;
+  final pulumi.Input<bool?>? userEngagementTrackingEnabled;
 
   /// Creates a new [EmailServiceDomainArgs].
   /// [domainManagement] Describes how a Domains resource is being managed. Possible values are `AzureManaged`, `CustomerManaged`, `CustomerManagedInExchangeOnline`. Changing this forces a new Email Communication Service to be created.

@@ -1,11 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linux_virtual_machine_additional_capabilities.dart';
+import 'linux_virtual_machine_admin_ssh_key.dart';
 import 'linux_virtual_machine_args.dart';
 import 'linux_virtual_machine_boot_diagnostics.dart';
+import 'linux_virtual_machine_gallery_application.dart';
 import 'linux_virtual_machine_identity.dart';
 import 'linux_virtual_machine_os_disk.dart';
 import 'linux_virtual_machine_os_image_notification.dart';
 import 'linux_virtual_machine_plan.dart';
+import 'linux_virtual_machine_secret.dart';
 import 'linux_virtual_machine_source_image_reference.dart';
 import 'linux_virtual_machine_state.dart';
 import 'linux_virtual_machine_termination_notification.dart';
@@ -274,7 +277,7 @@ import 'linux_virtual_machine_termination_notification.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -295,7 +298,7 @@ import 'linux_virtual_machine_termination_notification.dart';
 /// 			Size:              pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			AdminSshKeys: compute.LinuxVirtualMachineAdminSshKeyArray{
 /// 				&compute.LinuxVirtualMachineAdminSshKeyArgs{
@@ -566,7 +569,7 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
   /// One or more `adminSshKey` blocks as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** One of either `adminPassword` or `adminSshKey` must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> adminSshKeys;
+  late final pulumi.Output<List<LinuxVirtualMachineAdminSshKey>?> adminSshKeys;
   /// The username of the local administrator used for the Virtual Machine. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This is required unless using an existing OS Managed Disk by specifying `osManagedDiskId`.
@@ -614,7 +617,7 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
   /// One or more `galleryApplication` blocks as defined below.
   ///
   /// &gt; **Note** Gallery Application Assignments can be defined either directly on `azure.compute.LinuxVirtualMachine` resource, or using the `azure.compute.GalleryApplicationAssignment` resource - but the two approaches cannot be used together. If both are used with the same Virtual Machine, spurious changes will occur. If `azure.compute.GalleryApplicationAssignment` is used, it's recommended to use `ignoreChanges` for the `galleryApplication` block on the corresponding `azure.compute.LinuxVirtualMachine` resource, to avoid a persistent diff when using this resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?> galleryApplications;
+  late final pulumi.Output<List<LinuxVirtualMachineGalleryApplication>?> galleryApplications;
   /// An `identity` block as defined below.
   late final pulumi.Output<LinuxVirtualMachineIdentity?> identity;
   /// Specifies the License Type for this Virtual Machine. Possible values are `RHEL_BYOS`, `RHEL_BASE`, `RHEL_EUS`, `RHEL_SAPAPPS`, `RHEL_SAPHA`, `RHEL_BASESAPAPPS`, `RHEL_BASESAPHA`, `SLES_BYOS`, `SLES_SAP`, `SLES_HPC`, `UBUNTU_PRO`.
@@ -672,7 +675,7 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
   /// The name of the Resource Group in which the Linux Virtual Machine should be exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// One or more `secret` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
+  late final pulumi.Output<List<LinuxVirtualMachineSecret>?> secrets;
   /// Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> secureBootEnabled;
   /// The SKU which should be used for this Virtual Machine, such as `Standard_D4_v5`.
@@ -720,11 +723,12 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
           'azure:compute/linuxVirtualMachine:LinuxVirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['adminPassword', 'customData'],
         ) {
     additionalCapabilities = registerOutput<LinuxVirtualMachineAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    adminPassword = registerOutput<String?>('adminPassword');
-    adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
+    adminPassword = registerOutput<String?>('adminPassword', isSecret: true);
+    adminSshKeys = registerOutput<List<LinuxVirtualMachineAdminSshKey>?>('adminSshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineAdminSshKey>(guardedValue, (value) => LinuxVirtualMachineAdminSshKey.fromMap((value as Map).cast<String, dynamic>())); });
     adminUsername = registerOutput<String?>('adminUsername');
     allowExtensionOperations = registerOutput<bool>('allowExtensionOperations');
     availabilitySetId = registerOutput<String?>('availabilitySetId');
@@ -732,7 +736,7 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     bypassPlatformSafetyChecksOnUserScheduleEnabled = registerOutput<bool?>('bypassPlatformSafetyChecksOnUserScheduleEnabled');
     capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
     computerName = registerOutput<String>('computerName');
-    customData = registerOutput<String?>('customData');
+    customData = registerOutput<String?>('customData', isSecret: true);
     dedicatedHostGroupId = registerOutput<String?>('dedicatedHostGroupId');
     dedicatedHostId = registerOutput<String?>('dedicatedHostId');
     disablePasswordAuthentication = registerOutput<bool>('disablePasswordAuthentication');
@@ -741,13 +745,13 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    galleryApplications = registerOutput<List<Map<String, dynamic>>?>('galleryApplications');
+    galleryApplications = registerOutput<List<LinuxVirtualMachineGalleryApplication>?>('galleryApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineGalleryApplication>(guardedValue, (value) => LinuxVirtualMachineGalleryApplication.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<LinuxVirtualMachineIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     osDisk = registerOutput<LinuxVirtualMachineOsDisk>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osImageNotification = registerOutput<LinuxVirtualMachineOsImageNotification?>('osImageNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineOsImageNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osManagedDiskId = registerOutput<String>('osManagedDiskId');
@@ -757,19 +761,19 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     platformFaultDomain = registerOutput<int?>('platformFaultDomain');
     priority = registerOutput<String?>('priority');
     privateIpAddress = registerOutput<String>('privateIpAddress');
-    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
+    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisionVmAgent = registerOutput<bool>('provisionVmAgent');
     proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
     publicIpAddress = registerOutput<String>('publicIpAddress');
-    publicIpAddresses = registerOutput<List<String>>('publicIpAddresses');
+    publicIpAddresses = registerOutput<List<String>>('publicIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     rebootSetting = registerOutput<String?>('rebootSetting');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    secrets = registerOutput<List<LinuxVirtualMachineSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineSecret>(guardedValue, (value) => LinuxVirtualMachineSecret.fromMap((value as Map).cast<String, dynamic>())); });
     secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
     size = registerOutput<String>('size');
     sourceImageId = registerOutput<String?>('sourceImageId');
     sourceImageReference = registerOutput<LinuxVirtualMachineSourceImageReference?>('sourceImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineSourceImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationNotification = registerOutput<LinuxVirtualMachineTerminationNotification>('terminationNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineTerminationNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userData = registerOutput<String?>('userData');
     virtualMachineId = registerOutput<String>('virtualMachineId');
@@ -784,11 +788,12 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinuxVirtualMachineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinuxVirtualMachine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -803,8 +808,8 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     additionalCapabilities = registerOutput<LinuxVirtualMachineAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    adminPassword = registerOutput<String?>('adminPassword');
-    adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
+    adminPassword = registerOutput<String?>('adminPassword', isSecret: true);
+    adminSshKeys = registerOutput<List<LinuxVirtualMachineAdminSshKey>?>('adminSshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineAdminSshKey>(guardedValue, (value) => LinuxVirtualMachineAdminSshKey.fromMap((value as Map).cast<String, dynamic>())); });
     adminUsername = registerOutput<String?>('adminUsername');
     allowExtensionOperations = registerOutput<bool>('allowExtensionOperations');
     availabilitySetId = registerOutput<String?>('availabilitySetId');
@@ -812,7 +817,7 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     bypassPlatformSafetyChecksOnUserScheduleEnabled = registerOutput<bool?>('bypassPlatformSafetyChecksOnUserScheduleEnabled');
     capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
     computerName = registerOutput<String>('computerName');
-    customData = registerOutput<String?>('customData');
+    customData = registerOutput<String?>('customData', isSecret: true);
     dedicatedHostGroupId = registerOutput<String?>('dedicatedHostGroupId');
     dedicatedHostId = registerOutput<String?>('dedicatedHostId');
     disablePasswordAuthentication = registerOutput<bool>('disablePasswordAuthentication');
@@ -821,13 +826,13 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    galleryApplications = registerOutput<List<Map<String, dynamic>>?>('galleryApplications');
+    galleryApplications = registerOutput<List<LinuxVirtualMachineGalleryApplication>?>('galleryApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineGalleryApplication>(guardedValue, (value) => LinuxVirtualMachineGalleryApplication.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<LinuxVirtualMachineIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     licenseType = registerOutput<String?>('licenseType');
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     osDisk = registerOutput<LinuxVirtualMachineOsDisk>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osImageNotification = registerOutput<LinuxVirtualMachineOsImageNotification?>('osImageNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineOsImageNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osManagedDiskId = registerOutput<String>('osManagedDiskId');
@@ -837,19 +842,86 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     platformFaultDomain = registerOutput<int?>('platformFaultDomain');
     priority = registerOutput<String?>('priority');
     privateIpAddress = registerOutput<String>('privateIpAddress');
-    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
+    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisionVmAgent = registerOutput<bool>('provisionVmAgent');
     proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
     publicIpAddress = registerOutput<String>('publicIpAddress');
-    publicIpAddresses = registerOutput<List<String>>('publicIpAddresses');
+    publicIpAddresses = registerOutput<List<String>>('publicIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     rebootSetting = registerOutput<String?>('rebootSetting');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    secrets = registerOutput<List<LinuxVirtualMachineSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineSecret>(guardedValue, (value) => LinuxVirtualMachineSecret.fromMap((value as Map).cast<String, dynamic>())); });
     secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
     size = registerOutput<String>('size');
     sourceImageId = registerOutput<String?>('sourceImageId');
     sourceImageReference = registerOutput<LinuxVirtualMachineSourceImageReference?>('sourceImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineSourceImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    terminationNotification = registerOutput<LinuxVirtualMachineTerminationNotification>('terminationNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineTerminationNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userData = registerOutput<String?>('userData');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+    virtualMachineScaleSetId = registerOutput<String?>('virtualMachineScaleSetId');
+    vmAgentPlatformUpdatesEnabled = registerOutput<bool>('vmAgentPlatformUpdatesEnabled');
+    vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
+    zone = registerOutput<String?>('zone');
+  }
+
+  /// Creates a typed reference to an existing [LinuxVirtualMachine] resource.
+  LinuxVirtualMachine.reference(String urn)
+    : super(
+        'azure:compute/linuxVirtualMachine:LinuxVirtualMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['adminPassword', 'customData'],
+        isResourceReference: true,
+      ) {
+    additionalCapabilities = registerOutput<LinuxVirtualMachineAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    adminPassword = registerOutput<String?>('adminPassword', isSecret: true);
+    adminSshKeys = registerOutput<List<LinuxVirtualMachineAdminSshKey>?>('adminSshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineAdminSshKey>(guardedValue, (value) => LinuxVirtualMachineAdminSshKey.fromMap((value as Map).cast<String, dynamic>())); });
+    adminUsername = registerOutput<String?>('adminUsername');
+    allowExtensionOperations = registerOutput<bool>('allowExtensionOperations');
+    availabilitySetId = registerOutput<String?>('availabilitySetId');
+    bootDiagnostics = registerOutput<LinuxVirtualMachineBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bypassPlatformSafetyChecksOnUserScheduleEnabled = registerOutput<bool?>('bypassPlatformSafetyChecksOnUserScheduleEnabled');
+    capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
+    computerName = registerOutput<String>('computerName');
+    customData = registerOutput<String?>('customData', isSecret: true);
+    dedicatedHostGroupId = registerOutput<String?>('dedicatedHostGroupId');
+    dedicatedHostId = registerOutput<String?>('dedicatedHostId');
+    disablePasswordAuthentication = registerOutput<bool>('disablePasswordAuthentication');
+    diskControllerType = registerOutput<String>('diskControllerType');
+    edgeZone = registerOutput<String?>('edgeZone');
+    encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
+    galleryApplications = registerOutput<List<LinuxVirtualMachineGalleryApplication>?>('galleryApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineGalleryApplication>(guardedValue, (value) => LinuxVirtualMachineGalleryApplication.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<LinuxVirtualMachineIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    licenseType = registerOutput<String?>('licenseType');
+    location = registerOutput<String>('location');
+    maxBidPrice = registerOutput<double?>('maxBidPrice');
+    this.name = registerOutput<String>('name');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    osDisk = registerOutput<LinuxVirtualMachineOsDisk>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osImageNotification = registerOutput<LinuxVirtualMachineOsImageNotification?>('osImageNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineOsImageNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osManagedDiskId = registerOutput<String>('osManagedDiskId');
+    patchAssessmentMode = registerOutput<String>('patchAssessmentMode');
+    patchMode = registerOutput<String>('patchMode');
+    plan = registerOutput<LinuxVirtualMachinePlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachinePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformFaultDomain = registerOutput<int?>('platformFaultDomain');
+    priority = registerOutput<String?>('priority');
+    privateIpAddress = registerOutput<String>('privateIpAddress');
+    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    provisionVmAgent = registerOutput<bool>('provisionVmAgent');
+    proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
+    publicIpAddress = registerOutput<String>('publicIpAddress');
+    publicIpAddresses = registerOutput<List<String>>('publicIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    rebootSetting = registerOutput<String?>('rebootSetting');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secrets = registerOutput<List<LinuxVirtualMachineSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineSecret>(guardedValue, (value) => LinuxVirtualMachineSecret.fromMap((value as Map).cast<String, dynamic>())); });
+    secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
+    size = registerOutput<String>('size');
+    sourceImageId = registerOutput<String?>('sourceImageId');
+    sourceImageReference = registerOutput<LinuxVirtualMachineSourceImageReference?>('sourceImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineSourceImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationNotification = registerOutput<LinuxVirtualMachineTerminationNotification>('terminationNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineTerminationNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userData = registerOutput<String?>('userData');
     virtualMachineId = registerOutput<String>('virtualMachineId');

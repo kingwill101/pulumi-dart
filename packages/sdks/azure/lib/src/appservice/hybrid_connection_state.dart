@@ -5,26 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering HybridConnection resources.
 class HybridConnectionState {
   /// Specifies the name of the App Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? appServiceName;
+  final pulumi.Input<String?>? appServiceName;
   /// The hostname of the endpoint.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// The name of the Relay Namespace.
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// The port of the endpoint.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The ID of the Service Bus Relay. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? relayId;
-  final pulumi.Input<String>? relayName;
+  final pulumi.Input<String?>? relayId;
+  final pulumi.Input<String?>? relayName;
   /// The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The name of the Service Bus key which has Send permissions. Defaults to `RootManageSharedAccessKey`.
-  final pulumi.Input<String>? sendKeyName;
+  final pulumi.Input<String?>? sendKeyName;
   /// The value of the Service Bus Primary Access key.
-  final pulumi.Input<String>? sendKeyValue;
+  final pulumi.Input<String?>? sendKeyValue;
   /// The name of the Service Bus namespace.
-  final pulumi.Input<String>? serviceBusNamespace;
+  final pulumi.Input<String?>? serviceBusNamespace;
   /// The suffix for the service bus endpoint.
-  final pulumi.Input<String>? serviceBusSuffix;
+  final pulumi.Input<String?>? serviceBusSuffix;
 
   /// Creates a new [HybridConnectionState].
   /// [appServiceName] Specifies the name of the App Service. Changing this forces a new resource to be created.
@@ -73,7 +73,7 @@ class HybridConnectionState {
       appServiceName: (() { final guardedValue = map['appServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       relayId: (() { final guardedValue = map['relayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       relayName: (() { final guardedValue = map['relayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

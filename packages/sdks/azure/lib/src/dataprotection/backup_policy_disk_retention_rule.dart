@@ -39,7 +39,7 @@ class BackupPolicyDiskRetentionRule {
       criteria: pulumi.Input.fromValue(BackupPolicyDiskRetentionRuleCriteria.fromMap((map['criteria']! as Map).cast<String, dynamic>())),
       duration: pulumi.Input.fromValue(map['duration'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
     );
   }
 }

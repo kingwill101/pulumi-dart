@@ -14,7 +14,7 @@ class HadoopClusterStorageAccount {
   /// &gt; **Note:** When the `azure.storage.Container` resource is created with `storageAccountName`, this can be obtained from the `id` of the `azure.storage.Container` resource. When the `azure.storage.Container` resource is created with `storageAccountId`, please use `azure.storage.getContainers` data source to get the `dataPlaneId` of the `azure.storage.Container` resource for this field.
   final pulumi.Input<String> storageContainerId;
   /// The ID of the Storage Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageResourceId;
+  final pulumi.Input<String?>? storageResourceId;
 
   /// Creates a new [HadoopClusterStorageAccount].
   /// [isDefault] Is this the Default Storage Account for the HDInsight Hadoop Cluster? Changing this forces a new resource to be created.

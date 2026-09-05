@@ -15,11 +15,11 @@ class AccountRaiPolicyArgs {
   /// A `contentFilter` block as defined below.
   final pulumi.Input<List<AccountRaiPolicyContentFilter>> contentFilters;
   /// The mode of the RAI Policy. Possible values are `Default`, `Deferred`, `Blocking` or `Asynchronous_filter`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name of the Cognitive Service Account RAI Policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountRaiPolicyArgs].
   /// [basePolicyName] The name of the base policy to use for this RAI Policy. Changing this forces a new resource to be created.

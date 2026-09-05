@@ -113,7 +113,7 @@ import 'workspace_table_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = loganalytics.NewWorkspaceTable(ctx, "example", &loganalytics.WorkspaceTableArgs{
-/// 			WorkspaceId:          exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId:          exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                 pulumi.String("AppMetrics"),
 /// 			RetentionInDays:      pulumi.Int(60),
 /// 			TotalRetentionInDays: pulumi.Int(180),
@@ -265,7 +265,7 @@ class WorkspaceTable extends pulumi.CustomResource {
           'azure:loganalytics/workspaceTable:WorkspaceTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     plan = registerOutput<String?>('plan');
@@ -279,11 +279,12 @@ class WorkspaceTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -297,6 +298,22 @@ class WorkspaceTable extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<String?>('plan');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceTable] resource.
+  WorkspaceTable.reference(String urn)
+    : super(
+        'azure:loganalytics/workspaceTable:WorkspaceTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     plan = registerOutput<String?>('plan');
     retentionInDays = registerOutput<int?>('retentionInDays');

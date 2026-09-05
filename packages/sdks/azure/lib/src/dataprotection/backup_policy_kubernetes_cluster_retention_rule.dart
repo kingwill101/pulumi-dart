@@ -40,7 +40,7 @@ class BackupPolicyKubernetesClusterRetentionRule {
       criteria: pulumi.Input.fromValue(BackupPolicyKubernetesClusterRetentionRuleCriteria.fromMap((map['criteria']! as Map).cast<String, dynamic>())),
       lifeCycles: pulumi.Input.fromValue(pulumi.Input.decodeList<BackupPolicyKubernetesClusterRetentionRuleLifeCycle>(map['lifeCycles']!, (value) => BackupPolicyKubernetesClusterRetentionRuleLifeCycle.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
     );
   }
 }

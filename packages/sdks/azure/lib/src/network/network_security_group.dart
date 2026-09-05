@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_security_group_args.dart';
+import 'network_security_group_security_rule.dart';
 import 'network_security_group_state.dart';
 
 /// Manages a network security group that contains a list of network security rules.  Network security groups enable inbound or outbound traffic to be enabled or denied.
@@ -289,7 +290,7 @@ class NetworkSecurityGroup extends pulumi.CustomResource {
   /// A list of objects representing security rules, as defined below.
   ///
   /// &gt; **NOTE** Since `securityRule` can be configured both inline and via the separate `azure.network.NetworkSecurityRule` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
-  late final pulumi.Output<List<Map<String, dynamic>>> securityRules;
+  late final pulumi.Output<List<NetworkSecurityGroupSecurityRule>> securityRules;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -305,13 +306,13 @@ class NetworkSecurityGroup extends pulumi.CustomResource {
           'azure:network/networkSecurityGroup:NetworkSecurityGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    securityRules = registerOutput<List<Map<String, dynamic>>>('securityRules');
-    tags = registerOutput<Map<String, String>?>('tags');
+    securityRules = registerOutput<List<NetworkSecurityGroupSecurityRule>>('securityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkSecurityGroupSecurityRule>(guardedValue, (value) => NetworkSecurityGroupSecurityRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NetworkSecurityGroup] resource's state with the given [name] and [id].
@@ -319,11 +320,12 @@ class NetworkSecurityGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkSecurityGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkSecurityGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -340,7 +342,23 @@ class NetworkSecurityGroup extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    securityRules = registerOutput<List<Map<String, dynamic>>>('securityRules');
-    tags = registerOutput<Map<String, String>?>('tags');
+    securityRules = registerOutput<List<NetworkSecurityGroupSecurityRule>>('securityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkSecurityGroupSecurityRule>(guardedValue, (value) => NetworkSecurityGroupSecurityRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkSecurityGroup] resource.
+  NetworkSecurityGroup.reference(String urn)
+    : super(
+        'azure:network/networkSecurityGroup:NetworkSecurityGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    securityRules = registerOutput<List<NetworkSecurityGroupSecurityRule>>('securityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkSecurityGroupSecurityRule>(guardedValue, (value) => NetworkSecurityGroupSecurityRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

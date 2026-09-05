@@ -18,51 +18,51 @@ import 'hbase_cluster_storage_account_gen2.dart';
 /// Input properties used for looking up and filtering HBaseCluster resources.
 class HBaseClusterState {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? clusterVersion;
+  final pulumi.Input<String?>? clusterVersion;
   /// A `componentVersion` block as defined below.
-  final pulumi.Input<HBaseClusterComponentVersion>? componentVersion;
+  final pulumi.Input<HBaseClusterComponentVersion?>? componentVersion;
   /// A `computeIsolation` block as defined below.
-  final pulumi.Input<HBaseClusterComputeIsolation>? computeIsolation;
+  final pulumi.Input<HBaseClusterComputeIsolation?>? computeIsolation;
   /// One or more `diskEncryption` block as defined below.
-  final pulumi.Input<List<HBaseClusterDiskEncryption>>? diskEncryptions;
+  final pulumi.Input<List<HBaseClusterDiskEncryption>?>? diskEncryptions;
   /// An `extension` block as defined below.
-  final pulumi.Input<HBaseClusterExtension>? extension;
+  final pulumi.Input<HBaseClusterExtension?>? extension;
   /// A `gateway` block as defined below.
-  final pulumi.Input<HBaseClusterGateway>? gateway;
+  final pulumi.Input<HBaseClusterGateway?>? gateway;
   /// The HTTPS Connectivity Endpoint for this HDInsight HBase Cluster.
-  final pulumi.Input<String>? httpsEndpoint;
+  final pulumi.Input<String?>? httpsEndpoint;
   /// Specifies the Azure Region which this HDInsight HBase Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `metastores` block as defined below.
-  final pulumi.Input<HBaseClusterMetastores>? metastores;
+  final pulumi.Input<HBaseClusterMetastores?>? metastores;
   /// A `monitor` block as defined below.
-  final pulumi.Input<HBaseClusterMonitor>? monitor;
+  final pulumi.Input<HBaseClusterMonitor?>? monitor;
   /// Specifies the name for this HDInsight HBase Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `network` block as defined below.
-  final pulumi.Input<HBaseClusterNetwork>? network;
+  final pulumi.Input<HBaseClusterNetwork?>? network;
   /// A `privateLinkConfiguration` block as defined below.
-  final pulumi.Input<HBaseClusterPrivateLinkConfiguration>? privateLinkConfiguration;
+  final pulumi.Input<HBaseClusterPrivateLinkConfiguration?>? privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight HBase Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `roles` block as defined below.
-  final pulumi.Input<HBaseClusterRoles>? roles;
+  final pulumi.Input<HBaseClusterRoles?>? roles;
   /// A `securityProfile` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<HBaseClusterSecurityProfile>? securityProfile;
+  final pulumi.Input<HBaseClusterSecurityProfile?>? securityProfile;
   /// The SSH Connectivity Endpoint for this HDInsight HBase Cluster.
-  final pulumi.Input<String>? sshEndpoint;
+  final pulumi.Input<String?>? sshEndpoint;
   /// A `storageAccountGen2` block as defined below.
-  final pulumi.Input<HBaseClusterStorageAccountGen2>? storageAccountGen2;
+  final pulumi.Input<HBaseClusterStorageAccountGen2?>? storageAccountGen2;
   /// One or more `storageAccount` block as defined below.
-  final pulumi.Input<List<HBaseClusterStorageAccount>>? storageAccounts;
+  final pulumi.Input<List<HBaseClusterStorageAccount>?>? storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight HBase Cluster.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the Tier which should be used for this HDInsight HBase Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
   /// The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
-  final pulumi.Input<String>? tlsMinVersion;
+  final pulumi.Input<String?>? tlsMinVersion;
 
   /// Creates a new [HBaseClusterState].
   /// [clusterVersion] Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.

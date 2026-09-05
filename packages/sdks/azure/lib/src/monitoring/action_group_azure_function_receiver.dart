@@ -12,7 +12,7 @@ class ActionGroupAzureFunctionReceiver {
   /// The name of the Azure Function receiver.
   final pulumi.Input<String> name;
   /// Enables or disables the common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [ActionGroupAzureFunctionReceiver].
   /// [functionAppResourceId] The Azure resource ID of the function app.

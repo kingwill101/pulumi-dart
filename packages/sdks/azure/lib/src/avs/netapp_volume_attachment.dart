@@ -124,7 +124,7 @@ import 'netapp_volume_attachment_state.dart';
 ///     resourceGroupName: testAzurermResourceGroup.name,
 ///     type: "ExpressRoute",
 ///     virtualNetworkGatewayId: testVirtualNetworkGateway.id,
-///     expressRouteCircuitId: testPrivateCloud.circuits.apply(circuits => circuits[0].expressRouteId),
+///     expressRouteCircuitId: testPrivateCloud.circuits[0].expressRouteId,
 ///     authorizationKey: testExpressRouteAuthorization.expressRouteAuthorizationKey,
 /// });
 /// const testNetappVolumeAttachment = new azure.avs.NetappVolumeAttachment("test", {
@@ -523,8 +523,8 @@ import 'netapp_volume_attachment_state.dart';
 /// 			IpConfigurations: network.VirtualNetworkGatewayIpConfigurationArray{
 /// 				&network.VirtualNetworkGatewayIpConfigurationArgs{
 /// 					Name:              pulumi.String("vnetGatewayConfig"),
-/// 					PublicIpAddressId: test.ID(),
-/// 					SubnetId:          gatewaySubnet.ID(),
+/// 					PublicIpAddressId: test.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:          gatewaySubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -558,7 +558,7 @@ import 'netapp_volume_attachment_state.dart';
 /// 			PoolName:          testPool.Name,
 /// 			VolumePath:        pulumi.String("my-unique-file-path-%d"),
 /// 			ServiceLevel:      pulumi.String("Standard"),
-/// 			SubnetId:          netappSubnet.ID(),
+/// 			SubnetId:          netappSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Protocols: pulumi.StringArray{
 /// 				pulumi.String("NFSv3"),
 /// 			},
@@ -595,7 +595,7 @@ import 'netapp_volume_attachment_state.dart';
 /// 		}
 /// 		testCluster, err := avs.NewCluster(ctx, "test", &avs.ClusterArgs{
 /// 			Name:             pulumi.String("example-vm-cluster"),
-/// 			VmwareCloudId:    testPrivateCloud.ID(),
+/// 			VmwareCloudId:    testPrivateCloud.ID().ToIDOutput().ToStringOutput(),
 /// 			ClusterNodeCount: pulumi.Int(3),
 /// 			SkuName:          pulumi.String("av36"),
 /// 		})
@@ -604,7 +604,7 @@ import 'netapp_volume_attachment_state.dart';
 /// 		}
 /// 		testExpressRouteAuthorization, err := avs.NewExpressRouteAuthorization(ctx, "test", &avs.ExpressRouteAuthorizationArgs{
 /// 			Name:           pulumi.String("example-VmwareAuthorization"),
-/// 			PrivateCloudId: testPrivateCloud.ID(),
+/// 			PrivateCloudId: testPrivateCloud.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -614,10 +614,10 @@ import 'netapp_volume_attachment_state.dart';
 /// 			Location:                pulumi.Any(testAzurermResourceGroup.Location),
 /// 			ResourceGroupName:       pulumi.Any(testAzurermResourceGroup.Name),
 /// 			Type:                    pulumi.String("ExpressRoute"),
-/// 			VirtualNetworkGatewayId: testVirtualNetworkGateway.ID(),
-/// 			ExpressRouteCircuitId: pulumi.String(testPrivateCloud.Circuits.ApplyT(func(circuits []avs.PrivateCloudCircuit) (*string, error) {
+/// 			VirtualNetworkGatewayId: testVirtualNetworkGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			ExpressRouteCircuitId: testPrivateCloud.Circuits.ApplyT(func(circuits []avs.PrivateCloudCircuit) (*string, error) {
 /// 				return circuits[0].ExpressRouteId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}).(pulumi.StringPtrOutput),
 /// 			AuthorizationKey: testExpressRouteAuthorization.ExpressRouteAuthorizationKey,
 /// 		})
 /// 		if err != nil {
@@ -625,8 +625,8 @@ import 'netapp_volume_attachment_state.dart';
 /// 		}
 /// 		_, err = avs.NewNetappVolumeAttachment(ctx, "test", &avs.NetappVolumeAttachmentArgs{
 /// 			Name:            pulumi.String("example-vmwareattachment"),
-/// 			NetappVolumeId:  testVolume.ID(),
-/// 			VmwareClusterId: testCluster.ID(),
+/// 			NetappVolumeId:  testVolume.ID().ToIDOutput().ToStringOutput(),
+/// 			VmwareClusterId: testCluster.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			testVirtualNetworkGatewayConnection,
 /// 		}))
@@ -1138,7 +1138,7 @@ class NetappVolumeAttachment extends pulumi.CustomResource {
           'azure:avs/netappVolumeAttachment:NetappVolumeAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     netappVolumeId = registerOutput<String>('netappVolumeId');
@@ -1150,11 +1150,12 @@ class NetappVolumeAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetappVolumeAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetappVolumeAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1168,6 +1169,20 @@ class NetappVolumeAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    netappVolumeId = registerOutput<String>('netappVolumeId');
+    vmwareClusterId = registerOutput<String>('vmwareClusterId');
+  }
+
+  /// Creates a typed reference to an existing [NetappVolumeAttachment] resource.
+  NetappVolumeAttachment.reference(String urn)
+    : super(
+        'azure:avs/netappVolumeAttachment:NetappVolumeAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     netappVolumeId = registerOutput<String>('netappVolumeId');
     vmwareClusterId = registerOutput<String>('vmwareClusterId');

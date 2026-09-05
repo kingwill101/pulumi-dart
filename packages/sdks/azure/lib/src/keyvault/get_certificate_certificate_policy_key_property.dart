@@ -41,7 +41,7 @@ class GetCertificateCertificatePolicyKeyProperty {
     return GetCertificateCertificatePolicyKeyProperty(
       curve: pulumi.Input.fromValue(map['curve'] as String),
       exportable: pulumi.Input.fromValue(map['exportable'] as bool),
-      keySize: pulumi.Input.fromValue(map['keySize'] as int),
+      keySize: pulumi.Input.fromValue((map['keySize'] as num).toInt()),
       keyType: pulumi.Input.fromValue(map['keyType'] as String),
       reuseKey: pulumi.Input.fromValue(map['reuseKey'] as bool),
     );

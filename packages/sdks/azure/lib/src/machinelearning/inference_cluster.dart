@@ -33,6 +33,7 @@ import 'inference_cluster_state.dart';
 ///     name: "example-kv",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     purgeProtectionEnabled: true,
@@ -114,6 +115,7 @@ import 'inference_cluster_state.dart';
 ///     name="example-kv",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     purge_protection_enabled=True)
@@ -201,6 +203,7 @@ import 'inference_cluster_state.dart';
 ///         Name = "example-kv",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         PurgeProtectionEnabled = true,
@@ -326,12 +329,13 @@ import 'inference_cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("example-kv"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("standard"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("example-kv"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -350,9 +354,9 @@ import 'inference_cluster_state.dart';
 /// 			Name:                  pulumi.String("example-mlw"),
 /// 			Location:              example.Location,
 /// 			ResourceGroupName:     example.Name,
-/// 			ApplicationInsightsId: exampleInsights.ID(),
-/// 			KeyVaultId:            exampleKeyVault.ID(),
-/// 			StorageAccountId:      exampleAccount.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId:            exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:      exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &machinelearning.WorkspaceIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -391,7 +395,7 @@ import 'inference_cluster_state.dart';
 /// 				Name:         pulumi.String("default"),
 /// 				NodeCount:    pulumi.Int(3),
 /// 				VmSize:       pulumi.String("Standard_D3_v2"),
-/// 				VnetSubnetId: exampleSubnet.ID(),
+/// 				VnetSubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Identity: &containerservice.KubernetesClusterIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
@@ -404,9 +408,9 @@ import 'inference_cluster_state.dart';
 /// 			Name:                       pulumi.String("example"),
 /// 			Location:                   example.Location,
 /// 			ClusterPurpose:             pulumi.String("FastProd"),
-/// 			KubernetesClusterId:        exampleKubernetesCluster.ID(),
+/// 			KubernetesClusterId:        exampleKubernetesCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:                pulumi.String("This is an example cluster used with Terraform"),
-/// 			MachineLearningWorkspaceId: exampleWorkspace.ID(),
+/// 			MachineLearningWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"stage": pulumi.String("example"),
 /// 			},
@@ -444,12 +448,13 @@ import 'inference_cluster_state.dart';
 ///   application_type    = "web"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "example-kv"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "standard"
-///   purge_protection_enabled = true
+///   name                       = "example-kv"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   purge_protection_enabled   = true
 /// }
 /// resource "azure_storage_account" "example" {
 ///   name                     = "examplesa"
@@ -568,6 +573,7 @@ import 'inference_cluster_state.dart';
 ///             .name("example-kv")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .purgeProtectionEnabled(true)
@@ -660,6 +666,7 @@ import 'inference_cluster_state.dart';
 ///       name: example-kv
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       purgeProtectionEnabled: true
@@ -787,7 +794,7 @@ class InferenceCluster extends pulumi.CustomResource {
           'azure:machinelearning/inferenceCluster:InferenceCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clusterPurpose = registerOutput<String?>('clusterPurpose');
     description = registerOutput<String?>('description');
@@ -797,7 +804,7 @@ class InferenceCluster extends pulumi.CustomResource {
     machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
     this.name = registerOutput<String>('name');
     ssl = registerOutput<InferenceClusterSsl?>('ssl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceClusterSsl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [InferenceCluster] resource's state with the given [name] and [id].
@@ -805,11 +812,12 @@ class InferenceCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InferenceClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InferenceCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -831,6 +839,26 @@ class InferenceCluster extends pulumi.CustomResource {
     machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
     this.name = registerOutput<String>('name');
     ssl = registerOutput<InferenceClusterSsl?>('ssl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceClusterSsl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [InferenceCluster] resource.
+  InferenceCluster.reference(String urn)
+    : super(
+        'azure:machinelearning/inferenceCluster:InferenceCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterPurpose = registerOutput<String?>('clusterPurpose');
+    description = registerOutput<String?>('description');
+    identity = registerOutput<InferenceClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    location = registerOutput<String>('location');
+    machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
+    this.name = registerOutput<String>('name');
+    ssl = registerOutput<InferenceClusterSsl?>('ssl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InferenceClusterSsl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

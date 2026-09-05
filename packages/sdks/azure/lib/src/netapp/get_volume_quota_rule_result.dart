@@ -4,57 +4,57 @@
 /// Result data returned by getVolumeQuotaRule.
 class GetVolumeQuotaRuleResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The Azure Region where the Volume Quota Rule exists.
-  final String location;
-  final String name;
+  final String? location;
+  final String? name;
   /// The quota size in kibibytes.
-  final int quotaSizeInKib;
+  final int? quotaSizeInKib;
   /// The quota Target.
-  final String quotaTarget;
+  final String? quotaTarget;
   /// The quota type.
-  final String quotaType;
-  final String volumeId;
+  final String? quotaType;
+  final String? volumeId;
 
   /// Creates a new [GetVolumeQuotaRuleResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure Region where the Volume Quota Rule exists.
-  /// [name] Required.
+  /// [name] Optional.
   /// [quotaSizeInKib] The quota size in kibibytes.
   /// [quotaTarget] The quota Target.
   /// [quotaType] The quota type.
-  /// [volumeId] Required.
+  /// [volumeId] Optional.
   const GetVolumeQuotaRuleResult({
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.quotaSizeInKib,
-    required this.quotaTarget,
-    required this.quotaType,
-    required this.volumeId,
+    this.id,
+    this.location,
+    this.name,
+    this.quotaSizeInKib,
+    this.quotaTarget,
+    this.quotaType,
+    this.volumeId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'location': location,
-      'name': name,
-      'quotaSizeInKib': quotaSizeInKib,
-      'quotaTarget': quotaTarget,
-      'quotaType': quotaType,
-      'volumeId': volumeId,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'quotaSizeInKib': ?quotaSizeInKib,
+      'quotaTarget': ?quotaTarget,
+      'quotaType': ?quotaType,
+      'volumeId': ?volumeId,
     };
   }
 
   factory GetVolumeQuotaRuleResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeQuotaRuleResult(
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      quotaSizeInKib: map['quotaSizeInKib'] as int,
-      quotaTarget: map['quotaTarget'] as String,
-      quotaType: map['quotaType'] as String,
-      volumeId: map['volumeId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      quotaSizeInKib: (() { final guardedValue = map['quotaSizeInKib']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      quotaTarget: (() { final guardedValue = map['quotaTarget']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      quotaType: (() { final guardedValue = map['quotaType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      volumeId: (() { final guardedValue = map['volumeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

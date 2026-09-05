@@ -8,29 +8,29 @@ import 'gallery_application_version_target_region.dart';
 /// Input properties used for looking up and filtering GalleryApplicationVersion resources.
 class GalleryApplicationVersionState {
   /// Specifies the name of the config file on the VM. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? configFile;
+  final pulumi.Input<String?>? configFile;
   /// Should the Gallery Application reports health. Defaults to `false`.
-  final pulumi.Input<bool>? enableHealthCheck;
+  final pulumi.Input<bool?>? enableHealthCheck;
   /// The end of life date in RFC3339 format of the Gallery Application Version.
-  final pulumi.Input<String>? endOfLifeDate;
+  final pulumi.Input<String?>? endOfLifeDate;
   /// Should the Gallery Application Version be excluded from the `latest` filter? If set to `true` this Gallery Application Version won't be returned for the `latest` version. Defaults to `false`.
-  final pulumi.Input<bool>? excludeFromLatest;
+  final pulumi.Input<bool?>? excludeFromLatest;
   /// The ID of the Gallery Application. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? galleryApplicationId;
+  final pulumi.Input<String?>? galleryApplicationId;
   /// The Azure Region where the Gallery Application Version exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `manageAction` block as defined below.
-  final pulumi.Input<GalleryApplicationVersionManageAction>? manageAction;
+  final pulumi.Input<GalleryApplicationVersionManageAction?>? manageAction;
   /// The version name of the Gallery Application Version, such as `1.0.0`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the package file on the VM. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? packageFile;
+  final pulumi.Input<String?>? packageFile;
   /// A `source` block as defined below.
-  final pulumi.Input<GalleryApplicationVersionSource>? source;
+  final pulumi.Input<GalleryApplicationVersionSource?>? source;
   /// A mapping of tags to assign to the Gallery Application Version.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// One or more `targetRegion` blocks as defined below.
-  final pulumi.Input<List<GalleryApplicationVersionTargetRegion>>? targetRegions;
+  final pulumi.Input<List<GalleryApplicationVersionTargetRegion>?>? targetRegions;
 
   /// Creates a new [GalleryApplicationVersionState].
   /// [configFile] Specifies the name of the config file on the VM. Changing this forces a new resource to be created.

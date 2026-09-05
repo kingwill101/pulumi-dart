@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SqlTrigger resources.
 class SqlTriggerState {
   /// Body of the Trigger.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// The id of the Cosmos DB SQL Container to create the SQL Trigger within. Changing this forces a new SQL Trigger to be created.
-  final pulumi.Input<String>? containerId;
+  final pulumi.Input<String?>? containerId;
   /// The name which should be used for this SQL Trigger. Changing this forces a new SQL Trigger to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The operation the trigger is associated with. Possible values are `All`, `Create`, `Update`, `Delete` and `Replace`.
-  final pulumi.Input<String>? operation;
+  final pulumi.Input<String?>? operation;
   /// Type of the Trigger. Possible values are `Pre` and `Post`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SqlTriggerState].
   /// [body] Body of the Trigger.

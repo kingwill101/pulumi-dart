@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RulesEngineRuleActionRequestHeader {
   /// can be set to `Overwrite`, `Append` or `Delete`.
-  final pulumi.Input<String>? headerActionType;
+  final pulumi.Input<String?>? headerActionType;
   /// header name (string).
-  final pulumi.Input<String>? headerName;
+  final pulumi.Input<String?>? headerName;
   /// value name (string).
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [RulesEngineRuleActionRequestHeader].
   /// [headerActionType] can be set to `Overwrite`, `Append` or `Delete`.

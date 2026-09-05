@@ -331,15 +331,15 @@ class NetworkSecurityRule extends pulumi.CustomResource {
           'azure:network/networkSecurityRule:NetworkSecurityRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     access = registerOutput<String>('access');
     description = registerOutput<String?>('description');
     destinationAddressPrefix = registerOutput<String?>('destinationAddressPrefix');
-    destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes');
+    destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     destinationApplicationSecurityGroupIds = registerOutput<String?>('destinationApplicationSecurityGroupIds');
     destinationPortRange = registerOutput<String?>('destinationPortRange');
-    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     direction = registerOutput<String>('direction');
     this.name = registerOutput<String>('name');
     networkSecurityGroupName = registerOutput<String>('networkSecurityGroupName');
@@ -347,10 +347,10 @@ class NetworkSecurityRule extends pulumi.CustomResource {
     protocol = registerOutput<String>('protocol');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceAddressPrefix = registerOutput<String?>('sourceAddressPrefix');
-    sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes');
+    sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceApplicationSecurityGroupIds = registerOutput<String?>('sourceApplicationSecurityGroupIds');
     sourcePortRange = registerOutput<String?>('sourcePortRange');
-    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [NetworkSecurityRule] resource's state with the given [name] and [id].
@@ -358,11 +358,12 @@ class NetworkSecurityRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkSecurityRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkSecurityRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -379,10 +380,10 @@ class NetworkSecurityRule extends pulumi.CustomResource {
     access = registerOutput<String>('access');
     description = registerOutput<String?>('description');
     destinationAddressPrefix = registerOutput<String?>('destinationAddressPrefix');
-    destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes');
+    destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     destinationApplicationSecurityGroupIds = registerOutput<String?>('destinationApplicationSecurityGroupIds');
     destinationPortRange = registerOutput<String?>('destinationPortRange');
-    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     direction = registerOutput<String>('direction');
     this.name = registerOutput<String>('name');
     networkSecurityGroupName = registerOutput<String>('networkSecurityGroupName');
@@ -390,9 +391,38 @@ class NetworkSecurityRule extends pulumi.CustomResource {
     protocol = registerOutput<String>('protocol');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceAddressPrefix = registerOutput<String?>('sourceAddressPrefix');
-    sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes');
+    sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceApplicationSecurityGroupIds = registerOutput<String?>('sourceApplicationSecurityGroupIds');
     sourcePortRange = registerOutput<String?>('sourcePortRange');
-    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkSecurityRule] resource.
+  NetworkSecurityRule.reference(String urn)
+    : super(
+        'azure:network/networkSecurityRule:NetworkSecurityRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    access = registerOutput<String>('access');
+    description = registerOutput<String?>('description');
+    destinationAddressPrefix = registerOutput<String?>('destinationAddressPrefix');
+    destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinationApplicationSecurityGroupIds = registerOutput<String?>('destinationApplicationSecurityGroupIds');
+    destinationPortRange = registerOutput<String?>('destinationPortRange');
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    direction = registerOutput<String>('direction');
+    this.name = registerOutput<String>('name');
+    networkSecurityGroupName = registerOutput<String>('networkSecurityGroupName');
+    priority = registerOutput<int>('priority');
+    protocol = registerOutput<String>('protocol');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceAddressPrefix = registerOutput<String?>('sourceAddressPrefix');
+    sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceApplicationSecurityGroupIds = registerOutput<String?>('sourceApplicationSecurityGroupIds');
+    sourcePortRange = registerOutput<String?>('sourcePortRange');
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

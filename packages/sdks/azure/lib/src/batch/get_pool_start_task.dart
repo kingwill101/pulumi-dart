@@ -9,7 +9,7 @@ class GetPoolStartTask {
   /// The command line executed by the start task.
   final pulumi.Input<String> commandLine;
   /// A map of strings (key,value) that represents the environment variables to set in the start task.
-  final pulumi.Input<Map<String, String>>? commonEnvironmentProperties;
+  final pulumi.Input<Map<String, String>?>? commonEnvironmentProperties;
   /// The settings for the container under which the start task runs.
   final pulumi.Input<List<GetPoolStartTaskContainer>> containers;
   /// One or more `resourceFile` blocks that describe the files to be downloaded to a compute node.
@@ -57,7 +57,7 @@ class GetPoolStartTask {
       commonEnvironmentProperties: (() { final guardedValue = map['commonEnvironmentProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       containers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPoolStartTaskContainer>(map['containers']!, (value) => GetPoolStartTaskContainer.fromMap((value as Map).cast<String, dynamic>()))),
       resourceFiles: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPoolStartTaskResourceFile>(map['resourceFiles']!, (value) => GetPoolStartTaskResourceFile.fromMap((value as Map).cast<String, dynamic>()))),
-      taskRetryMaximum: pulumi.Input.fromValue(map['taskRetryMaximum'] as int),
+      taskRetryMaximum: pulumi.Input.fromValue((map['taskRetryMaximum'] as num).toInt()),
       userIdentities: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPoolStartTaskUserIdentity>(map['userIdentities']!, (value) => GetPoolStartTaskUserIdentity.fromMap((value as Map).cast<String, dynamic>()))),
       waitForSuccess: pulumi.Input.fromValue(map['waitForSuccess'] as bool),
     );

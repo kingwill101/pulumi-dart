@@ -25,7 +25,7 @@ class NextGenerationFirewallVirtualHubPanoramaDestinationNatFrontendConfig {
 
   factory NextGenerationFirewallVirtualHubPanoramaDestinationNatFrontendConfig.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubPanoramaDestinationNatFrontendConfig(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       publicIpAddressId: pulumi.Input.fromValue(map['publicIpAddressId'] as String),
     );
   }

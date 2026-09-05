@@ -6,7 +6,7 @@ class TriggerSchedulePipeline {
   /// Reference pipeline name.
   final pulumi.Input<String> name;
   /// The pipeline parameters that the trigger will act upon.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [TriggerSchedulePipeline].
   /// [name] Reference pipeline name.

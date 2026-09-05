@@ -127,7 +127,7 @@ import 'spring_cloud_elastic_application_performance_monitoring_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudElasticApplicationPerformanceMonitoring(ctx, "example", &appplatform.SpringCloudElasticApplicationPerformanceMonitoringArgs{
 /// 			Name:                 pulumi.String("example"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 			GloballyEnabled:      pulumi.Bool(true),
 /// 			ApplicationPackages: pulumi.StringArray{
 /// 				pulumi.String("org.example"),
@@ -292,9 +292,9 @@ class SpringCloudElasticApplicationPerformanceMonitoring extends pulumi.CustomRe
           'azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    applicationPackages = registerOutput<List<String>>('applicationPackages');
+    applicationPackages = registerOutput<List<String>>('applicationPackages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
     serverUrl = registerOutput<String>('serverUrl');
@@ -307,11 +307,12 @@ class SpringCloudElasticApplicationPerformanceMonitoring extends pulumi.CustomRe
     String name,
     pulumi.Input<String> id, {
     SpringCloudElasticApplicationPerformanceMonitoringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudElasticApplicationPerformanceMonitoring._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,7 +326,24 @@ class SpringCloudElasticApplicationPerformanceMonitoring extends pulumi.CustomRe
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    applicationPackages = registerOutput<List<String>>('applicationPackages');
+    applicationPackages = registerOutput<List<String>>('applicationPackages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
+    this.name = registerOutput<String>('name');
+    serverUrl = registerOutput<String>('serverUrl');
+    serviceName = registerOutput<String>('serviceName');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudElasticApplicationPerformanceMonitoring] resource.
+  SpringCloudElasticApplicationPerformanceMonitoring.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudElasticApplicationPerformanceMonitoring:SpringCloudElasticApplicationPerformanceMonitoring',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationPackages = registerOutput<List<String>>('applicationPackages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
     serverUrl = registerOutput<String>('serverUrl');

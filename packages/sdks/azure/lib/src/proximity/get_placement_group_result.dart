@@ -4,43 +4,43 @@
 /// Result data returned by getPlacementGroup.
 class GetPlacementGroupResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
-  final String name;
-  final String resourceGroupName;
-  final Map<String, String> tags;
+  final String? id;
+  final String? location;
+  final String? name;
+  final String? resourceGroupName;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetPlacementGroupResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
-  /// [tags] Required.
+  /// [location] Optional.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
+  /// [tags] Optional.
   const GetPlacementGroupResult({
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.resourceGroupName,
-    required this.tags,
+    this.id,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'location': location,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'tags': tags,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'tags': ?tags,
     };
   }
 
   factory GetPlacementGroupResult.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupResult(
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

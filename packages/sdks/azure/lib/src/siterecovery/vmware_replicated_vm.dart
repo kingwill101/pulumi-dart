@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vmware_replicated_vm_args.dart';
+import 'vmware_replicated_vm_managed_disk.dart';
+import 'vmware_replicated_vm_network_interface.dart';
 import 'vmware_replicated_vm_state.dart';
 
 /// Manages a VMWare replicated VM using Azure Site Recovery (VMWare to Azure only). A replicated VM keeps a copiously updated image of the VM in Azure in order to be able to start the VM in Azure in case of a disaster.
@@ -259,7 +261,7 @@ import 'vmware_replicated_vm_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleVMWareReplicationPolicy, err := siterecovery.NewVMWareReplicationPolicy(ctx, "example", &siterecovery.VMWareReplicationPolicyArgs{
-/// 			RecoveryVaultId:                 exampleVault.ID(),
+/// 			RecoveryVaultId:                 exampleVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                            pulumi.String("example-policy"),
 /// 			RecoveryPointRetentionInMinutes: pulumi.Int(1440),
 /// 			ApplicationConsistentSnapshotFrequencyInMinutes: pulumi.Int(240),
@@ -269,8 +271,8 @@ import 'vmware_replicated_vm_state.dart';
 /// 		}
 /// 		_, err = siterecovery.NewVmwareReplicationPolicyAssociation(ctx, "test", &siterecovery.VmwareReplicationPolicyAssociationArgs{
 /// 			Name:            pulumi.String("example-association"),
-/// 			RecoveryVaultId: exampleVault.ID(),
-/// 			PolicyId:        exampleVMWareReplicationPolicy.ID(),
+/// 			RecoveryVaultId: exampleVault.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyId:        exampleVMWareReplicationPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -310,18 +312,18 @@ import 'vmware_replicated_vm_state.dart';
 /// 		}
 /// 		_, err = siterecovery.NewVmwareReplicatedVm(ctx, "example", &siterecovery.VmwareReplicatedVmArgs{
 /// 			Name:                                  pulumi.String("example-vmware-vm"),
-/// 			RecoveryVaultId:                       exampleVault.ID(),
+/// 			RecoveryVaultId:                       exampleVault.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceVmName:                          pulumi.String("example-vm"),
 /// 			ApplianceName:                         pulumi.String("example-appliance"),
 /// 			RecoveryReplicationPolicyId:           pulumi.Any(exampleAzurermSiteRecoveryVmwareReplicationPolicyAssociation.PolicyId),
 /// 			PhysicalServerCredentialName:          pulumi.String("example-creds"),
 /// 			LicenseType:                           pulumi.String("NotSpecified"),
-/// 			TargetBootDiagnosticsStorageAccountId: exampleAccount.ID(),
+/// 			TargetBootDiagnosticsStorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			TargetVmName:                          pulumi.String("example_replicated_vm"),
-/// 			TargetResourceGroupId:                 example.ID(),
-/// 			DefaultLogStorageAccountId:            exampleAccount.ID(),
+/// 			TargetResourceGroupId:                 example.ID().ToIDOutput().ToStringOutput(),
+/// 			DefaultLogStorageAccountId:            exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultRecoveryDiskType:               pulumi.String("Standard_LRS"),
-/// 			TargetNetworkId:                       exampleVirtualNetwork.ID(),
+/// 			TargetNetworkId:                       exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkInterfaces: siterecovery.VmwareReplicatedVmNetworkInterfaceArray{
 /// 				&siterecovery.VmwareReplicatedVmNetworkInterfaceArgs{
 /// 					SourceMacAddress: pulumi.String("00:00:00:00:00:00"),
@@ -645,13 +647,13 @@ class VmwareReplicatedVm extends pulumi.CustomResource {
   /// One or more `managedDisk` block as defined below. It's available only if mobility service is already installed on the source VM.
   ///
   /// &gt; **Note:** A replicated VM could be created without `managedDisk` block, once the block has been specified, changing it expect removing it forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> managedDisks;
+  late final pulumi.Output<List<VmwareReplicatedVmManagedDisk>?> managedDisks;
   /// Name of group in which all machines will replicate together and have shared crash consistent and app-consistent recovery points when failed over.
   late final pulumi.Output<String?> multiVmGroupName;
   /// The name of the replicated VM. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// One or more `networkInterface` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networkInterfaces;
+  late final pulumi.Output<List<VmwareReplicatedVmNetworkInterface>?> networkInterfaces;
   /// The name of the credential to access the source VM. Changing this forces a new resource to be created. More information about the credentials could be found [here](https://learn.microsoft.com/en-us/azure/site-recovery/deploy-vmware-azure-replication-appliance-modernized).
   late final pulumi.Output<String> physicalServerCredentialName;
   /// The ID of the policy to use for this replicated VM.
@@ -695,17 +697,17 @@ class VmwareReplicatedVm extends pulumi.CustomResource {
           'azure:siterecovery/vmwareReplicatedVm:VmwareReplicatedVm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applianceName = registerOutput<String>('applianceName');
     defaultLogStorageAccountId = registerOutput<String?>('defaultLogStorageAccountId');
     defaultRecoveryDiskType = registerOutput<String?>('defaultRecoveryDiskType');
     defaultTargetDiskEncryptionSetId = registerOutput<String?>('defaultTargetDiskEncryptionSetId');
     licenseType = registerOutput<String?>('licenseType');
-    managedDisks = registerOutput<List<Map<String, dynamic>>?>('managedDisks');
+    managedDisks = registerOutput<List<VmwareReplicatedVmManagedDisk>?>('managedDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VmwareReplicatedVmManagedDisk>(guardedValue, (value) => VmwareReplicatedVmManagedDisk.fromMap((value as Map).cast<String, dynamic>())); });
     multiVmGroupName = registerOutput<String?>('multiVmGroupName');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>('networkInterfaces');
+    networkInterfaces = registerOutput<List<VmwareReplicatedVmNetworkInterface>?>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VmwareReplicatedVmNetworkInterface>(guardedValue, (value) => VmwareReplicatedVmNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     physicalServerCredentialName = registerOutput<String>('physicalServerCredentialName');
     recoveryReplicationPolicyId = registerOutput<String>('recoveryReplicationPolicyId');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
@@ -726,11 +728,12 @@ class VmwareReplicatedVm extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VmwareReplicatedVmState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VmwareReplicatedVm._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -749,10 +752,43 @@ class VmwareReplicatedVm extends pulumi.CustomResource {
     defaultRecoveryDiskType = registerOutput<String?>('defaultRecoveryDiskType');
     defaultTargetDiskEncryptionSetId = registerOutput<String?>('defaultTargetDiskEncryptionSetId');
     licenseType = registerOutput<String?>('licenseType');
-    managedDisks = registerOutput<List<Map<String, dynamic>>?>('managedDisks');
+    managedDisks = registerOutput<List<VmwareReplicatedVmManagedDisk>?>('managedDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VmwareReplicatedVmManagedDisk>(guardedValue, (value) => VmwareReplicatedVmManagedDisk.fromMap((value as Map).cast<String, dynamic>())); });
     multiVmGroupName = registerOutput<String?>('multiVmGroupName');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>('networkInterfaces');
+    networkInterfaces = registerOutput<List<VmwareReplicatedVmNetworkInterface>?>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VmwareReplicatedVmNetworkInterface>(guardedValue, (value) => VmwareReplicatedVmNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    physicalServerCredentialName = registerOutput<String>('physicalServerCredentialName');
+    recoveryReplicationPolicyId = registerOutput<String>('recoveryReplicationPolicyId');
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
+    sourceVmName = registerOutput<String>('sourceVmName');
+    targetAvailabilitySetId = registerOutput<String?>('targetAvailabilitySetId');
+    targetBootDiagnosticsStorageAccountId = registerOutput<String?>('targetBootDiagnosticsStorageAccountId');
+    targetNetworkId = registerOutput<String?>('targetNetworkId');
+    targetProximityPlacementGroupId = registerOutput<String?>('targetProximityPlacementGroupId');
+    targetResourceGroupId = registerOutput<String>('targetResourceGroupId');
+    targetVmName = registerOutput<String>('targetVmName');
+    targetVmSize = registerOutput<String?>('targetVmSize');
+    targetZone = registerOutput<String?>('targetZone');
+    testNetworkId = registerOutput<String?>('testNetworkId');
+  }
+
+  /// Creates a typed reference to an existing [VmwareReplicatedVm] resource.
+  VmwareReplicatedVm.reference(String urn)
+    : super(
+        'azure:siterecovery/vmwareReplicatedVm:VmwareReplicatedVm',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applianceName = registerOutput<String>('applianceName');
+    defaultLogStorageAccountId = registerOutput<String?>('defaultLogStorageAccountId');
+    defaultRecoveryDiskType = registerOutput<String?>('defaultRecoveryDiskType');
+    defaultTargetDiskEncryptionSetId = registerOutput<String?>('defaultTargetDiskEncryptionSetId');
+    licenseType = registerOutput<String?>('licenseType');
+    managedDisks = registerOutput<List<VmwareReplicatedVmManagedDisk>?>('managedDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VmwareReplicatedVmManagedDisk>(guardedValue, (value) => VmwareReplicatedVmManagedDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    multiVmGroupName = registerOutput<String?>('multiVmGroupName');
+    this.name = registerOutput<String>('name');
+    networkInterfaces = registerOutput<List<VmwareReplicatedVmNetworkInterface>?>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VmwareReplicatedVmNetworkInterface>(guardedValue, (value) => VmwareReplicatedVmNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     physicalServerCredentialName = registerOutput<String>('physicalServerCredentialName');
     recoveryReplicationPolicyId = registerOutput<String>('recoveryReplicationPolicyId');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');

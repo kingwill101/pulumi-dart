@@ -58,12 +58,12 @@ class GetTrafficManagerProfileMonitorConfig {
     return GetTrafficManagerProfileMonitorConfig(
       customHeaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetTrafficManagerProfileMonitorConfigCustomHeader>(map['customHeaders']!, (value) => GetTrafficManagerProfileMonitorConfigCustomHeader.fromMap((value as Map).cast<String, dynamic>()))),
       expectedStatusCodeRanges: pulumi.Input.fromValue((map['expectedStatusCodeRanges'] as List).cast<String>()),
-      intervalInSeconds: pulumi.Input.fromValue(map['intervalInSeconds'] as int),
+      intervalInSeconds: pulumi.Input.fromValue((map['intervalInSeconds'] as num).toInt()),
       path: pulumi.Input.fromValue(map['path'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      timeoutInSeconds: pulumi.Input.fromValue(map['timeoutInSeconds'] as int),
-      toleratedNumberOfFailures: pulumi.Input.fromValue(map['toleratedNumberOfFailures'] as int),
+      timeoutInSeconds: pulumi.Input.fromValue((map['timeoutInSeconds'] as num).toInt()),
+      toleratedNumberOfFailures: pulumi.Input.fromValue((map['toleratedNumberOfFailures'] as num).toInt()),
     );
   }
 }

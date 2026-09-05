@@ -126,7 +126,7 @@ import 'share_file_state.dart';
 /// 		}
 /// 		exampleShare, err := storage.NewShare(ctx, "example", &storage.ShareArgs{
 /// 			Name:             pulumi.String("sharename"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Quota:            pulumi.Int(50),
 /// 		})
 /// 		if err != nil {
@@ -309,14 +309,14 @@ class ShareFile extends pulumi.CustomResource {
           'azure:storage/shareFile:ShareFile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     contentDisposition = registerOutput<String?>('contentDisposition');
     contentEncoding = registerOutput<String?>('contentEncoding');
     contentLength = registerOutput<int>('contentLength');
     contentMd5 = registerOutput<String?>('contentMd5');
     contentType = registerOutput<String?>('contentType');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     path = registerOutput<String?>('path');
     source = registerOutput<String?>('source');
@@ -329,11 +329,12 @@ class ShareFile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ShareFileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ShareFile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -352,7 +353,29 @@ class ShareFile extends pulumi.CustomResource {
     contentLength = registerOutput<int>('contentLength');
     contentMd5 = registerOutput<String?>('contentMd5');
     contentType = registerOutput<String?>('contentType');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String?>('path');
+    source = registerOutput<String?>('source');
+    storageShareId = registerOutput<String>('storageShareId');
+    storageShareUrl = registerOutput<String>('storageShareUrl');
+  }
+
+  /// Creates a typed reference to an existing [ShareFile] resource.
+  ShareFile.reference(String urn)
+    : super(
+        'azure:storage/shareFile:ShareFile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    contentDisposition = registerOutput<String?>('contentDisposition');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    contentLength = registerOutput<int>('contentLength');
+    contentMd5 = registerOutput<String?>('contentMd5');
+    contentType = registerOutput<String?>('contentType');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     path = registerOutput<String?>('path');
     source = registerOutput<String?>('source');

@@ -12,45 +12,45 @@ import 'spring_cloud_service_trace.dart';
 /// Input properties used for looking up and filtering SpringCloudService resources.
 class SpringCloudServiceState {
   /// Specifies the size for this Spring Cloud Service's default build agent pool. Possible values are `S1`, `S2`, `S3`, `S4` and `S5`. This field is applicable only for Spring Cloud Service with enterprise tier.
-  final pulumi.Input<String>? buildAgentPoolSize;
+  final pulumi.Input<String?>? buildAgentPoolSize;
   /// A `configServerGitSetting` block as defined below. This field is applicable only for Spring Cloud Service with basic and standard tier.
-  final pulumi.Input<SpringCloudServiceConfigServerGitSetting>? configServerGitSetting;
+  final pulumi.Input<SpringCloudServiceConfigServerGitSetting?>? configServerGitSetting;
   /// One or more `containerRegistry` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
-  final pulumi.Input<List<SpringCloudServiceContainerRegistry>>? containerRegistries;
+  final pulumi.Input<List<SpringCloudServiceContainerRegistry>?>? containerRegistries;
   /// A `defaultBuildService` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
-  final pulumi.Input<SpringCloudServiceDefaultBuildService>? defaultBuildService;
+  final pulumi.Input<SpringCloudServiceDefaultBuildService?>? defaultBuildService;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Should the log stream in vnet injection instance could be accessed from Internet?
-  final pulumi.Input<bool>? logStreamPublicEndpointEnabled;
+  final pulumi.Input<bool?>? logStreamPublicEndpointEnabled;
   /// The resource Id of the Managed Environment that the Spring Apps instance builds on. Can only be specified when `skuTier` is set to `StandardGen2`.
-  final pulumi.Input<String>? managedEnvironmentId;
+  final pulumi.Input<String?>? managedEnvironmentId;
   /// A `marketplace` block as defined below. Can only be specified when `sku` is set to `E0`.
-  final pulumi.Input<SpringCloudServiceMarketplace>? marketplace;
+  final pulumi.Input<SpringCloudServiceMarketplace?>? marketplace;
   /// Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `network` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<SpringCloudServiceNetwork>? network;
+  final pulumi.Input<SpringCloudServiceNetwork?>? network;
   /// A list of the outbound Public IP Addresses used by this Spring Cloud Service.
-  final pulumi.Input<List<String>>? outboundPublicIpAddresses;
+  final pulumi.Input<List<String>?>? outboundPublicIpAddresses;
   /// A list of `requiredNetworkTrafficRules` blocks as defined below.
-  final pulumi.Input<List<SpringCloudServiceRequiredNetworkTrafficRule>>? requiredNetworkTrafficRules;
+  final pulumi.Input<List<SpringCloudServiceRequiredNetworkTrafficRule>?>? requiredNetworkTrafficRules;
   /// Specifies The name of the resource group in which to create the Spring Cloud Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Whether enable the default Service Registry. This field is applicable only for Spring Cloud Service with enterprise tier.
-  final pulumi.Input<bool>? serviceRegistryEnabled;
+  final pulumi.Input<bool?>? serviceRegistryEnabled;
   /// The ID of the Spring Cloud Service Registry.
-  final pulumi.Input<String>? serviceRegistryId;
+  final pulumi.Input<String?>? serviceRegistryId;
   /// Specifies the SKU Name for this Spring Cloud Service. Possible values are `B0`, `S0` and `E0`. Defaults to `S0`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// Specifies the SKU Tier for this Spring Cloud Service. Possible values are `Basic`, `Enterprise`, `Standard` and `StandardGen2`. The attribute is automatically computed from API response except when `managedEnvironmentId` is defined. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? skuTier;
+  final pulumi.Input<String?>? skuTier;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `trace` block as defined below.
-  final pulumi.Input<SpringCloudServiceTrace>? trace;
+  final pulumi.Input<SpringCloudServiceTrace?>? trace;
   /// Whether zone redundancy is enabled for this Spring Cloud Service. Defaults to `false`.
-  final pulumi.Input<bool>? zoneRedundant;
+  final pulumi.Input<bool?>? zoneRedundant;
 
   /// Creates a new [SpringCloudServiceState].
   /// [buildAgentPoolSize] Specifies the size for this Spring Cloud Service's default build agent pool. Possible values are `S1`, `S2`, `S3`, `S4` and `S5`. This field is applicable only for Spring Cloud Service with enterprise tier.

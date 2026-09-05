@@ -16,7 +16,7 @@ class FunctionAppHybridConnectionArgs {
   /// The ID of the Relay Hybrid Connection to use. Changing this forces a new resource to be created.
   final pulumi.Input<String> relayId;
   /// The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
-  final pulumi.Input<String>? sendKeyName;
+  final pulumi.Input<String?>? sendKeyName;
 
   /// Creates a new [FunctionAppHybridConnectionArgs].
   /// [functionAppId] The ID of the Function App for this Hybrid Connection. Changing this forces a new resource to be created.
@@ -46,7 +46,7 @@ class FunctionAppHybridConnectionArgs {
     return FunctionAppHybridConnectionArgs(
       functionAppId: pulumi.Input.fromValue(map['functionAppId'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       relayId: pulumi.Input.fromValue(map['relayId'] as String),
       sendKeyName: (() { final guardedValue = map['sendKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

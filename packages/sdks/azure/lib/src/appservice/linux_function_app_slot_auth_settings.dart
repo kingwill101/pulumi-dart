@@ -10,39 +10,39 @@ import 'linux_function_app_slot_auth_settings_twitter.dart';
 
 class LinuxFunctionAppSlotAuthSettings {
   /// an `activeDirectory` block as detailed below.
-  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsActiveDirectory>? activeDirectory;
+  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsActiveDirectory?>? activeDirectory;
   /// Specifies a map of login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
-  final pulumi.Input<Map<String, String>>? additionalLoginParameters;
+  final pulumi.Input<Map<String, String>?>? additionalLoginParameters;
   /// Specifies a list of External URLs that can be redirected to as part of logging in or logging out of the Windows Web App.
-  final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
+  final pulumi.Input<List<String>?>? allowedExternalRedirectUrls;
   /// The default authentication provider to use when multiple providers are configured. Possible values include: `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount`, `Twitter`, `Github`.
   ///
   /// &gt; **Note:** This setting is only needed if multiple providers are configured, and the `unauthenticatedClientAction` is set to "RedirectToLoginPage".
-  final pulumi.Input<String>? defaultProvider;
+  final pulumi.Input<String?>? defaultProvider;
   /// Should the Authentication / Authorization feature be enabled?
   final pulumi.Input<bool> enabled;
   /// a `facebook` block as detailed below.
-  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsFacebook>? facebook;
+  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsFacebook?>? facebook;
   /// a `github` block as detailed below.
-  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsGithub>? github;
+  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsGithub?>? github;
   /// a `google` block as detailed below.
-  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsGoogle>? google;
+  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsGoogle?>? google;
   /// The OpenID Connect Issuer URI that represents the entity which issues access tokens.
   ///
   /// &gt; **Note:** When using Azure Active Directory, this value is the URI of the directory tenant, e.g. &lt;https://sts.windows.net/{tenant-guid}/&gt;.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
   /// a `microsoft` block as detailed below.
-  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsMicrosoft>? microsoft;
+  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsMicrosoft?>? microsoft;
   /// The RuntimeVersion of the Authentication / Authorization feature in use.
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
   /// The number of hours after session token expiration that a session token can be used to call the token refresh API. Defaults to `72` hours.
-  final pulumi.Input<double>? tokenRefreshExtensionHours;
+  final pulumi.Input<double?>? tokenRefreshExtensionHours;
   /// Should the Linux Web App durably store platform-specific security tokens that are obtained during login flows? Defaults to `false`.
-  final pulumi.Input<bool>? tokenStoreEnabled;
+  final pulumi.Input<bool?>? tokenStoreEnabled;
   /// a `twitter` block as detailed below.
-  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsTwitter>? twitter;
+  final pulumi.Input<LinuxFunctionAppSlotAuthSettingsTwitter?>? twitter;
   /// The action to take when an unauthenticated client attempts to access the app. Possible values include: `RedirectToLoginPage`, `AllowAnonymous`.
-  final pulumi.Input<String>? unauthenticatedClientAction;
+  final pulumi.Input<String?>? unauthenticatedClientAction;
 
   /// Creates a new [LinuxFunctionAppSlotAuthSettings].
   /// [activeDirectory] an `activeDirectory` block as detailed below.
@@ -111,7 +111,7 @@ class LinuxFunctionAppSlotAuthSettings {
       issuer: (() { final guardedValue = map['issuer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       microsoft: (() { final guardedValue = map['microsoft']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinuxFunctionAppSlotAuthSettingsMicrosoft.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       runtimeVersion: (() { final guardedValue = map['runtimeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tokenRefreshExtensionHours: (() { final guardedValue = map['tokenRefreshExtensionHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      tokenRefreshExtensionHours: (() { final guardedValue = map['tokenRefreshExtensionHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       tokenStoreEnabled: (() { final guardedValue = map['tokenStoreEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       twitter: (() { final guardedValue = map['twitter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinuxFunctionAppSlotAuthSettingsTwitter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       unauthenticatedClientAction: (() { final guardedValue = map['unauthenticatedClientAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

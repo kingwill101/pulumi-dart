@@ -27,6 +27,7 @@ import 'managed_storage_account_state.dart';
 ///     name: "keyvaultname",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     accessPolicies: [{
@@ -75,6 +76,7 @@ import 'managed_storage_account_state.dart';
 ///     name="keyvaultname",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     access_policies=[{
@@ -133,6 +135,7 @@ import 'managed_storage_account_state.dart';
 ///         Name = "keyvaultname",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         AccessPolicies = new[]
@@ -207,11 +210,12 @@ import 'managed_storage_account_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:              pulumi.String("keyvaultname"),
-/// 			Location:          example.Location,
-/// 			ResourceGroupName: example.Name,
-/// 			TenantId:          pulumi.String(current.TenantId),
-/// 			SkuName:           pulumi.String("standard"),
+/// 			Name:                     pulumi.String("keyvaultname"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(current.TenantId),
@@ -238,8 +242,8 @@ import 'managed_storage_account_state.dart';
 /// 		}
 /// 		_, err = keyvault.NewManagedStorageAccount(ctx, "example", &keyvault.ManagedStorageAccountArgs{
 /// 			Name:                       pulumi.String("examplemanagedstorage"),
-/// 			KeyVaultId:                 exampleKeyVault.ID(),
-/// 			StorageAccountId:           exampleAccount.ID(),
+/// 			KeyVaultId:                 exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:           exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountKey:          pulumi.String("key1"),
 /// 			RegenerateKeyAutomatically: pulumi.Bool(false),
 /// 			RegenerationPeriod:         pulumi.String("P1D"),
@@ -275,11 +279,12 @@ import 'managed_storage_account_state.dart';
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "keyvaultname"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name            = "standard"
+///   name                       = "keyvaultname"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
 ///   access_policies {
 ///     tenant_id           = data.azure_core_getclientconfig.current.tenant_id
 ///     object_id           = data.azure_core_getclientconfig.current.object_id
@@ -344,6 +349,7 @@ import 'managed_storage_account_state.dart';
 ///             .name("keyvaultname")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .accessPolicies(KeyVaultAccessPolicyArgs.builder()
@@ -399,6 +405,7 @@ import 'managed_storage_account_state.dart';
 ///       name: keyvaultname
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       accessPolicies:
@@ -472,7 +479,7 @@ class ManagedStorageAccount extends pulumi.CustomResource {
           'azure:keyvault/managedStorageAccount:ManagedStorageAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     keyVaultId = registerOutput<String>('keyVaultId');
     this.name = registerOutput<String>('name');
@@ -480,7 +487,7 @@ class ManagedStorageAccount extends pulumi.CustomResource {
     regenerationPeriod = registerOutput<String?>('regenerationPeriod');
     storageAccountId = registerOutput<String>('storageAccountId');
     storageAccountKey = registerOutput<String>('storageAccountKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ManagedStorageAccount] resource's state with the given [name] and [id].
@@ -488,11 +495,12 @@ class ManagedStorageAccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedStorageAccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedStorageAccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -512,6 +520,24 @@ class ManagedStorageAccount extends pulumi.CustomResource {
     regenerationPeriod = registerOutput<String?>('regenerationPeriod');
     storageAccountId = registerOutput<String>('storageAccountId');
     storageAccountKey = registerOutput<String>('storageAccountKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ManagedStorageAccount] resource.
+  ManagedStorageAccount.reference(String urn)
+    : super(
+        'azure:keyvault/managedStorageAccount:ManagedStorageAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    keyVaultId = registerOutput<String>('keyVaultId');
+    this.name = registerOutput<String>('name');
+    regenerateKeyAutomatically = registerOutput<bool?>('regenerateKeyAutomatically');
+    regenerationPeriod = registerOutput<String?>('regenerationPeriod');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    storageAccountKey = registerOutput<String>('storageAccountKey');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

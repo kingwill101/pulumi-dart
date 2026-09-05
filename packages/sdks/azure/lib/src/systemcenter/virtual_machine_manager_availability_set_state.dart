@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VirtualMachineManagerAvailabilitySet resources.
 class VirtualMachineManagerAvailabilitySetState {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Availability Set. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? customLocationId;
+  final pulumi.Input<String?>? customLocationId;
   /// The Azure Region where the System Center Virtual Machine Manager Availability Set should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the System Center Virtual Machine Manager Availability Set. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the System Center Virtual Machine Availability Set should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The ID of the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? systemCenterVirtualMachineManagerServerId;
+  final pulumi.Input<String?>? systemCenterVirtualMachineManagerServerId;
   /// A mapping of tags which should be assigned to the System Center Virtual Machine Manager Availability Set.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VirtualMachineManagerAvailabilitySetState].
   /// [customLocationId] The ID of the Custom Location for the System Center Virtual Machine Manager Availability Set. Changing this forces a new resource to be created.

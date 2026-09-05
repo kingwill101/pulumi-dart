@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Snapshot resources.
 class SnapshotState {
   /// The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the NetApp Snapshot. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the NetApp pool in which the NetApp Volume should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? poolName;
+  final pulumi.Input<String?>? poolName;
   /// The name of the resource group where the NetApp Snapshot should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The name of the NetApp volume in which the NetApp Snapshot should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? volumeName;
+  final pulumi.Input<String?>? volumeName;
 
   /// Creates a new [SnapshotState].
   /// [accountName] The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.

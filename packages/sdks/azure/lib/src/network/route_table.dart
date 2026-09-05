@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_table_args.dart';
+import 'route_table_route.dart';
 import 'route_table_state.dart';
 
 /// Manages a Route Table
@@ -248,7 +249,7 @@ class RouteTable extends pulumi.CustomResource {
   /// A list of objects representing routes. Each object accepts the arguments documented below.
   ///
   /// &gt; **NOTE** Since `route` can be configured both inline and via the separate `azure.network.Route` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
-  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+  late final pulumi.Output<List<RouteTableRoute>> routes;
   /// The collection of Subnets associated with this route table.
   late final pulumi.Output<List<String>> subnets;
   /// A mapping of tags to assign to the resource.
@@ -266,15 +267,15 @@ class RouteTable extends pulumi.CustomResource {
           'azure:network/routeTable:RouteTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     bgpRoutePropagationEnabled = registerOutput<bool?>('bgpRoutePropagationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
-    subnets = registerOutput<List<String>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
+    routes = registerOutput<List<RouteTableRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteTableRoute>(guardedValue, (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RouteTable] resource's state with the given [name] and [id].
@@ -282,11 +283,12 @@ class RouteTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -304,8 +306,26 @@ class RouteTable extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
-    subnets = registerOutput<List<String>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
+    routes = registerOutput<List<RouteTableRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteTableRoute>(guardedValue, (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RouteTable] resource.
+  RouteTable.reference(String urn)
+    : super(
+        'azure:network/routeTable:RouteTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bgpRoutePropagationEnabled = registerOutput<bool?>('bgpRoutePropagationEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routes = registerOutput<List<RouteTableRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteTableRoute>(guardedValue, (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

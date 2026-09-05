@@ -22,7 +22,7 @@ import 'extension_state.dart';
 /// const exampleExtension = new azure.arcmachine.Extension("example", {
 ///     name: "example",
 ///     location: "West Europe",
-///     arcMachineId: example.apply(example => example.id),
+///     arcMachineId: example.id,
 ///     publisher: "Microsoft.Azure.Monitor",
 ///     type: "AzureMonitorLinuxAgent",
 /// });
@@ -97,13 +97,11 @@ import 'extension_state.dart';
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 		}, nil)
 /// 		_, err = arcmachine.NewExtension(ctx, "example", &arcmachine.ExtensionArgs{
-/// 			Name:     pulumi.String("example"),
-/// 			Location: pulumi.String("West Europe"),
-/// 			ArcMachineId: pulumi.String(example.ApplyT(func(example arcmachine.GetResult) (*string, error) {
-/// 				return example.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Publisher: pulumi.String("Microsoft.Azure.Monitor"),
-/// 			Type:      pulumi.String("AzureMonitorLinuxAgent"),
+/// 			Name:         pulumi.String("example"),
+/// 			Location:     pulumi.String("West Europe"),
+/// 			ArcMachineId: example.Id(),
+/// 			Publisher:    pulumi.String("Microsoft.Azure.Monitor"),
+/// 			Type:         pulumi.String("AzureMonitorLinuxAgent"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -267,17 +265,18 @@ class Extension extends pulumi.CustomResource {
           'azure:arcmachine/extension:Extension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['protectedSettings'],
         ) {
     arcMachineId = registerOutput<String>('arcMachineId');
     automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
     publisher = registerOutput<String>('publisher');
     settings = registerOutput<String?>('settings');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
   }
@@ -287,11 +286,12 @@ class Extension extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExtensionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Extension._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -310,10 +310,33 @@ class Extension extends pulumi.CustomResource {
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
     publisher = registerOutput<String>('publisher');
     settings = registerOutput<String?>('settings');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
+  }
+
+  /// Creates a typed reference to an existing [Extension] resource.
+  Extension.reference(String urn)
+    : super(
+        'azure:arcmachine/extension:Extension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['protectedSettings'],
+        isResourceReference: true,
+      ) {
+    arcMachineId = registerOutput<String>('arcMachineId');
+    automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
+    publisher = registerOutput<String>('publisher');
+    settings = registerOutput<String?>('settings');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
   }

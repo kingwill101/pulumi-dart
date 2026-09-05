@@ -10,27 +10,27 @@ import 'get_dicom_service_storage.dart';
 /// Result data returned by getDicomService.
 class GetDicomServiceResult {
   /// The `authentication` block as defined below.
-  final List<GetDicomServiceAuthentication> authentications;
+  final List<GetDicomServiceAuthentication>? authentications;
   /// The `cors` block as defined below.
-  final List<GetDicomServiceCor> cors;
+  final List<GetDicomServiceCor>? cors;
   /// If data partitions are enabled or not.
-  final bool dataPartitionsEnabled;
+  final bool? dataPartitionsEnabled;
   /// The URL of the key to use for encryption as part of the customer-managed key encryption settings.
-  final String encryptionKeyUrl;
+  final String? encryptionKeyUrl;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final List<GetDicomServiceIdentity> identities;
+  final String? id;
+  final List<GetDicomServiceIdentity>? identities;
   /// The Azure Region where the Healthcare DICOM Service is located.
-  final String location;
-  final String name;
-  final List<GetDicomServicePrivateEndpoint> privateEndpoints;
+  final String? location;
+  final String? name;
+  final List<GetDicomServicePrivateEndpoint>? privateEndpoints;
   /// The url of the Healthcare DICOM Services.
-  final String serviceUrl;
+  final String? serviceUrl;
   /// The `storage` block as defined below.
-  final List<GetDicomServiceStorage> storages;
+  final List<GetDicomServiceStorage>? storages;
   /// A map of tags assigned to the Healthcare DICOM Service.
-  final Map<String, String> tags;
-  final String workspaceId;
+  final Map<String, String>? tags;
+  final String? workspaceId;
 
   /// Creates a new [GetDicomServiceResult].
   /// [authentications] The `authentication` block as defined below.
@@ -38,63 +38,63 @@ class GetDicomServiceResult {
   /// [dataPartitionsEnabled] If data partitions are enabled or not.
   /// [encryptionKeyUrl] The URL of the key to use for encryption as part of the customer-managed key encryption settings.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [identities] Required.
+  /// [identities] Optional.
   /// [location] The Azure Region where the Healthcare DICOM Service is located.
-  /// [name] Required.
-  /// [privateEndpoints] Required.
+  /// [name] Optional.
+  /// [privateEndpoints] Optional.
   /// [serviceUrl] The url of the Healthcare DICOM Services.
   /// [storages] The `storage` block as defined below.
   /// [tags] A map of tags assigned to the Healthcare DICOM Service.
-  /// [workspaceId] Required.
+  /// [workspaceId] Optional.
   const GetDicomServiceResult({
-    required this.authentications,
-    required this.cors,
-    required this.dataPartitionsEnabled,
-    required this.encryptionKeyUrl,
-    required this.id,
-    required this.identities,
-    required this.location,
-    required this.name,
-    required this.privateEndpoints,
-    required this.serviceUrl,
-    required this.storages,
-    required this.tags,
-    required this.workspaceId,
+    this.authentications,
+    this.cors,
+    this.dataPartitionsEnabled,
+    this.encryptionKeyUrl,
+    this.id,
+    this.identities,
+    this.location,
+    this.name,
+    this.privateEndpoints,
+    this.serviceUrl,
+    this.storages,
+    this.tags,
+    this.workspaceId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentications': pulumi.Input.encodeList<GetDicomServiceAuthentication, Map<String, dynamic>>(authentications, (value) => value.toMap()),
-      'cors': pulumi.Input.encodeList<GetDicomServiceCor, Map<String, dynamic>>(cors, (value) => value.toMap()),
-      'dataPartitionsEnabled': dataPartitionsEnabled,
-      'encryptionKeyUrl': encryptionKeyUrl,
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetDicomServiceIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'location': location,
-      'name': name,
-      'privateEndpoints': pulumi.Input.encodeList<GetDicomServicePrivateEndpoint, Map<String, dynamic>>(privateEndpoints, (value) => value.toMap()),
-      'serviceUrl': serviceUrl,
-      'storages': pulumi.Input.encodeList<GetDicomServiceStorage, Map<String, dynamic>>(storages, (value) => value.toMap()),
-      'tags': tags,
-      'workspaceId': workspaceId,
+      'authentications': ?(() { final guardedValue = authentications; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDicomServiceAuthentication, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'cors': ?(() { final guardedValue = cors; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDicomServiceCor, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'dataPartitionsEnabled': ?dataPartitionsEnabled,
+      'encryptionKeyUrl': ?encryptionKeyUrl,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDicomServiceIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'name': ?name,
+      'privateEndpoints': ?(() { final guardedValue = privateEndpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDicomServicePrivateEndpoint, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'serviceUrl': ?serviceUrl,
+      'storages': ?(() { final guardedValue = storages; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDicomServiceStorage, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
+      'workspaceId': ?workspaceId,
     };
   }
 
   factory GetDicomServiceResult.fromMap(Map<String, dynamic> map) {
     return GetDicomServiceResult(
-      authentications: pulumi.Input.decodeList<GetDicomServiceAuthentication>(map['authentications']!, (value) => GetDicomServiceAuthentication.fromMap((value as Map).cast<String, dynamic>())),
-      cors: pulumi.Input.decodeList<GetDicomServiceCor>(map['cors']!, (value) => GetDicomServiceCor.fromMap((value as Map).cast<String, dynamic>())),
-      dataPartitionsEnabled: map['dataPartitionsEnabled'] as bool,
-      encryptionKeyUrl: map['encryptionKeyUrl'] as String,
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetDicomServiceIdentity>(map['identities']!, (value) => GetDicomServiceIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      privateEndpoints: pulumi.Input.decodeList<GetDicomServicePrivateEndpoint>(map['privateEndpoints']!, (value) => GetDicomServicePrivateEndpoint.fromMap((value as Map).cast<String, dynamic>())),
-      serviceUrl: map['serviceUrl'] as String,
-      storages: pulumi.Input.decodeList<GetDicomServiceStorage>(map['storages']!, (value) => GetDicomServiceStorage.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      workspaceId: map['workspaceId'] as String,
+      authentications: (() { final guardedValue = map['authentications']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDicomServiceAuthentication>(guardedValue, (value) => GetDicomServiceAuthentication.fromMap((value as Map).cast<String, dynamic>())); })(),
+      cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDicomServiceCor>(guardedValue, (value) => GetDicomServiceCor.fromMap((value as Map).cast<String, dynamic>())); })(),
+      dataPartitionsEnabled: (() { final guardedValue = map['dataPartitionsEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      encryptionKeyUrl: (() { final guardedValue = map['encryptionKeyUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDicomServiceIdentity>(guardedValue, (value) => GetDicomServiceIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateEndpoints: (() { final guardedValue = map['privateEndpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDicomServicePrivateEndpoint>(guardedValue, (value) => GetDicomServicePrivateEndpoint.fromMap((value as Map).cast<String, dynamic>())); })(),
+      serviceUrl: (() { final guardedValue = map['serviceUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storages: (() { final guardedValue = map['storages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDicomServiceStorage>(guardedValue, (value) => GetDicomServiceStorage.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

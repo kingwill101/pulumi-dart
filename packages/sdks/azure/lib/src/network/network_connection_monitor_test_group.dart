@@ -6,7 +6,7 @@ class NetworkConnectionMonitorTestGroup {
   /// A list of destination endpoint names.
   final pulumi.Input<List<String>> destinationEndpoints;
   /// Should the test group be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name of the test group for the Network Connection Monitor.
   final pulumi.Input<String> name;
   /// A list of source endpoint names.

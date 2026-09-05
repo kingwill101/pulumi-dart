@@ -25,7 +25,7 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatBacken
 
   factory NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatBackendConfig.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkStrataCloudManagerDestinationNatBackendConfig(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       publicIpAddress: pulumi.Input.fromValue(map['publicIpAddress'] as String),
     );
   }

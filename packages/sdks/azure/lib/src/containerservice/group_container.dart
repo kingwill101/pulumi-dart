@@ -9,33 +9,33 @@ import 'group_container_volume.dart';
 
 class GroupContainer {
   /// A list of commands which should be run on the container. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// The required number of CPU cores of the containers. Changing this forces a new resource to be created.
   final pulumi.Input<double> cpu;
   /// The upper limit of the number of CPU cores of the containers.
-  final pulumi.Input<double>? cpuLimit;
+  final pulumi.Input<double?>? cpuLimit;
   /// A list of environment variables to be set on the container. Specified as a map of name/value pairs. Changing this forces a new resource to be created.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// The container image name. Changing this forces a new resource to be created.
   final pulumi.Input<String> image;
   /// The definition of a readiness probe for this container as documented in the `livenessProbe` block below. Changing this forces a new resource to be created.
-  final pulumi.Input<GroupContainerLivenessProbe>? livenessProbe;
+  final pulumi.Input<GroupContainerLivenessProbe?>? livenessProbe;
   /// The required memory of the containers in GB. Changing this forces a new resource to be created.
   final pulumi.Input<double> memory;
   /// The upper limit of the memory of the containers in GB.
-  final pulumi.Input<double>? memoryLimit;
+  final pulumi.Input<double?>? memoryLimit;
   /// Specifies the name of the Container. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// A set of public ports for the container. Changing this forces a new resource to be created. Set as documented in the `ports` block below.
-  final pulumi.Input<List<GroupContainerPort>>? ports;
+  final pulumi.Input<List<GroupContainerPort>?>? ports;
   /// The definition of a readiness probe for this container as documented in the `readinessProbe` block below. Changing this forces a new resource to be created.
-  final pulumi.Input<GroupContainerReadinessProbe>? readinessProbe;
+  final pulumi.Input<GroupContainerReadinessProbe?>? readinessProbe;
   /// A list of sensitive environment variables to be set on the container. Specified as a map of name/value pairs. Changing this forces a new resource to be created.
-  final pulumi.Input<Map<String, String>>? secureEnvironmentVariables;
+  final pulumi.Input<Map<String, String>?>? secureEnvironmentVariables;
   /// The definition of the security context for this container as documented in the `security` block below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<GroupContainerSecurity>>? securities;
+  final pulumi.Input<List<GroupContainerSecurity>?>? securities;
   /// The definition of a volume mount for this container as documented in the `volume` block below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<GroupContainerVolume>>? volumes;
+  final pulumi.Input<List<GroupContainerVolume>?>? volumes;
 
   /// Creates a new [GroupContainer].
   /// [commands] A list of commands which should be run on the container. Changing this forces a new resource to be created.
@@ -91,13 +91,13 @@ class GroupContainer {
   factory GroupContainer.fromMap(Map<String, dynamic> map) {
     return GroupContainer(
       commands: (() { final guardedValue = map['commands']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      cpu: pulumi.Input.fromValue(map['cpu'] as double),
-      cpuLimit: (() { final guardedValue = map['cpuLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      cpu: pulumi.Input.fromValue((map['cpu'] as num).toDouble()),
+      cpuLimit: (() { final guardedValue = map['cpuLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       environmentVariables: (() { final guardedValue = map['environmentVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       image: pulumi.Input.fromValue(map['image'] as String),
       livenessProbe: (() { final guardedValue = map['livenessProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupContainerLivenessProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      memory: pulumi.Input.fromValue(map['memory'] as double),
-      memoryLimit: (() { final guardedValue = map['memoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      memory: pulumi.Input.fromValue((map['memory'] as num).toDouble()),
+      memoryLimit: (() { final guardedValue = map['memoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GroupContainerPort>(guardedValue, (value) => GroupContainerPort.fromMap((value as Map).cast<String, dynamic>()))); })(),
       readinessProbe: (() { final guardedValue = map['readinessProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupContainerReadinessProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

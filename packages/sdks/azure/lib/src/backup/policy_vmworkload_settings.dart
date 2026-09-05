@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyVMWorkloadSettings {
   /// The compression setting for the VM Workload Backup Policy. Defaults to `false`.
-  final pulumi.Input<bool>? compressionEnabled;
+  final pulumi.Input<bool?>? compressionEnabled;
   /// The timezone for the VM Workload Backup Policy. [The possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
   final pulumi.Input<String> timeZone;
 

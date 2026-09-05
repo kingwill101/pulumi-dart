@@ -144,7 +144,7 @@ import 'server_transparent_data_encryption_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewServerTransparentDataEncryption(ctx, "example", &mssql.ServerTransparentDataEncryptionArgs{
-/// 			ServerId: exampleServer.ID(),
+/// 			ServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -307,6 +307,7 @@ import 'server_transparent_data_encryption_state.dart';
 ///     name: "example",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     enabledForDiskEncryption: true,
 ///     tenantId: current.then(current => current.tenantId),
 ///     softDeleteRetentionDays: 7,
@@ -386,6 +387,7 @@ import 'server_transparent_data_encryption_state.dart';
 ///     name="example",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     enabled_for_disk_encryption=True,
 ///     tenant_id=current.tenant_id,
 ///     soft_delete_retention_days=7,
@@ -476,6 +478,7 @@ import 'server_transparent_data_encryption_state.dart';
 ///         Name = "example",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         EnabledForDiskEncryption = true,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SoftDeleteRetentionDays = 7,
@@ -590,6 +593,7 @@ import 'server_transparent_data_encryption_state.dart';
 /// 			Name:                     pulumi.String("example"),
 /// 			Location:                 example.Location,
 /// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
 /// 			EnabledForDiskEncryption: pulumi.Bool(true),
 /// 			TenantId:                 pulumi.String(current.TenantId),
 /// 			SoftDeleteRetentionDays:  pulumi.Int(7),
@@ -611,12 +615,8 @@ import 'server_transparent_data_encryption_state.dart';
 /// 					},
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
-/// 					TenantId: exampleServer.Identity.ApplyT(func(identity mssql.ServerIdentity) (*string, error) {
-/// 						return identity.TenantId, nil
-/// 					}).(pulumi.StringPtrOutput),
-/// 					ObjectId: exampleServer.Identity.ApplyT(func(identity mssql.ServerIdentity) (*string, error) {
-/// 						return identity.PrincipalId, nil
-/// 					}).(pulumi.StringPtrOutput),
+/// 					TenantId: exampleServer.Identity.TenantId(),
+/// 					ObjectId: exampleServer.Identity.PrincipalId(),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Get"),
 /// 						pulumi.String("WrapKey"),
@@ -630,7 +630,7 @@ import 'server_transparent_data_encryption_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("byok"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -644,8 +644,8 @@ import 'server_transparent_data_encryption_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewServerTransparentDataEncryption(ctx, "example", &mssql.ServerTransparentDataEncryptionArgs{
-/// 			ServerId:      exampleServer.ID(),
-/// 			KeyVaultKeyId: exampleKey.ID(),
+/// 			ServerId:      exampleServer.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -694,6 +694,7 @@ import 'server_transparent_data_encryption_state.dart';
 ///   name                        = "example"
 ///   location                    = azure_core_resourcegroup.example.location
 ///   resource_group_name         = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
 ///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
 ///   soft_delete_retention_days  = 7
@@ -787,6 +788,7 @@ import 'server_transparent_data_encryption_state.dart';
 ///             .name("example")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .enabledForDiskEncryption(true)
 ///             .tenantId(current.tenantId())
 ///             .softDeleteRetentionDays(7)
@@ -869,6 +871,7 @@ import 'server_transparent_data_encryption_state.dart';
 ///       name: example
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       enabledForDiskEncryption: true
 ///       tenantId: ${current.tenantId}
 ///       softDeleteRetentionDays: 7
@@ -961,7 +964,7 @@ class ServerTransparentDataEncryption extends pulumi.CustomResource {
           'azure:mssql/serverTransparentDataEncryption:ServerTransparentDataEncryption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
@@ -974,11 +977,12 @@ class ServerTransparentDataEncryption extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerTransparentDataEncryptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerTransparentDataEncryption._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -992,6 +996,21 @@ class ServerTransparentDataEncryption extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
+    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+    managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');
+    serverId = registerOutput<String>('serverId');
+  }
+
+  /// Creates a typed reference to an existing [ServerTransparentDataEncryption] resource.
+  ServerTransparentDataEncryption.reference(String urn)
+    : super(
+        'azure:mssql/serverTransparentDataEncryption:ServerTransparentDataEncryption',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     managedHsmKeyId = registerOutput<String?>('managedHsmKeyId');

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DataConnectorIot resources.
 class DataConnectorIotState {
   /// The ID of the Log Analytics Workspace that this Iot Data Connector resides in. Changing this forces a new Iot Data Connector to be created.
-  final pulumi.Input<String>? logAnalyticsWorkspaceId;
+  final pulumi.Input<String?>? logAnalyticsWorkspaceId;
   /// The name which should be used for this Iot Data Connector. Changing this forces a new Iot Data Connector to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the subscription that this Iot Data Connector connects to. Changing this forces a new Iot Data Connector to be created.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [DataConnectorIotState].
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace that this Iot Data Connector resides in. Changing this forces a new Iot Data Connector to be created.

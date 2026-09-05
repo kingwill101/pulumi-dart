@@ -12,17 +12,17 @@ class AccountArgs {
   /// An `identity` block as defined below.
   final pulumi.Input<AccountIdentity> identity;
   /// The Azure location where the Video Indexer Account exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Video Indexer Account. Changing the name forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The public network access for the Video Indexer Account. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The name of the Resource Group that the Video Indexer Account will be associated with. Changing the name forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `storage` block as defined below.
   final pulumi.Input<AccountStorage> storage;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountArgs].
   /// [identity] An `identity` block as defined below.

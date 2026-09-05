@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering WebAppHybridConnection resources.
 class WebAppHybridConnectionState {
   /// The hostname of the endpoint.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// The name of the Relay Namespace.
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// The port to use for the endpoint.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The ID of the Relay Hybrid Connection to use. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? relayId;
+  final pulumi.Input<String?>? relayId;
   /// The name of the Relay in use.
-  final pulumi.Input<String>? relayName;
+  final pulumi.Input<String?>? relayName;
   /// The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
-  final pulumi.Input<String>? sendKeyName;
+  final pulumi.Input<String?>? sendKeyName;
   /// The Primary Access Key for the `sendKeyName`
-  final pulumi.Input<String>? sendKeyValue;
+  final pulumi.Input<String?>? sendKeyValue;
   /// The Service Bus Namespace.
-  final pulumi.Input<String>? serviceBusNamespace;
+  final pulumi.Input<String?>? serviceBusNamespace;
   /// The suffix for the endpoint.
-  final pulumi.Input<String>? serviceBusSuffix;
+  final pulumi.Input<String?>? serviceBusSuffix;
   /// The ID of the Web App for this Hybrid Connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? webAppId;
+  final pulumi.Input<String?>? webAppId;
 
   /// Creates a new [WebAppHybridConnectionState].
   /// [hostname] The hostname of the endpoint.
@@ -68,7 +68,7 @@ class WebAppHybridConnectionState {
     return WebAppHybridConnectionState(
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       relayId: (() { final guardedValue = map['relayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       relayName: (() { final guardedValue = map['relayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sendKeyName: (() { final guardedValue = map['sendKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

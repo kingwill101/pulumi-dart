@@ -6,9 +6,9 @@ import 'blob_inventory_policy_rule.dart';
 /// Input properties used for looking up and filtering BlobInventoryPolicy resources.
 class BlobInventoryPolicyState {
   /// One or more `rules` blocks as defined below.
-  final pulumi.Input<List<BlobInventoryPolicyRule>>? rules;
+  final pulumi.Input<List<BlobInventoryPolicyRule>?>? rules;
   /// The ID of the storage account to apply this Blob Inventory Policy to. Changing this forces a new Storage Blob Inventory Policy to be created.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
 
   /// Creates a new [BlobInventoryPolicyState].
   /// [rules] One or more `rules` blocks as defined below.

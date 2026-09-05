@@ -11,63 +11,63 @@ import 'api_subscription_key_parameter_names.dart';
 /// Input properties used for looking up and filtering Api resources.
 class ApiState {
   /// The Name of the API Management Service where this API should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// Type of API. Possible values are `graphql`, `http`, `soap`, and `websocket`. Defaults to `http`.
-  final pulumi.Input<String>? apiType;
+  final pulumi.Input<String?>? apiType;
   /// A `contact` block as documented below.
-  final pulumi.Input<ApiContact>? contact;
+  final pulumi.Input<ApiContact?>? contact;
   /// A description of the API Management API, which may include HTML formatting tags.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the API.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// A `import` block as documented below.
   ///
   /// &gt; **Note:** The `displayName`, `description`, `contact`, and `license` fields can be imported by the `import` block, which might cause a drift if these fields are set along with the `import` block.
-  final pulumi.Input<ApiImport>? import;
+  final pulumi.Input<ApiImport?>? import;
   /// Is this the current API Revision?
-  final pulumi.Input<bool>? isCurrent;
+  final pulumi.Input<bool?>? isCurrent;
   /// Is this API Revision online/accessible via the Gateway?
-  final pulumi.Input<bool>? isOnline;
+  final pulumi.Input<bool?>? isOnline;
   /// A `license` block as documented below.
-  final pulumi.Input<ApiLicense>? license;
+  final pulumi.Input<ApiLicense?>? license;
   /// The name of the API Management API. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An `oauth2Authorization` block as documented below.
-  final pulumi.Input<ApiOauth2Authorization>? oauth2Authorization;
+  final pulumi.Input<ApiOauth2Authorization?>? oauth2Authorization;
   /// An `openidAuthentication` block as documented below.
-  final pulumi.Input<ApiOpenidAuthentication>? openidAuthentication;
+  final pulumi.Input<ApiOpenidAuthentication?>? openidAuthentication;
   /// The Path for this API Management API, which is a relative URL which uniquely identifies this API and all of its resource paths within the API Management Service.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// A list of protocols the operations in this API can be invoked. Possible values are `http`, `https`, `ws`, and `wss`.
   ///
   /// &gt; **Note:** `displayName`, `path` and `protocols` are required when `sourceApiId` is not set.
-  final pulumi.Input<List<String>>? protocols;
+  final pulumi.Input<List<String>?>? protocols;
   /// The Name of the Resource Group where the API Management API exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The Revision which used for this API. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? revision;
+  final pulumi.Input<String?>? revision;
   /// The description of the API Revision of the API Management API.
-  final pulumi.Input<String>? revisionDescription;
+  final pulumi.Input<String?>? revisionDescription;
   /// Absolute URL of the backend service implementing this API.
   ///
   /// &gt; **Note:** The `serviceUrl` is required when `apiType` is specified as `websocket`.
-  final pulumi.Input<String>? serviceUrl;
+  final pulumi.Input<String?>? serviceUrl;
   /// The API id of the source API, which could be in format `azurerm_api_management_api.example.id` or in format `azurerm_api_management_api.example.id;rev=1`
-  final pulumi.Input<String>? sourceApiId;
+  final pulumi.Input<String?>? sourceApiId;
   /// A `subscriptionKeyParameterNames` block as documented below.
-  final pulumi.Input<ApiSubscriptionKeyParameterNames>? subscriptionKeyParameterNames;
+  final pulumi.Input<ApiSubscriptionKeyParameterNames?>? subscriptionKeyParameterNames;
   /// Should this API require a subscription key? Defaults to `true`.
-  final pulumi.Input<bool>? subscriptionRequired;
+  final pulumi.Input<bool?>? subscriptionRequired;
   /// Absolute URL of the Terms of Service for the API.
-  final pulumi.Input<String>? termsOfServiceUrl;
+  final pulumi.Input<String?>? termsOfServiceUrl;
   /// The Version number of this API, if this API is versioned.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// The description of the API Version of the API Management API.
-  final pulumi.Input<String>? versionDescription;
+  final pulumi.Input<String?>? versionDescription;
   /// The ID of the Version Set which this API is associated with.
   ///
   /// &gt; **Note:** When `version` is set, `versionSetId` must also be specified
-  final pulumi.Input<String>? versionSetId;
+  final pulumi.Input<String?>? versionSetId;
 
   /// Creates a new [ApiState].
   /// [apiManagementName] The Name of the API Management Service where this API should be created. Changing this forces a new resource to be created.

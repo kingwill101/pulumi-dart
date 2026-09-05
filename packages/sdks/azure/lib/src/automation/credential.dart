@@ -271,12 +271,13 @@ class Credential extends pulumi.CustomResource {
           'azure:automation/credential:Credential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     username = registerOutput<String>('username');
   }
@@ -286,11 +287,12 @@ class Credential extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CredentialState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Credential._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -307,7 +309,25 @@ class Credential extends pulumi.CustomResource {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [Credential] resource.
+  Credential.reference(String urn)
+    : super(
+        'azure:automation/credential:Credential',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     username = registerOutput<String>('username');
   }

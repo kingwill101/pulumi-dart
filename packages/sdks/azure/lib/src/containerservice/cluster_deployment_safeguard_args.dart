@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_containerservice_cluster_deployment_safeguard_cluster_deployment_safeguard_args_doc}
 class ClusterDeploymentSafeguardArgs {
   /// A list of Kubernetes namespace names that should be excluded from Deployment Safeguards enforcement. This allows certain namespaces to bypass the configured policies.
-  final pulumi.Input<List<String>>? excludedNamespaces;
+  final pulumi.Input<List<String>?>? excludedNamespaces;
   /// Specifies the Kubernetes Cluster ID for which Deployment Safeguards should be configured. Changing this forces a new resource to be created.
   final pulumi.Input<String> kubernetesClusterId;
   /// The level of Deployment Safeguards enforcement. Possible values are `Warn` and `Enforce`.
   final pulumi.Input<String> level;
   /// The Pod Security Standards level to enforce. Possible values are `Baseline`, `Privileged`, and `Restricted`. Defaults to `Privileged`.
-  final pulumi.Input<String>? podSecurityStandardsLevel;
+  final pulumi.Input<String?>? podSecurityStandardsLevel;
 
   /// Creates a new [ClusterDeploymentSafeguardArgs].
   /// [excludedNamespaces] A list of Kubernetes namespace names that should be excluded from Deployment Safeguards enforcement. This allows certain namespaces to bypass the configured policies.

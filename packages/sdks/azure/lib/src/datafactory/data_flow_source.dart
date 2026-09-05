@@ -9,19 +9,19 @@ import 'data_flow_source_schema_linked_service.dart';
 
 class DataFlowSource {
   /// A `dataset` block as defined below.
-  final pulumi.Input<DataFlowSourceDataset>? dataset;
+  final pulumi.Input<DataFlowSourceDataset?>? dataset;
   /// The description for the Data Flow Source.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A `flowlet` block as defined below.
-  final pulumi.Input<DataFlowSourceFlowlet>? flowlet;
+  final pulumi.Input<DataFlowSourceFlowlet?>? flowlet;
   /// A `linkedService` block as defined below.
-  final pulumi.Input<DataFlowSourceLinkedService>? linkedService;
+  final pulumi.Input<DataFlowSourceLinkedService?>? linkedService;
   /// The name for the Data Flow Source.
   final pulumi.Input<String> name;
   /// A `rejectedLinkedService` block as defined below.
-  final pulumi.Input<DataFlowSourceRejectedLinkedService>? rejectedLinkedService;
+  final pulumi.Input<DataFlowSourceRejectedLinkedService?>? rejectedLinkedService;
   /// A `schemaLinkedService` block as defined below.
-  final pulumi.Input<DataFlowSourceSchemaLinkedService>? schemaLinkedService;
+  final pulumi.Input<DataFlowSourceSchemaLinkedService?>? schemaLinkedService;
 
   /// Creates a new [DataFlowSource].
   /// [dataset] A `dataset` block as defined below.

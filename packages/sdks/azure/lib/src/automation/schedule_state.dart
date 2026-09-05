@@ -6,29 +6,29 @@ import 'schedule_monthly_occurrence.dart';
 /// Input properties used for looking up and filtering Schedule resources.
 class ScheduleState {
   /// The name of the automation account in which the Schedule is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? automationAccountName;
+  final pulumi.Input<String?>? automationAccountName;
   /// A description for this Schedule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The end time of the schedule.
-  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<String?>? expiryTime;
   /// The frequency of the schedule. - can be either `OneTime`, `Day`, `Hour`, `Week`, or `Month`.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<String?>? frequency;
   /// The number of `frequency`s between runs. Only valid when frequency is `Day`, `Hour`, `Week`, or `Month` and defaults to `1`.
-  final pulumi.Input<int>? interval;
+  final pulumi.Input<int?>? interval;
   /// List of days of the month that the job should execute on. Must be between `1` and `31`. `-1` for last day of the month. Only valid when frequency is `Month`.
-  final pulumi.Input<List<int>>? monthDays;
+  final pulumi.Input<List<int>?>? monthDays;
   /// One `monthlyOccurrence` blocks as defined below to specifies occurrences of days within a month. Only valid when frequency is `Month`. The `monthlyOccurrence` block supports fields documented below.
-  final pulumi.Input<ScheduleMonthlyOccurrence>? monthlyOccurrence;
+  final pulumi.Input<ScheduleMonthlyOccurrence?>? monthlyOccurrence;
   /// Specifies the name of the Schedule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Schedule is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Start time of the schedule. Must be at least five minutes in the future. Defaults to seven minutes in the future from the time the resource is created.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The timezone of the start time. Defaults to `Etc/UTC`. For possible values see: &lt;https://docs.microsoft.com/en-us/rest/api/maps/timezone/gettimezoneenumwindows&gt;
-  final pulumi.Input<String>? timezone;
+  final pulumi.Input<String?>? timezone;
   /// List of days of the week that the job should execute on. Only valid when frequency is `Week`. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
-  final pulumi.Input<List<String>>? weekDays;
+  final pulumi.Input<List<String>?>? weekDays;
 
   /// Creates a new [ScheduleState].
   /// [automationAccountName] The name of the automation account in which the Schedule is created. Changing this forces a new resource to be created.
@@ -81,7 +81,7 @@ class ScheduleState {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expiryTime: (() { final guardedValue = map['expiryTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       monthDays: (() { final guardedValue = map['monthDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       monthlyOccurrence: (() { final guardedValue = map['monthlyOccurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduleMonthlyOccurrence.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -12,9 +12,9 @@ class CertificateArgs {
   /// The name of the IoTHub that this certificate will be attached to. Changing this forces a new resource to be created.
   final pulumi.Input<String> iothubName;
   /// Is the certificate verified? Defaults to `false`.
-  final pulumi.Input<bool>? isVerified;
+  final pulumi.Input<bool?>? isVerified;
   /// Specifies the name of the IotHub Certificate resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group under which the IotHub Certificate resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 

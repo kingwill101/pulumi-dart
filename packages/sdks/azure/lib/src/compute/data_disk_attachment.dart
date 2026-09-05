@@ -325,7 +325,7 @@ import 'data_disk_attachment_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   internal.ID(),
+/// 					SubnetId:                   internal.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -338,7 +338,7 @@ import 'data_disk_attachment_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				mainNetworkInterface.ID(),
+/// 				mainNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			VmSize: pulumi.String("Standard_D4_v5"),
 /// 			StorageImageReference: &compute.VirtualMachineStorageImageReferenceArgs{
@@ -377,8 +377,8 @@ import 'data_disk_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewDataDiskAttachment(ctx, "example", &compute.DataDiskAttachmentArgs{
-/// 			ManagedDiskId:    exampleManagedDisk.ID(),
-/// 			VirtualMachineId: exampleVirtualMachine.ID(),
+/// 			ManagedDiskId:    exampleManagedDisk.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualMachineId: exampleVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			Lun:              pulumi.Int(10),
 /// 			Caching:          pulumi.String("ReadWrite"),
 /// 		})
@@ -721,7 +721,7 @@ class DataDiskAttachment extends pulumi.CustomResource {
           'azure:compute/dataDiskAttachment:DataDiskAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     caching = registerOutput<String>('caching');
     createOption = registerOutput<String?>('createOption');
@@ -736,11 +736,12 @@ class DataDiskAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataDiskAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataDiskAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -754,6 +755,23 @@ class DataDiskAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    caching = registerOutput<String>('caching');
+    createOption = registerOutput<String?>('createOption');
+    lun = registerOutput<int>('lun');
+    managedDiskId = registerOutput<String>('managedDiskId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+    writeAcceleratorEnabled = registerOutput<bool?>('writeAcceleratorEnabled');
+  }
+
+  /// Creates a typed reference to an existing [DataDiskAttachment] resource.
+  DataDiskAttachment.reference(String urn)
+    : super(
+        'azure:compute/dataDiskAttachment:DataDiskAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     caching = registerOutput<String>('caching');
     createOption = registerOutput<String?>('createOption');
     lun = registerOutput<int>('lun');

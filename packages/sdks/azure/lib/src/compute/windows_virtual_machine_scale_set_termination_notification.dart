@@ -8,7 +8,7 @@ class WindowsVirtualMachineScaleSetTerminationNotification {
   /// Length of time (in minutes, between 5 and 15) a notification to be sent to the VM on the instance metadata server till the VM gets deleted. The time duration should be specified in ISO 8601 format. Defaults to `PT5M`.
   ///
   /// &gt; **Note:** For more information about the termination notification, please [refer to this doc](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification).
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [WindowsVirtualMachineScaleSetTerminationNotification].
   /// [enabled] Should the termination notification be enabled on this Virtual Machine Scale Set?

@@ -232,13 +232,13 @@ class ScheduledAction extends pulumi.CustomResource {
           'azure:costmanagement/scheduledAction:ScheduledAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dayOfMonth = registerOutput<int?>('dayOfMonth');
-    daysOfWeeks = registerOutput<List<String>?>('daysOfWeeks');
+    daysOfWeeks = registerOutput<List<String>?>('daysOfWeeks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     emailAddressSender = registerOutput<String>('emailAddressSender');
-    emailAddresses = registerOutput<List<String>>('emailAddresses');
+    emailAddresses = registerOutput<List<String>>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailSubject = registerOutput<String>('emailSubject');
     endDate = registerOutput<String>('endDate');
     frequency = registerOutput<String>('frequency');
@@ -247,7 +247,7 @@ class ScheduledAction extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     startDate = registerOutput<String>('startDate');
     viewId = registerOutput<String>('viewId');
-    weeksOfMonths = registerOutput<List<String>?>('weeksOfMonths');
+    weeksOfMonths = registerOutput<List<String>?>('weeksOfMonths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ScheduledAction] resource's state with the given [name] and [id].
@@ -255,11 +255,12 @@ class ScheduledAction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScheduledActionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScheduledAction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -274,10 +275,10 @@ class ScheduledAction extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dayOfMonth = registerOutput<int?>('dayOfMonth');
-    daysOfWeeks = registerOutput<List<String>?>('daysOfWeeks');
+    daysOfWeeks = registerOutput<List<String>?>('daysOfWeeks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     emailAddressSender = registerOutput<String>('emailAddressSender');
-    emailAddresses = registerOutput<List<String>>('emailAddresses');
+    emailAddresses = registerOutput<List<String>>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailSubject = registerOutput<String>('emailSubject');
     endDate = registerOutput<String>('endDate');
     frequency = registerOutput<String>('frequency');
@@ -286,6 +287,31 @@ class ScheduledAction extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     startDate = registerOutput<String>('startDate');
     viewId = registerOutput<String>('viewId');
-    weeksOfMonths = registerOutput<List<String>?>('weeksOfMonths');
+    weeksOfMonths = registerOutput<List<String>?>('weeksOfMonths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ScheduledAction] resource.
+  ScheduledAction.reference(String urn)
+    : super(
+        'azure:costmanagement/scheduledAction:ScheduledAction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dayOfMonth = registerOutput<int?>('dayOfMonth');
+    daysOfWeeks = registerOutput<List<String>?>('daysOfWeeks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    emailAddressSender = registerOutput<String>('emailAddressSender');
+    emailAddresses = registerOutput<List<String>>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    emailSubject = registerOutput<String>('emailSubject');
+    endDate = registerOutput<String>('endDate');
+    frequency = registerOutput<String>('frequency');
+    hourOfDay = registerOutput<int?>('hourOfDay');
+    message = registerOutput<String?>('message');
+    this.name = registerOutput<String>('name');
+    startDate = registerOutput<String>('startDate');
+    viewId = registerOutput<String>('viewId');
+    weeksOfMonths = registerOutput<List<String>?>('weeksOfMonths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

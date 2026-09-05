@@ -31,7 +31,7 @@ class SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule {
   factory SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule.fromMap(Map<String, dynamic> map) {
     return SparkClusterRolesWorkerNodeAutoscaleRecurrenceSchedule(
       days: pulumi.Input.fromValue((map['days'] as List).cast<String>()),
-      targetInstanceCount: pulumi.Input.fromValue(map['targetInstanceCount'] as int),
+      targetInstanceCount: pulumi.Input.fromValue((map['targetInstanceCount'] as num).toInt()),
       time: pulumi.Input.fromValue(map['time'] as String),
     );
   }

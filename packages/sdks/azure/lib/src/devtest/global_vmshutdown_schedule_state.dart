@@ -6,19 +6,19 @@ import 'global_vmshutdown_schedule_notification_settings.dart';
 /// Input properties used for looking up and filtering GlobalVMShutdownSchedule resources.
 class GlobalVMShutdownScheduleState {
   /// The time each day when the schedule takes effect. Must match the format HHmm where HH is 00-23 and mm is 00-59 (e.g. 0930, 2300, etc.)
-  final pulumi.Input<String>? dailyRecurrenceTime;
+  final pulumi.Input<String?>? dailyRecurrenceTime;
   /// Whether to enable the schedule. Possible values are `true` and `false`. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The location where the schedule is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The notification setting of a schedule. A `notificationSettings` block as defined below.
-  final pulumi.Input<GlobalVMShutdownScheduleNotificationSettings>? notificationSettings;
+  final pulumi.Input<GlobalVMShutdownScheduleNotificationSettings?>? notificationSettings;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The time zone ID (e.g. Pacific Standard time). Refer to this guide for a [full list of accepted time zone names](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
-  final pulumi.Input<String>? timezone;
+  final pulumi.Input<String?>? timezone;
   /// The resource ID of the target ARM-based Virtual Machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualMachineId;
+  final pulumi.Input<String?>? virtualMachineId;
 
   /// Creates a new [GlobalVMShutdownScheduleState].
   /// [dailyRecurrenceTime] The time each day when the schedule takes effect. Must match the format HHmm where HH is 00-23 and mm is 00-59 (e.g. 0930, 2300, etc.)

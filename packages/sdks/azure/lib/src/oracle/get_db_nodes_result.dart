@@ -5,35 +5,35 @@ import 'get_db_nodes_db_node.dart';
 
 /// Result data returned by getDbNodes.
 class GetDbNodesResult {
-  final String cloudVmClusterId;
+  final String? cloudVmClusterId;
   /// A `dbNodes` block as defined below.
-  final List<GetDbNodesDbNode> dbNodes;
+  final List<GetDbNodesDbNode>? dbNodes;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
 
   /// Creates a new [GetDbNodesResult].
-  /// [cloudVmClusterId] Required.
+  /// [cloudVmClusterId] Optional.
   /// [dbNodes] A `dbNodes` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   const GetDbNodesResult({
-    required this.cloudVmClusterId,
-    required this.dbNodes,
-    required this.id,
+    this.cloudVmClusterId,
+    this.dbNodes,
+    this.id,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudVmClusterId': cloudVmClusterId,
-      'dbNodes': pulumi.Input.encodeList<GetDbNodesDbNode, Map<String, dynamic>>(dbNodes, (value) => value.toMap()),
-      'id': id,
+      'cloudVmClusterId': ?cloudVmClusterId,
+      'dbNodes': ?(() { final guardedValue = dbNodes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDbNodesDbNode, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
     };
   }
 
   factory GetDbNodesResult.fromMap(Map<String, dynamic> map) {
     return GetDbNodesResult(
-      cloudVmClusterId: map['cloudVmClusterId'] as String,
-      dbNodes: pulumi.Input.decodeList<GetDbNodesDbNode>(map['dbNodes']!, (value) => GetDbNodesDbNode.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
+      cloudVmClusterId: (() { final guardedValue = map['cloudVmClusterId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dbNodes: (() { final guardedValue = map['dbNodes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDbNodesDbNode>(guardedValue, (value) => GetDbNodesDbNode.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

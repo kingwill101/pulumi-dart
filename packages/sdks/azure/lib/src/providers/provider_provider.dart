@@ -59,29 +59,30 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'azure',
           name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.Input.mapToInputs((args ?? ProviderArgs()).toMap()),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['clientCertificate', 'clientCertificatePassword', 'clientCertificatePath', 'clientId', 'clientIdFilePath', 'clientSecret', 'clientSecretFilePath', 'oidcRequestToken', 'oidcToken', 'oidcTokenFilePath', 'subscriptionId', 'tenantId'],
         ) {
     adoPipelineServiceConnectionId = registerOutput<String?>('adoPipelineServiceConnectionId');
-    clientCertificate = registerOutput<String?>('clientCertificate');
-    clientCertificatePassword = registerOutput<String?>('clientCertificatePassword');
-    clientCertificatePath = registerOutput<String?>('clientCertificatePath');
-    clientId = registerOutput<String?>('clientId');
-    clientIdFilePath = registerOutput<String?>('clientIdFilePath');
-    clientSecret = registerOutput<String?>('clientSecret');
-    clientSecretFilePath = registerOutput<String?>('clientSecretFilePath');
+    clientCertificate = registerOutput<String?>('clientCertificate', isSecret: true);
+    clientCertificatePassword = registerOutput<String?>('clientCertificatePassword', isSecret: true);
+    clientCertificatePath = registerOutput<String?>('clientCertificatePath', isSecret: true);
+    clientId = registerOutput<String?>('clientId', isSecret: true);
+    clientIdFilePath = registerOutput<String?>('clientIdFilePath', isSecret: true);
+    clientSecret = registerOutput<String?>('clientSecret', isSecret: true);
+    clientSecretFilePath = registerOutput<String?>('clientSecretFilePath', isSecret: true);
     environment = registerOutput<String?>('environment');
     metadataHost = registerOutput<String?>('metadataHost');
     msiApiVersion = registerOutput<String?>('msiApiVersion');
     msiEndpoint = registerOutput<String?>('msiEndpoint');
-    oidcRequestToken = registerOutput<String?>('oidcRequestToken');
+    oidcRequestToken = registerOutput<String?>('oidcRequestToken', isSecret: true);
     oidcRequestUrl = registerOutput<String?>('oidcRequestUrl');
-    oidcToken = registerOutput<String?>('oidcToken');
-    oidcTokenFilePath = registerOutput<String?>('oidcTokenFilePath');
+    oidcToken = registerOutput<String?>('oidcToken', isSecret: true);
+    oidcTokenFilePath = registerOutput<String?>('oidcTokenFilePath', isSecret: true);
     partnerId = registerOutput<String?>('partnerId');
     resourceProviderRegistrations = registerOutput<String?>('resourceProviderRegistrations');
-    subscriptionId = registerOutput<String?>('subscriptionId');
-    tenantId = registerOutput<String?>('tenantId');
+    subscriptionId = registerOutput<String?>('subscriptionId', isSecret: true);
+    tenantId = registerOutput<String?>('tenantId', isSecret: true);
   }
 
   /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.

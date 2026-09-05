@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_advisor_suppression_suppression_args_doc}
 class SuppressionArgs {
   /// The Name which should be used for this Advisor suppression. Changing this forces a new Advisor suppression to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Advisor recommendation to suppress. Changing this forces a new Advisor suppression to be created.
   final pulumi.Input<String> recommendationId;
   /// The ID of the Resource to suppress the Advisor recommendation for. Changing this forces a new Advisor suppression to be created.
   final pulumi.Input<String> resourceId;
   /// A optional time to live value. If omitted, the suppression will not expire. Changing this forces a new Advisor suppression to be created.
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
 
   /// Creates a new [SuppressionArgs].
   /// [name] The Name which should be used for this Advisor suppression. Changing this forces a new Advisor suppression to be created.

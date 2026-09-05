@@ -5,21 +5,21 @@ import 'linux_function_app_slot_site_config_application_stack_docker.dart';
 
 class LinuxFunctionAppSlotSiteConfigApplicationStack {
   /// a `docker` block as detailed below.
-  final pulumi.Input<List<LinuxFunctionAppSlotSiteConfigApplicationStackDocker>>? dockers;
+  final pulumi.Input<List<LinuxFunctionAppSlotSiteConfigApplicationStackDocker>?>? dockers;
   /// The version of .Net. Possible values are `3.1`, `6.0`, `7.0`, `8.0`, `9.0` and `10.0`.
-  final pulumi.Input<String>? dotnetVersion;
+  final pulumi.Input<String?>? dotnetVersion;
   /// The version of Java to use. Possible values are `8`, `11`, `17` and `21`.
-  final pulumi.Input<String>? javaVersion;
+  final pulumi.Input<String?>? javaVersion;
   /// The version of Node to use. Possible values include `12`, `14`, `16`, `18`, `20`, `22` and `24`.
-  final pulumi.Input<String>? nodeVersion;
+  final pulumi.Input<String?>? nodeVersion;
   /// The version of PowerShell Core to use. Possibles values are `7` , `7.2`, and `7.4`.
-  final pulumi.Input<String>? powershellCoreVersion;
+  final pulumi.Input<String?>? powershellCoreVersion;
   /// The version of Python to use. Possible values are `3.14`, `3.13`, `3.12`, `3.11`, `3.10`, `3.9`, `3.8` and `3.7`.
-  final pulumi.Input<String>? pythonVersion;
+  final pulumi.Input<String?>? pythonVersion;
   /// Should the Linux Function App use a custom runtime?
-  final pulumi.Input<bool>? useCustomRuntime;
+  final pulumi.Input<bool?>? useCustomRuntime;
   /// Should the DotNet process use an isolated runtime. Defaults to `false`.
-  final pulumi.Input<bool>? useDotnetIsolatedRuntime;
+  final pulumi.Input<bool?>? useDotnetIsolatedRuntime;
 
   /// Creates a new [LinuxFunctionAppSlotSiteConfigApplicationStack].
   /// [dockers] a `docker` block as detailed below.

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RulesEngineRuleMatchCondition {
   /// can be set to `true` or `false` to negate the given condition. Defaults to `false`.
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// can be set to `Any`, `IPMatch`, `GeoMatch`, `Equal`, `Contains`, `LessThan`, `GreaterThan`, `LessThanOrEqual`, `GreaterThanOrEqual`, `BeginsWith` or `EndsWith`
   final pulumi.Input<String> operator;
   /// match against a specific key when `variable` is set to `PostArgs` or `RequestHeader`. It cannot be used with `QueryString` and `RequestMethod`.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// can be set to one or more values out of `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `UrlDecode` and `UrlEncode`
-  final pulumi.Input<List<String>>? transforms;
+  final pulumi.Input<List<String>?>? transforms;
   /// (array) can contain one or more strings.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
   /// can be set to `IsMobile`, `RemoteAddr`, `RequestMethod`, `QueryString`, `PostArgs`, `RequestURI`, `RequestPath`, `RequestFilename`, `RequestFilenameExtension`,`RequestHeader`,`RequestBody` or `RequestScheme`.
-  final pulumi.Input<String>? variable;
+  final pulumi.Input<String?>? variable;
 
   /// Creates a new [RulesEngineRuleMatchCondition].
   /// [negateCondition] can be set to `true` or `false` to negate the given condition. Defaults to `false`.

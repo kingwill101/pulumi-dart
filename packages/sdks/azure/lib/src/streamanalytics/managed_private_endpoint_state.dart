@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ManagedPrivateEndpoint resources.
 class ManagedPrivateEndpointState {
   /// The name which should be used for this Stream Analytics Managed Private Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Stream Analytics Managed Private Endpoint should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The name of the Stream Analytics Cluster where the Managed Private Endpoint should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? streamAnalyticsClusterName;
+  final pulumi.Input<String?>? streamAnalyticsClusterName;
   /// Specifies the sub resource name which the Stream Analytics Private Endpoint is able to connect to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subresourceName;
+  final pulumi.Input<String?>? subresourceName;
   /// The ID of the Private Link Enabled Remote Resource which this Stream Analytics Private endpoint should be connected to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
 
   /// Creates a new [ManagedPrivateEndpointState].
   /// [name] The name which should be used for this Stream Analytics Managed Private Endpoint. Changing this forces a new resource to be created.

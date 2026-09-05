@@ -9,19 +9,19 @@ import 'source_control_security.dart';
 /// {@macro pulumi_automation_source_control_source_control_args_doc}
 class SourceControlArgs {
   /// Whether auto async the Source Control.
-  final pulumi.Input<bool>? automaticSync;
+  final pulumi.Input<bool?>? automaticSync;
   /// The ID of Automation Account to manage this Source Control. Changing this forces a new Automation Source Control to be created.
   final pulumi.Input<String> automationAccountId;
   /// Specify the repo branch of the Source Control. Empty value is valid only for `VsoTfvc`.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// A short description of the Source Control.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder path of the source control. This Path must be relative.
   final pulumi.Input<String> folderPath;
   /// The name which should be used for this Automation Source Control. Changing this forces a new Automation Source Control to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether auto publish the Source Control. Defaults to `true`.
-  final pulumi.Input<bool>? publishRunbookEnabled;
+  final pulumi.Input<bool?>? publishRunbookEnabled;
   /// The Repository URL of the source control.
   final pulumi.Input<String> repositoryUrl;
   /// A `security` block as defined below.

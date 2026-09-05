@@ -6,23 +6,23 @@ import 'scheduled_query_rules_log_criteria.dart';
 /// Input properties used for looking up and filtering ScheduledQueryRulesLog resources.
 class ScheduledQueryRulesLogState {
   /// A list of IDs of Resources referred into query.
-  final pulumi.Input<List<String>>? authorizedResourceIds;
+  final pulumi.Input<List<String>?>? authorizedResourceIds;
   /// A `criteria` block as defined below.
-  final pulumi.Input<ScheduledQueryRulesLogCriteria>? criteria;
+  final pulumi.Input<ScheduledQueryRulesLogCriteria?>? criteria;
   /// The resource URI over which log search query is to be run. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? dataSourceId;
+  final pulumi.Input<String?>? dataSourceId;
   /// The description of the scheduled query rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether this scheduled query rule is enabled. Default is `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the Azure Region where the resource should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the scheduled query rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the scheduled query rule instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ScheduledQueryRulesLogState].
   /// [authorizedResourceIds] A list of IDs of Resources referred into query.

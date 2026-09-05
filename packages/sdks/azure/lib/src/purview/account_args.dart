@@ -11,23 +11,23 @@ class AccountArgs {
   /// An `identity` block as defined below.
   final pulumi.Input<AccountIdentity> identity;
   /// The Azure Region where the Purview Account should exist. Changing this forces a new Purview Account to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Whether the Purview Account should create a managed Event Hub Namespace. Defaults to `true`.
   ///
   /// &gt; **Note:** `managedEventHubEnabled` must be `false` in order to use a Kafka Configuration with the Purview Account.
-  final pulumi.Input<bool>? managedEventHubEnabled;
+  final pulumi.Input<bool?>? managedEventHubEnabled;
   /// The name which should be used for the new Resource Group where Purview Account creates the managed resources. Changing this forces a new Purview Account to be created.
   ///
   /// &gt; **Note:** `managedResourceGroupName` must be a new Resource Group.
-  final pulumi.Input<String>? managedResourceGroupName;
+  final pulumi.Input<String?>? managedResourceGroupName;
   /// The name which should be used for this Purview Account. Changing this forces a new Purview Account to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Should the Purview Account be visible to the public network? Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkEnabled;
+  final pulumi.Input<bool?>? publicNetworkEnabled;
   /// The name of the Resource Group where the Purview Account should exist. Changing this forces a new Purview Account to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Purview Account.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountArgs].
   /// [identity] An `identity` block as defined below.

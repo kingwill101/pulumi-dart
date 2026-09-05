@@ -10,13 +10,13 @@ import 'tag_rules_metric_rule.dart';
 /// {@macro pulumi_dynatrace_tag_rules_tag_rules_args_doc}
 class TagRulesArgs {
   /// Set of rules for sending logs for the Monitor resource. A `logRule` block as defined below.
-  final pulumi.Input<TagRulesLogRule>? logRule;
+  final pulumi.Input<TagRulesLogRule?>? logRule;
   /// Set of rules for sending metrics for the Monitor resource. A `metricRule` block as defined below.
-  final pulumi.Input<TagRulesMetricRule>? metricRule;
+  final pulumi.Input<TagRulesMetricRule?>? metricRule;
   /// Name of the Dynatrace monitor. Changing this forces a new resource to be created.
   final pulumi.Input<String> monitorId;
   /// Name of the Dynatrace tag rules. Currently, the only supported value is `default`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [TagRulesArgs].
   /// [logRule] Set of rules for sending logs for the Monitor resource. A `logRule` block as defined below.

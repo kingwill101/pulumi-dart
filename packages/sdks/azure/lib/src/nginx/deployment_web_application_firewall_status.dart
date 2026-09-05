@@ -8,13 +8,13 @@ import 'deployment_web_application_firewall_status_threat_campaigns_package.dart
 
 class DeploymentWebApplicationFirewallStatus {
   /// One or more `attackSignaturesPackage` blocks as defined below.
-  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusAttackSignaturesPackage>>? attackSignaturesPackages;
+  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusAttackSignaturesPackage>?>? attackSignaturesPackages;
   /// One or more `botSignaturesPackage` blocks as defined below.
-  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusBotSignaturesPackage>>? botSignaturesPackages;
+  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusBotSignaturesPackage>?>? botSignaturesPackages;
   /// One or more `componentVersions` blocks as defined below.
-  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusComponentVersion>>? componentVersions;
+  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusComponentVersion>?>? componentVersions;
   /// One or more `threatCampaignsPackage` blocks as defined below.
-  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusThreatCampaignsPackage>>? threatCampaignsPackages;
+  final pulumi.Input<List<DeploymentWebApplicationFirewallStatusThreatCampaignsPackage>?>? threatCampaignsPackages;
 
   /// Creates a new [DeploymentWebApplicationFirewallStatus].
   /// [attackSignaturesPackages] One or more `attackSignaturesPackage` blocks as defined below.

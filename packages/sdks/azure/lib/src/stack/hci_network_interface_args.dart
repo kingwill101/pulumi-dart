@@ -11,21 +11,21 @@ class HciNetworkInterfaceArgs {
   /// The ID of the Custom Location where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> customLocationId;
   /// A list of IPv4 addresses of DNS servers available to VMs deployed in the Network Interface. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// An `ipConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<HciNetworkInterfaceIpConfiguration> ipConfiguration;
   /// The Azure Region where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The MAC address of the Network Interface. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If `macAddress` is not specified, it will be assigned by the server. If you experience a diff you may need to add this to `ignoreChanges`.
-  final pulumi.Input<String>? macAddress;
+  final pulumi.Input<String?>? macAddress;
   /// The name which should be used for this Azure Stack HCI Network Interface. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Azure Stack HCI Network Interface.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [HciNetworkInterfaceArgs].
   /// [customLocationId] The ID of the Custom Location where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.

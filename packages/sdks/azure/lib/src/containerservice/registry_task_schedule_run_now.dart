@@ -140,7 +140,7 @@ import 'registry_task_schedule_run_now_state.dart';
 /// 		}
 /// 		exampleRegistryTask, err := containerservice.NewRegistryTask(ctx, "example", &containerservice.RegistryTaskArgs{
 /// 			Name:                pulumi.String("example-task"),
-/// 			ContainerRegistryId: exampleRegistry.ID(),
+/// 			ContainerRegistryId: exampleRegistry.ID().ToIDOutput().ToStringOutput(),
 /// 			Platform: &containerservice.RegistryTaskPlatformArgs{
 /// 				Os: pulumi.String("Linux"),
 /// 			},
@@ -157,7 +157,7 @@ import 'registry_task_schedule_run_now_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = containerservice.NewRegistryTaskScheduleRunNow(ctx, "example", &containerservice.RegistryTaskScheduleRunNowArgs{
-/// 			ContainerRegistryTaskId: exampleRegistryTask.ID(),
+/// 			ContainerRegistryTaskId: exampleRegistryTask.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -323,7 +323,7 @@ class RegistryTaskScheduleRunNow extends pulumi.CustomResource {
           'azure:containerservice/registryTaskScheduleRunNow:RegistryTaskScheduleRunNow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     containerRegistryTaskId = registerOutput<String>('containerRegistryTaskId');
   }
@@ -333,11 +333,12 @@ class RegistryTaskScheduleRunNow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryTaskScheduleRunNowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryTaskScheduleRunNow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -351,6 +352,18 @@ class RegistryTaskScheduleRunNow extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    containerRegistryTaskId = registerOutput<String>('containerRegistryTaskId');
+  }
+
+  /// Creates a typed reference to an existing [RegistryTaskScheduleRunNow] resource.
+  RegistryTaskScheduleRunNow.reference(String urn)
+    : super(
+        'azure:containerservice/registryTaskScheduleRunNow:RegistryTaskScheduleRunNow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     containerRegistryTaskId = registerOutput<String>('containerRegistryTaskId');
   }
 }

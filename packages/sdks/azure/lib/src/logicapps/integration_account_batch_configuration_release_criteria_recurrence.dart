@@ -5,17 +5,17 @@ import 'integration_account_batch_configuration_release_criteria_recurrence_sche
 
 class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence {
   /// The end time of the schedule, formatted as an RFC3339 string.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The frequency of the schedule. Possible values are `Day`, `Hour`, `Minute`, `Month`, `NotSpecified`, `Second`, `Week` and `Year`.
   final pulumi.Input<String> frequency;
   /// The number of `frequency`s between runs.
   final pulumi.Input<int> interval;
   /// A `schedule` block as documented below.
-  final pulumi.Input<IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule>? schedule;
+  final pulumi.Input<IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule?>? schedule;
   /// The start time of the schedule, formatted as an RFC3339 string.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The timezone of the start/end time.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence].
   /// [endTime] The end time of the schedule, formatted as an RFC3339 string.
@@ -48,7 +48,7 @@ class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence {
     return IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence(
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
-      interval: pulumi.Input.fromValue(map['interval'] as int),
+      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

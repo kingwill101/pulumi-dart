@@ -238,7 +238,7 @@ import 'network_manager_deployment_state.dart';
 /// 		}
 /// 		exampleNetworkManagerNetworkGroup, err := network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -257,16 +257,16 @@ import 'network_manager_deployment_state.dart';
 /// 		}
 /// 		exampleNetworkManagerConnectivityConfiguration, err := network.NewNetworkManagerConnectivityConfiguration(ctx, "example", &network.NetworkManagerConnectivityConfigurationArgs{
 /// 			Name:                 pulumi.String("example-connectivity-conf"),
-/// 			NetworkManagerId:     exampleNetworkManager.ID(),
+/// 			NetworkManagerId:     exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectivityTopology: pulumi.String("HubAndSpoke"),
 /// 			AppliesToGroups: network.NetworkManagerConnectivityConfigurationAppliesToGroupArray{
 /// 				&network.NetworkManagerConnectivityConfigurationAppliesToGroupArgs{
 /// 					GroupConnectivity: pulumi.String("None"),
-/// 					NetworkGroupId:    exampleNetworkManagerNetworkGroup.ID(),
+/// 					NetworkGroupId:    exampleNetworkManagerNetworkGroup.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Hub: &network.NetworkManagerConnectivityConfigurationHubArgs{
-/// 				ResourceId:   exampleVirtualNetwork.ID(),
+/// 				ResourceId:   exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 				ResourceType: pulumi.String("Microsoft.Network/virtualNetworks"),
 /// 			},
 /// 		})
@@ -274,11 +274,11 @@ import 'network_manager_deployment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkManagerDeployment(ctx, "example", &network.NetworkManagerDeploymentArgs{
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:         pulumi.String("eastus"),
 /// 			ScopeAccess:      pulumi.String("Connectivity"),
 /// 			ConfigurationIds: pulumi.StringArray{
-/// 				exampleNetworkManagerConnectivityConfiguration.ID(),
+/// 				exampleNetworkManagerConnectivityConfiguration.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -581,7 +581,7 @@ import 'network_manager_deployment_state.dart';
 ///         source_port_ranges: std.joinOutput({
 ///             separator: ",",
 ///             input: exampleNetworkManagerAdminRule.sourcePortRanges,
-///         }).apply(invoke => invoke.result),
+///         }).result,
 ///     },
 /// }, {
 ///     dependsOn: [exampleNetworkManagerAdminRule],
@@ -649,7 +649,7 @@ import 'network_manager_deployment_state.dart';
 ///     configuration_ids=[example_network_manager_security_admin_configuration.id],
 ///     triggers={
 ///         "source_port_ranges": std.join_output(separator=",",
-///             input=example_network_manager_admin_rule.source_port_ranges).apply(lambda invoke: invoke.result),
+///             input=example_network_manager_admin_rule.source_port_ranges).result,
 ///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[example_network_manager_admin_rule]))
 /// ```
@@ -829,7 +829,7 @@ import 'network_manager_deployment_state.dart';
 /// 		}
 /// 		exampleNetworkManagerNetworkGroup, err := network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -848,16 +848,16 @@ import 'network_manager_deployment_state.dart';
 /// 		}
 /// 		exampleNetworkManagerSecurityAdminConfiguration, err := network.NewNetworkManagerSecurityAdminConfiguration(ctx, "example", &network.NetworkManagerSecurityAdminConfigurationArgs{
 /// 			Name:             pulumi.String("example-nmsac"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleNetworkManagerAdminRuleCollection, err := network.NewNetworkManagerAdminRuleCollection(ctx, "example", &network.NetworkManagerAdminRuleCollectionArgs{
 /// 			Name:                         pulumi.String("example-nmarc"),
-/// 			SecurityAdminConfigurationId: exampleNetworkManagerSecurityAdminConfiguration.ID(),
+/// 			SecurityAdminConfigurationId: exampleNetworkManagerSecurityAdminConfiguration.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkGroupIds: pulumi.StringArray{
-/// 				exampleNetworkManagerNetworkGroup.ID(),
+/// 				exampleNetworkManagerNetworkGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -865,7 +865,7 @@ import 'network_manager_deployment_state.dart';
 /// 		}
 /// 		exampleNetworkManagerAdminRule, err := network.NewNetworkManagerAdminRule(ctx, "example", &network.NetworkManagerAdminRuleArgs{
 /// 			Name:                  pulumi.String("example-nmar"),
-/// 			AdminRuleCollectionId: exampleNetworkManagerAdminRuleCollection.ID(),
+/// 			AdminRuleCollectionId: exampleNetworkManagerAdminRuleCollection.ID().ToIDOutput().ToStringOutput(),
 /// 			Action:                pulumi.String("Deny"),
 /// 			Description:           pulumi.String("example"),
 /// 			Direction:             pulumi.String("Inbound"),
@@ -894,20 +894,17 @@ import 'network_manager_deployment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkManagerDeployment(ctx, "example", &network.NetworkManagerDeploymentArgs{
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:         pulumi.String("eastus"),
 /// 			ScopeAccess:      pulumi.String("SecurityAdmin"),
 /// 			ConfigurationIds: pulumi.StringArray{
-/// 				exampleNetworkManagerSecurityAdminConfiguration.ID(),
+/// 				exampleNetworkManagerSecurityAdminConfiguration.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Triggers: pulumi.StringMap{
-/// 				"source_port_ranges": pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+/// 				"source_port_ranges": std.JoinOutput(ctx, std.JoinOutputArgs{
 /// 					Separator: pulumi.String(","),
 /// 					Input:     exampleNetworkManagerAdminRule.SourcePortRanges,
-/// 				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-/// 					val := invoke.Result
-/// 					return &val, nil
-/// 				}).(pulumi.StringPtrOutput)),
+/// 				}, nil).Result(),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleNetworkManagerAdminRule,
@@ -1260,13 +1257,13 @@ class NetworkManagerDeployment extends pulumi.CustomResource {
           'azure:network/networkManagerDeployment:NetworkManagerDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    configurationIds = registerOutput<List<String>>('configurationIds');
+    configurationIds = registerOutput<List<String>>('configurationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     networkManagerId = registerOutput<String>('networkManagerId');
     scopeAccess = registerOutput<String>('scopeAccess');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NetworkManagerDeployment] resource's state with the given [name] and [id].
@@ -1274,11 +1271,12 @@ class NetworkManagerDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1292,10 +1290,26 @@ class NetworkManagerDeployment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    configurationIds = registerOutput<List<String>>('configurationIds');
+    configurationIds = registerOutput<List<String>>('configurationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     networkManagerId = registerOutput<String>('networkManagerId');
     scopeAccess = registerOutput<String>('scopeAccess');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerDeployment] resource.
+  NetworkManagerDeployment.reference(String urn)
+    : super(
+        'azure:network/networkManagerDeployment:NetworkManagerDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configurationIds = registerOutput<List<String>>('configurationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    scopeAccess = registerOutput<String>('scopeAccess');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

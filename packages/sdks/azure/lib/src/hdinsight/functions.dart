@@ -157,3 +157,14 @@ Future<GetClusterResult> getCluster(
   );
   return GetClusterResult.fromMap(result);
 }
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:hdinsight/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}

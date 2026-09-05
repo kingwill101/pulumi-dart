@@ -244,7 +244,7 @@ import 'eventhub_data_connection_state.dart';
 /// 		}
 /// 		eventhub2, err := eventhub.NewEventHub(ctx, "eventhub", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("my-eventhub"),
-/// 			NamespaceId:      eventhubNs.ID(),
+/// 			NamespaceId:      eventhubNs.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(1),
 /// 			MessageRetention: pulumi.Int(1),
 /// 		})
@@ -266,7 +266,7 @@ import 'eventhub_data_connection_state.dart';
 /// 			Location:           example.Location,
 /// 			ClusterName:        cluster.Name,
 /// 			DatabaseName:       database.Name,
-/// 			EventhubId:         eventhub2.ID(),
+/// 			EventhubId:         eventhub2.ID().ToIDOutput().ToStringOutput(),
 /// 			ConsumerGroup:      consumerGroup.Name,
 /// 			TableName:          pulumi.String("my-table"),
 /// 			MappingRuleName:    pulumi.String("my-table-mapping"),
@@ -562,7 +562,7 @@ class EventhubDataConnection extends pulumi.CustomResource {
           'azure:kusto/eventhubDataConnection:EventhubDataConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clusterName = registerOutput<String>('clusterName');
     compression = registerOutput<String?>('compression');
@@ -570,7 +570,7 @@ class EventhubDataConnection extends pulumi.CustomResource {
     dataFormat = registerOutput<String?>('dataFormat');
     databaseName = registerOutput<String>('databaseName');
     databaseRoutingType = registerOutput<String?>('databaseRoutingType');
-    eventSystemProperties = registerOutput<List<String>>('eventSystemProperties');
+    eventSystemProperties = registerOutput<List<String>>('eventSystemProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     eventhubId = registerOutput<String>('eventhubId');
     identityId = registerOutput<String?>('identityId');
     location = registerOutput<String>('location');
@@ -586,11 +586,12 @@ class EventhubDataConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventhubDataConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventhubDataConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -610,7 +611,33 @@ class EventhubDataConnection extends pulumi.CustomResource {
     dataFormat = registerOutput<String?>('dataFormat');
     databaseName = registerOutput<String>('databaseName');
     databaseRoutingType = registerOutput<String?>('databaseRoutingType');
-    eventSystemProperties = registerOutput<List<String>>('eventSystemProperties');
+    eventSystemProperties = registerOutput<List<String>>('eventSystemProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    eventhubId = registerOutput<String>('eventhubId');
+    identityId = registerOutput<String?>('identityId');
+    location = registerOutput<String>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retrievalStartDate = registerOutput<String>('retrievalStartDate');
+    tableName = registerOutput<String?>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [EventhubDataConnection] resource.
+  EventhubDataConnection.reference(String urn)
+    : super(
+        'azure:kusto/eventhubDataConnection:EventhubDataConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterName = registerOutput<String>('clusterName');
+    compression = registerOutput<String?>('compression');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    databaseName = registerOutput<String>('databaseName');
+    databaseRoutingType = registerOutput<String?>('databaseRoutingType');
+    eventSystemProperties = registerOutput<List<String>>('eventSystemProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     eventhubId = registerOutput<String>('eventhubId');
     identityId = registerOutput<String?>('identityId');
     location = registerOutput<String>('location');

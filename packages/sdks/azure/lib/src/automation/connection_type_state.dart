@@ -6,15 +6,15 @@ import 'connection_type_field.dart';
 /// Input properties used for looking up and filtering ConnectionType resources.
 class ConnectionTypeState {
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? automationAccountName;
+  final pulumi.Input<String?>? automationAccountName;
   /// One or more `field` blocks as defined below. Changing this forces a new Automation to be created.
-  final pulumi.Input<List<ConnectionTypeField>>? fields;
+  final pulumi.Input<List<ConnectionTypeField>?>? fields;
   /// Whether the connection type is global. Changing this forces a new Automation to be created.
-  final pulumi.Input<bool>? isGlobal;
+  final pulumi.Input<bool?>? isGlobal;
   /// The name which should be used for this Automation Connection Type. Changing this forces a new Automation to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ConnectionTypeState].
   /// [automationAccountName] The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.

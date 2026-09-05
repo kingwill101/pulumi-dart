@@ -278,7 +278,7 @@ import 'global_vmshutdown_schedule_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("testconfiguration1"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -291,7 +291,7 @@ import 'global_vmshutdown_schedule_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Size: pulumi.String("Standard_B2s"),
 /// 			SourceImageReference: &compute.LinuxVirtualMachineSourceImageReferenceArgs{
@@ -313,7 +313,7 @@ import 'global_vmshutdown_schedule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = devtest.NewGlobalVMShutdownSchedule(ctx, "example", &devtest.GlobalVMShutdownScheduleArgs{
-/// 			VirtualMachineId:    exampleLinuxVirtualMachine.ID(),
+/// 			VirtualMachineId:    exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:            example.Location,
 /// 			Enabled:             pulumi.Bool(true),
 /// 			DailyRecurrenceTime: pulumi.String("1100"),
@@ -621,13 +621,13 @@ class GlobalVMShutdownSchedule extends pulumi.CustomResource {
           'azure:devtest/globalVMShutdownSchedule:GlobalVMShutdownSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dailyRecurrenceTime = registerOutput<String>('dailyRecurrenceTime');
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
     notificationSettings = registerOutput<GlobalVMShutdownScheduleNotificationSettings>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalVMShutdownScheduleNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timezone = registerOutput<String>('timezone');
     virtualMachineId = registerOutput<String>('virtualMachineId');
   }
@@ -637,11 +637,12 @@ class GlobalVMShutdownSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalVMShutdownScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalVMShutdownSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -659,7 +660,25 @@ class GlobalVMShutdownSchedule extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
     notificationSettings = registerOutput<GlobalVMShutdownScheduleNotificationSettings>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalVMShutdownScheduleNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timezone = registerOutput<String>('timezone');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+  }
+
+  /// Creates a typed reference to an existing [GlobalVMShutdownSchedule] resource.
+  GlobalVMShutdownSchedule.reference(String urn)
+    : super(
+        'azure:devtest/globalVMShutdownSchedule:GlobalVMShutdownSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dailyRecurrenceTime = registerOutput<String>('dailyRecurrenceTime');
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
+    notificationSettings = registerOutput<GlobalVMShutdownScheduleNotificationSettings>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalVMShutdownScheduleNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timezone = registerOutput<String>('timezone');
     virtualMachineId = registerOutput<String>('virtualMachineId');
   }

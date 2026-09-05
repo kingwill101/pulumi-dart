@@ -8,7 +8,7 @@ class AutoscaleSettingProfileFixedDate {
   /// Specifies the start date for the profile, formatted as an RFC3339 date string.
   final pulumi.Input<String> start;
   /// The Time Zone of the `start` and `end` times. A list of [possible values can be found here](https://learn.microsoft.com/en-us/rest/api/monitor/autoscale-settings/create-or-update?view=rest-monitor-2022-10-01&tabs=HTTP#recurrentschedule). Defaults to `UTC`.
-  final pulumi.Input<String>? timezone;
+  final pulumi.Input<String?>? timezone;
 
   /// Creates a new [AutoscaleSettingProfileFixedDate].
   /// [end] Specifies the end date for the profile, formatted as an RFC3339 date string.

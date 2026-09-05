@@ -354,7 +354,7 @@ import 'implicit_data_disk_from_source_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   internal.ID(),
+/// 					SubnetId:                   internal.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -367,7 +367,7 @@ import 'implicit_data_disk_from_source_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				mainNetworkInterface.ID(),
+/// 				mainNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			VmSize: pulumi.String("Standard_D4_v5"),
 /// 			StorageImageReference: &compute.VirtualMachineStorageImageReferenceArgs{
@@ -410,7 +410,7 @@ import 'implicit_data_disk_from_source_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			CreateOption:      pulumi.String("Copy"),
-/// 			SourceUri:         exampleManagedDisk.ID(),
+/// 			SourceUri:         exampleManagedDisk.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -810,7 +810,7 @@ class ImplicitDataDiskFromSource extends pulumi.CustomResource {
           'azure:compute/implicitDataDiskFromSource:ImplicitDataDiskFromSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     caching = registerOutput<String?>('caching');
     createOption = registerOutput<String>('createOption');
@@ -827,11 +827,12 @@ class ImplicitDataDiskFromSource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ImplicitDataDiskFromSourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ImplicitDataDiskFromSource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -845,6 +846,25 @@ class ImplicitDataDiskFromSource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    caching = registerOutput<String?>('caching');
+    createOption = registerOutput<String>('createOption');
+    diskSizeGb = registerOutput<int>('diskSizeGb');
+    lun = registerOutput<int>('lun');
+    this.name = registerOutput<String>('name');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+    writeAcceleratorEnabled = registerOutput<bool?>('writeAcceleratorEnabled');
+  }
+
+  /// Creates a typed reference to an existing [ImplicitDataDiskFromSource] resource.
+  ImplicitDataDiskFromSource.reference(String urn)
+    : super(
+        'azure:compute/implicitDataDiskFromSource:ImplicitDataDiskFromSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     caching = registerOutput<String?>('caching');
     createOption = registerOutput<String>('createOption');
     diskSizeGb = registerOutput<int>('diskSizeGb');

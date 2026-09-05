@@ -10,7 +10,7 @@ class OutputSynapseArgs {
   /// The name of the Azure SQL database. Changing this forces a new resource to be created.
   final pulumi.Input<String> database;
   /// The name of the Stream Output. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password that will be used to connect to the Azure SQL database.
   final pulumi.Input<String> password;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.

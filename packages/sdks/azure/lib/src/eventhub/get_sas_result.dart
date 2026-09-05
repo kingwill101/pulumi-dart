@@ -3,40 +3,40 @@
 
 /// Result data returned by getSas.
 class GetSasResult {
-  final String connectionString;
-  final String expiry;
+  final String? connectionString;
+  final String? expiry;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The computed Event Hub Shared Access Signature (SAS).
-  final String sas;
+  final String? sas;
 
   /// Creates a new [GetSasResult].
-  /// [connectionString] Required.
-  /// [expiry] Required.
+  /// [connectionString] Optional.
+  /// [expiry] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [sas] The computed Event Hub Shared Access Signature (SAS).
   const GetSasResult({
-    required this.connectionString,
-    required this.expiry,
-    required this.id,
-    required this.sas,
+    this.connectionString,
+    this.expiry,
+    this.id,
+    this.sas,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionString': connectionString,
-      'expiry': expiry,
-      'id': id,
-      'sas': sas,
+      'connectionString': ?connectionString,
+      'expiry': ?expiry,
+      'id': ?id,
+      'sas': ?sas,
     };
   }
 
   factory GetSasResult.fromMap(Map<String, dynamic> map) {
     return GetSasResult(
-      connectionString: map['connectionString'] as String,
-      expiry: map['expiry'] as String,
-      id: map['id'] as String,
-      sas: map['sas'] as String,
+      connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expiry: (() { final guardedValue = map['expiry']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sas: (() { final guardedValue = map['sas']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

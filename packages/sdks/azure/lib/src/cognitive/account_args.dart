@@ -13,23 +13,23 @@ import 'account_storage.dart';
 /// {@macro pulumi_cognitive_account_account_args_doc}
 class AccountArgs {
   /// If `kind` is `TextAnalytics` this specifies the ID of the Search service.
-  final pulumi.Input<String>? customQuestionAnsweringSearchServiceId;
+  final pulumi.Input<String?>? customQuestionAnsweringSearchServiceId;
   /// If `kind` is `TextAnalytics` this specifies the key of the Search service.
   ///
   /// &gt; **Note:** `customQuestionAnsweringSearchServiceId` and `customQuestionAnsweringSearchServiceKey` are used for [Custom Question Answering, the renamed version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/custom-question-answering), while `qnaRuntimeEndpoint` is used for [the old version of QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview)
-  final pulumi.Input<String>? customQuestionAnsweringSearchServiceKey;
+  final pulumi.Input<String?>? customQuestionAnsweringSearchServiceKey;
   /// The subdomain name used for Entra ID token-based authentication. This attribute is required when `networkAcls` is specified. This attribute is also required when using the OpenAI service with libraries which assume the Azure OpenAI endpoint is a subdomain on `https://openai.azure.com/`, eg. `https://&lt;custom_subdomain_name&gt;.openai.azure.com/`. This can be specified during creation or added later, but once set changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If you do not specify a `customSubdomainName` then you will not be able to attach a Private Endpoint to the resource. Moreover, functionality that requires Entra ID authentication, including Agent service, will not be accessible.
-  final pulumi.Input<String>? customSubdomainName;
+  final pulumi.Input<String?>? customSubdomainName;
   /// A `customerManagedKey` block as documented below.
-  final pulumi.Input<AccountCustomerManagedKey>? customerManagedKey;
+  final pulumi.Input<AccountCustomerManagedKey?>? customerManagedKey;
   /// Whether to enable the dynamic throttling for this Cognitive Service Account. This attribute cannot be set when the `kind` is `OpenAI` or `AIServices`.
-  final pulumi.Input<bool>? dynamicThrottlingEnabled;
+  final pulumi.Input<bool?>? dynamicThrottlingEnabled;
   /// List of FQDNs allowed for the Cognitive Account.
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   /// An `identity` block as defined below.
-  final pulumi.Input<AccountIdentity>? identity;
+  final pulumi.Input<AccountIdentity?>? identity;
   /// Specifies the type of Cognitive Service Account that should be created. Possible values are `Academic`, `AIServices`, `AnomalyDetector`, `Bing.Autosuggest`, `Bing.Autosuggest.v7`, `Bing.CustomSearch`, `Bing.Search`, `Bing.Search.v7`, `Bing.Speech`, `Bing.SpellCheck`, `Bing.SpellCheck.v7`, `CognitiveServices`, `ComputerVision`, `ContentModerator`, `ContentSafety`, `CustomSpeech`, `CustomVision.Prediction`, `CustomVision.Training`, `Emotion`, `Face`, `FormRecognizer`, `ImmersiveReader`, `LUIS`, `LUIS.Authoring`, `MetricsAdvisor`, `OpenAI`, `Personalizer`, `QnAMaker`, `Recommendations`, `SpeakerRecognition`, `Speech`, `SpeechServices`, `SpeechTranslation`, `TextAnalytics`, `TextTranslation` and `WebLM`. Changing this forces a new resource to be created except when upgrading the Cognitive Service Account from `OpenAI` to `AIServices` or rolling back from `AIServices` to `OpenAI`. More information on [upgrade and rollback scenario](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/upgrade-azure-openai?tabs=portal).
   ///
   /// &gt; **Note:** New Bing Search resources cannot be created as their APIs are moving from Cognitive Services Platform to new surface area under Microsoft.com. Starting from October 30, 2020, existing instances of Bing Search APIs provisioned via Cognitive Services will be continuously supported for next 3 years or till the end of respective Enterprise Agreement, whichever happens first.
@@ -37,33 +37,33 @@ class AccountArgs {
   /// &gt; **Note:** You must create your first Face, Text Analytics, or Computer Vision resources from the Azure portal to review and acknowledge the terms and conditions. In Azure Portal, the checkbox to accept terms and conditions is only displayed when a US region is selected. More information on [Prerequisites](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows#prerequisites).
   final pulumi.Input<String> kind;
   /// Whether local authentication methods is enabled for the Cognitive Account. Defaults to `true`.
-  final pulumi.Input<bool>? localAuthEnabled;
+  final pulumi.Input<bool?>? localAuthEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Azure AD Client ID (Application ID). This attribute is only set when kind is `MetricsAdvisor`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? metricsAdvisorAadClientId;
+  final pulumi.Input<String?>? metricsAdvisorAadClientId;
   /// The Azure AD Tenant ID. This attribute is only set when kind is `MetricsAdvisor`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? metricsAdvisorAadTenantId;
+  final pulumi.Input<String?>? metricsAdvisorAadTenantId;
   /// The super user of Metrics Advisor. This attribute is only set when kind is `MetricsAdvisor`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? metricsAdvisorSuperUserName;
+  final pulumi.Input<String?>? metricsAdvisorSuperUserName;
   /// The website name of Metrics Advisor. This attribute is only set when kind is `MetricsAdvisor`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This URL is mandatory if the `kind` is set to `QnAMaker`.
-  final pulumi.Input<String>? metricsAdvisorWebsiteName;
+  final pulumi.Input<String?>? metricsAdvisorWebsiteName;
   /// Specifies the name of the Cognitive Service Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `networkAcls` block as defined below. When this property is specified, `customSubdomainName` is also required to be set.
-  final pulumi.Input<AccountNetworkAcls>? networkAcls;
+  final pulumi.Input<AccountNetworkAcls?>? networkAcls;
   /// A `networkInjection` block as defined below. Only applicable if the `kind` is set to `AIServices`.
-  final pulumi.Input<AccountNetworkInjection>? networkInjection;
+  final pulumi.Input<AccountNetworkInjection?>? networkInjection;
   /// Whether outbound network access is restricted for the Cognitive Account. Defaults to `false`.
-  final pulumi.Input<bool>? outboundNetworkAccessRestricted;
+  final pulumi.Input<bool?>? outboundNetworkAccessRestricted;
   /// Whether project management is enabled. Can only be set to `true` when `kind` is set to `AIServices`. Once enabled, disabling `projectManagementEnabled` forces a new resource to be created unless `kind` is set to `OpenAI`. Defaults to `false`.
-  final pulumi.Input<bool>? projectManagementEnabled;
+  final pulumi.Input<bool?>? projectManagementEnabled;
   /// Whether public network access is allowed for the Cognitive Account. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// A URL to link a QnAMaker cognitive account to a QnA runtime.
-  final pulumi.Input<String>? qnaRuntimeEndpoint;
+  final pulumi.Input<String?>? qnaRuntimeEndpoint;
   /// The name of the resource group in which the Cognitive Service Account is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the SKU Name for this Cognitive Service Account. Possible values are `C2`, `C3`, `C4`, `D3`, `DC0`, `E0`, `F0`, `F1`, `P0`, `P1`, `P2`, `S`, `S0`, `S1`, `S2`, `S3`, `S4`, `S5` and `S6`.
@@ -71,9 +71,9 @@ class AccountArgs {
   /// &gt; **Note:** SKU `DC0` is the commitment tier for Cognitive Services containers running in disconnected environments. You must obtain approval from Microsoft by submitting the [request form](https://aka.ms/csdisconnectedcontainers) first, before you can use this SKU. More information on [Purchase a commitment plan to use containers in disconnected environments](https://learn.microsoft.com/en-us/azure/cognitive-services/containers/disconnected-containers?tabs=stt#purchase-a-commitment-plan-to-use-containers-in-disconnected-environments).
   final pulumi.Input<String> skuName;
   /// A `storage` block as defined below.
-  final pulumi.Input<List<AccountStorage>>? storages;
+  final pulumi.Input<List<AccountStorage>?>? storages;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountArgs].
   /// [customQuestionAnsweringSearchServiceId] If `kind` is `TextAnalytics` this specifies the ID of the Search service.

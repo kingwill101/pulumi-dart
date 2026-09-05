@@ -320,10 +320,11 @@ class Server extends pulumi.CustomResource {
           'azure:postgresql/server:Server',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['administratorLoginPassword'],
         ) {
     administratorLogin = registerOutput<String>('administratorLogin');
-    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
     administratorLoginPasswordWoVersion = registerOutput<int?>('administratorLoginPasswordWoVersion');
     autoGrowEnabled = registerOutput<bool?>('autoGrowEnabled');
     backupRetentionDays = registerOutput<int>('backupRetentionDays');
@@ -342,7 +343,7 @@ class Server extends pulumi.CustomResource {
     sslEnforcementEnabled = registerOutput<bool>('sslEnforcementEnabled');
     sslMinimalTlsVersionEnforced = registerOutput<String?>('sslMinimalTlsVersionEnforced');
     storageMb = registerOutput<int>('storageMb');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     threatDetectionPolicy = registerOutput<ServerThreatDetectionPolicy?>('threatDetectionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerThreatDetectionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }
@@ -352,11 +353,12 @@ class Server extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Server._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -371,7 +373,7 @@ class Server extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     administratorLogin = registerOutput<String>('administratorLogin');
-    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
     administratorLoginPasswordWoVersion = registerOutput<int?>('administratorLoginPasswordWoVersion');
     autoGrowEnabled = registerOutput<bool?>('autoGrowEnabled');
     backupRetentionDays = registerOutput<int>('backupRetentionDays');
@@ -390,7 +392,42 @@ class Server extends pulumi.CustomResource {
     sslEnforcementEnabled = registerOutput<bool>('sslEnforcementEnabled');
     sslMinimalTlsVersionEnforced = registerOutput<String?>('sslMinimalTlsVersionEnforced');
     storageMb = registerOutput<int>('storageMb');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    threatDetectionPolicy = registerOutput<ServerThreatDetectionPolicy?>('threatDetectionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerThreatDetectionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Server] resource.
+  Server.reference(String urn)
+    : super(
+        'azure:postgresql/server:Server',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['administratorLoginPassword'],
+        isResourceReference: true,
+      ) {
+    administratorLogin = registerOutput<String>('administratorLogin');
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
+    administratorLoginPasswordWoVersion = registerOutput<int?>('administratorLoginPasswordWoVersion');
+    autoGrowEnabled = registerOutput<bool?>('autoGrowEnabled');
+    backupRetentionDays = registerOutput<int>('backupRetentionDays');
+    createMode = registerOutput<String?>('createMode');
+    creationSourceServerId = registerOutput<String?>('creationSourceServerId');
+    fqdn = registerOutput<String>('fqdn');
+    geoRedundantBackupEnabled = registerOutput<bool?>('geoRedundantBackupEnabled');
+    identity = registerOutput<ServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restorePointInTime = registerOutput<String?>('restorePointInTime');
+    skuName = registerOutput<String>('skuName');
+    sslEnforcementEnabled = registerOutput<bool>('sslEnforcementEnabled');
+    sslMinimalTlsVersionEnforced = registerOutput<String?>('sslMinimalTlsVersionEnforced');
+    storageMb = registerOutput<int>('storageMb');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     threatDetectionPolicy = registerOutput<ServerThreatDetectionPolicy?>('threatDetectionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerThreatDetectionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
   }

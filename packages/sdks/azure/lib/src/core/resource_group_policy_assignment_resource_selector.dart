@@ -5,7 +5,7 @@ import 'resource_group_policy_assignment_resource_selector_selector.dart';
 
 class ResourceGroupPolicyAssignmentResourceSelector {
   /// Specifies a name for the resource selector.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `resourceSelector` block as defined below.
   final pulumi.Input<List<ResourceGroupPolicyAssignmentResourceSelectorSelector>> selectors;
 

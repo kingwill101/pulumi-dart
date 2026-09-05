@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ManagementGroup resources.
 class ManagementGroupState {
   /// A friendly name for this Management Group. If not specified, this will be the same as the `name`.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Parent Management Group.
-  final pulumi.Input<String>? parentManagementGroupId;
+  final pulumi.Input<String?>? parentManagementGroupId;
   /// A list of Subscription GUIDs which should be assigned to the Management Group.
   ///
   /// &gt; **Note:** To clear all Subscriptions from the Management Group set `subscriptionIds` to an empty list
-  final pulumi.Input<List<String>>? subscriptionIds;
+  final pulumi.Input<List<String>?>? subscriptionIds;
   /// The Management Group ID with the Tenant ID prefix.
-  final pulumi.Input<String>? tenantScopedId;
+  final pulumi.Input<String?>? tenantScopedId;
 
   /// Creates a new [ManagementGroupState].
   /// [displayName] A friendly name for this Management Group. If not specified, this will be the same as the `name`.

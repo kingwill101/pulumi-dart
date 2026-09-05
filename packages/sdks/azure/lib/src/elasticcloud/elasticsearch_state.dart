@@ -6,37 +6,37 @@ import 'elasticsearch_logs.dart';
 /// Input properties used for looking up and filtering Elasticsearch resources.
 class ElasticsearchState {
   /// The ID of the Deployment within Elastic Cloud.
-  final pulumi.Input<String>? elasticCloudDeploymentId;
+  final pulumi.Input<String?>? elasticCloudDeploymentId;
   /// Specifies the Email Address which should be associated with this Elasticsearch account. Changing this forces a new Elasticsearch to be created.
-  final pulumi.Input<String>? elasticCloudEmailAddress;
+  final pulumi.Input<String?>? elasticCloudEmailAddress;
   /// The Default URL used for Single Sign On (SSO) to Elastic Cloud.
-  final pulumi.Input<String>? elasticCloudSsoDefaultUrl;
+  final pulumi.Input<String?>? elasticCloudSsoDefaultUrl;
   /// The ID of the User Account within Elastic Cloud.
-  final pulumi.Input<String>? elasticCloudUserId;
+  final pulumi.Input<String?>? elasticCloudUserId;
   /// The URL to the Elasticsearch Service associated with this Elasticsearch.
-  final pulumi.Input<String>? elasticsearchServiceUrl;
+  final pulumi.Input<String?>? elasticsearchServiceUrl;
   /// The URL to the Kibana Dashboard associated with this Elasticsearch.
-  final pulumi.Input<String>? kibanaServiceUrl;
+  final pulumi.Input<String?>? kibanaServiceUrl;
   /// The URI used for SSO to the Kibana Dashboard associated with this Elasticsearch.
-  final pulumi.Input<String>? kibanaSsoUri;
+  final pulumi.Input<String?>? kibanaSsoUri;
   /// The Azure Region where the Elasticsearch resource should exist. Changing this forces a new Elasticsearch to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `logs` block as defined below.
-  final pulumi.Input<ElasticsearchLogs>? logs;
+  final pulumi.Input<ElasticsearchLogs?>? logs;
   /// Specifies if the Elasticsearch should have monitoring configured? Defaults to `true`. Changing this forces a new Elasticsearch to be created.
-  final pulumi.Input<bool>? monitoringEnabled;
+  final pulumi.Input<bool?>? monitoringEnabled;
   /// The name which should be used for this Elasticsearch resource. Changing this forces a new Elasticsearch to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Elasticsearch resource should exist. Changing this forces a new Elasticsearch to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Specifies the name of the SKU for this Elasticsearch. Changing this forces a new Elasticsearch to be created.
   ///
   /// &gt; **Note:** The SKU depends on the Elasticsearch Plans available for your account and is a combination of PlanID_Term.
   /// Ex: If the plan ID is "planXYZ" and term is "Yearly", the SKU will be "planXYZ_Yearly".
   /// You may find your eligible plans [here](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/elastic.ec-azure-pp) or in the online documentation [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp?tab=PlansAndPrice) for more details or in case of any issues with the SKU.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// A mapping of tags which should be assigned to the Elasticsearch resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ElasticsearchState].
   /// [elasticCloudDeploymentId] The ID of the Deployment within Elastic Cloud.

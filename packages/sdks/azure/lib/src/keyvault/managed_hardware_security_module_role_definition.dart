@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_hardware_security_module_role_definition_args.dart';
+import 'managed_hardware_security_module_role_definition_permission.dart';
 import 'managed_hardware_security_module_role_definition_state.dart';
 
 /// Manages a Key Vault Managed Hardware Security Module Role Definition. This resource works together with Managed hardware security module resource.
@@ -155,7 +156,7 @@ import 'managed_hardware_security_module_role_definition_state.dart';
 /// 		}
 /// 		_, err = keyvault.NewManagedHardwareSecurityModuleRoleDefinition(ctx, "example", &keyvault.ManagedHardwareSecurityModuleRoleDefinitionArgs{
 /// 			Name:         pulumi.String("7d206142-bf01-11ed-80bc-00155d61ee9e"),
-/// 			ManagedHsmId: example.ID(),
+/// 			ManagedHsmId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:  pulumi.String("desc foo"),
 /// 			Permissions: keyvault.ManagedHardwareSecurityModuleRoleDefinitionPermissionArray{
 /// 				&keyvault.ManagedHardwareSecurityModuleRoleDefinitionPermissionArgs{
@@ -303,7 +304,7 @@ class ManagedHardwareSecurityModuleRoleDefinition extends pulumi.CustomResource 
   /// The name in UUID notation of this Key Vault Managed Hardware Security Module Role Definition. Changing this forces a new Key Vault Managed Hardware Security Module Role Definition to be created.
   late final pulumi.Output<String> name;
   /// One or more `permission` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+  late final pulumi.Output<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>?> permissions;
   /// The ID of the role definition resource without Key Vault base URL.
   late final pulumi.Output<String> resourceManagerId;
   /// Specify a display name for this Key Vault Managed Hardware Security Module Role Definition.
@@ -323,12 +324,12 @@ class ManagedHardwareSecurityModuleRoleDefinition extends pulumi.CustomResource 
           'azure:keyvault/managedHardwareSecurityModuleRoleDefinition:ManagedHardwareSecurityModuleRoleDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     managedHsmId = registerOutput<String>('managedHsmId');
     this.name = registerOutput<String>('name');
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedHardwareSecurityModuleRoleDefinitionPermission>(guardedValue, (value) => ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>())); });
     resourceManagerId = registerOutput<String>('resourceManagerId');
     roleName = registerOutput<String?>('roleName');
     roleType = registerOutput<String>('roleType');
@@ -339,11 +340,12 @@ class ManagedHardwareSecurityModuleRoleDefinition extends pulumi.CustomResource 
     String name,
     pulumi.Input<String> id, {
     ManagedHardwareSecurityModuleRoleDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedHardwareSecurityModuleRoleDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -360,7 +362,25 @@ class ManagedHardwareSecurityModuleRoleDefinition extends pulumi.CustomResource 
     description = registerOutput<String?>('description');
     managedHsmId = registerOutput<String>('managedHsmId');
     this.name = registerOutput<String>('name');
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedHardwareSecurityModuleRoleDefinitionPermission>(guardedValue, (value) => ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceManagerId = registerOutput<String>('resourceManagerId');
+    roleName = registerOutput<String?>('roleName');
+    roleType = registerOutput<String>('roleType');
+  }
+
+  /// Creates a typed reference to an existing [ManagedHardwareSecurityModuleRoleDefinition] resource.
+  ManagedHardwareSecurityModuleRoleDefinition.reference(String urn)
+    : super(
+        'azure:keyvault/managedHardwareSecurityModuleRoleDefinition:ManagedHardwareSecurityModuleRoleDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    managedHsmId = registerOutput<String>('managedHsmId');
+    this.name = registerOutput<String>('name');
+    permissions = registerOutput<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedHardwareSecurityModuleRoleDefinitionPermission>(guardedValue, (value) => ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>())); });
     resourceManagerId = registerOutput<String>('resourceManagerId');
     roleName = registerOutput<String?>('roleName');
     roleType = registerOutput<String>('roleType');

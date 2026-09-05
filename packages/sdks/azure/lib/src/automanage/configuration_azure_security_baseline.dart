@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationAzureSecurityBaseline {
   /// The assignment type of the azure security baseline. Possible values are `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `Audit` and `DeployAndAutoCorrect`. Defaults to `ApplyAndAutoCorrect`.
-  final pulumi.Input<String>? assignmentType;
+  final pulumi.Input<String?>? assignmentType;
 
   /// Creates a new [ConfigurationAzureSecurityBaseline].
   /// [assignmentType] The assignment type of the azure security baseline. Possible values are `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `Audit` and `DeployAndAutoCorrect`. Defaults to `ApplyAndAutoCorrect`.

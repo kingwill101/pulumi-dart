@@ -14,7 +14,7 @@ class GetActionGroupEventHubReceiver {
   /// The Tenant ID for the subscription containing this Event Hub.
   final pulumi.Input<String> tenantId;
   /// Indicates whether to use common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [GetActionGroupEventHubReceiver].
   /// [eventHubName] The name of the specific Event Hub queue.

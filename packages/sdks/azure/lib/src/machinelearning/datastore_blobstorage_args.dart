@@ -8,25 +8,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_machinelearning_datastore_blobstorage_datastore_blobstorage_args_doc}
 class DatastoreBlobstorageArgs {
   /// The access key of the Storage Account. Conflicts with `sharedAccessSignature`.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// Text used to describe the asset. Changing this forces a new Machine Learning DataStore to be created.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies whether this Machines Learning DataStore is the default for the Workspace. Defaults to `false`.
   ///
   /// &gt; **Note:** `isDefault` can only be set to `true` on update.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// The name of the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies which identity to use when retrieving data from the specified source. Defaults to `None`. Possible values are `None`, `WorkspaceSystemAssignedIdentity` and `WorkspaceUserAssignedIdentity`.
-  final pulumi.Input<String>? serviceDataAuthIdentity;
+  final pulumi.Input<String?>? serviceDataAuthIdentity;
   /// The Shared Access Signature of the Storage Account. Conflicts with `accountKey`.
   ///
   /// &gt; **Note:** If `serviceDataAuthIdentity` is set to `None` or omitted, one of `accountKey` or `sharedAccessSignature` must be specified.
-  final pulumi.Input<String>? sharedAccessSignature;
+  final pulumi.Input<String?>? sharedAccessSignature;
   /// The ID of the Storage Account Container. Changing this forces a new Machine Learning DataStore to be created.
   final pulumi.Input<String> storageContainerId;
   /// A mapping of tags which should be assigned to the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning DataStore to be created.
   final pulumi.Input<String> workspaceId;
 

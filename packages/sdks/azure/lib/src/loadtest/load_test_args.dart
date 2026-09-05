@@ -10,19 +10,19 @@ import 'load_test_identity.dart';
 /// {@macro pulumi_loadtest_load_test_load_test_args_doc}
 class LoadTestArgs {
   /// Description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An `encryption` block as defined below. Changing this forces a new Load Test to be created.
-  final pulumi.Input<LoadTestEncryption>? encryption;
+  final pulumi.Input<LoadTestEncryption?>? encryption;
   /// An `identity` block as defined below. Specifies the Managed Identity which should be assigned to this Load Test.
-  final pulumi.Input<LoadTestIdentity>? identity;
+  final pulumi.Input<LoadTestIdentity?>? identity;
   /// The Azure Region where the Load Test should exist. Changing this forces a new Load Test to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this Load Test. Changing this forces a new Load Test to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group within which this Load Test should exist. Changing this forces a new Load Test to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Load Test.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LoadTestArgs].
   /// [description] Description of the resource.

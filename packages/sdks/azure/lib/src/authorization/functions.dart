@@ -30,7 +30,7 @@ import 'get_user_assigned_identity_result.dart';
 /// const builtin = azure.authorization.getRoleDefinition({
 ///     name: "Contributor",
 /// });
-/// export const customRoleDefinitionId = custom.apply(custom => custom.id);
+/// export const customRoleDefinitionId = custom.id;
 /// export const contributorRoleDefinitionId = builtin.then(builtin => builtin.id);
 /// ```
 /// ```python
@@ -128,9 +128,7 @@ import 'get_user_assigned_identity_result.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		ctx.Export("customRoleDefinitionId", custom.ApplyT(func(custom authorization.GetRoleDefinitionResult) (*string, error) {
-/// 			return custom.Id, nil
-/// 		}).(pulumi.StringPtrOutput))
+/// 		ctx.Export("customRoleDefinitionId", custom.Id())
 /// 		ctx.Export("contributorRoleDefinitionId", builtin.Id)
 /// 		return nil
 /// 	})
@@ -280,6 +278,17 @@ Future<GetRoleDefinitionResult> getRoleDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoleDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetRoleDefinitionResult> getRoleDefinitionOutput(
+  GetRoleDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:authorization/getRoleDefinition:getRoleDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoleDefinitionResult.fromMap);
 }
 
 /// Use this data source to access information about an existing User Assigned Identity.
@@ -447,4 +456,15 @@ Future<GetUserAssignedIdentityResult> getUserAssignedIdentity(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserAssignedIdentityResult.fromMap(result);
+}
+
+pulumi.Output<GetUserAssignedIdentityResult> getUserAssignedIdentityOutput(
+  GetUserAssignedIdentityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:authorization/getUserAssignedIdentity:getUserAssignedIdentity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserAssignedIdentityResult.fromMap);
 }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AIServicesNetworkAclsVirtualNetworkRule {
   /// Whether to ignore a missing Virtual Network Service Endpoint or not. Default to `false`.
-  final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
+  final pulumi.Input<bool?>? ignoreMissingVnetServiceEndpoint;
   /// The ID of the subnet which should be able to access this AI Services Account.
   final pulumi.Input<String> subnetId;
 

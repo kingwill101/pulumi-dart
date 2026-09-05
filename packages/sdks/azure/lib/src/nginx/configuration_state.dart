@@ -7,15 +7,15 @@ import 'configuration_protected_file.dart';
 /// Input properties used for looking up and filtering Configuration resources.
 class ConfigurationState {
   /// One or more `configFile` blocks as defined below.
-  final pulumi.Input<List<ConfigurationConfigFile>>? configFiles;
+  final pulumi.Input<List<ConfigurationConfigFile>?>? configFiles;
   /// The ID of the Nginx Deployment. Changing this forces a new Nginx Configuration to be created.
-  final pulumi.Input<String>? nginxDeploymentId;
+  final pulumi.Input<String?>? nginxDeploymentId;
   /// Specifies the package data for this configuration.
-  final pulumi.Input<String>? packageData;
+  final pulumi.Input<String?>? packageData;
   /// One or more `protectedFile` blocks with sensitive information as defined below. If specified `configFile` must also be specified.
-  final pulumi.Input<List<ConfigurationProtectedFile>>? protectedFiles;
+  final pulumi.Input<List<ConfigurationProtectedFile>?>? protectedFiles;
   /// Specifies the root file path of this Nginx Configuration.
-  final pulumi.Input<String>? rootFile;
+  final pulumi.Input<String?>? rootFile;
 
   /// Creates a new [ConfigurationState].
   /// [configFiles] One or more `configFile` blocks as defined below.

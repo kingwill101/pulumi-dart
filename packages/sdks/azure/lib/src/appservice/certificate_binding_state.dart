@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering CertificateBinding resources.
 class CertificateBindingState {
   /// The name of the App Service to which the certificate was bound.
-  final pulumi.Input<String>? appServiceName;
+  final pulumi.Input<String?>? appServiceName;
   /// The ID of the certificate to bind to the custom domain. Changing this forces a new App Service Certificate Binding to be created.
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// The hostname of the bound certificate.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// The ID of the Custom Domain/Hostname Binding. Changing this forces a new App Service Certificate Binding to be created.
-  final pulumi.Input<String>? hostnameBindingId;
+  final pulumi.Input<String?>? hostnameBindingId;
   /// The type of certificate binding. Allowed values are `IpBasedEnabled` or `SniEnabled`. Changing this forces a new App Service Certificate Binding to be created.
-  final pulumi.Input<String>? sslState;
+  final pulumi.Input<String?>? sslState;
   /// The certificate thumbprint.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [CertificateBindingState].
   /// [appServiceName] The name of the App Service to which the certificate was bound.

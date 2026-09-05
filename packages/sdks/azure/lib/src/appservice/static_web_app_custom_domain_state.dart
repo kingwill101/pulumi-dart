@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering StaticWebAppCustomDomain resources.
 class StaticWebAppCustomDomainState {
   /// The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
-  final pulumi.Input<String>? staticWebAppId;
+  final pulumi.Input<String?>? staticWebAppId;
   /// Token to be used with `dns-txt-token` validation.
-  final pulumi.Input<String>? validationToken;
+  final pulumi.Input<String?>? validationToken;
   /// One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   ///
   /// &gt; **Note:** Apex domains must use `dns-txt-token` validation.
   ///
   /// &gt; **Note:** Validation using `dns-txt-token` is performed asynchronously and Terraform does not wait for the validation process to be successful before marking the resource as created successfully. Please ensure that the appropriate TXT record is created using the `validationToken` value for this to complete out of band.
-  final pulumi.Input<String>? validationType;
+  final pulumi.Input<String?>? validationType;
 
   /// Creates a new [StaticWebAppCustomDomainState].
   /// [domainName] The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_hub_args.dart';
+import 'virtual_hub_route.dart';
 import 'virtual_hub_state.dart';
 
 /// Manages a Virtual Hub within a Virtual WAN.
@@ -108,7 +109,7 @@ import 'virtual_hub_state.dart';
 /// 			Name:              pulumi.String("example-virtualhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.0.0/23"),
 /// 		})
 /// 		if err != nil {
@@ -247,7 +248,7 @@ class VirtualHub extends pulumi.CustomResource {
   /// Specifies the name of the Resource Group where the Virtual Hub should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// One or more `route` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
+  late final pulumi.Output<List<VirtualHubRoute>?> routes;
   /// The SKU of the Virtual Hub. Possible values are `Basic` and `Standard`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sku;
   /// A mapping of tags to assign to the Virtual Hub.
@@ -273,7 +274,7 @@ class VirtualHub extends pulumi.CustomResource {
           'azure:network/virtualHub:VirtualHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     addressPrefix = registerOutput<String?>('addressPrefix');
     branchToBranchTrafficEnabled = registerOutput<bool?>('branchToBranchTrafficEnabled');
@@ -282,12 +283,12 @@ class VirtualHub extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    routes = registerOutput<List<VirtualHubRoute>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualHubRoute>(guardedValue, (value) => VirtualHubRoute.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<String?>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
     virtualRouterAutoScaleMinCapacity = registerOutput<int?>('virtualRouterAutoScaleMinCapacity');
-    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
+    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     virtualWanId = registerOutput<String?>('virtualWanId');
   }
 
@@ -296,11 +297,12 @@ class VirtualHub extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualHubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualHub._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -321,12 +323,37 @@ class VirtualHub extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    routes = registerOutput<List<VirtualHubRoute>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualHubRoute>(guardedValue, (value) => VirtualHubRoute.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<String?>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
     virtualRouterAutoScaleMinCapacity = registerOutput<int?>('virtualRouterAutoScaleMinCapacity');
-    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
+    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    virtualWanId = registerOutput<String?>('virtualWanId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualHub] resource.
+  VirtualHub.reference(String urn)
+    : super(
+        'azure:network/virtualHub:VirtualHub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressPrefix = registerOutput<String?>('addressPrefix');
+    branchToBranchTrafficEnabled = registerOutput<bool?>('branchToBranchTrafficEnabled');
+    defaultRouteTableId = registerOutput<String>('defaultRouteTableId');
+    hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routes = registerOutput<List<VirtualHubRoute>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualHubRoute>(guardedValue, (value) => VirtualHubRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<String?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
+    virtualRouterAutoScaleMinCapacity = registerOutput<int?>('virtualRouterAutoScaleMinCapacity');
+    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     virtualWanId = registerOutput<String?>('virtualWanId');
   }
 }

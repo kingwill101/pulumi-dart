@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolContainerConfigurationContainerRegistry {
   /// The password to log into the registry server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The container registry URL. Changing this forces a new resource to be created.
   final pulumi.Input<String> registryServer;
   /// The reference to the user assigned identity to use to access an Azure Container Registry instead of username and password. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
   /// The user name to log into the registry server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [PoolContainerConfigurationContainerRegistry].
   /// [password] The password to log into the registry server. Changing this forces a new resource to be created.

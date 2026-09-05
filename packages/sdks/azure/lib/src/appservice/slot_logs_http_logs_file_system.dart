@@ -25,8 +25,8 @@ class SlotLogsHttpLogsFileSystem {
 
   factory SlotLogsHttpLogsFileSystem.fromMap(Map<String, dynamic> map) {
     return SlotLogsHttpLogsFileSystem(
-      retentionInDays: pulumi.Input.fromValue(map['retentionInDays'] as int),
-      retentionInMb: pulumi.Input.fromValue(map['retentionInMb'] as int),
+      retentionInDays: pulumi.Input.fromValue((map['retentionInDays'] as num).toInt()),
+      retentionInMb: pulumi.Input.fromValue((map['retentionInMb'] as num).toInt()),
     );
   }
 }

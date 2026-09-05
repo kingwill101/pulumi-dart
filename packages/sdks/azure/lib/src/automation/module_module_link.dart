@@ -5,7 +5,7 @@ import 'module_module_link_hash.dart';
 
 class ModuleModuleLink {
   /// A `hash` block as defined below.
-  final pulumi.Input<ModuleModuleLinkHash>? hash;
+  final pulumi.Input<ModuleModuleLinkHash?>? hash;
   /// The URI of the module content (zip or nupkg).
   final pulumi.Input<String> uri;
 

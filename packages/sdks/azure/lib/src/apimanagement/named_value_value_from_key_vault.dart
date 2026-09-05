@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NamedValueValueFromKeyVault {
   /// The client ID of User Assigned Identity, for the API Management Service, which will be used to access the key vault secret. The System Assigned Identity will be used in absence.
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// The resource ID of the Key Vault Secret.
   final pulumi.Input<String> secretId;
 

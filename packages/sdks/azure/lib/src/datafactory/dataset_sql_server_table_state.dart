@@ -6,25 +6,25 @@ import 'dataset_sql_server_table_schema_column.dart';
 /// Input properties used for looking up and filtering DatasetSqlServerTable resources.
 class DatasetSqlServerTableState {
   /// A map of additional properties to associate with the Data Factory Dataset SQL Server Table.
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Dataset SQL Server Table.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The description for the Data Factory Dataset SQL Server Table.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// The Data Factory Linked Service name in which to associate the Dataset with.
-  final pulumi.Input<String>? linkedServiceName;
+  final pulumi.Input<String?>? linkedServiceName;
   /// Specifies the name of the Data Factory Dataset SQL Server Table. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Dataset SQL Server Table.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// A `schemaColumn` block as defined below.
-  final pulumi.Input<List<DatasetSqlServerTableSchemaColumn>>? schemaColumns;
+  final pulumi.Input<List<DatasetSqlServerTableSchemaColumn>?>? schemaColumns;
   /// The table name of the Data Factory Dataset SQL Server Table.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [DatasetSqlServerTableState].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Dataset SQL Server Table.

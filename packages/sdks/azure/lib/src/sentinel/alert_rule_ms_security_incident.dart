@@ -120,7 +120,7 @@ import 'alert_rule_ms_security_incident_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -308,18 +308,18 @@ class AlertRuleMsSecurityIncident extends pulumi.CustomResource {
           'azure:sentinel/alertRuleMsSecurityIncident:AlertRuleMsSecurityIncident',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    displayNameExcludeFilters = registerOutput<List<String>?>('displayNameExcludeFilters');
-    displayNameFilters = registerOutput<List<String>?>('displayNameFilters');
+    displayNameExcludeFilters = registerOutput<List<String>?>('displayNameExcludeFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayNameFilters = registerOutput<List<String>?>('displayNameFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     productFilter = registerOutput<String>('productFilter');
-    severityFilters = registerOutput<List<String>>('severityFilters');
+    severityFilters = registerOutput<List<String>>('severityFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [AlertRuleMsSecurityIncident] resource's state with the given [name] and [id].
@@ -327,11 +327,12 @@ class AlertRuleMsSecurityIncident extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlertRuleMsSecurityIncidentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AlertRuleMsSecurityIncident._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -348,12 +349,33 @@ class AlertRuleMsSecurityIncident extends pulumi.CustomResource {
     alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    displayNameExcludeFilters = registerOutput<List<String>?>('displayNameExcludeFilters');
-    displayNameFilters = registerOutput<List<String>?>('displayNameFilters');
+    displayNameExcludeFilters = registerOutput<List<String>?>('displayNameExcludeFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayNameFilters = registerOutput<List<String>?>('displayNameFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     productFilter = registerOutput<String>('productFilter');
-    severityFilters = registerOutput<List<String>>('severityFilters');
+    severityFilters = registerOutput<List<String>>('severityFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AlertRuleMsSecurityIncident] resource.
+  AlertRuleMsSecurityIncident.reference(String urn)
+    : super(
+        'azure:sentinel/alertRuleMsSecurityIncident:AlertRuleMsSecurityIncident',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    displayNameExcludeFilters = registerOutput<List<String>?>('displayNameExcludeFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayNameFilters = registerOutput<List<String>?>('displayNameFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enabled = registerOutput<bool?>('enabled');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    productFilter = registerOutput<String>('productFilter');
+    severityFilters = registerOutput<List<String>>('severityFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

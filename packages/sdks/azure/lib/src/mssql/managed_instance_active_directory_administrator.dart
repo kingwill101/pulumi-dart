@@ -249,7 +249,7 @@ import 'managed_instance_active_directory_administrator_state.dart';
 /// 			LicenseType:                pulumi.String("BasePrice"),
 /// 			SkuName:                    pulumi.String("GP_Gen5"),
 /// 			StorageSizeInGb:            pulumi.Int(32),
-/// 			SubnetId:                   exampleSubnet.ID(),
+/// 			SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Vcores:                     pulumi.Int(4),
 /// 			AdministratorLogin:         pulumi.String("msadministrator"),
 /// 			AdministratorLoginPassword: pulumi.String("thisIsDog11"),
@@ -267,10 +267,8 @@ import 'managed_instance_active_directory_administrator_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewDirectoryRoleMember(ctx, "example", &azuread.DirectoryRoleMemberArgs{
-/// 			RoleObjectId: reader.ObjectId,
-/// 			MemberObjectId: pulumi.String(exampleManagedInstance.Identity.ApplyT(func(identity mssql.ManagedInstanceIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			RoleObjectId:   reader.ObjectId,
+/// 			MemberObjectId: exampleManagedInstance.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -285,7 +283,7 @@ import 'managed_instance_active_directory_administrator_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewManagedInstanceActiveDirectoryAdministrator(ctx, "example", &mssql.ManagedInstanceActiveDirectoryAdministratorArgs{
-/// 			ManagedInstanceId: exampleManagedInstance.ID(),
+/// 			ManagedInstanceId: exampleManagedInstance.ID().ToIDOutput().ToStringOutput(),
 /// 			LoginUsername:     pulumi.String("msadmin"),
 /// 			ObjectId:          admin.ObjectId,
 /// 			TenantId:          pulumi.String(current.TenantId),
@@ -575,7 +573,7 @@ class ManagedInstanceActiveDirectoryAdministrator extends pulumi.CustomResource 
           'azure:mssql/managedInstanceActiveDirectoryAdministrator:ManagedInstanceActiveDirectoryAdministrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     azureadAuthenticationOnly = registerOutput<bool?>('azureadAuthenticationOnly');
     loginUsername = registerOutput<String>('loginUsername');
@@ -589,11 +587,12 @@ class ManagedInstanceActiveDirectoryAdministrator extends pulumi.CustomResource 
     String name,
     pulumi.Input<String> id, {
     ManagedInstanceActiveDirectoryAdministratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedInstanceActiveDirectoryAdministrator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -607,6 +606,22 @@ class ManagedInstanceActiveDirectoryAdministrator extends pulumi.CustomResource 
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    azureadAuthenticationOnly = registerOutput<bool?>('azureadAuthenticationOnly');
+    loginUsername = registerOutput<String>('loginUsername');
+    managedInstanceId = registerOutput<String>('managedInstanceId');
+    objectId = registerOutput<String>('objectId');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [ManagedInstanceActiveDirectoryAdministrator] resource.
+  ManagedInstanceActiveDirectoryAdministrator.reference(String urn)
+    : super(
+        'azure:mssql/managedInstanceActiveDirectoryAdministrator:ManagedInstanceActiveDirectoryAdministrator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     azureadAuthenticationOnly = registerOutput<bool?>('azureadAuthenticationOnly');
     loginUsername = registerOutput<String>('loginUsername');
     managedInstanceId = registerOutput<String>('managedInstanceId');

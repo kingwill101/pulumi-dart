@@ -150,3 +150,14 @@ Future<GetPrivateCloudResult> getPrivateCloud(
   );
   return GetPrivateCloudResult.fromMap(result);
 }
+
+pulumi.Output<GetPrivateCloudResult> getPrivateCloudOutput(
+  GetPrivateCloudArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:avs/getPrivateCloud:getPrivateCloud',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateCloudResult.fromMap);
+}

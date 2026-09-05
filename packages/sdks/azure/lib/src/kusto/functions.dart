@@ -137,6 +137,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:kusto/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Kusto Database
 ///
 /// ## Example Usage
@@ -275,4 +286,15 @@ Future<GetDatabaseResult> getDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:kusto/getDatabase:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
 }

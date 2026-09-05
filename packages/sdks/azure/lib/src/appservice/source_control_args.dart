@@ -13,21 +13,21 @@ class SourceControlArgs {
   /// &gt; **Note:** Function apps are not supported at this time.
   final pulumi.Input<String> appId;
   /// The branch name to use for deployments. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// A `githubActionConfiguration` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<SourceControlGithubActionConfiguration>? githubActionConfiguration;
+  final pulumi.Input<SourceControlGithubActionConfiguration?>? githubActionConfiguration;
   /// The URL for the repository. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? repoUrl;
+  final pulumi.Input<String?>? repoUrl;
   /// Should the Deployment Rollback be enabled? Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Azure can typically set this value automatically based on the `repoUrl` value.
-  final pulumi.Input<bool>? rollbackEnabled;
+  final pulumi.Input<bool?>? rollbackEnabled;
   /// Should the App use local Git configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useLocalGit;
+  final pulumi.Input<bool?>? useLocalGit;
   /// Should code be deployed manually. Set to `false` to enable continuous integration, such as webhooks into online repos such as GitHub. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useManualIntegration;
+  final pulumi.Input<bool?>? useManualIntegration;
   /// The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useMercurial;
+  final pulumi.Input<bool?>? useMercurial;
 
   /// Creates a new [SourceControlArgs].
   /// [appId] The ID of the Windows or Linux Web App. Changing this forces a new resource to be created.

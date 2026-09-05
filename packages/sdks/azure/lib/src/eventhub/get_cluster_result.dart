@@ -4,45 +4,45 @@
 /// Result data returned by getCluster.
 class GetClusterResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Location of the EventHub Cluster.
-  final String location;
-  final String name;
-  final String resourceGroupName;
+  final String? location;
+  final String? name;
+  final String? resourceGroupName;
   /// SKU name of the EventHub Cluster.
-  final String skuName;
+  final String? skuName;
 
   /// Creates a new [GetClusterResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Location of the EventHub Cluster.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
   /// [skuName] SKU name of the EventHub Cluster.
   const GetClusterResult({
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.resourceGroupName,
-    required this.skuName,
+    this.id,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.skuName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'location': location,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'skuName': skuName,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'skuName': ?skuName,
     };
   }
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      skuName: map['skuName'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

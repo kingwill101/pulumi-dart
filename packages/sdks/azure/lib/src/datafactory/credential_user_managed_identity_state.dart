@@ -7,17 +7,17 @@ class CredentialUserManagedIdentityState {
   /// List of tags that can be used for describing the Data Factory Credential.
   ///
   /// &gt; **Note:** Manually altering a Credential resource will cause annotations to be lost, resulting in a change being detected on the next run.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The Data Factory ID in which to associate the Credential with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The description for the Data Factory Credential.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Resouce ID of an existing User Assigned Managed Identity. This can be changed without recreating the resource. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Attempting to create a Credential resource without first assigning the identity to the parent Data Factory will result in an Azure API error.
-  final pulumi.Input<String>? identityId;
+  final pulumi.Input<String?>? identityId;
   /// Specifies the name of the Credential. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CredentialUserManagedIdentityState].
   /// [annotations] List of tags that can be used for describing the Data Factory Credential.

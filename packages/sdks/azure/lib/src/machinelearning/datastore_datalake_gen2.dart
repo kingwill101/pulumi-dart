@@ -26,6 +26,7 @@ import 'datastore_datalake_gen2_state.dart';
 ///     name: "workspaceexamplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 /// });
@@ -75,6 +76,7 @@ import 'datastore_datalake_gen2_state.dart';
 ///     name="workspaceexamplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium")
 /// example_account = azure.storage.Account("example",
@@ -131,6 +133,7 @@ import 'datastore_datalake_gen2_state.dart';
 ///         Name = "workspaceexamplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///     });
@@ -209,11 +212,12 @@ import 'datastore_datalake_gen2_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:              pulumi.String("workspaceexamplekeyvault"),
-/// 			Location:          example.Location,
-/// 			ResourceGroupName: example.Name,
-/// 			TenantId:          pulumi.String(current.TenantId),
-/// 			SkuName:           pulumi.String("premium"),
+/// 			Name:                     pulumi.String("workspaceexamplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -232,9 +236,9 @@ import 'datastore_datalake_gen2_state.dart';
 /// 			Name:                  pulumi.String("example-workspace"),
 /// 			Location:              example.Location,
 /// 			ResourceGroupName:     example.Name,
-/// 			ApplicationInsightsId: exampleInsights.ID(),
-/// 			KeyVaultId:            exampleKeyVault.ID(),
-/// 			StorageAccountId:      exampleAccount.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId:            exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:      exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &machinelearning.WorkspaceIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -252,8 +256,8 @@ import 'datastore_datalake_gen2_state.dart';
 /// 		}
 /// 		_, err = machinelearning.NewDatastoreDatalakeGen2(ctx, "example", &machinelearning.DatastoreDatalakeGen2Args{
 /// 			Name:               pulumi.String("example-datastore"),
-/// 			WorkspaceId:        exampleWorkspace.ID(),
-/// 			StorageContainerId: exampleContainer.ID(),
+/// 			WorkspaceId:        exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageContainerId: exampleContainer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -285,11 +289,12 @@ import 'datastore_datalake_gen2_state.dart';
 ///   application_type    = "web"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "workspaceexamplekeyvault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name            = "premium"
+///   name                       = "workspaceexamplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
 /// }
 /// resource "azure_storage_account" "example" {
 ///   name                     = "workspacestorageaccount"
@@ -373,6 +378,7 @@ import 'datastore_datalake_gen2_state.dart';
 ///             .name("workspaceexamplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .build());
@@ -434,6 +440,7 @@ import 'datastore_datalake_gen2_state.dart';
 ///       name: workspaceexamplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///   exampleAccount:
@@ -529,17 +536,18 @@ class DatastoreDatalakeGen2 extends pulumi.CustomResource {
           'azure:machinelearning/datastoreDatalakeGen2:DatastoreDatalakeGen2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['clientSecret'],
         ) {
     authorityUrl = registerOutput<String?>('authorityUrl');
     clientId = registerOutput<String?>('clientId');
-    clientSecret = registerOutput<String?>('clientSecret');
+    clientSecret = registerOutput<String?>('clientSecret', isSecret: true);
     description = registerOutput<String?>('description');
     isDefault = registerOutput<bool>('isDefault');
     this.name = registerOutput<String>('name');
     serviceDataIdentity = registerOutput<String?>('serviceDataIdentity');
     storageContainerId = registerOutput<String>('storageContainerId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String?>('tenantId');
     workspaceId = registerOutput<String>('workspaceId');
   }
@@ -549,11 +557,12 @@ class DatastoreDatalakeGen2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatastoreDatalakeGen2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatastoreDatalakeGen2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -569,13 +578,36 @@ class DatastoreDatalakeGen2 extends pulumi.CustomResource {
         ) {
     authorityUrl = registerOutput<String?>('authorityUrl');
     clientId = registerOutput<String?>('clientId');
-    clientSecret = registerOutput<String?>('clientSecret');
+    clientSecret = registerOutput<String?>('clientSecret', isSecret: true);
     description = registerOutput<String?>('description');
     isDefault = registerOutput<bool>('isDefault');
     this.name = registerOutput<String>('name');
     serviceDataIdentity = registerOutput<String?>('serviceDataIdentity');
     storageContainerId = registerOutput<String>('storageContainerId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String?>('tenantId');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [DatastoreDatalakeGen2] resource.
+  DatastoreDatalakeGen2.reference(String urn)
+    : super(
+        'azure:machinelearning/datastoreDatalakeGen2:DatastoreDatalakeGen2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['clientSecret'],
+        isResourceReference: true,
+      ) {
+    authorityUrl = registerOutput<String?>('authorityUrl');
+    clientId = registerOutput<String?>('clientId');
+    clientSecret = registerOutput<String?>('clientSecret', isSecret: true);
+    description = registerOutput<String?>('description');
+    isDefault = registerOutput<bool>('isDefault');
+    this.name = registerOutput<String>('name');
+    serviceDataIdentity = registerOutput<String?>('serviceDataIdentity');
+    storageContainerId = registerOutput<String>('storageContainerId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String?>('tenantId');
     workspaceId = registerOutput<String>('workspaceId');
   }

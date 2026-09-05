@@ -6,25 +6,25 @@ import 'application_plan.dart';
 /// Input properties used for looking up and filtering Application resources.
 class ApplicationState {
   /// The application definition ID to deploy.
-  final pulumi.Input<String>? applicationDefinitionId;
+  final pulumi.Input<String?>? applicationDefinitionId;
   /// The kind of the managed application to deploy. Possible values are `MarketPlace` and `ServiceCatalog`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the target resource group where all the resources deployed by the managed application will reside. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? managedResourceGroupName;
+  final pulumi.Input<String?>? managedResourceGroupName;
   /// Specifies the name of the Managed Application. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name and value pairs that define the managed application outputs.
-  final pulumi.Input<Map<String, String>>? outputs;
+  final pulumi.Input<Map<String, String>?>? outputs;
   /// The parameter values to pass to the Managed Application. This field is a JSON object that allows you to assign parameters to this Managed Application.
-  final pulumi.Input<String>? parameterValues;
+  final pulumi.Input<String?>? parameterValues;
   /// One `plan` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ApplicationPlan>? plan;
+  final pulumi.Input<ApplicationPlan?>? plan;
   /// The name of the Resource Group where the Managed Application should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ApplicationState].
   /// [applicationDefinitionId] The application definition ID to deploy.

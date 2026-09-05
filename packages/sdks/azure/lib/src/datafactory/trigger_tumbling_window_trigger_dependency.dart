@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerTumblingWindowTriggerDependency {
   /// The offset of the dependency trigger. Must be in Timespan format (±hh:mm:ss) and must be a negative offset for a self dependency.
-  final pulumi.Input<String>? offset;
+  final pulumi.Input<String?>? offset;
   /// The size of the dependency tumbling window. Must be in Timespan format (hh:mm:ss).
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// The dependency trigger name. If not specified, it will use self dependency.
-  final pulumi.Input<String>? triggerName;
+  final pulumi.Input<String?>? triggerName;
 
   /// Creates a new [TriggerTumblingWindowTriggerDependency].
   /// [offset] The offset of the dependency trigger. Must be in Timespan format (±hh:mm:ss) and must be a negative offset for a self dependency.

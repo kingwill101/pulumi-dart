@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountQueuePropertiesMinuteMetrics {
   /// Indicates whether metrics should generate summary statistics for called API operations.
-  final pulumi.Input<bool>? includeApis;
+  final pulumi.Input<bool?>? includeApis;
   /// Specifies the number of days that logs will be retained.
-  final pulumi.Input<int>? retentionPolicyDays;
+  final pulumi.Input<int?>? retentionPolicyDays;
   /// The version of storage analytics to configure.
   final pulumi.Input<String> version;
 
@@ -31,7 +31,7 @@ class AccountQueuePropertiesMinuteMetrics {
   factory AccountQueuePropertiesMinuteMetrics.fromMap(Map<String, dynamic> map) {
     return AccountQueuePropertiesMinuteMetrics(
       includeApis: (() { final guardedValue = map['includeApis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      retentionPolicyDays: (() { final guardedValue = map['retentionPolicyDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionPolicyDays: (() { final guardedValue = map['retentionPolicyDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }

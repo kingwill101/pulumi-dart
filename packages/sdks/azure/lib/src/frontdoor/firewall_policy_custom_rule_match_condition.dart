@@ -8,13 +8,13 @@ class FirewallPolicyCustomRuleMatchCondition {
   /// The request variable to compare with. Possible values are `Cookies`, `PostArgs`, `QueryString`, `RemoteAddr`, `RequestBody`, `RequestHeader`, `RequestMethod`, `RequestUri`, or `SocketAddr`.
   final pulumi.Input<String> matchVariable;
   /// Should the result of the condition be negated.
-  final pulumi.Input<bool>? negationCondition;
+  final pulumi.Input<bool?>? negationCondition;
   /// Comparison type to use for matching with the variable value. Possible values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GeoMatch`, `GreaterThan`, `GreaterThanOrEqual`, `IPMatch`, `LessThan`, `LessThanOrEqual` or `RegEx`.
   final pulumi.Input<String> operator;
   /// Match against a specific key if the `matchVariable` is `QueryString`, `PostArgs`, `RequestHeader` or `Cookies`.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// Up to `5` transforms to apply. Possible values are `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `URLDecode` or`URLEncode`.
-  final pulumi.Input<List<String>>? transforms;
+  final pulumi.Input<List<String>?>? transforms;
 
   /// Creates a new [FirewallPolicyCustomRuleMatchCondition].
   /// [matchValues] Up to `600` possible values to match. Limit is in total across all `matchCondition` blocks and `matchValues` arguments. String value itself can be up to `256` characters long.

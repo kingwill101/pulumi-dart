@@ -144,7 +144,7 @@ import 'hci_virtual_hard_disk_state.dart';
 /// 			Location:          example.Location,
 /// 			CustomLocationId:  pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ExtendedLocation/customLocations/cl1"),
 /// 			DiskSizeInGb:      pulumi.Int(2),
-/// 			StoragePathId:     exampleHciStoragePath.ID(),
+/// 			StoragePathId:     exampleHciStoragePath.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -332,7 +332,7 @@ class HciVirtualHardDisk extends pulumi.CustomResource {
           'azure:stack/hciVirtualHardDisk:HciVirtualHardDisk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     blockSizeInBytes = registerOutput<int?>('blockSizeInBytes');
     customLocationId = registerOutput<String>('customLocationId');
@@ -346,7 +346,7 @@ class HciVirtualHardDisk extends pulumi.CustomResource {
     physicalSectorInBytes = registerOutput<int?>('physicalSectorInBytes');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storagePathId = registerOutput<String?>('storagePathId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [HciVirtualHardDisk] resource's state with the given [name] and [id].
@@ -354,11 +354,12 @@ class HciVirtualHardDisk extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HciVirtualHardDiskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HciVirtualHardDisk._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -384,6 +385,30 @@ class HciVirtualHardDisk extends pulumi.CustomResource {
     physicalSectorInBytes = registerOutput<int?>('physicalSectorInBytes');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storagePathId = registerOutput<String?>('storagePathId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [HciVirtualHardDisk] resource.
+  HciVirtualHardDisk.reference(String urn)
+    : super(
+        'azure:stack/hciVirtualHardDisk:HciVirtualHardDisk',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    blockSizeInBytes = registerOutput<int?>('blockSizeInBytes');
+    customLocationId = registerOutput<String>('customLocationId');
+    diskFileFormat = registerOutput<String?>('diskFileFormat');
+    diskSizeInGb = registerOutput<int>('diskSizeInGb');
+    dynamicEnabled = registerOutput<bool?>('dynamicEnabled');
+    hypervGeneration = registerOutput<String?>('hypervGeneration');
+    location = registerOutput<String>('location');
+    logicalSectorInBytes = registerOutput<int?>('logicalSectorInBytes');
+    this.name = registerOutput<String>('name');
+    physicalSectorInBytes = registerOutput<int?>('physicalSectorInBytes');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storagePathId = registerOutput<String?>('storagePathId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -107,14 +107,14 @@ import 'local_rulestack_outbound_trust_certificate_association_state.dart';
 /// 		}
 /// 		exampleLocalRulestackCertificate, err := paloalto.NewLocalRulestackCertificate(ctx, "example", &paloalto.LocalRulestackCertificateArgs{
 /// 			Name:        pulumi.String("example"),
-/// 			RulestackId: exampleLocalRulestack.ID(),
+/// 			RulestackId: exampleLocalRulestack.ID().ToIDOutput().ToStringOutput(),
 /// 			SelfSigned:  pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = paloalto.NewLocalRulestackOutboundTrustCertificateAssociation(ctx, "example", &paloalto.LocalRulestackOutboundTrustCertificateAssociationArgs{
-/// 			CertificateId: exampleLocalRulestackCertificate.ID(),
+/// 			CertificateId: exampleLocalRulestackCertificate.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -252,7 +252,7 @@ class LocalRulestackOutboundTrustCertificateAssociation extends pulumi.CustomRes
           'azure:paloalto/localRulestackOutboundTrustCertificateAssociation:LocalRulestackOutboundTrustCertificateAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     certificateId = registerOutput<String>('certificateId');
   }
@@ -262,11 +262,12 @@ class LocalRulestackOutboundTrustCertificateAssociation extends pulumi.CustomRes
     String name,
     pulumi.Input<String> id, {
     LocalRulestackOutboundTrustCertificateAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocalRulestackOutboundTrustCertificateAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -280,6 +281,18 @@ class LocalRulestackOutboundTrustCertificateAssociation extends pulumi.CustomRes
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateId = registerOutput<String>('certificateId');
+  }
+
+  /// Creates a typed reference to an existing [LocalRulestackOutboundTrustCertificateAssociation] resource.
+  LocalRulestackOutboundTrustCertificateAssociation.reference(String urn)
+    : super(
+        'azure:paloalto/localRulestackOutboundTrustCertificateAssociation:LocalRulestackOutboundTrustCertificateAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateId = registerOutput<String>('certificateId');
   }
 }

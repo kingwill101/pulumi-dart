@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterHttpProxyConfig {
   /// The proxy address to be used when communicating over HTTP.
-  final pulumi.Input<String>? httpProxy;
+  final pulumi.Input<String?>? httpProxy;
   /// The proxy address to be used when communicating over HTTPS.
-  final pulumi.Input<String>? httpsProxy;
+  final pulumi.Input<String?>? httpsProxy;
   /// The list of domains that will not use the proxy for communication.
   ///
   /// &gt; **Note:** If you specify the `default_node_pool[0].vnet_subnet_id`, be sure to include the Subnet CIDR in the `noProxy` list.
   ///
   /// &gt; **Note:** You may wish to use Terraform's `ignoreChanges` functionality to ignore the changes to this field.
-  final pulumi.Input<List<String>>? noProxies;
+  final pulumi.Input<List<String>?>? noProxies;
   /// The base64 encoded alternative CA certificate content in PEM format.
-  final pulumi.Input<String>? trustedCa;
+  final pulumi.Input<String?>? trustedCa;
 
   /// Creates a new [KubernetesClusterHttpProxyConfig].
   /// [httpProxy] The proxy address to be used when communicating over HTTP.

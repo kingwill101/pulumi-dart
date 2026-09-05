@@ -5,11 +5,11 @@ import 'application_gateway_rewrite_rule_set_rewrite_rule.dart';
 
 class ApplicationGatewayRewriteRuleSet {
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Unique name of the rewrite rule set block
   final pulumi.Input<String> name;
   /// One or more `rewriteRule` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayRewriteRuleSetRewriteRule>>? rewriteRules;
+  final pulumi.Input<List<ApplicationGatewayRewriteRuleSetRewriteRule>?>? rewriteRules;
 
   /// Creates a new [ApplicationGatewayRewriteRuleSet].
   /// [id] The ID of the Rewrite Rule Set

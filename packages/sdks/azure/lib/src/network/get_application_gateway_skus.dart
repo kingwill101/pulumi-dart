@@ -30,7 +30,7 @@ class GetApplicationGatewaySkus {
 
   factory GetApplicationGatewaySkus.fromMap(Map<String, dynamic> map) {
     return GetApplicationGatewaySkus(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      capacity: pulumi.Input.fromValue((map['capacity'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
       tier: pulumi.Input.fromValue(map['tier'] as String),
     );

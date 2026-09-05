@@ -15,30 +15,30 @@ import 'deployment_web_application_firewall.dart';
 /// {@macro pulumi_nginx_deployment_deployment_args_doc}
 class DeploymentArgs {
   /// An `autoScaleProfile` block as defined below.
-  final pulumi.Input<List<DeploymentAutoScaleProfile>>? autoScaleProfiles;
+  final pulumi.Input<List<DeploymentAutoScaleProfile>?>? autoScaleProfiles;
   /// Specify the automatic upgrade channel for the NGINX deployment. Defaults to `stable`. The possible values are `stable` and `preview`.
-  final pulumi.Input<String>? automaticUpgradeChannel;
+  final pulumi.Input<String?>? automaticUpgradeChannel;
   /// Specify the number of NGINX capacity units for this NGINX deployment.
   ///
   /// &gt; **Note:** For more information on NGINX capacity units, please refer to the [NGINX scaling guidance documentation](https://docs.nginx.com/nginxaas/azure/quickstart/scaling/)
-  final pulumi.Input<int>? capacity;
-  final pulumi.Input<bool>? diagnoseSupportEnabled;
+  final pulumi.Input<int?>? capacity;
+  final pulumi.Input<bool?>? diagnoseSupportEnabled;
   /// Specify the preferred support contact email address for receiving alerts and notifications.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// One or more `frontendPrivate` blocks as defined below.
-  final pulumi.Input<List<DeploymentFrontendPrivate>>? frontendPrivates;
+  final pulumi.Input<List<DeploymentFrontendPrivate>?>? frontendPrivates;
   /// A `frontendPublic` block as defined below.
-  final pulumi.Input<DeploymentFrontendPublic>? frontendPublic;
+  final pulumi.Input<DeploymentFrontendPublic?>? frontendPublic;
   /// An `identity` block as defined below.
-  final pulumi.Input<DeploymentIdentity>? identity;
+  final pulumi.Input<DeploymentIdentity?>? identity;
   /// The Azure Region where the NGINX Deployment should exist. Changing this forces a new NGINX Deployment to be created.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<List<DeploymentLoggingStorageAccount>>? loggingStorageAccounts;
-  final pulumi.Input<String>? managedResourceGroup;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<List<DeploymentLoggingStorageAccount>?>? loggingStorageAccounts;
+  final pulumi.Input<String?>? managedResourceGroup;
   /// The name which should be used for this NGINX Deployment. Changing this forces a new NGINX Deployment to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `networkInterface` blocks as defined below.
-  final pulumi.Input<List<DeploymentNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<DeploymentNetworkInterface>?>? networkInterfaces;
   /// The name of the Resource Group where the NGINX Deployment should exist. Changing this forces a new NGINX Deployment to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the NGINX Deployment SKU.
@@ -48,9 +48,9 @@ class DeploymentArgs {
   /// &gt; **Note:** If you are setting the `sku` to `basic_Monthly`, you cannot specify a `capacity` or `autoScaleProfile`; basic plans do not support scaling. Other `sku`s require either `capacity` or `autoScaleProfile`. If you're using `basic_Monthly` with deployments created before v4.0, you may need to use Terraform's `ignoreChanges` functionality to ignore changes to the `capacity` field.
   final pulumi.Input<String> sku;
   /// A mapping of tags which should be assigned to the NGINX Deployment.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `webApplicationFirewall` blocks as defined below.
-  final pulumi.Input<DeploymentWebApplicationFirewall>? webApplicationFirewall;
+  final pulumi.Input<DeploymentWebApplicationFirewall?>? webApplicationFirewall;
 
   /// Creates a new [DeploymentArgs].
   /// [autoScaleProfiles] An `autoScaleProfile` block as defined below.
@@ -116,7 +116,7 @@ class DeploymentArgs {
     return DeploymentArgs(
       autoScaleProfiles: (() { final guardedValue = map['autoScaleProfiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeploymentAutoScaleProfile>(guardedValue, (value) => DeploymentAutoScaleProfile.fromMap((value as Map).cast<String, dynamic>()))); })(),
       automaticUpgradeChannel: (() { final guardedValue = map['automaticUpgradeChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       diagnoseSupportEnabled: (() { final guardedValue = map['diagnoseSupportEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       frontendPrivates: (() { final guardedValue = map['frontendPrivates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeploymentFrontendPrivate>(guardedValue, (value) => DeploymentFrontendPrivate.fromMap((value as Map).cast<String, dynamic>()))); })(),

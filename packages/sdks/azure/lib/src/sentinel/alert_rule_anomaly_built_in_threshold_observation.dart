@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleAnomalyBuiltInThresholdObservation {
   /// The description of the threshold observation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The max value of the threshold observation.
-  final pulumi.Input<String>? max;
+  final pulumi.Input<String?>? max;
   /// The min value of the threshold observation.
-  final pulumi.Input<String>? min;
+  final pulumi.Input<String?>? min;
   /// The Name of the built-in Anomaly Alert Rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the threshold observation.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AlertRuleAnomalyBuiltInThresholdObservation].
   /// [description] The description of the threshold observation.

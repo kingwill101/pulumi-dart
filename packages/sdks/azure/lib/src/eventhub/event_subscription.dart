@@ -4,6 +4,7 @@ import 'event_subscription_args.dart';
 import 'event_subscription_azure_function_endpoint.dart';
 import 'event_subscription_dead_letter_identity.dart';
 import 'event_subscription_delivery_identity.dart';
+import 'event_subscription_delivery_property.dart';
 import 'event_subscription_retry_policy.dart';
 import 'event_subscription_state.dart';
 import 'event_subscription_storage_blob_dead_letter_destination.dart';
@@ -161,9 +162,9 @@ import 'event_subscription_webhook_endpoint.dart';
 /// 		}
 /// 		_, err = eventgrid.NewEventSubscription(ctx, "example", &eventgrid.EventSubscriptionArgs{
 /// 			Name:  pulumi.String("example-aees"),
-/// 			Scope: example.ID(),
+/// 			Scope: example.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageQueueEndpoint: &eventgrid.EventSubscriptionStorageQueueEndpointArgs{
-/// 				StorageAccountId: exampleAccount.ID(),
+/// 				StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 				QueueName:        exampleQueue.Name,
 /// 			},
 /// 		})
@@ -333,7 +334,7 @@ class EventSubscription extends pulumi.CustomResource {
   /// A `deliveryIdentity` block as defined below.
   late final pulumi.Output<EventSubscriptionDeliveryIdentity?> deliveryIdentity;
   /// One or more `deliveryProperty` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> deliveryProperties;
+  late final pulumi.Output<List<EventSubscriptionDeliveryProperty>?> deliveryProperties;
   /// Specifies the event delivery schema for the event subscription. Possible values include: `EventGridSchema`, `CloudEventSchemaV1_0`, `CustomInputSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> eventDeliverySchema;
   /// Specifies the id where the Event Hub is located.
@@ -379,20 +380,20 @@ class EventSubscription extends pulumi.CustomResource {
           'azure:eventhub/eventSubscription:EventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     advancedFilter = registerOutput<EventSubscriptionAdvancedFilter?>('advancedFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionAdvancedFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     advancedFilteringOnArraysEnabled = registerOutput<bool?>('advancedFilteringOnArraysEnabled');
     azureFunctionEndpoint = registerOutput<EventSubscriptionAzureFunctionEndpoint?>('azureFunctionEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionAzureFunctionEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deadLetterIdentity = registerOutput<EventSubscriptionDeadLetterIdentity?>('deadLetterIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionDeadLetterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deliveryIdentity = registerOutput<EventSubscriptionDeliveryIdentity?>('deliveryIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionDeliveryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    deliveryProperties = registerOutput<List<Map<String, dynamic>>?>('deliveryProperties');
+    deliveryProperties = registerOutput<List<EventSubscriptionDeliveryProperty>?>('deliveryProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventSubscriptionDeliveryProperty>(guardedValue, (value) => EventSubscriptionDeliveryProperty.fromMap((value as Map).cast<String, dynamic>())); });
     eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
     eventhubEndpointId = registerOutput<String>('eventhubEndpointId');
     expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
     hybridConnectionEndpointId = registerOutput<String>('hybridConnectionEndpointId');
-    includedEventTypes = registerOutput<List<String>>('includedEventTypes');
-    labels = registerOutput<List<String>?>('labels');
+    includedEventTypes = registerOutput<List<String>>('includedEventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     retryPolicy = registerOutput<EventSubscriptionRetryPolicy>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scope = registerOutput<String>('scope');
@@ -409,11 +410,12 @@ class EventSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -432,13 +434,45 @@ class EventSubscription extends pulumi.CustomResource {
     azureFunctionEndpoint = registerOutput<EventSubscriptionAzureFunctionEndpoint?>('azureFunctionEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionAzureFunctionEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deadLetterIdentity = registerOutput<EventSubscriptionDeadLetterIdentity?>('deadLetterIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionDeadLetterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deliveryIdentity = registerOutput<EventSubscriptionDeliveryIdentity?>('deliveryIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionDeliveryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    deliveryProperties = registerOutput<List<Map<String, dynamic>>?>('deliveryProperties');
+    deliveryProperties = registerOutput<List<EventSubscriptionDeliveryProperty>?>('deliveryProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventSubscriptionDeliveryProperty>(guardedValue, (value) => EventSubscriptionDeliveryProperty.fromMap((value as Map).cast<String, dynamic>())); });
     eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
     eventhubEndpointId = registerOutput<String>('eventhubEndpointId');
     expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
     hybridConnectionEndpointId = registerOutput<String>('hybridConnectionEndpointId');
-    includedEventTypes = registerOutput<List<String>>('includedEventTypes');
-    labels = registerOutput<List<String>?>('labels');
+    includedEventTypes = registerOutput<List<String>>('includedEventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    retryPolicy = registerOutput<EventSubscriptionRetryPolicy>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scope = registerOutput<String>('scope');
+    serviceBusQueueEndpointId = registerOutput<String?>('serviceBusQueueEndpointId');
+    serviceBusTopicEndpointId = registerOutput<String?>('serviceBusTopicEndpointId');
+    storageBlobDeadLetterDestination = registerOutput<EventSubscriptionStorageBlobDeadLetterDestination?>('storageBlobDeadLetterDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionStorageBlobDeadLetterDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageQueueEndpoint = registerOutput<EventSubscriptionStorageQueueEndpoint?>('storageQueueEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionStorageQueueEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subjectFilter = registerOutput<EventSubscriptionSubjectFilter?>('subjectFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionSubjectFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webhookEndpoint = registerOutput<EventSubscriptionWebhookEndpoint?>('webhookEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionWebhookEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EventSubscription] resource.
+  EventSubscription.reference(String urn)
+    : super(
+        'azure:eventhub/eventSubscription:EventSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    advancedFilter = registerOutput<EventSubscriptionAdvancedFilter?>('advancedFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionAdvancedFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    advancedFilteringOnArraysEnabled = registerOutput<bool?>('advancedFilteringOnArraysEnabled');
+    azureFunctionEndpoint = registerOutput<EventSubscriptionAzureFunctionEndpoint?>('azureFunctionEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionAzureFunctionEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deadLetterIdentity = registerOutput<EventSubscriptionDeadLetterIdentity?>('deadLetterIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionDeadLetterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryIdentity = registerOutput<EventSubscriptionDeliveryIdentity?>('deliveryIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionDeliveryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryProperties = registerOutput<List<EventSubscriptionDeliveryProperty>?>('deliveryProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventSubscriptionDeliveryProperty>(guardedValue, (value) => EventSubscriptionDeliveryProperty.fromMap((value as Map).cast<String, dynamic>())); });
+    eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
+    eventhubEndpointId = registerOutput<String>('eventhubEndpointId');
+    expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
+    hybridConnectionEndpointId = registerOutput<String>('hybridConnectionEndpointId');
+    includedEventTypes = registerOutput<List<String>>('includedEventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     retryPolicy = registerOutput<EventSubscriptionRetryPolicy>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionRetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scope = registerOutput<String>('scope');

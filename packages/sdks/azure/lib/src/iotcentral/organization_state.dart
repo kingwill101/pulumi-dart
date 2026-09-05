@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Organization resources.
 class OrganizationState {
   /// Custom `displayName` for the organization.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The application `id`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? iotcentralApplicationId;
+  final pulumi.Input<String?>? iotcentralApplicationId;
   /// The ID of the organization. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? organizationId;
+  final pulumi.Input<String?>? organizationId;
   /// The `organizationId` of the parent organization. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? parentOrganizationId;
+  final pulumi.Input<String?>? parentOrganizationId;
 
   /// Creates a new [OrganizationState].
   /// [displayName] Custom `displayName` for the organization.

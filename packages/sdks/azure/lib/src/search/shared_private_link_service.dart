@@ -143,9 +143,9 @@ import 'shared_private_link_service_state.dart';
 /// 		}
 /// 		_, err = search.NewSharedPrivateLinkService(ctx, "test", &search.SharedPrivateLinkServiceArgs{
 /// 			Name:             pulumi.String("example-spl"),
-/// 			SearchServiceId:  testService.ID(),
+/// 			SearchServiceId:  testService.ID().ToIDOutput().ToStringOutput(),
 /// 			SubresourceName:  pulumi.String("blob"),
-/// 			TargetResourceId: testAccount.ID(),
+/// 			TargetResourceId: testAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			RequestMessage:   pulumi.String("please approve"),
 /// 		})
 /// 		if err != nil {
@@ -325,7 +325,7 @@ class SharedPrivateLinkService extends pulumi.CustomResource {
           'azure:search/sharedPrivateLinkService:SharedPrivateLinkService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     requestMessage = registerOutput<String?>('requestMessage');
@@ -340,11 +340,12 @@ class SharedPrivateLinkService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SharedPrivateLinkServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SharedPrivateLinkService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -358,6 +359,23 @@ class SharedPrivateLinkService extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    requestMessage = registerOutput<String?>('requestMessage');
+    searchServiceId = registerOutput<String>('searchServiceId');
+    status = registerOutput<String>('status');
+    subresourceName = registerOutput<String>('subresourceName');
+    targetResourceId = registerOutput<String>('targetResourceId');
+  }
+
+  /// Creates a typed reference to an existing [SharedPrivateLinkService] resource.
+  SharedPrivateLinkService.reference(String urn)
+    : super(
+        'azure:search/sharedPrivateLinkService:SharedPrivateLinkService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     requestMessage = registerOutput<String?>('requestMessage');
     searchServiceId = registerOutput<String>('searchServiceId');

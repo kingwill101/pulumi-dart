@@ -175,7 +175,7 @@ import 'file_upload_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = iot.NewFileUpload(ctx, "example", &iot.FileUploadArgs{
-/// 			IothubId:         exampleIoTHub.ID(),
+/// 			IothubId:         exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionString: exampleAccount.PrimaryBlobConnectionString,
 /// 			ContainerName:    exampleContainer.Name,
 /// 		})
@@ -380,10 +380,11 @@ class FileUpload extends pulumi.CustomResource {
           'azure:iot/fileUpload:FileUpload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['connectionString'],
         ) {
     authenticationType = registerOutput<String?>('authenticationType');
-    connectionString = registerOutput<String>('connectionString');
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
     containerName = registerOutput<String>('containerName');
     defaultTtl = registerOutput<String?>('defaultTtl');
     identityId = registerOutput<String?>('identityId');
@@ -399,11 +400,12 @@ class FileUpload extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FileUploadState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FileUpload._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -418,7 +420,29 @@ class FileUpload extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authenticationType = registerOutput<String?>('authenticationType');
-    connectionString = registerOutput<String>('connectionString');
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
+    containerName = registerOutput<String>('containerName');
+    defaultTtl = registerOutput<String?>('defaultTtl');
+    identityId = registerOutput<String?>('identityId');
+    iothubId = registerOutput<String>('iothubId');
+    lockDuration = registerOutput<String?>('lockDuration');
+    maxDeliveryCount = registerOutput<int?>('maxDeliveryCount');
+    notificationsEnabled = registerOutput<bool?>('notificationsEnabled');
+    sasTtl = registerOutput<String?>('sasTtl');
+  }
+
+  /// Creates a typed reference to an existing [FileUpload] resource.
+  FileUpload.reference(String urn)
+    : super(
+        'azure:iot/fileUpload:FileUpload',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connectionString'],
+        isResourceReference: true,
+      ) {
+    authenticationType = registerOutput<String?>('authenticationType');
+    connectionString = registerOutput<String>('connectionString', isSecret: true);
     containerName = registerOutput<String>('containerName');
     defaultTtl = registerOutput<String?>('defaultTtl');
     identityId = registerOutput<String?>('identityId');

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorBackendPoolSetting {
   /// Specifies the send and receive timeout on forwarding request to the backend. When the timeout is reached, the request fails and returns. Possible values are between `0` - `240`. Defaults to `60`.
-  final pulumi.Input<int>? backendPoolsSendReceiveTimeoutSeconds;
+  final pulumi.Input<int?>? backendPoolsSendReceiveTimeoutSeconds;
   /// Enforce certificate name check on `HTTPS` requests to all backend pools, this setting will have no effect on `HTTP` requests. Permitted values are `true` or `false`.
   ///
   /// &gt; **NOTE:** `backendPoolsSendReceiveTimeoutSeconds` and `enforceBackendPoolsCertificateNameCheck` apply to all backend pools.
@@ -27,7 +27,7 @@ class FrontdoorBackendPoolSetting {
 
   factory FrontdoorBackendPoolSetting.fromMap(Map<String, dynamic> map) {
     return FrontdoorBackendPoolSetting(
-      backendPoolsSendReceiveTimeoutSeconds: (() { final guardedValue = map['backendPoolsSendReceiveTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backendPoolsSendReceiveTimeoutSeconds: (() { final guardedValue = map['backendPoolsSendReceiveTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       enforceBackendPoolsCertificateNameCheck: pulumi.Input.fromValue(map['enforceBackendPoolsCertificateNameCheck'] as bool),
     );
   }

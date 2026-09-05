@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ConnectionClassicCertificate resources.
 class ConnectionClassicCertificateState {
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? automationAccountName;
+  final pulumi.Input<String?>? automationAccountName;
   /// The name of the certificate asset.
-  final pulumi.Input<String>? certificateAssetName;
+  final pulumi.Input<String?>? certificateAssetName;
   /// A description for this Connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name of the Connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The id of subscription.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The name of subscription.
-  final pulumi.Input<String>? subscriptionName;
+  final pulumi.Input<String?>? subscriptionName;
 
   /// Creates a new [ConnectionClassicCertificateState].
   /// [automationAccountName] The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.

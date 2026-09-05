@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_machinelearning_datastore_fileshare_datastore_fileshare_args_doc}
 class DatastoreFileshareArgs {
   /// The access key of the Storage Account. Conflicts with `sharedAccessSignature`.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// Text used to describe the asset. Changing this forces a new Machine Learning DataStore to be created.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies which identity to use when retrieving data from the specified source. Defaults to `None`. Possible values are `None`, `WorkspaceSystemAssignedIdentity` and `WorkspaceUserAssignedIdentity`.
-  final pulumi.Input<String>? serviceDataIdentity;
+  final pulumi.Input<String?>? serviceDataIdentity;
   /// The Shared Access Signature of the Storage Account. Conflicts with `accountKey`.
-  final pulumi.Input<String>? sharedAccessSignature;
+  final pulumi.Input<String?>? sharedAccessSignature;
   /// The ID of the Storage Account File Share. Changing this forces a new Machine Learning DataStore to be created.
   final pulumi.Input<String> storageFileshareId;
   /// A mapping of tags which should be assigned to the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning DataStore to be created.
   final pulumi.Input<String> workspaceId;
 

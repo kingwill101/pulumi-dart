@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering HyperVReplicationPolicyAssociation resources.
 class HyperVReplicationPolicyAssociationState {
   /// The ID of the HyperV site to which the policy should be associated. Changing this forces a new association to be created.
-  final pulumi.Input<String>? hypervSiteId;
+  final pulumi.Input<String?>? hypervSiteId;
   /// The name of the replication policy association. Changing this forces a new association to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the HyperV replication policy which to be associated. Changing this forces a new association to be created.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
 
   /// Creates a new [HyperVReplicationPolicyAssociationState].
   /// [hypervSiteId] The ID of the HyperV site to which the policy should be associated. Changing this forces a new association to be created.

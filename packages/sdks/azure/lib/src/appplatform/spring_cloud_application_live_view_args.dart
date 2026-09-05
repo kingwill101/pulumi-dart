@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appplatform_spring_cloud_application_live_view_spring_cloud_application_live_view_args_doc}
 class SpringCloudApplicationLiveViewArgs {
   /// The name which should be used for this Spring Cloud Application Live View. Changing this forces a new Spring Cloud Application Live View to be created. The only possible value is `default`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Application Live View to be created.
   final pulumi.Input<String> springCloudServiceId;
 

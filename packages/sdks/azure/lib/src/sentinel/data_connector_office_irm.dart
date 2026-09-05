@@ -108,7 +108,7 @@ import 'data_connector_office_irm_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -260,7 +260,7 @@ class DataConnectorOfficeIrm extends pulumi.CustomResource {
           'azure:sentinel/dataConnectorOfficeIrm:DataConnectorOfficeIrm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
@@ -272,11 +272,12 @@ class DataConnectorOfficeIrm extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataConnectorOfficeIrmState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataConnectorOfficeIrm._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,6 +291,20 @@ class DataConnectorOfficeIrm extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [DataConnectorOfficeIrm] resource.
+  DataConnectorOfficeIrm.reference(String urn)
+    : super(
+        'azure:sentinel/dataConnectorOfficeIrm:DataConnectorOfficeIrm',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     tenantId = registerOutput<String>('tenantId');

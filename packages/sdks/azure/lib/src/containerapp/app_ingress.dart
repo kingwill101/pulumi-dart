@@ -8,23 +8,23 @@ import 'app_ingress_traffic_weight.dart';
 
 class AppIngress {
   /// Should this ingress allow insecure connections?
-  final pulumi.Input<bool>? allowInsecureConnections;
+  final pulumi.Input<bool?>? allowInsecureConnections;
   /// The client certificate mode for the Ingress. Possible values are `require`, `accept`, and `ignore`.
-  final pulumi.Input<String>? clientCertificateMode;
+  final pulumi.Input<String?>? clientCertificateMode;
   /// A `cors` block as defined below.
-  final pulumi.Input<AppIngressCors>? cors;
+  final pulumi.Input<AppIngressCors?>? cors;
   /// One or more `customDomain` block as detailed below.
-  final pulumi.Input<List<AppIngressCustomDomain>>? customDomains;
+  final pulumi.Input<List<AppIngressCustomDomain>?>? customDomains;
   /// The exposed port on the container for the Ingress traffic.
   ///
   /// &gt; **Note:** `exposedPort` can only be specified when `transport` is set to `tcp`.
-  final pulumi.Input<int>? exposedPort;
+  final pulumi.Input<int?>? exposedPort;
   /// Are connections to this Ingress from outside the Container App Environment enabled? Defaults to `false`.
-  final pulumi.Input<bool>? externalEnabled;
+  final pulumi.Input<bool?>? externalEnabled;
   /// The FQDN of the ingress.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// One or more `ipSecurityRestriction` blocks for IP-filtering rules as defined below.
-  final pulumi.Input<List<AppIngressIpSecurityRestriction>>? ipSecurityRestrictions;
+  final pulumi.Input<List<AppIngressIpSecurityRestriction>?>? ipSecurityRestrictions;
   /// The target port on the container for the Ingress traffic.
   final pulumi.Input<int> targetPort;
   /// One or more `trafficWeight` blocks as detailed below.
@@ -32,7 +32,7 @@ class AppIngress {
   /// The transport method for the Ingress. Possible values are `auto`, `http`, `http2` and `tcp`. Defaults to `auto`.
   ///
   /// &gt; **Note:** if `transport` is set to `tcp`, `exposedPort` and `targetPort` should be set at the same time.
-  final pulumi.Input<String>? transport;
+  final pulumi.Input<String?>? transport;
 
   /// Creates a new [AppIngress].
   /// [allowInsecureConnections] Should this ingress allow insecure connections?
@@ -82,11 +82,11 @@ class AppIngress {
       clientCertificateMode: (() { final guardedValue = map['clientCertificateMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppIngressCors.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customDomains: (() { final guardedValue = map['customDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppIngressCustomDomain>(guardedValue, (value) => AppIngressCustomDomain.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      exposedPort: (() { final guardedValue = map['exposedPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      exposedPort: (() { final guardedValue = map['exposedPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       externalEnabled: (() { final guardedValue = map['externalEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipSecurityRestrictions: (() { final guardedValue = map['ipSecurityRestrictions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppIngressIpSecurityRestriction>(guardedValue, (value) => AppIngressIpSecurityRestriction.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      targetPort: pulumi.Input.fromValue(map['targetPort'] as int),
+      targetPort: pulumi.Input.fromValue((map['targetPort'] as num).toInt()),
       trafficWeights: pulumi.Input.fromValue(pulumi.Input.decodeList<AppIngressTrafficWeight>(map['trafficWeights']!, (value) => AppIngressTrafficWeight.fromMap((value as Map).cast<String, dynamic>()))),
       transport: (() { final guardedValue = map['transport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IntegrationRuntimeSsisProxy {
   /// The path in the data store to be used when moving data between Self-Hosted and Azure-SSIS Integration Runtimes.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Name of Self Hosted Integration Runtime as a proxy.
   final pulumi.Input<String> selfHostedIntegrationRuntimeName;
   /// Name of Azure Blob Storage linked service to reference the staging data store to be used when moving data between self-hosted and Azure-SSIS integration runtimes.

@@ -275,7 +275,7 @@ import 'project_pool_state.dart';
 /// 			Name:              pulumi.String("example-dcnc"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			SubnetId:          exampleSubnet.ID(),
+/// 			SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			DomainJoinType:    pulumi.String("AzureADJoin"),
 /// 		})
 /// 		if err != nil {
@@ -283,8 +283,8 @@ import 'project_pool_state.dart';
 /// 		}
 /// 		exampleAttachedNetwork, err := devcenter.NewAttachedNetwork(ctx, "example", &devcenter.AttachedNetworkArgs{
 /// 			Name:                pulumi.String("example-dcet"),
-/// 			DevCenterId:         exampleDevCenter.ID(),
-/// 			NetworkConnectionId: exampleNetworkConnection.ID(),
+/// 			DevCenterId:         exampleDevCenter.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkConnectionId: exampleNetworkConnection.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -293,7 +293,7 @@ import 'project_pool_state.dart';
 /// 			Name:              pulumi.String("example-dcp"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			DevCenterId:       exampleDevCenter.ID(),
+/// 			DevCenterId:       exampleDevCenter.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -301,8 +301,8 @@ import 'project_pool_state.dart';
 /// 		exampleDevBoxDefinition, err := devcenter.NewDevBoxDefinition(ctx, "example", &devcenter.DevBoxDefinitionArgs{
 /// 			Name:        pulumi.String("example-dcet"),
 /// 			Location:    example.Location,
-/// 			DevCenterId: exampleDevCenter.ID(),
-/// 			ImageReferenceId: exampleDevCenter.ID().ApplyT(func(id string) (string, error) {
+/// 			DevCenterId: exampleDevCenter.ID().ToIDOutput().ToStringOutput(),
+/// 			ImageReferenceId: exampleDevCenter.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("%v/galleries/default/images/microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win10-m365-gen2", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 			SkuName: pulumi.String("general_i_8c32gb256ssd_v2"),
@@ -313,7 +313,7 @@ import 'project_pool_state.dart';
 /// 		_, err = devcenter.NewProjectPool(ctx, "example", &devcenter.ProjectPoolArgs{
 /// 			Name:                               pulumi.String("example-dcpl"),
 /// 			Location:                           example.Location,
-/// 			DevCenterProjectId:                 exampleProject.ID(),
+/// 			DevCenterProjectId:                 exampleProject.ID().ToIDOutput().ToStringOutput(),
 /// 			DevBoxDefinitionName:               exampleDevBoxDefinition.Name,
 /// 			LocalAdministratorEnabled:          pulumi.Bool(true),
 /// 			DevCenterAttachedNetworkName:       exampleAttachedNetwork.Name,
@@ -633,7 +633,7 @@ class ProjectPool extends pulumi.CustomResource {
           'azure:devcenter/projectPool:ProjectPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     devBoxDefinitionName = registerOutput<String>('devBoxDefinitionName');
     devCenterAttachedNetworkName = registerOutput<String>('devCenterAttachedNetworkName');
@@ -644,7 +644,7 @@ class ProjectPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     singleSignOnEnabled = registerOutput<bool?>('singleSignOnEnabled');
     stopOnDisconnectGracePeriodMinutes = registerOutput<int?>('stopOnDisconnectGracePeriodMinutes');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ProjectPool] resource's state with the given [name] and [id].
@@ -652,11 +652,12 @@ class ProjectPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -679,6 +680,27 @@ class ProjectPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     singleSignOnEnabled = registerOutput<bool?>('singleSignOnEnabled');
     stopOnDisconnectGracePeriodMinutes = registerOutput<int?>('stopOnDisconnectGracePeriodMinutes');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ProjectPool] resource.
+  ProjectPool.reference(String urn)
+    : super(
+        'azure:devcenter/projectPool:ProjectPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    devBoxDefinitionName = registerOutput<String>('devBoxDefinitionName');
+    devCenterAttachedNetworkName = registerOutput<String>('devCenterAttachedNetworkName');
+    devCenterProjectId = registerOutput<String>('devCenterProjectId');
+    localAdministratorEnabled = registerOutput<bool>('localAdministratorEnabled');
+    location = registerOutput<String>('location');
+    managedVirtualNetworkRegions = registerOutput<String?>('managedVirtualNetworkRegions');
+    this.name = registerOutput<String>('name');
+    singleSignOnEnabled = registerOutput<bool?>('singleSignOnEnabled');
+    stopOnDisconnectGracePeriodMinutes = registerOutput<int?>('stopOnDisconnectGracePeriodMinutes');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

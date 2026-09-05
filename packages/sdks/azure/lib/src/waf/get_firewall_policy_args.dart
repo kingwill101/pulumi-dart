@@ -11,7 +11,7 @@ class GetFirewallPolicyArgs {
   final pulumi.Input<String> name;
   /// The name of the Resource Group where the Web Application Firewall Policy exists.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetFirewallPolicyArgs].
   /// [name] The name of the Web Application Firewall Policy

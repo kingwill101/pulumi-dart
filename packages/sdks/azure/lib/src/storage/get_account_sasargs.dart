@@ -17,17 +17,17 @@ class GetAccountSASArgs {
   /// &gt; **Note:** The [ISO-8601 Time offset from UTC](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC) is currently not supported by the service, which will result into 409 error.
   final pulumi.Input<String> expiry;
   /// Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// IP address, or a range of IP addresses, from which to accept requests. When specifying a range, note that the range is inclusive.
-  final pulumi.Input<String>? ipAddresses;
+  final pulumi.Input<String?>? ipAddresses;
   /// A `permissions` block as defined below.
-  final pulumi.Input<GetAccountSASPermissions>? permissions;
+  final pulumi.Input<GetAccountSASPermissions?>? permissions;
   /// A `resourceTypes` block as defined below.
   final pulumi.Input<GetAccountSASResourceTypes> resourceTypes;
   /// A `services` block as defined below.
   final pulumi.Input<GetAccountSASServices> services;
   /// Specifies the signed storage service version to use to authorize requests made with this account SAS. Defaults to `2022-11-02`.
-  final pulumi.Input<String>? signedVersion;
+  final pulumi.Input<String?>? signedVersion;
   /// The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
   final pulumi.Input<String> start;
 

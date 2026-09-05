@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnGatewayIpConfiguration {
   /// The identifier of the IP configuration for the VPN Gateway.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The private IP address of this IP configuration.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The public IP address of this IP configuration.
-  final pulumi.Input<String>? publicIpAddress;
+  final pulumi.Input<String?>? publicIpAddress;
 
   /// Creates a new [VpnGatewayIpConfiguration].
   /// [id] The identifier of the IP configuration for the VPN Gateway.

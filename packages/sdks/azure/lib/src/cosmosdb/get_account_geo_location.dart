@@ -29,7 +29,7 @@ class GetAccountGeoLocation {
 
   factory GetAccountGeoLocation.fromMap(Map<String, dynamic> map) {
     return GetAccountGeoLocation(
-      failoverPriority: pulumi.Input.fromValue(map['failoverPriority'] as int),
+      failoverPriority: pulumi.Input.fromValue((map['failoverPriority'] as num).toInt()),
       id: pulumi.Input.fromValue(map['id'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
     );

@@ -5,7 +5,7 @@ import 'kubernetes_cluster_aci_connector_linux_connector_identity.dart';
 
 class KubernetesClusterAciConnectorLinux {
   /// A `connectorIdentity` block is exported. The exported attributes are defined below.
-  final pulumi.Input<List<KubernetesClusterAciConnectorLinuxConnectorIdentity>>? connectorIdentities;
+  final pulumi.Input<List<KubernetesClusterAciConnectorLinuxConnectorIdentity>?>? connectorIdentities;
   /// The subnet name for the virtual nodes to run.
   ///
   /// &gt; **Note:** At this time ACI Connectors are not supported in Azure China.

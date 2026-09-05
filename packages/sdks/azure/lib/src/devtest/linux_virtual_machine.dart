@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linux_virtual_machine_args.dart';
 import 'linux_virtual_machine_gallery_image_reference.dart';
+import 'linux_virtual_machine_inbound_nat_rule.dart';
 import 'linux_virtual_machine_state.dart';
 
 /// Manages a Linux Virtual Machine within a Dev Test Lab.
@@ -45,7 +46,7 @@ import 'linux_virtual_machine_state.dart';
 ///         input: "~/.ssh/id_rsa.pub",
 ///     }).then(invoke => invoke.result),
 ///     labVirtualNetworkId: exampleVirtualNetwork.id,
-///     labSubnetName: exampleVirtualNetwork.subnet.apply(subnet => subnet.name),
+///     labSubnetName: exampleVirtualNetwork.subnet.name,
 ///     storageType: "Premium",
 ///     notes: "Some notes about this Virtual Machine.",
 ///     galleryImageReference: {
@@ -219,12 +220,10 @@ import 'linux_virtual_machine_state.dart';
 /// 			Size:                pulumi.String("Standard_DS2"),
 /// 			Username:            pulumi.String("exampleuser99"),
 /// 			SshKey:              pulumi.String(invokeFile.Result),
-/// 			LabVirtualNetworkId: exampleVirtualNetwork.ID(),
-/// 			LabSubnetName: pulumi.String(exampleVirtualNetwork.Subnet.ApplyT(func(subnet devtest.VirtualNetworkSubnet) (*string, error) {
-/// 				return subnet.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			StorageType: pulumi.String("Premium"),
-/// 			Notes:       pulumi.String("Some notes about this Virtual Machine."),
+/// 			LabVirtualNetworkId: exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			LabSubnetName:       exampleVirtualNetwork.Subnet.Name(),
+/// 			StorageType:         pulumi.String("Premium"),
+/// 			Notes:               pulumi.String("Some notes about this Virtual Machine."),
 /// 			GalleryImageReference: &devtest.LinuxVirtualMachineGalleryImageReferenceArgs{
 /// 				Publisher: pulumi.String("Canonical"),
 /// 				Offer:     pulumi.String("0001-com-ubuntu-server-jammy"),
@@ -450,7 +449,7 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
   /// One or more `inboundNatRule` blocks as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If any `inboundNatRule` blocks are specified then `disallowPublicIpAddress` must be set to `true`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inboundNatRules;
+  late final pulumi.Output<List<LinuxVirtualMachineInboundNatRule>?> inboundNatRules;
   /// Specifies the name of the Dev Test Lab in which the Virtual Machine should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> labName;
   /// The name of a Subnet within the Dev Test Virtual Network where this machine should exist. Changing this forces a new resource to be created.
@@ -496,25 +495,26 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
           'azure:devtest/linuxVirtualMachine:LinuxVirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     allowClaim = registerOutput<bool?>('allowClaim');
     disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
     fqdn = registerOutput<String>('fqdn');
     galleryImageReference = registerOutput<LinuxVirtualMachineGalleryImageReference>('galleryImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineGalleryImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundNatRules = registerOutput<List<Map<String, dynamic>>?>('inboundNatRules');
+    inboundNatRules = registerOutput<List<LinuxVirtualMachineInboundNatRule>?>('inboundNatRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineInboundNatRule>(guardedValue, (value) => LinuxVirtualMachineInboundNatRule.fromMap((value as Map).cast<String, dynamic>())); });
     labName = registerOutput<String>('labName');
     labSubnetName = registerOutput<String>('labSubnetName');
     labVirtualNetworkId = registerOutput<String>('labVirtualNetworkId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     size = registerOutput<String>('size');
     sshKey = registerOutput<String?>('sshKey');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
     username = registerOutput<String>('username');
   }
@@ -524,11 +524,12 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinuxVirtualMachineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinuxVirtualMachine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -546,19 +547,50 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
     disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
     fqdn = registerOutput<String>('fqdn');
     galleryImageReference = registerOutput<LinuxVirtualMachineGalleryImageReference>('galleryImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineGalleryImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundNatRules = registerOutput<List<Map<String, dynamic>>?>('inboundNatRules');
+    inboundNatRules = registerOutput<List<LinuxVirtualMachineInboundNatRule>?>('inboundNatRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineInboundNatRule>(guardedValue, (value) => LinuxVirtualMachineInboundNatRule.fromMap((value as Map).cast<String, dynamic>())); });
     labName = registerOutput<String>('labName');
     labSubnetName = registerOutput<String>('labSubnetName');
     labVirtualNetworkId = registerOutput<String>('labVirtualNetworkId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     size = registerOutput<String>('size');
     sshKey = registerOutput<String?>('sshKey');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [LinuxVirtualMachine] resource.
+  LinuxVirtualMachine.reference(String urn)
+    : super(
+        'azure:devtest/linuxVirtualMachine:LinuxVirtualMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    allowClaim = registerOutput<bool?>('allowClaim');
+    disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
+    fqdn = registerOutput<String>('fqdn');
+    galleryImageReference = registerOutput<LinuxVirtualMachineGalleryImageReference>('galleryImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineGalleryImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundNatRules = registerOutput<List<LinuxVirtualMachineInboundNatRule>?>('inboundNatRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineInboundNatRule>(guardedValue, (value) => LinuxVirtualMachineInboundNatRule.fromMap((value as Map).cast<String, dynamic>())); });
+    labName = registerOutput<String>('labName');
+    labSubnetName = registerOutput<String>('labSubnetName');
+    labVirtualNetworkId = registerOutput<String>('labVirtualNetworkId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notes = registerOutput<String?>('notes');
+    password = registerOutput<String?>('password', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    size = registerOutput<String>('size');
+    sshKey = registerOutput<String?>('sshKey');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
     username = registerOutput<String>('username');
   }

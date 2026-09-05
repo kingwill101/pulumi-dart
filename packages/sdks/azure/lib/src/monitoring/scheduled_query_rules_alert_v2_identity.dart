@@ -6,11 +6,11 @@ class ScheduledQueryRulesAlertV2Identity {
   /// A list of User Assigned Managed Identity IDs to be assigned to this Scheduled Query Rule.
   ///
   /// &gt; **Note:** This is required when `type` is set to `UserAssigned`. The identity associated must have required roles, read the [Azure documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-create-log-alert-rule#configure-the-alert-rule-details) for more information.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// The Principal ID for the Service Principal associated with the Managed Service Identity of this App Service slot.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The Tenant ID for the Service Principal associated with the Managed Service Identity of this App Service slot.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Specifies the type of Managed Service Identity that should be configured on this Scheduled Query Rule. Possible values are `SystemAssigned`, `UserAssigned`.
   final pulumi.Input<String> type;
 

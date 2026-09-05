@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'custom_provider_action.dart';
 import 'custom_provider_args.dart';
+import 'custom_provider_resource_type.dart';
 import 'custom_provider_state.dart';
+import 'custom_provider_validation.dart';
 
 /// Manages an Azure Custom Provider.
 ///
@@ -208,7 +211,7 @@ import 'custom_provider_state.dart';
 /// ```
 class CustomProvider extends pulumi.CustomResource {
   /// Any number of `action` block as defined below. One of `resourceType` or `action` must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+  late final pulumi.Output<List<CustomProviderAction>?> actions;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// Specifies the name of the Custom Provider. Changing this forces a new resource to be created.
@@ -216,11 +219,11 @@ class CustomProvider extends pulumi.CustomResource {
   /// The name of the resource group in which to create the Custom Provider. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// Any number of `resourceType` block as defined below. One of `resourceType` or `action` must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourceTypes;
+  late final pulumi.Output<List<CustomProviderResourceType>?> resourceTypes;
   /// A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Any number of `validation` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> validations;
+  late final pulumi.Output<List<CustomProviderValidation>?> validations;
 
   /// Creates a new [CustomProvider].
   /// [name] The Pulumi resource name.
@@ -234,15 +237,15 @@ class CustomProvider extends pulumi.CustomResource {
           'azure:core/customProvider:CustomProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    actions = registerOutput<List<CustomProviderAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomProviderAction>(guardedValue, (value) => CustomProviderAction.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    resourceTypes = registerOutput<List<Map<String, dynamic>>?>('resourceTypes');
-    tags = registerOutput<Map<String, String>?>('tags');
-    validations = registerOutput<List<Map<String, dynamic>>?>('validations');
+    resourceTypes = registerOutput<List<CustomProviderResourceType>?>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomProviderResourceType>(guardedValue, (value) => CustomProviderResourceType.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validations = registerOutput<List<CustomProviderValidation>?>('validations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomProviderValidation>(guardedValue, (value) => CustomProviderValidation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [CustomProvider] resource's state with the given [name] and [id].
@@ -250,11 +253,12 @@ class CustomProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -268,12 +272,30 @@ class CustomProvider extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    actions = registerOutput<List<CustomProviderAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomProviderAction>(guardedValue, (value) => CustomProviderAction.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    resourceTypes = registerOutput<List<Map<String, dynamic>>?>('resourceTypes');
-    tags = registerOutput<Map<String, String>?>('tags');
-    validations = registerOutput<List<Map<String, dynamic>>?>('validations');
+    resourceTypes = registerOutput<List<CustomProviderResourceType>?>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomProviderResourceType>(guardedValue, (value) => CustomProviderResourceType.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validations = registerOutput<List<CustomProviderValidation>?>('validations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomProviderValidation>(guardedValue, (value) => CustomProviderValidation.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [CustomProvider] resource.
+  CustomProvider.reference(String urn)
+    : super(
+        'azure:core/customProvider:CustomProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<CustomProviderAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomProviderAction>(guardedValue, (value) => CustomProviderAction.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceTypes = registerOutput<List<CustomProviderResourceType>?>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomProviderResourceType>(guardedValue, (value) => CustomProviderResourceType.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validations = registerOutput<List<CustomProviderValidation>?>('validations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomProviderValidation>(guardedValue, (value) => CustomProviderValidation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

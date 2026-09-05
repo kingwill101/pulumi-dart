@@ -11,7 +11,7 @@ class FrontdoorSecurityPolicyArgs {
   /// The Front Door Profile Resource Id that is linked to this Front Door Security Policy. Changing this forces a new resource to be created.
   final pulumi.Input<String> cdnFrontdoorProfileId;
   /// The name which should be used for this Front Door Security Policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `securityPolicies` block as defined below.
   final pulumi.Input<FrontdoorSecurityPolicySecurityPolicies> securityPolicies;
 

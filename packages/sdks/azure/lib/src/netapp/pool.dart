@@ -514,7 +514,7 @@ class Pool extends pulumi.CustomResource {
           'azure:netapp/pool:Pool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     coolAccessEnabled = registerOutput<bool?>('coolAccessEnabled');
@@ -526,7 +526,7 @@ class Pool extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serviceLevel = registerOutput<String>('serviceLevel');
     sizeInTb = registerOutput<int>('sizeInTb');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Pool] resource's state with the given [name] and [id].
@@ -534,11 +534,12 @@ class Pool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -562,6 +563,28 @@ class Pool extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serviceLevel = registerOutput<String>('serviceLevel');
     sizeInTb = registerOutput<int>('sizeInTb');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Pool] resource.
+  Pool.reference(String urn)
+    : super(
+        'azure:netapp/pool:Pool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    coolAccessEnabled = registerOutput<bool?>('coolAccessEnabled');
+    customThroughputMibps = registerOutput<int?>('customThroughputMibps');
+    encryptionType = registerOutput<String?>('encryptionType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    qosType = registerOutput<String?>('qosType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceLevel = registerOutput<String>('serviceLevel');
+    sizeInTb = registerOutput<int>('sizeInTb');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

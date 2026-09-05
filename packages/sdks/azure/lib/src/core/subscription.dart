@@ -640,13 +640,13 @@ class Subscription extends pulumi.CustomResource {
           'azure:core/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     billingScopeId = registerOutput<String?>('billingScopeId');
     subscriptionId = registerOutput<String>('subscriptionId');
     subscriptionName = registerOutput<String>('subscriptionName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     workload = registerOutput<String?>('workload');
   }
@@ -656,11 +656,12 @@ class Subscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Subscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -678,7 +679,25 @@ class Subscription extends pulumi.CustomResource {
     billingScopeId = registerOutput<String?>('billingScopeId');
     subscriptionId = registerOutput<String>('subscriptionId');
     subscriptionName = registerOutput<String>('subscriptionName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+    workload = registerOutput<String?>('workload');
+  }
+
+  /// Creates a typed reference to an existing [Subscription] resource.
+  Subscription.reference(String urn)
+    : super(
+        'azure:core/subscription:Subscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alias = registerOutput<String>('alias');
+    billingScopeId = registerOutput<String?>('billingScopeId');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    subscriptionName = registerOutput<String>('subscriptionName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     workload = registerOutput<String?>('workload');
   }

@@ -10,7 +10,7 @@ class FactoryVstsConfiguration {
   /// Specifies the name of the VSTS project.
   final pulumi.Input<String> projectName;
   /// Is automated publishing enabled? Defaults to `true`.
-  final pulumi.Input<bool>? publishingEnabled;
+  final pulumi.Input<bool?>? publishingEnabled;
   /// Specifies the name of the git repository.
   final pulumi.Input<String> repositoryName;
   /// Specifies the root folder within the repository. Set to `/` for the top level.

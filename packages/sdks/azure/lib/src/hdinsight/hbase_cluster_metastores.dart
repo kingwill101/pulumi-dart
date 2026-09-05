@@ -7,11 +7,11 @@ import 'hbase_cluster_metastores_oozie.dart';
 
 class HBaseClusterMetastores {
   /// An `ambari` block as defined below.
-  final pulumi.Input<HBaseClusterMetastoresAmbari>? ambari;
+  final pulumi.Input<HBaseClusterMetastoresAmbari?>? ambari;
   /// A `hive` block as defined below.
-  final pulumi.Input<HBaseClusterMetastoresHive>? hive;
+  final pulumi.Input<HBaseClusterMetastoresHive?>? hive;
   /// An `oozie` block as defined below.
-  final pulumi.Input<HBaseClusterMetastoresOozie>? oozie;
+  final pulumi.Input<HBaseClusterMetastoresOozie?>? oozie;
 
   /// Creates a new [HBaseClusterMetastores].
   /// [ambari] An `ambari` block as defined below.

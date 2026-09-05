@@ -123,7 +123,7 @@ import 'namespace_authorization_rule_state.dart';
 /// 		}
 /// 		_, err = servicebus.NewNamespaceAuthorizationRule(ctx, "example", &servicebus.NamespaceAuthorizationRuleArgs{
 /// 			Name:        pulumi.String("examplerule"),
-/// 			NamespaceId: exampleNamespace.ID(),
+/// 			NamespaceId: exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			Listen:      pulumi.Bool(true),
 /// 			Send:        pulumi.Bool(true),
 /// 			Manage:      pulumi.Bool(false),
@@ -295,18 +295,19 @@ class NamespaceAuthorizationRule extends pulumi.CustomResource {
           'azure:servicebus/namespaceAuthorizationRule:NamespaceAuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
         ) {
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    primaryKey = registerOutput<String>('primaryKey');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
   }
 
@@ -315,11 +316,12 @@ class NamespaceAuthorizationRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamespaceAuthorizationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NamespaceAuthorizationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -337,12 +339,35 @@ class NamespaceAuthorizationRule extends pulumi.CustomResource {
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    primaryKey = registerOutput<String>('primaryKey');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    send = registerOutput<bool?>('send');
+  }
+
+  /// Creates a typed reference to an existing [NamespaceAuthorizationRule] resource.
+  NamespaceAuthorizationRule.reference(String urn)
+    : super(
+        'azure:servicebus/namespaceAuthorizationRule:NamespaceAuthorizationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
+    this.name = registerOutput<String>('name');
+    namespaceId = registerOutput<String>('namespaceId');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
   }
 }

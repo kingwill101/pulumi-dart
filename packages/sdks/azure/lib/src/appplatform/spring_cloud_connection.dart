@@ -300,15 +300,15 @@ import 'spring_cloud_connection_state.dart';
 /// 		}
 /// 		exampleSpringCloudJavaDeployment, err := appplatform.NewSpringCloudJavaDeployment(ctx, "example", &appplatform.SpringCloudJavaDeploymentArgs{
 /// 			Name:             pulumi.String("exampledeployment"),
-/// 			SpringCloudAppId: exampleSpringCloudApp.ID(),
+/// 			SpringCloudAppId: exampleSpringCloudApp.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudConnection(ctx, "example", &appplatform.SpringCloudConnectionArgs{
 /// 			Name:             pulumi.String("example-serviceconnector"),
-/// 			SpringCloudId:    exampleSpringCloudJavaDeployment.ID(),
-/// 			TargetResourceId: exampleSqlDatabase.ID(),
+/// 			SpringCloudId:    exampleSpringCloudJavaDeployment.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetResourceId: exampleSqlDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 			Authentication: &appplatform.SpringCloudConnectionAuthenticationArgs{
 /// 				Type: pulumi.String("systemAssignedIdentity"),
 /// 			},
@@ -609,7 +609,7 @@ class SpringCloudConnection extends pulumi.CustomResource {
           'azure:appplatform/springCloudConnection:SpringCloudConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     authentication = registerOutput<SpringCloudConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientType = registerOutput<String?>('clientType');
@@ -625,11 +625,12 @@ class SpringCloudConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -643,6 +644,24 @@ class SpringCloudConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    authentication = registerOutput<SpringCloudConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientType = registerOutput<String?>('clientType');
+    this.name = registerOutput<String>('name');
+    secretStore = registerOutput<SpringCloudConnectionSecretStore?>('secretStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudConnectionSecretStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    springCloudId = registerOutput<String>('springCloudId');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    vnetSolution = registerOutput<String?>('vnetSolution');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudConnection] resource.
+  SpringCloudConnection.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudConnection:SpringCloudConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     authentication = registerOutput<SpringCloudConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientType = registerOutput<String?>('clientType');
     this.name = registerOutput<String>('name');

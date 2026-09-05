@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TokenPasswordPassword1 {
   /// The expiration date of the password in RFC3339 format. If not specified, the password never expires. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? expiry;
+  final pulumi.Input<String?>? expiry;
   /// The value of the password (Sensitive).
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TokenPasswordPassword1].
   /// [expiry] The expiration date of the password in RFC3339 format. If not specified, the password never expires. Changing this forces a new resource to be created.

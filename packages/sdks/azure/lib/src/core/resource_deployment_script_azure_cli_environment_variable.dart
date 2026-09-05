@@ -6,9 +6,9 @@ class ResourceDeploymentScriptAzureCliEnvironmentVariable {
   /// Specifies the name of the environment variable.
   final pulumi.Input<String> name;
   /// Specifies the value of the secure environment variable.
-  final pulumi.Input<String>? secureValue;
+  final pulumi.Input<String?>? secureValue;
   /// Specifies the value of the environment variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ResourceDeploymentScriptAzureCliEnvironmentVariable].
   /// [name] Specifies the name of the environment variable.

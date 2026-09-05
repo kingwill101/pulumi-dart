@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupContainerPort {
   /// The port number the container will expose. Changing this forces a new resource to be created.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The network protocol associated with port. Possible values are `TCP` & `UDP`. Changing this forces a new resource to be created. Defaults to `TCP`.
   ///
   /// &gt; **Note:** Omitting these blocks will default the exposed ports on the group to all ports on all containers defined in the `container` blocks of this group.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [GroupContainerPort].
   /// [port] The port number the container will expose. Changing this forces a new resource to be created.
@@ -27,7 +27,7 @@ class GroupContainerPort {
 
   factory GroupContainerPort.fromMap(Map<String, dynamic> map) {
     return GroupContainerPort(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

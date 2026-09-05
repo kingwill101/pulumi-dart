@@ -304,7 +304,7 @@ class Product extends pulumi.CustomResource {
           'azure:apimanagement/product:Product',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     approvalRequired = registerOutput<bool?>('approvalRequired');
@@ -323,11 +323,12 @@ class Product extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProductState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Product._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,6 +342,27 @@ class Product extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    approvalRequired = registerOutput<bool?>('approvalRequired');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    productId = registerOutput<String>('productId');
+    published = registerOutput<bool>('published');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
+    subscriptionsLimit = registerOutput<int?>('subscriptionsLimit');
+    terms = registerOutput<String?>('terms');
+  }
+
+  /// Creates a typed reference to an existing [Product] resource.
+  Product.reference(String urn)
+    : super(
+        'azure:apimanagement/product:Product',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     approvalRequired = registerOutput<bool?>('approvalRequired');
     description = registerOutput<String?>('description');

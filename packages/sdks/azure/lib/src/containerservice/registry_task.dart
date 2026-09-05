@@ -8,7 +8,9 @@ import 'registry_task_file_step.dart';
 import 'registry_task_identity.dart';
 import 'registry_task_platform.dart';
 import 'registry_task_registry_credential.dart';
+import 'registry_task_source_trigger.dart';
 import 'registry_task_state.dart';
+import 'registry_task_timer_trigger.dart';
 
 /// Manages a Container Registry Task.
 ///
@@ -141,7 +143,7 @@ import 'registry_task_state.dart';
 /// 		}
 /// 		_, err = containerservice.NewRegistryTask(ctx, "example", &containerservice.RegistryTaskArgs{
 /// 			Name:                pulumi.String("example-task"),
-/// 			ContainerRegistryId: exampleRegistry.ID(),
+/// 			ContainerRegistryId: exampleRegistry.ID().ToIDOutput().ToStringOutput(),
 /// 			Platform: &containerservice.RegistryTaskPlatformArgs{
 /// 				Os: pulumi.String("Linux"),
 /// 			},
@@ -330,11 +332,11 @@ class RegistryTask extends pulumi.CustomResource {
   late final pulumi.Output<RegistryTaskPlatform?> platform;
   late final pulumi.Output<RegistryTaskRegistryCredential?> registryCredential;
   /// One or more `sourceTrigger` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sourceTriggers;
+  late final pulumi.Output<List<RegistryTaskSourceTrigger>?> sourceTriggers;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<int?> timeoutInSeconds;
   /// One or more `timerTrigger` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> timerTriggers;
+  late final pulumi.Output<List<RegistryTaskTimerTrigger>?> timerTriggers;
 
   /// Creates a new [RegistryTask].
   /// [name] The Pulumi resource name.
@@ -348,7 +350,7 @@ class RegistryTask extends pulumi.CustomResource {
           'azure:containerservice/registryTask:RegistryTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     agentPoolName = registerOutput<String?>('agentPoolName');
     agentSetting = registerOutput<RegistryTaskAgentSetting?>('agentSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskAgentSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -364,10 +366,10 @@ class RegistryTask extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     platform = registerOutput<RegistryTaskPlatform?>('platform', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskPlatform.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     registryCredential = registerOutput<RegistryTaskRegistryCredential?>('registryCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskRegistryCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sourceTriggers = registerOutput<List<Map<String, dynamic>>?>('sourceTriggers');
-    tags = registerOutput<Map<String, String>?>('tags');
+    sourceTriggers = registerOutput<List<RegistryTaskSourceTrigger>?>('sourceTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryTaskSourceTrigger>(guardedValue, (value) => RegistryTaskSourceTrigger.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
-    timerTriggers = registerOutput<List<Map<String, dynamic>>?>('timerTriggers');
+    timerTriggers = registerOutput<List<RegistryTaskTimerTrigger>?>('timerTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryTaskTimerTrigger>(guardedValue, (value) => RegistryTaskTimerTrigger.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [RegistryTask] resource's state with the given [name] and [id].
@@ -375,11 +377,12 @@ class RegistryTask extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryTaskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryTask._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -407,9 +410,38 @@ class RegistryTask extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     platform = registerOutput<RegistryTaskPlatform?>('platform', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskPlatform.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     registryCredential = registerOutput<RegistryTaskRegistryCredential?>('registryCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskRegistryCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sourceTriggers = registerOutput<List<Map<String, dynamic>>?>('sourceTriggers');
-    tags = registerOutput<Map<String, String>?>('tags');
+    sourceTriggers = registerOutput<List<RegistryTaskSourceTrigger>?>('sourceTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryTaskSourceTrigger>(guardedValue, (value) => RegistryTaskSourceTrigger.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
-    timerTriggers = registerOutput<List<Map<String, dynamic>>?>('timerTriggers');
+    timerTriggers = registerOutput<List<RegistryTaskTimerTrigger>?>('timerTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryTaskTimerTrigger>(guardedValue, (value) => RegistryTaskTimerTrigger.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RegistryTask] resource.
+  RegistryTask.reference(String urn)
+    : super(
+        'azure:containerservice/registryTask:RegistryTask',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentPoolName = registerOutput<String?>('agentPoolName');
+    agentSetting = registerOutput<RegistryTaskAgentSetting?>('agentSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskAgentSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    baseImageTrigger = registerOutput<RegistryTaskBaseImageTrigger?>('baseImageTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskBaseImageTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    dockerStep = registerOutput<RegistryTaskDockerStep?>('dockerStep', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskDockerStep.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enabled = registerOutput<bool?>('enabled');
+    encodedStep = registerOutput<RegistryTaskEncodedStep?>('encodedStep', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskEncodedStep.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileStep = registerOutput<RegistryTaskFileStep?>('fileStep', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskFileStep.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<RegistryTaskIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isSystemTask = registerOutput<bool?>('isSystemTask');
+    logTemplate = registerOutput<String?>('logTemplate');
+    this.name = registerOutput<String>('name');
+    platform = registerOutput<RegistryTaskPlatform?>('platform', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskPlatform.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    registryCredential = registerOutput<RegistryTaskRegistryCredential?>('registryCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskRegistryCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceTriggers = registerOutput<List<RegistryTaskSourceTrigger>?>('sourceTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryTaskSourceTrigger>(guardedValue, (value) => RegistryTaskSourceTrigger.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
+    timerTriggers = registerOutput<List<RegistryTaskTimerTrigger>?>('timerTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryTaskTimerTrigger>(guardedValue, (value) => RegistryTaskTimerTrigger.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

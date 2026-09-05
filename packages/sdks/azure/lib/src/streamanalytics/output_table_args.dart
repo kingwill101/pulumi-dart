@@ -10,9 +10,9 @@ class OutputTableArgs {
   /// The number of records for a batch operation. Must be between `1` and `100`.
   final pulumi.Input<int> batchSize;
   /// A list of the column names to be removed from output event entities.
-  final pulumi.Input<List<String>>? columnsToRemoves;
+  final pulumi.Input<List<String>?>? columnsToRemoves;
   /// The name of the Stream Output. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the output column that contains the partition key.
   final pulumi.Input<String> partitionKey;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
@@ -69,7 +69,7 @@ class OutputTableArgs {
 
   factory OutputTableArgs.fromMap(Map<String, dynamic> map) {
     return OutputTableArgs(
-      batchSize: pulumi.Input.fromValue(map['batchSize'] as int),
+      batchSize: pulumi.Input.fromValue((map['batchSize'] as num).toInt()),
       columnsToRemoves: (() { final guardedValue = map['columnsToRemoves']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partitionKey: pulumi.Input.fromValue(map['partitionKey'] as String),

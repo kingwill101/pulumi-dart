@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkbookIdentity {
   /// The list of User Assigned Managed Identity IDs assigned to this Workbook. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// The Principal ID of the System Assigned Managed Service Identity that is configured on this Workbook.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The Tenant ID of the System Assigned Managed Service Identity that is configured on this Workbook.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The type of Managed Service Identity that is configured on this Workbook. Possible values are `UserAssigned`, `SystemAssigned` and `SystemAssigned, UserAssigned`. Changing this forces a new resource to be created.
   final pulumi.Input<String> type;
 

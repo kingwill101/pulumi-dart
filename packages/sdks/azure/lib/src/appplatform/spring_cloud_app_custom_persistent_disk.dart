@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudAppCustomPersistentDisk {
   /// These are the mount options for a persistent disk.
-  final pulumi.Input<List<String>>? mountOptions;
+  final pulumi.Input<List<String>?>? mountOptions;
   /// The mount path of the persistent disk.
   final pulumi.Input<String> mountPath;
   /// Indicates whether the persistent disk is a readOnly one.
-  final pulumi.Input<bool>? readOnlyEnabled;
+  final pulumi.Input<bool?>? readOnlyEnabled;
   /// The share name of the Azure File share.
   final pulumi.Input<String> shareName;
   /// The name of the Spring Cloud Storage.

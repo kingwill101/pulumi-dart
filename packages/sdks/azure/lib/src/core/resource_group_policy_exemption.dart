@@ -134,12 +134,12 @@ import 'resource_group_policy_exemption_state.dart';
 /// 		}
 /// 		exampleResourceGroupPolicyAssignment, err := core.NewResourceGroupPolicyAssignment(ctx, "example", &core.ResourceGroupPolicyAssignmentArgs{
 /// 			Name:               pulumi.String("exampleAssignment"),
-/// 			ResourceGroupId:    exampleResourceGroup.ID(),
+/// 			ResourceGroupId:    exampleResourceGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			PolicyDefinitionId: pulumi.String(example.Id),
 /// 			Parameters: exampleResourceGroup.Location.ApplyT(func(location string) (pulumi.String, error) {
 /// 				var _zero pulumi.String
-/// 				tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 					"listOfAllowedLocations": map[string]interface{}{
+/// 				tmpJSON0, err := json.Marshal(map[string]map[string][]string{
+/// 					"listOfAllowedLocations": map[string][]string{
 /// 						"value": []string{
 /// 							location,
 /// 						},
@@ -157,8 +157,8 @@ import 'resource_group_policy_exemption_state.dart';
 /// 		}
 /// 		_, err = core.NewResourceGroupPolicyExemption(ctx, "example", &core.ResourceGroupPolicyExemptionArgs{
 /// 			Name:               pulumi.String("exampleExemption"),
-/// 			ResourceGroupId:    exampleResourceGroup.ID(),
-/// 			PolicyAssignmentId: exampleResourceGroupPolicyAssignment.ID(),
+/// 			ResourceGroupId:    exampleResourceGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyAssignmentId: exampleResourceGroupPolicyAssignment.ID().ToIDOutput().ToStringOutput(),
 /// 			ExemptionCategory:  pulumi.String("Mitigated"),
 /// 		})
 /// 		if err != nil {
@@ -337,7 +337,7 @@ class ResourceGroupPolicyExemption extends pulumi.CustomResource {
           'azure:core/resourceGroupPolicyExemption:ResourceGroupPolicyExemption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -346,7 +346,7 @@ class ResourceGroupPolicyExemption extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupId = registerOutput<String>('resourceGroupId');
   }
 
@@ -355,11 +355,12 @@ class ResourceGroupPolicyExemption extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceGroupPolicyExemptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceGroupPolicyExemption._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -380,7 +381,27 @@ class ResourceGroupPolicyExemption extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+  }
+
+  /// Creates a typed reference to an existing [ResourceGroupPolicyExemption] resource.
+  ResourceGroupPolicyExemption.reference(String urn)
+    : super(
+        'azure:core/resourceGroupPolicyExemption:ResourceGroupPolicyExemption',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    exemptionCategory = registerOutput<String>('exemptionCategory');
+    expiresOn = registerOutput<String?>('expiresOn');
+    metadata = registerOutput<String>('metadata');
+    this.name = registerOutput<String>('name');
+    policyAssignmentId = registerOutput<String>('policyAssignmentId');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupId = registerOutput<String>('resourceGroupId');
   }
 }

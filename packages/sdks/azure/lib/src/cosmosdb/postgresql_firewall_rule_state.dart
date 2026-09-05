@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PostgresqlFirewallRule resources.
 class PostgresqlFirewallRuleState {
   /// The resource ID of the Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// The end IP address of the Azure Cosmos DB for PostgreSQL Firewall Rule.
-  final pulumi.Input<String>? endIpAddress;
+  final pulumi.Input<String?>? endIpAddress;
   /// The name which should be used for the Azure Cosmos DB for PostgreSQL Firewall Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The start IP address of the Azure Cosmos DB for PostgreSQL Firewall Rule.
-  final pulumi.Input<String>? startIpAddress;
+  final pulumi.Input<String?>? startIpAddress;
 
   /// Creates a new [PostgresqlFirewallRuleState].
   /// [clusterId] The resource ID of the Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.

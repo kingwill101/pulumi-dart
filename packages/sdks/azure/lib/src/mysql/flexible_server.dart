@@ -265,7 +265,7 @@ import 'flexible_server_storage.dart';
 /// 		exampleZoneVirtualNetworkLink, err := privatedns.NewZoneVirtualNetworkLink(ctx, "example", &privatedns.ZoneVirtualNetworkLinkArgs{
 /// 			Name:               pulumi.String("exampleVnetZone.com"),
 /// 			PrivateDnsZoneName: exampleZone.Name,
-/// 			VirtualNetworkId:   exampleVirtualNetwork.ID(),
+/// 			VirtualNetworkId:   exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			ResourceGroupName:  example.Name,
 /// 		})
 /// 		if err != nil {
@@ -278,8 +278,8 @@ import 'flexible_server_storage.dart';
 /// 			AdministratorLogin:    pulumi.String("psqladmin"),
 /// 			AdministratorPassword: pulumi.String("H@Sh1CoR3!"),
 /// 			BackupRetentionDays:   pulumi.Int(7),
-/// 			DelegatedSubnetId:     exampleSubnet.ID(),
-/// 			PrivateDnsZoneId:      exampleZone.ID(),
+/// 			DelegatedSubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			PrivateDnsZoneId:      exampleZone.ID().ToIDOutput().ToStringOutput(),
 /// 			SkuName:               pulumi.String("GP_Standard_D2ds_v4"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleZoneVirtualNetworkLink,
@@ -608,10 +608,11 @@ class FlexibleServer extends pulumi.CustomResource {
           'azure:mysql/flexibleServer:FlexibleServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['administratorPassword'],
         ) {
     administratorLogin = registerOutput<String>('administratorLogin');
-    administratorPassword = registerOutput<String?>('administratorPassword');
+    administratorPassword = registerOutput<String?>('administratorPassword', isSecret: true);
     administratorPasswordWoVersion = registerOutput<int?>('administratorPasswordWoVersion');
     backupRetentionDays = registerOutput<int?>('backupRetentionDays');
     createMode = registerOutput<String?>('createMode');
@@ -634,7 +635,7 @@ class FlexibleServer extends pulumi.CustomResource {
     skuName = registerOutput<String>('skuName');
     sourceServerId = registerOutput<String?>('sourceServerId');
     storage = registerOutput<FlexibleServerStorage>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
     zone = registerOutput<String>('zone');
   }
@@ -644,11 +645,12 @@ class FlexibleServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlexibleServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlexibleServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -663,7 +665,7 @@ class FlexibleServer extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     administratorLogin = registerOutput<String>('administratorLogin');
-    administratorPassword = registerOutput<String?>('administratorPassword');
+    administratorPassword = registerOutput<String?>('administratorPassword', isSecret: true);
     administratorPasswordWoVersion = registerOutput<int?>('administratorPasswordWoVersion');
     backupRetentionDays = registerOutput<int?>('backupRetentionDays');
     createMode = registerOutput<String?>('createMode');
@@ -686,7 +688,46 @@ class FlexibleServer extends pulumi.CustomResource {
     skuName = registerOutput<String>('skuName');
     sourceServerId = registerOutput<String?>('sourceServerId');
     storage = registerOutput<FlexibleServerStorage>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String>('version');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [FlexibleServer] resource.
+  FlexibleServer.reference(String urn)
+    : super(
+        'azure:mysql/flexibleServer:FlexibleServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['administratorPassword'],
+        isResourceReference: true,
+      ) {
+    administratorLogin = registerOutput<String>('administratorLogin');
+    administratorPassword = registerOutput<String?>('administratorPassword', isSecret: true);
+    administratorPasswordWoVersion = registerOutput<int?>('administratorPasswordWoVersion');
+    backupRetentionDays = registerOutput<int?>('backupRetentionDays');
+    createMode = registerOutput<String?>('createMode');
+    customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    delegatedSubnetId = registerOutput<String?>('delegatedSubnetId');
+    fqdn = registerOutput<String>('fqdn');
+    geoRedundantBackupEnabled = registerOutput<bool?>('geoRedundantBackupEnabled');
+    highAvailability = registerOutput<FlexibleServerHighAvailability?>('highAvailability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerHighAvailability.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<FlexibleServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    pointInTimeRestoreTimeInUtc = registerOutput<String?>('pointInTimeRestoreTimeInUtc');
+    privateDnsZoneId = registerOutput<String?>('privateDnsZoneId');
+    publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
+    publicNetworkAccessEnabled = registerOutput<bool>('publicNetworkAccessEnabled');
+    replicaCapacity = registerOutput<int>('replicaCapacity');
+    replicationRole = registerOutput<String>('replicationRole');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    sourceServerId = registerOutput<String?>('sourceServerId');
+    storage = registerOutput<FlexibleServerStorage>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleServerStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
     zone = registerOutput<String>('zone');
   }

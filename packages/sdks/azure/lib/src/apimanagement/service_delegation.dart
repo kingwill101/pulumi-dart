@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceDelegation {
   /// Should subscription requests be delegated to an external url? Defaults to `false`.
-  final pulumi.Input<bool>? subscriptionsEnabled;
+  final pulumi.Input<bool?>? subscriptionsEnabled;
   /// The delegation URL.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// Should user registration requests be delegated to an external url? Defaults to `false`.
-  final pulumi.Input<bool>? userRegistrationEnabled;
+  final pulumi.Input<bool?>? userRegistrationEnabled;
   /// A base64-encoded validation key to validate, that a request is coming from Azure API Management.
-  final pulumi.Input<String>? validationKey;
+  final pulumi.Input<String?>? validationKey;
 
   /// Creates a new [ServiceDelegation].
   /// [subscriptionsEnabled] Should subscription requests be delegated to an external url? Defaults to `false`.

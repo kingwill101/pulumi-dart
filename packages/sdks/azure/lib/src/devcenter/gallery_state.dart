@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Gallery resources.
 class GalleryState {
   /// Specifies the ID of the Dev Center within which this Dev Center Gallery should exist. Changing this forces a new Dev Center Gallery to be created.
-  final pulumi.Input<String>? devCenterId;
+  final pulumi.Input<String?>? devCenterId;
   /// Specifies the name of this Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Shared Gallery which should be connected to the Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
-  final pulumi.Input<String>? sharedGalleryId;
+  final pulumi.Input<String?>? sharedGalleryId;
 
   /// Creates a new [GalleryState].
   /// [devCenterId] Specifies the ID of the Dev Center within which this Dev Center Gallery should exist. Changing this forces a new Dev Center Gallery to be created.

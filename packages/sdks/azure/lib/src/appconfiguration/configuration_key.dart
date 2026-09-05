@@ -140,7 +140,7 @@ import 'configuration_key_state.dart';
 /// 			return err
 /// 		}
 /// 		appconfDataowner, err := authorization.NewAssignment(ctx, "appconf_dataowner", &authorization.AssignmentArgs{
-/// 			Scope:              appconf.ID(),
+/// 			Scope:              appconf.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("App Configuration Data Owner"),
 /// 			PrincipalId:        pulumi.String(current.ObjectId),
 /// 		})
@@ -148,7 +148,7 @@ import 'configuration_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appconfiguration.NewConfigurationKey(ctx, "test", &appconfiguration.ConfigurationKeyArgs{
-/// 			ConfigurationStoreId: appconf.ID(),
+/// 			ConfigurationStoreId: appconf.ID().ToIDOutput().ToStringOutput(),
 /// 			Key:                  pulumi.String("appConfKey1"),
 /// 			Label:                pulumi.String("somelabel"),
 /// 			Value:                pulumi.String("a test"),
@@ -316,6 +316,7 @@ import 'configuration_key_state.dart';
 ///     name: "kv",
 ///     location: testAzurermResourceGroup.location,
 ///     resourceGroupName: testAzurermResourceGroup.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     softDeleteRetentionDays: 7,
@@ -371,6 +372,7 @@ import 'configuration_key_state.dart';
 ///     name="kv",
 ///     location=test_azurerm_resource_group["location"],
 ///     resource_group_name=test_azurerm_resource_group["name"],
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     soft_delete_retention_days=7,
@@ -433,6 +435,7 @@ import 'configuration_key_state.dart';
 ///         Name = "kv",
 ///         Location = testAzurermResourceGroup.Location,
 ///         ResourceGroupName = testAzurermResourceGroup.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         SoftDeleteRetentionDays = 7,
@@ -523,12 +526,13 @@ import 'configuration_key_state.dart';
 /// 			return err
 /// 		}
 /// 		kv, err := keyvault.NewKeyVault(ctx, "kv", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("kv"),
-/// 			Location:                pulumi.Any(testAzurermResourceGroup.Location),
-/// 			ResourceGroupName:       pulumi.Any(testAzurermResourceGroup.Name),
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("premium"),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
+/// 			Name:                     pulumi.String("kv"),
+/// 			Location:                 pulumi.Any(testAzurermResourceGroup.Location),
+/// 			ResourceGroupName:        pulumi.Any(testAzurermResourceGroup.Name),
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(current.TenantId),
@@ -553,13 +557,13 @@ import 'configuration_key_state.dart';
 /// 		kvs, err := keyvault.NewSecret(ctx, "kvs", &keyvault.SecretArgs{
 /// 			Name:       pulumi.String("kvs"),
 /// 			Value:      pulumi.String("szechuan"),
-/// 			KeyVaultId: kv.ID(),
+/// 			KeyVaultId: kv.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		appconfDataowner, err := authorization.NewAssignment(ctx, "appconf_dataowner", &authorization.AssignmentArgs{
-/// 			Scope:              appconf.ID(),
+/// 			Scope:              appconf.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("App Configuration Data Owner"),
 /// 			PrincipalId:        pulumi.String(current.ObjectId),
 /// 		})
@@ -607,6 +611,7 @@ import 'configuration_key_state.dart';
 ///   name                       = "kv"
 ///   location                   = testAzurermResourceGroup.location
 ///   resource_group_name        = testAzurermResourceGroup.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                   = "premium"
 ///   soft_delete_retention_days = 7
@@ -687,6 +692,7 @@ import 'configuration_key_state.dart';
 ///             .name("kv")
 ///             .location(testAzurermResourceGroup.location())
 ///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .softDeleteRetentionDays(7)
@@ -749,6 +755,7 @@ import 'configuration_key_state.dart';
 ///       name: kv
 ///       location: ${testAzurermResourceGroup.location}
 ///       resourceGroupName: ${testAzurermResourceGroup.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       softDeleteRetentionDays: 7
@@ -849,7 +856,7 @@ class ConfigurationKey extends pulumi.CustomResource {
           'azure:appconfiguration/configurationKey:ConfigurationKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     configurationStoreId = registerOutput<String>('configurationStoreId');
     contentType = registerOutput<String>('contentType');
@@ -857,7 +864,7 @@ class ConfigurationKey extends pulumi.CustomResource {
     key = registerOutput<String>('key');
     label = registerOutput<String?>('label');
     locked = registerOutput<bool?>('locked');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     value = registerOutput<String?>('value');
     vaultKeyReference = registerOutput<String?>('vaultKeyReference');
@@ -868,11 +875,12 @@ class ConfigurationKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigurationKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -892,7 +900,28 @@ class ConfigurationKey extends pulumi.CustomResource {
     key = registerOutput<String>('key');
     label = registerOutput<String?>('label');
     locked = registerOutput<bool?>('locked');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+    value = registerOutput<String?>('value');
+    vaultKeyReference = registerOutput<String?>('vaultKeyReference');
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationKey] resource.
+  ConfigurationKey.reference(String urn)
+    : super(
+        'azure:appconfiguration/configurationKey:ConfigurationKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configurationStoreId = registerOutput<String>('configurationStoreId');
+    contentType = registerOutput<String>('contentType');
+    etag = registerOutput<String>('etag');
+    key = registerOutput<String>('key');
+    label = registerOutput<String?>('label');
+    locked = registerOutput<bool?>('locked');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     value = registerOutput<String?>('value');
     vaultKeyReference = registerOutput<String?>('vaultKeyReference');

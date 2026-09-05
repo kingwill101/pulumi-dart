@@ -271,7 +271,7 @@ class ExascaleDatabaseStorageVault extends pulumi.CustomResource {
           'azure:oracle/exascaleDatabaseStorageVault:ExascaleDatabaseStorageVault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     additionalFlashCachePercentage = registerOutput<int>('additionalFlashCachePercentage');
     description = registerOutput<String>('description');
@@ -280,9 +280,9 @@ class ExascaleDatabaseStorageVault extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeZone = registerOutput<String?>('timeZone');
-    zones = registerOutput<List<String>>('zones');
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ExascaleDatabaseStorageVault] resource's state with the given [name] and [id].
@@ -290,11 +290,12 @@ class ExascaleDatabaseStorageVault extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExascaleDatabaseStorageVaultState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExascaleDatabaseStorageVault._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -315,8 +316,29 @@ class ExascaleDatabaseStorageVault extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeZone = registerOutput<String?>('timeZone');
-    zones = registerOutput<List<String>>('zones');
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ExascaleDatabaseStorageVault] resource.
+  ExascaleDatabaseStorageVault.reference(String urn)
+    : super(
+        'azure:oracle/exascaleDatabaseStorageVault:ExascaleDatabaseStorageVault',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalFlashCachePercentage = registerOutput<int>('additionalFlashCachePercentage');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    highCapacityDatabaseStorage = registerOutput<ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>('highCapacityDatabaseStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeZone = registerOutput<String?>('timeZone');
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

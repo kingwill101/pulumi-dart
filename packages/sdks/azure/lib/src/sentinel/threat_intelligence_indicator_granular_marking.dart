@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreatIntelligenceIndicatorGranularMarking {
   /// The language of granular marking of the Threat Intelligence Indicator.
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// The reference of the granular marking of the Threat Intelligence Indicator.
-  final pulumi.Input<String>? markingRef;
+  final pulumi.Input<String?>? markingRef;
   /// A list of selectors of the granular marking of the Threat Intelligence Indicator.
-  final pulumi.Input<List<String>>? selectors;
+  final pulumi.Input<List<String>?>? selectors;
 
   /// Creates a new [ThreatIntelligenceIndicatorGranularMarking].
   /// [language] The language of granular marking of the Threat Intelligence Indicator.

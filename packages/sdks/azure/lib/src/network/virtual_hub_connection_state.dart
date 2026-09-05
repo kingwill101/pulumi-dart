@@ -6,15 +6,15 @@ import 'virtual_hub_connection_routing.dart';
 /// Input properties used for looking up and filtering VirtualHubConnection resources.
 class VirtualHubConnectionState {
   /// Should Internet Security be enabled to secure internet traffic? Defaults to `false`.
-  final pulumi.Input<bool>? internetSecurityEnabled;
+  final pulumi.Input<bool?>? internetSecurityEnabled;
   /// The Name which should be used for this Connection, which must be unique within the Virtual Hub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Virtual Network which the Virtual Hub should be connected to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? remoteVirtualNetworkId;
+  final pulumi.Input<String?>? remoteVirtualNetworkId;
   /// A `routing` block as defined below.
-  final pulumi.Input<VirtualHubConnectionRouting>? routing;
+  final pulumi.Input<VirtualHubConnectionRouting?>? routing;
   /// The ID of the Virtual Hub within which this connection should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualHubId;
+  final pulumi.Input<String?>? virtualHubId;
 
   /// Creates a new [VirtualHubConnectionState].
   /// [internetSecurityEnabled] Should Internet Security be enabled to secure internet traffic? Defaults to `false`.

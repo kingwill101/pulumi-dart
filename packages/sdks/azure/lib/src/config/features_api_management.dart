@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesApiManagement {
-  final pulumi.Input<bool>? purgeSoftDeleteOnDestroy;
-  final pulumi.Input<bool>? recoverSoftDeleted;
+  final pulumi.Input<bool?>? purgeSoftDeleteOnDestroy;
+  final pulumi.Input<bool?>? recoverSoftDeleted;
 
   /// Creates a new [FeaturesApiManagement].
   /// [purgeSoftDeleteOnDestroy] Optional.

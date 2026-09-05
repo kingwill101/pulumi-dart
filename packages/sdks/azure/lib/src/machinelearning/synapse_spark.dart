@@ -30,6 +30,7 @@ import 'synapse_spark_state.dart';
 ///     name: "example-kv",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     purgeProtectionEnabled: true,
@@ -104,6 +105,7 @@ import 'synapse_spark_state.dart';
 ///     name="example-kv",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     purge_protection_enabled=True)
@@ -184,6 +186,7 @@ import 'synapse_spark_state.dart';
 ///         Name = "example-kv",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         PurgeProtectionEnabled = true,
@@ -294,12 +297,13 @@ import 'synapse_spark_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("example-kv"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("standard"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("example-kv"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -318,9 +322,9 @@ import 'synapse_spark_state.dart';
 /// 			Name:                  pulumi.String("example-mlw"),
 /// 			Location:              example.Location,
 /// 			ResourceGroupName:     example.Name,
-/// 			ApplicationInsightsId: exampleInsights.ID(),
-/// 			KeyVaultId:            exampleKeyVault.ID(),
-/// 			StorageAccountId:      exampleAccount.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId:            exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:      exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &machinelearning.WorkspaceIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -330,7 +334,7 @@ import 'synapse_spark_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -339,7 +343,7 @@ import 'synapse_spark_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			Identity: &synapse.WorkspaceIdentityArgs{
@@ -351,7 +355,7 @@ import 'synapse_spark_state.dart';
 /// 		}
 /// 		exampleSparkPool, err := synapse.NewSparkPool(ctx, "example", &synapse.SparkPoolArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			SynapseWorkspaceId: exampleWorkspace2.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace2.ID().ToIDOutput().ToStringOutput(),
 /// 			NodeSizeFamily:     pulumi.String("MemoryOptimized"),
 /// 			NodeSize:           pulumi.String("Small"),
 /// 			NodeCount:          pulumi.Int(3),
@@ -361,9 +365,9 @@ import 'synapse_spark_state.dart';
 /// 		}
 /// 		_, err = machinelearning.NewSynapseSpark(ctx, "example", &machinelearning.SynapseSparkArgs{
 /// 			Name:                       pulumi.String("example"),
-/// 			MachineLearningWorkspaceId: exampleWorkspace.ID(),
+/// 			MachineLearningWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:                   example.Location,
-/// 			SynapseSparkPoolId:         exampleSparkPool.ID(),
+/// 			SynapseSparkPoolId:         exampleSparkPool.ID().ToIDOutput().ToStringOutput(),
 /// 			Identity: &machinelearning.SynapseSparkIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
 /// 			},
@@ -401,12 +405,13 @@ import 'synapse_spark_state.dart';
 ///   application_type    = "web"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "example-kv"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "standard"
-///   purge_protection_enabled = true
+///   name                       = "example-kv"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   purge_protection_enabled   = true
 /// }
 /// resource "azure_storage_account" "example" {
 ///   name                     = "examplesa"
@@ -512,6 +517,7 @@ import 'synapse_spark_state.dart';
 ///             .name("example-kv")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .purgeProtectionEnabled(true)
@@ -599,6 +605,7 @@ import 'synapse_spark_state.dart';
 ///       name: example-kv
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       purgeProtectionEnabled: true
@@ -712,7 +719,7 @@ class SynapseSpark extends pulumi.CustomResource {
           'azure:machinelearning/synapseSpark:SynapseSpark',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     identity = registerOutput<SynapseSparkIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SynapseSparkIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -721,7 +728,7 @@ class SynapseSpark extends pulumi.CustomResource {
     machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
     this.name = registerOutput<String>('name');
     synapseSparkPoolId = registerOutput<String>('synapseSparkPoolId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SynapseSpark] resource's state with the given [name] and [id].
@@ -729,11 +736,12 @@ class SynapseSpark extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SynapseSparkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SynapseSpark._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -754,6 +762,25 @@ class SynapseSpark extends pulumi.CustomResource {
     machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
     this.name = registerOutput<String>('name');
     synapseSparkPoolId = registerOutput<String>('synapseSparkPoolId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SynapseSpark] resource.
+  SynapseSpark.reference(String urn)
+    : super(
+        'azure:machinelearning/synapseSpark:SynapseSpark',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    identity = registerOutput<SynapseSparkIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SynapseSparkIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
+    this.name = registerOutput<String>('name');
+    synapseSparkPoolId = registerOutput<String>('synapseSparkPoolId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

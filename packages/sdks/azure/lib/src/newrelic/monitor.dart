@@ -482,12 +482,13 @@ class Monitor extends pulumi.CustomResource {
           'azure:newrelic/monitor:Monitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['ingestionKey'],
         ) {
     accountCreationSource = registerOutput<String?>('accountCreationSource');
     accountId = registerOutput<String>('accountId');
     identity = registerOutput<MonitorIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ingestionKey = registerOutput<String?>('ingestionKey');
+    ingestionKey = registerOutput<String?>('ingestionKey', isSecret: true);
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     orgCreationSource = registerOutput<String?>('orgCreationSource');
@@ -503,11 +504,12 @@ class Monitor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MonitorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Monitor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -524,7 +526,31 @@ class Monitor extends pulumi.CustomResource {
     accountCreationSource = registerOutput<String?>('accountCreationSource');
     accountId = registerOutput<String>('accountId');
     identity = registerOutput<MonitorIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ingestionKey = registerOutput<String?>('ingestionKey');
+    ingestionKey = registerOutput<String?>('ingestionKey', isSecret: true);
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    orgCreationSource = registerOutput<String?>('orgCreationSource');
+    organizationId = registerOutput<String>('organizationId');
+    plan = registerOutput<MonitorPlan>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    user = registerOutput<MonitorUser>('user', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userId = registerOutput<String?>('userId');
+  }
+
+  /// Creates a typed reference to an existing [Monitor] resource.
+  Monitor.reference(String urn)
+    : super(
+        'azure:newrelic/monitor:Monitor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['ingestionKey'],
+        isResourceReference: true,
+      ) {
+    accountCreationSource = registerOutput<String?>('accountCreationSource');
+    accountId = registerOutput<String>('accountId');
+    identity = registerOutput<MonitorIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingestionKey = registerOutput<String?>('ingestionKey', isSecret: true);
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     orgCreationSource = registerOutput<String?>('orgCreationSource');

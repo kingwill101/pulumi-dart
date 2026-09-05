@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DscNodeConfiguration resources.
 class DscNodeConfigurationState {
   /// The name of the automation account in which the DSC Node Configuration is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? automationAccountName;
-  final pulumi.Input<String>? configurationName;
+  final pulumi.Input<String?>? automationAccountName;
+  final pulumi.Input<String?>? configurationName;
   /// The PowerShell DSC Node Configuration (mof content).
-  final pulumi.Input<String>? contentEmbedded;
+  final pulumi.Input<String?>? contentEmbedded;
   /// Specifies the name of the DSC Node Configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the DSC Node Configuration is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [DscNodeConfigurationState].
   /// [automationAccountName] The name of the automation account in which the DSC Node Configuration is created. Changing this forces a new resource to be created.

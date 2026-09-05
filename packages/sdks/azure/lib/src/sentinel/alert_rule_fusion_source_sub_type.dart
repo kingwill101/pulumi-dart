@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleFusionSourceSubType {
   /// Whether this source subtype under source signal is enabled or disabled in Fusion detection. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The Name of the source subtype under a given source signal in Fusion detection. Refer to Fusion alert rule template for supported values.
   final pulumi.Input<String> name;
   /// A list of severities that are enabled for this source subtype consumed in Fusion detection. Possible values for each element are `High`, `Medium`, `Low`, `Informational`.

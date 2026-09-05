@@ -136,7 +136,7 @@ import 'cluster_state.dart';
 /// 		}
 /// 		_, err = avs.NewCluster(ctx, "example", &avs.ClusterArgs{
 /// 			Name:             pulumi.String("example-Cluster"),
-/// 			VmwareCloudId:    examplePrivateCloud.ID(),
+/// 			VmwareCloudId:    examplePrivateCloud.ID().ToIDOutput().ToStringOutput(),
 /// 			ClusterNodeCount: pulumi.Int(3),
 /// 			SkuName:          pulumi.String("av36"),
 /// 		})
@@ -307,11 +307,11 @@ class Cluster extends pulumi.CustomResource {
           'azure:avs/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clusterNodeCount = registerOutput<int>('clusterNodeCount');
     clusterNumber = registerOutput<int>('clusterNumber');
-    hosts = registerOutput<List<String>>('hosts');
+    hosts = registerOutput<List<String>>('hosts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     skuName = registerOutput<String>('skuName');
     vmwareCloudId = registerOutput<String>('vmwareCloudId');
@@ -322,11 +322,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -342,7 +343,24 @@ class Cluster extends pulumi.CustomResource {
         ) {
     clusterNodeCount = registerOutput<int>('clusterNodeCount');
     clusterNumber = registerOutput<int>('clusterNumber');
-    hosts = registerOutput<List<String>>('hosts');
+    hosts = registerOutput<List<String>>('hosts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    skuName = registerOutput<String>('skuName');
+    vmwareCloudId = registerOutput<String>('vmwareCloudId');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'azure:avs/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterNodeCount = registerOutput<int>('clusterNodeCount');
+    clusterNumber = registerOutput<int>('clusterNumber');
+    hosts = registerOutput<List<String>>('hosts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     skuName = registerOutput<String>('skuName');
     vmwareCloudId = registerOutput<String>('vmwareCloudId');

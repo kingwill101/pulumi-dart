@@ -15,15 +15,15 @@ import 'subscription_state.dart';
 ///     name: "example-apim",
 ///     resourceGroupName: "example-resources",
 /// });
-/// const exampleGetProduct = Promise.all([example, example]).then(([example, example1]) => azure.apimanagement.getProduct({
+/// const exampleGetProduct = example.then(example => azure.apimanagement.getProduct({
 ///     productId: "00000000-0000-0000-0000-000000000000",
 ///     apiManagementName: example.name,
-///     resourceGroupName: example1.resourceGroupName,
+///     resourceGroupName: example.resourceGroupName,
 /// }));
-/// const exampleGetUser = Promise.all([example, example]).then(([example, example1]) => azure.apimanagement.getUser({
+/// const exampleGetUser = example.then(example => azure.apimanagement.getUser({
 ///     userId: "11111111-1111-1111-1111-111111111111",
 ///     apiManagementName: example.name,
-///     resourceGroupName: example1.resourceGroupName,
+///     resourceGroupName: example.resourceGroupName,
 /// }));
 /// const exampleSubscription = new azure.apimanagement.Subscription("example", {
 ///     apiManagementName: example.then(example => example.name),
@@ -312,16 +312,17 @@ class Subscription extends pulumi.CustomResource {
           'azure:apimanagement/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryKey', 'secondaryKey'],
         ) {
     allowTracing = registerOutput<bool?>('allowTracing');
     apiId = registerOutput<String?>('apiId');
     apiManagementName = registerOutput<String>('apiManagementName');
     displayName = registerOutput<String>('displayName');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     productId = registerOutput<String?>('productId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     state = registerOutput<String?>('state');
     subscriptionId = registerOutput<String>('subscriptionId');
     userId = registerOutput<String?>('userId');
@@ -332,11 +333,12 @@ class Subscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Subscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -354,11 +356,34 @@ class Subscription extends pulumi.CustomResource {
     apiId = registerOutput<String?>('apiId');
     apiManagementName = registerOutput<String>('apiManagementName');
     displayName = registerOutput<String>('displayName');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     productId = registerOutput<String?>('productId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     this.state = registerOutput<String?>('state');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    userId = registerOutput<String?>('userId');
+  }
+
+  /// Creates a typed reference to an existing [Subscription] resource.
+  Subscription.reference(String urn)
+    : super(
+        'azure:apimanagement/subscription:Subscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryKey', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    allowTracing = registerOutput<bool?>('allowTracing');
+    apiId = registerOutput<String?>('apiId');
+    apiManagementName = registerOutput<String>('apiManagementName');
+    displayName = registerOutput<String>('displayName');
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    productId = registerOutput<String?>('productId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    state = registerOutput<String?>('state');
     subscriptionId = registerOutput<String>('subscriptionId');
     userId = registerOutput<String?>('userId');
   }

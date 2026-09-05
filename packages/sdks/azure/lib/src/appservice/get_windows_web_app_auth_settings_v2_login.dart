@@ -76,7 +76,7 @@ class GetWindowsWebAppAuthSettingsV2Login {
       logoutEndpoint: pulumi.Input.fromValue(map['logoutEndpoint'] as String),
       nonceExpirationTime: pulumi.Input.fromValue(map['nonceExpirationTime'] as String),
       preserveUrlFragmentsForLogins: pulumi.Input.fromValue(map['preserveUrlFragmentsForLogins'] as bool),
-      tokenRefreshExtensionTime: pulumi.Input.fromValue(map['tokenRefreshExtensionTime'] as double),
+      tokenRefreshExtensionTime: pulumi.Input.fromValue((map['tokenRefreshExtensionTime'] as num).toDouble()),
       tokenStoreEnabled: pulumi.Input.fromValue(map['tokenStoreEnabled'] as bool),
       tokenStorePath: pulumi.Input.fromValue(map['tokenStorePath'] as String),
       tokenStoreSasSettingName: pulumi.Input.fromValue(map['tokenStoreSasSettingName'] as String),

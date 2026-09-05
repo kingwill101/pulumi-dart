@@ -12,21 +12,21 @@ class ApplicationArgs {
   /// Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all. Possible values include: `DoNotAllow`, `Allow`, `Require`.
   final pulumi.Input<String> commandLineArgumentPolicy;
   /// Command Line Arguments for Virtual Desktop Application.
-  final pulumi.Input<String>? commandLineArguments;
+  final pulumi.Input<String?>? commandLineArguments;
   /// Option to set a description for the Virtual Desktop Application.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Option to set a friendly name for the Virtual Desktop Application.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// The index of the icon you wish to use.
-  final pulumi.Input<int>? iconIndex;
+  final pulumi.Input<int?>? iconIndex;
   /// Specifies the path for an icon which will be used for this Virtual Desktop Application.
-  final pulumi.Input<String>? iconPath;
+  final pulumi.Input<String?>? iconPath;
   /// The name of the Virtual Desktop Application. Changing the name forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The file path location of the app on the Virtual Desktop OS.
   final pulumi.Input<String> path;
   /// Specifies whether to show the RemoteApp program in the RD Web Access server.
-  final pulumi.Input<bool>? showInPortal;
+  final pulumi.Input<bool?>? showInPortal;
 
   /// Creates a new [ApplicationArgs].
   /// [applicationGroupId] Resource ID for a Virtual Desktop Application Group to associate with the Virtual Desktop Application. Changing this forces a new resource to be created.
@@ -74,7 +74,7 @@ class ApplicationArgs {
       commandLineArguments: (() { final guardedValue = map['commandLineArguments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      iconIndex: (() { final guardedValue = map['iconIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      iconIndex: (() { final guardedValue = map['iconIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       iconPath: (() { final guardedValue = map['iconPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       path: pulumi.Input.fromValue(map['path'] as String),

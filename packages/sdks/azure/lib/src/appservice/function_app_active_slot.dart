@@ -181,7 +181,7 @@ import 'function_app_active_slot_state.dart';
 /// 			ResourceGroupName:  example.Name,
 /// 			Location:           example.Location,
 /// 			StorageAccountName: exampleAccount.Name,
-/// 			ServicePlanId:      exampleServicePlan.ID(),
+/// 			ServicePlanId:      exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:         &appservice.WindowsFunctionAppSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
@@ -189,7 +189,7 @@ import 'function_app_active_slot_state.dart';
 /// 		}
 /// 		exampleWindowsFunctionAppSlot, err := appservice.NewWindowsFunctionAppSlot(ctx, "example", &appservice.WindowsFunctionAppSlotArgs{
 /// 			Name:               pulumi.String("example-windows-function-app-slot"),
-/// 			FunctionAppId:      exampleWindowsFunctionApp.ID(),
+/// 			FunctionAppId:      exampleWindowsFunctionApp.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName: exampleAccount.Name,
 /// 			SiteConfig:         &appservice.WindowsFunctionAppSlotSiteConfigArgs{},
 /// 		})
@@ -197,7 +197,7 @@ import 'function_app_active_slot_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewFunctionAppActiveSlot(ctx, "example", &appservice.FunctionAppActiveSlotArgs{
-/// 			SlotId: exampleWindowsFunctionAppSlot.ID(),
+/// 			SlotId: exampleWindowsFunctionAppSlot.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -555,7 +555,7 @@ import 'function_app_active_slot_state.dart';
 /// 			Name:               pulumi.String("example-linux-function-app"),
 /// 			ResourceGroupName:  example.Name,
 /// 			Location:           example.Location,
-/// 			ServicePlanId:      exampleServicePlan.ID(),
+/// 			ServicePlanId:      exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName: exampleAccount.Name,
 /// 			SiteConfig:         &appservice.LinuxFunctionAppSiteConfigArgs{},
 /// 		})
@@ -572,7 +572,7 @@ import 'function_app_active_slot_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewFunctionAppActiveSlot(ctx, "example", &appservice.FunctionAppActiveSlotArgs{
-/// 			SlotId: exampleLinuxFunctionAppSlot.ID(),
+/// 			SlotId: exampleLinuxFunctionAppSlot.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -790,7 +790,7 @@ class FunctionAppActiveSlot extends pulumi.CustomResource {
           'azure:appservice/functionAppActiveSlot:FunctionAppActiveSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
     overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
@@ -802,11 +802,12 @@ class FunctionAppActiveSlot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionAppActiveSlotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionAppActiveSlot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -820,6 +821,20 @@ class FunctionAppActiveSlot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
+    overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
+    slotId = registerOutput<String>('slotId');
+  }
+
+  /// Creates a typed reference to an existing [FunctionAppActiveSlot] resource.
+  FunctionAppActiveSlot.reference(String urn)
+    : super(
+        'azure:appservice/functionAppActiveSlot:FunctionAppActiveSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
     overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
     slotId = registerOutput<String>('slotId');

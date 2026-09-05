@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AssignmentDedicatedHost resources.
 class AssignmentDedicatedHostState {
   /// Specifies the Dedicated Host ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? dedicatedHostId;
+  final pulumi.Input<String?>? dedicatedHostId;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the ID of the Maintenance Configuration Resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? maintenanceConfigurationId;
+  final pulumi.Input<String?>? maintenanceConfigurationId;
 
   /// Creates a new [AssignmentDedicatedHostState].
   /// [dedicatedHostId] Specifies the Dedicated Host ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.

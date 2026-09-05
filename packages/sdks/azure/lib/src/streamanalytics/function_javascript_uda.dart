@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_javascript_uda_args.dart';
+import 'function_javascript_uda_input.dart';
 import 'function_javascript_uda_output.dart';
 import 'function_javascript_uda_state.dart';
 
@@ -335,7 +336,7 @@ import 'function_javascript_uda_state.dart';
 /// ```
 class FunctionJavascriptUda extends pulumi.CustomResource {
   /// One or more `input` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> inputs;
+  late final pulumi.Output<List<FunctionJavascriptUdaInput>> inputs;
   /// The name of the JavaScript UDA Function. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// An `output` block as defined below.
@@ -357,9 +358,9 @@ class FunctionJavascriptUda extends pulumi.CustomResource {
           'azure:streamanalytics/functionJavascriptUda:FunctionJavascriptUda',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
+    inputs = registerOutput<List<FunctionJavascriptUdaInput>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionJavascriptUdaInput>(guardedValue, (value) => FunctionJavascriptUdaInput.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     output = registerOutput<FunctionJavascriptUdaOutput>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionJavascriptUdaOutput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     script = registerOutput<String>('script');
@@ -371,11 +372,12 @@ class FunctionJavascriptUda extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionJavascriptUdaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionJavascriptUda._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -389,7 +391,23 @@ class FunctionJavascriptUda extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
+    inputs = registerOutput<List<FunctionJavascriptUdaInput>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionJavascriptUdaInput>(guardedValue, (value) => FunctionJavascriptUdaInput.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    output = registerOutput<FunctionJavascriptUdaOutput>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionJavascriptUdaOutput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    script = registerOutput<String>('script');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+  }
+
+  /// Creates a typed reference to an existing [FunctionJavascriptUda] resource.
+  FunctionJavascriptUda.reference(String urn)
+    : super(
+        'azure:streamanalytics/functionJavascriptUda:FunctionJavascriptUda',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    inputs = registerOutput<List<FunctionJavascriptUdaInput>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionJavascriptUdaInput>(guardedValue, (value) => FunctionJavascriptUdaInput.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     output = registerOutput<FunctionJavascriptUdaOutput>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionJavascriptUdaOutput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     script = registerOutput<String>('script');

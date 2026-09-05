@@ -5,17 +5,17 @@ import 'assignment_dynamic_scope_filter_tag.dart';
 
 class AssignmentDynamicScopeFilter {
   /// Specifies a list of locations to scope the query to.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// Specifies a list of allowed operating systems. Possible values are `Linux` and `Windows`.
-  final pulumi.Input<List<String>>? osTypes;
+  final pulumi.Input<List<String>?>? osTypes;
   /// Specifies a list of allowed resource groups.
-  final pulumi.Input<List<String>>? resourceGroups;
+  final pulumi.Input<List<String>?>? resourceGroups;
   /// Specifies a list of allowed resources. Possible values are `Microsoft.Compute/virtualMachines` and `Microsoft.HybridCompute/machines`.
-  final pulumi.Input<List<String>>? resourceTypes;
+  final pulumi.Input<List<String>?>? resourceTypes;
   /// Filter VMs by `Any` or `All` specified tags. Defaults to `Any`.
-  final pulumi.Input<String>? tagFilter;
+  final pulumi.Input<String?>? tagFilter;
   /// One or more `tags` blocks as defined below.
-  final pulumi.Input<List<AssignmentDynamicScopeFilterTag>>? tags;
+  final pulumi.Input<List<AssignmentDynamicScopeFilterTag>?>? tags;
 
   /// Creates a new [AssignmentDynamicScopeFilter].
   /// [locations] Specifies a list of locations to scope the query to.

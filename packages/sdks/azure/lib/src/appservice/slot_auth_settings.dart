@@ -9,35 +9,35 @@ import 'slot_auth_settings_twitter.dart';
 
 class SlotAuthSettings {
   /// A `activeDirectory` block as defined below.
-  final pulumi.Input<SlotAuthSettingsActiveDirectory>? activeDirectory;
+  final pulumi.Input<SlotAuthSettingsActiveDirectory?>? activeDirectory;
   /// Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value".
-  final pulumi.Input<Map<String, String>>? additionalLoginParams;
+  final pulumi.Input<Map<String, String>?>? additionalLoginParams;
   /// External URLs that can be redirected to as part of logging in or logging out of the app.
-  final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
+  final pulumi.Input<List<String>?>? allowedExternalRedirectUrls;
   /// The default provider to use when multiple providers have been set up. Possible values are `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount` and `Twitter`.
   ///
   /// &gt; **NOTE:** When using multiple providers, the default provider must be set for settings like `unauthenticatedClientAction` to work.
-  final pulumi.Input<String>? defaultProvider;
+  final pulumi.Input<String?>? defaultProvider;
   /// Is Authentication enabled?
   final pulumi.Input<bool> enabled;
   /// A `facebook` block as defined below.
-  final pulumi.Input<SlotAuthSettingsFacebook>? facebook;
+  final pulumi.Input<SlotAuthSettingsFacebook?>? facebook;
   /// A `google` block as defined below.
-  final pulumi.Input<SlotAuthSettingsGoogle>? google;
+  final pulumi.Input<SlotAuthSettingsGoogle?>? google;
   /// Issuer URI. When using Azure Active Directory, this value is the URI of the directory tenant, e.g. &lt;https://sts.windows.net/{tenant-guid}/&gt;.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
   /// A `microsoft` block as defined below.
-  final pulumi.Input<SlotAuthSettingsMicrosoft>? microsoft;
+  final pulumi.Input<SlotAuthSettingsMicrosoft?>? microsoft;
   /// The runtime version of the Authentication/Authorization module.
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
   /// The number of hours after session token expiration that a session token can be used to call the token refresh API. Defaults to `72`.
-  final pulumi.Input<double>? tokenRefreshExtensionHours;
+  final pulumi.Input<double?>? tokenRefreshExtensionHours;
   /// If enabled the module will durably store platform-specific security tokens that are obtained during login flows. Defaults to `false`.
-  final pulumi.Input<bool>? tokenStoreEnabled;
+  final pulumi.Input<bool?>? tokenStoreEnabled;
   /// A `twitter` block as defined below.
-  final pulumi.Input<SlotAuthSettingsTwitter>? twitter;
+  final pulumi.Input<SlotAuthSettingsTwitter?>? twitter;
   /// The action to take when an unauthenticated client attempts to access the app. Possible values are `AllowAnonymous` and `RedirectToLoginPage`.
-  final pulumi.Input<String>? unauthenticatedClientAction;
+  final pulumi.Input<String?>? unauthenticatedClientAction;
 
   /// Creates a new [SlotAuthSettings].
   /// [activeDirectory] A `activeDirectory` block as defined below.
@@ -102,7 +102,7 @@ class SlotAuthSettings {
       issuer: (() { final guardedValue = map['issuer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       microsoft: (() { final guardedValue = map['microsoft']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SlotAuthSettingsMicrosoft.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       runtimeVersion: (() { final guardedValue = map['runtimeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tokenRefreshExtensionHours: (() { final guardedValue = map['tokenRefreshExtensionHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      tokenRefreshExtensionHours: (() { final guardedValue = map['tokenRefreshExtensionHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       tokenStoreEnabled: (() { final guardedValue = map['tokenStoreEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       twitter: (() { final guardedValue = map['twitter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SlotAuthSettingsTwitter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       unauthenticatedClientAction: (() { final guardedValue = map['unauthenticatedClientAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

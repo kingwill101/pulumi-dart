@@ -8,7 +8,7 @@ class FunctionAppAuthSettingsMicrosoft {
   /// The OAuth 2.0 client secret that was created for the app used for authentication.
   final pulumi.Input<String> clientSecret;
   /// The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. &lt;https://msdn.microsoft.com/en-us/library/dn631845.aspx&gt;
-  final pulumi.Input<List<String>>? oauthScopes;
+  final pulumi.Input<List<String>?>? oauthScopes;
 
   /// Creates a new [FunctionAppAuthSettingsMicrosoft].
   /// [clientId] The OAuth 2.0 client ID that was created for the app used for authentication.

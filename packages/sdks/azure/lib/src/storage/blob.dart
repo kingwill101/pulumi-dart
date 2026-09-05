@@ -127,7 +127,7 @@ import 'blob_state.dart';
 /// 		}
 /// 		exampleContainer, err := storage.NewContainer(ctx, "example", &storage.ContainerArgs{
 /// 			Name:                pulumi.String("content"),
-/// 			StorageAccountId:    exampleAccount.ID(),
+/// 			StorageAccountId:    exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			ContainerAccessType: pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -135,7 +135,7 @@ import 'blob_state.dart';
 /// 		}
 /// 		_, err = storage.NewBlob(ctx, "example", &storage.BlobArgs{
 /// 			Name:               pulumi.String("my-awesome-content.zip"),
-/// 			StorageContainerId: exampleContainer.ID(),
+/// 			StorageContainerId: exampleContainer.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:               pulumi.String("Block"),
 /// 			Source:             pulumi.NewFileAsset("some-local-file.zip"),
 /// 		})
@@ -333,14 +333,14 @@ class Blob extends pulumi.CustomResource {
           'azure:storage/blob:Blob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accessTier = registerOutput<String>('accessTier');
     cacheControl = registerOutput<String?>('cacheControl');
     contentMd5 = registerOutput<String?>('contentMd5');
     contentType = registerOutput<String?>('contentType');
     encryptionScope = registerOutput<String?>('encryptionScope');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     parallelism = registerOutput<int?>('parallelism');
     size = registerOutput<int?>('size');
@@ -359,11 +359,12 @@ class Blob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BlobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Blob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -382,7 +383,35 @@ class Blob extends pulumi.CustomResource {
     contentMd5 = registerOutput<String?>('contentMd5');
     contentType = registerOutput<String?>('contentType');
     encryptionScope = registerOutput<String?>('encryptionScope');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    parallelism = registerOutput<int?>('parallelism');
+    size = registerOutput<int?>('size');
+    source = registerOutput<dynamic>('source');
+    sourceContent = registerOutput<String?>('sourceContent');
+    sourceUri = registerOutput<String?>('sourceUri');
+    storageAccountName = registerOutput<String>('storageAccountName');
+    storageContainerId = registerOutput<String>('storageContainerId');
+    storageContainerName = registerOutput<String>('storageContainerName');
+    type = registerOutput<String>('type');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Blob] resource.
+  Blob.reference(String urn)
+    : super(
+        'azure:storage/blob:Blob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessTier = registerOutput<String>('accessTier');
+    cacheControl = registerOutput<String?>('cacheControl');
+    contentMd5 = registerOutput<String?>('contentMd5');
+    contentType = registerOutput<String?>('contentType');
+    encryptionScope = registerOutput<String?>('encryptionScope');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     parallelism = registerOutput<int?>('parallelism');
     size = registerOutput<int?>('size');

@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ChannelTeams resources.
 class ChannelTeamsState {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? botName;
+  final pulumi.Input<String?>? botName;
   /// Specifies whether to enable Microsoft Teams channel calls. This defaults to `false`.
-  final pulumi.Input<bool>? callingEnabled;
+  final pulumi.Input<bool?>? callingEnabled;
   /// Specifies the webhook for Microsoft Teams channel calls.
-  final pulumi.Input<String>? callingWebHook;
+  final pulumi.Input<String?>? callingWebHook;
   /// The deployment environment for Microsoft Teams channel calls. Possible values are `CommercialDeployment` and `GCCModerateDeployment`. Defaults to `CommercialDeployment`.
-  final pulumi.Input<String>? deploymentEnvironment;
-  final pulumi.Input<bool>? enableCalling;
+  final pulumi.Input<String?>? deploymentEnvironment;
+  final pulumi.Input<bool?>? enableCalling;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ChannelTeamsState].
   /// [botName] The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.

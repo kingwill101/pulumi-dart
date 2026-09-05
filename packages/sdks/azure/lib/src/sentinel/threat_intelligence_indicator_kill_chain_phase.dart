@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreatIntelligenceIndicatorKillChainPhase {
   /// The name which should be used for the Lockheed Martin cyber kill chain phase.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ThreatIntelligenceIndicatorKillChainPhase].
   /// [name] The name which should be used for the Lockheed Martin cyber kill chain phase.

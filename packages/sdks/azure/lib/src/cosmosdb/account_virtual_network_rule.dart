@@ -6,7 +6,7 @@ class AccountVirtualNetworkRule {
   /// The ID of the virtual network subnet.
   final pulumi.Input<String> id;
   /// If set to true, the specified subnet will be added as a virtual network rule even if its CosmosDB service endpoint is not active. Defaults to `false`.
-  final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
+  final pulumi.Input<bool?>? ignoreMissingVnetServiceEndpoint;
 
   /// Creates a new [AccountVirtualNetworkRule].
   /// [id] The ID of the virtual network subnet.

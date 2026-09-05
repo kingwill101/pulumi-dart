@@ -34,8 +34,8 @@ import 'output_blob_state.dart';
 /// });
 /// const exampleOutputBlob = new azure.streamanalytics.OutputBlob("example", {
 ///     name: "output-to-blob-storage",
-///     streamAnalyticsJobName: example.apply(example => example.name),
-///     resourceGroupName: example.apply(example => example.resourceGroupName),
+///     streamAnalyticsJobName: example.name,
+///     resourceGroupName: example.resourceGroupName,
 ///     storageAccountName: exampleAccount.name,
 ///     storageAccountKey: exampleAccount.primaryAccessKey,
 ///     storageContainerName: exampleContainer.name,
@@ -183,19 +183,15 @@ import 'output_blob_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = streamanalytics.NewOutputBlob(ctx, "example", &streamanalytics.OutputBlobArgs{
-/// 			Name: pulumi.String("output-to-blob-storage"),
-/// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.ResourceGroupName, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			StorageAccountName:   exampleAccount.Name,
-/// 			StorageAccountKey:    exampleAccount.PrimaryAccessKey,
-/// 			StorageContainerName: exampleContainer.Name,
-/// 			PathPattern:          pulumi.String("some-pattern"),
-/// 			DateFormat:           pulumi.String("yyyy-MM-dd"),
-/// 			TimeFormat:           pulumi.String("HH"),
+/// 			Name:                   pulumi.String("output-to-blob-storage"),
+/// 			StreamAnalyticsJobName: example.Name(),
+/// 			ResourceGroupName:      example.ResourceGroupName(),
+/// 			StorageAccountName:     exampleAccount.Name,
+/// 			StorageAccountKey:      exampleAccount.PrimaryAccessKey,
+/// 			StorageContainerName:   exampleContainer.Name,
+/// 			PathPattern:            pulumi.String("some-pattern"),
+/// 			DateFormat:             pulumi.String("yyyy-MM-dd"),
+/// 			TimeFormat:             pulumi.String("HH"),
 /// 			Serialization: &streamanalytics.OutputBlobSerializationArgs{
 /// 				Type:           pulumi.String("Csv"),
 /// 				Encoding:       pulumi.String("UTF8"),
@@ -437,7 +433,8 @@ class OutputBlob extends pulumi.CustomResource {
           'azure:streamanalytics/outputBlob:OutputBlob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountKey'],
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     batchMaxWaitTime = registerOutput<String?>('batchMaxWaitTime');
@@ -448,7 +445,7 @@ class OutputBlob extends pulumi.CustomResource {
     pathPattern = registerOutput<String>('pathPattern');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<OutputBlobSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputBlobSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageAccountKey = registerOutput<String?>('storageAccountKey');
+    storageAccountKey = registerOutput<String?>('storageAccountKey', isSecret: true);
     storageAccountName = registerOutput<String>('storageAccountName');
     storageContainerName = registerOutput<String>('storageContainerName');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
@@ -460,11 +457,12 @@ class OutputBlob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutputBlobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutputBlob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -487,7 +485,33 @@ class OutputBlob extends pulumi.CustomResource {
     pathPattern = registerOutput<String>('pathPattern');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<OutputBlobSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputBlobSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageAccountKey = registerOutput<String?>('storageAccountKey');
+    storageAccountKey = registerOutput<String?>('storageAccountKey', isSecret: true);
+    storageAccountName = registerOutput<String>('storageAccountName');
+    storageContainerName = registerOutput<String>('storageContainerName');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    timeFormat = registerOutput<String>('timeFormat');
+  }
+
+  /// Creates a typed reference to an existing [OutputBlob] resource.
+  OutputBlob.reference(String urn)
+    : super(
+        'azure:streamanalytics/outputBlob:OutputBlob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountKey'],
+        isResourceReference: true,
+      ) {
+    authenticationMode = registerOutput<String?>('authenticationMode');
+    batchMaxWaitTime = registerOutput<String?>('batchMaxWaitTime');
+    batchMinRows = registerOutput<int?>('batchMinRows');
+    blobWriteMode = registerOutput<String?>('blobWriteMode');
+    dateFormat = registerOutput<String>('dateFormat');
+    this.name = registerOutput<String>('name');
+    pathPattern = registerOutput<String>('pathPattern');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serialization = registerOutput<OutputBlobSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputBlobSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccountKey = registerOutput<String?>('storageAccountKey', isSecret: true);
     storageAccountName = registerOutput<String>('storageAccountName');
     storageContainerName = registerOutput<String>('storageContainerName');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');

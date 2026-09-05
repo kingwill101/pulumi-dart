@@ -111,7 +111,7 @@ import 'notification_recipient_email_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apimanagement.NewNotificationRecipientEmail(ctx, "example", &apimanagement.NotificationRecipientEmailArgs{
-/// 			ApiManagementId:  exampleService.ID(),
+/// 			ApiManagementId:  exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			NotificationType: pulumi.String("AccountClosedPublisher"),
 /// 			Email:            pulumi.String("foo@bar.com"),
 /// 		})
@@ -258,7 +258,7 @@ class NotificationRecipientEmail extends pulumi.CustomResource {
           'azure:apimanagement/notificationRecipientEmail:NotificationRecipientEmail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     email = registerOutput<String>('email');
@@ -270,11 +270,12 @@ class NotificationRecipientEmail extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NotificationRecipientEmailState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NotificationRecipientEmail._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -288,6 +289,20 @@ class NotificationRecipientEmail extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    email = registerOutput<String>('email');
+    notificationType = registerOutput<String>('notificationType');
+  }
+
+  /// Creates a typed reference to an existing [NotificationRecipientEmail] resource.
+  NotificationRecipientEmail.reference(String urn)
+    : super(
+        'azure:apimanagement/notificationRecipientEmail:NotificationRecipientEmail',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     email = registerOutput<String>('email');
     notificationType = registerOutput<String>('notificationType');

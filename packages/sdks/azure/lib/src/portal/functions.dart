@@ -148,3 +148,14 @@ Future<AzurermPortalDashboardResult> azurermPortalDashboard(
   );
   return AzurermPortalDashboardResult.fromMap(result);
 }
+
+pulumi.Output<AzurermPortalDashboardResult> azurermPortalDashboardOutput(
+  AzurermPortalDashboardArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:portal/azurerm_portal_dashboard:azurerm_portal_dashboard',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(AzurermPortalDashboardResult.fromMap);
+}

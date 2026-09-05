@@ -10,11 +10,11 @@ class WorkspacePolicyArgs {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementWorkspaceId;
   /// Specifies the API Management Workspace Policy as an XML string.
-  final pulumi.Input<String>? xmlContent;
+  final pulumi.Input<String?>? xmlContent;
   /// Specifies a publicly accessible URL to a policy XML document.
   ///
   /// &gt; **Note:** Exactly one of `xmlContent` or `xmlLink` must be specified.
-  final pulumi.Input<String>? xmlLink;
+  final pulumi.Input<String?>? xmlLink;
 
   /// Creates a new [WorkspacePolicyArgs].
   /// [apiManagementWorkspaceId] Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.

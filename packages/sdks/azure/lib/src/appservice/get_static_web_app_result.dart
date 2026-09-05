@@ -7,37 +7,37 @@ import 'get_static_web_app_identity.dart';
 /// Result data returned by getStaticWebApp.
 class GetStaticWebAppResult {
   /// The API key of this Static Web App, which is used for later interacting with this Static Web App from other clients, e.g. GitHub Action.
-  final String apiKey;
+  final String? apiKey;
   /// The map of key-value pairs of App Settings for the Static Web App.
-  final Map<String, String> appSettings;
+  final Map<String, String>? appSettings;
   /// A `basicAuth` block as defined below.
-  final List<GetStaticWebAppBasicAuth> basicAuths;
+  final List<GetStaticWebAppBasicAuth>? basicAuths;
   /// Are changes to the configuration file permitted.
-  final bool configurationFileChangesEnabled;
+  final bool? configurationFileChangesEnabled;
   /// The default host name of the Static Web App.
-  final String defaultHostName;
+  final String? defaultHostName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// An `identity` block as defined below.
-  final List<GetStaticWebAppIdentity> identities;
+  final List<GetStaticWebAppIdentity>? identities;
   /// The Azure region in which this Static Web App exists.
-  final String location;
-  final String name;
+  final String? location;
+  final String? name;
   /// Are Preview (Staging) environments enabled.
-  final bool previewEnvironmentsEnabled;
+  final bool? previewEnvironmentsEnabled;
   /// Should public network access be enabled for the Static Web App.
-  final bool publicNetworkAccessEnabled;
+  final bool? publicNetworkAccessEnabled;
   /// Repository branch of the Static Web App.
-  final String repositoryBranch;
+  final String? repositoryBranch;
   /// Repository URL of the Static Web App.
-  final String repositoryUrl;
-  final String resourceGroupName;
+  final String? repositoryUrl;
+  final String? resourceGroupName;
   /// The SKU size of the Static Web App.
-  final String skuSize;
+  final String? skuSize;
   /// The SKU tier of the Static Web App.
-  final String skuTier;
+  final String? skuTier;
   /// The mapping of tags assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetStaticWebAppResult].
   /// [apiKey] The API key of this Static Web App, which is used for later interacting with this Static Web App from other clients, e.g. GitHub Action.
@@ -48,76 +48,76 @@ class GetStaticWebAppResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below.
   /// [location] The Azure region in which this Static Web App exists.
-  /// [name] Required.
+  /// [name] Optional.
   /// [previewEnvironmentsEnabled] Are Preview (Staging) environments enabled.
   /// [publicNetworkAccessEnabled] Should public network access be enabled for the Static Web App.
   /// [repositoryBranch] Repository branch of the Static Web App.
   /// [repositoryUrl] Repository URL of the Static Web App.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [skuSize] The SKU size of the Static Web App.
   /// [skuTier] The SKU tier of the Static Web App.
   /// [tags] The mapping of tags assigned to the resource.
   const GetStaticWebAppResult({
-    required this.apiKey,
-    required this.appSettings,
-    required this.basicAuths,
-    required this.configurationFileChangesEnabled,
-    required this.defaultHostName,
-    required this.id,
-    required this.identities,
-    required this.location,
-    required this.name,
-    required this.previewEnvironmentsEnabled,
-    required this.publicNetworkAccessEnabled,
-    required this.repositoryBranch,
-    required this.repositoryUrl,
-    required this.resourceGroupName,
-    required this.skuSize,
-    required this.skuTier,
-    required this.tags,
+    this.apiKey,
+    this.appSettings,
+    this.basicAuths,
+    this.configurationFileChangesEnabled,
+    this.defaultHostName,
+    this.id,
+    this.identities,
+    this.location,
+    this.name,
+    this.previewEnvironmentsEnabled,
+    this.publicNetworkAccessEnabled,
+    this.repositoryBranch,
+    this.repositoryUrl,
+    this.resourceGroupName,
+    this.skuSize,
+    this.skuTier,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiKey': apiKey,
-      'appSettings': appSettings,
-      'basicAuths': pulumi.Input.encodeList<GetStaticWebAppBasicAuth, Map<String, dynamic>>(basicAuths, (value) => value.toMap()),
-      'configurationFileChangesEnabled': configurationFileChangesEnabled,
-      'defaultHostName': defaultHostName,
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetStaticWebAppIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'location': location,
-      'name': name,
-      'previewEnvironmentsEnabled': previewEnvironmentsEnabled,
-      'publicNetworkAccessEnabled': publicNetworkAccessEnabled,
-      'repositoryBranch': repositoryBranch,
-      'repositoryUrl': repositoryUrl,
-      'resourceGroupName': resourceGroupName,
-      'skuSize': skuSize,
-      'skuTier': skuTier,
-      'tags': tags,
+      'apiKey': ?apiKey,
+      'appSettings': ?appSettings,
+      'basicAuths': ?(() { final guardedValue = basicAuths; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetStaticWebAppBasicAuth, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'configurationFileChangesEnabled': ?configurationFileChangesEnabled,
+      'defaultHostName': ?defaultHostName,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetStaticWebAppIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'name': ?name,
+      'previewEnvironmentsEnabled': ?previewEnvironmentsEnabled,
+      'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
+      'repositoryBranch': ?repositoryBranch,
+      'repositoryUrl': ?repositoryUrl,
+      'resourceGroupName': ?resourceGroupName,
+      'skuSize': ?skuSize,
+      'skuTier': ?skuTier,
+      'tags': ?tags,
     };
   }
 
   factory GetStaticWebAppResult.fromMap(Map<String, dynamic> map) {
     return GetStaticWebAppResult(
-      apiKey: map['apiKey'] as String,
-      appSettings: (map['appSettings'] as Map).cast<String, String>(),
-      basicAuths: pulumi.Input.decodeList<GetStaticWebAppBasicAuth>(map['basicAuths']!, (value) => GetStaticWebAppBasicAuth.fromMap((value as Map).cast<String, dynamic>())),
-      configurationFileChangesEnabled: map['configurationFileChangesEnabled'] as bool,
-      defaultHostName: map['defaultHostName'] as String,
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetStaticWebAppIdentity>(map['identities']!, (value) => GetStaticWebAppIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      previewEnvironmentsEnabled: map['previewEnvironmentsEnabled'] as bool,
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] as bool,
-      repositoryBranch: map['repositoryBranch'] as String,
-      repositoryUrl: map['repositoryUrl'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      skuSize: map['skuSize'] as String,
-      skuTier: map['skuTier'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      apiKey: (() { final guardedValue = map['apiKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      appSettings: (() { final guardedValue = map['appSettings']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      basicAuths: (() { final guardedValue = map['basicAuths']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetStaticWebAppBasicAuth>(guardedValue, (value) => GetStaticWebAppBasicAuth.fromMap((value as Map).cast<String, dynamic>())); })(),
+      configurationFileChangesEnabled: (() { final guardedValue = map['configurationFileChangesEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      defaultHostName: (() { final guardedValue = map['defaultHostName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetStaticWebAppIdentity>(guardedValue, (value) => GetStaticWebAppIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      previewEnvironmentsEnabled: (() { final guardedValue = map['previewEnvironmentsEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      repositoryBranch: (() { final guardedValue = map['repositoryBranch']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      repositoryUrl: (() { final guardedValue = map['repositoryUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      skuSize: (() { final guardedValue = map['skuSize']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      skuTier: (() { final guardedValue = map['skuTier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

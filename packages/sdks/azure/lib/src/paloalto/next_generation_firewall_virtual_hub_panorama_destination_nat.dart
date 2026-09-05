@@ -6,9 +6,9 @@ import 'next_generation_firewall_virtual_hub_panorama_destination_nat_frontend_c
 
 class NextGenerationFirewallVirtualHubPanoramaDestinationNat {
   /// A `backendConfig` block as defined above.
-  final pulumi.Input<NextGenerationFirewallVirtualHubPanoramaDestinationNatBackendConfig>? backendConfig;
+  final pulumi.Input<NextGenerationFirewallVirtualHubPanoramaDestinationNatBackendConfig?>? backendConfig;
   /// A `frontendConfig` block as defined below.
-  final pulumi.Input<NextGenerationFirewallVirtualHubPanoramaDestinationNatFrontendConfig>? frontendConfig;
+  final pulumi.Input<NextGenerationFirewallVirtualHubPanoramaDestinationNatFrontendConfig?>? frontendConfig;
   /// The name which should be used for this NAT.
   final pulumi.Input<String> name;
   /// The protocol used for this Destination NAT. Possible values include `TCP` and `UDP`.

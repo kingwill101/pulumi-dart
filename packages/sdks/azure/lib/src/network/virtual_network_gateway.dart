@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_network_gateway_args.dart';
 import 'virtual_network_gateway_bgp_settings.dart';
 import 'virtual_network_gateway_custom_route.dart';
+import 'virtual_network_gateway_ip_configuration.dart';
+import 'virtual_network_gateway_policy_group.dart';
 import 'virtual_network_gateway_state.dart';
 import 'virtual_network_gateway_vpn_client_configuration.dart';
 
@@ -327,9 +329,9 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 /// 			IpConfigurations: network.VirtualNetworkGatewayIpConfigurationArray{
 /// 				&network.VirtualNetworkGatewayIpConfigurationArgs{
 /// 					Name:                       pulumi.String("vnetGatewayConfig"),
-/// 					PublicIpAddressId:          examplePublicIp.ID(),
+/// 					PublicIpAddressId:          examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			VpnClientConfiguration: &network.VirtualNetworkGatewayVpnClientConfigurationArgs{
@@ -666,7 +668,7 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
   /// &gt; **Note:** The available values depend on the `type` and `sku` arguments - where `Generation2` is only value for a `sku` larger than `VpnGw2` or `VpnGw2AZ`.
   late final pulumi.Output<String> generation;
   /// One or more (up to 3) `ipConfiguration` blocks documented below. Changing this forces a new resource to be created. An active-standby gateway requires exactly one `ipConfiguration` block, an active-active gateway requires exactly two `ipConfiguration` blocks whereas an active-active zone redundant gateway with P2S configuration requires exactly three `ipConfiguration` blocks.
-  late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
+  late final pulumi.Output<List<VirtualNetworkGatewayIpConfiguration>> ipConfigurations;
   /// Is IP Sec Replay Protection enabled? Defaults to `true`.
   late final pulumi.Output<bool?> ipSecReplayProtectionEnabled;
   /// The location/region where the Virtual Network Gateway is located. Changing this forces a new resource to be created.
@@ -686,7 +688,7 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
   /// The name of the Virtual Network Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// One or more `policyGroup` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> policyGroups;
+  late final pulumi.Output<List<VirtualNetworkGatewayPolicyGroup>?> policyGroups;
   /// Should private IP be enabled on this gateway for connections? Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> privateIpAddressEnabled;
   /// Is remote vnet traffic that is used to configure this gateway to accept traffic from other Azure Virtual Networks enabled? Defaults to `false`.
@@ -722,7 +724,7 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
           'azure:network/virtualNetworkGateway:VirtualNetworkGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     activeActive = registerOutput<bool>('activeActive');
     bgpEnabled = registerOutput<bool>('bgpEnabled');
@@ -734,18 +736,18 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
     edgeZone = registerOutput<String?>('edgeZone');
     enableBgp = registerOutput<bool>('enableBgp');
     generation = registerOutput<String>('generation');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
+    ipConfigurations = registerOutput<List<VirtualNetworkGatewayIpConfiguration>>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayIpConfiguration>(guardedValue, (value) => VirtualNetworkGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     ipSecReplayProtectionEnabled = registerOutput<bool?>('ipSecReplayProtectionEnabled');
     location = registerOutput<String>('location');
     maximumScaleUnit = registerOutput<int>('maximumScaleUnit');
     minimumScaleUnit = registerOutput<int>('minimumScaleUnit');
     this.name = registerOutput<String>('name');
-    policyGroups = registerOutput<List<Map<String, dynamic>>?>('policyGroups');
+    policyGroups = registerOutput<List<VirtualNetworkGatewayPolicyGroup>?>('policyGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroup>(guardedValue, (value) => VirtualNetworkGatewayPolicyGroup.fromMap((value as Map).cast<String, dynamic>())); });
     privateIpAddressEnabled = registerOutput<bool?>('privateIpAddressEnabled');
     remoteVnetTrafficEnabled = registerOutput<bool?>('remoteVnetTrafficEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     virtualWanTrafficEnabled = registerOutput<bool?>('virtualWanTrafficEnabled');
     vpnClientConfiguration = registerOutput<VirtualNetworkGatewayVpnClientConfiguration?>('vpnClientConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayVpnClientConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -757,11 +759,12 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNetworkGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNetworkGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -785,18 +788,55 @@ class VirtualNetworkGateway extends pulumi.CustomResource {
     edgeZone = registerOutput<String?>('edgeZone');
     enableBgp = registerOutput<bool>('enableBgp');
     generation = registerOutput<String>('generation');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
+    ipConfigurations = registerOutput<List<VirtualNetworkGatewayIpConfiguration>>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayIpConfiguration>(guardedValue, (value) => VirtualNetworkGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     ipSecReplayProtectionEnabled = registerOutput<bool?>('ipSecReplayProtectionEnabled');
     location = registerOutput<String>('location');
     maximumScaleUnit = registerOutput<int>('maximumScaleUnit');
     minimumScaleUnit = registerOutput<int>('minimumScaleUnit');
     this.name = registerOutput<String>('name');
-    policyGroups = registerOutput<List<Map<String, dynamic>>?>('policyGroups');
+    policyGroups = registerOutput<List<VirtualNetworkGatewayPolicyGroup>?>('policyGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroup>(guardedValue, (value) => VirtualNetworkGatewayPolicyGroup.fromMap((value as Map).cast<String, dynamic>())); });
     privateIpAddressEnabled = registerOutput<bool?>('privateIpAddressEnabled');
     remoteVnetTrafficEnabled = registerOutput<bool?>('remoteVnetTrafficEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualWanTrafficEnabled = registerOutput<bool?>('virtualWanTrafficEnabled');
+    vpnClientConfiguration = registerOutput<VirtualNetworkGatewayVpnClientConfiguration?>('vpnClientConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayVpnClientConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpnType = registerOutput<String?>('vpnType');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkGateway] resource.
+  VirtualNetworkGateway.reference(String urn)
+    : super(
+        'azure:network/virtualNetworkGateway:VirtualNetworkGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeActive = registerOutput<bool>('activeActive');
+    bgpEnabled = registerOutput<bool>('bgpEnabled');
+    bgpRouteTranslationForNatEnabled = registerOutput<bool?>('bgpRouteTranslationForNatEnabled');
+    bgpSettings = registerOutput<VirtualNetworkGatewayBgpSettings>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayBgpSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customRoute = registerOutput<VirtualNetworkGatewayCustomRoute?>('customRoute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayCustomRoute.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultLocalNetworkGatewayId = registerOutput<String?>('defaultLocalNetworkGatewayId');
+    dnsForwardingEnabled = registerOutput<bool?>('dnsForwardingEnabled');
+    edgeZone = registerOutput<String?>('edgeZone');
+    enableBgp = registerOutput<bool>('enableBgp');
+    generation = registerOutput<String>('generation');
+    ipConfigurations = registerOutput<List<VirtualNetworkGatewayIpConfiguration>>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayIpConfiguration>(guardedValue, (value) => VirtualNetworkGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    ipSecReplayProtectionEnabled = registerOutput<bool?>('ipSecReplayProtectionEnabled');
+    location = registerOutput<String>('location');
+    maximumScaleUnit = registerOutput<int>('maximumScaleUnit');
+    minimumScaleUnit = registerOutput<int>('minimumScaleUnit');
+    this.name = registerOutput<String>('name');
+    policyGroups = registerOutput<List<VirtualNetworkGatewayPolicyGroup>?>('policyGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroup>(guardedValue, (value) => VirtualNetworkGatewayPolicyGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    privateIpAddressEnabled = registerOutput<bool?>('privateIpAddressEnabled');
+    remoteVnetTrafficEnabled = registerOutput<bool?>('remoteVnetTrafficEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     virtualWanTrafficEnabled = registerOutput<bool?>('virtualWanTrafficEnabled');
     vpnClientConfiguration = registerOutput<VirtualNetworkGatewayVpnClientConfiguration?>('vpnClientConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayVpnClientConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

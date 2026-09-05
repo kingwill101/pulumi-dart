@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicatedVMNetworkInterface {
   /// Id of the public IP object to use when a test failover is done.
-  final pulumi.Input<String>? failoverTestPublicIpAddressId;
+  final pulumi.Input<String?>? failoverTestPublicIpAddressId;
   /// Static IP to assign when a test failover is done.
-  final pulumi.Input<String>? failoverTestStaticIp;
+  final pulumi.Input<String?>? failoverTestStaticIp;
   /// Name of the subnet to use when a test failover is done.
-  final pulumi.Input<String>? failoverTestSubnetName;
+  final pulumi.Input<String?>? failoverTestSubnetName;
   /// A list of IDs of Load Balancer Backend Address Pools to use when a failover is done.
-  final pulumi.Input<List<String>>? recoveryLoadBalancerBackendAddressPoolIds;
+  final pulumi.Input<List<String>?>? recoveryLoadBalancerBackendAddressPoolIds;
   /// Id of the public IP object to use when a failover is done.
-  final pulumi.Input<String>? recoveryPublicIpAddressId;
+  final pulumi.Input<String?>? recoveryPublicIpAddressId;
   /// (Required if the networkInterface block is specified) Id source network interface.
-  final pulumi.Input<String>? sourceNetworkInterfaceId;
+  final pulumi.Input<String?>? sourceNetworkInterfaceId;
   /// Static IP to assign when a failover is done.
-  final pulumi.Input<String>? targetStaticIp;
+  final pulumi.Input<String?>? targetStaticIp;
   /// Name of the subnet to use when a failover is done.
-  final pulumi.Input<String>? targetSubnetName;
+  final pulumi.Input<String?>? targetSubnetName;
 
   /// Creates a new [ReplicatedVMNetworkInterface].
   /// [failoverTestPublicIpAddressId] Id of the public IP object to use when a test failover is done.

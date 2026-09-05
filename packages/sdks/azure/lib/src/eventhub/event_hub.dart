@@ -126,7 +126,7 @@ import 'event_hub_state.dart';
 /// 		}
 /// 		_, err = eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("acceptanceTestEventHub"),
-/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			NamespaceId:      exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(2),
 /// 			MessageRetention: pulumi.Int(1),
 /// 		})
@@ -297,7 +297,7 @@ class EventHub extends pulumi.CustomResource {
           'azure:eventhub/eventHub:EventHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     captureDescription = registerOutput<EventHubCaptureDescription?>('captureDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubCaptureDescription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     messageRetention = registerOutput<int>('messageRetention');
@@ -305,7 +305,7 @@ class EventHub extends pulumi.CustomResource {
     namespaceId = registerOutput<String>('namespaceId');
     namespaceName = registerOutput<String>('namespaceName');
     partitionCount = registerOutput<int>('partitionCount');
-    partitionIds = registerOutput<List<String>>('partitionIds');
+    partitionIds = registerOutput<List<String>>('partitionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDescription = registerOutput<EventHubRetentionDescription>('retentionDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubRetentionDescription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String?>('status');
@@ -316,11 +316,12 @@ class EventHub extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventHubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventHub._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -340,7 +341,28 @@ class EventHub extends pulumi.CustomResource {
     namespaceId = registerOutput<String>('namespaceId');
     namespaceName = registerOutput<String>('namespaceName');
     partitionCount = registerOutput<int>('partitionCount');
-    partitionIds = registerOutput<List<String>>('partitionIds');
+    partitionIds = registerOutput<List<String>>('partitionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionDescription = registerOutput<EventHubRetentionDescription>('retentionDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubRetentionDescription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String?>('status');
+  }
+
+  /// Creates a typed reference to an existing [EventHub] resource.
+  EventHub.reference(String urn)
+    : super(
+        'azure:eventhub/eventHub:EventHub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    captureDescription = registerOutput<EventHubCaptureDescription?>('captureDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubCaptureDescription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    messageRetention = registerOutput<int>('messageRetention');
+    this.name = registerOutput<String>('name');
+    namespaceId = registerOutput<String>('namespaceId');
+    namespaceName = registerOutput<String>('namespaceName');
+    partitionCount = registerOutput<int>('partitionCount');
+    partitionIds = registerOutput<List<String>>('partitionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDescription = registerOutput<EventHubRetentionDescription>('retentionDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventHubRetentionDescription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String?>('status');

@@ -216,7 +216,7 @@ import 'virtual_network_rule_state.dart';
 /// 			Name:                             pulumi.String("postgresql-vnet-rule"),
 /// 			ResourceGroupName:                example.Name,
 /// 			ServerName:                       exampleServer.Name,
-/// 			SubnetId:                         internal.ID(),
+/// 			SubnetId:                         internal.ID().ToIDOutput().ToStringOutput(),
 /// 			IgnoreMissingVnetServiceEndpoint: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -441,7 +441,7 @@ class VirtualNetworkRule extends pulumi.CustomResource {
           'azure:postgresql/virtualNetworkRule:VirtualNetworkRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
     this.name = registerOutput<String>('name');
@@ -455,11 +455,12 @@ class VirtualNetworkRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNetworkRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNetworkRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -473,6 +474,22 @@ class VirtualNetworkRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    subnetId = registerOutput<String>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkRule] resource.
+  VirtualNetworkRule.reference(String urn)
+    : super(
+        'azure:postgresql/virtualNetworkRule:VirtualNetworkRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

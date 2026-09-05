@@ -5,43 +5,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Certificate resources.
 class CertificateState {
   /// The ID of the associated App Service plan. Must be specified when the certificate is used inside an App Service Environment hosted App Service or with Basic and Premium App Service plans. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? appServicePlanId;
+  final pulumi.Input<String?>? appServicePlanId;
   /// The expiration date for the certificate.
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// The friendly name of the certificate.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// List of host names the certificate applies to.
-  final pulumi.Input<List<String>>? hostNames;
+  final pulumi.Input<List<String>?>? hostNames;
   /// The ID of the App Service Environment where the certificate is in use.
-  final pulumi.Input<String>? hostingEnvironmentProfileId;
+  final pulumi.Input<String?>? hostingEnvironmentProfileId;
   /// The issue date for the certificate.
-  final pulumi.Input<String>? issueDate;
+  final pulumi.Input<String?>? issueDate;
   /// The name of the certificate issuer.
-  final pulumi.Input<String>? issuer;
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? issuer;
+  final pulumi.Input<String?>? keyVaultId;
   /// The ID of the Key Vault secret. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** Exactly one of `keyVaultSecretId` or `pfxBlob` must be specified.
-  final pulumi.Input<String>? keyVaultSecretId;
+  final pulumi.Input<String?>? keyVaultSecretId;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password to access the certificate's private key. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The base64-encoded contents of the certificate. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** Exactly one of `keyVaultSecretId` or `pfxBlob` must be specified.
-  final pulumi.Input<String>? pfxBlob;
+  final pulumi.Input<String?>? pfxBlob;
   /// The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** The resource group must be the same as that which the app service plan is defined in - otherwise the certificate will not show as available for the app services.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The subject name of the certificate.
-  final pulumi.Input<String>? subjectName;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? subjectName;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The thumbprint for the certificate.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [CertificateState].
   /// [appServicePlanId] The ID of the associated App Service plan. Must be specified when the certificate is used inside an App Service Environment hosted App Service or with Basic and Premium App Service plans. Changing this forces a new resource to be created.

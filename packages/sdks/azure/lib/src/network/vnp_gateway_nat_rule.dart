@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vnp_gateway_nat_rule_args.dart';
+import 'vnp_gateway_nat_rule_external_mapping.dart';
+import 'vnp_gateway_nat_rule_internal_mapping.dart';
 import 'vnp_gateway_nat_rule_state.dart';
 
 /// Manages a VPN Gateway NAT Rule.
@@ -167,7 +169,7 @@ import 'vnp_gateway_nat_rule_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
 /// 			AddressPrefix:     pulumi.String("10.0.1.0/24"),
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -176,14 +178,14 @@ import 'vnp_gateway_nat_rule_state.dart';
 /// 			Name:              pulumi.String("example-vpngateway"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			VirtualHubId:      exampleVirtualHub.ID(),
+/// 			VirtualHubId:      exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = network.NewVnpGatewayNatRule(ctx, "example", &network.VnpGatewayNatRuleArgs{
 /// 			Name:         pulumi.String("example-vpngatewaynatrule"),
-/// 			VpnGatewayId: exampleVpnGateway.ID(),
+/// 			VpnGatewayId: exampleVpnGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			ExternalMappings: network.VnpGatewayNatRuleExternalMappingArray{
 /// 				&network.VnpGatewayNatRuleExternalMappingArgs{
 /// 					AddressSpace: pulumi.String("192.168.21.0/26"),
@@ -375,9 +377,9 @@ import 'vnp_gateway_nat_rule_state.dart';
 /// ```
 class VnpGatewayNatRule extends pulumi.CustomResource {
   /// One of more `externalMapping` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> externalMappings;
+  late final pulumi.Output<List<VnpGatewayNatRuleExternalMapping>?> externalMappings;
   /// One of more `internalMapping` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> internalMappings;
+  late final pulumi.Output<List<VnpGatewayNatRuleInternalMapping>?> internalMappings;
   /// The ID of the IP Configuration this VPN Gateway NAT Rule applies to. Possible values are `Instance0` and `Instance1`.
   late final pulumi.Output<String?> ipConfigurationId;
   /// The source NAT direction of the VPN NAT. Possible values are `EgressSnat` and `IngressSnat`. Defaults to `EgressSnat`. Changing this forces a new resource to be created.
@@ -401,10 +403,10 @@ class VnpGatewayNatRule extends pulumi.CustomResource {
           'azure:network/vnpGatewayNatRule:VnpGatewayNatRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    externalMappings = registerOutput<List<Map<String, dynamic>>?>('externalMappings');
-    internalMappings = registerOutput<List<Map<String, dynamic>>?>('internalMappings');
+    externalMappings = registerOutput<List<VnpGatewayNatRuleExternalMapping>?>('externalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VnpGatewayNatRuleExternalMapping>(guardedValue, (value) => VnpGatewayNatRuleExternalMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    internalMappings = registerOutput<List<VnpGatewayNatRuleInternalMapping>?>('internalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VnpGatewayNatRuleInternalMapping>(guardedValue, (value) => VnpGatewayNatRuleInternalMapping.fromMap((value as Map).cast<String, dynamic>())); });
     ipConfigurationId = registerOutput<String?>('ipConfigurationId');
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
@@ -417,11 +419,12 @@ class VnpGatewayNatRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VnpGatewayNatRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VnpGatewayNatRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -435,8 +438,26 @@ class VnpGatewayNatRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    externalMappings = registerOutput<List<Map<String, dynamic>>?>('externalMappings');
-    internalMappings = registerOutput<List<Map<String, dynamic>>?>('internalMappings');
+    externalMappings = registerOutput<List<VnpGatewayNatRuleExternalMapping>?>('externalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VnpGatewayNatRuleExternalMapping>(guardedValue, (value) => VnpGatewayNatRuleExternalMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    internalMappings = registerOutput<List<VnpGatewayNatRuleInternalMapping>?>('internalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VnpGatewayNatRuleInternalMapping>(guardedValue, (value) => VnpGatewayNatRuleInternalMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    ipConfigurationId = registerOutput<String?>('ipConfigurationId');
+    mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String?>('type');
+    vpnGatewayId = registerOutput<String>('vpnGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [VnpGatewayNatRule] resource.
+  VnpGatewayNatRule.reference(String urn)
+    : super(
+        'azure:network/vnpGatewayNatRule:VnpGatewayNatRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    externalMappings = registerOutput<List<VnpGatewayNatRuleExternalMapping>?>('externalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VnpGatewayNatRuleExternalMapping>(guardedValue, (value) => VnpGatewayNatRuleExternalMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    internalMappings = registerOutput<List<VnpGatewayNatRuleInternalMapping>?>('internalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VnpGatewayNatRuleInternalMapping>(guardedValue, (value) => VnpGatewayNatRuleInternalMapping.fromMap((value as Map).cast<String, dynamic>())); });
     ipConfigurationId = registerOutput<String?>('ipConfigurationId');
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');

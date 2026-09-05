@@ -10,21 +10,21 @@ class SharedAccessPolicyArgs {
   /// Adds `DeviceConnect` permission to this Shared Access Account. It allows sending and receiving on the device-side endpoints.
   ///
   /// &gt; **Note:** At least one of `registryRead`, `registryWrite`, `serviceConnect`, `deviceConnect` permissions must be set to `true`.
-  final pulumi.Input<bool>? deviceConnect;
+  final pulumi.Input<bool?>? deviceConnect;
   /// The name of the IoTHub to which this Shared Access Policy belongs. Changing this forces a new resource to be created.
   final pulumi.Input<String> iothubName;
   /// Specifies the name of the IotHub Shared Access Policy resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Adds `RegistryRead` permission to this Shared Access Account. It allows read access to the identity registry.
-  final pulumi.Input<bool>? registryRead;
+  final pulumi.Input<bool?>? registryRead;
   /// Adds `RegistryWrite` permission to this Shared Access Account. It allows write access to the identity registry.
   ///
   /// &gt; **Note:** When `registryWrite` is set to `true`, `registryRead` must also be set to true. This is a limitation of the Azure REST API
-  final pulumi.Input<bool>? registryWrite;
+  final pulumi.Input<bool?>? registryWrite;
   /// The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Adds `ServiceConnect` permission to this Shared Access Account. It allows sending and receiving on the cloud-side endpoints.
-  final pulumi.Input<bool>? serviceConnect;
+  final pulumi.Input<bool?>? serviceConnect;
 
   /// Creates a new [SharedAccessPolicyArgs].
   /// [deviceConnect] Adds `DeviceConnect` permission to this Shared Access Account. It allows sending and receiving on the device-side endpoints.

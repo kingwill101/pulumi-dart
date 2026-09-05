@@ -97,7 +97,7 @@ import 'pipeline_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewPipeline(ctx, "example", &datafactory.PipelineArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -454,18 +454,18 @@ class Pipeline extends pulumi.CustomResource {
           'azure:datafactory/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     activitiesJson = registerOutput<String?>('activitiesJson');
-    annotations = registerOutput<List<String>?>('annotations');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     concurrency = registerOutput<int?>('concurrency');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     moniterMetricsAfterDuration = registerOutput<String?>('moniterMetricsAfterDuration');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    variables = registerOutput<Map<String, String>?>('variables');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    variables = registerOutput<Map<String, String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Pipeline] resource's state with the given [name] and [id].
@@ -473,11 +473,12 @@ class Pipeline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PipelineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pipeline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -492,14 +493,35 @@ class Pipeline extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     activitiesJson = registerOutput<String?>('activitiesJson');
-    annotations = registerOutput<List<String>?>('annotations');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     concurrency = registerOutput<int?>('concurrency');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     moniterMetricsAfterDuration = registerOutput<String?>('moniterMetricsAfterDuration');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    variables = registerOutput<Map<String, String>?>('variables');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    variables = registerOutput<Map<String, String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Pipeline] resource.
+  Pipeline.reference(String urn)
+    : super(
+        'azure:datafactory/pipeline:Pipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activitiesJson = registerOutput<String?>('activitiesJson');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    concurrency = registerOutput<int?>('concurrency');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    moniterMetricsAfterDuration = registerOutput<String?>('moniterMetricsAfterDuration');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    variables = registerOutput<Map<String, String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

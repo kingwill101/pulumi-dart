@@ -147,7 +147,7 @@ import 'container_immutability_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = storage.NewContainerImmutabilityPolicy(ctx, "example", &storage.ContainerImmutabilityPolicyArgs{
-/// 			StorageContainerResourceManagerId: exampleContainer.ID(),
+/// 			StorageContainerResourceManagerId: exampleContainer.ID().ToIDOutput().ToStringOutput(),
 /// 			ImmutabilityPeriodInDays:          pulumi.Int(14),
 /// 			ProtectedAppendWritesAllEnabled:   pulumi.Bool(false),
 /// 			ProtectedAppendWritesEnabled:      pulumi.Bool(true),
@@ -327,7 +327,7 @@ class ContainerImmutabilityPolicy extends pulumi.CustomResource {
           'azure:storage/containerImmutabilityPolicy:ContainerImmutabilityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     immutabilityPeriodInDays = registerOutput<int>('immutabilityPeriodInDays');
     locked = registerOutput<bool?>('locked');
@@ -341,11 +341,12 @@ class ContainerImmutabilityPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContainerImmutabilityPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContainerImmutabilityPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -359,6 +360,22 @@ class ContainerImmutabilityPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    immutabilityPeriodInDays = registerOutput<int>('immutabilityPeriodInDays');
+    locked = registerOutput<bool?>('locked');
+    protectedAppendWritesAllEnabled = registerOutput<bool?>('protectedAppendWritesAllEnabled');
+    protectedAppendWritesEnabled = registerOutput<bool?>('protectedAppendWritesEnabled');
+    storageContainerResourceManagerId = registerOutput<String>('storageContainerResourceManagerId');
+  }
+
+  /// Creates a typed reference to an existing [ContainerImmutabilityPolicy] resource.
+  ContainerImmutabilityPolicy.reference(String urn)
+    : super(
+        'azure:storage/containerImmutabilityPolicy:ContainerImmutabilityPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     immutabilityPeriodInDays = registerOutput<int>('immutabilityPeriodInDays');
     locked = registerOutput<bool?>('locked');
     protectedAppendWritesAllEnabled = registerOutput<bool?>('protectedAppendWritesAllEnabled');

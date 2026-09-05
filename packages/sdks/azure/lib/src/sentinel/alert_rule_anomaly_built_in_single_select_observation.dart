@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleAnomalyBuiltInSingleSelectObservation {
   /// The description of the threshold observation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Name of the built-in Anomaly Alert Rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of supported values of the single select observation.
-  final pulumi.Input<List<String>>? supportedValues;
+  final pulumi.Input<List<String>?>? supportedValues;
   /// The value of the threshold observation.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AlertRuleAnomalyBuiltInSingleSelectObservation].
   /// [description] The description of the threshold observation.

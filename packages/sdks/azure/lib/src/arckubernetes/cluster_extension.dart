@@ -146,7 +146,7 @@ import 'cluster_extension_state.dart';
 /// 		}
 /// 		_, err = arckubernetes.NewClusterExtension(ctx, "example", &arckubernetes.ClusterExtensionArgs{
 /// 			Name:          pulumi.String("example-ext"),
-/// 			ClusterId:     exampleCluster.ID(),
+/// 			ClusterId:     exampleCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			ExtensionType: pulumi.String("microsoft.flux"),
 /// 		})
 /// 		if err != nil {
@@ -329,11 +329,11 @@ class ClusterExtension extends pulumi.CustomResource {
           'azure:arckubernetes/clusterExtension:ClusterExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
-    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
-    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     currentVersion = registerOutput<String>('currentVersion');
     extensionType = registerOutput<String>('extensionType');
     identity = registerOutput<ClusterExtensionIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterExtensionIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -349,11 +349,12 @@ class ClusterExtension extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterExtensionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterExtension._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,8 +369,30 @@ class ClusterExtension extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clusterId = registerOutput<String>('clusterId');
-    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
-    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    currentVersion = registerOutput<String>('currentVersion');
+    extensionType = registerOutput<String>('extensionType');
+    identity = registerOutput<ClusterExtensionIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterExtensionIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    releaseNamespace = registerOutput<String>('releaseNamespace');
+    releaseTrain = registerOutput<String>('releaseTrain');
+    targetNamespace = registerOutput<String>('targetNamespace');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [ClusterExtension] resource.
+  ClusterExtension.reference(String urn)
+    : super(
+        'azure:arckubernetes/clusterExtension:ClusterExtension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     currentVersion = registerOutput<String>('currentVersion');
     extensionType = registerOutput<String>('extensionType');
     identity = registerOutput<ClusterExtensionIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterExtensionIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

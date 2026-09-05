@@ -115,7 +115,7 @@ import 'resource_group_template_deployment_state.dart';
 ///     }
 /// }
 /// """)
-/// pulumi.export("armExampleOutput", std.jsondecode_output(input=example.output_content).apply(lambda invoke: invoke.result["exampleOutput"]["value"]))
+/// pulumi.export("armExampleOutput", std.jsondecode_output(input=example.output_content).result["exampleOutput"]["value"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -200,8 +200,8 @@ import 'resource_group_template_deployment_state.dart';
 /// func main() {
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// vnetName := "example-vnet";
-/// tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// "vnetName": map[string]interface{}{
+/// tmpJSON0, err := json.Marshal(map[string]map[string]string{
+/// "vnetName": map[string]string{
 /// "value": vnetName,
 /// },
 /// })
@@ -643,7 +643,7 @@ class ResourceGroupTemplateDeployment extends pulumi.CustomResource {
           'azure:core/resourceGroupTemplateDeployment:ResourceGroupTemplateDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     debugLevel = registerOutput<String?>('debugLevel');
     deploymentMode = registerOutput<String>('deploymentMode');
@@ -651,7 +651,7 @@ class ResourceGroupTemplateDeployment extends pulumi.CustomResource {
     outputContent = registerOutput<String>('outputContent');
     parametersContent = registerOutput<String>('parametersContent');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateContent = registerOutput<String>('templateContent');
     templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
   }
@@ -661,11 +661,12 @@ class ResourceGroupTemplateDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceGroupTemplateDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceGroupTemplateDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -685,7 +686,27 @@ class ResourceGroupTemplateDeployment extends pulumi.CustomResource {
     outputContent = registerOutput<String>('outputContent');
     parametersContent = registerOutput<String>('parametersContent');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateContent = registerOutput<String>('templateContent');
+    templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
+  }
+
+  /// Creates a typed reference to an existing [ResourceGroupTemplateDeployment] resource.
+  ResourceGroupTemplateDeployment.reference(String urn)
+    : super(
+        'azure:core/resourceGroupTemplateDeployment:ResourceGroupTemplateDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    debugLevel = registerOutput<String?>('debugLevel');
+    deploymentMode = registerOutput<String>('deploymentMode');
+    this.name = registerOutput<String>('name');
+    outputContent = registerOutput<String>('outputContent');
+    parametersContent = registerOutput<String>('parametersContent');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateContent = registerOutput<String>('templateContent');
     templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
   }

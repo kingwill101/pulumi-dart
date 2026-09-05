@@ -12,9 +12,9 @@ class AnalyticsItemArgs {
   /// The content for the Analytics Item, for example the query text if `type` is `query`.
   final pulumi.Input<String> content;
   /// The alias to use for the function. Required when `type` is `function`.
-  final pulumi.Input<String>? functionAlias;
+  final pulumi.Input<String?>? functionAlias;
   /// Specifies the name of the Application Insights Analytics Item. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The scope for the Analytics Item. Can be `shared` or `user`. Changing this forces a new resource to be created. Must be `shared` for functions.
   final pulumi.Input<String> scope;
   /// The type of Analytics Item to create. Can be one of `query`, `function`, `folder`, `recent`. Changing this forces a new resource to be created.

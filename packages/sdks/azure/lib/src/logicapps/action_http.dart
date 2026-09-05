@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'action_http_args.dart';
+import 'action_http_run_after.dart';
 import 'action_http_state.dart';
 
 /// Manages an HTTP Action within a Logic App Workflow
@@ -103,7 +104,7 @@ import 'action_http_state.dart';
 /// 		}
 /// 		_, err = logicapps.NewActionHttp(ctx, "example", &logicapps.ActionHttpArgs{
 /// 			Name:       pulumi.String("webhook"),
-/// 			LogicAppId: exampleWorkflow.ID(),
+/// 			LogicAppId: exampleWorkflow.ID().ToIDOutput().ToStringOutput(),
 /// 			Method:     pulumi.String("GET"),
 /// 			Uri:        pulumi.String("http://example.com/some-webhook"),
 /// 		})
@@ -235,7 +236,7 @@ class ActionHttp extends pulumi.CustomResource {
   /// Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
   late final pulumi.Output<Map<String, String>?> queries;
   /// Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `runAfter` block is as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> runAfters;
+  late final pulumi.Output<List<ActionHttpRunAfter>?> runAfters;
   /// Specifies the URI which will be called when this HTTP Action is triggered.
   late final pulumi.Output<String> uri;
 
@@ -251,15 +252,15 @@ class ActionHttp extends pulumi.CustomResource {
           'azure:logicapps/actionHttp:ActionHttp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     body = registerOutput<String?>('body');
-    headers = registerOutput<Map<String, String>?>('headers');
+    headers = registerOutput<Map<String, String>?>('headers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     logicAppId = registerOutput<String>('logicAppId');
     method = registerOutput<String>('method');
     this.name = registerOutput<String>('name');
-    queries = registerOutput<Map<String, String>?>('queries');
-    runAfters = registerOutput<List<Map<String, dynamic>>?>('runAfters');
+    queries = registerOutput<Map<String, String>?>('queries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    runAfters = registerOutput<List<ActionHttpRunAfter>?>('runAfters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionHttpRunAfter>(guardedValue, (value) => ActionHttpRunAfter.fromMap((value as Map).cast<String, dynamic>())); });
     uri = registerOutput<String>('uri');
   }
 
@@ -268,11 +269,12 @@ class ActionHttp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ActionHttpState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ActionHttp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -287,12 +289,31 @@ class ActionHttp extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     body = registerOutput<String?>('body');
-    headers = registerOutput<Map<String, String>?>('headers');
+    headers = registerOutput<Map<String, String>?>('headers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     logicAppId = registerOutput<String>('logicAppId');
     method = registerOutput<String>('method');
     this.name = registerOutput<String>('name');
-    queries = registerOutput<Map<String, String>?>('queries');
-    runAfters = registerOutput<List<Map<String, dynamic>>?>('runAfters');
+    queries = registerOutput<Map<String, String>?>('queries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    runAfters = registerOutput<List<ActionHttpRunAfter>?>('runAfters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionHttpRunAfter>(guardedValue, (value) => ActionHttpRunAfter.fromMap((value as Map).cast<String, dynamic>())); });
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [ActionHttp] resource.
+  ActionHttp.reference(String urn)
+    : super(
+        'azure:logicapps/actionHttp:ActionHttp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    body = registerOutput<String?>('body');
+    headers = registerOutput<Map<String, String>?>('headers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    logicAppId = registerOutput<String>('logicAppId');
+    method = registerOutput<String>('method');
+    this.name = registerOutput<String>('name');
+    queries = registerOutput<Map<String, String>?>('queries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    runAfters = registerOutput<List<ActionHttpRunAfter>?>('runAfters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionHttpRunAfter>(guardedValue, (value) => ActionHttpRunAfter.fromMap((value as Map).cast<String, dynamic>())); });
     uri = registerOutput<String>('uri');
   }
 }

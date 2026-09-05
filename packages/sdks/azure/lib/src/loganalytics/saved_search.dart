@@ -115,7 +115,7 @@ import 'saved_search_state.dart';
 /// 		}
 /// 		_, err = loganalytics.NewSavedSearch(ctx, "example", &loganalytics.SavedSearchArgs{
 /// 			Name:                    pulumi.String("exampleSavedSearch"),
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Category:                pulumi.String("exampleCategory"),
 /// 			DisplayName:             pulumi.String("exampleDisplayName"),
 /// 			Query:                   pulumi.String("exampleQuery"),
@@ -276,16 +276,16 @@ class SavedSearch extends pulumi.CustomResource {
           'azure:loganalytics/savedSearch:SavedSearch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     category = registerOutput<String>('category');
     displayName = registerOutput<String>('displayName');
     functionAlias = registerOutput<String?>('functionAlias');
-    functionParameters = registerOutput<List<String>?>('functionParameters');
+    functionParameters = registerOutput<List<String>?>('functionParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     query = registerOutput<String>('query');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SavedSearch] resource's state with the given [name] and [id].
@@ -293,11 +293,12 @@ class SavedSearch extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SavedSearchState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SavedSearch._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -314,10 +315,29 @@ class SavedSearch extends pulumi.CustomResource {
     category = registerOutput<String>('category');
     displayName = registerOutput<String>('displayName');
     functionAlias = registerOutput<String?>('functionAlias');
-    functionParameters = registerOutput<List<String>?>('functionParameters');
+    functionParameters = registerOutput<List<String>?>('functionParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     query = registerOutput<String>('query');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SavedSearch] resource.
+  SavedSearch.reference(String urn)
+    : super(
+        'azure:loganalytics/savedSearch:SavedSearch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    category = registerOutput<String>('category');
+    displayName = registerOutput<String>('displayName');
+    functionAlias = registerOutput<String?>('functionAlias');
+    functionParameters = registerOutput<List<String>?>('functionParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    query = registerOutput<String>('query');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

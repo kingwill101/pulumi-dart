@@ -9,13 +9,13 @@ import 'zone_soa_record.dart';
 /// {@macro pulumi_dns_zone_zone_args_doc}
 class ZoneArgs {
   /// The name of the DNS Zone. Must be a valid domain name. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `soaRecord` block as defined below.
-  final pulumi.Input<ZoneSoaRecord>? soaRecord;
+  final pulumi.Input<ZoneSoaRecord?>? soaRecord;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ZoneArgs].
   /// [name] The name of the DNS Zone. Must be a valid domain name. Changing this forces a new resource to be created.

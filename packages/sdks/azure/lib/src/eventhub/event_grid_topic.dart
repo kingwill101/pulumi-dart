@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_grid_topic_args.dart';
 import 'event_grid_topic_identity.dart';
+import 'event_grid_topic_inbound_ip_rule.dart';
 import 'event_grid_topic_input_mapping_default_values.dart';
 import 'event_grid_topic_input_mapping_fields.dart';
 import 'event_grid_topic_state.dart';
@@ -203,7 +204,7 @@ class EventGridTopic extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<EventGridTopicIdentity?> identity;
   /// One or more `inboundIpRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
+  late final pulumi.Output<List<EventGridTopicInboundIpRule>?> inboundIpRules;
   /// A `inputMappingDefaultValues` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<EventGridTopicInputMappingDefaultValues?> inputMappingDefaultValues;
   /// A `inputMappingFields` block as defined below. Changing this forces a new resource to be created.
@@ -239,22 +240,23 @@ class EventGridTopic extends pulumi.CustomResource {
           'azure:eventhub/eventGridTopic:EventGridTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
         ) {
     endpoint = registerOutput<String>('endpoint');
     identity = registerOutput<EventGridTopicIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGridTopicIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    inboundIpRules = registerOutput<List<EventGridTopicInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventGridTopicInboundIpRule>(guardedValue, (value) => EventGridTopicInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     inputMappingDefaultValues = registerOutput<EventGridTopicInputMappingDefaultValues?>('inputMappingDefaultValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGridTopicInputMappingDefaultValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputMappingFields = registerOutput<EventGridTopicInputMappingFields?>('inputMappingFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGridTopicInputMappingFields.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputSchema = registerOutput<String?>('inputSchema');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [EventGridTopic] resource's state with the given [name] and [id].
@@ -262,11 +264,12 @@ class EventGridTopic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventGridTopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventGridTopic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -282,17 +285,43 @@ class EventGridTopic extends pulumi.CustomResource {
         ) {
     endpoint = registerOutput<String>('endpoint');
     identity = registerOutput<EventGridTopicIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGridTopicIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    inboundIpRules = registerOutput<List<EventGridTopicInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventGridTopicInboundIpRule>(guardedValue, (value) => EventGridTopicInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     inputMappingDefaultValues = registerOutput<EventGridTopicInputMappingDefaultValues?>('inputMappingDefaultValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGridTopicInputMappingDefaultValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputMappingFields = registerOutput<EventGridTopicInputMappingFields?>('inputMappingFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGridTopicInputMappingFields.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputSchema = registerOutput<String?>('inputSchema');
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [EventGridTopic] resource.
+  EventGridTopic.reference(String urn)
+    : super(
+        'azure:eventhub/eventGridTopic:EventGridTopic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
+        isResourceReference: true,
+      ) {
+    endpoint = registerOutput<String>('endpoint');
+    identity = registerOutput<EventGridTopicIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGridTopicIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundIpRules = registerOutput<List<EventGridTopicInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventGridTopicInboundIpRule>(guardedValue, (value) => EventGridTopicInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
+    inputMappingDefaultValues = registerOutput<EventGridTopicInputMappingDefaultValues?>('inputMappingDefaultValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGridTopicInputMappingDefaultValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputMappingFields = registerOutput<EventGridTopicInputMappingFields?>('inputMappingFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGridTopicInputMappingFields.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputSchema = registerOutput<String?>('inputSchema');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

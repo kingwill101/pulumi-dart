@@ -30,8 +30,8 @@ class GetBackendAddressPoolBackendAddressInboundNatRulePortMapping {
 
   factory GetBackendAddressPoolBackendAddressInboundNatRulePortMapping.fromMap(Map<String, dynamic> map) {
     return GetBackendAddressPoolBackendAddressInboundNatRulePortMapping(
-      backendPort: pulumi.Input.fromValue(map['backendPort'] as int),
-      frontendPort: pulumi.Input.fromValue(map['frontendPort'] as int),
+      backendPort: pulumi.Input.fromValue((map['backendPort'] as num).toInt()),
+      frontendPort: pulumi.Input.fromValue((map['frontendPort'] as num).toInt()),
       inboundNatRuleName: pulumi.Input.fromValue(map['inboundNatRuleName'] as String),
     );
   }

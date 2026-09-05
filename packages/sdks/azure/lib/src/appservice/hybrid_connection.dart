@@ -190,7 +190,7 @@ import 'hybrid_connection_state.dart';
 /// 			Name:              pulumi.String("exampleAppService1"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -216,7 +216,7 @@ import 'hybrid_connection_state.dart';
 /// 		_, err = appservice.NewHybridConnection(ctx, "example", &appservice.HybridConnectionArgs{
 /// 			AppServiceName:    exampleAppService.Name,
 /// 			ResourceGroupName: example.Name,
-/// 			RelayId:           exampleHybridConnection.ID(),
+/// 			RelayId:           exampleHybridConnection.ID().ToIDOutput().ToStringOutput(),
 /// 			Hostname:          pulumi.String("testhostname.example"),
 /// 			Port:              pulumi.Int(8080),
 /// 			SendKeyName:       pulumi.String("exampleSharedAccessKey"),
@@ -456,7 +456,8 @@ class HybridConnection extends pulumi.CustomResource {
           'azure:appservice/hybridConnection:HybridConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['sendKeyValue'],
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     hostname = registerOutput<String>('hostname');
@@ -466,7 +467,7 @@ class HybridConnection extends pulumi.CustomResource {
     relayName = registerOutput<String>('relayName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sendKeyName = registerOutput<String?>('sendKeyName');
-    sendKeyValue = registerOutput<String>('sendKeyValue');
+    sendKeyValue = registerOutput<String>('sendKeyValue', isSecret: true);
     serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
     serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
   }
@@ -476,11 +477,12 @@ class HybridConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HybridConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HybridConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -502,7 +504,30 @@ class HybridConnection extends pulumi.CustomResource {
     relayName = registerOutput<String>('relayName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sendKeyName = registerOutput<String?>('sendKeyName');
-    sendKeyValue = registerOutput<String>('sendKeyValue');
+    sendKeyValue = registerOutput<String>('sendKeyValue', isSecret: true);
+    serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
+    serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
+  }
+
+  /// Creates a typed reference to an existing [HybridConnection] resource.
+  HybridConnection.reference(String urn)
+    : super(
+        'azure:appservice/hybridConnection:HybridConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sendKeyValue'],
+        isResourceReference: true,
+      ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    hostname = registerOutput<String>('hostname');
+    namespaceName = registerOutput<String>('namespaceName');
+    port = registerOutput<int>('port');
+    relayId = registerOutput<String>('relayId');
+    relayName = registerOutput<String>('relayName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sendKeyName = registerOutput<String?>('sendKeyName');
+    sendKeyValue = registerOutput<String>('sendKeyValue', isSecret: true);
     serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
     serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
   }

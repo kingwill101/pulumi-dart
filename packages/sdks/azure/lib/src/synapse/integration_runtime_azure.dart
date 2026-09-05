@@ -203,7 +203,7 @@ import 'integration_runtime_azure_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -212,7 +212,7 @@ import 'integration_runtime_azure_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			Location:                        example.Location,
 /// 			ResourceGroupName:               example.Name,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			ManagedVirtualNetworkEnabled:    pulumi.Bool(true),
@@ -225,7 +225,7 @@ import 'integration_runtime_azure_state.dart';
 /// 		}
 /// 		_, err = synapse.NewFirewallRule(ctx, "example", &synapse.FirewallRuleArgs{
 /// 			Name:               pulumi.String("AllowAll"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			StartIpAddress:     pulumi.String("0.0.0.0"),
 /// 			EndIpAddress:       pulumi.String("255.255.255.255"),
 /// 		})
@@ -234,7 +234,7 @@ import 'integration_runtime_azure_state.dart';
 /// 		}
 /// 		_, err = synapse.NewIntegrationRuntimeAzure(ctx, "example", &synapse.IntegrationRuntimeAzureArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:           example.Location,
 /// 		})
 /// 		if err != nil {
@@ -479,7 +479,7 @@ class IntegrationRuntimeAzure extends pulumi.CustomResource {
           'azure:synapse/integrationRuntimeAzure:IntegrationRuntimeAzure',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     computeType = registerOutput<String?>('computeType');
     coreCount = registerOutput<int?>('coreCount');
@@ -495,11 +495,12 @@ class IntegrationRuntimeAzure extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationRuntimeAzureState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationRuntimeAzure._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -513,6 +514,24 @@ class IntegrationRuntimeAzure extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    computeType = registerOutput<String?>('computeType');
+    coreCount = registerOutput<int?>('coreCount');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+    timeToLiveMin = registerOutput<int?>('timeToLiveMin');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationRuntimeAzure] resource.
+  IntegrationRuntimeAzure.reference(String urn)
+    : super(
+        'azure:synapse/integrationRuntimeAzure:IntegrationRuntimeAzure',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     computeType = registerOutput<String?>('computeType');
     coreCount = registerOutput<int?>('coreCount');
     description = registerOutput<String?>('description');

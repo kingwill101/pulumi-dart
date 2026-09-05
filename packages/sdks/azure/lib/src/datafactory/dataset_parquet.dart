@@ -3,6 +3,7 @@ import 'dataset_parquet_args.dart';
 import 'dataset_parquet_azure_blob_fs_location.dart';
 import 'dataset_parquet_azure_blob_storage_location.dart';
 import 'dataset_parquet_http_server_location.dart';
+import 'dataset_parquet_schema_column.dart';
 import 'dataset_parquet_state.dart';
 
 /// Manages an Azure Parquet Dataset inside an Azure Data Factory.
@@ -138,7 +139,7 @@ import 'dataset_parquet_state.dart';
 /// 		}
 /// 		exampleLinkedServiceWeb, err := datafactory.NewLinkedServiceWeb(ctx, "example", &datafactory.LinkedServiceWebArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			DataFactoryId:      exampleFactory.ID(),
+/// 			DataFactoryId:      exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			AuthenticationType: pulumi.String("Anonymous"),
 /// 			Url:                pulumi.String("https://www.bing.com"),
 /// 		})
@@ -147,7 +148,7 @@ import 'dataset_parquet_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewDatasetParquet(ctx, "example", &datafactory.DatasetParquetArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedServiceWeb.Name,
 /// 			HttpServerLocation: &datafactory.DatasetParquetHttpServerLocationArgs{
 /// 				RelativeUrl: pulumi.String("http://www.bing.com"),
@@ -332,7 +333,7 @@ class DatasetParquet extends pulumi.CustomResource {
   /// A map of parameters to associate with the Data Factory Dataset.
   late final pulumi.Output<Map<String, String>?> parameters;
   /// A `schemaColumn` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
+  late final pulumi.Output<List<DatasetParquetSchemaColumn>?> schemaColumns;
 
   /// Creates a new [DatasetParquet].
   /// [name] The Pulumi resource name.
@@ -346,10 +347,10 @@ class DatasetParquet extends pulumi.CustomResource {
           'azure:datafactory/datasetParquet:DatasetParquet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureBlobFsLocation = registerOutput<DatasetParquetAzureBlobFsLocation?>('azureBlobFsLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetParquetAzureBlobFsLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureBlobStorageLocation = registerOutput<DatasetParquetAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetParquetAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compressionCodec = registerOutput<String?>('compressionCodec');
@@ -360,8 +361,8 @@ class DatasetParquet extends pulumi.CustomResource {
     httpServerLocation = registerOutput<DatasetParquetHttpServerLocation?>('httpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetParquetHttpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetParquetSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetParquetSchemaColumn>(guardedValue, (value) => DatasetParquetSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DatasetParquet] resource's state with the given [name] and [id].
@@ -369,11 +370,12 @@ class DatasetParquet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetParquetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetParquet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -387,8 +389,8 @@ class DatasetParquet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureBlobFsLocation = registerOutput<DatasetParquetAzureBlobFsLocation?>('azureBlobFsLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetParquetAzureBlobFsLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureBlobStorageLocation = registerOutput<DatasetParquetAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetParquetAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compressionCodec = registerOutput<String?>('compressionCodec');
@@ -399,7 +401,32 @@ class DatasetParquet extends pulumi.CustomResource {
     httpServerLocation = registerOutput<DatasetParquetHttpServerLocation?>('httpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetParquetHttpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetParquetSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetParquetSchemaColumn>(guardedValue, (value) => DatasetParquetSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DatasetParquet] resource.
+  DatasetParquet.reference(String urn)
+    : super(
+        'azure:datafactory/datasetParquet:DatasetParquet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureBlobFsLocation = registerOutput<DatasetParquetAzureBlobFsLocation?>('azureBlobFsLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetParquetAzureBlobFsLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureBlobStorageLocation = registerOutput<DatasetParquetAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetParquetAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compressionCodec = registerOutput<String?>('compressionCodec');
+    compressionLevel = registerOutput<String?>('compressionLevel');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation = registerOutput<DatasetParquetHttpServerLocation?>('httpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetParquetHttpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedServiceName = registerOutput<String>('linkedServiceName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetParquetSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetParquetSchemaColumn>(guardedValue, (value) => DatasetParquetSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -32,9 +32,9 @@ class AutoscaleSettingProfileCapacity {
 
   factory AutoscaleSettingProfileCapacity.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingProfileCapacity(
-      default_: pulumi.Input.fromValue(map['default'] as int),
-      maximum: pulumi.Input.fromValue(map['maximum'] as int),
-      minimum: pulumi.Input.fromValue(map['minimum'] as int),
+      default_: pulumi.Input.fromValue((map['default'] as num).toInt()),
+      maximum: pulumi.Input.fromValue((map['maximum'] as num).toInt()),
+      minimum: pulumi.Input.fromValue((map['minimum'] as num).toInt()),
     );
   }
 }

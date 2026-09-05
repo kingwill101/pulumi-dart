@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_postgresql_flexible_server_backup_flexible_server_backup_args_doc}
 class FlexibleServerBackupArgs {
   /// Specifies the name of this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverId;
 

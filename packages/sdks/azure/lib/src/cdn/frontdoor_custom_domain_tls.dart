@@ -7,18 +7,18 @@ class FrontdoorCustomDomainTls {
   /// Resource ID of the Front Door Secret.
   ///
   /// &gt; **Note:** `cdnFrontdoorSecretId` must be specified when `certificateType` is `CustomerCertificate` and must not be specified when `certificateType` is `ManagedCertificate`.
-  final pulumi.Input<String>? cdnFrontdoorSecretId;
+  final pulumi.Input<String?>? cdnFrontdoorSecretId;
   /// Defines the source of the SSL certificate. Possible values are `CustomerCertificate` and `ManagedCertificate`. Defaults to `ManagedCertificate`.
   ///
   /// &gt; **Note:** It may take up to 15 minutes for the Front Door Service to validate the state and domain ownership of the Custom Domain.
   ///
-  /// &gt; **Note:** When `certificateType` is `ManagedCertificate`, `hostName` must not exceed 64 characters. Azure Front Door supports managed certificates for apex domains, but apex-domain certificate rotation can require revalidation of domain ownership. Wildcard domains require `CustomerCertificate`. Use `CustomerCertificate` for wildcard domains or host names longer than 64 characters.
-  final pulumi.Input<String>? certificateType;
+  /// &gt; **Note:** When `certificateType` is `ManagedCertificate`, `hostName` must not exceed 64 characters. Azure Front Door supports managed certificates for apex and wildcard domains, but apex-domain certificate rotation can require revalidation of domain ownership and wildcard-domain managed certificates are not rotated automatically.
+  final pulumi.Input<String?>? certificateType;
   /// A `cipherSuite` block as defined below.
-  final pulumi.Input<FrontdoorCustomDomainTlsCipherSuite>? cipherSuite;
-  final pulumi.Input<String>? minimumTlsVersion;
+  final pulumi.Input<FrontdoorCustomDomainTlsCipherSuite?>? cipherSuite;
+  final pulumi.Input<String?>? minimumTlsVersion;
   /// TLS protocol version that will be used for HTTPS. The only possible value is `TLS12`. Defaults to `TLS12`.
-  final pulumi.Input<String>? minimumVersion;
+  final pulumi.Input<String?>? minimumVersion;
 
   /// Creates a new [FrontdoorCustomDomainTls].
   /// [cdnFrontdoorSecretId] Resource ID of the Front Door Secret.

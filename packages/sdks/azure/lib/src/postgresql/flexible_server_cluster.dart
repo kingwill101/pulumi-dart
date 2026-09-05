@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleServerCluster {
   /// The default database name to be created. Changing this forces a new PostgreSQL Flexible Server to be created.
-  final pulumi.Input<String>? defaultDatabaseName;
+  final pulumi.Input<String?>? defaultDatabaseName;
   /// The number of nodes in the cluster. Must be at least `1` and no greater than `32`.
   ///
   /// &gt; **Note:** The maximum supported cluster size is currently 20 nodes. Support for up to 32 nodes will be available in the near future.
@@ -32,7 +32,7 @@ class FlexibleServerCluster {
   factory FlexibleServerCluster.fromMap(Map<String, dynamic> map) {
     return FlexibleServerCluster(
       defaultDatabaseName: (() { final guardedValue = map['defaultDatabaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
     );
   }
 }

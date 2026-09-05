@@ -153,6 +153,17 @@ Future<GetFactoryResult> getFactory(
   return GetFactoryResult.fromMap(result);
 }
 
+pulumi.Output<GetFactoryResult> getFactoryOutput(
+  GetFactoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:datafactory/getFactory:getFactory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFactoryResult.fromMap);
+}
+
 /// Use this data source to access information about a trigger schedule in Azure Data Factory.
 ///
 /// ## Example Usage
@@ -292,6 +303,17 @@ Future<GetTriggerScheduleResult> getTriggerSchedule(
   return GetTriggerScheduleResult.fromMap(result);
 }
 
+pulumi.Output<GetTriggerScheduleResult> getTriggerScheduleOutput(
+  GetTriggerScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:datafactory/getTriggerSchedule:getTriggerSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTriggerScheduleResult.fromMap);
+}
+
 /// Use this data source to access information about all existing trigger schedules in Azure Data Factory.
 ///
 /// ## Example Usage
@@ -422,4 +444,15 @@ Future<GetTriggerSchedulesResult> getTriggerSchedules(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTriggerSchedulesResult.fromMap(result);
+}
+
+pulumi.Output<GetTriggerSchedulesResult> getTriggerSchedulesOutput(
+  GetTriggerSchedulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:datafactory/getTriggerSchedules:getTriggerSchedules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTriggerSchedulesResult.fromMap);
 }

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServiceTrust resources.
 class ServiceTrustState {
   /// The ID of the Active Directory Domain Service. Changing this forces a new Active Directory Domain Service Trust to be created.
-  final pulumi.Input<String>? domainServiceId;
+  final pulumi.Input<String?>? domainServiceId;
   /// The name which should be used for this Active Directory Domain Service Trust. Changing this forces a new Active Directory Domain Service Trust to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password of the inbound trust set in the on-premise Active Directory Domain Service.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Specifies a list of DNS IPs that are used to resolve the on-premise Active Directory Domain Service.
-  final pulumi.Input<List<String>>? trustedDomainDnsIps;
+  final pulumi.Input<List<String>?>? trustedDomainDnsIps;
   /// The FQDN of the on-premise Active Directory Domain Service.
-  final pulumi.Input<String>? trustedDomainFqdn;
+  final pulumi.Input<String?>? trustedDomainFqdn;
 
   /// Creates a new [ServiceTrustState].
   /// [domainServiceId] The ID of the Active Directory Domain Service. Changing this forces a new Active Directory Domain Service Trust to be created.

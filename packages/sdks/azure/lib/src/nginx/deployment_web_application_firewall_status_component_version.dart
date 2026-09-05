@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentWebApplicationFirewallStatusComponentVersion {
   /// The version of the WAF Engine.
-  final pulumi.Input<String>? wafEngineVersion;
+  final pulumi.Input<String?>? wafEngineVersion;
   /// The version of the WAF Nginx module.
-  final pulumi.Input<String>? wafNginxVersion;
+  final pulumi.Input<String?>? wafNginxVersion;
 
   /// Creates a new [DeploymentWebApplicationFirewallStatusComponentVersion].
   /// [wafEngineVersion] The version of the WAF Engine.

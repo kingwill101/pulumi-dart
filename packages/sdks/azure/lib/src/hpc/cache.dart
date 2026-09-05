@@ -165,7 +165,7 @@ import 'cache_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
 /// 			CacheSizeInGb:     pulumi.Int(3072),
-/// 			SubnetId:          exampleSubnet.ID(),
+/// 			SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			SkuName:           pulumi.String("Standard_2G"),
 /// 		})
 /// 		if err != nil {
@@ -375,7 +375,7 @@ class Cache extends pulumi.CustomResource {
           'azure:hpc/cache:Cache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automaticallyRotateKeyToLatestEnabled = registerOutput<bool?>('automaticallyRotateKeyToLatestEnabled');
     cacheSizeInGb = registerOutput<int>('cacheSizeInGb');
@@ -387,14 +387,14 @@ class Cache extends pulumi.CustomResource {
     identity = registerOutput<CacheIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     location = registerOutput<String>('location');
-    mountAddresses = registerOutput<List<String>>('mountAddresses');
+    mountAddresses = registerOutput<List<String>>('mountAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
     ntpServer = registerOutput<String?>('ntpServer');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Cache] resource's state with the given [name] and [id].
@@ -402,11 +402,12 @@ class Cache extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CacheState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cache._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -430,13 +431,42 @@ class Cache extends pulumi.CustomResource {
     identity = registerOutput<CacheIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     location = registerOutput<String>('location');
-    mountAddresses = registerOutput<List<String>>('mountAddresses');
+    mountAddresses = registerOutput<List<String>>('mountAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
     ntpServer = registerOutput<String?>('ntpServer');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Cache] resource.
+  Cache.reference(String urn)
+    : super(
+        'azure:hpc/cache:Cache',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automaticallyRotateKeyToLatestEnabled = registerOutput<bool?>('automaticallyRotateKeyToLatestEnabled');
+    cacheSizeInGb = registerOutput<int>('cacheSizeInGb');
+    defaultAccessPolicy = registerOutput<CacheDefaultAccessPolicy>('defaultAccessPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDefaultAccessPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    directoryActiveDirectory = registerOutput<CacheDirectoryActiveDirectory?>('directoryActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDirectoryActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    directoryFlatFile = registerOutput<CacheDirectoryFlatFile?>('directoryFlatFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDirectoryFlatFile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    directoryLdap = registerOutput<CacheDirectoryLdap?>('directoryLdap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDirectoryLdap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dns = registerOutput<CacheDns?>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<CacheIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+    location = registerOutput<String>('location');
+    mountAddresses = registerOutput<List<String>>('mountAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    mtu = registerOutput<int?>('mtu');
+    this.name = registerOutput<String>('name');
+    ntpServer = registerOutput<String?>('ntpServer');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

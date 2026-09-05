@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ChannelAlexa resources.
 class ChannelAlexaState {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? botName;
+  final pulumi.Input<String?>? botName;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group where the Alexa Channel should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The Alexa skill ID for the Alexa Channel.
-  final pulumi.Input<String>? skillId;
+  final pulumi.Input<String?>? skillId;
 
   /// Creates a new [ChannelAlexaState].
   /// [botName] The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.

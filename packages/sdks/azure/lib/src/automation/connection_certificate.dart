@@ -362,7 +362,7 @@ class ConnectionCertificate extends pulumi.CustomResource {
           'azure:automation/connectionCertificate:ConnectionCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     automationCertificateName = registerOutput<String>('automationCertificateName');
@@ -377,11 +377,12 @@ class ConnectionCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectionCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -395,6 +396,23 @@ class ConnectionCertificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    automationCertificateName = registerOutput<String>('automationCertificateName');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [ConnectionCertificate] resource.
+  ConnectionCertificate.reference(String urn)
+    : super(
+        'azure:automation/connectionCertificate:ConnectionCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     automationCertificateName = registerOutput<String>('automationCertificateName');
     description = registerOutput<String?>('description');

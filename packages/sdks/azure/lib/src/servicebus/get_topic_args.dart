@@ -10,9 +10,9 @@ class GetTopicArgs {
   /// The name of this Service Bus Topic.
   final pulumi.Input<String> name;
   /// The ID of the ServiceBus Namespace where the Service Bus Topic exists.
-  final pulumi.Input<String>? namespaceId;
-  final pulumi.Input<String>? namespaceName;
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? namespaceId;
+  final pulumi.Input<String?>? namespaceName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [GetTopicArgs].
   /// [name] The name of this Service Bus Topic.

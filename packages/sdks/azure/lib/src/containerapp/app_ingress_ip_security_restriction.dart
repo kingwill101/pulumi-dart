@@ -8,7 +8,7 @@ class AppIngressIpSecurityRestriction {
   /// &gt; **Note:** The `action` types in an all `ipSecurityRestriction` blocks must be the same for the `ingress`, mixing `Allow` and `Deny` rules is not currently supported by the service.
   final pulumi.Input<String> action;
   /// Describe the IP restriction rule that is being sent to the container-app.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The incoming IP address or range of IP addresses (in CIDR notation).
   final pulumi.Input<String> ipAddressRange;
   /// Name for the IP restriction rule.

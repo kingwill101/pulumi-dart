@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'point_to_point_vpn_gateway_args.dart';
+import 'point_to_point_vpn_gateway_connection_configuration.dart';
 import 'point_to_point_vpn_gateway_state.dart';
 
 /// Manages a Point-to-Site VPN Gateway.
@@ -257,7 +258,7 @@ import 'point_to_point_vpn_gateway_state.dart';
 /// 			Name:              pulumi.String("example-virtualhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.0.0/23"),
 /// 		})
 /// 		if err != nil {
@@ -304,8 +305,8 @@ import 'point_to_point_vpn_gateway_state.dart';
 /// 			Name:                     pulumi.String("example-vpn-gateway"),
 /// 			Location:                 example.Location,
 /// 			ResourceGroupName:        example.Name,
-/// 			VirtualHubId:             exampleVirtualHub.ID(),
-/// 			VpnServerConfigurationId: exampleVpnServerConfiguration.ID(),
+/// 			VirtualHubId:             exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
+/// 			VpnServerConfigurationId: exampleVpnServerConfiguration.ID().ToIDOutput().ToStringOutput(),
 /// 			ScaleUnit:                pulumi.Int(1),
 /// 			ConnectionConfigurations: network.PointToPointVpnGatewayConnectionConfigurationArray{
 /// 				&network.PointToPointVpnGatewayConnectionConfigurationArgs{
@@ -565,7 +566,7 @@ import 'point_to_point_vpn_gateway_state.dart';
 /// ```
 class PointToPointVpnGateway extends pulumi.CustomResource {
   /// A `connectionConfiguration` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectionConfigurations;
+  late final pulumi.Output<List<PointToPointVpnGatewayConnectionConfiguration>> connectionConfigurations;
   /// A list of IP Addresses of DNS Servers for the Point-to-Site VPN Gateway.
   late final pulumi.Output<List<String>?> dnsServers;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
@@ -597,16 +598,16 @@ class PointToPointVpnGateway extends pulumi.CustomResource {
           'azure:network/pointToPointVpnGateway:PointToPointVpnGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    connectionConfigurations = registerOutput<List<Map<String, dynamic>>>('connectionConfigurations');
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    connectionConfigurations = registerOutput<List<PointToPointVpnGatewayConnectionConfiguration>>('connectionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PointToPointVpnGatewayConnectionConfiguration>(guardedValue, (value) => PointToPointVpnGatewayConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routingPreferenceInternetEnabled = registerOutput<bool?>('routingPreferenceInternetEnabled');
     scaleUnit = registerOutput<int>('scaleUnit');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualHubId = registerOutput<String>('virtualHubId');
     vpnServerConfigurationId = registerOutput<String>('vpnServerConfigurationId');
   }
@@ -616,11 +617,12 @@ class PointToPointVpnGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PointToPointVpnGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PointToPointVpnGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -634,14 +636,35 @@ class PointToPointVpnGateway extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    connectionConfigurations = registerOutput<List<Map<String, dynamic>>>('connectionConfigurations');
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    connectionConfigurations = registerOutput<List<PointToPointVpnGatewayConnectionConfiguration>>('connectionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PointToPointVpnGatewayConnectionConfiguration>(guardedValue, (value) => PointToPointVpnGatewayConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routingPreferenceInternetEnabled = registerOutput<bool?>('routingPreferenceInternetEnabled');
     scaleUnit = registerOutput<int>('scaleUnit');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualHubId = registerOutput<String>('virtualHubId');
+    vpnServerConfigurationId = registerOutput<String>('vpnServerConfigurationId');
+  }
+
+  /// Creates a typed reference to an existing [PointToPointVpnGateway] resource.
+  PointToPointVpnGateway.reference(String urn)
+    : super(
+        'azure:network/pointToPointVpnGateway:PointToPointVpnGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectionConfigurations = registerOutput<List<PointToPointVpnGatewayConnectionConfiguration>>('connectionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PointToPointVpnGatewayConnectionConfiguration>(guardedValue, (value) => PointToPointVpnGatewayConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routingPreferenceInternetEnabled = registerOutput<bool?>('routingPreferenceInternetEnabled');
+    scaleUnit = registerOutput<int>('scaleUnit');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualHubId = registerOutput<String>('virtualHubId');
     vpnServerConfigurationId = registerOutput<String>('vpnServerConfigurationId');
   }

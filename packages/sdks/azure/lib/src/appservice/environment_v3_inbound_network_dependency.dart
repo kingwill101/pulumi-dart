@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentV3InboundNetworkDependency {
   /// A short description of the purpose of the network traffic.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of IP addresses that network traffic will originate from in CIDR notation.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
   /// The ports that network traffic will arrive to the App Service Environment V3 on.
-  final pulumi.Input<List<String>>? ports;
+  final pulumi.Input<List<String>?>? ports;
 
   /// Creates a new [EnvironmentV3InboundNetworkDependency].
   /// [description] A short description of the purpose of the network traffic.

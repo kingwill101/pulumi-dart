@@ -5,11 +5,11 @@ import 'key_rotation_policy_automatic.dart';
 
 class KeyRotationPolicy {
   /// An `automatic` block as defined below.
-  final pulumi.Input<KeyRotationPolicyAutomatic>? automatic;
+  final pulumi.Input<KeyRotationPolicyAutomatic?>? automatic;
   /// Expire a Key Vault Key after given duration as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
-  final pulumi.Input<String>? expireAfter;
+  final pulumi.Input<String?>? expireAfter;
   /// Notify at a given duration before expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
-  final pulumi.Input<String>? notifyBeforeExpiry;
+  final pulumi.Input<String?>? notifyBeforeExpiry;
 
   /// Creates a new [KeyRotationPolicy].
   /// [automatic] An `automatic` block as defined below.

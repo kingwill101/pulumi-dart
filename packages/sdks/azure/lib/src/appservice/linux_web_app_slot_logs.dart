@@ -6,13 +6,13 @@ import 'linux_web_app_slot_logs_http_logs.dart';
 
 class LinuxWebAppSlotLogs {
   /// A `applicationLogs` block as defined above.
-  final pulumi.Input<LinuxWebAppSlotLogsApplicationLogs>? applicationLogs;
+  final pulumi.Input<LinuxWebAppSlotLogsApplicationLogs?>? applicationLogs;
   /// Should detailed error messages be enabled?
-  final pulumi.Input<bool>? detailedErrorMessages;
+  final pulumi.Input<bool?>? detailedErrorMessages;
   /// Should the failed request tracing be enabled?
-  final pulumi.Input<bool>? failedRequestTracing;
+  final pulumi.Input<bool?>? failedRequestTracing;
   /// An `httpLogs` block as defined above.
-  final pulumi.Input<LinuxWebAppSlotLogsHttpLogs>? httpLogs;
+  final pulumi.Input<LinuxWebAppSlotLogsHttpLogs?>? httpLogs;
 
   /// Creates a new [LinuxWebAppSlotLogs].
   /// [applicationLogs] A `applicationLogs` block as defined above.

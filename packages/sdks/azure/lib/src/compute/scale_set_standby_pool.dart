@@ -146,7 +146,7 @@ import 'scale_set_standby_pool_state.dart';
 /// 			Name:                             pulumi.String("example-spsvmp"),
 /// 			ResourceGroupName:                example.Name,
 /// 			Location:                         pulumi.String("West Europe"),
-/// 			AttachedVirtualMachineScaleSetId: exampleOrchestratedVirtualMachineScaleSet.ID(),
+/// 			AttachedVirtualMachineScaleSetId: exampleOrchestratedVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 			VirtualMachineState:              pulumi.String("Running"),
 /// 			ElasticityProfile: &compute.ScaleSetStandbyPoolElasticityProfileArgs{
 /// 				MaxReadyCapacity: pulumi.Int(10),
@@ -329,14 +329,14 @@ class ScaleSetStandbyPool extends pulumi.CustomResource {
           'azure:compute/scaleSetStandbyPool:ScaleSetStandbyPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     attachedVirtualMachineScaleSetId = registerOutput<String>('attachedVirtualMachineScaleSetId');
     elasticityProfile = registerOutput<ScaleSetStandbyPoolElasticityProfile>('elasticityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetStandbyPoolElasticityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualMachineState = registerOutput<String>('virtualMachineState');
   }
 
@@ -345,11 +345,12 @@ class ScaleSetStandbyPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScaleSetStandbyPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScaleSetStandbyPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,7 +369,25 @@ class ScaleSetStandbyPool extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualMachineState = registerOutput<String>('virtualMachineState');
+  }
+
+  /// Creates a typed reference to an existing [ScaleSetStandbyPool] resource.
+  ScaleSetStandbyPool.reference(String urn)
+    : super(
+        'azure:compute/scaleSetStandbyPool:ScaleSetStandbyPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attachedVirtualMachineScaleSetId = registerOutput<String>('attachedVirtualMachineScaleSetId');
+    elasticityProfile = registerOutput<ScaleSetStandbyPoolElasticityProfile>('elasticityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetStandbyPoolElasticityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualMachineState = registerOutput<String>('virtualMachineState');
   }
 }

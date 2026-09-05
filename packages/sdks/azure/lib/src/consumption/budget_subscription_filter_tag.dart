@@ -6,7 +6,7 @@ class BudgetSubscriptionFilterTag {
   /// The name of the tag to use for the filter.
   final pulumi.Input<String> name;
   /// The operator to use for comparison. The allowed values are `In`. Defaults to `In`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// Specifies a list of values for the tag.
   final pulumi.Input<List<String>> values;
 

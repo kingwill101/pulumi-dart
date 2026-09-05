@@ -7,13 +7,13 @@ class CacheDirectoryLdap {
   /// The base distinguished name (DN) for the LDAP domain.
   final pulumi.Input<String> baseDn;
   /// A `bind` block as defined above.
-  final pulumi.Input<CacheDirectoryLdapBind>? bind;
+  final pulumi.Input<CacheDirectoryLdapBind?>? bind;
   /// The URI of the CA certificate to validate the LDAP secure connection.
-  final pulumi.Input<String>? certificateValidationUri;
+  final pulumi.Input<String?>? certificateValidationUri;
   /// Whether the certificate should be automatically downloaded. This can be set to `true` only when `certificateValidationUri` is provided.
-  final pulumi.Input<bool>? downloadCertificateAutomatically;
+  final pulumi.Input<bool?>? downloadCertificateAutomatically;
   /// Whether the LDAP connection should be encrypted?
-  final pulumi.Input<bool>? encrypted;
+  final pulumi.Input<bool?>? encrypted;
   /// The FQDN or IP address of the LDAP server.
   final pulumi.Input<String> server;
 

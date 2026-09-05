@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FunctionAppActiveSlot resources.
 class FunctionAppActiveSlotState {
   /// The timestamp of the last successful swap with `Production`
-  final pulumi.Input<String>? lastSuccessfulSwap;
+  final pulumi.Input<String?>? lastSuccessfulSwap;
   /// The swap action should overwrite the Production slot's network configuration with the configuration from this slot. Defaults to `true`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? overwriteNetworkConfig;
+  final pulumi.Input<bool?>? overwriteNetworkConfig;
   /// The ID of the Slot to swap with `Production`.
-  final pulumi.Input<String>? slotId;
+  final pulumi.Input<String?>? slotId;
 
   /// Creates a new [FunctionAppActiveSlotState].
   /// [lastSuccessfulSwap] The timestamp of the last successful swap with `Production`

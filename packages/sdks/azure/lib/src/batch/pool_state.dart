@@ -22,66 +22,66 @@ import 'pool_window.dart';
 /// Input properties used for looking up and filtering Pool resources.
 class PoolState {
   /// Specifies the name of the Batch account in which the pool will be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// A `autoScale` block that describes the scale settings when using auto scale as defined below.
   ///
   /// &gt; **Note:** `fixedScale` and `autoScale` blocks cannot be used both at the same time.
-  final pulumi.Input<PoolAutoScale>? autoScale;
-  final pulumi.Input<List<PoolCertificate>>? certificates;
+  final pulumi.Input<PoolAutoScale?>? autoScale;
+  final pulumi.Input<List<PoolCertificate>?>? certificates;
   /// The container configuration used in the pool's VMs. One `containerConfiguration` block as defined below.
-  final pulumi.Input<PoolContainerConfiguration>? containerConfiguration;
+  final pulumi.Input<PoolContainerConfiguration?>? containerConfiguration;
   /// A `dataDisks` block describes the data disk settings as defined below.
-  final pulumi.Input<List<PoolDataDisk>>? dataDisks;
+  final pulumi.Input<List<PoolDataDisk>?>? dataDisks;
   /// A `diskEncryption` block, as defined below, describes the disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
-  final pulumi.Input<List<PoolDiskEncryption>>? diskEncryptions;
+  final pulumi.Input<List<PoolDiskEncryption>?>? diskEncryptions;
   /// Specifies the display name of the Batch pool. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// An `extensions` block as defined below.
-  final pulumi.Input<List<PoolExtension>>? extensions;
+  final pulumi.Input<List<PoolExtension>?>? extensions;
   /// A `fixedScale` block that describes the scale settings when using fixed scale as defined below.
-  final pulumi.Input<PoolFixedScale>? fixedScale;
+  final pulumi.Input<PoolFixedScale?>? fixedScale;
   /// An `identity` block as defined below.
-  final pulumi.Input<PoolIdentity>? identity;
+  final pulumi.Input<PoolIdentity?>? identity;
   /// Whether the pool permits direct communication between nodes. This imposes restrictions on which nodes can be assigned to the pool. Enabling this value can reduce the chance of the requested number of nodes to be allocated in the pool. Values allowed are `Disabled` and `Enabled`. Defaults to `Enabled`.
-  final pulumi.Input<String>? interNodeCommunication;
+  final pulumi.Input<String?>? interNodeCommunication;
   /// The type of on-premises license to be used when deploying the operating system. This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are: "Windows_Server" - The on-premises license is for Windows Server. "Windows_Client" - The on-premises license is for Windows Client.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// Specifies the maximum number of tasks that can run concurrently on a single compute node in the pool. Defaults to `1`. Changing this forces a new resource to be created.
-  final pulumi.Input<int>? maxTasksPerNode;
+  final pulumi.Input<int?>? maxTasksPerNode;
   /// A map of custom batch pool metadata.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// A `mount` block defined as below.
-  final pulumi.Input<List<PoolMount>>? mounts;
+  final pulumi.Input<List<PoolMount>?>? mounts;
   /// Specifies the name of the Batch pool. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `networkConfiguration` block that describes the network configurations for the Batch pool as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<PoolNetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<PoolNetworkConfiguration?>? networkConfiguration;
   /// Specifies the SKU of the node agents that will be created in the Batch pool. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? nodeAgentSkuId;
+  final pulumi.Input<String?>? nodeAgentSkuId;
   /// A `nodePlacement` block that describes the placement policy for allocating nodes in the pool as defined below.
-  final pulumi.Input<List<PoolNodePlacement>>? nodePlacements;
+  final pulumi.Input<List<PoolNodePlacement>?>? nodePlacements;
   /// Specifies the ephemeral disk placement for operating system disk for all VMs in the pool. This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements&gt; and Linux VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements&gt;. The only possible value is `CacheDisk`.
-  final pulumi.Input<String>? osDiskPlacement;
+  final pulumi.Input<String?>? osDiskPlacement;
   /// The name of the resource group in which to create the Batch pool. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `securityProfile` block that describes the security settings for the Batch pool as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<PoolSecurityProfile>? securityProfile;
+  final pulumi.Input<PoolSecurityProfile?>? securityProfile;
   /// A `startTask` block that describes the start task settings for the Batch pool as defined below.
-  final pulumi.Input<PoolStartTask>? startTask;
+  final pulumi.Input<PoolStartTask?>? startTask;
   /// Whether to stop if there is a pending resize operation on this pool.
-  final pulumi.Input<bool>? stopPendingResizeOperation;
+  final pulumi.Input<bool?>? stopPendingResizeOperation;
   /// A `storageImageReference` block for the virtual machines that will compose the Batch pool as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<PoolStorageImageReference>? storageImageReference;
+  final pulumi.Input<PoolStorageImageReference?>? storageImageReference;
   /// The desired node communication mode for the pool. Possible values are `Classic`, `Default` and `Simplified`.
-  final pulumi.Input<String>? targetNodeCommunicationMode;
+  final pulumi.Input<String?>? targetNodeCommunicationMode;
   /// A `taskSchedulingPolicy` block that describes how tasks are distributed across compute nodes in a pool as defined below. If not specified, the default is spread as defined below.
-  final pulumi.Input<List<PoolTaskSchedulingPolicy>>? taskSchedulingPolicies;
+  final pulumi.Input<List<PoolTaskSchedulingPolicy>?>? taskSchedulingPolicies;
   /// A `userAccounts` block that describes the list of user accounts to be created on each node in the pool as defined below.
-  final pulumi.Input<List<PoolUserAccount>>? userAccounts;
+  final pulumi.Input<List<PoolUserAccount>?>? userAccounts;
   /// Specifies the size of the VM created in the Batch pool. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? vmSize;
+  final pulumi.Input<String?>? vmSize;
   /// A `windows` block that describes the Windows configuration in the pool as defined below.
-  final pulumi.Input<List<PoolWindow>>? windows;
+  final pulumi.Input<List<PoolWindow>?>? windows;
 
   /// Creates a new [PoolState].
   /// [accountName] Specifies the name of the Batch account in which the pool will be created. Changing this forces a new resource to be created.
@@ -196,7 +196,7 @@ class PoolState {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PoolIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       interNodeCommunication: (() { final guardedValue = map['interNodeCommunication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxTasksPerNode: (() { final guardedValue = map['maxTasksPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxTasksPerNode: (() { final guardedValue = map['maxTasksPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       mounts: (() { final guardedValue = map['mounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PoolMount>(guardedValue, (value) => PoolMount.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

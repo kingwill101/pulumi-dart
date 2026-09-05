@@ -7,67 +7,67 @@ import 'get_frontdoor_origin_group_load_balancing.dart';
 /// Result data returned by getFrontdoorOriginGroup.
 class GetFrontdoorOriginGroupResult {
   /// Specifies the ID of the Front Door Profile within which this Front Door Origin Group exists.
-  final String cdnFrontdoorProfileId;
+  final String? cdnFrontdoorProfileId;
   /// A `healthProbe` block as defined below.
-  final List<GetFrontdoorOriginGroupHealthProbe> healthProbes;
+  final List<GetFrontdoorOriginGroupHealthProbe>? healthProbes;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A `loadBalancing` block as defined below.
-  final List<GetFrontdoorOriginGroupLoadBalancing> loadBalancings;
-  final String name;
-  final String profileName;
-  final String resourceGroupName;
-  final int restoreTrafficTimeToHealedOrNewEndpointInMinutes;
+  final List<GetFrontdoorOriginGroupLoadBalancing>? loadBalancings;
+  final String? name;
+  final String? profileName;
+  final String? resourceGroupName;
+  final int? restoreTrafficTimeToHealedOrNewEndpointInMinutes;
   /// Specifies whether session affinity is enabled on this host.
-  final bool sessionAffinityEnabled;
+  final bool? sessionAffinityEnabled;
 
   /// Creates a new [GetFrontdoorOriginGroupResult].
   /// [cdnFrontdoorProfileId] Specifies the ID of the Front Door Profile within which this Front Door Origin Group exists.
   /// [healthProbes] A `healthProbe` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [loadBalancings] A `loadBalancing` block as defined below.
-  /// [name] Required.
-  /// [profileName] Required.
-  /// [resourceGroupName] Required.
-  /// [restoreTrafficTimeToHealedOrNewEndpointInMinutes] Required.
+  /// [name] Optional.
+  /// [profileName] Optional.
+  /// [resourceGroupName] Optional.
+  /// [restoreTrafficTimeToHealedOrNewEndpointInMinutes] Optional.
   /// [sessionAffinityEnabled] Specifies whether session affinity is enabled on this host.
   const GetFrontdoorOriginGroupResult({
-    required this.cdnFrontdoorProfileId,
-    required this.healthProbes,
-    required this.id,
-    required this.loadBalancings,
-    required this.name,
-    required this.profileName,
-    required this.resourceGroupName,
-    required this.restoreTrafficTimeToHealedOrNewEndpointInMinutes,
-    required this.sessionAffinityEnabled,
+    this.cdnFrontdoorProfileId,
+    this.healthProbes,
+    this.id,
+    this.loadBalancings,
+    this.name,
+    this.profileName,
+    this.resourceGroupName,
+    this.restoreTrafficTimeToHealedOrNewEndpointInMinutes,
+    this.sessionAffinityEnabled,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cdnFrontdoorProfileId': cdnFrontdoorProfileId,
-      'healthProbes': pulumi.Input.encodeList<GetFrontdoorOriginGroupHealthProbe, Map<String, dynamic>>(healthProbes, (value) => value.toMap()),
-      'id': id,
-      'loadBalancings': pulumi.Input.encodeList<GetFrontdoorOriginGroupLoadBalancing, Map<String, dynamic>>(loadBalancings, (value) => value.toMap()),
-      'name': name,
-      'profileName': profileName,
-      'resourceGroupName': resourceGroupName,
-      'restoreTrafficTimeToHealedOrNewEndpointInMinutes': restoreTrafficTimeToHealedOrNewEndpointInMinutes,
-      'sessionAffinityEnabled': sessionAffinityEnabled,
+      'cdnFrontdoorProfileId': ?cdnFrontdoorProfileId,
+      'healthProbes': ?(() { final guardedValue = healthProbes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFrontdoorOriginGroupHealthProbe, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'loadBalancings': ?(() { final guardedValue = loadBalancings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFrontdoorOriginGroupLoadBalancing, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'profileName': ?profileName,
+      'resourceGroupName': ?resourceGroupName,
+      'restoreTrafficTimeToHealedOrNewEndpointInMinutes': ?restoreTrafficTimeToHealedOrNewEndpointInMinutes,
+      'sessionAffinityEnabled': ?sessionAffinityEnabled,
     };
   }
 
   factory GetFrontdoorOriginGroupResult.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorOriginGroupResult(
-      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] as String,
-      healthProbes: pulumi.Input.decodeList<GetFrontdoorOriginGroupHealthProbe>(map['healthProbes']!, (value) => GetFrontdoorOriginGroupHealthProbe.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      loadBalancings: pulumi.Input.decodeList<GetFrontdoorOriginGroupLoadBalancing>(map['loadBalancings']!, (value) => GetFrontdoorOriginGroupLoadBalancing.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      profileName: map['profileName'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      restoreTrafficTimeToHealedOrNewEndpointInMinutes: map['restoreTrafficTimeToHealedOrNewEndpointInMinutes'] as int,
-      sessionAffinityEnabled: map['sessionAffinityEnabled'] as bool,
+      cdnFrontdoorProfileId: (() { final guardedValue = map['cdnFrontdoorProfileId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      healthProbes: (() { final guardedValue = map['healthProbes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFrontdoorOriginGroupHealthProbe>(guardedValue, (value) => GetFrontdoorOriginGroupHealthProbe.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      loadBalancings: (() { final guardedValue = map['loadBalancings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFrontdoorOriginGroupLoadBalancing>(guardedValue, (value) => GetFrontdoorOriginGroupLoadBalancing.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      restoreTrafficTimeToHealedOrNewEndpointInMinutes: (() { final guardedValue = map['restoreTrafficTimeToHealedOrNewEndpointInMinutes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      sessionAffinityEnabled: (() { final guardedValue = map['sessionAffinityEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

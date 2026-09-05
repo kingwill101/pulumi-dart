@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PostgresqlClusterServer {
   /// The Fully Qualified Domain Name of the server.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// The name which should be used for this Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PostgresqlClusterServer].
   /// [fqdn] The Fully Qualified Domain Name of the server.

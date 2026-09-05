@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appplatform_spring_cloud_storage_spring_cloud_storage_args_doc}
 class SpringCloudStorageArgs {
   /// The name which should be used for this Spring Cloud Storage. Changing this forces a new Spring Cloud Storage to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Spring Cloud Service where the Spring Cloud Storage should exist. Changing this forces a new Spring Cloud Storage to be created.
   final pulumi.Input<String> springCloudServiceId;
   /// The access key of the Azure Storage Account.

@@ -203,7 +203,7 @@ class VirtualWan extends pulumi.CustomResource {
           'azure:network/virtualWan:VirtualWan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     allowBranchToBranchTraffic = registerOutput<bool?>('allowBranchToBranchTraffic');
     disableVpnEncryption = registerOutput<bool?>('disableVpnEncryption');
@@ -211,7 +211,7 @@ class VirtualWan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     office365LocalBreakoutCategory = registerOutput<String?>('office365LocalBreakoutCategory');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
   }
 
@@ -220,11 +220,12 @@ class VirtualWan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualWanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualWan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -244,7 +245,26 @@ class VirtualWan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     office365LocalBreakoutCategory = registerOutput<String?>('office365LocalBreakoutCategory');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [VirtualWan] resource.
+  VirtualWan.reference(String urn)
+    : super(
+        'azure:network/virtualWan:VirtualWan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowBranchToBranchTraffic = registerOutput<bool?>('allowBranchToBranchTraffic');
+    disableVpnEncryption = registerOutput<bool?>('disableVpnEncryption');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    office365LocalBreakoutCategory = registerOutput<String?>('office365LocalBreakoutCategory');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
   }
 }

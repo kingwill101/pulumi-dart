@@ -158,6 +158,17 @@ Future<GetAccessPolicyResult> getAccessPolicy(
   return GetAccessPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPolicyResult> getAccessPolicyOutput(
+  GetAccessPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getAccessPolicy:getAccessPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPolicyResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Key Vault Certificate.
 ///
 /// ## Example Usage
@@ -330,6 +341,17 @@ Future<GetCertificateResult> getCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
 }
 
 /// Use this data source to access data stored in an existing Key Vault Certificate.
@@ -508,6 +530,17 @@ Future<GetCertificateDataResult> getCertificateData(
   return GetCertificateDataResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateDataResult> getCertificateDataOutput(
+  GetCertificateDataArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getCertificateData:getCertificateData',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateDataResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Key Vault Certificate Issuer.
 ///
 /// ## Example Usage
@@ -682,6 +715,17 @@ Future<GetCertificateIssuerResult> getCertificateIssuer(
   return GetCertificateIssuerResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateIssuerResult> getCertificateIssuerOutput(
+  GetCertificateIssuerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getCertificateIssuer:getCertificateIssuer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateIssuerResult.fromMap);
+}
+
 /// Use this data source to retrieve a list of certificate names from an existing Key Vault.
 ///
 /// ## Example Usage
@@ -772,6 +816,17 @@ Future<GetCertificatesResult> getCertificates(
   return GetCertificatesResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificatesResult> getCertificatesOutput(
+  GetCertificatesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getCertificates:getCertificates',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificatesResult.fromMap);
+}
+
 /// Encrypts or Decrypts a value using a Key Vault Key.
 /// [args] Arguments passed to this invoke. {@macro pulumi_keyvault_get_encrypted_value_get_encrypted_value_args_doc}
 /// [options] Invoke options controlling this call.
@@ -786,6 +841,17 @@ Future<GetEncryptedValueResult> getEncryptedValue(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEncryptedValueResult.fromMap(result);
+}
+
+pulumi.Output<GetEncryptedValueResult> getEncryptedValueOutput(
+  GetEncryptedValueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getEncryptedValue:getEncryptedValue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEncryptedValueResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Key Vault Key.
@@ -927,6 +993,17 @@ Future<GetKeyResult> getKey(
   return GetKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetKeyResult> getKeyOutput(
+  GetKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getKey:getKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Key Vault.
 ///
 /// ## Example Usage
@@ -1051,6 +1128,14 @@ Future<GetKeyResult> getKey(
 /// outputs:
 ///   vaultUri: ${example.vaultUri}
 /// ```
+///
+///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This data source uses the following Azure API Providers:
+///
+/// * `Microsoft.KeyVault` - 2026-02-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_keyvault_get_key_vault_get_key_vault_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetKeyVaultResult> getKeyVault(
@@ -1064,6 +1149,17 @@ Future<GetKeyVaultResult> getKeyVault(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKeyVaultResult.fromMap(result);
+}
+
+pulumi.Output<GetKeyVaultResult> getKeyVaultOutput(
+  GetKeyVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getKeyVault:getKeyVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyVaultResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Key Vault Managed Hardware Security Module.
@@ -1213,6 +1309,17 @@ Future<GetManagedHardwareSecurityModuleResult> getManagedHardwareSecurityModule(
   return GetManagedHardwareSecurityModuleResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedHardwareSecurityModuleResult> getManagedHardwareSecurityModuleOutput(
+  GetManagedHardwareSecurityModuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getManagedHardwareSecurityModule:getManagedHardwareSecurityModule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedHardwareSecurityModuleResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Managed Hardware Security Module Key.
 ///
 /// &gt; **Note:** All arguments including the secret value will be stored in the raw state as plain-text.
@@ -1359,6 +1466,17 @@ Future<GetManagedHardwareSecurityModuleKeyResult> getManagedHardwareSecurityModu
   return GetManagedHardwareSecurityModuleKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedHardwareSecurityModuleKeyResult> getManagedHardwareSecurityModuleKeyOutput(
+  GetManagedHardwareSecurityModuleKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getManagedHardwareSecurityModuleKey:getManagedHardwareSecurityModuleKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedHardwareSecurityModuleKeyResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Key Vault Managed Hardware Security Module Role Definition.
 ///
 /// ## Example Usage
@@ -1496,6 +1614,17 @@ Future<GetManagedHardwareSecurityModuleRoleDefinitionResult> getManagedHardwareS
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedHardwareSecurityModuleRoleDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedHardwareSecurityModuleRoleDefinitionResult> getManagedHardwareSecurityModuleRoleDefinitionOutput(
+  GetManagedHardwareSecurityModuleRoleDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getManagedHardwareSecurityModuleRoleDefinition:getManagedHardwareSecurityModuleRoleDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedHardwareSecurityModuleRoleDefinitionResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Key Vault Secret.
@@ -1637,6 +1766,17 @@ Future<GetSecretResult> getSecret(
   return GetSecretResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretResult> getSecretOutput(
+  GetSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getSecret:getSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretResult.fromMap);
+}
+
 /// Use this data source to retrieve a list of secret names from an existing Key Vault Secret.
 ///
 /// ## Example Usage
@@ -1725,4 +1865,15 @@ Future<GetSecretsResult> getSecrets(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretsResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretsResult> getSecretsOutput(
+  GetSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:keyvault/getSecrets:getSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretsResult.fromMap);
 }

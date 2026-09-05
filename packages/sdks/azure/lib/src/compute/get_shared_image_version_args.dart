@@ -20,9 +20,9 @@ class GetSharedImageVersionArgs {
   /// The name of the Resource Group in which the Shared Image Gallery exists.
   final pulumi.Input<String> resourceGroupName;
   /// Sort available versions taking SemVer versioning scheme into account. Defaults to `false`.
-  final pulumi.Input<bool>? sortVersionsBySemver;
+  final pulumi.Input<bool?>? sortVersionsBySemver;
   /// A mapping of tags assigned to the Shared Image.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetSharedImageVersionArgs].
   /// [galleryName] The name of the Shared Image Gallery in which the Shared Image exists.

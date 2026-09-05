@@ -14,13 +14,13 @@ class ChannelSlackArgs {
   /// The Client Secret that will be used to authenticate with Slack.
   final pulumi.Input<String> clientSecret;
   /// The Slack Landing Page URL.
-  final pulumi.Input<String>? landingPageUrl;
+  final pulumi.Input<String?>? landingPageUrl;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The Signing Secret that will be used to sign the requests.
-  final pulumi.Input<String>? signingSecret;
+  final pulumi.Input<String?>? signingSecret;
   /// The Verification Token that will be used to authenticate with Slack.
   final pulumi.Input<String> verificationToken;
 

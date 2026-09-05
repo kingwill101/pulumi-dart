@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ContainerStorageAccount resources.
 class ContainerStorageAccountState {
   /// The name of the vault where the storage account will be registered. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? recoveryVaultName;
+  final pulumi.Input<String?>? recoveryVaultName;
   /// Name of the resource group where the vault is located. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The ID of the Storage Account to be registered Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Azure Backup places a Resource Lock on the storage account that will cause deletion to fail until the account is unregistered from Azure Backup
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
 
   /// Creates a new [ContainerStorageAccountState].
   /// [recoveryVaultName] The name of the vault where the storage account will be registered. Changing this forces a new resource to be created.

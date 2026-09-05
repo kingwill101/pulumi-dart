@@ -193,7 +193,7 @@ class PrivateLink extends pulumi.CustomResource {
           'azure:management/privateLink:PrivateLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -205,11 +205,12 @@ class PrivateLink extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivateLinkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivateLink._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -223,6 +224,20 @@ class PrivateLink extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [PrivateLink] resource.
+  PrivateLink.reference(String urn)
+    : super(
+        'azure:management/privateLink:PrivateLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

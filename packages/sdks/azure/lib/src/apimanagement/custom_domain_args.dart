@@ -15,15 +15,15 @@ class CustomDomainArgs {
   /// The ID of the API Management service for which to configure Custom Domains. Changing this forces a new API Management Custom Domain resource to be created.
   final pulumi.Input<String> apiManagementId;
   /// One or more `developerPortal` blocks as defined below.
-  final pulumi.Input<List<CustomDomainDeveloperPortal>>? developerPortals;
+  final pulumi.Input<List<CustomDomainDeveloperPortal>?>? developerPortals;
   /// One or more `gateway` blocks as defined below.
-  final pulumi.Input<List<CustomDomainGateway>>? gateways;
+  final pulumi.Input<List<CustomDomainGateway>?>? gateways;
   /// One or more `management` blocks as defined below.
-  final pulumi.Input<List<CustomDomainManagement>>? managements;
+  final pulumi.Input<List<CustomDomainManagement>?>? managements;
   /// One or more `portal` blocks as defined below.
-  final pulumi.Input<List<CustomDomainPortal>>? portals;
+  final pulumi.Input<List<CustomDomainPortal>?>? portals;
   /// One or more `scm` blocks as defined below.
-  final pulumi.Input<List<CustomDomainScm>>? scms;
+  final pulumi.Input<List<CustomDomainScm>?>? scms;
 
   /// Creates a new [CustomDomainArgs].
   /// [apiManagementId] The ID of the API Management service for which to configure Custom Domains. Changing this forces a new API Management Custom Domain resource to be created.

@@ -9,21 +9,21 @@ import 'backup_policy_blob_storage_retention_rule.dart';
 /// {@macro pulumi_dataprotection_backup_policy_blob_storage_backup_policy_blob_storage_args_doc}
 class BackupPolicyBlobStorageArgs {
   /// Specifies a list of repeating time interval. It should follow `ISO 8601` repeating time interval. Changing this forces a new Backup Policy Blob Storage to be created.
-  final pulumi.Input<List<String>>? backupRepeatingTimeIntervals;
+  final pulumi.Input<List<String>?>? backupRepeatingTimeIntervals;
   /// The name which should be used for this Backup Policy Blob Storage. Changing this forces a new Backup Policy Blob Storage to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The duration of operational default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
-  final pulumi.Input<String>? operationalDefaultRetentionDuration;
+  final pulumi.Input<String?>? operationalDefaultRetentionDuration;
   /// One or more `retentionRule` blocks as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
   ///
   /// &gt; **Note:** Setting `retentionRule` also requires setting `vaultDefaultRetentionDuration`.
-  final pulumi.Input<List<BackupPolicyBlobStorageRetentionRule>>? retentionRules;
+  final pulumi.Input<List<BackupPolicyBlobStorageRetentionRule>?>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Blob Storage to be created.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// The duration of vault default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   ///
   /// &gt; **Note:** Setting `vaultDefaultRetentionDuration` also requires setting `backupRepeatingTimeIntervals`. At least one of `operationalDefaultRetentionDuration` or `vaultDefaultRetentionDuration` must be specified.
-  final pulumi.Input<String>? vaultDefaultRetentionDuration;
+  final pulumi.Input<String?>? vaultDefaultRetentionDuration;
   /// The ID of the Backup Vault within which the Backup Policy Blob Storage should exist. Changing this forces a new Backup Policy Blob Storage to be created.
   final pulumi.Input<String> vaultId;
 

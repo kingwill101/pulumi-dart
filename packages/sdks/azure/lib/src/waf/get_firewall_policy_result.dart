@@ -4,42 +4,42 @@
 /// Result data returned by getFirewallPolicy.
 class GetFirewallPolicyResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
-  final String name;
-  final String resourceGroupName;
+  final String? id;
+  final String? location;
+  final String? name;
+  final String? resourceGroupName;
   final Map<String, String>? tags;
 
   /// Creates a new [GetFirewallPolicyResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
+  /// [location] Optional.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
   /// [tags] Optional.
   const GetFirewallPolicyResult({
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.resourceGroupName,
+    this.id,
+    this.location,
+    this.name,
+    this.resourceGroupName,
     this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'location': location,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
       'tags': ?tags,
     };
   }
 
   factory GetFirewallPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyResult(
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobIdentity {
   /// A list of Managed Identity IDs to assign to the Container App Job.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// The Principal ID associated with this Managed Service Identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The Tenant ID associated with this Managed Service Identity.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The type of identity used for the Container App Job. Possible values are `SystemAssigned`, `UserAssigned` and `None`.
   final pulumi.Input<String> type;
 

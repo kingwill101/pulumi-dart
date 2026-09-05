@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appplatform_spring_cloud_app_redis_association_spring_cloud_app_redis_association_args_doc}
 class SpringCloudAppRedisAssociationArgs {
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the Redis Cache access key.
   final pulumi.Input<String> redisAccessKey;
   /// Specifies the Redis Cache resource ID. Changing this forces a new resource to be created.
@@ -16,7 +16,7 @@ class SpringCloudAppRedisAssociationArgs {
   /// Specifies the Spring Cloud Application resource ID in which the Association is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> springCloudAppId;
   /// Should SSL be used when connecting to Redis? Defaults to `true`.
-  final pulumi.Input<bool>? sslEnabled;
+  final pulumi.Input<bool?>? sslEnabled;
 
   /// Creates a new [SpringCloudAppRedisAssociationArgs].
   /// [name] Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.

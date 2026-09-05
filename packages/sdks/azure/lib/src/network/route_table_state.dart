@@ -6,21 +6,21 @@ import 'route_table_route.dart';
 /// Input properties used for looking up and filtering RouteTable resources.
 class RouteTableState {
   /// Boolean flag which controls propagation of routes learned by BGP on that route table. Defaults to `true`.
-  final pulumi.Input<bool>? bgpRoutePropagationEnabled;
+  final pulumi.Input<bool?>? bgpRoutePropagationEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the route.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the route table. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A list of objects representing routes. Each object accepts the arguments documented below.
   ///
   /// &gt; **NOTE** Since `route` can be configured both inline and via the separate `azure.network.Route` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
-  final pulumi.Input<List<RouteTableRoute>>? routes;
+  final pulumi.Input<List<RouteTableRoute>?>? routes;
   /// The collection of Subnets associated with this route table.
-  final pulumi.Input<List<String>>? subnets;
+  final pulumi.Input<List<String>?>? subnets;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RouteTableState].
   /// [bgpRoutePropagationEnabled] Boolean flag which controls propagation of routes learned by BGP on that route table. Defaults to `true`.

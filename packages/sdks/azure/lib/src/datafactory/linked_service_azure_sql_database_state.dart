@@ -7,35 +7,35 @@ import 'linked_service_azure_sql_database_key_vault_password.dart';
 /// Input properties used for looking up and filtering LinkedServiceAzureSqlDatabase resources.
 class LinkedServiceAzureSqlDatabaseState {
   /// A map of additional properties to associate with the Data Factory Linked Service Azure SQL Database.
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service Azure SQL Database.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The connection string in which to authenticate with Azure SQL Database. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// The name of a User-assigned Managed Identity. Use this argument to authenticate against the linked resource using a User-assigned Managed Identity.
-  final pulumi.Input<String>? credentialName;
+  final pulumi.Input<String?>? credentialName;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The description for the Data Factory Linked Service Azure SQL Database.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The integration runtime reference to associate with the Data Factory Linked Service Azure SQL Database.
-  final pulumi.Input<String>? integrationRuntimeName;
+  final pulumi.Input<String?>? integrationRuntimeName;
   /// A `keyVaultConnectionString` block as defined below. Use this argument to store Azure SQL Database connection string in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. Exactly one of either `connectionString` or `keyVaultConnectionString` is required.
-  final pulumi.Input<LinkedServiceAzureSqlDatabaseKeyVaultConnectionString>? keyVaultConnectionString;
+  final pulumi.Input<LinkedServiceAzureSqlDatabaseKeyVaultConnectionString?>? keyVaultConnectionString;
   /// A `keyVaultPassword` block as defined below. Use this argument to store SQL Server password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
-  final pulumi.Input<LinkedServiceAzureSqlDatabaseKeyVaultPassword>? keyVaultPassword;
+  final pulumi.Input<LinkedServiceAzureSqlDatabaseKeyVaultPassword?>? keyVaultPassword;
   /// Specifies the name of the Data Factory Linked Service Azure SQL Database. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Linked Service Azure SQL Database.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The service principal id in which to authenticate against the Azure SQL Database. Required if `servicePrincipalKey` is set.
-  final pulumi.Input<String>? servicePrincipalId;
+  final pulumi.Input<String?>? servicePrincipalId;
   /// The service principal key in which to authenticate against the Azure SQL Database. Required if `servicePrincipalId` is set.
-  final pulumi.Input<String>? servicePrincipalKey;
+  final pulumi.Input<String?>? servicePrincipalKey;
   /// The tenant id or name in which to authenticate against the Azure SQL Database.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Whether to use the Data Factory's managed identity to authenticate against the Azure SQL Database. Incompatible with `servicePrincipalId` and `servicePrincipalKey`
-  final pulumi.Input<bool>? useManagedIdentity;
+  final pulumi.Input<bool?>? useManagedIdentity;
 
   /// Creates a new [LinkedServiceAzureSqlDatabaseState].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Linked Service Azure SQL Database.

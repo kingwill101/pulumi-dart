@@ -8,11 +8,11 @@ class ConnectedRegistryNotification {
   /// The digest of the artifact that wants to be subscribed for the Connected Registry.
   ///
   /// &gt; **Note:** One of either `tag` or `digest` can be specified.
-  final pulumi.Input<String>? digest;
+  final pulumi.Input<String?>? digest;
   /// The name of the artifact that wants to be subscribed for the Connected Registry.
   final pulumi.Input<String> name;
   /// The tag of the artifact that wants to be subscribed for the Connected Registry.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [ConnectedRegistryNotification].
   /// [action] The action of the artifact that wants to be subscribed for the Connected Registry. Possible values are `push`, `delete` and `*` (i.e. any).

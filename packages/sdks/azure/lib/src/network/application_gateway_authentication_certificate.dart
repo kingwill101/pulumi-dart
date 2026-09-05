@@ -6,7 +6,7 @@ class ApplicationGatewayAuthenticationCertificate {
   /// The contents of the Authentication Certificate which should be used.
   final pulumi.Input<String> data;
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Name of the Authentication Certificate to use.
   final pulumi.Input<String> name;
 

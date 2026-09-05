@@ -399,9 +399,9 @@ import 'module_state.dart';
 /// 			Sku:               pulumi.String("Standard"),
 /// 			IpConfigurations: network.VirtualNetworkGatewayIpConfigurationArray{
 /// 				&network.VirtualNetworkGatewayIpConfigurationArgs{
-/// 					PublicIpAddressId:          examplePublicIp.ID(),
+/// 					PublicIpAddressId:          examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
-/// 					SubnetId:                   example3.ID(),
+/// 					SubnetId:                   example3.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -417,13 +417,13 @@ import 'module_state.dart';
 /// 				NetworkInterfacePrivateIpAddresses: pulumi.StringArray{
 /// 					pulumi.String("10.2.1.7"),
 /// 				},
-/// 				SubnetId: example2.ID(),
+/// 				SubnetId: example2.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			NetworkProfile: &hsm.ModuleNetworkProfileArgs{
 /// 				NetworkInterfacePrivateIpAddresses: pulumi.StringArray{
 /// 					pulumi.String("10.2.1.8"),
 /// 				},
-/// 				SubnetId: example2.ID(),
+/// 				SubnetId: example2.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			StampId: pulumi.String("stamp2"),
 /// 			Tags: pulumi.StringMap{
@@ -787,7 +787,7 @@ class Module extends pulumi.CustomResource {
           'azure:hsm/module:Module',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>('managementNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleManagementNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -796,8 +796,8 @@ class Module extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     stampId = registerOutput<String?>('stampId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>?>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Module] resource's state with the given [name] and [id].
@@ -805,11 +805,12 @@ class Module extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ModuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Module._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -830,7 +831,27 @@ class Module extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
     stampId = registerOutput<String?>('stampId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>?>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Module] resource.
+  Module.reference(String urn)
+    : super(
+        'azure:hsm/module:Module',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>('managementNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleManagementNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<ModuleNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    stampId = registerOutput<String?>('stampId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

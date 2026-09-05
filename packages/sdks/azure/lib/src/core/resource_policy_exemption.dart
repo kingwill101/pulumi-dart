@@ -157,7 +157,7 @@ import 'resource_policy_exemption_state.dart';
 /// 		}
 /// 		exampleResourcePolicyAssignment, err := core.NewResourcePolicyAssignment(ctx, "example", &core.ResourcePolicyAssignmentArgs{
 /// 			Name:               pulumi.String("assignment1"),
-/// 			ResourceId:         exampleVirtualNetwork.ID(),
+/// 			ResourceId:         exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			PolicyDefinitionId: pulumi.String(example.Id),
 /// 			Location:           exampleResourceGroup.Location,
 /// 			Identity: &core.ResourcePolicyAssignmentIdentityArgs{
@@ -170,7 +170,7 @@ import 'resource_policy_exemption_state.dart';
 /// 		_, err = core.NewResourcePolicyExemption(ctx, "example", &core.ResourcePolicyExemptionArgs{
 /// 			Name:               pulumi.String("exemption1"),
 /// 			ResourceId:         exampleResourcePolicyAssignment.ResourceId,
-/// 			PolicyAssignmentId: exampleResourcePolicyAssignment.ID(),
+/// 			PolicyAssignmentId: exampleResourcePolicyAssignment.ID().ToIDOutput().ToStringOutput(),
 /// 			ExemptionCategory:  pulumi.String("Mitigated"),
 /// 		})
 /// 		if err != nil {
@@ -368,7 +368,7 @@ class ResourcePolicyExemption extends pulumi.CustomResource {
           'azure:core/resourcePolicyExemption:ResourcePolicyExemption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -377,7 +377,7 @@ class ResourcePolicyExemption extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceId = registerOutput<String>('resourceId');
   }
 
@@ -386,11 +386,12 @@ class ResourcePolicyExemption extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourcePolicyExemptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourcePolicyExemption._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -411,7 +412,27 @@ class ResourcePolicyExemption extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceId = registerOutput<String>('resourceId');
+  }
+
+  /// Creates a typed reference to an existing [ResourcePolicyExemption] resource.
+  ResourcePolicyExemption.reference(String urn)
+    : super(
+        'azure:core/resourcePolicyExemption:ResourcePolicyExemption',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    exemptionCategory = registerOutput<String>('exemptionCategory');
+    expiresOn = registerOutput<String?>('expiresOn');
+    metadata = registerOutput<String>('metadata');
+    this.name = registerOutput<String>('name');
+    policyAssignmentId = registerOutput<String>('policyAssignmentId');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceId = registerOutput<String>('resourceId');
   }
 }

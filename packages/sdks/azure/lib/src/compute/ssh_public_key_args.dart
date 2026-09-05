@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_ssh_public_key_ssh_public_key_args_doc}
 class SshPublicKeyArgs {
   /// The Azure Region where the SSH Public Key should exist. Changing this forces a new SSH Public Key to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this SSH Public Key. Changing this forces a new SSH Public Key to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// SSH public key used to authenticate to a virtual machine through ssh. the provided public key needs to be at least 2048-bit and in ssh-rsa format.
   final pulumi.Input<String> publicKey;
   /// The name of the Resource Group where the SSH Public Key should exist. Changing this forces a new SSH Public Key to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the SSH Public Key.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SshPublicKeyArgs].
   /// [location] The Azure Region where the SSH Public Key should exist. Changing this forces a new SSH Public Key to be created.

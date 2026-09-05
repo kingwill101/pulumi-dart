@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_table_custom_log_args.dart';
+import 'workspace_table_custom_log_column.dart';
+import 'workspace_table_custom_log_standard_column.dart';
 import 'workspace_table_custom_log_state.dart';
 
 /// Manages a Custom Log Table in a Log Analytics (formally Operational Insights) Workspace.
@@ -122,7 +124,7 @@ import 'workspace_table_custom_log_state.dart';
 /// 		}
 /// 		_, err = loganalytics.NewWorkspaceTableCustomLog(ctx, "example", &loganalytics.WorkspaceTableCustomLogArgs{
 /// 			Name:        pulumi.String("example_CL"),
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Columns: loganalytics.WorkspaceTableCustomLogColumnArray{
 /// 				&loganalytics.WorkspaceTableCustomLogColumnArgs{
 /// 					Name: pulumi.String("TimeGenerated"),
@@ -261,7 +263,7 @@ import 'workspace_table_custom_log_state.dart';
 /// ```
 class WorkspaceTableCustomLog extends pulumi.CustomResource {
   /// One or more `column` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> columns;
+  late final pulumi.Output<List<WorkspaceTableCustomLogColumn>> columns;
   /// The description of the table.
   late final pulumi.Output<String?> description;
   /// The display name of the table.
@@ -281,7 +283,7 @@ class WorkspaceTableCustomLog extends pulumi.CustomResource {
   /// A list of solutions associated with the table.
   late final pulumi.Output<List<String>> solutions;
   /// One or more `standardColumn` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> standardColumns;
+  late final pulumi.Output<List<WorkspaceTableCustomLogStandardColumn>> standardColumns;
   /// The table's total retention in days. Possible values range between `4` and `730`; or `1095`, `1460`, `1826`, `2191`, `2556`, `2922`, `3288`, `3653`, `4018`, or `4383`.
   late final pulumi.Output<int?> totalRetentionInDays;
   /// The object ID of the Log Analytics Workspace that contains the table. Changing this forces a new resource to be created.
@@ -299,16 +301,16 @@ class WorkspaceTableCustomLog extends pulumi.CustomResource {
           'azure:loganalytics/workspaceTableCustomLog:WorkspaceTableCustomLog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    columns = registerOutput<List<Map<String, dynamic>>>('columns');
+    columns = registerOutput<List<WorkspaceTableCustomLogColumn>>('columns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceTableCustomLogColumn>(guardedValue, (value) => WorkspaceTableCustomLogColumn.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     plan = registerOutput<String?>('plan');
     retentionInDays = registerOutput<int?>('retentionInDays');
-    solutions = registerOutput<List<String>>('solutions');
-    standardColumns = registerOutput<List<Map<String, dynamic>>>('standardColumns');
+    solutions = registerOutput<List<String>>('solutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    standardColumns = registerOutput<List<WorkspaceTableCustomLogStandardColumn>>('standardColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceTableCustomLogStandardColumn>(guardedValue, (value) => WorkspaceTableCustomLogStandardColumn.fromMap((value as Map).cast<String, dynamic>())); });
     totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
     workspaceId = registerOutput<String>('workspaceId');
   }
@@ -318,11 +320,12 @@ class WorkspaceTableCustomLog extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceTableCustomLogState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceTableCustomLog._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,14 +339,35 @@ class WorkspaceTableCustomLog extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    columns = registerOutput<List<Map<String, dynamic>>>('columns');
+    columns = registerOutput<List<WorkspaceTableCustomLogColumn>>('columns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceTableCustomLogColumn>(guardedValue, (value) => WorkspaceTableCustomLogColumn.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     plan = registerOutput<String?>('plan');
     retentionInDays = registerOutput<int?>('retentionInDays');
-    solutions = registerOutput<List<String>>('solutions');
-    standardColumns = registerOutput<List<Map<String, dynamic>>>('standardColumns');
+    solutions = registerOutput<List<String>>('solutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    standardColumns = registerOutput<List<WorkspaceTableCustomLogStandardColumn>>('standardColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceTableCustomLogStandardColumn>(guardedValue, (value) => WorkspaceTableCustomLogStandardColumn.fromMap((value as Map).cast<String, dynamic>())); });
+    totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceTableCustomLog] resource.
+  WorkspaceTableCustomLog.reference(String urn)
+    : super(
+        'azure:loganalytics/workspaceTableCustomLog:WorkspaceTableCustomLog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    columns = registerOutput<List<WorkspaceTableCustomLogColumn>>('columns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceTableCustomLogColumn>(guardedValue, (value) => WorkspaceTableCustomLogColumn.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<String?>('plan');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    solutions = registerOutput<List<String>>('solutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    standardColumns = registerOutput<List<WorkspaceTableCustomLogStandardColumn>>('standardColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceTableCustomLogStandardColumn>(guardedValue, (value) => WorkspaceTableCustomLogStandardColumn.fromMap((value as Map).cast<String, dynamic>())); });
     totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
     workspaceId = registerOutput<String>('workspaceId');
   }

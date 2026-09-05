@@ -368,7 +368,7 @@ import 'application_security_group_association_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              examplePublicIp.Name,
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -389,13 +389,13 @@ import 'application_security_group_association_state.dart';
 /// 				&privatedns.LinkServiceNatIpConfigurationArgs{
 /// 					Name:     pulumi.String("primaryIpConfiguration"),
 /// 					Primary:  pulumi.Bool(true),
-/// 					SubnetId: service.ID(),
+/// 					SubnetId: service.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			LoadBalancerFrontendIpConfigurationIds: pulumi.StringArray{
-/// 				pulumi.String(exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
+/// 				exampleLoadBalancer.FrontendIpConfigurations.ApplyT(func(frontendIpConfigurations []lb.LoadBalancerFrontendIpConfiguration) (*string, error) {
 /// 					return frontendIpConfigurations[0].Id, nil
-/// 				}).(pulumi.StringPtrOutput)),
+/// 				}).(pulumi.StringPtrOutput),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -405,11 +405,11 @@ import 'application_security_group_association_state.dart';
 /// 			Name:              pulumi.String("example-privatelink"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			SubnetId:          endpoint.ID(),
+/// 			SubnetId:          endpoint.ID().ToIDOutput().ToStringOutput(),
 /// 			PrivateServiceConnection: &privatelink.EndpointPrivateServiceConnectionArgs{
 /// 				Name:                        exampleLinkService.Name,
 /// 				IsManualConnection:          pulumi.Bool(false),
-/// 				PrivateConnectionResourceId: exampleLinkService.ID(),
+/// 				PrivateConnectionResourceId: exampleLinkService.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -424,8 +424,8 @@ import 'application_security_group_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = privatelink.NewApplicationSecurityGroupAssociation(ctx, "example", &privatelink.ApplicationSecurityGroupAssociationArgs{
-/// 			PrivateEndpointId:          exampleEndpoint.ID(),
-/// 			ApplicationSecurityGroupId: exampleApplicationSecurityGroup.ID(),
+/// 			PrivateEndpointId:          exampleEndpoint.ID().ToIDOutput().ToStringOutput(),
+/// 			ApplicationSecurityGroupId: exampleApplicationSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -791,7 +791,7 @@ class ApplicationSecurityGroupAssociation extends pulumi.CustomResource {
           'azure:privatelink/applicationSecurityGroupAssociation:ApplicationSecurityGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationSecurityGroupId = registerOutput<String>('applicationSecurityGroupId');
     privateEndpointId = registerOutput<String>('privateEndpointId');
@@ -802,11 +802,12 @@ class ApplicationSecurityGroupAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationSecurityGroupAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationSecurityGroupAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -820,6 +821,19 @@ class ApplicationSecurityGroupAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationSecurityGroupId = registerOutput<String>('applicationSecurityGroupId');
+    privateEndpointId = registerOutput<String>('privateEndpointId');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationSecurityGroupAssociation] resource.
+  ApplicationSecurityGroupAssociation.reference(String urn)
+    : super(
+        'azure:privatelink/applicationSecurityGroupAssociation:ApplicationSecurityGroupAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationSecurityGroupId = registerOutput<String>('applicationSecurityGroupId');
     privateEndpointId = registerOutput<String>('privateEndpointId');
   }

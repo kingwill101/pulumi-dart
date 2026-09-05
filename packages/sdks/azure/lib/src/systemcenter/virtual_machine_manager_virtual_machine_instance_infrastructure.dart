@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineManagerVirtualMachineInstanceInfrastructure {
   /// The type of checkpoint supported for the Virtual Machine. Possible values are `Disabled`, `Production`, `ProductionOnly` and `Standard`.
-  final pulumi.Input<String>? checkpointType;
+  final pulumi.Input<String?>? checkpointType;
   /// The ID of the System Center Virtual Machine Manager Cloud resource to use for deploying the Virtual Machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? systemCenterVirtualMachineManagerCloudId;
+  final pulumi.Input<String?>? systemCenterVirtualMachineManagerCloudId;
   /// The ID of the System Center Virtual Machine Manager Inventory Item for System Center Virtual Machine Manager Virtual Machine Instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? systemCenterVirtualMachineManagerInventoryItemId;
+  final pulumi.Input<String?>? systemCenterVirtualMachineManagerInventoryItemId;
   /// The ID of the System Center Virtual Machine Manager Virtual Machine Template to use for deploying the Virtual Machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? systemCenterVirtualMachineManagerTemplateId;
+  final pulumi.Input<String?>? systemCenterVirtualMachineManagerTemplateId;
   /// The ID of the System Center Virtual Machine Manager Virtual Machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? systemCenterVirtualMachineManagerVirtualMachineServerId;
+  final pulumi.Input<String?>? systemCenterVirtualMachineManagerVirtualMachineServerId;
 
   /// Creates a new [VirtualMachineManagerVirtualMachineInstanceInfrastructure].
   /// [checkpointType] The type of checkpoint supported for the Virtual Machine. Possible values are `Disabled`, `Production`, `ProductionOnly` and `Standard`.

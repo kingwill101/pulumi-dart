@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_args.dart';
+import 'workspace_private_endpoint_connection.dart';
 import 'workspace_state.dart';
 
 /// Manages a Healthcare workspace
@@ -140,7 +141,7 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Specifies the name of the Healthcare Workspace. Changing this forces a new Healthcare Workspace to be created.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<WorkspacePrivateEndpointConnection>> privateEndpointConnections;
   /// Specifies the name of the Resource Group where the Healthcare Workspace should exist. Changing this forces a new Healthcare Workspace to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags to assign to the Healthcare Workspace.
@@ -158,13 +159,13 @@ class Workspace extends pulumi.CustomResource {
           'azure:healthcare/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<WorkspacePrivateEndpointConnection>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspacePrivateEndpointConnection>(guardedValue, (value) => WorkspacePrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -172,11 +173,12 @@ class Workspace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workspace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -192,8 +194,24 @@ class Workspace extends pulumi.CustomResource {
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<WorkspacePrivateEndpointConnection>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspacePrivateEndpointConnection>(guardedValue, (value) => WorkspacePrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Workspace] resource.
+  Workspace.reference(String urn)
+    : super(
+        'azure:healthcare/workspace:Workspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<WorkspacePrivateEndpointConnection>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspacePrivateEndpointConnection>(guardedValue, (value) => WorkspacePrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

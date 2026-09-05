@@ -12,7 +12,7 @@ class GetNetworkSecurityGroupSecurityRule {
   /// A list of CIDRs or destination IP ranges.
   final pulumi.Input<List<String>> destinationAddressPrefixes;
   /// A List of destination Application Security Group IDs
-  final pulumi.Input<List<String>>? destinationApplicationSecurityGroupIds;
+  final pulumi.Input<List<String>?>? destinationApplicationSecurityGroupIds;
   /// The Destination Port or Range.
   final pulumi.Input<String> destinationPortRange;
   final pulumi.Input<List<String>> destinationPortRanges;
@@ -29,7 +29,7 @@ class GetNetworkSecurityGroupSecurityRule {
   /// A list of CIDRs or source IP ranges.
   final pulumi.Input<List<String>> sourceAddressPrefixes;
   /// A List of source Application Security Group IDs
-  final pulumi.Input<List<String>>? sourceApplicationSecurityGroupIds;
+  final pulumi.Input<List<String>?>? sourceApplicationSecurityGroupIds;
   /// The Source Port or Range.
   final pulumi.Input<String> sourcePortRange;
   final pulumi.Input<List<String>> sourcePortRanges;
@@ -102,7 +102,7 @@ class GetNetworkSecurityGroupSecurityRule {
       destinationPortRanges: pulumi.Input.fromValue((map['destinationPortRanges'] as List).cast<String>()),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       sourceAddressPrefix: pulumi.Input.fromValue(map['sourceAddressPrefix'] as String),
       sourceAddressPrefixes: pulumi.Input.fromValue((map['sourceAddressPrefixes'] as List).cast<String>()),

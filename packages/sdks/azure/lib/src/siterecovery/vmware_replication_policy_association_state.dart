@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VmwareReplicationPolicyAssociation resources.
 class VmwareReplicationPolicyAssociationState {
   /// The name of the replication policy association. Changing this forces a new association to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the VMWare replication policy which to be associated. Changing this forces a new association to be created.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// The ID of the Recovery Service Vault to which the policy should be associated.
   /// Changing this forces a new association to be created.
-  final pulumi.Input<String>? recoveryVaultId;
+  final pulumi.Input<String?>? recoveryVaultId;
 
   /// Creates a new [VmwareReplicationPolicyAssociationState].
   /// [name] The name of the replication policy association. Changing this forces a new association to be created.

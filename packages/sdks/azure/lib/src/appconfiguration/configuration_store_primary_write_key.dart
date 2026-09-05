@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationStorePrimaryWriteKey {
   /// The Connection String for this Access Key - consisting of the Endpoint, ID, and Secret.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// The ID of the Access Key.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Secret of the Access Key.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
 
   /// Creates a new [ConfigurationStorePrimaryWriteKey].
   /// [connectionString] The Connection String for this Access Key - consisting of the Endpoint, ID, and Secret.

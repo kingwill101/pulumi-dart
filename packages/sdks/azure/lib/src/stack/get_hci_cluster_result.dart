@@ -6,27 +6,27 @@ import 'get_hci_cluster_identity.dart';
 /// Result data returned by getHciCluster.
 class GetHciClusterResult {
   /// The ID of the Automanage Configuration assigned to the Azure Stack HCI Cluster.
-  final String automanageConfigurationId;
+  final String? automanageConfigurationId;
   /// The Client ID of the Azure Active Directory used by the Azure Stack HCI Cluster.
-  final String clientId;
+  final String? clientId;
   /// An immutable UUID for the Azure Stack HCI Cluster.
-  final String cloudId;
+  final String? cloudId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// An `identity` block as defined below.
-  final List<GetHciClusterIdentity> identities;
+  final List<GetHciClusterIdentity>? identities;
   /// The Azure Region where the Azure Stack HCI Cluster exists.
-  final String location;
-  final String name;
-  final String resourceGroupName;
+  final String? location;
+  final String? name;
+  final String? resourceGroupName;
   /// The object ID of the Resource Provider Service Principal.
-  final String resourceProviderObjectId;
+  final String? resourceProviderObjectId;
   /// The region specific Data Path Endpoint of the Azure Stack HCI Cluster.
-  final String serviceEndpoint;
+  final String? serviceEndpoint;
   /// A mapping of tags assigned to the Azure Stack HCI Cluster.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// The Tenant ID associated with this Managed Service Identity.
-  final String tenantId;
+  final String? tenantId;
 
   /// Creates a new [GetHciClusterResult].
   /// [automanageConfigurationId] The ID of the Automanage Configuration assigned to the Azure Stack HCI Cluster.
@@ -35,58 +35,58 @@ class GetHciClusterResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below.
   /// [location] The Azure Region where the Azure Stack HCI Cluster exists.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
   /// [resourceProviderObjectId] The object ID of the Resource Provider Service Principal.
   /// [serviceEndpoint] The region specific Data Path Endpoint of the Azure Stack HCI Cluster.
   /// [tags] A mapping of tags assigned to the Azure Stack HCI Cluster.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   const GetHciClusterResult({
-    required this.automanageConfigurationId,
-    required this.clientId,
-    required this.cloudId,
-    required this.id,
-    required this.identities,
-    required this.location,
-    required this.name,
-    required this.resourceGroupName,
-    required this.resourceProviderObjectId,
-    required this.serviceEndpoint,
-    required this.tags,
-    required this.tenantId,
+    this.automanageConfigurationId,
+    this.clientId,
+    this.cloudId,
+    this.id,
+    this.identities,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.resourceProviderObjectId,
+    this.serviceEndpoint,
+    this.tags,
+    this.tenantId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'automanageConfigurationId': automanageConfigurationId,
-      'clientId': clientId,
-      'cloudId': cloudId,
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetHciClusterIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'location': location,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'resourceProviderObjectId': resourceProviderObjectId,
-      'serviceEndpoint': serviceEndpoint,
-      'tags': tags,
-      'tenantId': tenantId,
+      'automanageConfigurationId': ?automanageConfigurationId,
+      'clientId': ?clientId,
+      'cloudId': ?cloudId,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetHciClusterIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'resourceProviderObjectId': ?resourceProviderObjectId,
+      'serviceEndpoint': ?serviceEndpoint,
+      'tags': ?tags,
+      'tenantId': ?tenantId,
     };
   }
 
   factory GetHciClusterResult.fromMap(Map<String, dynamic> map) {
     return GetHciClusterResult(
-      automanageConfigurationId: map['automanageConfigurationId'] as String,
-      clientId: map['clientId'] as String,
-      cloudId: map['cloudId'] as String,
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetHciClusterIdentity>(map['identities']!, (value) => GetHciClusterIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      resourceProviderObjectId: map['resourceProviderObjectId'] as String,
-      serviceEndpoint: map['serviceEndpoint'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      tenantId: map['tenantId'] as String,
+      automanageConfigurationId: (() { final guardedValue = map['automanageConfigurationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cloudId: (() { final guardedValue = map['cloudId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetHciClusterIdentity>(guardedValue, (value) => GetHciClusterIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceProviderObjectId: (() { final guardedValue = map['resourceProviderObjectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceEndpoint: (() { final guardedValue = map['serviceEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

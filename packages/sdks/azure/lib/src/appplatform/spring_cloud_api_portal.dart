@@ -159,16 +159,16 @@ import 'spring_cloud_api_portal_state.dart';
 /// 		}
 /// 		exampleSpringCloudGateway, err := appplatform.NewSpringCloudGateway(ctx, "example", &appplatform.SpringCloudGatewayArgs{
 /// 			Name:                 pulumi.String("default"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudApiPortal(ctx, "example", &appplatform.SpringCloudApiPortalArgs{
 /// 			Name:                 pulumi.String("default"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 			GatewayIds: pulumi.StringArray{
-/// 				exampleSpringCloudGateway.ID(),
+/// 				exampleSpringCloudGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			HttpsOnlyEnabled:           pulumi.Bool(false),
 /// 			PublicNetworkAccessEnabled: pulumi.Bool(true),
@@ -381,10 +381,10 @@ class SpringCloudApiPortal extends pulumi.CustomResource {
           'azure:appplatform/springCloudApiPortal:SpringCloudApiPortal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiTryOutEnabled = registerOutput<bool?>('apiTryOutEnabled');
-    gatewayIds = registerOutput<List<String>?>('gatewayIds');
+    gatewayIds = registerOutput<List<String>?>('gatewayIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     httpsOnlyEnabled = registerOutput<bool?>('httpsOnlyEnabled');
     instanceCount = registerOutput<int?>('instanceCount');
     this.name = registerOutput<String>('name');
@@ -399,11 +399,12 @@ class SpringCloudApiPortal extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudApiPortalState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudApiPortal._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -418,7 +419,27 @@ class SpringCloudApiPortal extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     apiTryOutEnabled = registerOutput<bool?>('apiTryOutEnabled');
-    gatewayIds = registerOutput<List<String>?>('gatewayIds');
+    gatewayIds = registerOutput<List<String>?>('gatewayIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    httpsOnlyEnabled = registerOutput<bool?>('httpsOnlyEnabled');
+    instanceCount = registerOutput<int?>('instanceCount');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    sso = registerOutput<SpringCloudApiPortalSso?>('sso', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudApiPortalSso.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudApiPortal] resource.
+  SpringCloudApiPortal.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudApiPortal:SpringCloudApiPortal',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiTryOutEnabled = registerOutput<bool?>('apiTryOutEnabled');
+    gatewayIds = registerOutput<List<String>?>('gatewayIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     httpsOnlyEnabled = registerOutput<bool?>('httpsOnlyEnabled');
     instanceCount = registerOutput<int?>('instanceCount');
     this.name = registerOutput<String>('name');

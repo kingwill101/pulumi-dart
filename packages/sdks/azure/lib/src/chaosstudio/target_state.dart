@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Target resources.
 class TargetState {
   /// The Azure Region where the Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the Target Resource Id within which this Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
   /// The name of the Chaos Studio Target. This has the format of [publisher]-[targetType] e.g. `Microsoft-StorageAccount`. For supported values please see this Target Type column in [this table](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-providers). Changing this forces a new Chaos Studio Target to be created.
-  final pulumi.Input<String>? targetType;
+  final pulumi.Input<String?>? targetType;
 
   /// Creates a new [TargetState].
   /// [location] The Azure Region where the Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.

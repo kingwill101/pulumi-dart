@@ -53,7 +53,7 @@ class GetApplicationGatewayRewriteRuleSetRewriteRule {
       name: pulumi.Input.fromValue(map['name'] as String),
       requestHeaderConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration>(map['requestHeaderConfigurations']!, (value) => GetApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
       responseHeaderConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration>(map['responseHeaderConfigurations']!, (value) => GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      ruleSequence: pulumi.Input.fromValue(map['ruleSequence'] as int),
+      ruleSequence: pulumi.Input.fromValue((map['ruleSequence'] as num).toInt()),
       urls: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationGatewayRewriteRuleSetRewriteRuleUrl>(map['urls']!, (value) => GetApplicationGatewayRewriteRuleSetRewriteRuleUrl.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

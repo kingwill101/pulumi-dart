@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appservice_function_app_active_slot_function_app_active_slot_args_doc}
 class FunctionAppActiveSlotArgs {
   /// The swap action should overwrite the Production slot's network configuration with the configuration from this slot. Defaults to `true`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? overwriteNetworkConfig;
+  final pulumi.Input<bool?>? overwriteNetworkConfig;
   /// The ID of the Slot to swap with `Production`.
   final pulumi.Input<String> slotId;
 

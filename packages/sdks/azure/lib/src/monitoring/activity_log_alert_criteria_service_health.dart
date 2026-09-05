@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ActivityLogAlertCriteriaServiceHealth {
   /// Events this alert will monitor Possible values are `Incident`, `Maintenance`, `Informational`, `ActionRequired` and `Security`.
-  final pulumi.Input<List<String>>? events;
+  final pulumi.Input<List<String>?>? events;
   /// Locations this alert will monitor. For example, `West Europe`.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// Services this alert will monitor. For example, `Activity Logs & Alerts`, `Action Groups`. Defaults to all Services.
-  final pulumi.Input<List<String>>? services;
+  final pulumi.Input<List<String>?>? services;
 
   /// Creates a new [ActivityLogAlertCriteriaServiceHealth].
   /// [events] Events this alert will monitor Possible values are `Incident`, `Maintenance`, `Informational`, `ActionRequired` and `Security`.

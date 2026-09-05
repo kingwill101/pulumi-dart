@@ -291,12 +291,12 @@ import 'api_key_state.dart';
 /// 			AutomaticUpgradeChannel: pulumi.String("stable"),
 /// 			FrontendPublic: &nginx.DeploymentFrontendPublicArgs{
 /// 				IpAddresses: pulumi.StringArray{
-/// 					examplePublicIp.ID(),
+/// 					examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			NetworkInterfaces: nginx.DeploymentNetworkInterfaceArray{
 /// 				&nginx.DeploymentNetworkInterfaceArgs{
-/// 					SubnetId: exampleSubnet.ID(),
+/// 					SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Capacity: pulumi.Int(20),
@@ -307,7 +307,7 @@ import 'api_key_state.dart';
 /// 		}
 /// 		_, err = nginx.NewApiKey(ctx, "example", &nginx.ApiKeyArgs{
 /// 			Name:              pulumi.String("example-api-key"),
-/// 			NginxDeploymentId: exampleDeployment.ID(),
+/// 			NginxDeploymentId: exampleDeployment.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretText:        pulumi.String("727c8642-6807-4254-9d02-ae93bfad21de"),
 /// 			EndDateTime:       pulumi.String("2027-01-01T00:00:00Z"),
 /// 		})
@@ -585,13 +585,14 @@ class ApiKey extends pulumi.CustomResource {
           'azure:nginx/apiKey:ApiKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['secretText'],
         ) {
     endDateTime = registerOutput<String>('endDateTime');
     hint = registerOutput<String>('hint');
     this.name = registerOutput<String>('name');
     nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
-    secretText = registerOutput<String>('secretText');
+    secretText = registerOutput<String>('secretText', isSecret: true);
   }
 
   /// Gets an existing [ApiKey] resource's state with the given [name] and [id].
@@ -599,11 +600,12 @@ class ApiKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -621,6 +623,23 @@ class ApiKey extends pulumi.CustomResource {
     hint = registerOutput<String>('hint');
     this.name = registerOutput<String>('name');
     nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
-    secretText = registerOutput<String>('secretText');
+    secretText = registerOutput<String>('secretText', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ApiKey] resource.
+  ApiKey.reference(String urn)
+    : super(
+        'azure:nginx/apiKey:ApiKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secretText'],
+        isResourceReference: true,
+      ) {
+    endDateTime = registerOutput<String>('endDateTime');
+    hint = registerOutput<String>('hint');
+    this.name = registerOutput<String>('name');
+    nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
+    secretText = registerOutput<String>('secretText', isSecret: true);
   }
 }

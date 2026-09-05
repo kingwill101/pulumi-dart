@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsSolutionPlan {
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The product name of the solution. For example `OMSGallery/Containers`. Changing this forces a new resource to be created.
   final pulumi.Input<String> product;
   /// A promotion code to be used with the solution. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? promotionCode;
+  final pulumi.Input<String?>? promotionCode;
   /// The publisher of the solution. For example `Microsoft`. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
 

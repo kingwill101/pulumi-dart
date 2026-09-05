@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderFeaturesVirtualMachine {
-  final pulumi.Input<bool>? deleteOsDiskOnDeletion;
-  final pulumi.Input<bool>? detachImplicitDataDiskOnDeletion;
-  final pulumi.Input<bool>? gracefulShutdown;
-  final pulumi.Input<bool>? skipShutdownAndForceDelete;
+  final pulumi.Input<bool?>? deleteOsDiskOnDeletion;
+  final pulumi.Input<bool?>? detachImplicitDataDiskOnDeletion;
+  final pulumi.Input<bool?>? gracefulShutdown;
+  final pulumi.Input<bool?>? skipShutdownAndForceDelete;
 
   /// Creates a new [ProviderFeaturesVirtualMachine].
   /// [deleteOsDiskOnDeletion] Optional.

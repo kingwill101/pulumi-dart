@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NamespaceSchemaGroup resources.
 class NamespaceSchemaGroupState {
   /// Specifies the name of this schema group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the EventHub Namespace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? namespaceId;
+  final pulumi.Input<String?>? namespaceId;
   /// Specifies the compatibility of this schema group. Possible values are `None`, `Backward`, `Forward`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? schemaCompatibility;
+  final pulumi.Input<String?>? schemaCompatibility;
   /// Specifies the Type of this schema group. Possible values are `Avro`, `Unknown` and `Json`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** When `schemaType` is specified as `Json`, `schemaCompatibility` must be set to `None`.
-  final pulumi.Input<String>? schemaType;
+  final pulumi.Input<String?>? schemaType;
 
   /// Creates a new [NamespaceSchemaGroupState].
   /// [name] Specifies the name of this schema group. Changing this forces a new resource to be created.

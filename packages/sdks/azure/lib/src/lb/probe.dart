@@ -144,7 +144,7 @@ import 'probe_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String("PublicIPAddress"),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -152,7 +152,7 @@ import 'probe_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lb.NewProbe(ctx, "example", &lb.ProbeArgs{
-/// 			LoadbalancerId: exampleLoadBalancer.ID(),
+/// 			LoadbalancerId: exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:           pulumi.String("ssh-running-probe"),
 /// 			Port:           pulumi.Int(22),
 /// 		})
@@ -336,10 +336,10 @@ class Probe extends pulumi.CustomResource {
           'azure:lb/probe:Probe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     intervalInSeconds = registerOutput<int?>('intervalInSeconds');
-    loadBalancerRules = registerOutput<List<String>>('loadBalancerRules');
+    loadBalancerRules = registerOutput<List<String>>('loadBalancerRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
     numberOfProbes = registerOutput<int?>('numberOfProbes');
@@ -354,11 +354,12 @@ class Probe extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProbeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Probe._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -373,7 +374,27 @@ class Probe extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     intervalInSeconds = registerOutput<int?>('intervalInSeconds');
-    loadBalancerRules = registerOutput<List<String>>('loadBalancerRules');
+    loadBalancerRules = registerOutput<List<String>>('loadBalancerRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadbalancerId = registerOutput<String>('loadbalancerId');
+    this.name = registerOutput<String>('name');
+    numberOfProbes = registerOutput<int?>('numberOfProbes');
+    port = registerOutput<int>('port');
+    probeThreshold = registerOutput<int?>('probeThreshold');
+    protocol = registerOutput<String?>('protocol');
+    requestPath = registerOutput<String?>('requestPath');
+  }
+
+  /// Creates a typed reference to an existing [Probe] resource.
+  Probe.reference(String urn)
+    : super(
+        'azure:lb/probe:Probe',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    intervalInSeconds = registerOutput<int?>('intervalInSeconds');
+    loadBalancerRules = registerOutput<List<String>>('loadBalancerRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
     numberOfProbes = registerOutput<int?>('numberOfProbes');

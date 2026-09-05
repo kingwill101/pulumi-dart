@@ -139,7 +139,7 @@ import 'container_storage_account_state.dart';
 /// 		_, err = backup.NewContainerStorageAccount(ctx, "container", &backup.ContainerStorageAccountArgs{
 /// 			ResourceGroupName: example.Name,
 /// 			RecoveryVaultName: vault.Name,
-/// 			StorageAccountId:  sa.ID(),
+/// 			StorageAccountId:  sa.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -298,7 +298,7 @@ class ContainerStorageAccount extends pulumi.CustomResource {
           'azure:backup/containerStorageAccount:ContainerStorageAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -310,11 +310,12 @@ class ContainerStorageAccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContainerStorageAccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContainerStorageAccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -328,6 +329,20 @@ class ContainerStorageAccount extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageAccountId = registerOutput<String>('storageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [ContainerStorageAccount] resource.
+  ContainerStorageAccount.reference(String urn)
+    : super(
+        'azure:backup/containerStorageAccount:ContainerStorageAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageAccountId = registerOutput<String>('storageAccountId');

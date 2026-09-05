@@ -155,7 +155,7 @@ import 'spring_cloud_dev_tool_portal_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudDevToolPortal(ctx, "example", &appplatform.SpringCloudDevToolPortalArgs{
 /// 			Name:                       pulumi.String("default"),
-/// 			SpringCloudServiceId:       exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId:       exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 			PublicNetworkAccessEnabled: pulumi.Bool(true),
 /// 			Sso: &appplatform.SpringCloudDevToolPortalSsoArgs{
 /// 				ClientId:     pulumi.String("example id"),
@@ -347,7 +347,7 @@ class SpringCloudDevToolPortal extends pulumi.CustomResource {
           'azure:appplatform/springCloudDevToolPortal:SpringCloudDevToolPortal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationAcceleratorEnabled = registerOutput<bool>('applicationAcceleratorEnabled');
     applicationLiveViewEnabled = registerOutput<bool>('applicationLiveViewEnabled');
@@ -362,11 +362,12 @@ class SpringCloudDevToolPortal extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudDevToolPortalState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudDevToolPortal._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -380,6 +381,23 @@ class SpringCloudDevToolPortal extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationAcceleratorEnabled = registerOutput<bool>('applicationAcceleratorEnabled');
+    applicationLiveViewEnabled = registerOutput<bool>('applicationLiveViewEnabled');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    sso = registerOutput<SpringCloudDevToolPortalSso?>('sso', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudDevToolPortalSso.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudDevToolPortal] resource.
+  SpringCloudDevToolPortal.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudDevToolPortal:SpringCloudDevToolPortal',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationAcceleratorEnabled = registerOutput<bool>('applicationAcceleratorEnabled');
     applicationLiveViewEnabled = registerOutput<bool>('applicationLiveViewEnabled');
     this.name = registerOutput<String>('name');

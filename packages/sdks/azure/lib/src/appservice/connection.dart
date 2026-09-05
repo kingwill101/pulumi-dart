@@ -280,7 +280,7 @@ import 'connection_state.dart';
 /// 			Location:          example.Location,
 /// 			Name:              pulumi.String("example-linuxwebapp"),
 /// 			ResourceGroupName: example.Name,
-/// 			ServicePlanId:     exampleServicePlan.ID(),
+/// 			ServicePlanId:     exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:        &appservice.LinuxWebAppSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
@@ -288,8 +288,8 @@ import 'connection_state.dart';
 /// 		}
 /// 		_, err = appservice.NewConnection(ctx, "example", &appservice.ConnectionArgs{
 /// 			Name:             pulumi.String("example-serviceconnector"),
-/// 			AppServiceId:     exampleLinuxWebApp.ID(),
-/// 			TargetResourceId: exampleSqlDatabase.ID(),
+/// 			AppServiceId:     exampleLinuxWebApp.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetResourceId: exampleSqlDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 			Authentication: &appservice.ConnectionAuthenticationArgs{
 /// 				Type: pulumi.String("systemAssignedIdentity"),
 /// 			},
@@ -580,7 +580,7 @@ class Connection extends pulumi.CustomResource {
           'azure:appservice/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServiceId = registerOutput<String>('appServiceId');
     authentication = registerOutput<ConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -596,11 +596,12 @@ class Connection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Connection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -614,6 +615,24 @@ class Connection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appServiceId = registerOutput<String>('appServiceId');
+    authentication = registerOutput<ConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientType = registerOutput<String?>('clientType');
+    this.name = registerOutput<String>('name');
+    secretStore = registerOutput<ConnectionSecretStore?>('secretStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionSecretStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetResourceId = registerOutput<String>('targetResourceId');
+    vnetSolution = registerOutput<String?>('vnetSolution');
+  }
+
+  /// Creates a typed reference to an existing [Connection] resource.
+  Connection.reference(String urn)
+    : super(
+        'azure:appservice/connection:Connection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appServiceId = registerOutput<String>('appServiceId');
     authentication = registerOutput<ConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientType = registerOutput<String?>('clientType');

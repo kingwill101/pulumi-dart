@@ -22,6 +22,7 @@ import 'server_key_state.dart';
 ///     name: "examplekv",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     purgeProtectionEnabled: true,
@@ -109,6 +110,7 @@ import 'server_key_state.dart';
 ///     name="examplekv",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     purge_protection_enabled=True)
@@ -198,6 +200,7 @@ import 'server_key_state.dart';
 ///         Name = "examplekv",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         PurgeProtectionEnabled = true,
@@ -321,12 +324,13 @@ import 'server_key_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("examplekv"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("premium"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("examplekv"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -349,11 +353,9 @@ import 'server_key_state.dart';
 /// 			return err
 /// 		}
 /// 		server, err := keyvault.NewAccessPolicy(ctx, "server", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
-/// 			ObjectId: pulumi.String(exampleServer.Identity.ApplyT(func(identity postgresql.ServerIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			ObjectId:   exampleServer.Identity.PrincipalId(),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
 /// 				pulumi.String("UnwrapKey"),
@@ -367,7 +369,7 @@ import 'server_key_state.dart';
 /// 			return err
 /// 		}
 /// 		client, err := keyvault.NewAccessPolicy(ctx, "client", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -395,7 +397,7 @@ import 'server_key_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("tfex-key"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -414,8 +416,8 @@ import 'server_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = postgresql.NewServerKey(ctx, "example", &postgresql.ServerKeyArgs{
-/// 			ServerId:      exampleServer.ID(),
-/// 			KeyVaultKeyId: exampleKey.ID(),
+/// 			ServerId:      exampleServer.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -441,12 +443,13 @@ import 'server_key_state.dart';
 ///   location = "West Europe"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "examplekv"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "premium"
-///   purge_protection_enabled = true
+///   name                       = "examplekv"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
+///   purge_protection_enabled   = true
 /// }
 /// resource "azure_keyvault_accesspolicy" "server" {
 ///   key_vault_id       = azure_keyvault_keyvault.example.id
@@ -534,6 +537,7 @@ import 'server_key_state.dart';
 ///             .name("examplekv")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .purgeProtectionEnabled(true)
@@ -627,6 +631,7 @@ import 'server_key_state.dart';
 ///       name: examplekv
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       purgeProtectionEnabled: true
@@ -745,7 +750,7 @@ class ServerKey extends pulumi.CustomResource {
           'azure:postgresql/serverKey:ServerKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     serverId = registerOutput<String>('serverId');
@@ -756,11 +761,12 @@ class ServerKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -774,6 +780,19 @@ class ServerKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    serverId = registerOutput<String>('serverId');
+  }
+
+  /// Creates a typed reference to an existing [ServerKey] resource.
+  ServerKey.reference(String urn)
+    : super(
+        'azure:postgresql/serverKey:ServerKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     serverId = registerOutput<String>('serverId');
   }

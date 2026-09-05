@@ -210,14 +210,14 @@ class TenantTemplateDeployment extends pulumi.CustomResource {
           'azure:core/tenantTemplateDeployment:TenantTemplateDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     debugLevel = registerOutput<String?>('debugLevel');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     outputContent = registerOutput<String>('outputContent');
     parametersContent = registerOutput<String>('parametersContent');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateContent = registerOutput<String>('templateContent');
     templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
   }
@@ -227,11 +227,12 @@ class TenantTemplateDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TenantTemplateDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TenantTemplateDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -250,7 +251,26 @@ class TenantTemplateDeployment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputContent = registerOutput<String>('outputContent');
     parametersContent = registerOutput<String>('parametersContent');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateContent = registerOutput<String>('templateContent');
+    templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
+  }
+
+  /// Creates a typed reference to an existing [TenantTemplateDeployment] resource.
+  TenantTemplateDeployment.reference(String urn)
+    : super(
+        'azure:core/tenantTemplateDeployment:TenantTemplateDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    debugLevel = registerOutput<String?>('debugLevel');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    outputContent = registerOutput<String>('outputContent');
+    parametersContent = registerOutput<String>('parametersContent');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateContent = registerOutput<String>('templateContent');
     templateSpecVersionId = registerOutput<String?>('templateSpecVersionId');
   }

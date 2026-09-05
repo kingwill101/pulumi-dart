@@ -211,7 +211,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"commandToExecute": "echo $HOSTNAME",
 /// 		})
 /// 		if err != nil {
@@ -220,7 +220,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = compute.NewVirtualMachineScaleSetExtension(ctx, "example", &compute.VirtualMachineScaleSetExtensionArgs{
 /// 			Name:                     pulumi.String("example"),
-/// 			VirtualMachineScaleSetId: exampleLinuxVirtualMachineScaleSet.ID(),
+/// 			VirtualMachineScaleSetId: exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 			Publisher:                pulumi.String("Microsoft.Azure.Extensions"),
 /// 			Type:                     pulumi.String("CustomScript"),
 /// 			TypeHandlerVersion:       pulumi.String("2.0"),
@@ -405,7 +405,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Compute` - 2024-11-01, 2024-03-01
+/// * `Microsoft.Compute` - 2025-04-01, 2024-03-01
 ///
 /// ## Import
 ///
@@ -470,16 +470,17 @@ class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
           'azure:compute/virtualMachineScaleSetExtension:VirtualMachineScaleSetExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['protectedSettings'],
         ) {
     autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
     automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
     failureSuppressionEnabled = registerOutput<bool?>('failureSuppressionEnabled');
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     this.name = registerOutput<String>('name');
-    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
     protectedSettingsFromKeyVault = registerOutput<VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?>('protectedSettingsFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions');
+    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     publisher = registerOutput<String>('publisher');
     settings = registerOutput<String?>('settings');
     type = registerOutput<String>('type');
@@ -492,11 +493,12 @@ class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualMachineScaleSetExtensionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualMachineScaleSetExtension._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -515,9 +517,34 @@ class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
     failureSuppressionEnabled = registerOutput<bool?>('failureSuppressionEnabled');
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     this.name = registerOutput<String>('name');
-    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
     protectedSettingsFromKeyVault = registerOutput<VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?>('protectedSettingsFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions');
+    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    publisher = registerOutput<String>('publisher');
+    settings = registerOutput<String?>('settings');
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
+    virtualMachineScaleSetId = registerOutput<String>('virtualMachineScaleSetId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineScaleSetExtension] resource.
+  VirtualMachineScaleSetExtension.reference(String urn)
+    : super(
+        'azure:compute/virtualMachineScaleSetExtension:VirtualMachineScaleSetExtension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['protectedSettings'],
+        isResourceReference: true,
+      ) {
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
+    failureSuppressionEnabled = registerOutput<bool?>('failureSuppressionEnabled');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    this.name = registerOutput<String>('name');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
+    protectedSettingsFromKeyVault = registerOutput<VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?>('protectedSettingsFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     publisher = registerOutput<String>('publisher');
     settings = registerOutput<String?>('settings');
     type = registerOutput<String>('type');

@@ -2,11 +2,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_service_args.dart';
 import 'app_service_auth_settings.dart';
 import 'app_service_backup.dart';
+import 'app_service_connection_string.dart';
 import 'app_service_identity.dart';
 import 'app_service_logs.dart';
 import 'app_service_site_config.dart';
+import 'app_service_site_credential.dart';
 import 'app_service_source_control.dart';
 import 'app_service_state.dart';
+import 'app_service_storage_account.dart';
 
 /// Manages an App Service (within an App Service Plan).
 ///
@@ -176,7 +179,7 @@ import 'app_service_state.dart';
 /// 			Name:              pulumi.String("example-app-service"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig: &appservice.AppServiceSiteConfigArgs{
 /// 				DotnetFrameworkVersion: pulumi.String("v4.0"),
 /// 				ScmType:                pulumi.String("LocalGit"),
@@ -363,7 +366,7 @@ class AppService extends pulumi.CustomResource {
   /// Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `clientCertEnabled` must be set to `true`, otherwise this parameter is ignored.
   late final pulumi.Output<String> clientCertMode;
   /// One or more `connectionString` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
+  late final pulumi.Output<List<AppServiceConnectionString>> connectionStrings;
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
   /// The Default Hostname associated with the App Service - such as `mysite.azurewebsites.net`
@@ -395,11 +398,11 @@ class AppService extends pulumi.CustomResource {
   /// A `siteConfig` block as defined below.
   late final pulumi.Output<AppServiceSiteConfig> siteConfig;
   /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
-  late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
+  late final pulumi.Output<List<AppServiceSiteCredential>> siteCredentials;
   /// A `sourceControl` block as defined below.
   late final pulumi.Output<AppServiceSourceControl> sourceControl;
   /// One or more `storageAccount` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> storageAccounts;
+  late final pulumi.Output<List<AppServiceStorageAccount>> storageAccounts;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -415,16 +418,16 @@ class AppService extends pulumi.CustomResource {
           'azure:appservice/appService:AppService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
-    appSettings = registerOutput<Map<String, String>>('appSettings');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<AppServiceAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backup = registerOutput<AppServiceBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
     clientCertEnabled = registerOutput<bool?>('clientCertEnabled');
     clientCertMode = registerOutput<String>('clientCertMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    connectionStrings = registerOutput<List<AppServiceConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppServiceConnectionString>(guardedValue, (value) => AppServiceConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
     customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
     defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
     enabled = registerOutput<bool?>('enabled');
@@ -434,16 +437,16 @@ class AppService extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     logs = registerOutput<AppServiceLogs>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     siteConfig = registerOutput<AppServiceSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
+    siteCredentials = registerOutput<List<AppServiceSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppServiceSiteCredential>(guardedValue, (value) => AppServiceSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
     sourceControl = registerOutput<AppServiceSourceControl>('sourceControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceSourceControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageAccounts = registerOutput<List<Map<String, dynamic>>>('storageAccounts');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storageAccounts = registerOutput<List<AppServiceStorageAccount>>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppServiceStorageAccount>(guardedValue, (value) => AppServiceStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AppService] resource's state with the given [name] and [id].
@@ -451,11 +454,12 @@ class AppService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -470,13 +474,13 @@ class AppService extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
-    appSettings = registerOutput<Map<String, String>>('appSettings');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<AppServiceAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backup = registerOutput<AppServiceBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
     clientCertEnabled = registerOutput<bool?>('clientCertEnabled');
     clientCertMode = registerOutput<String>('clientCertMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    connectionStrings = registerOutput<List<AppServiceConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppServiceConnectionString>(guardedValue, (value) => AppServiceConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
     customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
     defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
     enabled = registerOutput<bool?>('enabled');
@@ -486,15 +490,53 @@ class AppService extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     logs = registerOutput<AppServiceLogs>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     siteConfig = registerOutput<AppServiceSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
+    siteCredentials = registerOutput<List<AppServiceSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppServiceSiteCredential>(guardedValue, (value) => AppServiceSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
     sourceControl = registerOutput<AppServiceSourceControl>('sourceControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceSourceControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageAccounts = registerOutput<List<Map<String, dynamic>>>('storageAccounts');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storageAccounts = registerOutput<List<AppServiceStorageAccount>>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppServiceStorageAccount>(guardedValue, (value) => AppServiceStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AppService] resource.
+  AppService.reference(String urn)
+    : super(
+        'azure:appservice/appService:AppService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appServicePlanId = registerOutput<String>('appServicePlanId');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    authSettings = registerOutput<AppServiceAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backup = registerOutput<AppServiceBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
+    clientCertEnabled = registerOutput<bool?>('clientCertEnabled');
+    clientCertMode = registerOutput<String>('clientCertMode');
+    connectionStrings = registerOutput<List<AppServiceConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppServiceConnectionString>(guardedValue, (value) => AppServiceConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
+    defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
+    enabled = registerOutput<bool?>('enabled');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<AppServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
+    location = registerOutput<String>('location');
+    logs = registerOutput<AppServiceLogs>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    siteConfig = registerOutput<AppServiceSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<AppServiceSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppServiceSiteCredential>(guardedValue, (value) => AppServiceSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    sourceControl = registerOutput<AppServiceSourceControl>('sourceControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppServiceSourceControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccounts = registerOutput<List<AppServiceStorageAccount>>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppServiceStorageAccount>(guardedValue, (value) => AppServiceStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

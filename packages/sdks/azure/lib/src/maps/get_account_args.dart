@@ -11,7 +11,7 @@ class GetAccountArgs {
   final pulumi.Input<String> name;
   /// Specifies the name of the Resource Group in which the Maps Account is located.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetAccountArgs].
   /// [name] Specifies the name of the Maps Account.

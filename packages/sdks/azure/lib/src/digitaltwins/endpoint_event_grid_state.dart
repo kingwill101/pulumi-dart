@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering EndpointEventGrid resources.
 class EndpointEventGridState {
   /// The storage secret of the dead-lettering, whose format is `https://&lt;storageAccountname&gt;.blob.core.windows.net/&lt;containerName&gt;?&lt;SASToken&gt;`. When an endpoint can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account.
-  final pulumi.Input<String>? deadLetterStorageSecret;
+  final pulumi.Input<String?>? deadLetterStorageSecret;
   /// The resource ID of the Digital Twins Instance. Changing this forces a new Digital Twins Eventgrid Endpoint to be created.
-  final pulumi.Input<String>? digitalTwinsId;
+  final pulumi.Input<String?>? digitalTwinsId;
   /// The endpoint of the Event Grid Topic.
-  final pulumi.Input<String>? eventgridTopicEndpoint;
+  final pulumi.Input<String?>? eventgridTopicEndpoint;
   /// The primary access key of the Event Grid Topic.
-  final pulumi.Input<String>? eventgridTopicPrimaryAccessKey;
+  final pulumi.Input<String?>? eventgridTopicPrimaryAccessKey;
   /// The secondary access key of the Event Grid Topic.
-  final pulumi.Input<String>? eventgridTopicSecondaryAccessKey;
+  final pulumi.Input<String?>? eventgridTopicSecondaryAccessKey;
   /// The name which should be used for this Digital Twins Eventgrid Endpoint. Changing this forces a new Digital Twins Eventgrid Endpoint to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [EndpointEventGridState].
   /// [deadLetterStorageSecret] The storage secret of the dead-lettering, whose format is `https://&lt;storageAccountname&gt;.blob.core.windows.net/&lt;containerName&gt;?&lt;SASToken&gt;`. When an endpoint can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account.

@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appplatform_spring_cloud_dynatrace_application_performance_monitoring_spring_cloud_dynatrace_application_performance_monitoring_args_doc}
 class SpringCloudDynatraceApplicationPerformanceMonitoringArgs {
   /// Specifies the API token of the Dynatrace environment.
-  final pulumi.Input<String>? apiToken;
+  final pulumi.Input<String?>? apiToken;
   /// Specifies the API Url of the Dynatrace environment.
-  final pulumi.Input<String>? apiUrl;
+  final pulumi.Input<String?>? apiUrl;
   /// Specifies the endpoint to connect to the Dynatrace environment.
   final pulumi.Input<String> connectionPoint;
   /// Specifies the Dynatrace environment ID.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// Specifies whether the Spring Cloud Application Performance Monitoring resource for Application Insights is enabled globally. Defaults to `false`.
-  final pulumi.Input<bool>? globallyEnabled;
+  final pulumi.Input<bool?>? globallyEnabled;
   /// The name which should be used for this Spring Cloud Application Performance Monitoring resource for Dynatrace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> springCloudServiceId;
   /// Specifies the Dynatrace tenant.

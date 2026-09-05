@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageOsDisk {
   /// Specifies the URI in Azure storage of the blob that you want to use to create the image. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? blobUri;
+  final pulumi.Input<String?>? blobUri;
   /// Specifies the caching mode as `ReadWrite`, `ReadOnly`, or `None`. The default is `None`.
-  final pulumi.Input<String>? caching;
+  final pulumi.Input<String?>? caching;
   /// The ID of the Disk Encryption Set which should be used to encrypt this disk. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? diskEncryptionSetId;
+  final pulumi.Input<String?>? diskEncryptionSetId;
   /// Specifies the ID of the managed disk resource that you want to use to create the image.
-  final pulumi.Input<String>? managedDiskId;
+  final pulumi.Input<String?>? managedDiskId;
   /// Specifies the state of the operating system contained in the blob. Currently, the only value is Generalized. Possible values are `Generalized` and `Specialized`.
-  final pulumi.Input<String>? osState;
+  final pulumi.Input<String?>? osState;
   /// Specifies the type of operating system contained in the virtual machine image. Possible values are: `Windows` or `Linux`.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// Specifies the size of the image to be created. Changing this forces a new resource to be created.
-  final pulumi.Input<int>? sizeGb;
+  final pulumi.Input<int?>? sizeGb;
   /// The type of Storage Disk to use. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageType;
 
@@ -61,7 +61,7 @@ class ImageOsDisk {
       managedDiskId: (() { final guardedValue = map['managedDiskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       osState: (() { final guardedValue = map['osState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       storageType: pulumi.Input.fromValue(map['storageType'] as String),
     );
   }

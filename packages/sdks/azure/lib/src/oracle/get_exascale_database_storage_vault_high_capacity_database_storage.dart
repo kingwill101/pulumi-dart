@@ -25,8 +25,8 @@ class GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage {
 
   factory GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(Map<String, dynamic> map) {
     return GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage(
-      availableSizeInGb: pulumi.Input.fromValue(map['availableSizeInGb'] as int),
-      totalSizeInGb: pulumi.Input.fromValue(map['totalSizeInGb'] as int),
+      availableSizeInGb: pulumi.Input.fromValue((map['availableSizeInGb'] as num).toInt()),
+      totalSizeInGb: pulumi.Input.fromValue((map['totalSizeInGb'] as num).toInt()),
     );
   }
 }

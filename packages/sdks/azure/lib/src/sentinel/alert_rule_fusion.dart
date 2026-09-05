@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_rule_fusion_args.dart';
+import 'alert_rule_fusion_source.dart';
 import 'alert_rule_fusion_state.dart';
 
 /// Manages a Sentinel Fusion Alert Rule.
@@ -108,7 +109,7 @@ import 'alert_rule_fusion_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -254,7 +255,7 @@ class AlertRuleFusion extends pulumi.CustomResource {
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
   late final pulumi.Output<String> name;
   /// One or more `source` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> sources;
+  late final pulumi.Output<List<AlertRuleFusionSource>> sources;
 
   /// Creates a new [AlertRuleFusion].
   /// [name] The Pulumi resource name.
@@ -268,13 +269,13 @@ class AlertRuleFusion extends pulumi.CustomResource {
           'azure:sentinel/alertRuleFusion:AlertRuleFusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    sources = registerOutput<List<AlertRuleFusionSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleFusionSource>(guardedValue, (value) => AlertRuleFusionSource.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AlertRuleFusion] resource's state with the given [name] and [id].
@@ -282,11 +283,12 @@ class AlertRuleFusion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlertRuleFusionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AlertRuleFusion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -304,6 +306,22 @@ class AlertRuleFusion extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    sources = registerOutput<List<AlertRuleFusionSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleFusionSource>(guardedValue, (value) => AlertRuleFusionSource.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AlertRuleFusion] resource.
+  AlertRuleFusion.reference(String urn)
+    : super(
+        'azure:sentinel/alertRuleFusion:AlertRuleFusion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
+    enabled = registerOutput<bool?>('enabled');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    sources = registerOutput<List<AlertRuleFusionSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleFusionSource>(guardedValue, (value) => AlertRuleFusionSource.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

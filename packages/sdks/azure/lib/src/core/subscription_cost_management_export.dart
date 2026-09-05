@@ -179,7 +179,7 @@ import 'subscription_cost_management_export_state.dart';
 /// 			RecurrencePeriodEndDate:   pulumi.String("2020-09-18T00:00:00Z"),
 /// 			FileFormat:                pulumi.String("Csv"),
 /// 			ExportDataStorageLocation: &core.SubscriptionCostManagementExportExportDataStorageLocationArgs{
-/// 				ContainerId:    exampleContainer.ID(),
+/// 				ContainerId:    exampleContainer.ID().ToIDOutput().ToStringOutput(),
 /// 				RootFolderPath: pulumi.String("/root/updated"),
 /// 			},
 /// 			ExportDataOptions: &core.SubscriptionCostManagementExportExportDataOptionsArgs{
@@ -403,7 +403,7 @@ class SubscriptionCostManagementExport extends pulumi.CustomResource {
           'azure:core/subscriptionCostManagementExport:SubscriptionCostManagementExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     exportDataOptions = registerOutput<SubscriptionCostManagementExportExportDataOptions>('exportDataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionCostManagementExportExportDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -421,11 +421,12 @@ class SubscriptionCostManagementExport extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriptionCostManagementExportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubscriptionCostManagementExport._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -439,6 +440,26 @@ class SubscriptionCostManagementExport extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    active = registerOutput<bool?>('active');
+    exportDataOptions = registerOutput<SubscriptionCostManagementExportExportDataOptions>('exportDataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionCostManagementExportExportDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exportDataStorageLocation = registerOutput<SubscriptionCostManagementExportExportDataStorageLocation>('exportDataStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionCostManagementExportExportDataStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileFormat = registerOutput<String?>('fileFormat');
+    this.name = registerOutput<String>('name');
+    recurrencePeriodEndDate = registerOutput<String>('recurrencePeriodEndDate');
+    recurrencePeriodStartDate = registerOutput<String>('recurrencePeriodStartDate');
+    recurrenceType = registerOutput<String>('recurrenceType');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [SubscriptionCostManagementExport] resource.
+  SubscriptionCostManagementExport.reference(String urn)
+    : super(
+        'azure:core/subscriptionCostManagementExport:SubscriptionCostManagementExport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     active = registerOutput<bool?>('active');
     exportDataOptions = registerOutput<SubscriptionCostManagementExportExportDataOptions>('exportDataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionCostManagementExportExportDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     exportDataStorageLocation = registerOutput<SubscriptionCostManagementExportExportDataStorageLocation>('exportDataStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionCostManagementExportExportDataStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });

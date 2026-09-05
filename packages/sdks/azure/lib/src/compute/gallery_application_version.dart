@@ -3,6 +3,7 @@ import 'gallery_application_version_args.dart';
 import 'gallery_application_version_manage_action.dart';
 import 'gallery_application_version_source.dart';
 import 'gallery_application_version_state.dart';
+import 'gallery_application_version_target_region.dart';
 
 /// Manages a Gallery Application Version.
 ///
@@ -221,7 +222,7 @@ import 'gallery_application_version_state.dart';
 /// 		}
 /// 		exampleGalleryApplication, err := compute.NewGalleryApplication(ctx, "example", &compute.GalleryApplicationArgs{
 /// 			Name:            pulumi.String("example-app"),
-/// 			GalleryId:       exampleSharedImageGallery.ID(),
+/// 			GalleryId:       exampleSharedImageGallery.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:        example.Location,
 /// 			SupportedOsType: pulumi.String("Linux"),
 /// 		})
@@ -258,14 +259,14 @@ import 'gallery_application_version_state.dart';
 /// 		}
 /// 		_, err = compute.NewGalleryApplicationVersion(ctx, "example", &compute.GalleryApplicationVersionArgs{
 /// 			Name:                 pulumi.String("0.0.1"),
-/// 			GalleryApplicationId: exampleGalleryApplication.ID(),
+/// 			GalleryApplicationId: exampleGalleryApplication.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:             exampleGalleryApplication.Location,
 /// 			ManageAction: &compute.GalleryApplicationVersionManageActionArgs{
 /// 				Install: pulumi.String("[install command]"),
 /// 				Remove:  pulumi.String("[remove command]"),
 /// 			},
 /// 			Source: &compute.GalleryApplicationVersionSourceArgs{
-/// 				MediaLink: exampleBlob.ID(),
+/// 				MediaLink: exampleBlob.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			TargetRegions: compute.GalleryApplicationVersionTargetRegionArray{
 /// 				&compute.GalleryApplicationVersionTargetRegionArgs{
@@ -540,7 +541,7 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
   /// A mapping of tags to assign to the Gallery Application Version.
   late final pulumi.Output<Map<String, String>?> tags;
   /// One or more `targetRegion` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> targetRegions;
+  late final pulumi.Output<List<GalleryApplicationVersionTargetRegion>> targetRegions;
 
   /// Creates a new [GalleryApplicationVersion].
   /// [name] The Pulumi resource name.
@@ -554,7 +555,7 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
           'azure:compute/galleryApplicationVersion:GalleryApplicationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     configFile = registerOutput<String?>('configFile');
     enableHealthCheck = registerOutput<bool?>('enableHealthCheck');
@@ -566,8 +567,8 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     packageFile = registerOutput<String?>('packageFile');
     source = registerOutput<GalleryApplicationVersionSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryApplicationVersionSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetRegions = registerOutput<List<Map<String, dynamic>>>('targetRegions');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetRegions = registerOutput<List<GalleryApplicationVersionTargetRegion>>('targetRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryApplicationVersionTargetRegion>(guardedValue, (value) => GalleryApplicationVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [GalleryApplicationVersion] resource's state with the given [name] and [id].
@@ -575,11 +576,12 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GalleryApplicationVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GalleryApplicationVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -603,7 +605,30 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     packageFile = registerOutput<String?>('packageFile');
     source = registerOutput<GalleryApplicationVersionSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryApplicationVersionSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetRegions = registerOutput<List<Map<String, dynamic>>>('targetRegions');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetRegions = registerOutput<List<GalleryApplicationVersionTargetRegion>>('targetRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryApplicationVersionTargetRegion>(guardedValue, (value) => GalleryApplicationVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [GalleryApplicationVersion] resource.
+  GalleryApplicationVersion.reference(String urn)
+    : super(
+        'azure:compute/galleryApplicationVersion:GalleryApplicationVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configFile = registerOutput<String?>('configFile');
+    enableHealthCheck = registerOutput<bool?>('enableHealthCheck');
+    endOfLifeDate = registerOutput<String?>('endOfLifeDate');
+    excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
+    galleryApplicationId = registerOutput<String>('galleryApplicationId');
+    location = registerOutput<String>('location');
+    manageAction = registerOutput<GalleryApplicationVersionManageAction>('manageAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryApplicationVersionManageAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    packageFile = registerOutput<String?>('packageFile');
+    source = registerOutput<GalleryApplicationVersionSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryApplicationVersionSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetRegions = registerOutput<List<GalleryApplicationVersionTargetRegion>>('targetRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryApplicationVersionTargetRegion>(guardedValue, (value) => GalleryApplicationVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

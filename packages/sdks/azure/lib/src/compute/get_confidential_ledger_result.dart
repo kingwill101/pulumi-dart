@@ -6,74 +6,74 @@ import 'get_confidential_ledger_certificate_based_security_principal.dart';
 
 /// Result data returned by getConfidentialLedger.
 class GetConfidentialLedgerResult {
-  final List<GetConfidentialLedgerAzureadBasedServicePrincipal> azureadBasedServicePrincipals;
-  final List<GetConfidentialLedgerCertificateBasedSecurityPrincipal> certificateBasedSecurityPrincipals;
+  final List<GetConfidentialLedgerAzureadBasedServicePrincipal>? azureadBasedServicePrincipals;
+  final List<GetConfidentialLedgerCertificateBasedSecurityPrincipal>? certificateBasedSecurityPrincipals;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The Identity Service Endpoint for this Confidential Ledger.
-  final String identityServiceEndpoint;
+  final String? identityServiceEndpoint;
   /// The Endpoint for this Confidential Ledger.
-  final String ledgerEndpoint;
+  final String? ledgerEndpoint;
   /// The type of Confidential Ledger.
-  final String ledgerType;
+  final String? ledgerType;
   /// The supported Azure location where the Confidential Ledger exists.
-  final String location;
-  final String name;
-  final String resourceGroupName;
+  final String? location;
+  final String? name;
+  final String? resourceGroupName;
   /// A mapping of tags to assign to the Confidential Ledger.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetConfidentialLedgerResult].
-  /// [azureadBasedServicePrincipals] Required.
-  /// [certificateBasedSecurityPrincipals] Required.
+  /// [azureadBasedServicePrincipals] Optional.
+  /// [certificateBasedSecurityPrincipals] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identityServiceEndpoint] The Identity Service Endpoint for this Confidential Ledger.
   /// [ledgerEndpoint] The Endpoint for this Confidential Ledger.
   /// [ledgerType] The type of Confidential Ledger.
   /// [location] The supported Azure location where the Confidential Ledger exists.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
   /// [tags] A mapping of tags to assign to the Confidential Ledger.
   const GetConfidentialLedgerResult({
-    required this.azureadBasedServicePrincipals,
-    required this.certificateBasedSecurityPrincipals,
-    required this.id,
-    required this.identityServiceEndpoint,
-    required this.ledgerEndpoint,
-    required this.ledgerType,
-    required this.location,
-    required this.name,
-    required this.resourceGroupName,
-    required this.tags,
+    this.azureadBasedServicePrincipals,
+    this.certificateBasedSecurityPrincipals,
+    this.id,
+    this.identityServiceEndpoint,
+    this.ledgerEndpoint,
+    this.ledgerType,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureadBasedServicePrincipals': pulumi.Input.encodeList<GetConfidentialLedgerAzureadBasedServicePrincipal, Map<String, dynamic>>(azureadBasedServicePrincipals, (value) => value.toMap()),
-      'certificateBasedSecurityPrincipals': pulumi.Input.encodeList<GetConfidentialLedgerCertificateBasedSecurityPrincipal, Map<String, dynamic>>(certificateBasedSecurityPrincipals, (value) => value.toMap()),
-      'id': id,
-      'identityServiceEndpoint': identityServiceEndpoint,
-      'ledgerEndpoint': ledgerEndpoint,
-      'ledgerType': ledgerType,
-      'location': location,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'tags': tags,
+      'azureadBasedServicePrincipals': ?(() { final guardedValue = azureadBasedServicePrincipals; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConfidentialLedgerAzureadBasedServicePrincipal, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'certificateBasedSecurityPrincipals': ?(() { final guardedValue = certificateBasedSecurityPrincipals; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConfidentialLedgerCertificateBasedSecurityPrincipal, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'identityServiceEndpoint': ?identityServiceEndpoint,
+      'ledgerEndpoint': ?ledgerEndpoint,
+      'ledgerType': ?ledgerType,
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'tags': ?tags,
     };
   }
 
   factory GetConfidentialLedgerResult.fromMap(Map<String, dynamic> map) {
     return GetConfidentialLedgerResult(
-      azureadBasedServicePrincipals: pulumi.Input.decodeList<GetConfidentialLedgerAzureadBasedServicePrincipal>(map['azureadBasedServicePrincipals']!, (value) => GetConfidentialLedgerAzureadBasedServicePrincipal.fromMap((value as Map).cast<String, dynamic>())),
-      certificateBasedSecurityPrincipals: pulumi.Input.decodeList<GetConfidentialLedgerCertificateBasedSecurityPrincipal>(map['certificateBasedSecurityPrincipals']!, (value) => GetConfidentialLedgerCertificateBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      identityServiceEndpoint: map['identityServiceEndpoint'] as String,
-      ledgerEndpoint: map['ledgerEndpoint'] as String,
-      ledgerType: map['ledgerType'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      azureadBasedServicePrincipals: (() { final guardedValue = map['azureadBasedServicePrincipals']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConfidentialLedgerAzureadBasedServicePrincipal>(guardedValue, (value) => GetConfidentialLedgerAzureadBasedServicePrincipal.fromMap((value as Map).cast<String, dynamic>())); })(),
+      certificateBasedSecurityPrincipals: (() { final guardedValue = map['certificateBasedSecurityPrincipals']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConfidentialLedgerCertificateBasedSecurityPrincipal>(guardedValue, (value) => GetConfidentialLedgerCertificateBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identityServiceEndpoint: (() { final guardedValue = map['identityServiceEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ledgerEndpoint: (() { final guardedValue = map['ledgerEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ledgerType: (() { final guardedValue = map['ledgerType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

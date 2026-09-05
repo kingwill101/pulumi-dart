@@ -10,9 +10,9 @@ class CredentialArgs {
   /// The name of the automation account in which the Credential is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> automationAccountName;
   /// The description associated with this Automation Credential.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name of the Credential. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password associated with this Automation Credential.
   final pulumi.Input<String> password;
   /// The name of the resource group in which the Credential is created. Changing this forces a new resource to be created.

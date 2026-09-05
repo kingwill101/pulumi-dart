@@ -164,3 +164,14 @@ Future<GetAgreementResult> getAgreement(
   );
   return GetAgreementResult.fromMap(result);
 }
+
+pulumi.Output<GetAgreementResult> getAgreementOutput(
+  GetAgreementArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:marketplace/getAgreement:getAgreement',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgreementResult.fromMap);
+}

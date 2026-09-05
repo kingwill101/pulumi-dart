@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_application_rule_collection_args.dart';
+import 'firewall_application_rule_collection_rule.dart';
 import 'firewall_application_rule_collection_state.dart';
 
 /// Manages an Application Rule Collection within an Azure Firewall.
@@ -269,8 +270,8 @@ import 'firewall_application_rule_collection_state.dart';
 /// 			IpConfigurations: network.FirewallIpConfigurationArray{
 /// 				&network.FirewallIpConfigurationArgs{
 /// 					Name:              pulumi.String("configuration"),
-/// 					SubnetId:          exampleSubnet.ID(),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -557,7 +558,7 @@ class FirewallApplicationRuleCollection extends pulumi.CustomResource {
   /// Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// One or more `rule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<FirewallApplicationRuleCollectionRule>> rules;
 
   /// Creates a new [FirewallApplicationRuleCollection].
   /// [name] The Pulumi resource name.
@@ -571,14 +572,14 @@ class FirewallApplicationRuleCollection extends pulumi.CustomResource {
           'azure:network/firewallApplicationRuleCollection:FirewallApplicationRuleCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     azureFirewallName = registerOutput<String>('azureFirewallName');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<FirewallApplicationRuleCollectionRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallApplicationRuleCollectionRule>(guardedValue, (value) => FirewallApplicationRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [FirewallApplicationRuleCollection] resource's state with the given [name] and [id].
@@ -586,11 +587,12 @@ class FirewallApplicationRuleCollection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallApplicationRuleCollectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallApplicationRuleCollection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -609,6 +611,23 @@ class FirewallApplicationRuleCollection extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<FirewallApplicationRuleCollectionRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallApplicationRuleCollectionRule>(guardedValue, (value) => FirewallApplicationRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [FirewallApplicationRuleCollection] resource.
+  FirewallApplicationRuleCollection.reference(String urn)
+    : super(
+        'azure:network/firewallApplicationRuleCollection:FirewallApplicationRuleCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    azureFirewallName = registerOutput<String>('azureFirewallName');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rules = registerOutput<List<FirewallApplicationRuleCollectionRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallApplicationRuleCollectionRule>(guardedValue, (value) => FirewallApplicationRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -4,23 +4,23 @@
 /// Result data returned by getApplicationGroup.
 class GetApplicationGroupResult {
   /// The description of the Application Group.
-  final String description;
+  final String? description;
   /// The friendly name of the Application Group.
-  final String friendlyName;
+  final String? friendlyName;
   /// The Virtual Desktop Host Pool ID the Application Group is associated to.
-  final String hostPoolId;
+  final String? hostPoolId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The Azure Region where the Application Group exists.
-  final String location;
-  final String name;
-  final String resourceGroupName;
+  final String? location;
+  final String? name;
+  final String? resourceGroupName;
   /// A mapping of tags assigned to the Application Group.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// The type of Application Group (`RemoteApp` or `Desktop`).
-  final String type;
+  final String? type;
   /// The Virtual Desktop Workspace ID the Application Group is associated to.
-  final String workspaceId;
+  final String? workspaceId;
 
   /// Creates a new [GetApplicationGroupResult].
   /// [description] The description of the Application Group.
@@ -28,51 +28,51 @@ class GetApplicationGroupResult {
   /// [hostPoolId] The Virtual Desktop Host Pool ID the Application Group is associated to.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure Region where the Application Group exists.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
   /// [tags] A mapping of tags assigned to the Application Group.
   /// [type] The type of Application Group (`RemoteApp` or `Desktop`).
   /// [workspaceId] The Virtual Desktop Workspace ID the Application Group is associated to.
   const GetApplicationGroupResult({
-    required this.description,
-    required this.friendlyName,
-    required this.hostPoolId,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.resourceGroupName,
-    required this.tags,
-    required this.type,
-    required this.workspaceId,
+    this.description,
+    this.friendlyName,
+    this.hostPoolId,
+    this.id,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.tags,
+    this.type,
+    this.workspaceId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'friendlyName': friendlyName,
-      'hostPoolId': hostPoolId,
-      'id': id,
-      'location': location,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'tags': tags,
-      'type': type,
-      'workspaceId': workspaceId,
+      'description': ?description,
+      'friendlyName': ?friendlyName,
+      'hostPoolId': ?hostPoolId,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'tags': ?tags,
+      'type': ?type,
+      'workspaceId': ?workspaceId,
     };
   }
 
   factory GetApplicationGroupResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationGroupResult(
-      description: map['description'] as String,
-      friendlyName: map['friendlyName'] as String,
-      hostPoolId: map['hostPoolId'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      workspaceId: map['workspaceId'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostPoolId: (() { final guardedValue = map['hostPoolId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

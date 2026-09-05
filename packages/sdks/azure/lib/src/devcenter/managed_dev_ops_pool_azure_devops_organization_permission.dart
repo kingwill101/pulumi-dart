@@ -5,7 +5,7 @@ import 'managed_dev_ops_pool_azure_devops_organization_permission_administrator_
 
 class ManagedDevOpsPoolAzureDevopsOrganizationPermission {
   /// An `administratorAccount` block as defined below. This block is only valid when `kind` is set to `SpecificAccounts`. Changing this forces a new resource to be created.
-  final pulumi.Input<ManagedDevOpsPoolAzureDevopsOrganizationPermissionAdministratorAccount>? administratorAccount;
+  final pulumi.Input<ManagedDevOpsPoolAzureDevopsOrganizationPermissionAdministratorAccount?>? administratorAccount;
   /// Determines who has admin permissions to the Azure DevOps pool. Possible values are `Inherit` and `SpecificAccounts`. Changing this forces a new resource to be created.
   final pulumi.Input<String> kind;
 

@@ -334,7 +334,7 @@ import 'medtech_service_fhir_destination_state.dart';
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("example-eh"),
-/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			NamespaceId:      exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(1),
 /// 			MessageRetention: pulumi.Int(1),
 /// 		})
@@ -354,7 +354,7 @@ import 'medtech_service_fhir_destination_state.dart';
 /// 			Name:              pulumi.String("examplefhir"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			WorkspaceId:       exampleWorkspace.ID(),
+/// 			WorkspaceId:       exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Kind:              pulumi.String("fhir-R4"),
 /// 			Authentication: &healthcare.FhirServiceAuthenticationArgs{
 /// 				Authority: pulumi.String("https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
@@ -374,7 +374,7 @@ import 'medtech_service_fhir_destination_state.dart';
 /// 		json0 := string(tmpJSON0)
 /// 		exampleMedtechService, err := healthcare.NewMedtechService(ctx, "example", &healthcare.MedtechServiceArgs{
 /// 			Name:                      pulumi.String("examplemt"),
-/// 			WorkspaceId:               exampleWorkspace.ID(),
+/// 			WorkspaceId:               exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:                  example.Location,
 /// 			EventhubNamespaceName:     exampleEventHubNamespace.Name,
 /// 			EventhubName:              exampleEventHub.Name,
@@ -390,8 +390,8 @@ import 'medtech_service_fhir_destination_state.dart';
 /// 				map[string]interface{}{
 /// 					"templateType": "CodeValueFhir",
 /// 					"template": map[string]interface{}{
-/// 						"codes": []map[string]interface{}{
-/// 							map[string]interface{}{
+/// 						"codes": []map[string]string{
+/// 							{
 /// 								"code":    "8867-4",
 /// 								"system":  "http://loinc.org",
 /// 								"display": "Heart rate",
@@ -416,8 +416,8 @@ import 'medtech_service_fhir_destination_state.dart';
 /// 		_, err = healthcare.NewMedtechServiceFhirDestination(ctx, "example", &healthcare.MedtechServiceFhirDestinationArgs{
 /// 			Name:                              pulumi.String("examplemtdes"),
 /// 			Location:                          pulumi.String("east us"),
-/// 			MedtechServiceId:                  exampleMedtechService.ID(),
-/// 			DestinationFhirServiceId:          exampleFhirService.ID(),
+/// 			MedtechServiceId:                  exampleMedtechService.ID().ToIDOutput().ToStringOutput(),
+/// 			DestinationFhirServiceId:          exampleFhirService.ID().ToIDOutput().ToStringOutput(),
 /// 			DestinationIdentityResolutionType: pulumi.String("Create"),
 /// 			DestinationFhirMappingJson:        pulumi.String(json1),
 /// 		})
@@ -789,7 +789,7 @@ class MedtechServiceFhirDestination extends pulumi.CustomResource {
           'azure:healthcare/medtechServiceFhirDestination:MedtechServiceFhirDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     destinationFhirMappingJson = registerOutput<String>('destinationFhirMappingJson');
     destinationFhirServiceId = registerOutput<String>('destinationFhirServiceId');
@@ -804,11 +804,12 @@ class MedtechServiceFhirDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MedtechServiceFhirDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MedtechServiceFhirDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -822,6 +823,23 @@ class MedtechServiceFhirDestination extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    destinationFhirMappingJson = registerOutput<String>('destinationFhirMappingJson');
+    destinationFhirServiceId = registerOutput<String>('destinationFhirServiceId');
+    destinationIdentityResolutionType = registerOutput<String>('destinationIdentityResolutionType');
+    location = registerOutput<String>('location');
+    medtechServiceId = registerOutput<String>('medtechServiceId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [MedtechServiceFhirDestination] resource.
+  MedtechServiceFhirDestination.reference(String urn)
+    : super(
+        'azure:healthcare/medtechServiceFhirDestination:MedtechServiceFhirDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     destinationFhirMappingJson = registerOutput<String>('destinationFhirMappingJson');
     destinationFhirServiceId = registerOutput<String>('destinationFhirServiceId');
     destinationIdentityResolutionType = registerOutput<String>('destinationIdentityResolutionType');

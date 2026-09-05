@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datafactory_linked_service_key_vault_linked_service_key_vault_args_doc}
 class LinkedServiceKeyVaultArgs {
   /// A map of additional properties to associate with the Data Factory Linked Service Key Vault.
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Linked Service Key Vault.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
   /// The description for the Data Factory Linked Service Key Vault.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The integration runtime reference to associate with the Data Factory Linked Service Key Vault.
-  final pulumi.Input<String>? integrationRuntimeName;
+  final pulumi.Input<String?>? integrationRuntimeName;
   /// The ID the Azure Key Vault resource.
   final pulumi.Input<String> keyVaultId;
   /// Specifies the name of the Data Factory Linked Service Key Vault. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Linked Service Key Vault.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [LinkedServiceKeyVaultArgs].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Linked Service Key Vault.

@@ -19,33 +19,33 @@ class PolicyVMArgs {
   /// The consistency type for the backup policy. The only possible value is `OnlyCrashConsistent`.
   ///
   /// &gt; **Note:** `consistencyType` can only be specified when `policyType` is `V2`.
-  final pulumi.Input<String>? consistencyType;
+  final pulumi.Input<String?>? consistencyType;
   /// Specifies the instant restore resource group name as documented in the `instantRestoreResourceGroup` block below.
-  final pulumi.Input<PolicyVMInstantRestoreResourceGroup>? instantRestoreResourceGroup;
+  final pulumi.Input<PolicyVMInstantRestoreResourceGroup?>? instantRestoreResourceGroup;
   /// Specifies the instant restore retention range in days. Possible values are between `1` and `5` when `policyType` is `V1`, and `1` to `30` when `policyType` is `V2`.
   ///
   /// &gt; **Note:** `instantRestoreRetentionDays` **must** be set to `5` if the backup frequency is set to `Weekly`.
-  final pulumi.Input<int>? instantRestoreRetentionDays;
+  final pulumi.Input<int?>? instantRestoreRetentionDays;
   /// Specifies the name of the Backup Policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of the Backup Policy. Possible values are `V1` and `V2` where `V2` stands for the Enhanced Policy. Defaults to `V1`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? policyType;
+  final pulumi.Input<String?>? policyType;
   /// Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   final pulumi.Input<String> recoveryVaultName;
   /// The name of the resource group in which to create the policy. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Configures the policy daily retention as documented in the `retentionDaily` block below. Required when backup frequency is `Daily`.
-  final pulumi.Input<PolicyVMRetentionDaily>? retentionDaily;
+  final pulumi.Input<PolicyVMRetentionDaily?>? retentionDaily;
   /// Configures the policy monthly retention as documented in the `retentionMonthly` block below.
-  final pulumi.Input<PolicyVMRetentionMonthly>? retentionMonthly;
+  final pulumi.Input<PolicyVMRetentionMonthly?>? retentionMonthly;
   /// Configures the policy weekly retention as documented in the `retentionWeekly` block below. Required when backup frequency is `Weekly`.
-  final pulumi.Input<PolicyVMRetentionWeekly>? retentionWeekly;
+  final pulumi.Input<PolicyVMRetentionWeekly?>? retentionWeekly;
   /// Configures the policy yearly retention as documented in the `retentionYearly` block below.
-  final pulumi.Input<PolicyVMRetentionYearly>? retentionYearly;
+  final pulumi.Input<PolicyVMRetentionYearly?>? retentionYearly;
   /// A `tieringPolicy` block as defined below.
-  final pulumi.Input<PolicyVMTieringPolicy>? tieringPolicy;
+  final pulumi.Input<PolicyVMTieringPolicy?>? tieringPolicy;
   /// Specifies the timezone. [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/). Defaults to `UTC`
-  final pulumi.Input<String>? timezone;
+  final pulumi.Input<String?>? timezone;
 
   /// Creates a new [PolicyVMArgs].
   /// [backup] Configures the Policy backup frequency, times & days as documented in the `backup` block below.
@@ -103,7 +103,7 @@ class PolicyVMArgs {
       backup: pulumi.Input.fromValue(PolicyVMBackup.fromMap((map['backup']! as Map).cast<String, dynamic>())),
       consistencyType: (() { final guardedValue = map['consistencyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instantRestoreResourceGroup: (() { final guardedValue = map['instantRestoreResourceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyVMInstantRestoreResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      instantRestoreRetentionDays: (() { final guardedValue = map['instantRestoreRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instantRestoreRetentionDays: (() { final guardedValue = map['instantRestoreRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryVaultName: pulumi.Input.fromValue(map['recoveryVaultName'] as String),

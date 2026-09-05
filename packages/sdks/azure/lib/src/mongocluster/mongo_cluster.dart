@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_cluster_args.dart';
+import 'mongo_cluster_connection_string.dart';
 import 'mongo_cluster_customer_managed_key.dart';
 import 'mongo_cluster_identity.dart';
 import 'mongo_cluster_restore.dart';
@@ -235,7 +236,7 @@ class MongoCluster extends pulumi.CustomResource {
   /// The compute tier to assign to the MongoDB Cluster. Possible values are `Free`, `M10`, `M20`, `M25`, `M30`, `M40`, `M50`, `M60`, `M80`, and `M200`.
   late final pulumi.Output<String?> computeTier;
   /// One or more `connectionStrings` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
+  late final pulumi.Output<List<MongoClusterConnectionString>> connectionStrings;
   /// The creation mode for the MongoDB Cluster. Possible values are `Default`, `GeoReplica` and `PointInTimeRestore`. Defaults to `Default`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> createMode;
   /// A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
@@ -293,13 +294,14 @@ class MongoCluster extends pulumi.CustomResource {
           'azure:mongocluster/mongoCluster:MongoCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['administratorPassword', 'connectionStrings'],
         ) {
-    administratorPassword = registerOutput<String?>('administratorPassword');
+    administratorPassword = registerOutput<String?>('administratorPassword', isSecret: true);
     administratorUsername = registerOutput<String?>('administratorUsername');
-    authenticationMethods = registerOutput<List<String>>('authenticationMethods');
+    authenticationMethods = registerOutput<List<String>>('authenticationMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     computeTier = registerOutput<String?>('computeTier');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    connectionStrings = registerOutput<List<MongoClusterConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoClusterConnectionString>(guardedValue, (value) => MongoClusterConnectionString.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
     createMode = registerOutput<String?>('createMode');
     customerManagedKey = registerOutput<MongoClusterCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoClusterCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataApiModeEnabled = registerOutput<bool?>('dataApiModeEnabled');
@@ -307,7 +309,7 @@ class MongoCluster extends pulumi.CustomResource {
     identity = registerOutput<MongoClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    previewFeatures = registerOutput<List<String>?>('previewFeatures');
+    previewFeatures = registerOutput<List<String>?>('previewFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     restore = registerOutput<MongoClusterRestore?>('restore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoClusterRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -316,7 +318,7 @@ class MongoCluster extends pulumi.CustomResource {
     sourceServerId = registerOutput<String?>('sourceServerId');
     storageSizeInGb = registerOutput<int?>('storageSizeInGb');
     storageType = registerOutput<String?>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String?>('version');
   }
 
@@ -325,11 +327,12 @@ class MongoCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MongoClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MongoCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -343,11 +346,11 @@ class MongoCluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    administratorPassword = registerOutput<String?>('administratorPassword');
+    administratorPassword = registerOutput<String?>('administratorPassword', isSecret: true);
     administratorUsername = registerOutput<String?>('administratorUsername');
-    authenticationMethods = registerOutput<List<String>>('authenticationMethods');
+    authenticationMethods = registerOutput<List<String>>('authenticationMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     computeTier = registerOutput<String?>('computeTier');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    connectionStrings = registerOutput<List<MongoClusterConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoClusterConnectionString>(guardedValue, (value) => MongoClusterConnectionString.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
     createMode = registerOutput<String?>('createMode');
     customerManagedKey = registerOutput<MongoClusterCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoClusterCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataApiModeEnabled = registerOutput<bool?>('dataApiModeEnabled');
@@ -355,7 +358,7 @@ class MongoCluster extends pulumi.CustomResource {
     identity = registerOutput<MongoClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    previewFeatures = registerOutput<List<String>?>('previewFeatures');
+    previewFeatures = registerOutput<List<String>?>('previewFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     restore = registerOutput<MongoClusterRestore?>('restore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoClusterRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -364,7 +367,42 @@ class MongoCluster extends pulumi.CustomResource {
     sourceServerId = registerOutput<String?>('sourceServerId');
     storageSizeInGb = registerOutput<int?>('storageSizeInGb');
     storageType = registerOutput<String?>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [MongoCluster] resource.
+  MongoCluster.reference(String urn)
+    : super(
+        'azure:mongocluster/mongoCluster:MongoCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['administratorPassword', 'connectionStrings'],
+        isResourceReference: true,
+      ) {
+    administratorPassword = registerOutput<String?>('administratorPassword', isSecret: true);
+    administratorUsername = registerOutput<String?>('administratorUsername');
+    authenticationMethods = registerOutput<List<String>>('authenticationMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    computeTier = registerOutput<String?>('computeTier');
+    connectionStrings = registerOutput<List<MongoClusterConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoClusterConnectionString>(guardedValue, (value) => MongoClusterConnectionString.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    createMode = registerOutput<String?>('createMode');
+    customerManagedKey = registerOutput<MongoClusterCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoClusterCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataApiModeEnabled = registerOutput<bool?>('dataApiModeEnabled');
+    highAvailabilityMode = registerOutput<String?>('highAvailabilityMode');
+    identity = registerOutput<MongoClusterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    previewFeatures = registerOutput<List<String>?>('previewFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restore = registerOutput<MongoClusterRestore?>('restore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoClusterRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    shardCount = registerOutput<int?>('shardCount');
+    sourceLocation = registerOutput<String?>('sourceLocation');
+    sourceServerId = registerOutput<String?>('sourceServerId');
+    storageSizeInGb = registerOutput<int?>('storageSizeInGb');
+    storageType = registerOutput<String?>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String?>('version');
   }
 }

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleServerStorage {
   /// Should Storage Auto Grow be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? autoGrowEnabled;
+  final pulumi.Input<bool?>? autoGrowEnabled;
   /// Should IOPS be scaled automatically? If `true`, `iops` can not be set. Defaults to `false`.
-  final pulumi.Input<bool>? ioScalingEnabled;
+  final pulumi.Input<bool?>? ioScalingEnabled;
   /// The storage IOPS for the MySQL Flexible Server. Possible values are between `360` and `20000`.
-  final pulumi.Input<int>? iops;
+  final pulumi.Input<int?>? iops;
   /// Should Storage Log On Disk be enabled? Defaults to `false`.
-  final pulumi.Input<bool>? logOnDiskEnabled;
+  final pulumi.Input<bool?>? logOnDiskEnabled;
   /// The max storage allowed for the MySQL Flexible Server. Possible values are between `20` and `16384`.
   ///
   /// &gt; **Note:** Decreasing `sizeGb` forces a new resource to be created.
-  final pulumi.Input<int>? sizeGb;
+  final pulumi.Input<int?>? sizeGb;
 
   /// Creates a new [FlexibleServerStorage].
   /// [autoGrowEnabled] Should Storage Auto Grow be enabled? Defaults to `true`.
@@ -44,9 +44,9 @@ class FlexibleServerStorage {
     return FlexibleServerStorage(
       autoGrowEnabled: (() { final guardedValue = map['autoGrowEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ioScalingEnabled: (() { final guardedValue = map['ioScalingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       logOnDiskEnabled: (() { final guardedValue = map['logOnDiskEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

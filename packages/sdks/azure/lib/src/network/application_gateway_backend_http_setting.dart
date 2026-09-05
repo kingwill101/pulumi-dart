@@ -6,45 +6,45 @@ import 'application_gateway_backend_http_setting_connection_draining.dart';
 
 class ApplicationGatewayBackendHttpSetting {
   /// The name of the affinity cookie.
-  final pulumi.Input<String>? affinityCookieName;
+  final pulumi.Input<String?>? affinityCookieName;
   /// One or more `authenticationCertificateBackend` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayBackendHttpSettingAuthenticationCertificate>>? authenticationCertificates;
+  final pulumi.Input<List<ApplicationGatewayBackendHttpSettingAuthenticationCertificate>?>? authenticationCertificates;
   /// Whether to validate the certificate chain and expiry on the backend HTTPS servers. Defaults to `true`.
-  final pulumi.Input<bool>? certificateChainValidationEnabled;
+  final pulumi.Input<bool?>? certificateChainValidationEnabled;
   /// A `connectionDraining` block as defined below.
-  final pulumi.Input<ApplicationGatewayBackendHttpSettingConnectionDraining>? connectionDraining;
+  final pulumi.Input<ApplicationGatewayBackendHttpSettingConnectionDraining?>? connectionDraining;
   /// Is Cookie-Based Affinity enabled? Possible values are `Enabled` and `Disabled`.
   final pulumi.Input<String> cookieBasedAffinity;
   /// Whether to use a dedicated backend connection. Defaults to `false`.
-  final pulumi.Input<bool>? dedicatedBackendConnectionEnabled;
+  final pulumi.Input<bool?>? dedicatedBackendConnectionEnabled;
   /// Host header to be sent to the backend servers. Cannot be set if `pickHostNameFromBackendAddress` is set to `true`.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the Authentication Certificate.
   final pulumi.Input<String> name;
   /// The Path which should be used as a prefix for all HTTP requests.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Whether host header should be picked from the host name of the backend server. Defaults to `false`.
-  final pulumi.Input<bool>? pickHostNameFromBackendAddress;
+  final pulumi.Input<bool?>? pickHostNameFromBackendAddress;
   /// The port which should be used for this Backend HTTP Settings Collection.
   final pulumi.Input<int> port;
   /// The ID of the associated Probe.
-  final pulumi.Input<String>? probeId;
+  final pulumi.Input<String?>? probeId;
   /// The name of an associated HTTP Probe.
-  final pulumi.Input<String>? probeName;
+  final pulumi.Input<String?>? probeName;
   /// The Protocol which should be used. Possible values are `Http` and `Https`.
   final pulumi.Input<String> protocol;
   /// The request timeout in seconds, which must be between 1 and 86400 seconds. Defaults to `30`.
-  final pulumi.Input<int>? requestTimeout;
+  final pulumi.Input<int?>? requestTimeout;
   /// The Server Name Indication (SNI) hostname to send to the backend servers.
   ///
   /// &gt; **Note:** `sniName` can only be set when `sniValidationEnabled` is set to `true`.
-  final pulumi.Input<String>? sniName;
+  final pulumi.Input<String?>? sniName;
   /// Whether to enable Server Name Indication (SNI) validation on the backend HTTPS servers. Defaults to `true`.
-  final pulumi.Input<bool>? sniValidationEnabled;
+  final pulumi.Input<bool?>? sniValidationEnabled;
   /// A list of `trustedRootCertificate` names.
-  final pulumi.Input<List<String>>? trustedRootCertificateNames;
+  final pulumi.Input<List<String>?>? trustedRootCertificateNames;
 
   /// Creates a new [ApplicationGatewayBackendHttpSetting].
   /// [affinityCookieName] The name of the affinity cookie.
@@ -125,11 +125,11 @@ class ApplicationGatewayBackendHttpSetting {
       name: pulumi.Input.fromValue(map['name'] as String),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pickHostNameFromBackendAddress: (() { final guardedValue = map['pickHostNameFromBackendAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       probeId: (() { final guardedValue = map['probeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       probeName: (() { final guardedValue = map['probeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      requestTimeout: (() { final guardedValue = map['requestTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      requestTimeout: (() { final guardedValue = map['requestTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sniName: (() { final guardedValue = map['sniName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sniValidationEnabled: (() { final guardedValue = map['sniValidationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       trustedRootCertificateNames: (() { final guardedValue = map['trustedRootCertificateNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

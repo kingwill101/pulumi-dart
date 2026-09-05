@@ -25,7 +25,7 @@ class LinuxWebAppSiteConfigAutoHealSettingTriggerRequests {
 
   factory LinuxWebAppSiteConfigAutoHealSettingTriggerRequests.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSiteConfigAutoHealSettingTriggerRequests(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       interval: pulumi.Input.fromValue(map['interval'] as String),
     );
   }

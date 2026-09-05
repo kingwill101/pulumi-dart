@@ -25,7 +25,7 @@ class GetTriggerScheduleScheduleMonthly {
 
   factory GetTriggerScheduleScheduleMonthly.fromMap(Map<String, dynamic> map) {
     return GetTriggerScheduleScheduleMonthly(
-      week: pulumi.Input.fromValue(map['week'] as int),
+      week: pulumi.Input.fromValue((map['week'] as num).toInt()),
       weekday: pulumi.Input.fromValue(map['weekday'] as String),
     );
   }

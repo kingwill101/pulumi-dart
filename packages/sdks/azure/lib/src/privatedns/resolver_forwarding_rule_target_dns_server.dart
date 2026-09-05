@@ -6,7 +6,7 @@ class ResolverForwardingRuleTargetDnsServer {
   /// DNS server IP address.
   final pulumi.Input<String> ipAddress;
   /// DNS server port.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [ResolverForwardingRuleTargetDnsServer].
   /// [ipAddress] DNS server IP address.
@@ -26,7 +26,7 @@ class ResolverForwardingRuleTargetDnsServer {
   factory ResolverForwardingRuleTargetDnsServer.fromMap(Map<String, dynamic> map) {
     return ResolverForwardingRuleTargetDnsServer(
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

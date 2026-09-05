@@ -8,7 +8,7 @@ class FluxConfigurationKustomizationPostBuildSubstituteFrom {
   /// Specifies the name of the ConfigMap/Secret that holds the variables to be used in substitution.
   final pulumi.Input<String> name;
   /// Whether to proceed without ConfigMap/Secret if it is not present. Defaults to `false`.
-  final pulumi.Input<bool>? optional;
+  final pulumi.Input<bool?>? optional;
 
   /// Creates a new [FluxConfigurationKustomizationPostBuildSubstituteFrom].
   /// [kind] Specifies the source kind to hold the variables to be used in substitution. Possible values are `ConfigMap` and `Secret`.

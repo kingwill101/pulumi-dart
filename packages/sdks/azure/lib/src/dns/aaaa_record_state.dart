@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AaaaRecord resources.
 class AaaaRecordState {
   /// The FQDN of the DNS AAAA Record.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// The name of the DNS AAAA Record. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of IPv6 Addresses. Conflicts with `targetResourceId`.
-  final pulumi.Input<List<String>>? records;
+  final pulumi.Input<List<String>?>? records;
   /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
   ///
   /// &gt; **Note:** either `records` OR `targetResourceId` must be specified, but not both.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Azure resource id of the target object. Conflicts with `records`.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
   /// The Time To Live (TTL) of the DNS record in seconds.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
   /// Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? zoneName;
+  final pulumi.Input<String?>? zoneName;
 
   /// Creates a new [AaaaRecordState].
   /// [fqdn] The FQDN of the DNS AAAA Record.
@@ -64,7 +64,7 @@ class AaaaRecordState {
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetResourceId: (() { final guardedValue = map['targetResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       zoneName: (() { final guardedValue = map['zoneName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

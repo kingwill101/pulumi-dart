@@ -7,27 +7,27 @@ import 'network_manager_admin_rule_source.dart';
 /// Input properties used for looking up and filtering NetworkManagerAdminRule resources.
 class NetworkManagerAdminRuleState {
   /// Specifies the action allowed for this Network Manager Admin Rule. Possible values are `Allow`, `AlwaysAllow`, and `Deny`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Specifies the ID of the Network Manager Admin Rule Collection. Changing this forces a new Network Manager Admin Rule to be created.
-  final pulumi.Input<String>? adminRuleCollectionId;
+  final pulumi.Input<String?>? adminRuleCollectionId;
   /// A description of the Network Manager Admin Rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of string specifies the destination port ranges. Specify one or more single port number or port ranges such as `1024-65535`. Use `*` to specify any port.
-  final pulumi.Input<List<String>>? destinationPortRanges;
+  final pulumi.Input<List<String>?>? destinationPortRanges;
   /// One or more `destination` blocks as defined below.
-  final pulumi.Input<List<NetworkManagerAdminRuleDestination>>? destinations;
+  final pulumi.Input<List<NetworkManagerAdminRuleDestination>?>? destinations;
   /// Indicates if the traffic matched against the rule in inbound or outbound. Possible values are `Inbound` and `Outbound`.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// Specifies the name which should be used for this Network Manager Admin Rule. Changing this forces a new Network Manager Admin Rule to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The priority of the rule. Possible values are integers between `1` and `4096`. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Specifies which network protocol this Network Manager Admin Rule applies to. Possible values are `Ah`, `Any`, `Esp`, `Icmp`, `Tcp`, and `Udp`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// A list of string specifies the source port ranges. Specify one or more single port number or port ranges such as `1024-65535`. Use `*` to specify any port.
-  final pulumi.Input<List<String>>? sourcePortRanges;
+  final pulumi.Input<List<String>?>? sourcePortRanges;
   /// One or more `source` blocks as defined below.
-  final pulumi.Input<List<NetworkManagerAdminRuleSource>>? sources;
+  final pulumi.Input<List<NetworkManagerAdminRuleSource>?>? sources;
 
   /// Creates a new [NetworkManagerAdminRuleState].
   /// [action] Specifies the action allowed for this Network Manager Admin Rule. Possible values are `Allow`, `AlwaysAllow`, and `Deny`.
@@ -80,7 +80,7 @@ class NetworkManagerAdminRuleState {
       destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkManagerAdminRuleDestination>(guardedValue, (value) => NetworkManagerAdminRuleDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourcePortRanges: (() { final guardedValue = map['sourcePortRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       sources: (() { final guardedValue = map['sources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkManagerAdminRuleSource>(guardedValue, (value) => NetworkManagerAdminRuleSource.fromMap((value as Map).cast<String, dynamic>()))); })(),

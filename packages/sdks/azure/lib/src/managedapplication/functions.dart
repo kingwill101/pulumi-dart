@@ -148,3 +148,14 @@ Future<GetDefinitionResult> getDefinition(
   );
   return GetDefinitionResult.fromMap(result);
 }
+
+pulumi.Output<GetDefinitionResult> getDefinitionOutput(
+  GetDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:managedapplication/getDefinition:getDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefinitionResult.fromMap);
+}

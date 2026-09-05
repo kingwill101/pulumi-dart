@@ -13,28 +13,28 @@ class ConfigurationFeatureArgs {
   /// Specifies the id of the App Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String> configurationStoreId;
   /// A `customFilter` block as defined below.
-  final pulumi.Input<List<ConfigurationFeatureCustomFilter>>? customFilters;
+  final pulumi.Input<List<ConfigurationFeatureCustomFilter>?>? customFilters;
   /// The description of the App Configuration Feature.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The status of the App Configuration Feature. By default, this is set to false.
-  final pulumi.Input<bool>? enabled;
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<bool?>? enabled;
+  final pulumi.Input<String?>? etag;
   /// The key of the App Configuration Feature. The value for `name` will be used if this is unspecified. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The label of the App Configuration Feature. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Should this App Configuration Feature be Locked to prevent changes?
-  final pulumi.Input<bool>? locked;
+  final pulumi.Input<bool?>? locked;
   /// The name of the App Configuration Feature. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A number representing the value of the percentage required to enable this feature.
-  final pulumi.Input<double>? percentageFilterValue;
+  final pulumi.Input<double?>? percentageFilterValue;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `targetingFilter` block as defined below.
-  final pulumi.Input<List<ConfigurationFeatureTargetingFilter>>? targetingFilters;
+  final pulumi.Input<List<ConfigurationFeatureTargetingFilter>?>? targetingFilters;
   /// A `timewindowFilter` block as defined below.
-  final pulumi.Input<List<ConfigurationFeatureTimewindowFilter>>? timewindowFilters;
+  final pulumi.Input<List<ConfigurationFeatureTimewindowFilter>?>? timewindowFilters;
 
   /// Creates a new [ConfigurationFeatureArgs].
   /// [configurationStoreId] Specifies the id of the App Configuration. Changing this forces a new resource to be created.
@@ -95,7 +95,7 @@ class ConfigurationFeatureArgs {
       label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locked: (() { final guardedValue = map['locked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      percentageFilterValue: (() { final guardedValue = map['percentageFilterValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      percentageFilterValue: (() { final guardedValue = map['percentageFilterValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetingFilters: (() { final guardedValue = map['targetingFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationFeatureTargetingFilter>(guardedValue, (value) => ConfigurationFeatureTargetingFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       timewindowFilters: (() { final guardedValue = map['timewindowFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationFeatureTimewindowFilter>(guardedValue, (value) => ConfigurationFeatureTimewindowFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -8,13 +8,13 @@ class AccountAzureFilesAuthenticationActiveDirectory {
   /// Specifies the primary domain that the AD DNS server is authoritative for.
   final pulumi.Input<String> domainName;
   /// Specifies the security identifier (SID). This is required when `directoryType` is set to `AD`.
-  final pulumi.Input<String>? domainSid;
+  final pulumi.Input<String?>? domainSid;
   /// Specifies the Active Directory forest. This is required when `directoryType` is set to `AD`.
-  final pulumi.Input<String>? forestName;
+  final pulumi.Input<String?>? forestName;
   /// Specifies the NetBIOS domain name. This is required when `directoryType` is set to `AD`.
-  final pulumi.Input<String>? netbiosDomainName;
+  final pulumi.Input<String?>? netbiosDomainName;
   /// Specifies the security identifier (SID) for Azure Storage. This is required when `directoryType` is set to `AD`.
-  final pulumi.Input<String>? storageSid;
+  final pulumi.Input<String?>? storageSid;
 
   /// Creates a new [AccountAzureFilesAuthenticationActiveDirectory].
   /// [domainGuid] Specifies the domain GUID.

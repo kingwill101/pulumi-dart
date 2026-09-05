@@ -230,7 +230,7 @@ class ActiveSlot extends pulumi.CustomResource {
           'azure:appservice/activeSlot:ActiveSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     appServiceSlotName = registerOutput<String>('appServiceSlotName');
@@ -242,11 +242,12 @@ class ActiveSlot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ActiveSlotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ActiveSlot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -260,6 +261,20 @@ class ActiveSlot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    appServiceSlotName = registerOutput<String>('appServiceSlotName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ActiveSlot] resource.
+  ActiveSlot.reference(String urn)
+    : super(
+        'azure:appservice/activeSlot:ActiveSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appServiceName = registerOutput<String>('appServiceName');
     appServiceSlotName = registerOutput<String>('appServiceSlotName');
     resourceGroupName = registerOutput<String>('resourceGroupName');

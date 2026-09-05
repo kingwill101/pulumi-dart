@@ -109,7 +109,7 @@ import 'server_dns_alias_state.dart';
 /// 		}
 /// 		_, err = mssql.NewServerDnsAlias(ctx, "example", &mssql.ServerDnsAliasArgs{
 /// 			Name:          pulumi.String("example-dns-alias"),
-/// 			MssqlServerId: exampleServer.ID(),
+/// 			MssqlServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -251,7 +251,7 @@ class ServerDnsAlias extends pulumi.CustomResource {
           'azure:mssql/serverDnsAlias:ServerDnsAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dnsRecord = registerOutput<String>('dnsRecord');
     mssqlServerId = registerOutput<String>('mssqlServerId');
@@ -263,11 +263,12 @@ class ServerDnsAlias extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerDnsAliasState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerDnsAlias._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -281,6 +282,20 @@ class ServerDnsAlias extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dnsRecord = registerOutput<String>('dnsRecord');
+    mssqlServerId = registerOutput<String>('mssqlServerId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [ServerDnsAlias] resource.
+  ServerDnsAlias.reference(String urn)
+    : super(
+        'azure:mssql/serverDnsAlias:ServerDnsAlias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dnsRecord = registerOutput<String>('dnsRecord');
     mssqlServerId = registerOutput<String>('mssqlServerId');
     this.name = registerOutput<String>('name');

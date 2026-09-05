@@ -3,21 +3,21 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyRuleCollectionGroupNatRuleCollectionRule {
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The destination IP address (including CIDR).
-  final pulumi.Input<String>? destinationAddress;
-  final pulumi.Input<String>? destinationPorts;
+  final pulumi.Input<String?>? destinationAddress;
+  final pulumi.Input<String?>? destinationPorts;
   /// The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   final pulumi.Input<String> name;
   final pulumi.Input<List<String>> protocols;
-  final pulumi.Input<List<String>>? sourceAddresses;
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
   /// Specifies the translated address.
-  final pulumi.Input<String>? translatedAddress;
+  final pulumi.Input<String?>? translatedAddress;
   /// Specifies the translated FQDN.
   ///
   /// &gt; **Note:** Exactly one of `translatedAddress` and `translatedFqdn` should be set.
-  final pulumi.Input<String>? translatedFqdn;
+  final pulumi.Input<String?>? translatedFqdn;
   /// Specifies the translated port.
   final pulumi.Input<int> translatedPort;
 
@@ -71,7 +71,7 @@ class FirewallPolicyRuleCollectionGroupNatRuleCollectionRule {
       sourceIpGroups: (() { final guardedValue = map['sourceIpGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       translatedAddress: (() { final guardedValue = map['translatedAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       translatedFqdn: (() { final guardedValue = map['translatedFqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      translatedPort: pulumi.Input.fromValue(map['translatedPort'] as int),
+      translatedPort: pulumi.Input.fromValue((map['translatedPort'] as num).toInt()),
     );
   }
 }

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_mover_target_endpoint_mover_target_endpoint_args_doc}
 class MoverTargetEndpointArgs {
   /// Specifies a description for the Storage Mover Target Endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name which should be used for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the storage account for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountId;
   /// Specifies the name of the storage blob container for this Storage Mover Target Endpoint. Changing this forces a new resource to be created.

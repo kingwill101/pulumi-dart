@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_cosmos_dbapi_args.dart';
+import 'dataset_cosmos_dbapi_schema_column.dart';
 import 'dataset_cosmos_dbapi_state.dart';
 
 /// Manages an Azure Cosmos DB SQL API Dataset inside an Azure Data Factory.
@@ -142,7 +143,7 @@ import 'dataset_cosmos_dbapi_state.dart';
 /// 		}
 /// 		exampleLinkedServiceCosmosDb, err := datafactory.NewLinkedServiceCosmosDb(ctx, "example", &datafactory.LinkedServiceCosmosDbArgs{
 /// 			Name:            pulumi.String("example"),
-/// 			DataFactoryId:   exampleFactory.ID(),
+/// 			DataFactoryId:   exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			AccountEndpoint: pulumi.String(example.Endpoint),
 /// 			Database:        pulumi.String("foo"),
 /// 		})
@@ -151,7 +152,7 @@ import 'dataset_cosmos_dbapi_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewDatasetCosmosDBApi(ctx, "example", &datafactory.DatasetCosmosDBApiArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedServiceCosmosDb.Name,
 /// 			CollectionName:    pulumi.String("bar"),
 /// 		})
@@ -330,7 +331,7 @@ class DatasetCosmosDBApi extends pulumi.CustomResource {
   /// A map of parameters to associate with the Data Factory Dataset.
   late final pulumi.Output<Map<String, String>?> parameters;
   /// A `schemaColumn` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
+  late final pulumi.Output<List<DatasetCosmosDBApiSchemaColumn>?> schemaColumns;
 
   /// Creates a new [DatasetCosmosDBApi].
   /// [name] The Pulumi resource name.
@@ -344,18 +345,18 @@ class DatasetCosmosDBApi extends pulumi.CustomResource {
           'azure:datafactory/datasetCosmosDBApi:DatasetCosmosDBApi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     collectionName = registerOutput<String?>('collectionName');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetCosmosDBApiSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetCosmosDBApiSchemaColumn>(guardedValue, (value) => DatasetCosmosDBApiSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DatasetCosmosDBApi] resource's state with the given [name] and [id].
@@ -363,11 +364,12 @@ class DatasetCosmosDBApi extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetCosmosDBApiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetCosmosDBApi._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -381,15 +383,36 @@ class DatasetCosmosDBApi extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     collectionName = registerOutput<String?>('collectionName');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetCosmosDBApiSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetCosmosDBApiSchemaColumn>(guardedValue, (value) => DatasetCosmosDBApiSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DatasetCosmosDBApi] resource.
+  DatasetCosmosDBApi.reference(String urn)
+    : super(
+        'azure:datafactory/datasetCosmosDBApi:DatasetCosmosDBApi',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    collectionName = registerOutput<String?>('collectionName');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    linkedServiceName = registerOutput<String>('linkedServiceName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetCosmosDBApiSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetCosmosDBApiSchemaColumn>(guardedValue, (value) => DatasetCosmosDBApiSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

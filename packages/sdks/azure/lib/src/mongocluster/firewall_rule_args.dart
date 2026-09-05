@@ -12,7 +12,7 @@ class FirewallRuleArgs {
   /// The ID of the Mongo Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> mongoClusterId;
   /// The name of the Mongo Cluster Firewall Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The start IP address of the Mongo Cluster Firewall Rule.
   final pulumi.Input<String> startIpAddress;
 

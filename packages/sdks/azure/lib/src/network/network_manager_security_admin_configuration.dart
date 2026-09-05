@@ -163,14 +163,14 @@ import 'network_manager_security_admin_configuration_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-network-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = network.NewNetworkManagerSecurityAdminConfiguration(ctx, "example", &network.NetworkManagerSecurityAdminConfigurationArgs{
 /// 			Name:                                    pulumi.String("example-admin-conf"),
-/// 			NetworkManagerId:                        exampleNetworkManager.ID(),
+/// 			NetworkManagerId:                        exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:                             pulumi.String("example admin conf"),
 /// 			ApplyOnNetworkIntentPolicyBasedServices: pulumi.String("None"),
 /// 		})
@@ -363,7 +363,7 @@ class NetworkManagerSecurityAdminConfiguration extends pulumi.CustomResource {
           'azure:network/networkManagerSecurityAdminConfiguration:NetworkManagerSecurityAdminConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applyOnNetworkIntentPolicyBasedServices = registerOutput<String?>('applyOnNetworkIntentPolicyBasedServices');
     description = registerOutput<String?>('description');
@@ -376,11 +376,12 @@ class NetworkManagerSecurityAdminConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerSecurityAdminConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerSecurityAdminConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -394,6 +395,21 @@ class NetworkManagerSecurityAdminConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applyOnNetworkIntentPolicyBasedServices = registerOutput<String?>('applyOnNetworkIntentPolicyBasedServices');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    networkManagerId = registerOutput<String>('networkManagerId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerSecurityAdminConfiguration] resource.
+  NetworkManagerSecurityAdminConfiguration.reference(String urn)
+    : super(
+        'azure:network/networkManagerSecurityAdminConfiguration:NetworkManagerSecurityAdminConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applyOnNetworkIntentPolicyBasedServices = registerOutput<String?>('applyOnNetworkIntentPolicyBasedServices');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

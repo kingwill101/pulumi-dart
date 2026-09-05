@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointPrivateDnsZoneGroup {
   /// The ID of the Private DNS Zone Config.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the Name of the Private DNS Zone Group.
   final pulumi.Input<String> name;
   /// Specifies the list of Private DNS Zones to include within the `privateDnsZoneGroup`.

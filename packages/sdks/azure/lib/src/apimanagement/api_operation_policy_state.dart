@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApiOperationPolicy resources.
 class ApiOperationPolicyState {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// The name of the API within the API Management Service where the Operation exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiName;
+  final pulumi.Input<String?>? apiName;
   /// The operation identifier within an API. Must be unique in the current API Management service instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The XML Content for this Policy.
-  final pulumi.Input<String>? xmlContent;
+  final pulumi.Input<String?>? xmlContent;
   /// A link to a Policy XML Document, which must be publicly available.
-  final pulumi.Input<String>? xmlLink;
+  final pulumi.Input<String?>? xmlLink;
 
   /// Creates a new [ApiOperationPolicyState].
   /// [apiManagementName] The name of the API Management Service. Changing this forces a new resource to be created.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HciNetworkInterfaceIpConfiguration {
   /// The IPv4 address of the gateway for the Network Interface.
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
   /// The prefix length for the address of the Network Interface.
-  final pulumi.Input<String>? prefixLength;
+  final pulumi.Input<String?>? prefixLength;
   /// The IPv4 address of the IP configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The resource ID of the Stack HCI Logical Network bound to the IP configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
 

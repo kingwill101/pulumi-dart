@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnhancedValidation {
-  /// Should the AzureRM Provider validate location arguments against the list of supported Azure Locations? When enabled, invalid locations are caught at plan time; when disabled, they are caught at apply time.
-  final pulumi.Input<bool>? locations;
+  /// Should the AzureRM Provider validate location arguments against the list of supported Azure Locations?
+  final pulumi.Input<bool?>? locations;
   /// Should the AzureRM Provider validate Resource Provider arguments against the list of supported Resource Providers? When enabled, invalid resource providers are caught at plan time; when disabled, they are caught at apply time.
-  final pulumi.Input<bool>? resourceProviders;
+  final pulumi.Input<bool?>? resourceProviders;
 
   /// Creates a new [EnhancedValidation].
-  /// [locations] Should the AzureRM Provider validate location arguments against the list of supported Azure Locations? When enabled, invalid locations are caught at plan time; when disabled, they are caught at apply time.
+  /// [locations] Should the AzureRM Provider validate location arguments against the list of supported Azure Locations?
   /// [resourceProviders] Should the AzureRM Provider validate Resource Provider arguments against the list of supported Resource Providers? When enabled, invalid resource providers are caught at plan time; when disabled, they are caught at apply time.
   const EnhancedValidation({
     this.locations,

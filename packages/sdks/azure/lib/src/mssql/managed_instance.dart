@@ -805,8 +805,8 @@ import 'managed_instance_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnetNetworkSecurityGroupAssociation, err := network.NewSubnetNetworkSecurityGroupAssociation(ctx, "example", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               exampleSubnet.ID(),
-/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID(),
+/// 			SubnetId:               exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -823,8 +823,8 @@ import 'managed_instance_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSubnetRouteTableAssociation, err := network.NewSubnetRouteTableAssociation(ctx, "example", &network.SubnetRouteTableAssociationArgs{
-/// 			SubnetId:     exampleSubnet.ID(),
-/// 			RouteTableId: exampleRouteTable.ID(),
+/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			RouteTableId: exampleRouteTable.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -836,7 +836,7 @@ import 'managed_instance_state.dart';
 /// 			LicenseType:                pulumi.String("BasePrice"),
 /// 			SkuName:                    pulumi.String("GP_Gen5"),
 /// 			StorageSizeInGb:            pulumi.Int(32),
-/// 			SubnetId:                   exampleSubnet.ID(),
+/// 			SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Vcores:                     pulumi.Int(4),
 /// 			AdministratorLogin:         pulumi.String("mradministrator"),
 /// 			AdministratorLoginPassword: pulumi.String("thisIsDog11"),
@@ -1567,10 +1567,11 @@ class ManagedInstance extends pulumi.CustomResource {
           'azure:mssql/managedInstance:ManagedInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['administratorLoginPassword'],
         ) {
     administratorLogin = registerOutput<String>('administratorLogin');
-    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
     azureActiveDirectoryAdministrator = registerOutput<ManagedInstanceAzureActiveDirectoryAdministrator?>('azureActiveDirectoryAdministrator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedInstanceAzureActiveDirectoryAdministrator.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collation = registerOutput<String?>('collation');
     databaseFormat = registerOutput<String?>('databaseFormat');
@@ -1594,7 +1595,7 @@ class ManagedInstance extends pulumi.CustomResource {
     storageIops = registerOutput<int>('storageIops');
     storageSizeInGb = registerOutput<int>('storageSizeInGb');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timezoneId = registerOutput<String?>('timezoneId');
     vcores = registerOutput<int>('vcores');
     zoneRedundantEnabled = registerOutput<bool?>('zoneRedundantEnabled');
@@ -1605,11 +1606,12 @@ class ManagedInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1624,7 +1626,7 @@ class ManagedInstance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     administratorLogin = registerOutput<String>('administratorLogin');
-    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
     azureActiveDirectoryAdministrator = registerOutput<ManagedInstanceAzureActiveDirectoryAdministrator?>('azureActiveDirectoryAdministrator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedInstanceAzureActiveDirectoryAdministrator.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collation = registerOutput<String?>('collation');
     databaseFormat = registerOutput<String?>('databaseFormat');
@@ -1648,7 +1650,48 @@ class ManagedInstance extends pulumi.CustomResource {
     storageIops = registerOutput<int>('storageIops');
     storageSizeInGb = registerOutput<int>('storageSizeInGb');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timezoneId = registerOutput<String?>('timezoneId');
+    vcores = registerOutput<int>('vcores');
+    zoneRedundantEnabled = registerOutput<bool?>('zoneRedundantEnabled');
+  }
+
+  /// Creates a typed reference to an existing [ManagedInstance] resource.
+  ManagedInstance.reference(String urn)
+    : super(
+        'azure:mssql/managedInstance:ManagedInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['administratorLoginPassword'],
+        isResourceReference: true,
+      ) {
+    administratorLogin = registerOutput<String>('administratorLogin');
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
+    azureActiveDirectoryAdministrator = registerOutput<ManagedInstanceAzureActiveDirectoryAdministrator?>('azureActiveDirectoryAdministrator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedInstanceAzureActiveDirectoryAdministrator.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    collation = registerOutput<String?>('collation');
+    databaseFormat = registerOutput<String?>('databaseFormat');
+    dnsZone = registerOutput<String>('dnsZone');
+    dnsZonePartnerId = registerOutput<String?>('dnsZonePartnerId');
+    fqdn = registerOutput<String>('fqdn');
+    generalPurposeV2Enabled = registerOutput<bool?>('generalPurposeV2Enabled');
+    hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
+    identity = registerOutput<ManagedInstanceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    licenseType = registerOutput<String>('licenseType');
+    location = registerOutput<String>('location');
+    maintenanceConfigurationName = registerOutput<String?>('maintenanceConfigurationName');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+    this.name = registerOutput<String>('name');
+    proxyOverride = registerOutput<String>('proxyOverride');
+    publicDataEndpointEnabled = registerOutput<bool?>('publicDataEndpointEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    servicePrincipalType = registerOutput<String?>('servicePrincipalType');
+    skuName = registerOutput<String>('skuName');
+    storageAccountType = registerOutput<String?>('storageAccountType');
+    storageIops = registerOutput<int>('storageIops');
+    storageSizeInGb = registerOutput<int>('storageSizeInGb');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timezoneId = registerOutput<String?>('timezoneId');
     vcores = registerOutput<int>('vcores');
     zoneRedundantEnabled = registerOutput<bool?>('zoneRedundantEnabled');

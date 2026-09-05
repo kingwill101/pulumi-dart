@@ -43,7 +43,7 @@ import 'stream_input_event_hub_v2_state.dart';
 /// });
 /// const exampleStreamInputEventHubV2 = new azure.streamanalytics.StreamInputEventHubV2("example", {
 ///     name: "eventhub-stream-input",
-///     streamAnalyticsJobId: example.apply(example => example.id),
+///     streamAnalyticsJobId: example.id,
 ///     eventhubConsumerGroupName: exampleConsumerGroup.name,
 ///     eventhubName: exampleEventHub.name,
 ///     servicebusNamespace: exampleEventHubNamespace.name,
@@ -191,7 +191,7 @@ import 'stream_input_event_hub_v2_state.dart';
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("example-eventhub"),
-/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			NamespaceId:      exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(2),
 /// 			MessageRetention: pulumi.Int(1),
 /// 		})
@@ -208,10 +208,8 @@ import 'stream_input_event_hub_v2_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = streamanalytics.NewStreamInputEventHubV2(ctx, "example", &streamanalytics.StreamInputEventHubV2Args{
-/// 			Name: pulumi.String("eventhub-stream-input"),
-/// 			StreamAnalyticsJobId: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:                      pulumi.String("eventhub-stream-input"),
+/// 			StreamAnalyticsJobId:      example.Id(),
 /// 			EventhubConsumerGroupName: exampleConsumerGroup.Name,
 /// 			EventhubName:              exampleEventHub.Name,
 /// 			ServicebusNamespace:       exampleEventHubNamespace.Name,
@@ -466,7 +464,8 @@ class StreamInputEventHubV2 extends pulumi.CustomResource {
           'azure:streamanalytics/streamInputEventHubV2:StreamInputEventHubV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['sharedAccessPolicyKey'],
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');
     eventhubConsumerGroupName = registerOutput<String?>('eventhubConsumerGroupName');
@@ -475,7 +474,7 @@ class StreamInputEventHubV2 extends pulumi.CustomResource {
     partitionKey = registerOutput<String?>('partitionKey');
     serialization = registerOutput<StreamInputEventHubV2Serialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamInputEventHubV2Serialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
-    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
+    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey', isSecret: true);
     sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
     streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }
@@ -485,11 +484,12 @@ class StreamInputEventHubV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StreamInputEventHubV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StreamInputEventHubV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -510,7 +510,29 @@ class StreamInputEventHubV2 extends pulumi.CustomResource {
     partitionKey = registerOutput<String?>('partitionKey');
     serialization = registerOutput<StreamInputEventHubV2Serialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamInputEventHubV2Serialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     servicebusNamespace = registerOutput<String>('servicebusNamespace');
-    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
+    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey', isSecret: true);
+    sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+  }
+
+  /// Creates a typed reference to an existing [StreamInputEventHubV2] resource.
+  StreamInputEventHubV2.reference(String urn)
+    : super(
+        'azure:streamanalytics/streamInputEventHubV2:StreamInputEventHubV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sharedAccessPolicyKey'],
+        isResourceReference: true,
+      ) {
+    authenticationMode = registerOutput<String?>('authenticationMode');
+    eventhubConsumerGroupName = registerOutput<String?>('eventhubConsumerGroupName');
+    eventhubName = registerOutput<String>('eventhubName');
+    this.name = registerOutput<String>('name');
+    partitionKey = registerOutput<String?>('partitionKey');
+    serialization = registerOutput<StreamInputEventHubV2Serialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamInputEventHubV2Serialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    servicebusNamespace = registerOutput<String>('servicebusNamespace');
+    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey', isSecret: true);
     sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
     streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }

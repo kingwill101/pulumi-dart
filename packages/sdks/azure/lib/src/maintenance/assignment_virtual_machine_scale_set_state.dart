@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AssignmentVirtualMachineScaleSet resources.
 class AssignmentVirtualMachineScaleSetState {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the ID of the Maintenance Configuration Resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? maintenanceConfigurationId;
+  final pulumi.Input<String?>? maintenanceConfigurationId;
   /// Specifies the Virtual Machine Scale Set ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualMachineScaleSetId;
+  final pulumi.Input<String?>? virtualMachineScaleSetId;
 
   /// Creates a new [AssignmentVirtualMachineScaleSetState].
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.

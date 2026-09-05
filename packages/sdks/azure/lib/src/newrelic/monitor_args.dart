@@ -11,25 +11,25 @@ import 'monitor_user.dart';
 /// {@macro pulumi_newrelic_monitor_monitor_args_doc}
 class MonitorArgs {
   /// Specifies the source of account creation. Possible values are `LIFTR` and `NEWRELIC`. Defaults to `LIFTR`. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final pulumi.Input<String>? accountCreationSource;
+  final pulumi.Input<String?>? accountCreationSource;
   /// Specifies the account id. Changing this forces a new Azure Native New Relic Monitor to be created.
   ///
   /// &gt; **Note:** The value of `accountId` must come from an Azure Native New Relic Monitor instance of another different subscription.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// An `identity` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final pulumi.Input<MonitorIdentity>? identity;
+  final pulumi.Input<MonitorIdentity?>? identity;
   /// Specifies the ingestion key of account. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final pulumi.Input<String>? ingestionKey;
+  final pulumi.Input<String?>? ingestionKey;
   /// Specifies the Azure Region where the Azure Native New Relic Monitor should exist. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this Azure Native New Relic Monitor. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the source of org creation. Possible values are `LIFTR` and `NEWRELIC`. Defaults to `LIFTR`. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final pulumi.Input<String>? orgCreationSource;
+  final pulumi.Input<String?>? orgCreationSource;
   /// Specifies the organization id. Changing this forces a new Azure Native New Relic Monitor to be created.
   ///
   /// &gt; **Note:** The value of `organizationId` must come from an Azure Native New Relic Monitor instance of another different subscription.
-  final pulumi.Input<String>? organizationId;
+  final pulumi.Input<String?>? organizationId;
   /// A `plan` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<MonitorPlan> plan;
   /// Specifies the name of the Resource Group where the Azure Native New Relic Monitor should exist. Changing this forces a new Azure Native New Relic Monitor to be created.
@@ -37,7 +37,7 @@ class MonitorArgs {
   /// A `user` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<MonitorUser> user;
   /// Specifies the user id. Changing this forces a new Azure Native New Relic Monitor to be created.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
 
   /// Creates a new [MonitorArgs].
   /// [accountCreationSource] Specifies the source of account creation. Possible values are `LIFTR` and `NEWRELIC`. Defaults to `LIFTR`. Changing this forces a new Azure Native New Relic Monitor to be created.

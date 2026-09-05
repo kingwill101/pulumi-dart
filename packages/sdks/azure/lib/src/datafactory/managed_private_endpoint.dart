@@ -144,8 +144,8 @@ import 'managed_private_endpoint_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewManagedPrivateEndpoint(ctx, "example", &datafactory.ManagedPrivateEndpointArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			DataFactoryId:    exampleFactory.ID(),
-/// 			TargetResourceId: exampleAccount.ID(),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetResourceId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			SubresourceName:  pulumi.String("blob"),
 /// 		})
 /// 		if err != nil {
@@ -325,10 +325,10 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
           'azure:datafactory/managedPrivateEndpoint:ManagedPrivateEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dataFactoryId = registerOutput<String>('dataFactoryId');
-    fqdns = registerOutput<List<String>>('fqdns');
+    fqdns = registerOutput<List<String>>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     subresourceName = registerOutput<String?>('subresourceName');
     targetResourceId = registerOutput<String>('targetResourceId');
@@ -339,11 +339,12 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedPrivateEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedPrivateEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -358,7 +359,23 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataFactoryId = registerOutput<String>('dataFactoryId');
-    fqdns = registerOutput<List<String>>('fqdns');
+    fqdns = registerOutput<List<String>>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    subresourceName = registerOutput<String?>('subresourceName');
+    targetResourceId = registerOutput<String>('targetResourceId');
+  }
+
+  /// Creates a typed reference to an existing [ManagedPrivateEndpoint] resource.
+  ManagedPrivateEndpoint.reference(String urn)
+    : super(
+        'azure:datafactory/managedPrivateEndpoint:ManagedPrivateEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    fqdns = registerOutput<List<String>>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     subresourceName = registerOutput<String?>('subresourceName');
     targetResourceId = registerOutput<String>('targetResourceId');

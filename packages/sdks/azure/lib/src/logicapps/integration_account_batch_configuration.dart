@@ -280,11 +280,11 @@ class IntegrationAccountBatchConfiguration extends pulumi.CustomResource {
           'azure:logicapps/integrationAccountBatchConfiguration:IntegrationAccountBatchConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     batchGroupName = registerOutput<String>('batchGroupName');
     integrationAccountName = registerOutput<String>('integrationAccountName');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     releaseCriteria = registerOutput<IntegrationAccountBatchConfigurationReleaseCriteria>('releaseCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountBatchConfigurationReleaseCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -295,11 +295,12 @@ class IntegrationAccountBatchConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationAccountBatchConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationAccountBatchConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -315,7 +316,24 @@ class IntegrationAccountBatchConfiguration extends pulumi.CustomResource {
         ) {
     batchGroupName = registerOutput<String>('batchGroupName');
     integrationAccountName = registerOutput<String>('integrationAccountName');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    releaseCriteria = registerOutput<IntegrationAccountBatchConfigurationReleaseCriteria>('releaseCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountBatchConfigurationReleaseCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccountBatchConfiguration] resource.
+  IntegrationAccountBatchConfiguration.reference(String urn)
+    : super(
+        'azure:logicapps/integrationAccountBatchConfiguration:IntegrationAccountBatchConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    batchGroupName = registerOutput<String>('batchGroupName');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     releaseCriteria = registerOutput<IntegrationAccountBatchConfigurationReleaseCriteria>('releaseCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountBatchConfigurationReleaseCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');

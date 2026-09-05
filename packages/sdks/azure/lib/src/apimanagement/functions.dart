@@ -181,6 +181,17 @@ Future<GetApiResult> getApi(
   return GetApiResult.fromMap(result);
 }
 
+pulumi.Output<GetApiResult> getApiOutput(
+  GetApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:apimanagement/getApi:getApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiResult.fromMap);
+}
+
 /// Uses this data source to access information about an API Version Set within an API Management Service.
 ///
 /// ## Example Usage
@@ -333,6 +344,17 @@ Future<GetApiVersionSetResult> getApiVersionSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiVersionSetResult.fromMap(result);
+}
+
+pulumi.Output<GetApiVersionSetResult> getApiVersionSetOutput(
+  GetApiVersionSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:apimanagement/getApiVersionSet:getApiVersionSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiVersionSetResult.fromMap);
 }
 
 /// Use this data source to access information about an existing API Management Gateway.
@@ -501,6 +523,17 @@ Future<GetGatewayResult> getGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetGatewayResult> getGatewayOutput(
+  GetGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:apimanagement/getGateway:getGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayResult.fromMap);
 }
 
 /// Use this data source to access information about an existing API Management Gateway Host Configuration.
@@ -727,6 +760,17 @@ Future<GetGatewayHostNameConfigurationResult> getGatewayHostNameConfiguration(
   return GetGatewayHostNameConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetGatewayHostNameConfigurationResult> getGatewayHostNameConfigurationOutput(
+  GetGatewayHostNameConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:apimanagement/getGatewayHostNameConfiguration:getGatewayHostNameConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayHostNameConfigurationResult.fromMap);
+}
+
 /// Use this data source to access information about an existing API Management Group.
 ///
 /// ## Example Usage
@@ -879,6 +923,17 @@ Future<GetGroupResult> getGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:apimanagement/getGroup:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
 }
 
 /// Use this data source to access information about an existing API Management Product.
@@ -1035,6 +1090,17 @@ Future<GetProductResult> getProduct(
   return GetProductResult.fromMap(result);
 }
 
+pulumi.Output<GetProductResult> getProductOutput(
+  GetProductArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:apimanagement/getProduct:getProduct',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProductResult.fromMap);
+}
+
 /// Use this data source to access information about an existing API Management Service.
 ///
 /// ## Example Usage
@@ -1182,6 +1248,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:apimanagement/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Use this data source to access information about an existing API Management Subscription.
 ///
 /// ## Example Usage
@@ -1327,6 +1404,17 @@ Future<GetSubscriptionResult> getSubscription(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubscriptionResult.fromMap(result);
+}
+
+pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
+  GetSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:apimanagement/getSubscription:getSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionResult.fromMap);
 }
 
 /// Use this data source to access information about an existing API Management User.
@@ -1483,6 +1571,17 @@ Future<GetUserResult> getUser(
   return GetUserResult.fromMap(result);
 }
 
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:apimanagement/getUser:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
+}
+
 /// Use this data source to access information about an existing API Management Workspace.
 ///
 /// ## Example Usage
@@ -1508,7 +1607,7 @@ Future<GetUserResult> getUser(
 ///     name: "existing",
 ///     apiManagementId: exampleService.id,
 /// });
-/// export const id = example.apply(example => example.id);
+/// export const id = example.id;
 /// ```
 /// ```python
 /// import pulumi
@@ -1595,11 +1694,9 @@ Future<GetUserResult> getUser(
 /// 		}
 /// 		example := apimanagement.LookupWorkspaceOutput(ctx, apimanagement.GetWorkspaceOutputArgs{
 /// 			Name:            pulumi.String("existing"),
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
-/// 		ctx.Export("id", example.ApplyT(func(example apimanagement.GetWorkspaceResult) (*string, error) {
-/// 			return example.Id, nil
-/// 		}).(pulumi.StringPtrOutput))
+/// 		ctx.Export("id", example.Id())
 /// 		return nil
 /// 	})
 /// }
@@ -1731,4 +1828,15 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:apimanagement/getWorkspace:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }

@@ -20,7 +20,7 @@ class RegistryTaskAgentSetting {
 
   factory RegistryTaskAgentSetting.fromMap(Map<String, dynamic> map) {
     return RegistryTaskAgentSetting(
-      cpu: pulumi.Input.fromValue(map['cpu'] as int),
+      cpu: pulumi.Input.fromValue((map['cpu'] as num).toInt()),
     );
   }
 }

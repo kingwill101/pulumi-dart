@@ -235,7 +235,7 @@ import 'workspace_security_alert_policy_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -244,11 +244,11 @@ import 'workspace_security_alert_policy_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
-/// 			AadAdmin: []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			AadAdmin: []map[string]string{
+/// 				{
 /// 					"login":    "AzureAD Admin",
 /// 					"objectId": "00000000-0000-0000-0000-000000000000",
 /// 					"tenantId": "00000000-0000-0000-0000-000000000000",
@@ -275,7 +275,7 @@ import 'workspace_security_alert_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = synapse.NewWorkspaceSecurityAlertPolicy(ctx, "example", &synapse.WorkspaceSecurityAlertPolicyArgs{
-/// 			SynapseWorkspaceId:      exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId:      exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			PolicyState:             pulumi.String("Enabled"),
 /// 			StorageEndpoint:         auditLogs.PrimaryBlobEndpoint,
 /// 			StorageAccountAccessKey: auditLogs.PrimaryAccessKey,
@@ -546,14 +546,15 @@ class WorkspaceSecurityAlertPolicy extends pulumi.CustomResource {
           'azure:synapse/workspaceSecurityAlertPolicy:WorkspaceSecurityAlertPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
-    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailAccountAdminsEnabled = registerOutput<bool?>('emailAccountAdminsEnabled');
-    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     policyState = registerOutput<String>('policyState');
     retentionDays = registerOutput<int?>('retentionDays');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageEndpoint = registerOutput<String?>('storageEndpoint');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
   }
@@ -563,11 +564,12 @@ class WorkspaceSecurityAlertPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceSecurityAlertPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceSecurityAlertPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -581,12 +583,32 @@ class WorkspaceSecurityAlertPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailAccountAdminsEnabled = registerOutput<bool?>('emailAccountAdminsEnabled');
-    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     policyState = registerOutput<String>('policyState');
     retentionDays = registerOutput<int?>('retentionDays');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceSecurityAlertPolicy] resource.
+  WorkspaceSecurityAlertPolicy.reference(String urn)
+    : super(
+        'azure:synapse/workspaceSecurityAlertPolicy:WorkspaceSecurityAlertPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
+        isResourceReference: true,
+      ) {
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    emailAccountAdminsEnabled = registerOutput<bool?>('emailAccountAdminsEnabled');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    policyState = registerOutput<String>('policyState');
+    retentionDays = registerOutput<int?>('retentionDays');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageEndpoint = registerOutput<String?>('storageEndpoint');
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
   }

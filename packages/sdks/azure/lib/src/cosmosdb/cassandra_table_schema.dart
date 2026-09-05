@@ -7,7 +7,7 @@ import 'cassandra_table_schema_partition_key.dart';
 
 class CassandraTableSchema {
   /// One or more `clusterKey` blocks as defined below.
-  final pulumi.Input<List<CassandraTableSchemaClusterKey>>? clusterKeys;
+  final pulumi.Input<List<CassandraTableSchemaClusterKey>?>? clusterKeys;
   /// One or more `column` blocks as defined below.
   final pulumi.Input<List<CassandraTableSchemaColumn>> columns;
   /// One or more `partitionKey` blocks as defined below.

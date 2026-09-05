@@ -11,7 +11,7 @@ class CacheNfsTargetArgs {
   /// The name HPC Cache, which the HPC Cache NFS Target will be added to. Changing this forces a new resource to be created.
   final pulumi.Input<String> cacheName;
   /// The name of the HPC Cache NFS Target. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Can be specified multiple times to define multiple `namespaceJunction`. Each `namespaceJunction` block supports fields documented below.
   final pulumi.Input<List<CacheNfsTargetNamespaceJunction>> namespaceJunctions;
   /// The name of the Resource Group in which to create the HPC Cache NFS Target. Changing this forces a new resource to be created.
@@ -21,9 +21,9 @@ class CacheNfsTargetArgs {
   /// The type of usage of the HPC Cache NFS Target. Possible values are: `READ_HEAVY_INFREQ`, `READ_HEAVY_CHECK_180`, `READ_ONLY`, `READ_WRITE`, `WRITE_WORKLOAD_15`, `WRITE_AROUND`, `WRITE_WORKLOAD_CHECK_30`, `WRITE_WORKLOAD_CHECK_60` and `WRITE_WORKLOAD_CLOUDWS`.
   final pulumi.Input<String> usageModel;
   /// The amount of time the cache waits before it checks the back-end storage for file updates. Possible values are between `1` and `31536000`.
-  final pulumi.Input<int>? verificationTimerInSeconds;
+  final pulumi.Input<int?>? verificationTimerInSeconds;
   /// The amount of time the cache waits after the last file change before it copies the changed file to back-end storage. Possible values are between `1` and `31536000`.
-  final pulumi.Input<int>? writeBackTimerInSeconds;
+  final pulumi.Input<int?>? writeBackTimerInSeconds;
 
   /// Creates a new [CacheNfsTargetArgs].
   /// [cacheName] The name HPC Cache, which the HPC Cache NFS Target will be added to. Changing this forces a new resource to be created.
@@ -66,8 +66,8 @@ class CacheNfsTargetArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       targetHostName: pulumi.Input.fromValue(map['targetHostName'] as String),
       usageModel: pulumi.Input.fromValue(map['usageModel'] as String),
-      verificationTimerInSeconds: (() { final guardedValue = map['verificationTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      writeBackTimerInSeconds: (() { final guardedValue = map['writeBackTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      verificationTimerInSeconds: (() { final guardedValue = map['verificationTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      writeBackTimerInSeconds: (() { final guardedValue = map['writeBackTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

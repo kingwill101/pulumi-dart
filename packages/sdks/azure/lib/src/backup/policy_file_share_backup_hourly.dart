@@ -30,9 +30,9 @@ class PolicyFileShareBackupHourly {
 
   factory PolicyFileShareBackupHourly.fromMap(Map<String, dynamic> map) {
     return PolicyFileShareBackupHourly(
-      interval: pulumi.Input.fromValue(map['interval'] as int),
+      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
-      windowDuration: pulumi.Input.fromValue(map['windowDuration'] as int),
+      windowDuration: pulumi.Input.fromValue((map['windowDuration'] as num).toInt()),
     );
   }
 }

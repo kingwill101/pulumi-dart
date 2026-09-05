@@ -6,7 +6,7 @@ class ApplicationGatewayTrustedClientCertificate {
   /// The base-64 encoded certificate.
   final pulumi.Input<String> data;
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the Trusted Client Certificate that is unique within this Application Gateway.
   final pulumi.Input<String> name;
 

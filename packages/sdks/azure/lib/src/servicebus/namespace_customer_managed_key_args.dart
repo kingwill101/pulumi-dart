@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicebus_namespace_customer_managed_key_namespace_customer_managed_key_args_doc}
 class NamespaceCustomerManagedKeyArgs {
   /// Used to specify whether enable Infrastructure Encryption. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? infrastructureEncryptionEnabled;
+  final pulumi.Input<bool?>? infrastructureEncryptionEnabled;
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Service Bus Namespace.
   final pulumi.Input<String> keyVaultKeyId;
   /// The ID of the Service Bus namespace. Changing this forces a new resource to be created.

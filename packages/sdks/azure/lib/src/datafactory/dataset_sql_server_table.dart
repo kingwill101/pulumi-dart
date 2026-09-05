@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_sql_server_table_args.dart';
+import 'dataset_sql_server_table_schema_column.dart';
 import 'dataset_sql_server_table_state.dart';
 
 /// Manages a SQL Server Table Dataset inside a Azure Data Factory.
@@ -116,7 +117,7 @@ import 'dataset_sql_server_table_state.dart';
 /// 		}
 /// 		exampleLinkedServiceSqlServer, err := datafactory.NewLinkedServiceSqlServer(ctx, "example", &datafactory.LinkedServiceSqlServerArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			DataFactoryId:    exampleFactory.ID(),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionString: pulumi.String("Integrated Security=False;Data Source=test;Initial Catalog=test;User ID=test;Password=test"),
 /// 		})
 /// 		if err != nil {
@@ -124,7 +125,7 @@ import 'dataset_sql_server_table_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewDatasetSqlServerTable(ctx, "example", &datafactory.DatasetSqlServerTableArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedServiceSqlServer.Name,
 /// 		})
 /// 		if err != nil {
@@ -272,7 +273,7 @@ class DatasetSqlServerTable extends pulumi.CustomResource {
   /// A map of parameters to associate with the Data Factory Dataset SQL Server Table.
   late final pulumi.Output<Map<String, String>?> parameters;
   /// A `schemaColumn` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
+  late final pulumi.Output<List<DatasetSqlServerTableSchemaColumn>?> schemaColumns;
   /// The table name of the Data Factory Dataset SQL Server Table.
   late final pulumi.Output<String?> tableName;
 
@@ -288,17 +289,17 @@ class DatasetSqlServerTable extends pulumi.CustomResource {
           'azure:datafactory/datasetSqlServerTable:DatasetSqlServerTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetSqlServerTableSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetSqlServerTableSchemaColumn>(guardedValue, (value) => DatasetSqlServerTableSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
     tableName = registerOutput<String?>('tableName');
   }
 
@@ -307,11 +308,12 @@ class DatasetSqlServerTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetSqlServerTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetSqlServerTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,15 +327,36 @@ class DatasetSqlServerTable extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetSqlServerTableSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetSqlServerTableSchemaColumn>(guardedValue, (value) => DatasetSqlServerTableSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
+    tableName = registerOutput<String?>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [DatasetSqlServerTable] resource.
+  DatasetSqlServerTable.reference(String urn)
+    : super(
+        'azure:datafactory/datasetSqlServerTable:DatasetSqlServerTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    linkedServiceName = registerOutput<String>('linkedServiceName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetSqlServerTableSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetSqlServerTableSchemaColumn>(guardedValue, (value) => DatasetSqlServerTableSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
     tableName = registerOutput<String?>('tableName');
   }
 }

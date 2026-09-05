@@ -5,21 +5,21 @@ import 'firewall_application_rule_collection_rule_protocol.dart';
 
 class FirewallApplicationRuleCollectionRule {
   /// Specifies a description for the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of FQDN tags. Possible values are `AppServiceEnvironment`, `AzureBackup`, `AzureKubernetesService`, `HDInsight`, `MicrosoftActiveProtectionService`, `WindowsDiagnostics`, `WindowsUpdate` and `WindowsVirtualDesktop`.
-  final pulumi.Input<List<String>>? fqdnTags;
+  final pulumi.Input<List<String>?>? fqdnTags;
   /// Specifies the name of the rule.
   final pulumi.Input<String> name;
   /// One or more `protocol` blocks as defined below.
-  final pulumi.Input<List<FirewallApplicationRuleCollectionRuleProtocol>>? protocols;
+  final pulumi.Input<List<FirewallApplicationRuleCollectionRuleProtocol>?>? protocols;
   /// A list of source IP addresses and/or IP ranges.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// A list of source IP Group IDs for the rule.
   ///
   /// &gt; **Note:** At least one of `sourceAddresses` and `sourceIpGroups` must be specified for a rule.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
   /// A list of FQDNs.
-  final pulumi.Input<List<String>>? targetFqdns;
+  final pulumi.Input<List<String>?>? targetFqdns;
 
   /// Creates a new [FirewallApplicationRuleCollectionRule].
   /// [description] Specifies a description for the rule.

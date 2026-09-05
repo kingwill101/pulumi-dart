@@ -10,11 +10,11 @@ class FrontdoorEndpointArgs {
   /// The ID of the Front Door Profile within which this Front Door Endpoint should exist. Changing this forces a new Front Door Endpoint to be created.
   final pulumi.Input<String> cdnFrontdoorProfileId;
   /// Specifies if this Front Door Endpoint is enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name which should be used for this Front Door Endpoint. Changing this forces a new Front Door Endpoint to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies a mapping of tags which should be assigned to the Front Door Endpoint.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FrontdoorEndpointArgs].
   /// [cdnFrontdoorProfileId] The ID of the Front Door Profile within which this Front Door Endpoint should exist. Changing this forces a new Front Door Endpoint to be created.

@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleServerAuthentication {
   /// Whether Active Directory authentication is allowed to access the PostgreSQL Flexible Server. Defaults to `false`.
-  final pulumi.Input<bool>? activeDirectoryAuthEnabled;
+  final pulumi.Input<bool?>? activeDirectoryAuthEnabled;
   /// Whether password authentication is allowed to access the PostgreSQL Flexible Server. Defaults to `true`.
-  final pulumi.Input<bool>? passwordAuthEnabled;
+  final pulumi.Input<bool?>? passwordAuthEnabled;
   /// The Tenant ID of the Azure Active Directory which is used by the Active Directory authentication. `activeDirectoryAuthEnabled` must be set to `true`.
   ///
   /// &gt; **Note:** Setting `activeDirectoryAuthEnabled` to `true` requires a Service Principal for the Postgres Flexible Server. For more details see [this document](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication).
   ///
   /// &gt; **Note:** `tenantId` is required when `activeDirectoryAuthEnabled` is set to `true`. And it should not be specified when `activeDirectoryAuthEnabled` is set to `false`
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [FlexibleServerAuthentication].
   /// [activeDirectoryAuthEnabled] Whether Active Directory authentication is allowed to access the PostgreSQL Flexible Server. Defaults to `false`.

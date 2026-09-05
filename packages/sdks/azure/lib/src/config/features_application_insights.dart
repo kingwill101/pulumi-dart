@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesApplicationInsights {
-  final pulumi.Input<bool>? disableGeneratedRule;
+  final pulumi.Input<bool?>? disableGeneratedRule;
 
   /// Creates a new [FeaturesApplicationInsights].
   /// [disableGeneratedRule] Optional.

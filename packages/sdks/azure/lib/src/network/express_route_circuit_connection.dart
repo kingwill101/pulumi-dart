@@ -277,7 +277,7 @@ import 'express_route_circuit_connection_state.dart';
 /// 			Name:               pulumi.String("example-ercircuit"),
 /// 			Location:           example.Location,
 /// 			ResourceGroupName:  example.Name,
-/// 			ExpressRoutePortId: exampleExpressRoutePort.ID(),
+/// 			ExpressRoutePortId: exampleExpressRoutePort.ID().ToIDOutput().ToStringOutput(),
 /// 			BandwidthInGbps:    pulumi.Float64(5),
 /// 			Sku: &network.ExpressRouteCircuitSkuArgs{
 /// 				Tier:   pulumi.String("Standard"),
@@ -302,7 +302,7 @@ import 'express_route_circuit_connection_state.dart';
 /// 			Name:               pulumi.String("example-ercircuit2"),
 /// 			Location:           example.Location,
 /// 			ResourceGroupName:  example.Name,
-/// 			ExpressRoutePortId: example2.ID(),
+/// 			ExpressRoutePortId: example2.ID().ToIDOutput().ToStringOutput(),
 /// 			BandwidthInGbps:    pulumi.Float64(5),
 /// 			Sku: &network.ExpressRouteCircuitSkuArgs{
 /// 				Tier:   pulumi.String("Standard"),
@@ -340,8 +340,8 @@ import 'express_route_circuit_connection_state.dart';
 /// 		}
 /// 		_, err = network.NewExpressRouteCircuitConnection(ctx, "example", &network.ExpressRouteCircuitConnectionArgs{
 /// 			Name:              pulumi.String("example-ercircuitconnection"),
-/// 			PeeringId:         exampleExpressRouteCircuitPeering.ID(),
-/// 			PeerPeeringId:     example2ExpressRouteCircuitPeering.ID(),
+/// 			PeeringId:         exampleExpressRouteCircuitPeering.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerPeeringId:     example2ExpressRouteCircuitPeering.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefixIpv4: pulumi.String("192.169.9.0/29"),
 /// 			AuthorizationKey:  pulumi.String("846a1918-b7a2-4917-b43c-8c4cdaee006a"),
 /// 		})
@@ -669,11 +669,12 @@ class ExpressRouteCircuitConnection extends pulumi.CustomResource {
           'azure:network/expressRouteCircuitConnection:ExpressRouteCircuitConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['authorizationKey'],
         ) {
     addressPrefixIpv4 = registerOutput<String>('addressPrefixIpv4');
     addressPrefixIpv6 = registerOutput<String?>('addressPrefixIpv6');
-    authorizationKey = registerOutput<String?>('authorizationKey');
+    authorizationKey = registerOutput<String?>('authorizationKey', isSecret: true);
     this.name = registerOutput<String>('name');
     peerPeeringId = registerOutput<String>('peerPeeringId');
     peeringId = registerOutput<String>('peeringId');
@@ -684,11 +685,12 @@ class ExpressRouteCircuitConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExpressRouteCircuitConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExpressRouteCircuitConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -704,7 +706,25 @@ class ExpressRouteCircuitConnection extends pulumi.CustomResource {
         ) {
     addressPrefixIpv4 = registerOutput<String>('addressPrefixIpv4');
     addressPrefixIpv6 = registerOutput<String?>('addressPrefixIpv6');
-    authorizationKey = registerOutput<String?>('authorizationKey');
+    authorizationKey = registerOutput<String?>('authorizationKey', isSecret: true);
+    this.name = registerOutput<String>('name');
+    peerPeeringId = registerOutput<String>('peerPeeringId');
+    peeringId = registerOutput<String>('peeringId');
+  }
+
+  /// Creates a typed reference to an existing [ExpressRouteCircuitConnection] resource.
+  ExpressRouteCircuitConnection.reference(String urn)
+    : super(
+        'azure:network/expressRouteCircuitConnection:ExpressRouteCircuitConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['authorizationKey'],
+        isResourceReference: true,
+      ) {
+    addressPrefixIpv4 = registerOutput<String>('addressPrefixIpv4');
+    addressPrefixIpv6 = registerOutput<String?>('addressPrefixIpv6');
+    authorizationKey = registerOutput<String?>('authorizationKey', isSecret: true);
     this.name = registerOutput<String>('name');
     peerPeeringId = registerOutput<String>('peerPeeringId');
     peeringId = registerOutput<String>('peeringId');

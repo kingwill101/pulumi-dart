@@ -5,7 +5,7 @@ import 'frontdoor_firewall_policy_log_scrubbing_scrubbing_rule.dart';
 
 class FrontdoorFirewallPolicyLogScrubbing {
   /// Is log scrubbing enabled? Possible values are `true` or `false`. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// One or more `scrubbingRule` blocks as defined below.
   ///
   /// &gt; **Note:** For more information on masking sensitive data in Azure Front Door please see the [product documentation](https://learn.microsoft.com/azure/web-application-firewall/afds/waf-sensitive-data-protection-configure-frontdoor).

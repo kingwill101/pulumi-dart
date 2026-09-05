@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Watcher resources.
 class WatcherState {
   /// The ID of Automation Account to manage this Watcher. Changing this forces a new Watcher to be created.
-  final pulumi.Input<String>? automationAccountId;
+  final pulumi.Input<String?>? automationAccountId;
   /// A description of this Automation Watcher.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A string of etag assigned to this Automation Watcher.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Specify the frequency at which the watcher is invoked.
-  final pulumi.Input<int>? executionFrequencyInSeconds;
+  final pulumi.Input<int?>? executionFrequencyInSeconds;
   /// The Azure Region where the Automation Watcher should exist. Changing this forces a new Automation Watcher to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Automation Watcher. Changing this forces a new Automation Watcher to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specify the name of an existing runbook this watcher is attached to. Changing this forces a new Automation to be created.
-  final pulumi.Input<String>? scriptName;
+  final pulumi.Input<String?>? scriptName;
   /// Specifies a list of key-vaule parameters. Changing this forces a new Automation watcher to be created.
-  final pulumi.Input<Map<String, String>>? scriptParameters;
+  final pulumi.Input<Map<String, String>?>? scriptParameters;
   /// Specify the name of the Hybrid work group the watcher will run on.
-  final pulumi.Input<String>? scriptRunOn;
+  final pulumi.Input<String?>? scriptRunOn;
   /// The current status of the Automation Watcher.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A mapping of tags which should be assigned to the Automation Watcher.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [WatcherState].
   /// [automationAccountId] The ID of Automation Account to manage this Watcher. Changing this forces a new Watcher to be created.
@@ -74,7 +74,7 @@ class WatcherState {
       automationAccountId: (() { final guardedValue = map['automationAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      executionFrequencyInSeconds: (() { final guardedValue = map['executionFrequencyInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      executionFrequencyInSeconds: (() { final guardedValue = map['executionFrequencyInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scriptName: (() { final guardedValue = map['scriptName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

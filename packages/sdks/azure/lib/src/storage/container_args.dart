@@ -10,23 +10,23 @@ class ContainerArgs {
   /// The Access Level configured for this Container. Possible values are `blob`, `container` or `private`. Defaults to `private`.
   ///
   /// &gt; **Note:** When updating `containerAccessType` for an existing storage container resource, Shared Key authentication will always be used, as AzureAD authentication is not supported.
-  final pulumi.Input<String>? containerAccessType;
+  final pulumi.Input<String?>? containerAccessType;
   /// The default encryption scope to use for blobs uploaded to this container. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? defaultEncryptionScope;
+  final pulumi.Input<String?>? defaultEncryptionScope;
   /// Whether to allow blobs to override the default encryption scope for this container. Can only be set when specifying `defaultEncryptionScope`. Defaults to `true`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? encryptionScopeOverrideEnabled;
+  final pulumi.Input<bool?>? encryptionScopeOverrideEnabled;
   /// A mapping of MetaData for this Container. All metadata keys should be lowercase.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name of the Container which should be created within the Storage Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Storage Account where the Container should be created.
   ///
   /// &gt; **Note:** One of `storageAccountName` or `storageAccountId` must be specified. When specifying `storageAccountId` the resource will use the Resource Manager API, rather than the Data Plane API.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// The name of the Storage Account where the Container should be created. This property is deprecated in favour of `storageAccountId`.
   ///
   /// &gt; **Note:** Migrating from the deprecated `storageAccountName` to `storageAccountId` is supported without recreation. Any other change to either property will result in the resource being recreated.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [ContainerArgs].
   /// [containerAccessType] The Access Level configured for this Container. Possible values are `blob`, `container` or `private`. Defaults to `private`.

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicationRecoveryPlanAzureToAzureSettings {
   /// The Edge Zone within the Azure Region where the VM exists. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
-  final pulumi.Input<String>? primaryEdgeZone;
+  final pulumi.Input<String?>? primaryEdgeZone;
   /// The Availability Zone in which the VM is located. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
-  final pulumi.Input<String>? primaryZone;
+  final pulumi.Input<String?>? primaryZone;
   /// The Edge Zone within the Azure Region where the VM is recovered. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
   ///
   /// &gt; **Note:** `primaryEdgeZone` and `recoveryEdgeZone` must be specified together.
-  final pulumi.Input<String>? recoveryEdgeZone;
+  final pulumi.Input<String?>? recoveryEdgeZone;
   /// The Availability Zone in which the VM is recovered. Changing this forces a new Site Recovery Replication Recovery Plan to be created.
   ///
   /// &gt; **Note:** `primaryZone` and `recoveryZone` must be specified together.
-  final pulumi.Input<String>? recoveryZone;
+  final pulumi.Input<String?>? recoveryZone;
 
   /// Creates a new [ReplicationRecoveryPlanAzureToAzureSettings].
   /// [primaryEdgeZone] The Edge Zone within the Azure Region where the VM exists. Changing this forces a new Site Recovery Replication Recovery Plan to be created.

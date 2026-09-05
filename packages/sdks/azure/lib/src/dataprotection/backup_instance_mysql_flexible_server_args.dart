@@ -10,9 +10,9 @@ class BackupInstanceMysqlFlexibleServerArgs {
   /// The ID of the Backup Policy.
   final pulumi.Input<String> backupPolicyId;
   /// The location of the source database. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Backup Instance for the MySQL Flexible Server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the source server. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverId;
   /// The ID of the Backup Vault within which the MySQL Flexible Server Backup Instance should exist. Changing this forces a new resource to be created.

@@ -30,7 +30,7 @@ class LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
 
   factory LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       interval: pulumi.Input.fromValue(map['interval'] as String),
       timeTaken: pulumi.Input.fromValue(map['timeTaken'] as String),
     );

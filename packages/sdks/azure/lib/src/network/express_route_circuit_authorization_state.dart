@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ExpressRouteCircuitAuthorization resources.
 class ExpressRouteCircuitAuthorizationState {
   /// The Authorization Key.
-  final pulumi.Input<String>? authorizationKey;
+  final pulumi.Input<String?>? authorizationKey;
   /// The authorization use status.
-  final pulumi.Input<String>? authorizationUseStatus;
+  final pulumi.Input<String?>? authorizationUseStatus;
   /// The name of the Express Route Circuit in which to create the Authorization. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? expressRouteCircuitName;
+  final pulumi.Input<String?>? expressRouteCircuitName;
   /// The name of the ExpressRoute circuit. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the ExpressRoute circuit. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ExpressRouteCircuitAuthorizationState].
   /// [authorizationKey] The Authorization Key.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StaticWebAppIdentity {
   /// A list of Managed Identity IDs which should be assigned to this Static Web App resource.
-  final pulumi.Input<List<String>>? identityIds;
-  final pulumi.Input<String>? principalId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<List<String>?>? identityIds;
+  final pulumi.Input<String?>? principalId;
+  final pulumi.Input<String?>? tenantId;
   /// The Type of Managed Identity assigned to this Static Web App resource. Possible values are `SystemAssigned` and `UserAssigned`.
   final pulumi.Input<String> type;
 

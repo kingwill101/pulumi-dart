@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_group_args.dart';
 import 'volume_group_encryption.dart';
 import 'volume_group_identity.dart';
+import 'volume_group_network_rule.dart';
 import 'volume_group_state.dart';
 
 /// Manages an Elastic SAN Volume Group resource.
@@ -49,6 +50,7 @@ import 'volume_group_state.dart';
 ///     name: "examplekv",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     enabledForDiskEncryption: true,
 ///     tenantId: current.then(current => current.tenantId),
 ///     softDeleteRetentionDays: 7,
@@ -160,6 +162,7 @@ import 'volume_group_state.dart';
 ///     name="examplekv",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     enabled_for_disk_encryption=True,
 ///     tenant_id=current.tenant_id,
 ///     soft_delete_retention_days=7,
@@ -296,6 +299,7 @@ import 'volume_group_state.dart';
 ///         Name = "examplekv",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         EnabledForDiskEncryption = true,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SoftDeleteRetentionDays = 7,
@@ -476,6 +480,7 @@ import 'volume_group_state.dart';
 /// 			Name:                     pulumi.String("examplekv"),
 /// 			Location:                 example.Location,
 /// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
 /// 			EnabledForDiskEncryption: pulumi.Bool(true),
 /// 			TenantId:                 pulumi.String(current.TenantId),
 /// 			SoftDeleteRetentionDays:  pulumi.Int(7),
@@ -486,7 +491,7 @@ import 'volume_group_state.dart';
 /// 			return err
 /// 		}
 /// 		userAssignedIdentity, err := keyvault.NewAccessPolicy(ctx, "userAssignedIdentity", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   exampleUserAssignedIdentity.PrincipalId,
 /// 			KeyPermissions: pulumi.StringArray{
@@ -502,7 +507,7 @@ import 'volume_group_state.dart';
 /// 			return err
 /// 		}
 /// 		client, err := keyvault.NewAccessPolicy(ctx, "client", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -530,7 +535,7 @@ import 'volume_group_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("example-kvk"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -550,21 +555,21 @@ import 'volume_group_state.dart';
 /// 		}
 /// 		_, err = elasticsan.NewVolumeGroup(ctx, "example", &elasticsan.VolumeGroupArgs{
 /// 			Name:           pulumi.String("example-esvg"),
-/// 			ElasticSanId:   exampleElasticSan.ID(),
+/// 			ElasticSanId:   exampleElasticSan.ID().ToIDOutput().ToStringOutput(),
 /// 			EncryptionType: pulumi.String("EncryptionAtRestWithCustomerManagedKey"),
 /// 			Encryption: &elasticsan.VolumeGroupEncryptionArgs{
 /// 				KeyVaultKeyId:          exampleKey.VersionlessId,
-/// 				UserAssignedIdentityId: exampleUserAssignedIdentity.ID(),
+/// 				UserAssignedIdentityId: exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Identity: &elasticsan.VolumeGroupIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			NetworkRules: elasticsan.VolumeGroupNetworkRuleArray{
 /// 				&elasticsan.VolumeGroupNetworkRuleArgs{
-/// 					SubnetId: exampleSubnet.ID(),
+/// 					SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					Action:   pulumi.String("Allow"),
 /// 				},
 /// 			},
@@ -623,6 +628,7 @@ import 'volume_group_state.dart';
 ///   name                        = "examplekv"
 ///   location                    = azure_core_resourcegroup.example.location
 ///   resource_group_name         = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
 ///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
 ///   soft_delete_retention_days  = 7
@@ -754,6 +760,7 @@ import 'volume_group_state.dart';
 ///             .name("examplekv")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .enabledForDiskEncryption(true)
 ///             .tenantId(current.tenantId())
 ///             .softDeleteRetentionDays(7)
@@ -884,6 +891,7 @@ import 'volume_group_state.dart';
 ///       name: examplekv
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       enabledForDiskEncryption: true
 ///       tenantId: ${current.tenantId}
 ///       softDeleteRetentionDays: 7
@@ -996,7 +1004,7 @@ class VolumeGroup extends pulumi.CustomResource {
   /// Specifies the name of this Elastic SAN Volume Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// One or more `networkRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networkRules;
+  late final pulumi.Output<List<VolumeGroupNetworkRule>?> networkRules;
   /// Specifies the type of the storage target. The only possible value is `Iscsi`. Defaults to `Iscsi`.
   late final pulumi.Output<String?> protocolType;
 
@@ -1012,14 +1020,14 @@ class VolumeGroup extends pulumi.CustomResource {
           'azure:elasticsan/volumeGroup:VolumeGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     elasticSanId = registerOutput<String>('elasticSanId');
     encryption = registerOutput<VolumeGroupEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeGroupEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionType = registerOutput<String?>('encryptionType');
     identity = registerOutput<VolumeGroupIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeGroupIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkRules = registerOutput<List<Map<String, dynamic>>?>('networkRules');
+    networkRules = registerOutput<List<VolumeGroupNetworkRule>?>('networkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeGroupNetworkRule>(guardedValue, (value) => VolumeGroupNetworkRule.fromMap((value as Map).cast<String, dynamic>())); });
     protocolType = registerOutput<String?>('protocolType');
   }
 
@@ -1028,11 +1036,12 @@ class VolumeGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1051,7 +1060,25 @@ class VolumeGroup extends pulumi.CustomResource {
     encryptionType = registerOutput<String?>('encryptionType');
     identity = registerOutput<VolumeGroupIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeGroupIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkRules = registerOutput<List<Map<String, dynamic>>?>('networkRules');
+    networkRules = registerOutput<List<VolumeGroupNetworkRule>?>('networkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeGroupNetworkRule>(guardedValue, (value) => VolumeGroupNetworkRule.fromMap((value as Map).cast<String, dynamic>())); });
+    protocolType = registerOutput<String?>('protocolType');
+  }
+
+  /// Creates a typed reference to an existing [VolumeGroup] resource.
+  VolumeGroup.reference(String urn)
+    : super(
+        'azure:elasticsan/volumeGroup:VolumeGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    elasticSanId = registerOutput<String>('elasticSanId');
+    encryption = registerOutput<VolumeGroupEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeGroupEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionType = registerOutput<String?>('encryptionType');
+    identity = registerOutput<VolumeGroupIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeGroupIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkRules = registerOutput<List<VolumeGroupNetworkRule>?>('networkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeGroupNetworkRule>(guardedValue, (value) => VolumeGroupNetworkRule.fromMap((value as Map).cast<String, dynamic>())); });
     protocolType = registerOutput<String?>('protocolType');
   }
 }

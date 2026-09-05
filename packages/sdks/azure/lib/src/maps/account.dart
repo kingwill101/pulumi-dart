@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
 import 'account_cors.dart';
+import 'account_data_store.dart';
 import 'account_identity.dart';
 import 'account_state.dart';
 
@@ -205,7 +206,7 @@ class Account extends pulumi.CustomResource {
   /// A `cors` block as defined below
   late final pulumi.Output<AccountCors?> cors;
   /// One or more `dataStore` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> dataStores;
+  late final pulumi.Output<List<AccountDataStore>?> dataStores;
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity?> identity;
   /// Is local authentication enabled for this Azure Maps Account? When `false`, all authentication to the Azure Maps data-plane REST API is disabled, except Azure AD authentication. Defaults to `true`.
@@ -241,19 +242,20 @@ class Account extends pulumi.CustomResource {
           'azure:maps/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
         ) {
     cors = registerOutput<AccountCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dataStores = registerOutput<List<Map<String, dynamic>>?>('dataStores');
+    dataStores = registerOutput<List<AccountDataStore>?>('dataStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountDataStore>(guardedValue, (value) => AccountDataStore.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     xMsClientId = registerOutput<String>('xMsClientId');
   }
 
@@ -262,11 +264,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -281,16 +284,40 @@ class Account extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cors = registerOutput<AccountCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dataStores = registerOutput<List<Map<String, dynamic>>?>('dataStores');
+    dataStores = registerOutput<List<AccountDataStore>?>('dataStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountDataStore>(guardedValue, (value) => AccountDataStore.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    xMsClientId = registerOutput<String>('xMsClientId');
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'azure:maps/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
+        isResourceReference: true,
+      ) {
+    cors = registerOutput<AccountCors?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCors.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataStores = registerOutput<List<AccountDataStore>?>('dataStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountDataStore>(guardedValue, (value) => AccountDataStore.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     xMsClientId = registerOutput<String>('xMsClientId');
   }
 }

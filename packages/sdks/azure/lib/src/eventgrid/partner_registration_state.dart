@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PartnerRegistration resources.
 class PartnerRegistrationState {
   /// The name which should be used for this EventGrid Partner Registration. Changing this forces a new EventGrid Partner Registration to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The immutable id of the corresponding partner registration.
-  final pulumi.Input<String>? partnerRegistrationId;
+  final pulumi.Input<String?>? partnerRegistrationId;
   /// The name of the Resource Group where the EventGrid Partner Registration should exist. Changing this forces a new EventGrid Partner Registration to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the EventGrid Partner Registration.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PartnerRegistrationState].
   /// [name] The name which should be used for this EventGrid Partner Registration. Changing this forces a new EventGrid Partner Registration to be created.

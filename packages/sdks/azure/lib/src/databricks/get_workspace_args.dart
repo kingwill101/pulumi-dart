@@ -12,7 +12,7 @@ class GetWorkspaceArgs {
   /// The Name of the Resource Group where the Databricks Workspace exists.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the Databricks Workspace.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetWorkspaceArgs].
   /// [name] The name of the Databricks Workspace.

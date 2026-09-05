@@ -6,21 +6,21 @@ import 'spring_cloud_customized_accelerator_git_repository_ssh_auth.dart';
 
 class SpringCloudCustomizedAcceleratorGitRepository {
   /// A `basicAuth` block as defined below. Conflicts with `git_repository[0].ssh_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
-  final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth>? basicAuth;
+  final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth?>? basicAuth;
   /// Specifies the Git repository branch to be used.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// Specifies the ID of the CA Spring Cloud Certificate for https URL of Git repository.
-  final pulumi.Input<String>? caCertificateId;
+  final pulumi.Input<String?>? caCertificateId;
   /// Specifies the Git repository commit to be used.
-  final pulumi.Input<String>? commit;
+  final pulumi.Input<String?>? commit;
   /// Specifies the Git repository tag to be used.
-  final pulumi.Input<String>? gitTag;
+  final pulumi.Input<String?>? gitTag;
   /// Specifies the interval for checking for updates to Git or image repository. It should be greater than 10.
-  final pulumi.Input<int>? intervalInSeconds;
+  final pulumi.Input<int?>? intervalInSeconds;
   /// Specifies the path under the git repository to be treated as the root directory of the accelerator or the fragment (depending on `acceleratorType`).
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// A `sshAuth` block as defined below. Conflicts with `git_repository[0].basic_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
-  final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepositorySshAuth>? sshAuth;
+  final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepositorySshAuth?>? sshAuth;
   /// Specifies Git repository URL for the accelerator.
   final pulumi.Input<String> url;
 
@@ -67,7 +67,7 @@ class SpringCloudCustomizedAcceleratorGitRepository {
       caCertificateId: (() { final guardedValue = map['caCertificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       commit: (() { final guardedValue = map['commit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gitTag: (() { final guardedValue = map['gitTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sshAuth: (() { final guardedValue = map['sshAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpringCloudCustomizedAcceleratorGitRepositorySshAuth.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       url: pulumi.Input.fromValue(map['url'] as String),

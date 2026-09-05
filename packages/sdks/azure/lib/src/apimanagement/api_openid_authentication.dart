@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiOpenidAuthentication {
   /// How to send token to the server. A list of zero or more methods. Valid values are `authorizationHeader` and `query`.
-  final pulumi.Input<List<String>>? bearerTokenSendingMethods;
+  final pulumi.Input<List<String>?>? bearerTokenSendingMethods;
   /// OpenID Connect provider identifier. The name of an OpenID Connect Provider.
   final pulumi.Input<String> openidProviderName;
 

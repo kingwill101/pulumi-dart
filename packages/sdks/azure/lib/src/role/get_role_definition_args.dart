@@ -10,13 +10,13 @@ class GetRoleDefinitionArgs {
   /// Specifies the Name of either a built-in or custom Role Definition.
   ///
   /// &gt; **Note:** You can also use this for built-in roles such as `Contributor`, `Owner`, `Reader` and `Virtual Machine Contributor`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the Role Definition as a UUID/GUID.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
   /// Specifies the Scope at which the Custom Role Definition exists.
   ///
   /// &gt; **Note:** One of `name` or `roleDefinitionId` must be specified.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [GetRoleDefinitionArgs].
   /// [name] Specifies the Name of either a built-in or custom Role Definition.

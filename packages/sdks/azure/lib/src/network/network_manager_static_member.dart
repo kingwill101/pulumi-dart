@@ -185,7 +185,7 @@ import 'network_manager_static_member_state.dart';
 /// 		}
 /// 		exampleNetworkManagerNetworkGroup, err := network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:      pulumi.String("example network group"),
 /// 		})
 /// 		if err != nil {
@@ -204,8 +204,8 @@ import 'network_manager_static_member_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkManagerStaticMember(ctx, "example", &network.NetworkManagerStaticMemberArgs{
 /// 			Name:                   pulumi.String("example-nmsm"),
-/// 			NetworkGroupId:         exampleNetworkManagerNetworkGroup.ID(),
-/// 			TargetVirtualNetworkId: exampleVirtualNetwork.ID(),
+/// 			NetworkGroupId:         exampleNetworkManagerNetworkGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetVirtualNetworkId: exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -422,7 +422,7 @@ class NetworkManagerStaticMember extends pulumi.CustomResource {
           'azure:network/networkManagerStaticMember:NetworkManagerStaticMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     networkGroupId = registerOutput<String>('networkGroupId');
@@ -435,11 +435,12 @@ class NetworkManagerStaticMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerStaticMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerStaticMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -453,6 +454,21 @@ class NetworkManagerStaticMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    networkGroupId = registerOutput<String>('networkGroupId');
+    region = registerOutput<String>('region');
+    targetVirtualNetworkId = registerOutput<String>('targetVirtualNetworkId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerStaticMember] resource.
+  NetworkManagerStaticMember.reference(String urn)
+    : super(
+        'azure:network/networkManagerStaticMember:NetworkManagerStaticMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     networkGroupId = registerOutput<String>('networkGroupId');
     region = registerOutput<String>('region');

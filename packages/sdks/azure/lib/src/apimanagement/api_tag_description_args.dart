@@ -10,11 +10,11 @@ class ApiTagDescriptionArgs {
   /// The The ID of the API Management API Tag. Changing this forces a new API Management API Tag Description to be created.
   final pulumi.Input<String> apiTagId;
   /// The description of the Tag.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The description of the external documentation resources describing the tag.
-  final pulumi.Input<String>? externalDocumentationDescription;
+  final pulumi.Input<String?>? externalDocumentationDescription;
   /// The URL of external documentation resources describing the tag.
-  final pulumi.Input<String>? externalDocumentationUrl;
+  final pulumi.Input<String?>? externalDocumentationUrl;
 
   /// Creates a new [ApiTagDescriptionArgs].
   /// [apiTagId] The The ID of the API Management API Tag. Changing this forces a new API Management API Tag Description to be created.

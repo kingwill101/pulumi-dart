@@ -9,7 +9,7 @@ import 'management_policy_rule.dart';
 /// {@macro pulumi_storage_management_policy_management_policy_args_doc}
 class ManagementPolicyArgs {
   /// A `rule` block as documented below.
-  final pulumi.Input<List<ManagementPolicyRule>>? rules;
+  final pulumi.Input<List<ManagementPolicyRule>?>? rules;
   /// Specifies the id of the storage account to apply the management policy to. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountId;
 

@@ -11,64 +11,64 @@ import 'get_service_status.dart';
 /// Result data returned by get.
 class GetResult {
   /// Specifies the AD fully qualified display name.
-  final String activeDirectoryFqdn;
+  final String? activeDirectoryFqdn;
   /// The Azure Arc machine agent full version.
-  final String agentVersion;
+  final String? agentVersion;
   /// A `agent` block as defined below.
-  final List<GetAgent> agents;
+  final List<GetAgent>? agents;
   /// Public Key that the client provides to be used during initial resource onboarding.
-  final String clientPublicKey;
+  final String? clientPublicKey;
   /// A `cloudMetadata` block as defined below.
-  final List<GetCloudMetadata> cloudMetadatas;
+  final List<GetCloudMetadata>? cloudMetadatas;
   /// A `detectedProperties` block as defined below.
-  final Map<String, String> detectedProperties;
+  final Map<String, String>? detectedProperties;
   /// Specifies the Azure Arc machine display name.
-  final String displayName;
+  final String? displayName;
   /// Specifies the DNS fully qualified display name.
-  final String dnsFqdn;
+  final String? dnsFqdn;
   /// Specifies the Windows domain name.
-  final String domainName;
+  final String? domainName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A `identity` block as defined below.
-  final List<GetIdentity> identities;
+  final List<GetIdentity>? identities;
   /// The time of the last status change.
-  final String lastStatusChangeTime;
+  final String? lastStatusChangeTime;
   /// The Azure Region where the Azure Arc machine exists.
-  final String location;
+  final String? location;
   /// A `locationData` block as defined below.
-  final List<GetLocationData> locationDatas;
+  final List<GetLocationData>? locationDatas;
   /// Specifies the Azure Arc machine fully qualified display name.
-  final String machineFqdn;
+  final String? machineFqdn;
   /// Specifies whether any MS SQL instance is discovered on the machine.
-  final bool mssqlDiscovered;
+  final bool? mssqlDiscovered;
   /// A canonical name for the geographic or physical location.
-  final String name;
+  final String? name;
   /// The Operating System running on the Azure Arc machine.
-  final String osName;
+  final String? osName;
   /// A `osProfile` block as defined below.
-  final List<GetOsProfile> osProfiles;
+  final List<GetOsProfile>? osProfiles;
   /// Specifies the Operating System product SKU.
-  final String osSku;
+  final String? osSku;
   /// The type of Operating System. Possible values are `windows` and `linux`.
-  final String osType;
+  final String? osType;
   /// The version of Operating System running on the Azure Arc machine.
-  final String osVersion;
+  final String? osVersion;
   /// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
-  final String parentClusterResourceId;
+  final String? parentClusterResourceId;
   /// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
-  final String privateLinkScopeResourceId;
-  final String resourceGroupName;
+  final String? privateLinkScopeResourceId;
+  final String? resourceGroupName;
   /// A `serviceStatus` block as defined below.
-  final List<GetServiceStatus> serviceStatuses;
+  final List<GetServiceStatus>? serviceStatuses;
   /// The current status of the service.
-  final String status;
+  final String? status;
   /// A mapping of tags assigned to the Hybrid Compute.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Specifies the Azure Arc machine unique ID.
-  final String vmId;
+  final String? vmId;
   /// Specifies the Arc Machine's unique SMBIOS ID.
-  final String vmUuid;
+  final String? vmUuid;
 
   /// Creates a new [GetResult].
   /// [activeDirectoryFqdn] Specifies the AD fully qualified display name.
@@ -95,112 +95,112 @@ class GetResult {
   /// [osVersion] The version of Operating System running on the Azure Arc machine.
   /// [parentClusterResourceId] The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
   /// [privateLinkScopeResourceId] The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [serviceStatuses] A `serviceStatus` block as defined below.
   /// [status] The current status of the service.
   /// [tags] A mapping of tags assigned to the Hybrid Compute.
   /// [vmId] Specifies the Azure Arc machine unique ID.
   /// [vmUuid] Specifies the Arc Machine's unique SMBIOS ID.
   const GetResult({
-    required this.activeDirectoryFqdn,
-    required this.agentVersion,
-    required this.agents,
-    required this.clientPublicKey,
-    required this.cloudMetadatas,
-    required this.detectedProperties,
-    required this.displayName,
-    required this.dnsFqdn,
-    required this.domainName,
-    required this.id,
-    required this.identities,
-    required this.lastStatusChangeTime,
-    required this.location,
-    required this.locationDatas,
-    required this.machineFqdn,
-    required this.mssqlDiscovered,
-    required this.name,
-    required this.osName,
-    required this.osProfiles,
-    required this.osSku,
-    required this.osType,
-    required this.osVersion,
-    required this.parentClusterResourceId,
-    required this.privateLinkScopeResourceId,
-    required this.resourceGroupName,
-    required this.serviceStatuses,
-    required this.status,
-    required this.tags,
-    required this.vmId,
-    required this.vmUuid,
+    this.activeDirectoryFqdn,
+    this.agentVersion,
+    this.agents,
+    this.clientPublicKey,
+    this.cloudMetadatas,
+    this.detectedProperties,
+    this.displayName,
+    this.dnsFqdn,
+    this.domainName,
+    this.id,
+    this.identities,
+    this.lastStatusChangeTime,
+    this.location,
+    this.locationDatas,
+    this.machineFqdn,
+    this.mssqlDiscovered,
+    this.name,
+    this.osName,
+    this.osProfiles,
+    this.osSku,
+    this.osType,
+    this.osVersion,
+    this.parentClusterResourceId,
+    this.privateLinkScopeResourceId,
+    this.resourceGroupName,
+    this.serviceStatuses,
+    this.status,
+    this.tags,
+    this.vmId,
+    this.vmUuid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectoryFqdn': activeDirectoryFqdn,
-      'agentVersion': agentVersion,
-      'agents': pulumi.Input.encodeList<GetAgent, Map<String, dynamic>>(agents, (value) => value.toMap()),
-      'clientPublicKey': clientPublicKey,
-      'cloudMetadatas': pulumi.Input.encodeList<GetCloudMetadata, Map<String, dynamic>>(cloudMetadatas, (value) => value.toMap()),
-      'detectedProperties': detectedProperties,
-      'displayName': displayName,
-      'dnsFqdn': dnsFqdn,
-      'domainName': domainName,
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'lastStatusChangeTime': lastStatusChangeTime,
-      'location': location,
-      'locationDatas': pulumi.Input.encodeList<GetLocationData, Map<String, dynamic>>(locationDatas, (value) => value.toMap()),
-      'machineFqdn': machineFqdn,
-      'mssqlDiscovered': mssqlDiscovered,
-      'name': name,
-      'osName': osName,
-      'osProfiles': pulumi.Input.encodeList<GetOsProfile, Map<String, dynamic>>(osProfiles, (value) => value.toMap()),
-      'osSku': osSku,
-      'osType': osType,
-      'osVersion': osVersion,
-      'parentClusterResourceId': parentClusterResourceId,
-      'privateLinkScopeResourceId': privateLinkScopeResourceId,
-      'resourceGroupName': resourceGroupName,
-      'serviceStatuses': pulumi.Input.encodeList<GetServiceStatus, Map<String, dynamic>>(serviceStatuses, (value) => value.toMap()),
-      'status': status,
-      'tags': tags,
-      'vmId': vmId,
-      'vmUuid': vmUuid,
+      'activeDirectoryFqdn': ?activeDirectoryFqdn,
+      'agentVersion': ?agentVersion,
+      'agents': ?(() { final guardedValue = agents; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAgent, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'clientPublicKey': ?clientPublicKey,
+      'cloudMetadatas': ?(() { final guardedValue = cloudMetadatas; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetCloudMetadata, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'detectedProperties': ?detectedProperties,
+      'displayName': ?displayName,
+      'dnsFqdn': ?dnsFqdn,
+      'domainName': ?domainName,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'lastStatusChangeTime': ?lastStatusChangeTime,
+      'location': ?location,
+      'locationDatas': ?(() { final guardedValue = locationDatas; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLocationData, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'machineFqdn': ?machineFqdn,
+      'mssqlDiscovered': ?mssqlDiscovered,
+      'name': ?name,
+      'osName': ?osName,
+      'osProfiles': ?(() { final guardedValue = osProfiles; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetOsProfile, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'osSku': ?osSku,
+      'osType': ?osType,
+      'osVersion': ?osVersion,
+      'parentClusterResourceId': ?parentClusterResourceId,
+      'privateLinkScopeResourceId': ?privateLinkScopeResourceId,
+      'resourceGroupName': ?resourceGroupName,
+      'serviceStatuses': ?(() { final guardedValue = serviceStatuses; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceStatus, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'status': ?status,
+      'tags': ?tags,
+      'vmId': ?vmId,
+      'vmUuid': ?vmUuid,
     };
   }
 
   factory GetResult.fromMap(Map<String, dynamic> map) {
     return GetResult(
-      activeDirectoryFqdn: map['activeDirectoryFqdn'] as String,
-      agentVersion: map['agentVersion'] as String,
-      agents: pulumi.Input.decodeList<GetAgent>(map['agents']!, (value) => GetAgent.fromMap((value as Map).cast<String, dynamic>())),
-      clientPublicKey: map['clientPublicKey'] as String,
-      cloudMetadatas: pulumi.Input.decodeList<GetCloudMetadata>(map['cloudMetadatas']!, (value) => GetCloudMetadata.fromMap((value as Map).cast<String, dynamic>())),
-      detectedProperties: (map['detectedProperties'] as Map).cast<String, String>(),
-      displayName: map['displayName'] as String,
-      dnsFqdn: map['dnsFqdn'] as String,
-      domainName: map['domainName'] as String,
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetIdentity>(map['identities']!, (value) => GetIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      lastStatusChangeTime: map['lastStatusChangeTime'] as String,
-      location: map['location'] as String,
-      locationDatas: pulumi.Input.decodeList<GetLocationData>(map['locationDatas']!, (value) => GetLocationData.fromMap((value as Map).cast<String, dynamic>())),
-      machineFqdn: map['machineFqdn'] as String,
-      mssqlDiscovered: map['mssqlDiscovered'] as bool,
-      name: map['name'] as String,
-      osName: map['osName'] as String,
-      osProfiles: pulumi.Input.decodeList<GetOsProfile>(map['osProfiles']!, (value) => GetOsProfile.fromMap((value as Map).cast<String, dynamic>())),
-      osSku: map['osSku'] as String,
-      osType: map['osType'] as String,
-      osVersion: map['osVersion'] as String,
-      parentClusterResourceId: map['parentClusterResourceId'] as String,
-      privateLinkScopeResourceId: map['privateLinkScopeResourceId'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      serviceStatuses: pulumi.Input.decodeList<GetServiceStatus>(map['serviceStatuses']!, (value) => GetServiceStatus.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      vmId: map['vmId'] as String,
-      vmUuid: map['vmUuid'] as String,
+      activeDirectoryFqdn: (() { final guardedValue = map['activeDirectoryFqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      agentVersion: (() { final guardedValue = map['agentVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      agents: (() { final guardedValue = map['agents']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAgent>(guardedValue, (value) => GetAgent.fromMap((value as Map).cast<String, dynamic>())); })(),
+      clientPublicKey: (() { final guardedValue = map['clientPublicKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cloudMetadatas: (() { final guardedValue = map['cloudMetadatas']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCloudMetadata>(guardedValue, (value) => GetCloudMetadata.fromMap((value as Map).cast<String, dynamic>())); })(),
+      detectedProperties: (() { final guardedValue = map['detectedProperties']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dnsFqdn: (() { final guardedValue = map['dnsFqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetIdentity>(guardedValue, (value) => GetIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      lastStatusChangeTime: (() { final guardedValue = map['lastStatusChangeTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      locationDatas: (() { final guardedValue = map['locationDatas']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLocationData>(guardedValue, (value) => GetLocationData.fromMap((value as Map).cast<String, dynamic>())); })(),
+      machineFqdn: (() { final guardedValue = map['machineFqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mssqlDiscovered: (() { final guardedValue = map['mssqlDiscovered']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      osName: (() { final guardedValue = map['osName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      osProfiles: (() { final guardedValue = map['osProfiles']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetOsProfile>(guardedValue, (value) => GetOsProfile.fromMap((value as Map).cast<String, dynamic>())); })(),
+      osSku: (() { final guardedValue = map['osSku']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      osVersion: (() { final guardedValue = map['osVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parentClusterResourceId: (() { final guardedValue = map['parentClusterResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateLinkScopeResourceId: (() { final guardedValue = map['privateLinkScopeResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceStatuses: (() { final guardedValue = map['serviceStatuses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceStatus>(guardedValue, (value) => GetServiceStatus.fromMap((value as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      vmId: (() { final guardedValue = map['vmId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmUuid: (() { final guardedValue = map['vmUuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

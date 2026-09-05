@@ -1,9 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'app_flex_consumption_always_ready.dart';
 import 'app_flex_consumption_args.dart';
 import 'app_flex_consumption_auth_settings.dart';
 import 'app_flex_consumption_auth_settings_v2.dart';
+import 'app_flex_consumption_connection_string.dart';
 import 'app_flex_consumption_identity.dart';
 import 'app_flex_consumption_site_config.dart';
+import 'app_flex_consumption_site_credential.dart';
 import 'app_flex_consumption_state.dart';
 import 'app_flex_consumption_sticky_settings.dart';
 
@@ -193,7 +196,7 @@ import 'app_flex_consumption_sticky_settings.dart';
 /// 		}
 /// 		exampleContainer, err := storage.NewContainer(ctx, "example", &storage.ContainerArgs{
 /// 			Name:                pulumi.String("example-flexcontainer"),
-/// 			StorageAccountId:    exampleAccount.ID(),
+/// 			StorageAccountId:    exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			ContainerAccessType: pulumi.String("private"),
 /// 		})
 /// 		if err != nil {
@@ -213,7 +216,7 @@ import 'app_flex_consumption_sticky_settings.dart';
 /// 			Name:                 pulumi.String("example-linux-function-app"),
 /// 			ResourceGroupName:    example.Name,
 /// 			Location:             example.Location,
-/// 			ServicePlanId:        exampleServicePlan.ID(),
+/// 			ServicePlanId:        exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageContainerType: pulumi.String("blobContainer"),
 /// 			StorageContainerEndpoint: pulumi.All(exampleAccount.PrimaryBlobEndpoint, exampleContainer.Name).ApplyT(func(_args []interface{}) (string, error) {
 /// 				primaryBlobEndpoint := _args[0].(string)
@@ -432,7 +435,7 @@ import 'app_flex_consumption_sticky_settings.dart';
 /// ```
 class AppFlexConsumption extends pulumi.CustomResource {
   /// One or more `alwaysReady` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> alwaysReadies;
+  late final pulumi.Output<List<AppFlexConsumptionAlwaysReady>?> alwaysReadies;
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   ///
   /// &gt; **Note:** For storage related settings, please use related properties that are available such as `storageAccessKey`, terraform will assign the value to keys such as `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`, `AzureWebJobsStorage` in app_setting.
@@ -454,7 +457,7 @@ class AppFlexConsumption extends pulumi.CustomResource {
   /// The mode of the Function App's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. Defaults to `Optional`.
   late final pulumi.Output<String?> clientCertificateMode;
   /// One or more `connectionString` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> connectionStrings;
+  late final pulumi.Output<List<AppFlexConsumptionConnectionString>?> connectionStrings;
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
   /// The default hostname of the Linux Function App.
@@ -504,7 +507,7 @@ class AppFlexConsumption extends pulumi.CustomResource {
   /// A `siteConfig` block as defined below.
   late final pulumi.Output<AppFlexConsumptionSiteConfig> siteConfig;
   /// A `siteCredential` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
+  late final pulumi.Output<List<AppFlexConsumptionSiteCredential>> siteCredentials;
   /// A `stickySettings` block as defined below.
   late final pulumi.Output<AppFlexConsumptionStickySettings?> stickySettings;
   /// The access key which will be used to access the backend storage account for the Function App.
@@ -550,17 +553,18 @@ class AppFlexConsumption extends pulumi.CustomResource {
           'azure:appservice/appFlexConsumption:AppFlexConsumption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['customDomainVerificationId', 'siteCredentials'],
         ) {
-    alwaysReadies = registerOutput<List<Map<String, dynamic>>?>('alwaysReadies');
-    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    alwaysReadies = registerOutput<List<AppFlexConsumptionAlwaysReady>?>('alwaysReadies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppFlexConsumptionAlwaysReady>(guardedValue, (value) => AppFlexConsumptionAlwaysReady.fromMap((value as Map).cast<String, dynamic>())); });
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<AppFlexConsumptionAuthSettings?>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSettingsV2 = registerOutput<AppFlexConsumptionAuthSettingsV2?>('authSettingsV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionAuthSettingsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
     clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
     clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>?>('connectionStrings');
-    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
+    connectionStrings = registerOutput<List<AppFlexConsumptionConnectionString>?>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppFlexConsumptionConnectionString>(guardedValue, (value) => AppFlexConsumptionConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId', isSecret: true);
     defaultHostname = registerOutput<String>('defaultHostname');
     enabled = registerOutput<bool?>('enabled');
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
@@ -572,9 +576,9 @@ class AppFlexConsumption extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     maximumInstanceCount = registerOutput<int?>('maximumInstanceCount');
     this.name = registerOutput<String>('name');
-    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -582,14 +586,14 @@ class AppFlexConsumption extends pulumi.CustomResource {
     runtimeVersion = registerOutput<String>('runtimeVersion');
     servicePlanId = registerOutput<String>('servicePlanId');
     siteConfig = registerOutput<AppFlexConsumptionSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
+    siteCredentials = registerOutput<List<AppFlexConsumptionSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppFlexConsumptionSiteCredential>(guardedValue, (value) => AppFlexConsumptionSiteCredential.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
     stickySettings = registerOutput<AppFlexConsumptionStickySettings?>('stickySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionStickySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccessKey = registerOutput<String?>('storageAccessKey');
     storageAuthenticationType = registerOutput<String>('storageAuthenticationType');
     storageContainerEndpoint = registerOutput<String>('storageContainerEndpoint');
     storageContainerType = registerOutput<String>('storageContainerType');
     storageUserAssignedIdentityId = registerOutput<String?>('storageUserAssignedIdentityId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
     webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>('webdeployPublishBasicAuthenticationEnabled');
     zipDeployFile = registerOutput<String>('zipDeployFile');
@@ -600,11 +604,12 @@ class AppFlexConsumption extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppFlexConsumptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppFlexConsumption._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -618,15 +623,15 @@ class AppFlexConsumption extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    alwaysReadies = registerOutput<List<Map<String, dynamic>>?>('alwaysReadies');
-    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    alwaysReadies = registerOutput<List<AppFlexConsumptionAlwaysReady>?>('alwaysReadies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppFlexConsumptionAlwaysReady>(guardedValue, (value) => AppFlexConsumptionAlwaysReady.fromMap((value as Map).cast<String, dynamic>())); });
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<AppFlexConsumptionAuthSettings?>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSettingsV2 = registerOutput<AppFlexConsumptionAuthSettingsV2?>('authSettingsV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionAuthSettingsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
     clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
     clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>?>('connectionStrings');
-    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
+    connectionStrings = registerOutput<List<AppFlexConsumptionConnectionString>?>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppFlexConsumptionConnectionString>(guardedValue, (value) => AppFlexConsumptionConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId', isSecret: true);
     defaultHostname = registerOutput<String>('defaultHostname');
     enabled = registerOutput<bool?>('enabled');
     hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
@@ -638,9 +643,9 @@ class AppFlexConsumption extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     maximumInstanceCount = registerOutput<int?>('maximumInstanceCount');
     this.name = registerOutput<String>('name');
-    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -648,14 +653,67 @@ class AppFlexConsumption extends pulumi.CustomResource {
     runtimeVersion = registerOutput<String>('runtimeVersion');
     servicePlanId = registerOutput<String>('servicePlanId');
     siteConfig = registerOutput<AppFlexConsumptionSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
+    siteCredentials = registerOutput<List<AppFlexConsumptionSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppFlexConsumptionSiteCredential>(guardedValue, (value) => AppFlexConsumptionSiteCredential.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
     stickySettings = registerOutput<AppFlexConsumptionStickySettings?>('stickySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionStickySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccessKey = registerOutput<String?>('storageAccessKey');
     storageAuthenticationType = registerOutput<String>('storageAuthenticationType');
     storageContainerEndpoint = registerOutput<String>('storageContainerEndpoint');
     storageContainerType = registerOutput<String>('storageContainerType');
     storageUserAssignedIdentityId = registerOutput<String?>('storageUserAssignedIdentityId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
+    webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>('webdeployPublishBasicAuthenticationEnabled');
+    zipDeployFile = registerOutput<String>('zipDeployFile');
+  }
+
+  /// Creates a typed reference to an existing [AppFlexConsumption] resource.
+  AppFlexConsumption.reference(String urn)
+    : super(
+        'azure:appservice/appFlexConsumption:AppFlexConsumption',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['customDomainVerificationId', 'siteCredentials'],
+        isResourceReference: true,
+      ) {
+    alwaysReadies = registerOutput<List<AppFlexConsumptionAlwaysReady>?>('alwaysReadies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppFlexConsumptionAlwaysReady>(guardedValue, (value) => AppFlexConsumptionAlwaysReady.fromMap((value as Map).cast<String, dynamic>())); });
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    authSettings = registerOutput<AppFlexConsumptionAuthSettings?>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authSettingsV2 = registerOutput<AppFlexConsumptionAuthSettingsV2?>('authSettingsV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionAuthSettingsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
+    clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
+    clientCertificateMode = registerOutput<String?>('clientCertificateMode');
+    connectionStrings = registerOutput<List<AppFlexConsumptionConnectionString>?>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppFlexConsumptionConnectionString>(guardedValue, (value) => AppFlexConsumptionConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId', isSecret: true);
+    defaultHostname = registerOutput<String>('defaultHostname');
+    enabled = registerOutput<bool?>('enabled');
+    hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
+    httpConcurrency = registerOutput<int?>('httpConcurrency');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<AppFlexConsumptionIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceMemoryInMb = registerOutput<int?>('instanceMemoryInMb');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    maximumInstanceCount = registerOutput<int?>('maximumInstanceCount');
+    this.name = registerOutput<String>('name');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    runtimeName = registerOutput<String>('runtimeName');
+    runtimeVersion = registerOutput<String>('runtimeVersion');
+    servicePlanId = registerOutput<String>('servicePlanId');
+    siteConfig = registerOutput<AppFlexConsumptionSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<AppFlexConsumptionSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppFlexConsumptionSiteCredential>(guardedValue, (value) => AppFlexConsumptionSiteCredential.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    stickySettings = registerOutput<AppFlexConsumptionStickySettings?>('stickySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppFlexConsumptionStickySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccessKey = registerOutput<String?>('storageAccessKey');
+    storageAuthenticationType = registerOutput<String>('storageAuthenticationType');
+    storageContainerEndpoint = registerOutput<String>('storageContainerEndpoint');
+    storageContainerType = registerOutput<String>('storageContainerType');
+    storageUserAssignedIdentityId = registerOutput<String?>('storageUserAssignedIdentityId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
     webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>('webdeployPublishBasicAuthenticationEnabled');
     zipDeployFile = registerOutput<String>('zipDeployFile');

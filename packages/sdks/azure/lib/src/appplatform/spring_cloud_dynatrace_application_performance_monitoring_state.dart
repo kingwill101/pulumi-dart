@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SpringCloudDynatraceApplicationPerformanceMonitoring resources.
 class SpringCloudDynatraceApplicationPerformanceMonitoringState {
   /// Specifies the API token of the Dynatrace environment.
-  final pulumi.Input<String>? apiToken;
+  final pulumi.Input<String?>? apiToken;
   /// Specifies the API Url of the Dynatrace environment.
-  final pulumi.Input<String>? apiUrl;
+  final pulumi.Input<String?>? apiUrl;
   /// Specifies the endpoint to connect to the Dynatrace environment.
-  final pulumi.Input<String>? connectionPoint;
+  final pulumi.Input<String?>? connectionPoint;
   /// Specifies the Dynatrace environment ID.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// Specifies whether the Spring Cloud Application Performance Monitoring resource for Application Insights is enabled globally. Defaults to `false`.
-  final pulumi.Input<bool>? globallyEnabled;
+  final pulumi.Input<bool?>? globallyEnabled;
   /// The name which should be used for this Spring Cloud Application Performance Monitoring resource for Dynatrace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? springCloudServiceId;
+  final pulumi.Input<String?>? springCloudServiceId;
   /// Specifies the Dynatrace tenant.
-  final pulumi.Input<String>? tenant;
+  final pulumi.Input<String?>? tenant;
   /// Specifies the internal token that is used for authentication when OneAgent connects to the Dynatrace cluster to send data.
-  final pulumi.Input<String>? tenantToken;
+  final pulumi.Input<String?>? tenantToken;
 
   /// Creates a new [SpringCloudDynatraceApplicationPerformanceMonitoringState].
   /// [apiToken] Specifies the API token of the Dynatrace environment.

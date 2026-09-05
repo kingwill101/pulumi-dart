@@ -11,17 +11,17 @@ class ExadataInfrastructureArgs {
   /// The number of compute servers for the Cloud Exadata Infrastructure. Changing this forces a new Cloud Exadata Infrastructure to be created.
   final pulumi.Input<int> computeCount;
   /// The email address used by Oracle to send notifications regarding databases and infrastructure. Changing this forces a new Cloud Exadata Infrastructure to be created.
-  final pulumi.Input<List<String>>? customerContacts;
+  final pulumi.Input<List<String>?>? customerContacts;
   /// The database server model type of the cloud Exadata infrastructure resource. Changing this forces a new Cloud Exadata Infrastructure to be created.
-  final pulumi.Input<String>? databaseServerType;
+  final pulumi.Input<String?>? databaseServerType;
   /// The user-friendly name for the Cloud Exadata Infrastructure resource. The name does not need to be unique. Changing this forces a new Cloud Exadata Infrastructure to be created.
   final pulumi.Input<String> displayName;
   /// The Azure Region where the Cloud Exadata Infrastructure should exist. Changing this forces a new Cloud Exadata Infrastructure to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// One or more `maintenanceWindow` blocks as defined below. Changing this forces a new Cloud Exadata Infrastructure to be created.
-  final pulumi.Input<List<ExadataInfrastructureMaintenanceWindow>>? maintenanceWindows;
+  final pulumi.Input<List<ExadataInfrastructureMaintenanceWindow>?>? maintenanceWindows;
   /// The name which should be used for this Cloud Exadata Infrastructure. Changing this forces a new Cloud Exadata Infrastructure to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the ODB@A Infrastructure should exist. Changing this forces a new Cloud Exadata Infrastructure to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The shape of the ODB@A infrastructure resource. Changing this forces a new Cloud Exadata Infrastructure to be created.
@@ -29,9 +29,9 @@ class ExadataInfrastructureArgs {
   /// The number of storage servers for the Cloud Exadata Infrastructure. Changing this forces a new Cloud Exadata Infrastructure to be created.
   final pulumi.Input<int> storageCount;
   /// The storage server model type of the cloud Exadata infrastructure resource. Changing this forces a new Cloud Exadata Infrastructure to be created.
-  final pulumi.Input<String>? storageServerType;
+  final pulumi.Input<String?>? storageServerType;
   /// A mapping of tags which should be assigned to the Cloud Exadata Infrastructure.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Cloud Exadata Infrastructure zones. Changing this forces a new Cloud Exadata Infrastructure to be created.
   final pulumi.Input<List<String>> zones;
 
@@ -85,7 +85,7 @@ class ExadataInfrastructureArgs {
 
   factory ExadataInfrastructureArgs.fromMap(Map<String, dynamic> map) {
     return ExadataInfrastructureArgs(
-      computeCount: pulumi.Input.fromValue(map['computeCount'] as int),
+      computeCount: pulumi.Input.fromValue((map['computeCount'] as num).toInt()),
       customerContacts: (() { final guardedValue = map['customerContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       databaseServerType: (() { final guardedValue = map['databaseServerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
@@ -94,7 +94,7 @@ class ExadataInfrastructureArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shape: pulumi.Input.fromValue(map['shape'] as String),
-      storageCount: pulumi.Input.fromValue(map['storageCount'] as int),
+      storageCount: pulumi.Input.fromValue((map['storageCount'] as num).toInt()),
       storageServerType: (() { final guardedValue = map['storageServerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       zones: pulumi.Input.fromValue((map['zones'] as List).cast<String>()),

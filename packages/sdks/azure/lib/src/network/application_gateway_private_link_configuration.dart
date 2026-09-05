@@ -5,7 +5,7 @@ import 'application_gateway_private_link_configuration_ip_configuration.dart';
 
 class ApplicationGatewayPrivateLinkConfiguration {
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// One or more `ipConfiguration` blocks as defined below.
   ///
   /// &gt; **Note:** The `AllowApplicationGatewayPrivateLink` feature must be registered on the subscription before enabling private link

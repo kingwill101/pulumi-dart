@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'standard_args.dart';
+import 'standard_connection_string.dart';
 import 'standard_identity.dart';
 import 'standard_site_config.dart';
+import 'standard_site_credential.dart';
 import 'standard_state.dart';
 
 /// Manages a Logic App (Standard / Single Tenant)
@@ -506,7 +508,7 @@ import 'standard_state.dart';
 /// 			Name:                    pulumi.String("example-logic-app"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			AppServicePlanId:        exampleServicePlan.ID(),
+/// 			AppServicePlanId:        exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName:      exampleAccount.Name,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
 /// 			SiteConfig: &logicapps.StandardSiteConfigArgs{
@@ -701,7 +703,7 @@ class Standard extends pulumi.CustomResource {
   late final pulumi.Output<String> appServicePlanId;
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   ///
-  /// &gt; **Note:** There are a number of application settings that will be managed for you by this resource type and *shouldn't* be configured separately as part of the appSettings you specify.  `AzureWebJobsStorage` is filled based on `storageAccountName` and `storageAccountAccessKey`. `WEBSITE_CONTENTSHARE` is detailed below. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`. `APP_KIND` is set to workflowApp and `AzureFunctionsJobHost__extensionBundle__id` and `AzureFunctionsJobHost__extensionBundle__version` are set as detailed below.
+  /// &gt; **Note:** There are a number of application settings that will be managed for you by this resource type and *shouldn't* be configured separately as part of the appSettings you specify.  `AzureWebJobsStorage` is filled based on `storageAccountName` and `storageAccountAccessKey`, or from `storageKeyVaultSecretId` when using a Key Vault reference. `WEBSITE_CONTENTSHARE` is detailed below. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`. `APP_KIND` is set to workflowApp and `AzureFunctionsJobHost__extensionBundle__id` and `AzureFunctionsJobHost__extensionBundle__version` are set as detailed below.
   late final pulumi.Output<Map<String, String>> appSettings;
   /// If `useExtensionBundle` is set to `true` this controls the allowed range for bundle versions. Defaults to `[1.*, 2.0.0)`.
   late final pulumi.Output<String?> bundleVersion;
@@ -710,7 +712,7 @@ class Standard extends pulumi.CustomResource {
   /// The mode of the Logic App's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`.
   late final pulumi.Output<String?> clientCertificateMode;
   /// A `connectionString` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
+  late final pulumi.Output<List<StandardConnectionString>> connectionStrings;
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
   /// The default hostname associated with the Logic App - such as `mysite.azurewebsites.net`.
@@ -748,17 +750,23 @@ class Standard extends pulumi.CustomResource {
   /// A `siteConfig` object as defined below.
   late final pulumi.Output<StandardSiteConfig> siteConfig;
   /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
-  late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
-  /// The access key which will be used to access the backend storage account for the Logic App.
-  late final pulumi.Output<String> storageAccountAccessKey;
-  /// The backend storage account name which will be used by this Logic App (e.g. for Stateful workflows data). Changing this forces a new resource to be created.
-  late final pulumi.Output<String> storageAccountName;
+  late final pulumi.Output<List<StandardSiteCredential>> siteCredentials;
+  /// The access key which will be used to access the backend storage account for the Logic App. Required when `storageAccountName` is specified. Conflicts with `storageKeyVaultSecretId`.
+  late final pulumi.Output<String?> storageAccountAccessKey;
+  /// The backend storage account name which will be used by this Logic App (e.g. for Stateful workflows data). Exactly one of `storageAccountName` or `storageKeyVaultSecretId` must be specified.
+  late final pulumi.Output<String?> storageAccountName;
   /// The name of the share used by the logic app, if you want to use a custom name. This corresponds to the WEBSITE_CONTENTSHARE appsetting, which this resource will create for you. If you don't specify a name, then this resource will generate a dynamic name. This setting is useful if you want to provision a storage account and create a share using `azure.storage.Share`.
   ///
   /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of terraform code for Logic App to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or Python, etc.), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
   ///
   /// &gt; **Note:** When using an App Service Plan in the `Free` or `Shared` Tiers `use32BitWorkerProcess` must be set to `true`.
   late final pulumi.Output<String> storageAccountShareName;
+  /// The Key Vault Secret ID, optionally including version, that contains the connection string to the backend storage account for the Logic App. Exactly one of `storageAccountName` or `storageKeyVaultSecretId` must be specified.
+  ///
+  /// &gt; **Note:** When using `storageKeyVaultSecretId`, a `keyVaultReferenceIdentityId` must be set and the corresponding identity must have `Get` and `List` secret permissions on the Key Vault.
+  ///
+  /// &gt; **Note:** `storageKeyVaultSecretId` used without a version will use the latest version of the secret, however, the service can take up to 24h to pick up a rotation of the latest version. See the [official docs](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#rotation) for more information.
+  late final pulumi.Output<String?> storageKeyVaultSecretId;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Should the logic app use the bundled extension package? If true, then application settings for `AzureFunctionsJobHost__extensionBundle__id` and `AzureFunctionsJobHost__extensionBundle__version` will be created. Defaults to `true`.
@@ -786,14 +794,15 @@ class Standard extends pulumi.CustomResource {
           'azure:logicapps/standard:Standard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
-    appSettings = registerOutput<Map<String, String>>('appSettings');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     bundleVersion = registerOutput<String?>('bundleVersion');
     clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
     clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    connectionStrings = registerOutput<List<StandardConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardConnectionString>(guardedValue, (value) => StandardConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
     customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
     defaultHostname = registerOutput<String>('defaultHostname');
     enabled = registerOutput<bool?>('enabled');
@@ -810,11 +819,12 @@ class Standard extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scmPublishBasicAuthenticationEnabled = registerOutput<bool?>('scmPublishBasicAuthenticationEnabled');
     siteConfig = registerOutput<StandardSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
-    storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
-    storageAccountName = registerOutput<String>('storageAccountName');
+    siteCredentials = registerOutput<List<StandardSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardSiteCredential>(guardedValue, (value) => StandardSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageAccountName = registerOutput<String?>('storageAccountName');
     storageAccountShareName = registerOutput<String>('storageAccountShareName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storageKeyVaultSecretId = registerOutput<String?>('storageKeyVaultSecretId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     useExtensionBundle = registerOutput<bool?>('useExtensionBundle');
     version = registerOutput<String?>('version');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
@@ -826,11 +836,12 @@ class Standard extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StandardState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Standard._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -845,11 +856,11 @@ class Standard extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
-    appSettings = registerOutput<Map<String, String>>('appSettings');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     bundleVersion = registerOutput<String?>('bundleVersion');
     clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
     clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    connectionStrings = registerOutput<List<StandardConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardConnectionString>(guardedValue, (value) => StandardConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
     customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
     defaultHostname = registerOutput<String>('defaultHostname');
     enabled = registerOutput<bool?>('enabled');
@@ -866,11 +877,56 @@ class Standard extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scmPublishBasicAuthenticationEnabled = registerOutput<bool?>('scmPublishBasicAuthenticationEnabled');
     siteConfig = registerOutput<StandardSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
-    storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
-    storageAccountName = registerOutput<String>('storageAccountName');
+    siteCredentials = registerOutput<List<StandardSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardSiteCredential>(guardedValue, (value) => StandardSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageAccountName = registerOutput<String?>('storageAccountName');
     storageAccountShareName = registerOutput<String>('storageAccountShareName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storageKeyVaultSecretId = registerOutput<String?>('storageKeyVaultSecretId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    useExtensionBundle = registerOutput<bool?>('useExtensionBundle');
+    version = registerOutput<String?>('version');
+    virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
+    vnetContentShareEnabled = registerOutput<bool?>('vnetContentShareEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Standard] resource.
+  Standard.reference(String urn)
+    : super(
+        'azure:logicapps/standard:Standard',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
+        isResourceReference: true,
+      ) {
+    appServicePlanId = registerOutput<String>('appServicePlanId');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    bundleVersion = registerOutput<String?>('bundleVersion');
+    clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
+    clientCertificateMode = registerOutput<String?>('clientCertificateMode');
+    connectionStrings = registerOutput<List<StandardConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardConnectionString>(guardedValue, (value) => StandardConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
+    defaultHostname = registerOutput<String>('defaultHostname');
+    enabled = registerOutput<bool?>('enabled');
+    ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>('ftpPublishBasicAuthenticationEnabled');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<StandardIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String?>('keyVaultReferenceIdentityId');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
+    publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scmPublishBasicAuthenticationEnabled = registerOutput<bool?>('scmPublishBasicAuthenticationEnabled');
+    siteConfig = registerOutput<StandardSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<StandardSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardSiteCredential>(guardedValue, (value) => StandardSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageAccountName = registerOutput<String?>('storageAccountName');
+    storageAccountShareName = registerOutput<String>('storageAccountShareName');
+    storageKeyVaultSecretId = registerOutput<String?>('storageKeyVaultSecretId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     useExtensionBundle = registerOutput<bool?>('useExtensionBundle');
     version = registerOutput<String?>('version');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');

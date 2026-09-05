@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_policy_assignment_args.dart';
 import 'resource_policy_assignment_identity.dart';
+import 'resource_policy_assignment_non_compliance_message.dart';
+import 'resource_policy_assignment_override.dart';
+import 'resource_policy_assignment_resource_selector.dart';
 import 'resource_policy_assignment_state.dart';
 
 /// Manages a Policy Assignment to a Resource.
@@ -154,7 +157,7 @@ import 'resource_policy_assignment_state.dart';
 /// 		_, err = core.NewResourcePolicyAssignment(ctx, "example", &core.ResourcePolicyAssignmentArgs{
 /// 			Name:               pulumi.String("example-policy-assignment"),
 /// 			ResourceId:         pulumi.String(example.Id),
-/// 			PolicyDefinitionId: exampleDefinition.ID(),
+/// 			PolicyDefinitionId: exampleDefinition.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -322,11 +325,11 @@ class ResourcePolicyAssignment extends pulumi.CustomResource {
   /// The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created. Cannot exceed 64 characters in length.
   late final pulumi.Output<String> name;
   /// One or more `nonComplianceMessage` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> nonComplianceMessages;
+  late final pulumi.Output<List<ResourcePolicyAssignmentNonComplianceMessage>?> nonComplianceMessages;
   /// Specifies a list of Resource Scopes (for example a Subscription, or a Resource Group) within this Management Group which are excluded from this Policy.
   late final pulumi.Output<List<String>?> notScopes;
   /// One or more `overrides` blocks as defined below. More detail about `overrides` and `resourceSelectors` see [policy assignment structure](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure)
-  late final pulumi.Output<List<Map<String, dynamic>>?> overrides;
+  late final pulumi.Output<List<ResourcePolicyAssignmentOverride>?> overrides;
   /// A JSON mapping of any Parameters for this Policy.
   late final pulumi.Output<String?> parameters;
   /// The ID of the Policy Definition or Policy Definition Set. Changing this forces a new Policy Assignment to be created.
@@ -336,7 +339,7 @@ class ResourcePolicyAssignment extends pulumi.CustomResource {
   /// &gt; **Note:** To create a Policy Assignment at a Management Group use the `azure.management.GroupPolicyAssignment` resource, for a Resource Group use the `azure.core.ResourceGroupPolicyAssignment` and for a Subscription use the `azure.core.SubscriptionPolicyAssignment` resource.
   late final pulumi.Output<String> resourceId;
   /// One or more `resourceSelectors` blocks as defined below to filter polices by resource properties.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourceSelectors;
+  late final pulumi.Output<List<ResourcePolicyAssignmentResourceSelector>?> resourceSelectors;
 
   /// Creates a new [ResourcePolicyAssignment].
   /// [name] The Pulumi resource name.
@@ -350,7 +353,7 @@ class ResourcePolicyAssignment extends pulumi.CustomResource {
           'azure:core/resourcePolicyAssignment:ResourcePolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -359,13 +362,13 @@ class ResourcePolicyAssignment extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
-    nonComplianceMessages = registerOutput<List<Map<String, dynamic>>?>('nonComplianceMessages');
-    notScopes = registerOutput<List<String>?>('notScopes');
-    overrides = registerOutput<List<Map<String, dynamic>>?>('overrides');
+    nonComplianceMessages = registerOutput<List<ResourcePolicyAssignmentNonComplianceMessage>?>('nonComplianceMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourcePolicyAssignmentNonComplianceMessage>(guardedValue, (value) => ResourcePolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>())); });
+    notScopes = registerOutput<List<String>?>('notScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    overrides = registerOutput<List<ResourcePolicyAssignmentOverride>?>('overrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourcePolicyAssignmentOverride>(guardedValue, (value) => ResourcePolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>())); });
     parameters = registerOutput<String?>('parameters');
     policyDefinitionId = registerOutput<String>('policyDefinitionId');
     resourceId = registerOutput<String>('resourceId');
-    resourceSelectors = registerOutput<List<Map<String, dynamic>>?>('resourceSelectors');
+    resourceSelectors = registerOutput<List<ResourcePolicyAssignmentResourceSelector>?>('resourceSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourcePolicyAssignmentResourceSelector>(guardedValue, (value) => ResourcePolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ResourcePolicyAssignment] resource's state with the given [name] and [id].
@@ -373,11 +376,12 @@ class ResourcePolicyAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourcePolicyAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourcePolicyAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -398,12 +402,37 @@ class ResourcePolicyAssignment extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
-    nonComplianceMessages = registerOutput<List<Map<String, dynamic>>?>('nonComplianceMessages');
-    notScopes = registerOutput<List<String>?>('notScopes');
-    overrides = registerOutput<List<Map<String, dynamic>>?>('overrides');
+    nonComplianceMessages = registerOutput<List<ResourcePolicyAssignmentNonComplianceMessage>?>('nonComplianceMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourcePolicyAssignmentNonComplianceMessage>(guardedValue, (value) => ResourcePolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>())); });
+    notScopes = registerOutput<List<String>?>('notScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    overrides = registerOutput<List<ResourcePolicyAssignmentOverride>?>('overrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourcePolicyAssignmentOverride>(guardedValue, (value) => ResourcePolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>())); });
     parameters = registerOutput<String?>('parameters');
     policyDefinitionId = registerOutput<String>('policyDefinitionId');
     resourceId = registerOutput<String>('resourceId');
-    resourceSelectors = registerOutput<List<Map<String, dynamic>>?>('resourceSelectors');
+    resourceSelectors = registerOutput<List<ResourcePolicyAssignmentResourceSelector>?>('resourceSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourcePolicyAssignmentResourceSelector>(guardedValue, (value) => ResourcePolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ResourcePolicyAssignment] resource.
+  ResourcePolicyAssignment.reference(String urn)
+    : super(
+        'azure:core/resourcePolicyAssignment:ResourcePolicyAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    enforce = registerOutput<bool?>('enforce');
+    identity = registerOutput<ResourcePolicyAssignmentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyAssignmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<String>('metadata');
+    this.name = registerOutput<String>('name');
+    nonComplianceMessages = registerOutput<List<ResourcePolicyAssignmentNonComplianceMessage>?>('nonComplianceMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourcePolicyAssignmentNonComplianceMessage>(guardedValue, (value) => ResourcePolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>())); });
+    notScopes = registerOutput<List<String>?>('notScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    overrides = registerOutput<List<ResourcePolicyAssignmentOverride>?>('overrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourcePolicyAssignmentOverride>(guardedValue, (value) => ResourcePolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>())); });
+    parameters = registerOutput<String?>('parameters');
+    policyDefinitionId = registerOutput<String>('policyDefinitionId');
+    resourceId = registerOutput<String>('resourceId');
+    resourceSelectors = registerOutput<List<ResourcePolicyAssignmentResourceSelector>?>('resourceSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourcePolicyAssignmentResourceSelector>(guardedValue, (value) => ResourcePolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

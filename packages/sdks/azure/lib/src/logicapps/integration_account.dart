@@ -225,14 +225,14 @@ class IntegrationAccount extends pulumi.CustomResource {
           'azure:logicapps/integrationAccount:IntegrationAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     integrationServiceEnvironmentId = registerOutput<String?>('integrationServiceEnvironmentId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IntegrationAccount] resource's state with the given [name] and [id].
@@ -240,11 +240,12 @@ class IntegrationAccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationAccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationAccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -263,6 +264,23 @@ class IntegrationAccount extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccount] resource.
+  IntegrationAccount.reference(String urn)
+    : super(
+        'azure:logicapps/integrationAccount:IntegrationAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    integrationServiceEnvironmentId = registerOutput<String?>('integrationServiceEnvironmentId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

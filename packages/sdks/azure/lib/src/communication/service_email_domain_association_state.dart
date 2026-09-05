@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServiceEmailDomainAssociation resources.
 class ServiceEmailDomainAssociationState {
   /// The ID of the Communication Service. Changing this forces a new communication service email domain association to be created.
-  final pulumi.Input<String>? communicationServiceId;
+  final pulumi.Input<String?>? communicationServiceId;
   /// The ID of the EMail Service Domain. Changing this forces a new communication service email domain association to be created.
-  final pulumi.Input<String>? emailServiceDomainId;
+  final pulumi.Input<String?>? emailServiceDomainId;
 
   /// Creates a new [ServiceEmailDomainAssociationState].
   /// [communicationServiceId] The ID of the Communication Service. Changing this forces a new communication service email domain association to be created.

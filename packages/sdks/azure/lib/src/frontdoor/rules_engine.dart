@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rules_engine_args.dart';
+import 'rules_engine_rule.dart';
 import 'rules_engine_state.dart';
 
 /// &gt; **Note:** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
@@ -745,7 +746,7 @@ class RulesEngine extends pulumi.CustomResource {
   /// The name of the resource group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A `rule` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<RulesEngineRule>?> rules;
 
   /// Creates a new [RulesEngine].
   /// [name] The Pulumi resource name.
@@ -759,14 +760,14 @@ class RulesEngine extends pulumi.CustomResource {
           'azure:frontdoor/rulesEngine:RulesEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     frontdoorName = registerOutput<String>('frontdoorName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<RulesEngineRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RulesEngineRule>(guardedValue, (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [RulesEngine] resource's state with the given [name] and [id].
@@ -774,11 +775,12 @@ class RulesEngine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RulesEngineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RulesEngine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -797,6 +799,23 @@ class RulesEngine extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<RulesEngineRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RulesEngineRule>(guardedValue, (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RulesEngine] resource.
+  RulesEngine.reference(String urn)
+    : super(
+        'azure:frontdoor/rulesEngine:RulesEngine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabled = registerOutput<bool?>('enabled');
+    frontdoorName = registerOutput<String>('frontdoorName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rules = registerOutput<List<RulesEngineRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RulesEngineRule>(guardedValue, (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

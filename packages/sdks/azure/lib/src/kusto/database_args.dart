@@ -10,15 +10,15 @@ class DatabaseArgs {
   /// Specifies the name of the Kusto Cluster this database will be added to. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterName;
   /// The time the data that should be kept in cache for fast queries as ISO 8601 timespan. Default is unlimited. For more information see: [ISO 8601 Timespan](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-  final pulumi.Input<String>? hotCachePeriod;
+  final pulumi.Input<String?>? hotCachePeriod;
   /// The location where the Kusto Database should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Kusto Database to create. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the Resource Group where the Kusto Database should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The time the data should be kept before it stops being accessible to queries as ISO 8601 timespan. Default is unlimited. For more information see: [ISO 8601 Timespan](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-  final pulumi.Input<String>? softDeletePeriod;
+  final pulumi.Input<String?>? softDeletePeriod;
 
   /// Creates a new [DatabaseArgs].
   /// [clusterName] Specifies the name of the Kusto Cluster this database will be added to. Changing this forces a new resource to be created.

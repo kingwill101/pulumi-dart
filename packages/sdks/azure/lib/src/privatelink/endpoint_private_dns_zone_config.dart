@@ -5,13 +5,13 @@ import 'endpoint_private_dns_zone_config_record_set.dart';
 
 class EndpointPrivateDnsZoneConfig {
   /// The ID of the Private DNS Zone Config.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Private DNS Zone that the config belongs to.
-  final pulumi.Input<String>? privateDnsZoneId;
+  final pulumi.Input<String?>? privateDnsZoneId;
   /// A `recordSets` block as defined below.
-  final pulumi.Input<List<EndpointPrivateDnsZoneConfigRecordSet>>? recordSets;
+  final pulumi.Input<List<EndpointPrivateDnsZoneConfigRecordSet>?>? recordSets;
 
   /// Creates a new [EndpointPrivateDnsZoneConfig].
   /// [id] The ID of the Private DNS Zone Config.

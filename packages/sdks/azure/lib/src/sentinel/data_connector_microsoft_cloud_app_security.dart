@@ -110,7 +110,7 @@ import 'data_connector_microsoft_cloud_app_security_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -268,7 +268,7 @@ class DataConnectorMicrosoftCloudAppSecurity extends pulumi.CustomResource {
           'azure:sentinel/dataConnectorMicrosoftCloudAppSecurity:DataConnectorMicrosoftCloudAppSecurity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     alertsEnabled = registerOutput<bool?>('alertsEnabled');
     discoveryLogsEnabled = registerOutput<bool?>('discoveryLogsEnabled');
@@ -282,11 +282,12 @@ class DataConnectorMicrosoftCloudAppSecurity extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataConnectorMicrosoftCloudAppSecurityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataConnectorMicrosoftCloudAppSecurity._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,6 +301,22 @@ class DataConnectorMicrosoftCloudAppSecurity extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    alertsEnabled = registerOutput<bool?>('alertsEnabled');
+    discoveryLogsEnabled = registerOutput<bool?>('discoveryLogsEnabled');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [DataConnectorMicrosoftCloudAppSecurity] resource.
+  DataConnectorMicrosoftCloudAppSecurity.reference(String urn)
+    : super(
+        'azure:sentinel/dataConnectorMicrosoftCloudAppSecurity:DataConnectorMicrosoftCloudAppSecurity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     alertsEnabled = registerOutput<bool?>('alertsEnabled');
     discoveryLogsEnabled = registerOutput<bool?>('discoveryLogsEnabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');

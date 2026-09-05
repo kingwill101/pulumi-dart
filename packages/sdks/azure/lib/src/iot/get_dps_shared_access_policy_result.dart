@@ -4,62 +4,62 @@
 /// Result data returned by getDpsSharedAccessPolicy.
 class GetDpsSharedAccessPolicyResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String iothubDpsName;
-  final String name;
+  final String? id;
+  final String? iothubDpsName;
+  final String? name;
   /// The primary connection string of the Shared Access Policy.
-  final String primaryConnectionString;
+  final String? primaryConnectionString;
   /// The primary key used to create the authentication token.
-  final String primaryKey;
-  final String resourceGroupName;
+  final String? primaryKey;
+  final String? resourceGroupName;
   /// The secondary connection string of the Shared Access Policy.
-  final String secondaryConnectionString;
+  final String? secondaryConnectionString;
   /// The secondary key used to create the authentication token.
-  final String secondaryKey;
+  final String? secondaryKey;
 
   /// Creates a new [GetDpsSharedAccessPolicyResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [iothubDpsName] Required.
-  /// [name] Required.
+  /// [iothubDpsName] Optional.
+  /// [name] Optional.
   /// [primaryConnectionString] The primary connection string of the Shared Access Policy.
   /// [primaryKey] The primary key used to create the authentication token.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [secondaryConnectionString] The secondary connection string of the Shared Access Policy.
   /// [secondaryKey] The secondary key used to create the authentication token.
   const GetDpsSharedAccessPolicyResult({
-    required this.id,
-    required this.iothubDpsName,
-    required this.name,
-    required this.primaryConnectionString,
-    required this.primaryKey,
-    required this.resourceGroupName,
-    required this.secondaryConnectionString,
-    required this.secondaryKey,
+    this.id,
+    this.iothubDpsName,
+    this.name,
+    this.primaryConnectionString,
+    this.primaryKey,
+    this.resourceGroupName,
+    this.secondaryConnectionString,
+    this.secondaryKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'iothubDpsName': iothubDpsName,
-      'name': name,
-      'primaryConnectionString': primaryConnectionString,
-      'primaryKey': primaryKey,
-      'resourceGroupName': resourceGroupName,
-      'secondaryConnectionString': secondaryConnectionString,
-      'secondaryKey': secondaryKey,
+      'id': ?id,
+      'iothubDpsName': ?iothubDpsName,
+      'name': ?name,
+      'primaryConnectionString': ?primaryConnectionString,
+      'primaryKey': ?primaryKey,
+      'resourceGroupName': ?resourceGroupName,
+      'secondaryConnectionString': ?secondaryConnectionString,
+      'secondaryKey': ?secondaryKey,
     };
   }
 
   factory GetDpsSharedAccessPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetDpsSharedAccessPolicyResult(
-      id: map['id'] as String,
-      iothubDpsName: map['iothubDpsName'] as String,
-      name: map['name'] as String,
-      primaryConnectionString: map['primaryConnectionString'] as String,
-      primaryKey: map['primaryKey'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      secondaryConnectionString: map['secondaryConnectionString'] as String,
-      secondaryKey: map['secondaryKey'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      iothubDpsName: (() { final guardedValue = map['iothubDpsName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryConnectionString: (() { final guardedValue = map['primaryConnectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryConnectionString: (() { final guardedValue = map['secondaryConnectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ExpressRoutePortAuthorization resources.
 class ExpressRoutePortAuthorizationState {
   /// The Authorization Key.
-  final pulumi.Input<String>? authorizationKey;
+  final pulumi.Input<String?>? authorizationKey;
   /// The authorization use status.
-  final pulumi.Input<String>? authorizationUseStatus;
+  final pulumi.Input<String?>? authorizationUseStatus;
   /// The name of the Express Route Port in which to create the Authorization. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? expressRoutePortName;
+  final pulumi.Input<String?>? expressRoutePortName;
   /// The name of the ExpressRoute Port. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the ExpressRoute Port. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ExpressRoutePortAuthorizationState].
   /// [authorizationKey] The Authorization Key.

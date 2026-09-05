@@ -6,7 +6,7 @@ class VirtualMachineAutoBackupManualSchedule {
   /// A list of days on which backup can take place. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`
   ///
   /// &gt; **Note:** `daysOfWeek` can only be specified when `manualSchedule` is set to `Weekly`
-  final pulumi.Input<List<String>>? daysOfWeeks;
+  final pulumi.Input<List<String>?>? daysOfWeeks;
   /// Frequency of full backups. Valid values include `Daily` or `Weekly`.
   final pulumi.Input<String> fullBackupFrequency;
   /// Start hour of a given day during which full backups can take place. Valid values are from `0` to `23`.
@@ -44,9 +44,9 @@ class VirtualMachineAutoBackupManualSchedule {
     return VirtualMachineAutoBackupManualSchedule(
       daysOfWeeks: (() { final guardedValue = map['daysOfWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       fullBackupFrequency: pulumi.Input.fromValue(map['fullBackupFrequency'] as String),
-      fullBackupStartHour: pulumi.Input.fromValue(map['fullBackupStartHour'] as int),
-      fullBackupWindowInHours: pulumi.Input.fromValue(map['fullBackupWindowInHours'] as int),
-      logBackupFrequencyInMinutes: pulumi.Input.fromValue(map['logBackupFrequencyInMinutes'] as int),
+      fullBackupStartHour: pulumi.Input.fromValue((map['fullBackupStartHour'] as num).toInt()),
+      fullBackupWindowInHours: pulumi.Input.fromValue((map['fullBackupWindowInHours'] as num).toInt()),
+      logBackupFrequencyInMinutes: pulumi.Input.fromValue((map['logBackupFrequencyInMinutes'] as num).toInt()),
     );
   }
 }

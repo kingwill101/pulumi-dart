@@ -215,21 +215,22 @@ class Server extends pulumi.CustomResource {
           'azure:fluidrelay/server:Server',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryKey', 'secondaryKey'],
         ) {
     customerManagedKey = registerOutput<ServerCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     frsTenantId = registerOutput<String>('frsTenantId');
     identity = registerOutput<ServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    ordererEndpoints = registerOutput<List<String>>('ordererEndpoints');
-    primaryKey = registerOutput<String>('primaryKey');
+    ordererEndpoints = registerOutput<List<String>>('ordererEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryKey = registerOutput<String>('secondaryKey');
-    serviceEndpoints = registerOutput<List<String>>('serviceEndpoints');
-    storageEndpoints = registerOutput<List<String>>('storageEndpoints');
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    serviceEndpoints = registerOutput<List<String>>('serviceEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storageEndpoints = registerOutput<List<String>>('storageEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageSku = registerOutput<String>('storageSku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Server] resource's state with the given [name] and [id].
@@ -237,11 +238,12 @@ class Server extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Server._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -260,13 +262,38 @@ class Server extends pulumi.CustomResource {
     identity = registerOutput<ServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    ordererEndpoints = registerOutput<List<String>>('ordererEndpoints');
-    primaryKey = registerOutput<String>('primaryKey');
+    ordererEndpoints = registerOutput<List<String>>('ordererEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryKey = registerOutput<String>('secondaryKey');
-    serviceEndpoints = registerOutput<List<String>>('serviceEndpoints');
-    storageEndpoints = registerOutput<List<String>>('storageEndpoints');
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    serviceEndpoints = registerOutput<List<String>>('serviceEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storageEndpoints = registerOutput<List<String>>('storageEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageSku = registerOutput<String>('storageSku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Server] resource.
+  Server.reference(String urn)
+    : super(
+        'azure:fluidrelay/server:Server',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryKey', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    customerManagedKey = registerOutput<ServerCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frsTenantId = registerOutput<String>('frsTenantId');
+    identity = registerOutput<ServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    ordererEndpoints = registerOutput<List<String>>('ordererEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    serviceEndpoints = registerOutput<List<String>>('serviceEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storageEndpoints = registerOutput<List<String>>('storageEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storageSku = registerOutput<String>('storageSku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

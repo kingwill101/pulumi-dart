@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterKubeConfig {
   /// Base64 encoded public certificate used by clients to authenticate to the Kubernetes cluster.
-  final pulumi.Input<String>? clientCertificate;
+  final pulumi.Input<String?>? clientCertificate;
   /// Base64 encoded private key used by clients to authenticate to the Kubernetes cluster.
-  final pulumi.Input<String>? clientKey;
+  final pulumi.Input<String?>? clientKey;
   /// Base64 encoded public CA certificate used as the root of trust for the Kubernetes cluster.
-  final pulumi.Input<String>? clusterCaCertificate;
+  final pulumi.Input<String?>? clusterCaCertificate;
   /// The Kubernetes cluster server host.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// A password or token used to authenticate to the Kubernetes cluster.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// A username used to authenticate to the Kubernetes cluster.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [KubernetesClusterKubeConfig].
   /// [clientCertificate] Base64 encoded public certificate used by clients to authenticate to the Kubernetes cluster.

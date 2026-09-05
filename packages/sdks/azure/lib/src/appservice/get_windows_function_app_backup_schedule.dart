@@ -45,11 +45,11 @@ class GetWindowsFunctionAppBackupSchedule {
 
   factory GetWindowsFunctionAppBackupSchedule.fromMap(Map<String, dynamic> map) {
     return GetWindowsFunctionAppBackupSchedule(
-      frequencyInterval: pulumi.Input.fromValue(map['frequencyInterval'] as int),
+      frequencyInterval: pulumi.Input.fromValue((map['frequencyInterval'] as num).toInt()),
       frequencyUnit: pulumi.Input.fromValue(map['frequencyUnit'] as String),
       keepAtLeastOneBackup: pulumi.Input.fromValue(map['keepAtLeastOneBackup'] as bool),
       lastExecutionTime: pulumi.Input.fromValue(map['lastExecutionTime'] as String),
-      retentionPeriodDays: pulumi.Input.fromValue(map['retentionPeriodDays'] as int),
+      retentionPeriodDays: pulumi.Input.fromValue((map['retentionPeriodDays'] as num).toInt()),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }

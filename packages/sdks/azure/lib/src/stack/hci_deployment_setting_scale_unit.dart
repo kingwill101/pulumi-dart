@@ -12,27 +12,27 @@ class HciDeploymentSettingScaleUnit {
   /// Specify the full name of the Active Directory Organizational Unit container object prepared for the deployment, including the domain components. For example:`OU=HCI01,DC=contoso,DC=com`. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> activeDirectoryOrganizationalUnitPath;
   /// Whether to enable BitLocker for boot volume. Possible values are `true` and `false`. When set to `true`, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? bitlockerBootVolumeEnabled;
+  final pulumi.Input<bool?>? bitlockerBootVolumeEnabled;
   /// Whether to enable BitLocker for data volume. Possible values are `true` and `false`. When set to `true`, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? bitlockerDataVolumeEnabled;
+  final pulumi.Input<bool?>? bitlockerDataVolumeEnabled;
   /// A `cluster` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<HciDeploymentSettingScaleUnitCluster> cluster;
   /// Whether to enable credential guard. Possible values are `true` and `false`. Defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? credentialGuardEnabled;
+  final pulumi.Input<bool?>? credentialGuardEnabled;
   /// Specifies the FQDN for deploying cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> domainFqdn;
   /// Whether to enable drift control. Possible values are `true` and `false`. When set to `true`, the security baseline is re-applied regularly. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? driftControlEnabled;
+  final pulumi.Input<bool?>? driftControlEnabled;
   /// Whether to enable DRTM protection. Possible values are `true` and `false`. When set to `true`, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? drtmProtectionEnabled;
+  final pulumi.Input<bool?>? drtmProtectionEnabled;
   /// Whether to collect log data to facilitate quicker issue resolution. Possible values are `true` and `false`. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? episodicDataUploadEnabled;
+  final pulumi.Input<bool?>? episodicDataUploadEnabled;
   /// Whether to store data sent to Microsoft in EU. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to `false` results in all data sent to Microsoft to be stored outside of the EU. Possible values are `true` and `false`. Defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? euLocationEnabled;
+  final pulumi.Input<bool?>? euLocationEnabled;
   /// A `hostNetwork` block as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<HciDeploymentSettingScaleUnitHostNetwork> hostNetwork;
   /// Whether to enable HVCI protection. Possible values are `true` and `false`. When set to `true`, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? hvciProtectionEnabled;
+  final pulumi.Input<bool?>? hvciProtectionEnabled;
   /// One or more `infrastructureNetwork` blocks as defined above. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<List<HciDeploymentSettingScaleUnitInfrastructureNetwork>> infrastructureNetworks;
   /// Specifies the name prefix to deploy cluster. It must be 1-8 characters long and contain only letters, numbers and hyphens Changing this forces a new Stack HCI Deployment Setting to be created.
@@ -44,17 +44,17 @@ class HciDeploymentSettingScaleUnit {
   /// The URI to the Key Vault or secret store. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> secretsLocation;
   /// Whether to enable side channel mitigation. Possible values are `true` and `false`. When set to `true`, all side channel mitigations are enabled on your Azure HCI cluster. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? sideChannelMitigationEnabled;
+  final pulumi.Input<bool?>? sideChannelMitigationEnabled;
   /// Whether to enable SMB cluster encryption. Possible values are `true` and `false`. When set to `true`, cluster east-west traffic is encrypted. Defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? smbClusterEncryptionEnabled;
+  final pulumi.Input<bool?>? smbClusterEncryptionEnabled;
   /// Whether to enable SMB signing. Possible values are `true` and `false`. When set to `true`, the SMB default instance requires sign in for the client and server services. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? smbSigningEnabled;
+  final pulumi.Input<bool?>? smbSigningEnabled;
   /// A `storage` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<HciDeploymentSettingScaleUnitStorage> storage;
   /// Whether the telemetry data will be sent to Microsoft. Possible values are `true` and `false`. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? streamingDataClientEnabled;
+  final pulumi.Input<bool?>? streamingDataClientEnabled;
   /// Whether to enable WDAC. Possible values are `true` and `false`. When set to `true`, applications and the code that you can run on your Azure Stack HCI cluster are limited. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<bool>? wdacEnabled;
+  final pulumi.Input<bool?>? wdacEnabled;
 
   /// Creates a new [HciDeploymentSettingScaleUnit].
   /// [activeDirectoryOrganizationalUnitPath] Specify the full name of the Active Directory Organizational Unit container object prepared for the deployment, including the domain components. For example:`OU=HCI01,DC=contoso,DC=com`. Changing this forces a new Stack HCI Deployment Setting to be created.

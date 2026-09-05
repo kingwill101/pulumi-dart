@@ -11,23 +11,23 @@ class AssignmentArgs {
   /// An `identity` block as defined below.
   final pulumi.Input<AssignmentIdentity> identity;
   /// The Azure location of the Assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// a list of up to 200 actions that are permitted to bypass the locks applied by the Blueprint.
-  final pulumi.Input<List<String>>? lockExcludeActions;
+  final pulumi.Input<List<String>?>? lockExcludeActions;
   /// a list of up to 5 Principal IDs that are permitted to bypass the locks applied by the Blueprint.
-  final pulumi.Input<List<String>>? lockExcludePrincipals;
+  final pulumi.Input<List<String>?>? lockExcludePrincipals;
   /// The locking mode of the Blueprint Assignment. One of `None` (Default), `AllResourcesReadOnly`, or `AllResourcesDoNotDelete`. Defaults to `None`.
-  final pulumi.Input<String>? lockMode;
+  final pulumi.Input<String?>? lockMode;
   /// The name of the Blueprint Assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// a JSON string to supply Blueprint Assignment parameter values.
   ///
   /// &gt; **NOTE:** Improperly formatted JSON, or missing values required by a Blueprint will cause the assignment to fail.
-  final pulumi.Input<String>? parameterValues;
+  final pulumi.Input<String?>? parameterValues;
   /// a JSON string to supply the Blueprint Resource Group information.
   ///
   /// &gt; **NOTE:** Improperly formatted JSON, or missing values required by a Blueprint will cause the assignment to fail.
-  final pulumi.Input<String>? resourceGroups;
+  final pulumi.Input<String?>? resourceGroups;
   /// The Subscription ID the Blueprint Published Version is to be applied to. Changing this forces a new resource to be created.
   final pulumi.Input<String> targetSubscriptionId;
   /// The ID of the Published Version of the blueprint to be assigned.

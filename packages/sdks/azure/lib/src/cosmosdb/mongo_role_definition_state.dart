@@ -6,15 +6,15 @@ import 'mongo_role_definition_privilege.dart';
 /// Input properties used for looking up and filtering MongoRoleDefinition resources.
 class MongoRoleDefinitionState {
   /// The resource ID of the Mongo DB. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? cosmosMongoDatabaseId;
+  final pulumi.Input<String?>? cosmosMongoDatabaseId;
   /// A list of Mongo Roles which are inherited to the Mongo Role Definition.
   ///
   /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmosMongoDatabaseId`.
-  final pulumi.Input<List<String>>? inheritedRoleNames;
+  final pulumi.Input<List<String>?>? inheritedRoleNames;
   /// A `privilege` block as defined below.
-  final pulumi.Input<List<MongoRoleDefinitionPrivilege>>? privileges;
+  final pulumi.Input<List<MongoRoleDefinitionPrivilege>?>? privileges;
   /// The user-friendly name for the Mongo Role Definition. It must be unique for the database account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
 
   /// Creates a new [MongoRoleDefinitionState].
   /// [cosmosMongoDatabaseId] The resource ID of the Mongo DB. Changing this forces a new resource to be created.

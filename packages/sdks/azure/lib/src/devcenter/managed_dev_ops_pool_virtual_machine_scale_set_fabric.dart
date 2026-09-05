@@ -9,17 +9,17 @@ class ManagedDevOpsPoolVirtualMachineScaleSetFabric {
   /// One or more `image` blocks as defined below.
   final pulumi.Input<List<ManagedDevOpsPoolVirtualMachineScaleSetFabricImage>> images;
   /// The storage account type for the OS disk. Possible values are `Premium`, `Standard`, and `StandardSSD`. Defaults to `Standard`.
-  final pulumi.Input<String>? osDiskStorageAccountType;
+  final pulumi.Input<String?>? osDiskStorageAccountType;
   /// A `security` block as defined below.
-  final pulumi.Input<ManagedDevOpsPoolVirtualMachineScaleSetFabricSecurity>? security;
+  final pulumi.Input<ManagedDevOpsPoolVirtualMachineScaleSetFabricSecurity?>? security;
   /// The Azure SKU name of the machines in the pool.
   ///
   /// &gt; **Note:** Please refer to the [Microsoft Documentation](https://learn.microsoft.com/azure/devops/managed-devops-pools/configure-pool-settings?view=azure-devops&tabs=azure-portal#agent-size) for more information about available SKUs.
   final pulumi.Input<String> skuName;
   /// A `storage` block as defined below.
-  final pulumi.Input<ManagedDevOpsPoolVirtualMachineScaleSetFabricStorage>? storage;
+  final pulumi.Input<ManagedDevOpsPoolVirtualMachineScaleSetFabricStorage?>? storage;
   /// The subnet ID on which to put all machines created in the pool.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [ManagedDevOpsPoolVirtualMachineScaleSetFabric].
   /// [images] One or more `image` blocks as defined below.

@@ -1,14 +1,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pool_args.dart';
 import 'pool_auto_scale.dart';
+import 'pool_certificate.dart';
 import 'pool_container_configuration.dart';
+import 'pool_data_disk.dart';
+import 'pool_disk_encryption.dart';
+import 'pool_extension.dart';
 import 'pool_fixed_scale.dart';
 import 'pool_identity.dart';
+import 'pool_mount.dart';
 import 'pool_network_configuration.dart';
+import 'pool_node_placement.dart';
 import 'pool_security_profile.dart';
 import 'pool_start_task.dart';
 import 'pool_state.dart';
 import 'pool_storage_image_reference.dart';
+import 'pool_task_scheduling_policy.dart';
+import 'pool_user_account.dart';
+import 'pool_window.dart';
 
 /// Manages an Azure Batch pool.
 ///
@@ -286,7 +295,7 @@ import 'pool_storage_image_reference.dart';
 /// 			ResourceGroupName:                example.Name,
 /// 			Location:                         example.Location,
 /// 			PoolAllocationMode:               pulumi.String("BatchService"),
-/// 			StorageAccountId:                 exampleAccount.ID(),
+/// 			StorageAccountId:                 exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountAuthenticationMode: pulumi.String("StorageKeys"),
 /// 			Tags: pulumi.StringMap{
 /// 				"env": pulumi.String("test"),
@@ -613,17 +622,17 @@ class Pool extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** `fixedScale` and `autoScale` blocks cannot be used both at the same time.
   late final pulumi.Output<PoolAutoScale?> autoScale;
-  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
+  late final pulumi.Output<List<PoolCertificate>?> certificates;
   /// The container configuration used in the pool's VMs. One `containerConfiguration` block as defined below.
   late final pulumi.Output<PoolContainerConfiguration?> containerConfiguration;
   /// A `dataDisks` block describes the data disk settings as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
+  late final pulumi.Output<List<PoolDataDisk>?> dataDisks;
   /// A `diskEncryption` block, as defined below, describes the disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
-  late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
+  late final pulumi.Output<List<PoolDiskEncryption>?> diskEncryptions;
   /// Specifies the display name of the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> displayName;
   /// An `extensions` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
+  late final pulumi.Output<List<PoolExtension>?> extensions;
   /// A `fixedScale` block that describes the scale settings when using fixed scale as defined below.
   late final pulumi.Output<PoolFixedScale?> fixedScale;
   /// An `identity` block as defined below.
@@ -637,7 +646,7 @@ class Pool extends pulumi.CustomResource {
   /// A map of custom batch pool metadata.
   late final pulumi.Output<Map<String, String>?> metadata;
   /// A `mount` block defined as below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> mounts;
+  late final pulumi.Output<List<PoolMount>?> mounts;
   /// Specifies the name of the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// A `networkConfiguration` block that describes the network configurations for the Batch pool as defined below. Changing this forces a new resource to be created.
@@ -645,7 +654,7 @@ class Pool extends pulumi.CustomResource {
   /// Specifies the SKU of the node agents that will be created in the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> nodeAgentSkuId;
   /// A `nodePlacement` block that describes the placement policy for allocating nodes in the pool as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> nodePlacements;
+  late final pulumi.Output<List<PoolNodePlacement>?> nodePlacements;
   /// Specifies the ephemeral disk placement for operating system disk for all VMs in the pool. This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements&gt; and Linux VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements&gt;. The only possible value is `CacheDisk`.
   late final pulumi.Output<String?> osDiskPlacement;
   /// The name of the resource group in which to create the Batch pool. Changing this forces a new resource to be created.
@@ -661,13 +670,13 @@ class Pool extends pulumi.CustomResource {
   /// The desired node communication mode for the pool. Possible values are `Classic`, `Default` and `Simplified`.
   late final pulumi.Output<String?> targetNodeCommunicationMode;
   /// A `taskSchedulingPolicy` block that describes how tasks are distributed across compute nodes in a pool as defined below. If not specified, the default is spread as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> taskSchedulingPolicies;
+  late final pulumi.Output<List<PoolTaskSchedulingPolicy>> taskSchedulingPolicies;
   /// A `userAccounts` block that describes the list of user accounts to be created on each node in the pool as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> userAccounts;
+  late final pulumi.Output<List<PoolUserAccount>?> userAccounts;
   /// Specifies the size of the VM created in the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vmSize;
   /// A `windows` block that describes the Windows configuration in the pool as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> windows;
+  late final pulumi.Output<List<PoolWindow>?> windows;
 
   /// Creates a new [Pool].
   /// [name] The Pulumi resource name.
@@ -681,27 +690,27 @@ class Pool extends pulumi.CustomResource {
           'azure:batch/pool:Pool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     autoScale = registerOutput<PoolAutoScale?>('autoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    certificates = registerOutput<List<PoolCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolCertificate>(guardedValue, (value) => PoolCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     containerConfiguration = registerOutput<PoolContainerConfiguration?>('containerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolContainerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
-    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>('diskEncryptions');
+    dataDisks = registerOutput<List<PoolDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolDataDisk>(guardedValue, (value) => PoolDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    diskEncryptions = registerOutput<List<PoolDiskEncryption>?>('diskEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolDiskEncryption>(guardedValue, (value) => PoolDiskEncryption.fromMap((value as Map).cast<String, dynamic>())); });
     displayName = registerOutput<String?>('displayName');
-    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    extensions = registerOutput<List<PoolExtension>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolExtension>(guardedValue, (value) => PoolExtension.fromMap((value as Map).cast<String, dynamic>())); });
     fixedScale = registerOutput<PoolFixedScale?>('fixedScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolFixedScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<PoolIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interNodeCommunication = registerOutput<String?>('interNodeCommunication');
     licenseType = registerOutput<String?>('licenseType');
     maxTasksPerNode = registerOutput<int?>('maxTasksPerNode');
-    metadata = registerOutput<Map<String, String>?>('metadata');
-    mounts = registerOutput<List<Map<String, dynamic>>?>('mounts');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    mounts = registerOutput<List<PoolMount>?>('mounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolMount>(guardedValue, (value) => PoolMount.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<PoolNetworkConfiguration?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeAgentSkuId = registerOutput<String>('nodeAgentSkuId');
-    nodePlacements = registerOutput<List<Map<String, dynamic>>?>('nodePlacements');
+    nodePlacements = registerOutput<List<PoolNodePlacement>?>('nodePlacements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolNodePlacement>(guardedValue, (value) => PoolNodePlacement.fromMap((value as Map).cast<String, dynamic>())); });
     osDiskPlacement = registerOutput<String?>('osDiskPlacement');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     securityProfile = registerOutput<PoolSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -709,10 +718,10 @@ class Pool extends pulumi.CustomResource {
     stopPendingResizeOperation = registerOutput<bool?>('stopPendingResizeOperation');
     storageImageReference = registerOutput<PoolStorageImageReference>('storageImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolStorageImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetNodeCommunicationMode = registerOutput<String?>('targetNodeCommunicationMode');
-    taskSchedulingPolicies = registerOutput<List<Map<String, dynamic>>>('taskSchedulingPolicies');
-    userAccounts = registerOutput<List<Map<String, dynamic>>?>('userAccounts');
+    taskSchedulingPolicies = registerOutput<List<PoolTaskSchedulingPolicy>>('taskSchedulingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolTaskSchedulingPolicy>(guardedValue, (value) => PoolTaskSchedulingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    userAccounts = registerOutput<List<PoolUserAccount>?>('userAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolUserAccount>(guardedValue, (value) => PoolUserAccount.fromMap((value as Map).cast<String, dynamic>())); });
     vmSize = registerOutput<String>('vmSize');
-    windows = registerOutput<List<Map<String, dynamic>>?>('windows');
+    windows = registerOutput<List<PoolWindow>?>('windows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolWindow>(guardedValue, (value) => PoolWindow.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Pool] resource's state with the given [name] and [id].
@@ -720,11 +729,12 @@ class Pool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -740,23 +750,23 @@ class Pool extends pulumi.CustomResource {
         ) {
     accountName = registerOutput<String>('accountName');
     autoScale = registerOutput<PoolAutoScale?>('autoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    certificates = registerOutput<List<PoolCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolCertificate>(guardedValue, (value) => PoolCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     containerConfiguration = registerOutput<PoolContainerConfiguration?>('containerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolContainerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
-    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>('diskEncryptions');
+    dataDisks = registerOutput<List<PoolDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolDataDisk>(guardedValue, (value) => PoolDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    diskEncryptions = registerOutput<List<PoolDiskEncryption>?>('diskEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolDiskEncryption>(guardedValue, (value) => PoolDiskEncryption.fromMap((value as Map).cast<String, dynamic>())); });
     displayName = registerOutput<String?>('displayName');
-    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    extensions = registerOutput<List<PoolExtension>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolExtension>(guardedValue, (value) => PoolExtension.fromMap((value as Map).cast<String, dynamic>())); });
     fixedScale = registerOutput<PoolFixedScale?>('fixedScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolFixedScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<PoolIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interNodeCommunication = registerOutput<String?>('interNodeCommunication');
     licenseType = registerOutput<String?>('licenseType');
     maxTasksPerNode = registerOutput<int?>('maxTasksPerNode');
-    metadata = registerOutput<Map<String, String>?>('metadata');
-    mounts = registerOutput<List<Map<String, dynamic>>?>('mounts');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    mounts = registerOutput<List<PoolMount>?>('mounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolMount>(guardedValue, (value) => PoolMount.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<PoolNetworkConfiguration?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeAgentSkuId = registerOutput<String>('nodeAgentSkuId');
-    nodePlacements = registerOutput<List<Map<String, dynamic>>?>('nodePlacements');
+    nodePlacements = registerOutput<List<PoolNodePlacement>?>('nodePlacements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolNodePlacement>(guardedValue, (value) => PoolNodePlacement.fromMap((value as Map).cast<String, dynamic>())); });
     osDiskPlacement = registerOutput<String?>('osDiskPlacement');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     securityProfile = registerOutput<PoolSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -764,9 +774,50 @@ class Pool extends pulumi.CustomResource {
     stopPendingResizeOperation = registerOutput<bool?>('stopPendingResizeOperation');
     storageImageReference = registerOutput<PoolStorageImageReference>('storageImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolStorageImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetNodeCommunicationMode = registerOutput<String?>('targetNodeCommunicationMode');
-    taskSchedulingPolicies = registerOutput<List<Map<String, dynamic>>>('taskSchedulingPolicies');
-    userAccounts = registerOutput<List<Map<String, dynamic>>?>('userAccounts');
+    taskSchedulingPolicies = registerOutput<List<PoolTaskSchedulingPolicy>>('taskSchedulingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolTaskSchedulingPolicy>(guardedValue, (value) => PoolTaskSchedulingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    userAccounts = registerOutput<List<PoolUserAccount>?>('userAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolUserAccount>(guardedValue, (value) => PoolUserAccount.fromMap((value as Map).cast<String, dynamic>())); });
     vmSize = registerOutput<String>('vmSize');
-    windows = registerOutput<List<Map<String, dynamic>>?>('windows');
+    windows = registerOutput<List<PoolWindow>?>('windows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolWindow>(guardedValue, (value) => PoolWindow.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Pool] resource.
+  Pool.reference(String urn)
+    : super(
+        'azure:batch/pool:Pool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    autoScale = registerOutput<PoolAutoScale?>('autoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificates = registerOutput<List<PoolCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolCertificate>(guardedValue, (value) => PoolCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    containerConfiguration = registerOutput<PoolContainerConfiguration?>('containerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolContainerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataDisks = registerOutput<List<PoolDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolDataDisk>(guardedValue, (value) => PoolDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    diskEncryptions = registerOutput<List<PoolDiskEncryption>?>('diskEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolDiskEncryption>(guardedValue, (value) => PoolDiskEncryption.fromMap((value as Map).cast<String, dynamic>())); });
+    displayName = registerOutput<String?>('displayName');
+    extensions = registerOutput<List<PoolExtension>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolExtension>(guardedValue, (value) => PoolExtension.fromMap((value as Map).cast<String, dynamic>())); });
+    fixedScale = registerOutput<PoolFixedScale?>('fixedScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolFixedScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<PoolIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    interNodeCommunication = registerOutput<String?>('interNodeCommunication');
+    licenseType = registerOutput<String?>('licenseType');
+    maxTasksPerNode = registerOutput<int?>('maxTasksPerNode');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    mounts = registerOutput<List<PoolMount>?>('mounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolMount>(guardedValue, (value) => PoolMount.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    networkConfiguration = registerOutput<PoolNetworkConfiguration?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeAgentSkuId = registerOutput<String>('nodeAgentSkuId');
+    nodePlacements = registerOutput<List<PoolNodePlacement>?>('nodePlacements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolNodePlacement>(guardedValue, (value) => PoolNodePlacement.fromMap((value as Map).cast<String, dynamic>())); });
+    osDiskPlacement = registerOutput<String?>('osDiskPlacement');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    securityProfile = registerOutput<PoolSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startTask = registerOutput<PoolStartTask?>('startTask', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolStartTask.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    stopPendingResizeOperation = registerOutput<bool?>('stopPendingResizeOperation');
+    storageImageReference = registerOutput<PoolStorageImageReference>('storageImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolStorageImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetNodeCommunicationMode = registerOutput<String?>('targetNodeCommunicationMode');
+    taskSchedulingPolicies = registerOutput<List<PoolTaskSchedulingPolicy>>('taskSchedulingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolTaskSchedulingPolicy>(guardedValue, (value) => PoolTaskSchedulingPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    userAccounts = registerOutput<List<PoolUserAccount>?>('userAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolUserAccount>(guardedValue, (value) => PoolUserAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    vmSize = registerOutput<String>('vmSize');
+    windows = registerOutput<List<PoolWindow>?>('windows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PoolWindow>(guardedValue, (value) => PoolWindow.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

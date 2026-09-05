@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkInterfaceApplicationSecurityGroupAssociation resources.
 class NetworkInterfaceApplicationSecurityGroupAssociationState {
   /// The ID of the Application Security Group which this Network Interface which should be connected to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? applicationSecurityGroupId;
+  final pulumi.Input<String?>? applicationSecurityGroupId;
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
 
   /// Creates a new [NetworkInterfaceApplicationSecurityGroupAssociationState].
   /// [applicationSecurityGroupId] The ID of the Application Security Group which this Network Interface which should be connected to. Changing this forces a new resource to be created.

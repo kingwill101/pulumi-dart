@@ -117,7 +117,7 @@ import 'queue_state.dart';
 /// 		}
 /// 		_, err = servicebus.NewQueue(ctx, "example", &servicebus.QueueArgs{
 /// 			Name:                pulumi.String("tfex_servicebus_queue"),
-/// 			NamespaceId:         exampleNamespace.ID(),
+/// 			NamespaceId:         exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitioningEnabled: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -299,7 +299,7 @@ class Queue extends pulumi.CustomResource {
           'azure:servicebus/queue:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autoDeleteOnIdle = registerOutput<String>('autoDeleteOnIdle');
     batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
@@ -328,11 +328,12 @@ class Queue extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QueueState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Queue._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,6 +347,37 @@ class Queue extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoDeleteOnIdle = registerOutput<String>('autoDeleteOnIdle');
+    batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
+    deadLetteringOnMessageExpiration = registerOutput<bool?>('deadLetteringOnMessageExpiration');
+    defaultMessageTtl = registerOutput<String>('defaultMessageTtl');
+    duplicateDetectionHistoryTimeWindow = registerOutput<String?>('duplicateDetectionHistoryTimeWindow');
+    expressEnabled = registerOutput<bool?>('expressEnabled');
+    forwardDeadLetteredMessagesTo = registerOutput<String?>('forwardDeadLetteredMessagesTo');
+    forwardTo = registerOutput<String?>('forwardTo');
+    lockDuration = registerOutput<String?>('lockDuration');
+    maxDeliveryCount = registerOutput<int?>('maxDeliveryCount');
+    maxMessageSizeInKilobytes = registerOutput<int>('maxMessageSizeInKilobytes');
+    maxSizeInMegabytes = registerOutput<int>('maxSizeInMegabytes');
+    this.name = registerOutput<String>('name');
+    namespaceId = registerOutput<String>('namespaceId');
+    namespaceName = registerOutput<String>('namespaceName');
+    partitioningEnabled = registerOutput<bool?>('partitioningEnabled');
+    requiresDuplicateDetection = registerOutput<bool?>('requiresDuplicateDetection');
+    requiresSession = registerOutput<bool?>('requiresSession');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    status = registerOutput<String?>('status');
+  }
+
+  /// Creates a typed reference to an existing [Queue] resource.
+  Queue.reference(String urn)
+    : super(
+        'azure:servicebus/queue:Queue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoDeleteOnIdle = registerOutput<String>('autoDeleteOnIdle');
     batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
     deadLetteringOnMessageExpiration = registerOutput<bool?>('deadLetteringOnMessageExpiration');

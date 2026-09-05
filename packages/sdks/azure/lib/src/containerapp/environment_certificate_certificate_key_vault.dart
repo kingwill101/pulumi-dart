@@ -6,7 +6,7 @@ class EnvironmentCertificateCertificateKeyVault {
   /// The managed identity to authenticate with Azure Key Vault. Possible values are the resource ID of user-assigned identity, and `System` for system-assigned identity. Defaults to `System`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Please make sure [required permissions](https://learn.microsoft.com/en-us/azure/container-apps/key-vault-certificates-manage) are correctly configured for your Key Vault and managed identity.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The ID of the Key Vault Secret containing the certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String> keyVaultSecretId;
 

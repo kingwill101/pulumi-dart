@@ -222,13 +222,13 @@ class PlacementGroup extends pulumi.CustomResource {
           'azure:proximity/placementGroup:PlacementGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    allowedVmSizes = registerOutput<List<String>?>('allowedVmSizes');
+    allowedVmSizes = registerOutput<List<String>?>('allowedVmSizes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zone = registerOutput<String?>('zone');
   }
 
@@ -237,11 +237,12 @@ class PlacementGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PlacementGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PlacementGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -255,11 +256,28 @@ class PlacementGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedVmSizes = registerOutput<List<String>?>('allowedVmSizes');
+    allowedVmSizes = registerOutput<List<String>?>('allowedVmSizes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zone = registerOutput<String?>('zone');
+  }
+
+  /// Creates a typed reference to an existing [PlacementGroup] resource.
+  PlacementGroup.reference(String urn)
+    : super(
+        'azure:proximity/placementGroup:PlacementGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedVmSizes = registerOutput<List<String>?>('allowedVmSizes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zone = registerOutput<String?>('zone');
   }
 }

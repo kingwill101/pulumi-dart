@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeBucketWithServerServer {
   /// Base64-encoded PEM blob containing the server certificate concatenated with the private key. Used when the certificate is supplied directly instead of via Key Vault. Mutually exclusive with `keyVault`.
-  final pulumi.Input<String>? certificatePem;
+  final pulumi.Input<String?>? certificatePem;
   /// The DNS name that resolves to the bucket endpoint IP address.
   final pulumi.Input<String> fqdn;
   /// Behaviour when an existing certificate already matches during a certificate rotation. Possible values are `Update` and `Fail`. Defaults to `Fail`.
-  final pulumi.Input<String>? onCertificateConflictAction;
+  final pulumi.Input<String?>? onCertificateConflictAction;
 
   /// Creates a new [VolumeBucketWithServerServer].
   /// [certificatePem] Base64-encoded PEM blob containing the server certificate concatenated with the private key. Used when the certificate is supplied directly instead of via Key Vault. Mutually exclusive with `keyVault`.

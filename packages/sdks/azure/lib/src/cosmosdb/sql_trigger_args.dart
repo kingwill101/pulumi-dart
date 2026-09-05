@@ -12,7 +12,7 @@ class SqlTriggerArgs {
   /// The id of the Cosmos DB SQL Container to create the SQL Trigger within. Changing this forces a new SQL Trigger to be created.
   final pulumi.Input<String> containerId;
   /// The name which should be used for this SQL Trigger. Changing this forces a new SQL Trigger to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The operation the trigger is associated with. Possible values are `All`, `Create`, `Update`, `Delete` and `Replace`.
   final pulumi.Input<String> operation;
   /// Type of the Trigger. Possible values are `Pre` and `Post`.

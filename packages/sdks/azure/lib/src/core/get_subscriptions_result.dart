@@ -8,9 +8,9 @@ class GetSubscriptionsResult {
   final String? displayNameContains;
   final String? displayNamePrefix;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// One or more `subscription` blocks as defined below.
-  final List<GetSubscriptionsSubscription> subscriptions;
+  final List<GetSubscriptionsSubscription>? subscriptions;
 
   /// Creates a new [GetSubscriptionsResult].
   /// [displayNameContains] Optional.
@@ -20,16 +20,16 @@ class GetSubscriptionsResult {
   const GetSubscriptionsResult({
     this.displayNameContains,
     this.displayNamePrefix,
-    required this.id,
-    required this.subscriptions,
+    this.id,
+    this.subscriptions,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayNameContains': ?displayNameContains,
       'displayNamePrefix': ?displayNamePrefix,
-      'id': id,
-      'subscriptions': pulumi.Input.encodeList<GetSubscriptionsSubscription, Map<String, dynamic>>(subscriptions, (value) => value.toMap()),
+      'id': ?id,
+      'subscriptions': ?(() { final guardedValue = subscriptions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSubscriptionsSubscription, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
@@ -37,8 +37,8 @@ class GetSubscriptionsResult {
     return GetSubscriptionsResult(
       displayNameContains: (() { final guardedValue = map['displayNameContains']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayNamePrefix: (() { final guardedValue = map['displayNamePrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      subscriptions: pulumi.Input.decodeList<GetSubscriptionsSubscription>(map['subscriptions']!, (value) => GetSubscriptionsSubscription.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subscriptions: (() { final guardedValue = map['subscriptions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSubscriptionsSubscription>(guardedValue, (value) => GetSubscriptionsSubscription.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -9,9 +9,9 @@ class KubernetesClusterWindowsProfile {
   /// The Admin Username for Windows VMs. Changing this forces a new resource to be created.
   final pulumi.Input<String> adminUsername;
   /// A `gmsa` block as defined below.
-  final pulumi.Input<KubernetesClusterWindowsProfileGmsa>? gmsa;
+  final pulumi.Input<KubernetesClusterWindowsProfileGmsa?>? gmsa;
   /// Specifies the type of on-premise license which should be used for Node Pool Windows Virtual Machine. At this time the only possible value is `Windows_Server`.
-  final pulumi.Input<String>? license;
+  final pulumi.Input<String?>? license;
 
   /// Creates a new [KubernetesClusterWindowsProfile].
   /// [adminPassword] The Admin Password for Windows VMs. Length must be between 14 and 123 characters.

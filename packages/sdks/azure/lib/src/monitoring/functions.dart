@@ -161,6 +161,17 @@ Future<GetActionGroupResult> getActionGroup(
   return GetActionGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetActionGroupResult> getActionGroupOutput(
+  GetActionGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:monitoring/getActionGroup:getActionGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActionGroupResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Data Collection Endpoint.
 ///
 /// ## Example Usage
@@ -308,6 +319,17 @@ Future<GetDataCollectionEndpointResult> getDataCollectionEndpoint(
   return GetDataCollectionEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetDataCollectionEndpointResult> getDataCollectionEndpointOutput(
+  GetDataCollectionEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:monitoring/getDataCollectionEndpoint:getDataCollectionEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataCollectionEndpointResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Data Collection Rule.
 ///
 /// ## Example Usage
@@ -453,6 +475,17 @@ Future<GetDataCollectionRuleResult> getDataCollectionRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataCollectionRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetDataCollectionRuleResult> getDataCollectionRuleOutput(
+  GetDataCollectionRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:monitoring/getDataCollectionRule:getDataCollectionRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataCollectionRuleResult.fromMap);
 }
 
 /// Use this data source to access information about the Monitor Diagnostics Categories supported by an existing Resource.
@@ -618,6 +651,17 @@ Future<GetDiagnosticCategoriesResult> getDiagnosticCategories(
   return GetDiagnosticCategoriesResult.fromMap(result);
 }
 
+pulumi.Output<GetDiagnosticCategoriesResult> getDiagnosticCategoriesOutput(
+  GetDiagnosticCategoriesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:monitoring/getDiagnosticCategories:getDiagnosticCategories',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiagnosticCategoriesResult.fromMap);
+}
+
 /// Use this data source to access the properties of an AlertingAction scheduled query rule.
 ///
 /// ## Example Usage
@@ -763,6 +807,17 @@ Future<GetScheduledQueryRulesAlertResult> getScheduledQueryRulesAlert(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScheduledQueryRulesAlertResult.fromMap(result);
+}
+
+pulumi.Output<GetScheduledQueryRulesAlertResult> getScheduledQueryRulesAlertOutput(
+  GetScheduledQueryRulesAlertArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:monitoring/getScheduledQueryRulesAlert:getScheduledQueryRulesAlert',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduledQueryRulesAlertResult.fromMap);
 }
 
 /// Use this data source to access the properties of a LogToMetricAction scheduled query rule.
@@ -912,6 +967,17 @@ Future<GetScheduledQueryRulesLogResult> getScheduledQueryRulesLog(
   return GetScheduledQueryRulesLogResult.fromMap(result);
 }
 
+pulumi.Output<GetScheduledQueryRulesLogResult> getScheduledQueryRulesLogOutput(
+  GetScheduledQueryRulesLogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:monitoring/getScheduledQueryRulesLog:getScheduledQueryRulesLog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduledQueryRulesLogResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Workspace.
 ///
 /// ## Example Usage
@@ -1057,4 +1123,15 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:monitoring/getWorkspace:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }

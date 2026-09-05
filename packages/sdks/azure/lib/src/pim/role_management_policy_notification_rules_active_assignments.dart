@@ -7,11 +7,11 @@ import 'role_management_policy_notification_rules_active_assignments_assignee_no
 
 class RoleManagementPolicyNotificationRulesActiveAssignments {
   /// Admin notification settings
-  final pulumi.Input<RoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications>? adminNotifications;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications?>? adminNotifications;
   /// Approver notification settings
-  final pulumi.Input<RoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications>? approverNotifications;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications?>? approverNotifications;
   /// Assignee notification settings
-  final pulumi.Input<RoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications>? assigneeNotifications;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications?>? assigneeNotifications;
 
   /// Creates a new [RoleManagementPolicyNotificationRulesActiveAssignments].
   /// [adminNotifications] Admin notification settings

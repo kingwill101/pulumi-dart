@@ -157,6 +157,17 @@ Future<GetPolicyAssignmentResult> getPolicyAssignment(
   return GetPolicyAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyAssignmentResult> getPolicyAssignmentOutput(
+  GetPolicyAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:policy/getPolicyAssignment:getPolicyAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyAssignmentResult.fromMap);
+}
+
 /// Use this data source to access information about a Policy Definition, both custom and built in. Retrieves Policy Definitions from your current subscription by default.
 ///
 /// ## Example Usage
@@ -287,6 +298,17 @@ Future<GetPolicyDefintionResult> getPolicyDefintion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyDefintionResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyDefintionResult> getPolicyDefintionOutput(
+  GetPolicyDefintionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:policy/getPolicyDefintion:getPolicyDefintion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyDefintionResult.fromMap);
 }
 
 /// Use this data source to access information about a Built-In Policy Definition. Retrieves Policy Definitions from your current subscription by default.
@@ -421,6 +443,17 @@ Future<GetPolicyDefintionBuiltInResult> getPolicyDefintionBuiltIn(
   return GetPolicyDefintionBuiltInResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyDefintionBuiltInResult> getPolicyDefintionBuiltInOutput(
+  GetPolicyDefintionBuiltInArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:policy/getPolicyDefintionBuiltIn:getPolicyDefintionBuiltIn',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyDefintionBuiltInResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Policy Set Definition.
 ///
 /// ## Example Usage
@@ -551,6 +584,17 @@ Future<GetPolicySetDefinitionResult> getPolicySetDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicySetDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicySetDefinitionResult> getPolicySetDefinitionOutput(
+  GetPolicySetDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:policy/getPolicySetDefinition:getPolicySetDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicySetDefinitionResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Guest Configuration Policy.
@@ -705,4 +749,15 @@ Future<GetVirtualMachineConfigurationAssignmentResult> getVirtualMachineConfigur
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineConfigurationAssignmentResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineConfigurationAssignmentResult> getVirtualMachineConfigurationAssignmentOutput(
+  GetVirtualMachineConfigurationAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:policy/getVirtualMachineConfigurationAssignment:getVirtualMachineConfigurationAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineConfigurationAssignmentResult.fromMap);
 }

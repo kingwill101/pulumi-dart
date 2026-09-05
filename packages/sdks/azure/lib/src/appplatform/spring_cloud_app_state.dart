@@ -9,33 +9,33 @@ import 'spring_cloud_app_persistent_disk.dart';
 /// Input properties used for looking up and filtering SpringCloudApp resources.
 class SpringCloudAppState {
   /// A JSON object that contains the addon configurations of the Spring Cloud Service.
-  final pulumi.Input<String>? addonJson;
+  final pulumi.Input<String?>? addonJson;
   /// A `customPersistentDisk` block as defined below.
-  final pulumi.Input<List<SpringCloudAppCustomPersistentDisk>>? customPersistentDisks;
+  final pulumi.Input<List<SpringCloudAppCustomPersistentDisk>?>? customPersistentDisks;
   /// The Fully Qualified DNS Name of the Spring Application in the service.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// Is only HTTPS allowed? Defaults to `false`.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// An `identity` block as defined below.
-  final pulumi.Input<SpringCloudAppIdentity>? identity;
+  final pulumi.Input<SpringCloudAppIdentity?>? identity;
   /// An `ingressSettings` block as defined below.
-  final pulumi.Input<SpringCloudAppIngressSettings>? ingressSettings;
+  final pulumi.Input<SpringCloudAppIngressSettings?>? ingressSettings;
   /// Does the Spring Cloud Application have public endpoint? Defaults to `false`.
-  final pulumi.Input<bool>? isPublic;
+  final pulumi.Input<bool?>? isPublic;
   /// Specifies the name of the Spring Cloud Application. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An `persistentDisk` block as defined below.
-  final pulumi.Input<SpringCloudAppPersistentDisk>? persistentDisk;
+  final pulumi.Input<SpringCloudAppPersistentDisk?>? persistentDisk;
   /// Should the App in vnet injection instance exposes endpoint which could be accessed from Internet?
-  final pulumi.Input<bool>? publicEndpointEnabled;
+  final pulumi.Input<bool?>? publicEndpointEnabled;
   /// Specifies the name of the resource group in which to create the Spring Cloud Application. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// Is End to End TLS Enabled? Defaults to `false`.
-  final pulumi.Input<bool>? tlsEnabled;
+  final pulumi.Input<bool?>? tlsEnabled;
   /// The public endpoint of the Spring Cloud Application.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [SpringCloudAppState].
   /// [addonJson] A JSON object that contains the addon configurations of the Spring Cloud Service.

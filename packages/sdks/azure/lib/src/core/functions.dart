@@ -142,6 +142,17 @@ Future<GetClientConfigResult> getClientConfig(
   return GetClientConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetClientConfigResult> getClientConfigOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getClientConfig:getClientConfig',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetClientConfigResult.fromMap);
+}
+
 /// This data source return the available Extended Locations for a specific Azure Region.
 ///
 /// ## Example Usage
@@ -260,6 +271,17 @@ Future<GetExtendedLocationsResult> getExtendedLocations(
   return GetExtendedLocationsResult.fromMap(result);
 }
 
+pulumi.Output<GetExtendedLocationsResult> getExtendedLocationsOutput(
+  GetExtendedLocationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getExtendedLocations:getExtendedLocations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExtendedLocationsResult.fromMap);
+}
+
 /// Use this data source to access information of a specific physical location.
 ///
 /// ## Example Usage
@@ -376,6 +398,17 @@ Future<GetLocationResult> getLocation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocationResult.fromMap(result);
+}
+
+pulumi.Output<GetLocationResult> getLocationOutput(
+  GetLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getLocation:getLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocationResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Resource Group.
@@ -508,6 +541,17 @@ Future<GetResourceGroupResult> getResourceGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetResourceGroupResult> getResourceGroupOutput(
+  GetResourceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getResourceGroup:getResourceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceGroupResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Resource Group Template Deployment.
@@ -681,6 +725,17 @@ Future<GetResourceGroupTemplateDeploymentResult> getResourceGroupTemplateDeploym
   return GetResourceGroupTemplateDeploymentResult.fromMap(result);
 }
 
+pulumi.Output<GetResourceGroupTemplateDeploymentResult> getResourceGroupTemplateDeploymentOutput(
+  GetResourceGroupTemplateDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getResourceGroupTemplateDeployment:getResourceGroupTemplateDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceGroupTemplateDeploymentResult.fromMap);
+}
+
 /// Use this data source to access information about existing resources.
 /// [args] Arguments passed to this invoke. {@macro pulumi_core_get_resources_get_resources_args_doc}
 /// [options] Invoke options controlling this call.
@@ -695,6 +750,17 @@ Future<GetResourcesResult> getResources(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourcesResult.fromMap(result);
+}
+
+pulumi.Output<GetResourcesResult> getResourcesOutput(
+  GetResourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getResources:getResources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcesResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Subscription.
@@ -817,6 +883,17 @@ Future<GetSubscriptionResult> getSubscription(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubscriptionResult.fromMap(result);
+}
+
+pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
+  GetSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getSubscription:getSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Subscription Template Deployment.
@@ -983,6 +1060,17 @@ Future<GetSubscriptionTemplateDeploymentResult> getSubscriptionTemplateDeploymen
   return GetSubscriptionTemplateDeploymentResult.fromMap(result);
 }
 
+pulumi.Output<GetSubscriptionTemplateDeploymentResult> getSubscriptionTemplateDeploymentOutput(
+  GetSubscriptionTemplateDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getSubscriptionTemplateDeployment:getSubscriptionTemplateDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionTemplateDeploymentResult.fromMap);
+}
+
 /// Use this data source to access information about all the Subscriptions currently available.
 ///
 /// ## Example Usage
@@ -1112,6 +1200,17 @@ Future<GetSubscriptionsResult> getSubscriptions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubscriptionsResult.fromMap(result);
+}
+
+pulumi.Output<GetSubscriptionsResult> getSubscriptionsOutput(
+  GetSubscriptionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getSubscriptions:getSubscriptions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionsResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Template Spec Version.
@@ -1266,6 +1365,17 @@ Future<GetTemplateSpecVersionResult> getTemplateSpecVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTemplateSpecVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetTemplateSpecVersionResult> getTemplateSpecVersionOutput(
+  GetTemplateSpecVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getTemplateSpecVersion:getTemplateSpecVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTemplateSpecVersionResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Tenant Template Deployment.
@@ -1430,6 +1540,17 @@ Future<GetTenantTemplateDeploymentResult> getTenantTemplateDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTenantTemplateDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetTenantTemplateDeploymentResult> getTenantTemplateDeploymentOutput(
+  GetTenantTemplateDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getTenantTemplateDeployment:getTenantTemplateDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTenantTemplateDeploymentResult.fromMap);
 }
 
 /// Use this data source to access information about an existing User Assigned Identity.
@@ -1597,4 +1718,15 @@ Future<GetUserAssignedIdentityResult> getUserAssignedIdentity(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserAssignedIdentityResult.fromMap(result);
+}
+
+pulumi.Output<GetUserAssignedIdentityResult> getUserAssignedIdentityOutput(
+  GetUserAssignedIdentityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:core/getUserAssignedIdentity:getUserAssignedIdentity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserAssignedIdentityResult.fromMap);
 }

@@ -6,15 +6,15 @@ class AppRegistry {
   /// Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
   ///
   /// &gt; **Note:** The Resource ID must be of a User Assigned Managed identity defined in an `identity` block.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The name of the Secret Reference containing the password value for this user on the Container Registry, `username` must also be supplied.
-  final pulumi.Input<String>? passwordSecretName;
+  final pulumi.Input<String?>? passwordSecretName;
   /// The hostname for the Container Registry.
   ///
   /// The authentication details must also be supplied, `identity` and `username`/`passwordSecretName` are mutually exclusive.
   final pulumi.Input<String> server;
   /// The username to use for this Container Registry, `passwordSecretName` must also be supplied..
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [AppRegistry].
   /// [identity] Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.

@@ -9,15 +9,15 @@ import 'service_hostname_configuration_scm.dart';
 
 class ServiceHostnameConfiguration {
   /// One or more `developerPortal` blocks as documented below.
-  final pulumi.Input<List<ServiceHostnameConfigurationDeveloperPortal>>? developerPortals;
+  final pulumi.Input<List<ServiceHostnameConfigurationDeveloperPortal>?>? developerPortals;
   /// One or more `management` blocks as documented below.
-  final pulumi.Input<List<ServiceHostnameConfigurationManagement>>? managements;
+  final pulumi.Input<List<ServiceHostnameConfigurationManagement>?>? managements;
   /// One or more `portal` blocks as documented below.
-  final pulumi.Input<List<ServiceHostnameConfigurationPortal>>? portals;
+  final pulumi.Input<List<ServiceHostnameConfigurationPortal>?>? portals;
   /// One or more `proxy` blocks as documented below.
-  final pulumi.Input<List<ServiceHostnameConfigurationProxy>>? proxies;
+  final pulumi.Input<List<ServiceHostnameConfigurationProxy>?>? proxies;
   /// One or more `scm` blocks as documented below.
-  final pulumi.Input<List<ServiceHostnameConfigurationScm>>? scms;
+  final pulumi.Input<List<ServiceHostnameConfigurationScm>?>? scms;
 
   /// Creates a new [ServiceHostnameConfiguration].
   /// [developerPortals] One or more `developerPortal` blocks as documented below.

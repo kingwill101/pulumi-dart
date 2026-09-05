@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountRouting {
   /// Specifies the kind of network routing opted by the user. Possible values are `InternetRouting` and `MicrosoftRouting`. Defaults to `MicrosoftRouting`.
-  final pulumi.Input<String>? choice;
+  final pulumi.Input<String?>? choice;
   /// Should internet routing storage endpoints be published? Defaults to `false`.
-  final pulumi.Input<bool>? publishInternetEndpoints;
+  final pulumi.Input<bool?>? publishInternetEndpoints;
   /// Should Microsoft routing storage endpoints be published? Defaults to `false`.
-  final pulumi.Input<bool>? publishMicrosoftEndpoints;
+  final pulumi.Input<bool?>? publishMicrosoftEndpoints;
 
   /// Creates a new [AccountRouting].
   /// [choice] Specifies the kind of network routing opted by the user. Possible values are `InternetRouting` and `MicrosoftRouting`. Defaults to `MicrosoftRouting`.

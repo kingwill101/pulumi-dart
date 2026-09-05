@@ -6,17 +6,17 @@ import 'namespace_topic_spaces_configuration_static_routing_enrichment.dart';
 
 class NamespaceTopicSpacesConfiguration {
   /// Specifies a list of alternative sources for the client authentication name from the client certificate. Possible values are `ClientCertificateDns`, `ClientCertificateEmail`, `ClientCertificateIp`, `ClientCertificateSubject` and `ClientCertificateUri`.
-  final pulumi.Input<List<String>>? alternativeAuthenticationNameSources;
+  final pulumi.Input<List<String>?>? alternativeAuthenticationNameSources;
   /// One or more `dynamicRoutingEnrichment` blocks as defined below.
-  final pulumi.Input<List<NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment>>? dynamicRoutingEnrichments;
+  final pulumi.Input<List<NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment>?>? dynamicRoutingEnrichments;
   /// Specifies the maximum number of client sessions per authentication name. Valid values can be between `1` and `100`.
-  final pulumi.Input<int>? maximumClientSessionsPerAuthenticationName;
+  final pulumi.Input<int?>? maximumClientSessionsPerAuthenticationName;
   /// Specifies the maximum session expiry interval allowed for all MQTT clients connecting to the Event Grid namespace. Valid values can be between `1` and `8`.
-  final pulumi.Input<int>? maximumSessionExpiryInHours;
+  final pulumi.Input<int?>? maximumSessionExpiryInHours;
   /// Specifies the Event Grid topic resource ID to route messages to.
-  final pulumi.Input<String>? routeTopicId;
+  final pulumi.Input<String?>? routeTopicId;
   /// One or more `staticRoutingEnrichment` blocks as defined below.
-  final pulumi.Input<List<NamespaceTopicSpacesConfigurationStaticRoutingEnrichment>>? staticRoutingEnrichments;
+  final pulumi.Input<List<NamespaceTopicSpacesConfigurationStaticRoutingEnrichment>?>? staticRoutingEnrichments;
 
   /// Creates a new [NamespaceTopicSpacesConfiguration].
   /// [alternativeAuthenticationNameSources] Specifies a list of alternative sources for the client authentication name from the client certificate. Possible values are `ClientCertificateDns`, `ClientCertificateEmail`, `ClientCertificateIp`, `ClientCertificateSubject` and `ClientCertificateUri`.
@@ -49,8 +49,8 @@ class NamespaceTopicSpacesConfiguration {
     return NamespaceTopicSpacesConfiguration(
       alternativeAuthenticationNameSources: (() { final guardedValue = map['alternativeAuthenticationNameSources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       dynamicRoutingEnrichments: (() { final guardedValue = map['dynamicRoutingEnrichments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment>(guardedValue, (value) => NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maximumClientSessionsPerAuthenticationName: (() { final guardedValue = map['maximumClientSessionsPerAuthenticationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maximumSessionExpiryInHours: (() { final guardedValue = map['maximumSessionExpiryInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximumClientSessionsPerAuthenticationName: (() { final guardedValue = map['maximumClientSessionsPerAuthenticationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumSessionExpiryInHours: (() { final guardedValue = map['maximumSessionExpiryInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       routeTopicId: (() { final guardedValue = map['routeTopicId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       staticRoutingEnrichments: (() { final guardedValue = map['staticRoutingEnrichments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NamespaceTopicSpacesConfigurationStaticRoutingEnrichment>(guardedValue, (value) => NamespaceTopicSpacesConfigurationStaticRoutingEnrichment.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

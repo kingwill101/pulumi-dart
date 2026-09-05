@@ -12,17 +12,17 @@ class LedgerArgs {
   /// A list of `azureadBasedServicePrincipal` blocks as defined below.
   final pulumi.Input<List<LedgerAzureadBasedServicePrincipal>> azureadBasedServicePrincipals;
   /// A list of `certificateBasedSecurityPrincipal` blocks as defined below.
-  final pulumi.Input<List<LedgerCertificateBasedSecurityPrincipal>>? certificateBasedSecurityPrincipals;
+  final pulumi.Input<List<LedgerCertificateBasedSecurityPrincipal>?>? certificateBasedSecurityPrincipals;
   /// Specifies the type of Confidential Ledger. Possible values are `Private` and `Public`. Changing this forces a new resource to be created.
   final pulumi.Input<String> ledgerType;
   /// Specifies the supported Azure location where the Confidential Ledger exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Confidential Ledger. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Confidential Ledger exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the Confidential Ledger.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LedgerArgs].
   /// [azureadBasedServicePrincipals] A list of `azureadBasedServicePrincipal` blocks as defined below.

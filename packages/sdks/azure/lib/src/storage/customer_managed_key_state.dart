@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering CustomerManagedKey resources.
 class CustomerManagedKeyState {
   /// The Client ID of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account.
-  final pulumi.Input<String>? federatedIdentityClientId;
-  final pulumi.Input<String>? keyName;
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? federatedIdentityClientId;
+  final pulumi.Input<String?>? keyName;
+  final pulumi.Input<String?>? keyVaultId;
   /// The ID of the Key Vault Key.
-  final pulumi.Input<String>? keyVaultKeyId;
-  final pulumi.Input<String>? keyVaultUri;
-  final pulumi.Input<String>? keyVersion;
-  final pulumi.Input<String>? managedHsmKeyId;
+  final pulumi.Input<String?>? keyVaultKeyId;
+  final pulumi.Input<String?>? keyVaultUri;
+  final pulumi.Input<String?>? keyVersion;
+  final pulumi.Input<String?>? managedHsmKeyId;
   /// The ID of the Storage Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// The ID of a user assigned identity.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
 
   /// Creates a new [CustomerManagedKeyState].
   /// [federatedIdentityClientId] The Client ID of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account.

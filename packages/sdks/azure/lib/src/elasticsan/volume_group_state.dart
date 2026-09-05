@@ -8,21 +8,21 @@ import 'volume_group_network_rule.dart';
 /// Input properties used for looking up and filtering VolumeGroup resources.
 class VolumeGroupState {
   /// Specifies the Elastic SAN ID within which this Elastic SAN Volume Group should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? elasticSanId;
+  final pulumi.Input<String?>? elasticSanId;
   /// An `encryption` block as defined below.
   ///
   /// &gt; **Note:** The `encryption` block can only be set when `encryptionType` is set to `EncryptionAtRestWithCustomerManagedKey`.
-  final pulumi.Input<VolumeGroupEncryption>? encryption;
+  final pulumi.Input<VolumeGroupEncryption?>? encryption;
   /// Specifies the type of the key used to encrypt the data of the disk. Possible values are `EncryptionAtRestWithCustomerManagedKey` and `EncryptionAtRestWithPlatformKey`. Defaults to `EncryptionAtRestWithPlatformKey`.
-  final pulumi.Input<String>? encryptionType;
+  final pulumi.Input<String?>? encryptionType;
   /// An `identity` block as defined below. Specifies the Managed Identity which should be assigned to this Elastic SAN Volume Group.
-  final pulumi.Input<VolumeGroupIdentity>? identity;
+  final pulumi.Input<VolumeGroupIdentity?>? identity;
   /// Specifies the name of this Elastic SAN Volume Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `networkRule` blocks as defined below.
-  final pulumi.Input<List<VolumeGroupNetworkRule>>? networkRules;
+  final pulumi.Input<List<VolumeGroupNetworkRule>?>? networkRules;
   /// Specifies the type of the storage target. The only possible value is `Iscsi`. Defaults to `Iscsi`.
-  final pulumi.Input<String>? protocolType;
+  final pulumi.Input<String?>? protocolType;
 
   /// Creates a new [VolumeGroupState].
   /// [elasticSanId] Specifies the Elastic SAN ID within which this Elastic SAN Volume Group should exist. Changing this forces a new resource to be created.

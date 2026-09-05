@@ -105,7 +105,7 @@ import 'linked_service_cosmos_db_mongo_api_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceCosmosDbMongoApi(ctx, "example", &datafactory.LinkedServiceCosmosDbMongoApiArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			DataFactoryId:    exampleFactory.ID(),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionString: pulumi.String("mongodb://testinstance:testkey@testinstance.documents.azure.com:10255/?ssl=true"),
 /// 			Database:         pulumi.String("foo"),
 /// 		})
@@ -255,17 +255,18 @@ class LinkedServiceCosmosDbMongoApi extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceCosmosDbMongoApi:LinkedServiceCosmosDbMongoApi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['connectionString'],
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String?>('connectionString');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     dataFactoryId = registerOutput<String>('dataFactoryId');
     database = registerOutput<String?>('database');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     serverVersionIs32OrHigher = registerOutput<bool?>('serverVersionIs32OrHigher');
   }
 
@@ -274,11 +275,12 @@ class LinkedServiceCosmosDbMongoApi extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceCosmosDbMongoApiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceCosmosDbMongoApi._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -292,15 +294,37 @@ class LinkedServiceCosmosDbMongoApi extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String?>('connectionString');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     dataFactoryId = registerOutput<String>('dataFactoryId');
     database = registerOutput<String?>('database');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    serverVersionIs32OrHigher = registerOutput<bool?>('serverVersionIs32OrHigher');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceCosmosDbMongoApi] resource.
+  LinkedServiceCosmosDbMongoApi.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceCosmosDbMongoApi:LinkedServiceCosmosDbMongoApi',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connectionString'],
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    database = registerOutput<String?>('database');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     serverVersionIs32OrHigher = registerOutput<bool?>('serverVersionIs32OrHigher');
   }
 }

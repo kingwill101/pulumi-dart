@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'alert_rule_scheduled_alert_details_override.dart';
 import 'alert_rule_scheduled_args.dart';
+import 'alert_rule_scheduled_entity_mapping.dart';
 import 'alert_rule_scheduled_event_grouping.dart';
 import 'alert_rule_scheduled_incident.dart';
+import 'alert_rule_scheduled_sentinel_entity_mapping.dart';
 import 'alert_rule_scheduled_state.dart';
 
 /// Manages a Sentinel Scheduled Alert Rule.
@@ -131,7 +134,7 @@ import 'alert_rule_scheduled_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -291,7 +294,7 @@ import 'alert_rule_scheduled_state.dart';
 /// ```
 class AlertRuleScheduled extends pulumi.CustomResource {
   /// An `alertDetailsOverride` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> alertDetailsOverrides;
+  late final pulumi.Output<List<AlertRuleScheduledAlertDetailsOverride>?> alertDetailsOverrides;
   /// The GUID of the alert rule template which is used for this Sentinel Scheduled Alert Rule. Changing this forces a new Sentinel Scheduled Alert Rule to be created.
   late final pulumi.Output<String?> alertRuleTemplateGuid;
   /// The version of the alert rule template which is used for this Sentinel Scheduled Alert Rule.
@@ -305,7 +308,7 @@ class AlertRuleScheduled extends pulumi.CustomResource {
   /// Should the Sentinel Scheduled Alert Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
   /// A list of `entityMapping` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> entityMappings;
+  late final pulumi.Output<List<AlertRuleScheduledEntityMapping>?> entityMappings;
   /// A `eventGrouping` block as defined below.
   late final pulumi.Output<AlertRuleScheduledEventGrouping?> eventGrouping;
   /// A `incident` block as defined below.
@@ -325,7 +328,7 @@ class AlertRuleScheduled extends pulumi.CustomResource {
   /// A list of `sentinelEntityMapping` blocks as defined below.
   ///
   /// &gt; **Note:** `entityMapping` and `sentinelEntityMapping` together can't exceed 10.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sentinelEntityMappings;
+  late final pulumi.Output<List<AlertRuleScheduledSentinelEntityMapping>?> sentinelEntityMappings;
   /// The alert severity of this Sentinel Scheduled Alert Rule. Possible values are `High`, `Medium`, `Low` and `Informational`.
   late final pulumi.Output<String> severity;
   /// If `suppressionEnabled` is `true`, this is ISO 8601 timespan duration, which specifies the amount of time the query should stop running after alert is generated. Defaults to `PT5H`.
@@ -355,16 +358,16 @@ class AlertRuleScheduled extends pulumi.CustomResource {
           'azure:sentinel/alertRuleScheduled:AlertRuleScheduled',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    alertDetailsOverrides = registerOutput<List<Map<String, dynamic>>?>('alertDetailsOverrides');
+    alertDetailsOverrides = registerOutput<List<AlertRuleScheduledAlertDetailsOverride>?>('alertDetailsOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleScheduledAlertDetailsOverride>(guardedValue, (value) => AlertRuleScheduledAlertDetailsOverride.fromMap((value as Map).cast<String, dynamic>())); });
     alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
     alertRuleTemplateVersion = registerOutput<String?>('alertRuleTemplateVersion');
-    customDetails = registerOutput<Map<String, String>?>('customDetails');
+    customDetails = registerOutput<Map<String, String>?>('customDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    entityMappings = registerOutput<List<Map<String, dynamic>>?>('entityMappings');
+    entityMappings = registerOutput<List<AlertRuleScheduledEntityMapping>?>('entityMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleScheduledEntityMapping>(guardedValue, (value) => AlertRuleScheduledEntityMapping.fromMap((value as Map).cast<String, dynamic>())); });
     eventGrouping = registerOutput<AlertRuleScheduledEventGrouping?>('eventGrouping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleScheduledEventGrouping.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     incident = registerOutput<AlertRuleScheduledIncident>('incident', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleScheduledIncident.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
@@ -372,12 +375,12 @@ class AlertRuleScheduled extends pulumi.CustomResource {
     query = registerOutput<String>('query');
     queryFrequency = registerOutput<String?>('queryFrequency');
     queryPeriod = registerOutput<String?>('queryPeriod');
-    sentinelEntityMappings = registerOutput<List<Map<String, dynamic>>?>('sentinelEntityMappings');
+    sentinelEntityMappings = registerOutput<List<AlertRuleScheduledSentinelEntityMapping>?>('sentinelEntityMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleScheduledSentinelEntityMapping>(guardedValue, (value) => AlertRuleScheduledSentinelEntityMapping.fromMap((value as Map).cast<String, dynamic>())); });
     severity = registerOutput<String>('severity');
     suppressionDuration = registerOutput<String?>('suppressionDuration');
     suppressionEnabled = registerOutput<bool?>('suppressionEnabled');
-    tactics = registerOutput<List<String>?>('tactics');
-    techniques = registerOutput<List<String>?>('techniques');
+    tactics = registerOutput<List<String>?>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>?>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     triggerOperator = registerOutput<String?>('triggerOperator');
     triggerThreshold = registerOutput<int?>('triggerThreshold');
   }
@@ -387,11 +390,12 @@ class AlertRuleScheduled extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlertRuleScheduledState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AlertRuleScheduled._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -405,14 +409,14 @@ class AlertRuleScheduled extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    alertDetailsOverrides = registerOutput<List<Map<String, dynamic>>?>('alertDetailsOverrides');
+    alertDetailsOverrides = registerOutput<List<AlertRuleScheduledAlertDetailsOverride>?>('alertDetailsOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleScheduledAlertDetailsOverride>(guardedValue, (value) => AlertRuleScheduledAlertDetailsOverride.fromMap((value as Map).cast<String, dynamic>())); });
     alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
     alertRuleTemplateVersion = registerOutput<String?>('alertRuleTemplateVersion');
-    customDetails = registerOutput<Map<String, String>?>('customDetails');
+    customDetails = registerOutput<Map<String, String>?>('customDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    entityMappings = registerOutput<List<Map<String, dynamic>>?>('entityMappings');
+    entityMappings = registerOutput<List<AlertRuleScheduledEntityMapping>?>('entityMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleScheduledEntityMapping>(guardedValue, (value) => AlertRuleScheduledEntityMapping.fromMap((value as Map).cast<String, dynamic>())); });
     eventGrouping = registerOutput<AlertRuleScheduledEventGrouping?>('eventGrouping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleScheduledEventGrouping.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     incident = registerOutput<AlertRuleScheduledIncident>('incident', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleScheduledIncident.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
@@ -420,12 +424,46 @@ class AlertRuleScheduled extends pulumi.CustomResource {
     query = registerOutput<String>('query');
     queryFrequency = registerOutput<String?>('queryFrequency');
     queryPeriod = registerOutput<String?>('queryPeriod');
-    sentinelEntityMappings = registerOutput<List<Map<String, dynamic>>?>('sentinelEntityMappings');
+    sentinelEntityMappings = registerOutput<List<AlertRuleScheduledSentinelEntityMapping>?>('sentinelEntityMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleScheduledSentinelEntityMapping>(guardedValue, (value) => AlertRuleScheduledSentinelEntityMapping.fromMap((value as Map).cast<String, dynamic>())); });
     severity = registerOutput<String>('severity');
     suppressionDuration = registerOutput<String?>('suppressionDuration');
     suppressionEnabled = registerOutput<bool?>('suppressionEnabled');
-    tactics = registerOutput<List<String>?>('tactics');
-    techniques = registerOutput<List<String>?>('techniques');
+    tactics = registerOutput<List<String>?>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>?>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    triggerOperator = registerOutput<String?>('triggerOperator');
+    triggerThreshold = registerOutput<int?>('triggerThreshold');
+  }
+
+  /// Creates a typed reference to an existing [AlertRuleScheduled] resource.
+  AlertRuleScheduled.reference(String urn)
+    : super(
+        'azure:sentinel/alertRuleScheduled:AlertRuleScheduled',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alertDetailsOverrides = registerOutput<List<AlertRuleScheduledAlertDetailsOverride>?>('alertDetailsOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleScheduledAlertDetailsOverride>(guardedValue, (value) => AlertRuleScheduledAlertDetailsOverride.fromMap((value as Map).cast<String, dynamic>())); });
+    alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
+    alertRuleTemplateVersion = registerOutput<String?>('alertRuleTemplateVersion');
+    customDetails = registerOutput<Map<String, String>?>('customDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    entityMappings = registerOutput<List<AlertRuleScheduledEntityMapping>?>('entityMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleScheduledEntityMapping>(guardedValue, (value) => AlertRuleScheduledEntityMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    eventGrouping = registerOutput<AlertRuleScheduledEventGrouping?>('eventGrouping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleScheduledEventGrouping.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    incident = registerOutput<AlertRuleScheduledIncident>('incident', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleScheduledIncident.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    query = registerOutput<String>('query');
+    queryFrequency = registerOutput<String?>('queryFrequency');
+    queryPeriod = registerOutput<String?>('queryPeriod');
+    sentinelEntityMappings = registerOutput<List<AlertRuleScheduledSentinelEntityMapping>?>('sentinelEntityMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleScheduledSentinelEntityMapping>(guardedValue, (value) => AlertRuleScheduledSentinelEntityMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    severity = registerOutput<String>('severity');
+    suppressionDuration = registerOutput<String?>('suppressionDuration');
+    suppressionEnabled = registerOutput<bool?>('suppressionEnabled');
+    tactics = registerOutput<List<String>?>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>?>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     triggerOperator = registerOutput<String?>('triggerOperator');
     triggerThreshold = registerOutput<int?>('triggerThreshold');
   }

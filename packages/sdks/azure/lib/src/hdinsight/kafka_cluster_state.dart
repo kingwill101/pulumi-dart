@@ -19,57 +19,57 @@ import 'kafka_cluster_storage_account_gen2.dart';
 /// Input properties used for looking up and filtering KafkaCluster resources.
 class KafkaClusterState {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? clusterVersion;
+  final pulumi.Input<String?>? clusterVersion;
   /// A `componentVersion` block as defined below.
-  final pulumi.Input<KafkaClusterComponentVersion>? componentVersion;
+  final pulumi.Input<KafkaClusterComponentVersion?>? componentVersion;
   /// A `computeIsolation` block as defined below.
-  final pulumi.Input<KafkaClusterComputeIsolation>? computeIsolation;
+  final pulumi.Input<KafkaClusterComputeIsolation?>? computeIsolation;
   /// One or more `diskEncryption` block as defined below.
   ///
   /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
-  final pulumi.Input<List<KafkaClusterDiskEncryption>>? diskEncryptions;
+  final pulumi.Input<List<KafkaClusterDiskEncryption>?>? diskEncryptions;
   /// Whether encryption in transit is enabled for this HDInsight Kafka Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? encryptionInTransitEnabled;
+  final pulumi.Input<bool?>? encryptionInTransitEnabled;
   /// An `extension` block as defined below.
-  final pulumi.Input<KafkaClusterExtension>? extension;
+  final pulumi.Input<KafkaClusterExtension?>? extension;
   /// A `gateway` block as defined below.
-  final pulumi.Input<KafkaClusterGateway>? gateway;
+  final pulumi.Input<KafkaClusterGateway?>? gateway;
   /// The HTTPS Connectivity Endpoint for this HDInsight Kafka Cluster.
-  final pulumi.Input<String>? httpsEndpoint;
+  final pulumi.Input<String?>? httpsEndpoint;
   /// The Kafka Rest Proxy Endpoint for this HDInsight Kafka Cluster.
-  final pulumi.Input<String>? kafkaRestProxyEndpoint;
+  final pulumi.Input<String?>? kafkaRestProxyEndpoint;
   /// Specifies the Azure Region which this HDInsight Kafka Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `metastores` block as defined below.
-  final pulumi.Input<KafkaClusterMetastores>? metastores;
+  final pulumi.Input<KafkaClusterMetastores?>? metastores;
   /// A `monitor` block as defined below.
-  final pulumi.Input<KafkaClusterMonitor>? monitor;
+  final pulumi.Input<KafkaClusterMonitor?>? monitor;
   /// Specifies the name for this HDInsight Kafka Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `network` block as defined below.
-  final pulumi.Input<KafkaClusterNetwork>? network;
+  final pulumi.Input<KafkaClusterNetwork?>? network;
   /// A `privateLinkConfiguration` block as defined below.
-  final pulumi.Input<KafkaClusterPrivateLinkConfiguration>? privateLinkConfiguration;
+  final pulumi.Input<KafkaClusterPrivateLinkConfiguration?>? privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight Kafka Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `restProxy` block as defined below.
-  final pulumi.Input<KafkaClusterRestProxy>? restProxy;
+  final pulumi.Input<KafkaClusterRestProxy?>? restProxy;
   /// A `roles` block as defined below.
-  final pulumi.Input<KafkaClusterRoles>? roles;
+  final pulumi.Input<KafkaClusterRoles?>? roles;
   /// A `securityProfile` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<KafkaClusterSecurityProfile>? securityProfile;
+  final pulumi.Input<KafkaClusterSecurityProfile?>? securityProfile;
   /// The SSH Connectivity Endpoint for this HDInsight Kafka Cluster.
-  final pulumi.Input<String>? sshEndpoint;
+  final pulumi.Input<String?>? sshEndpoint;
   /// A `storageAccountGen2` block as defined below.
-  final pulumi.Input<KafkaClusterStorageAccountGen2>? storageAccountGen2;
+  final pulumi.Input<KafkaClusterStorageAccountGen2?>? storageAccountGen2;
   /// One or more `storageAccount` block as defined below.
-  final pulumi.Input<List<KafkaClusterStorageAccount>>? storageAccounts;
+  final pulumi.Input<List<KafkaClusterStorageAccount>?>? storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight Kafka Cluster.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the Tier which should be used for this HDInsight Kafka Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
   /// The minimal supported TLS version. Possible values are `1.0`, `1.1` or `1.2`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? tlsMinVersion;
+  final pulumi.Input<String?>? tlsMinVersion;
 
   /// Creates a new [KafkaClusterState].
   /// [clusterVersion] Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'packet_capture_args.dart';
+import 'packet_capture_filter.dart';
 import 'packet_capture_state.dart';
 import 'packet_capture_storage_location.dart';
 
@@ -364,7 +365,7 @@ import 'packet_capture_storage_location.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("testconfiguration1"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -377,7 +378,7 @@ import 'packet_capture_storage_location.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			VmSize: pulumi.String("Standard_D4_v5"),
 /// 			StorageImageReference: &compute.VirtualMachineStorageImageReferenceArgs{
@@ -406,7 +407,7 @@ import 'packet_capture_storage_location.dart';
 /// 		}
 /// 		exampleExtension, err := compute.NewExtension(ctx, "example", &compute.ExtensionArgs{
 /// 			Name:                    pulumi.String("network-watcher"),
-/// 			VirtualMachineId:        exampleVirtualMachine.ID(),
+/// 			VirtualMachineId:        exampleVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			Publisher:               pulumi.String("Microsoft.Azure.NetworkWatcher"),
 /// 			Type:                    pulumi.String("NetworkWatcherAgentLinux"),
 /// 			TypeHandlerVersion:      pulumi.String("1.4"),
@@ -427,10 +428,10 @@ import 'packet_capture_storage_location.dart';
 /// 		}
 /// 		_, err = compute.NewPacketCapture(ctx, "example", &compute.PacketCaptureArgs{
 /// 			Name:             pulumi.String("example-pc"),
-/// 			NetworkWatcherId: exampleNetworkWatcher.ID(),
-/// 			VirtualMachineId: exampleVirtualMachine.ID(),
+/// 			NetworkWatcherId: exampleNetworkWatcher.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualMachineId: exampleVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageLocation: &compute.PacketCaptureStorageLocationArgs{
-/// 				StorageAccountId: exampleAccount.ID(),
+/// 				StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleExtension,
@@ -794,7 +795,7 @@ import 'packet_capture_storage_location.dart';
 /// ```
 class PacketCapture extends pulumi.CustomResource {
   /// One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> filters;
+  late final pulumi.Output<List<PacketCaptureFilter>?> filters;
   /// The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maximumBytesPerPacket;
   /// Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
@@ -822,9 +823,9 @@ class PacketCapture extends pulumi.CustomResource {
           'azure:compute/packetCapture:PacketCapture',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    filters = registerOutput<List<Map<String, dynamic>>?>('filters');
+    filters = registerOutput<List<PacketCaptureFilter>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PacketCaptureFilter>(guardedValue, (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>())); });
     maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
     maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
     maximumCaptureDurationInSeconds = registerOutput<int?>('maximumCaptureDurationInSeconds');
@@ -839,11 +840,12 @@ class PacketCapture extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PacketCaptureState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PacketCapture._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -857,7 +859,26 @@ class PacketCapture extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    filters = registerOutput<List<Map<String, dynamic>>?>('filters');
+    filters = registerOutput<List<PacketCaptureFilter>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PacketCaptureFilter>(guardedValue, (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
+    maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
+    maximumCaptureDurationInSeconds = registerOutput<int?>('maximumCaptureDurationInSeconds');
+    this.name = registerOutput<String>('name');
+    networkWatcherId = registerOutput<String>('networkWatcherId');
+    storageLocation = registerOutput<PacketCaptureStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketCaptureStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+  }
+
+  /// Creates a typed reference to an existing [PacketCapture] resource.
+  PacketCapture.reference(String urn)
+    : super(
+        'azure:compute/packetCapture:PacketCapture',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    filters = registerOutput<List<PacketCaptureFilter>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PacketCaptureFilter>(guardedValue, (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>())); });
     maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
     maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
     maximumCaptureDurationInSeconds = registerOutput<int?>('maximumCaptureDurationInSeconds');

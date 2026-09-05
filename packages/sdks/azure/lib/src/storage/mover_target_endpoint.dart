@@ -166,8 +166,8 @@ import 'mover_target_endpoint_state.dart';
 /// 		}
 /// 		_, err = storage.NewMoverTargetEndpoint(ctx, "example", &storage.MoverTargetEndpointArgs{
 /// 			Name:                 pulumi.String("example-se"),
-/// 			StorageMoverId:       exampleMover.ID(),
-/// 			StorageAccountId:     exampleAccount.ID(),
+/// 			StorageMoverId:       exampleMover.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:     exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageContainerName: exampleContainer.Name,
 /// 			Description:          pulumi.String("Example Storage Container Endpoint Description"),
 /// 		})
@@ -364,7 +364,7 @@ class MoverTargetEndpoint extends pulumi.CustomResource {
           'azure:storage/moverTargetEndpoint:MoverTargetEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -378,11 +378,12 @@ class MoverTargetEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MoverTargetEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MoverTargetEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -396,6 +397,22 @@ class MoverTargetEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    storageContainerName = registerOutput<String>('storageContainerName');
+    storageMoverId = registerOutput<String>('storageMoverId');
+  }
+
+  /// Creates a typed reference to an existing [MoverTargetEndpoint] resource.
+  MoverTargetEndpoint.reference(String urn)
+    : super(
+        'azure:storage/moverTargetEndpoint:MoverTargetEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     storageAccountId = registerOutput<String>('storageAccountId');

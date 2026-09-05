@@ -237,7 +237,7 @@ import 'cassandra_table_state.dart';
 /// 		}
 /// 		_, err = cosmosdb.NewCassandraTable(ctx, "example", &cosmosdb.CassandraTableArgs{
 /// 			Name:                pulumi.String("testtable"),
-/// 			CassandraKeyspaceId: exampleCassandraKeyspace.ID(),
+/// 			CassandraKeyspaceId: exampleCassandraKeyspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Schema: &cosmosdb.CassandraTableSchemaArgs{
 /// 				Columns: cosmosdb.CassandraTableSchemaColumnArray{
 /// 					&cosmosdb.CassandraTableSchemaColumnArgs{
@@ -492,7 +492,7 @@ class CassandraTable extends pulumi.CustomResource {
           'azure:cosmosdb/cassandraTable:CassandraTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<CassandraTableAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -508,11 +508,12 @@ class CassandraTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CassandraTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CassandraTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -526,6 +527,24 @@ class CassandraTable extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
+    autoscaleSettings = registerOutput<CassandraTableAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cassandraKeyspaceId = registerOutput<String>('cassandraKeyspaceId');
+    defaultTtl = registerOutput<int?>('defaultTtl');
+    this.name = registerOutput<String>('name');
+    schema = registerOutput<CassandraTableSchema>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    throughput = registerOutput<int>('throughput');
+  }
+
+  /// Creates a typed reference to an existing [CassandraTable] resource.
+  CassandraTable.reference(String urn)
+    : super(
+        'azure:cosmosdb/cassandraTable:CassandraTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<CassandraTableAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cassandraKeyspaceId = registerOutput<String>('cassandraKeyspaceId');

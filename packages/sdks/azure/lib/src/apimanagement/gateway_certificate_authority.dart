@@ -178,7 +178,7 @@ import 'gateway_certificate_authority_state.dart';
 /// 		}
 /// 		exampleGateway, err := apimanagement.NewGateway(ctx, "example", &apimanagement.GatewayArgs{
 /// 			Name:            pulumi.String("example-gateway"),
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:     pulumi.String("Example API Management gateway"),
 /// 			LocationData: &apimanagement.GatewayLocationDataArgs{
 /// 				Name:     pulumi.String("example name"),
@@ -206,7 +206,7 @@ import 'gateway_certificate_authority_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apimanagement.NewGatewayCertificateAuthority(ctx, "example", &apimanagement.GatewayCertificateAuthorityArgs{
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			CertificateName: exampleCertificate.Name,
 /// 			GatewayName:     exampleGateway.Name,
 /// 			IsTrusted:       pulumi.Bool(true),
@@ -432,7 +432,7 @@ class GatewayCertificateAuthority extends pulumi.CustomResource {
           'azure:apimanagement/gatewayCertificateAuthority:GatewayCertificateAuthority',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     certificateName = registerOutput<String>('certificateName');
@@ -445,11 +445,12 @@ class GatewayCertificateAuthority extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GatewayCertificateAuthorityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GatewayCertificateAuthority._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -463,6 +464,21 @@ class GatewayCertificateAuthority extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    certificateName = registerOutput<String>('certificateName');
+    gatewayName = registerOutput<String>('gatewayName');
+    isTrusted = registerOutput<bool?>('isTrusted');
+  }
+
+  /// Creates a typed reference to an existing [GatewayCertificateAuthority] resource.
+  GatewayCertificateAuthority.reference(String urn)
+    : super(
+        'azure:apimanagement/gatewayCertificateAuthority:GatewayCertificateAuthority',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     certificateName = registerOutput<String>('certificateName');
     gatewayName = registerOutput<String>('gatewayName');

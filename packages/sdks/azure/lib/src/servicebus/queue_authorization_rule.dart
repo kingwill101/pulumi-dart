@@ -139,7 +139,7 @@ import 'queue_authorization_rule_state.dart';
 /// 		}
 /// 		exampleQueue, err := servicebus.NewQueue(ctx, "example", &servicebus.QueueArgs{
 /// 			Name:               pulumi.String("tfex_servicebus_queue"),
-/// 			NamespaceId:        exampleNamespace.ID(),
+/// 			NamespaceId:        exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			EnablePartitioning: true,
 /// 		})
 /// 		if err != nil {
@@ -147,7 +147,7 @@ import 'queue_authorization_rule_state.dart';
 /// 		}
 /// 		_, err = servicebus.NewQueueAuthorizationRule(ctx, "example", &servicebus.QueueAuthorizationRuleArgs{
 /// 			Name:    pulumi.String("examplerule"),
-/// 			QueueId: exampleQueue.ID(),
+/// 			QueueId: exampleQueue.ID().ToIDOutput().ToStringOutput(),
 /// 			Listen:  pulumi.Bool(true),
 /// 			Send:    pulumi.Bool(true),
 /// 			Manage:  pulumi.Bool(false),
@@ -339,18 +339,19 @@ class QueueAuthorizationRule extends pulumi.CustomResource {
           'azure:servicebus/queueAuthorizationRule:QueueAuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
         ) {
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     queueId = registerOutput<String>('queueId');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
   }
 
@@ -359,11 +360,12 @@ class QueueAuthorizationRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QueueAuthorizationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return QueueAuthorizationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -380,13 +382,36 @@ class QueueAuthorizationRule extends pulumi.CustomResource {
     listen = registerOutput<bool?>('listen');
     manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     queueId = registerOutput<String>('queueId');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    send = registerOutput<bool?>('send');
+  }
+
+  /// Creates a typed reference to an existing [QueueAuthorizationRule] resource.
+  QueueAuthorizationRule.reference(String urn)
+    : super(
+        'azure:servicebus/queueAuthorizationRule:QueueAuthorizationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
+    this.name = registerOutput<String>('name');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    queueId = registerOutput<String>('queueId');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     send = registerOutput<bool?>('send');
   }
 }

@@ -8,7 +8,7 @@ class AccountCustomDomain {
   /// Should the Custom Domain Name be validated by using indirect CNAME validation?
   ///
   /// &gt; **Note:** [More information on Validation is available here](https://docs.microsoft.com/en-gb/azure/storage/blobs/storage-custom-domain-name)
-  final pulumi.Input<bool>? useSubdomain;
+  final pulumi.Input<bool?>? useSubdomain;
 
   /// Creates a new [AccountCustomDomain].
   /// [name] The Custom Domain Name to use for the Storage Account, which will be validated by Azure.

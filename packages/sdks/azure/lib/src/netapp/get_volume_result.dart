@@ -8,65 +8,65 @@ import 'get_volume_data_protection_replication.dart';
 /// Result data returned by getVolume.
 class GetVolumeResult {
   /// The accept grow capacity pool for short term clone split property.
-  final String acceptGrowCapacityPoolForShortTermCloneSplit;
-  final String accountName;
+  final String? acceptGrowCapacityPoolForShortTermCloneSplit;
+  final String? accountName;
   /// An Advanced Ransomware Protection (ARP) data protection block.
-  final List<GetVolumeDataProtectionAdvancedRansomware> dataProtectionAdvancedRansomwares;
+  final List<GetVolumeDataProtectionAdvancedRansomware>? dataProtectionAdvancedRansomwares;
   /// A data protecion backup policy block
-  final List<GetVolumeDataProtectionBackupPolicy> dataProtectionBackupPolicies;
+  final List<GetVolumeDataProtectionBackupPolicy>? dataProtectionBackupPolicies;
   /// Volume data protection replication block
-  final List<GetVolumeDataProtectionReplication> dataProtectionReplications;
-  final String encryptionKeySource;
+  final List<GetVolumeDataProtectionReplication>? dataProtectionReplications;
+  final String? encryptionKeySource;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String keyVaultPrivateEndpointId;
+  final String? id;
+  final String? keyVaultPrivateEndpointId;
   /// Indicates if the volume is a large volume.
-  final bool largeVolumeEnabled;
+  final bool? largeVolumeEnabled;
   /// The Azure Region where the NetApp Volume exists.
-  final String location;
+  final String? location;
   /// A list of IPv4 Addresses which should be used to mount the volume.
-  final List<String> mountIpAddresses;
-  final String name;
+  final List<String>? mountIpAddresses;
+  final String? name;
   /// Network features in use `Basic` or `Standard`.
-  final String networkFeatures;
-  final String poolName;
+  final String? networkFeatures;
+  final String? poolName;
   /// A list of protocol types enabled on volume.
-  final List<String> protocols;
-  final String resourceGroupName;
+  final List<String>? protocols;
+  final String? resourceGroupName;
   /// Volume security style
   final String? securityStyle;
   /// The service level of the file system.
-  final String serviceLevel;
+  final String? serviceLevel;
   /// Limits enumeration of files and folders (that is, listing the contents) in SMB only to users with allowed access on the share.
-  final bool smbAccessBasedEnumerationEnabled;
+  final bool? smbAccessBasedEnumerationEnabled;
   /// Limits clients from browsing for an SMB share.
-  final bool smbNonBrowsableEnabled;
+  final bool? smbNonBrowsableEnabled;
   /// The maximum Storage Quota in Gigabytes allowed for a file system.
-  final int storageQuotaInGb;
+  final int? storageQuotaInGb;
   /// The ID of a Subnet in which the NetApp Volume resides.
-  final String subnetId;
+  final String? subnetId;
   /// The unique file path of the volume.
-  final String volumePath;
+  final String? volumePath;
   /// The Availability Zone in which the Volume is located.
-  final String zone;
+  final String? zone;
 
   /// Creates a new [GetVolumeResult].
   /// [acceptGrowCapacityPoolForShortTermCloneSplit] The accept grow capacity pool for short term clone split property.
-  /// [accountName] Required.
+  /// [accountName] Optional.
   /// [dataProtectionAdvancedRansomwares] An Advanced Ransomware Protection (ARP) data protection block.
   /// [dataProtectionBackupPolicies] A data protecion backup policy block
   /// [dataProtectionReplications] Volume data protection replication block
-  /// [encryptionKeySource] Required.
+  /// [encryptionKeySource] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [keyVaultPrivateEndpointId] Required.
+  /// [keyVaultPrivateEndpointId] Optional.
   /// [largeVolumeEnabled] Indicates if the volume is a large volume.
   /// [location] The Azure Region where the NetApp Volume exists.
   /// [mountIpAddresses] A list of IPv4 Addresses which should be used to mount the volume.
-  /// [name] Required.
+  /// [name] Optional.
   /// [networkFeatures] Network features in use `Basic` or `Standard`.
-  /// [poolName] Required.
+  /// [poolName] Optional.
   /// [protocols] A list of protocol types enabled on volume.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [securityStyle] Volume security style
   /// [serviceLevel] The service level of the file system.
   /// [smbAccessBasedEnumerationEnabled] Limits enumeration of files and folders (that is, listing the contents) in SMB only to users with allowed access on the share.
@@ -76,87 +76,87 @@ class GetVolumeResult {
   /// [volumePath] The unique file path of the volume.
   /// [zone] The Availability Zone in which the Volume is located.
   const GetVolumeResult({
-    required this.acceptGrowCapacityPoolForShortTermCloneSplit,
-    required this.accountName,
-    required this.dataProtectionAdvancedRansomwares,
-    required this.dataProtectionBackupPolicies,
-    required this.dataProtectionReplications,
-    required this.encryptionKeySource,
-    required this.id,
-    required this.keyVaultPrivateEndpointId,
-    required this.largeVolumeEnabled,
-    required this.location,
-    required this.mountIpAddresses,
-    required this.name,
-    required this.networkFeatures,
-    required this.poolName,
-    required this.protocols,
-    required this.resourceGroupName,
+    this.acceptGrowCapacityPoolForShortTermCloneSplit,
+    this.accountName,
+    this.dataProtectionAdvancedRansomwares,
+    this.dataProtectionBackupPolicies,
+    this.dataProtectionReplications,
+    this.encryptionKeySource,
+    this.id,
+    this.keyVaultPrivateEndpointId,
+    this.largeVolumeEnabled,
+    this.location,
+    this.mountIpAddresses,
+    this.name,
+    this.networkFeatures,
+    this.poolName,
+    this.protocols,
+    this.resourceGroupName,
     this.securityStyle,
-    required this.serviceLevel,
-    required this.smbAccessBasedEnumerationEnabled,
-    required this.smbNonBrowsableEnabled,
-    required this.storageQuotaInGb,
-    required this.subnetId,
-    required this.volumePath,
-    required this.zone,
+    this.serviceLevel,
+    this.smbAccessBasedEnumerationEnabled,
+    this.smbNonBrowsableEnabled,
+    this.storageQuotaInGb,
+    this.subnetId,
+    this.volumePath,
+    this.zone,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acceptGrowCapacityPoolForShortTermCloneSplit': acceptGrowCapacityPoolForShortTermCloneSplit,
-      'accountName': accountName,
-      'dataProtectionAdvancedRansomwares': pulumi.Input.encodeList<GetVolumeDataProtectionAdvancedRansomware, Map<String, dynamic>>(dataProtectionAdvancedRansomwares, (value) => value.toMap()),
-      'dataProtectionBackupPolicies': pulumi.Input.encodeList<GetVolumeDataProtectionBackupPolicy, Map<String, dynamic>>(dataProtectionBackupPolicies, (value) => value.toMap()),
-      'dataProtectionReplications': pulumi.Input.encodeList<GetVolumeDataProtectionReplication, Map<String, dynamic>>(dataProtectionReplications, (value) => value.toMap()),
-      'encryptionKeySource': encryptionKeySource,
-      'id': id,
-      'keyVaultPrivateEndpointId': keyVaultPrivateEndpointId,
-      'largeVolumeEnabled': largeVolumeEnabled,
-      'location': location,
-      'mountIpAddresses': mountIpAddresses,
-      'name': name,
-      'networkFeatures': networkFeatures,
-      'poolName': poolName,
-      'protocols': protocols,
-      'resourceGroupName': resourceGroupName,
+      'acceptGrowCapacityPoolForShortTermCloneSplit': ?acceptGrowCapacityPoolForShortTermCloneSplit,
+      'accountName': ?accountName,
+      'dataProtectionAdvancedRansomwares': ?(() { final guardedValue = dataProtectionAdvancedRansomwares; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVolumeDataProtectionAdvancedRansomware, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'dataProtectionBackupPolicies': ?(() { final guardedValue = dataProtectionBackupPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVolumeDataProtectionBackupPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'dataProtectionReplications': ?(() { final guardedValue = dataProtectionReplications; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVolumeDataProtectionReplication, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'encryptionKeySource': ?encryptionKeySource,
+      'id': ?id,
+      'keyVaultPrivateEndpointId': ?keyVaultPrivateEndpointId,
+      'largeVolumeEnabled': ?largeVolumeEnabled,
+      'location': ?location,
+      'mountIpAddresses': ?mountIpAddresses,
+      'name': ?name,
+      'networkFeatures': ?networkFeatures,
+      'poolName': ?poolName,
+      'protocols': ?protocols,
+      'resourceGroupName': ?resourceGroupName,
       'securityStyle': ?securityStyle,
-      'serviceLevel': serviceLevel,
-      'smbAccessBasedEnumerationEnabled': smbAccessBasedEnumerationEnabled,
-      'smbNonBrowsableEnabled': smbNonBrowsableEnabled,
-      'storageQuotaInGb': storageQuotaInGb,
-      'subnetId': subnetId,
-      'volumePath': volumePath,
-      'zone': zone,
+      'serviceLevel': ?serviceLevel,
+      'smbAccessBasedEnumerationEnabled': ?smbAccessBasedEnumerationEnabled,
+      'smbNonBrowsableEnabled': ?smbNonBrowsableEnabled,
+      'storageQuotaInGb': ?storageQuotaInGb,
+      'subnetId': ?subnetId,
+      'volumePath': ?volumePath,
+      'zone': ?zone,
     };
   }
 
   factory GetVolumeResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeResult(
-      acceptGrowCapacityPoolForShortTermCloneSplit: map['acceptGrowCapacityPoolForShortTermCloneSplit'] as String,
-      accountName: map['accountName'] as String,
-      dataProtectionAdvancedRansomwares: pulumi.Input.decodeList<GetVolumeDataProtectionAdvancedRansomware>(map['dataProtectionAdvancedRansomwares']!, (value) => GetVolumeDataProtectionAdvancedRansomware.fromMap((value as Map).cast<String, dynamic>())),
-      dataProtectionBackupPolicies: pulumi.Input.decodeList<GetVolumeDataProtectionBackupPolicy>(map['dataProtectionBackupPolicies']!, (value) => GetVolumeDataProtectionBackupPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      dataProtectionReplications: pulumi.Input.decodeList<GetVolumeDataProtectionReplication>(map['dataProtectionReplications']!, (value) => GetVolumeDataProtectionReplication.fromMap((value as Map).cast<String, dynamic>())),
-      encryptionKeySource: map['encryptionKeySource'] as String,
-      id: map['id'] as String,
-      keyVaultPrivateEndpointId: map['keyVaultPrivateEndpointId'] as String,
-      largeVolumeEnabled: map['largeVolumeEnabled'] as bool,
-      location: map['location'] as String,
-      mountIpAddresses: (map['mountIpAddresses'] as List).cast<String>(),
-      name: map['name'] as String,
-      networkFeatures: map['networkFeatures'] as String,
-      poolName: map['poolName'] as String,
-      protocols: (map['protocols'] as List).cast<String>(),
-      resourceGroupName: map['resourceGroupName'] as String,
+      acceptGrowCapacityPoolForShortTermCloneSplit: (() { final guardedValue = map['acceptGrowCapacityPoolForShortTermCloneSplit']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataProtectionAdvancedRansomwares: (() { final guardedValue = map['dataProtectionAdvancedRansomwares']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVolumeDataProtectionAdvancedRansomware>(guardedValue, (value) => GetVolumeDataProtectionAdvancedRansomware.fromMap((value as Map).cast<String, dynamic>())); })(),
+      dataProtectionBackupPolicies: (() { final guardedValue = map['dataProtectionBackupPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVolumeDataProtectionBackupPolicy>(guardedValue, (value) => GetVolumeDataProtectionBackupPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      dataProtectionReplications: (() { final guardedValue = map['dataProtectionReplications']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVolumeDataProtectionReplication>(guardedValue, (value) => GetVolumeDataProtectionReplication.fromMap((value as Map).cast<String, dynamic>())); })(),
+      encryptionKeySource: (() { final guardedValue = map['encryptionKeySource']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keyVaultPrivateEndpointId: (() { final guardedValue = map['keyVaultPrivateEndpointId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      largeVolumeEnabled: (() { final guardedValue = map['largeVolumeEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mountIpAddresses: (() { final guardedValue = map['mountIpAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkFeatures: (() { final guardedValue = map['networkFeatures']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      poolName: (() { final guardedValue = map['poolName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protocols: (() { final guardedValue = map['protocols']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       securityStyle: (() { final guardedValue = map['securityStyle']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      serviceLevel: map['serviceLevel'] as String,
-      smbAccessBasedEnumerationEnabled: map['smbAccessBasedEnumerationEnabled'] as bool,
-      smbNonBrowsableEnabled: map['smbNonBrowsableEnabled'] as bool,
-      storageQuotaInGb: map['storageQuotaInGb'] as int,
-      subnetId: map['subnetId'] as String,
-      volumePath: map['volumePath'] as String,
-      zone: map['zone'] as String,
+      serviceLevel: (() { final guardedValue = map['serviceLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      smbAccessBasedEnumerationEnabled: (() { final guardedValue = map['smbAccessBasedEnumerationEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      smbNonBrowsableEnabled: (() { final guardedValue = map['smbNonBrowsableEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      storageQuotaInGb: (() { final guardedValue = map['storageQuotaInGb']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      volumePath: (() { final guardedValue = map['volumePath']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

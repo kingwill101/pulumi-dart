@@ -7,7 +7,7 @@ class FrontdoorCustomDomainTlsCipherSuite {
   /// A `customCiphers` block as defined below.
   ///
   /// &gt; **Note:** The `customCiphers` block is required when `type` is set to `Customized` and must not be specified otherwise.
-  final pulumi.Input<FrontdoorCustomDomainTlsCipherSuiteCustomCiphers>? customCiphers;
+  final pulumi.Input<FrontdoorCustomDomainTlsCipherSuiteCustomCiphers?>? customCiphers;
   /// The cipher suite set type. Possible values are `Customized`, `TLS12_2022`, and `TLS12_2023`.
   final pulumi.Input<String> type;
 

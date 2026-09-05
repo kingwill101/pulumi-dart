@@ -12,7 +12,7 @@ class GetGroupArgs {
   /// The name of the Resource Group where the Container Group instance exists.
   final pulumi.Input<String> resourceGroupName;
   /// A list of Availability Zones in which this Container Group is located.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [GetGroupArgs].
   /// [name] The name of this Container Group instance.

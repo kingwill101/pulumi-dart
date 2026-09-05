@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentLoggingStorageAccount {
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// The name which should be used for this NGINX Deployment. Changing this forces a new NGINX Deployment to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DeploymentLoggingStorageAccount].
   /// [containerName] Optional.

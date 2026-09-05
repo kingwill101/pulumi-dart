@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApiKey resources.
 class ApiKeyState {
   /// The API Key secret (Sensitive).
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// The ID of the Application Insights component on which the API key operates. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? applicationInsightsId;
+  final pulumi.Input<String?>? applicationInsightsId;
   /// Specifies the name of the Application Insights API key. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the list of read permissions granted to the API key. Valid values are `agentconfig`, `aggregate`, `api`, `draft`, `extendqueries`, `search`. Please note these values are case sensitive. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? readPermissions;
+  final pulumi.Input<List<String>?>? readPermissions;
   /// Specifies the list of write permissions granted to the API key. Valid values are `annotations`. Please note these values are case sensitive. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** At least one read or write permission must be defined.
-  final pulumi.Input<List<String>>? writePermissions;
+  final pulumi.Input<List<String>?>? writePermissions;
 
   /// Creates a new [ApiKeyState].
   /// [apiKey] The API Key secret (Sensitive).

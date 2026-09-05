@@ -7,13 +7,13 @@ import 'data_flow_transformation_linked_service.dart';
 
 class DataFlowTransformation {
   /// A `dataset` block as defined below.
-  final pulumi.Input<DataFlowTransformationDataset>? dataset;
+  final pulumi.Input<DataFlowTransformationDataset?>? dataset;
   /// The description for the Data Flow transformation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A `flowlet` block as defined below.
-  final pulumi.Input<DataFlowTransformationFlowlet>? flowlet;
+  final pulumi.Input<DataFlowTransformationFlowlet?>? flowlet;
   /// A `linkedService` block as defined below.
-  final pulumi.Input<DataFlowTransformationLinkedService>? linkedService;
+  final pulumi.Input<DataFlowTransformationLinkedService?>? linkedService;
   /// The name for the Data Flow transformation.
   final pulumi.Input<String> name;
 

@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'activity_log_alert_action.dart';
 import 'activity_log_alert_args.dart';
 import 'activity_log_alert_criteria.dart';
 import 'activity_log_alert_state.dart';
@@ -207,17 +208,17 @@ import 'activity_log_alert_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
 /// 			Scopes: pulumi.StringArray{
-/// 				example.ID(),
+/// 				example.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Description: pulumi.String("This alert will monitor a specific storage account updates."),
 /// 			Criteria: &monitoring.ActivityLogAlertCriteriaArgs{
-/// 				ResourceId:    toMonitor.ID(),
+/// 				ResourceId:    toMonitor.ID().ToIDOutput().ToStringOutput(),
 /// 				OperationName: pulumi.String("Microsoft.Storage/storageAccounts/write"),
 /// 				Category:      pulumi.String("Recommendation"),
 /// 			},
 /// 			Actions: monitoring.ActivityLogAlertActionArray{
 /// 				&monitoring.ActivityLogAlertActionArgs{
-/// 					ActionGroupId: main.ID(),
+/// 					ActionGroupId: main.ID().ToIDOutput().ToStringOutput(),
 /// 					WebhookProperties: pulumi.StringMap{
 /// 						"from": pulumi.String("source"),
 /// 					},
@@ -414,7 +415,7 @@ import 'activity_log_alert_state.dart';
 /// ```
 class ActivityLogAlert extends pulumi.CustomResource {
   /// One or more `action` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+  late final pulumi.Output<List<ActivityLogAlertAction>?> actions;
   /// A `criteria` block as defined below.
   late final pulumi.Output<ActivityLogAlertCriteria> criteria;
   /// The description of this activity log alert.
@@ -444,17 +445,17 @@ class ActivityLogAlert extends pulumi.CustomResource {
           'azure:monitoring/activityLogAlert:ActivityLogAlert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    actions = registerOutput<List<ActivityLogAlertAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActivityLogAlertAction>(guardedValue, (value) => ActivityLogAlertAction.fromMap((value as Map).cast<String, dynamic>())); });
     criteria = registerOutput<ActivityLogAlertCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivityLogAlertCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    scopes = registerOutput<List<String>>('scopes');
-    tags = registerOutput<Map<String, String>?>('tags');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ActivityLogAlert] resource's state with the given [name] and [id].
@@ -462,11 +463,12 @@ class ActivityLogAlert extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ActivityLogAlertState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ActivityLogAlert._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -480,14 +482,34 @@ class ActivityLogAlert extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    actions = registerOutput<List<ActivityLogAlertAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActivityLogAlertAction>(guardedValue, (value) => ActivityLogAlertAction.fromMap((value as Map).cast<String, dynamic>())); });
     criteria = registerOutput<ActivityLogAlertCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivityLogAlertCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    scopes = registerOutput<List<String>>('scopes');
-    tags = registerOutput<Map<String, String>?>('tags');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ActivityLogAlert] resource.
+  ActivityLogAlert.reference(String urn)
+    : super(
+        'azure:monitoring/activityLogAlert:ActivityLogAlert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<ActivityLogAlertAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActivityLogAlertAction>(guardedValue, (value) => ActivityLogAlertAction.fromMap((value as Map).cast<String, dynamic>())); });
+    criteria = registerOutput<ActivityLogAlertCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivityLogAlertCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

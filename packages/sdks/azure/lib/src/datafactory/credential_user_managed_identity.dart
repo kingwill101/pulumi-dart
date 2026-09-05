@@ -154,7 +154,7 @@ import 'credential_user_managed_identity_state.dart';
 /// 			Identity: &datafactory.FactoryIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -164,8 +164,8 @@ import 'credential_user_managed_identity_state.dart';
 /// 		_, err = datafactory.NewCredentialUserManagedIdentity(ctx, "test", &datafactory.CredentialUserManagedIdentityArgs{
 /// 			Name:          exampleUserAssignedIdentity.Name,
 /// 			Description:   pulumi.String("Short description of this credential"),
-/// 			DataFactoryId: exampleFactory.ID(),
-/// 			IdentityId:    exampleUserAssignedIdentity.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			IdentityId:    exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 			Annotations: pulumi.StringArray{
 /// 				pulumi.String("example"),
 /// 				pulumi.String("example2"),
@@ -355,9 +355,9 @@ class CredentialUserManagedIdentity extends pulumi.CustomResource {
           'azure:datafactory/credentialUserManagedIdentity:CredentialUserManagedIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    annotations = registerOutput<List<String>?>('annotations');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     identityId = registerOutput<String>('identityId');
@@ -369,11 +369,12 @@ class CredentialUserManagedIdentity extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CredentialUserManagedIdentityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CredentialUserManagedIdentity._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -387,7 +388,23 @@ class CredentialUserManagedIdentity extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<List<String>?>('annotations');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    identityId = registerOutput<String>('identityId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [CredentialUserManagedIdentity] resource.
+  CredentialUserManagedIdentity.reference(String urn)
+    : super(
+        'azure:datafactory/credentialUserManagedIdentity:CredentialUserManagedIdentity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     identityId = registerOutput<String>('identityId');

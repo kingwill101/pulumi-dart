@@ -320,7 +320,7 @@ import 'assessment_status.dart';
 /// 						&compute.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs{
 /// 							Name:     pulumi.String("internal"),
 /// 							Primary:  pulumi.Bool(true),
-/// 							SubnetId: internal.ID(),
+/// 							SubnetId: internal.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -338,8 +338,8 @@ import 'assessment_status.dart';
 /// 			return err
 /// 		}
 /// 		_, err = securitycenter.NewAssessment(ctx, "example", &securitycenter.AssessmentArgs{
-/// 			AssessmentPolicyId: exampleAssessmentPolicy.ID(),
-/// 			TargetResourceId:   exampleLinuxVirtualMachineScaleSet.ID(),
+/// 			AssessmentPolicyId: exampleAssessmentPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetResourceId:   exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 			Status: &securitycenter.AssessmentStatusArgs{
 /// 				Code: pulumi.String("Healthy"),
 /// 			},
@@ -636,9 +636,9 @@ class Assessment extends pulumi.CustomResource {
           'azure:securitycenter/assessment:Assessment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalData = registerOutput<Map<String, String>?>('additionalData');
+    additionalData = registerOutput<Map<String, String>?>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     assessmentPolicyId = registerOutput<String>('assessmentPolicyId');
     status = registerOutput<AssessmentStatus>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetResourceId = registerOutput<String>('targetResourceId');
@@ -649,11 +649,12 @@ class Assessment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssessmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Assessment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -667,7 +668,22 @@ class Assessment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalData = registerOutput<Map<String, String>?>('additionalData');
+    additionalData = registerOutput<Map<String, String>?>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    assessmentPolicyId = registerOutput<String>('assessmentPolicyId');
+    status = registerOutput<AssessmentStatus>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetResourceId = registerOutput<String>('targetResourceId');
+  }
+
+  /// Creates a typed reference to an existing [Assessment] resource.
+  Assessment.reference(String urn)
+    : super(
+        'azure:securitycenter/assessment:Assessment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalData = registerOutput<Map<String, String>?>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     assessmentPolicyId = registerOutput<String>('assessmentPolicyId');
     status = registerOutput<AssessmentStatus>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetResourceId = registerOutput<String>('targetResourceId');

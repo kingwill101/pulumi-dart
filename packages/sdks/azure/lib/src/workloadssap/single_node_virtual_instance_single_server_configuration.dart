@@ -11,17 +11,17 @@ class SingleNodeVirtualInstanceSingleServerConfiguration {
   /// &gt; **Note:** While creating an SAP Single Node Virtual Instance, the service will provision the extra SAP systems/components in the `appResourceGroupName` that are not defined in the HCL Configuration. At this time, if the `appResourceGroupName` is different from the Resource Group where SAP Single Node Virtual Instance exists, you can set `preventDeletionIfContainsResources` to `false` to delete all resources defined in the HCL Configuration and the resources created in the `appResourceGroupName` with `terraform destroy`. However, if the `appResourceGroupName` is the same with the Resource Group where SAP Single Node Virtual Instance exists, some resources, such as the subnet defined in the HCL Configuration, cannot be deleted with `terraform destroy` since the resources defined in the HCL Configuration are being referenced by the SAP system/component. In this case, you have to manually delete the SAP system/component before deleting the resources in the HCL Configuration.
   final pulumi.Input<String> appResourceGroupName;
   /// The supported SAP database type. Possible values are `DB2` and `HANA`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? databaseType;
+  final pulumi.Input<String?>? databaseType;
   /// One or more `diskVolumeConfiguration` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration>>? diskVolumeConfigurations;
+  final pulumi.Input<List<SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration>?>? diskVolumeConfigurations;
   /// Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? secondaryIpEnabled;
+  final pulumi.Input<bool?>? secondaryIpEnabled;
   /// The resource ID of the Subnet for the SAP Single Node Virtual Instance. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
   /// A `virtualMachineConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfiguration> virtualMachineConfiguration;
   /// A `virtualMachineResourceNames` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNames>? virtualMachineResourceNames;
+  final pulumi.Input<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNames?>? virtualMachineResourceNames;
 
   /// Creates a new [SingleNodeVirtualInstanceSingleServerConfiguration].
   /// [appResourceGroupName] The name of the application Resource Group where SAP system resources will be deployed. Changing this forces a new resource to be created.

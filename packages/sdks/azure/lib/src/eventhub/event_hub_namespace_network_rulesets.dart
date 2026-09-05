@@ -8,15 +8,15 @@ class EventHubNamespaceNetworkRulesets {
   /// The default action to take when a rule is not matched. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> defaultAction;
   /// One or more `ipRule` blocks as defined below.
-  final pulumi.Input<List<EventHubNamespaceNetworkRulesetsIpRule>>? ipRules;
+  final pulumi.Input<List<EventHubNamespaceNetworkRulesetsIpRule>?>? ipRules;
   /// Is public network access enabled for the EventHub Namespace? Defaults to `true`.
   ///
   /// &gt; **Note:** The public network access setting at the network rule sets level should be the same as it's at the namespace level.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// Whether Trusted Microsoft Services are allowed to bypass firewall.
-  final pulumi.Input<bool>? trustedServiceAccessEnabled;
+  final pulumi.Input<bool?>? trustedServiceAccessEnabled;
   /// One or more `virtualNetworkRule` blocks as defined below.
-  final pulumi.Input<List<EventHubNamespaceNetworkRulesetsVirtualNetworkRule>>? virtualNetworkRules;
+  final pulumi.Input<List<EventHubNamespaceNetworkRulesetsVirtualNetworkRule>?>? virtualNetworkRules;
 
   /// Creates a new [EventHubNamespaceNetworkRulesets].
   /// [defaultAction] The default action to take when a rule is not matched. Possible values are `Allow` and `Deny`.

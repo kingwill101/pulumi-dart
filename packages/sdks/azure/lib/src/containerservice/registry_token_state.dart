@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RegistryToken resources.
 class RegistryTokenState {
   /// The name of the Container Registry. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? containerRegistryName;
+  final pulumi.Input<String?>? containerRegistryName;
   /// Should the Container Registry token be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the name of the token. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the Container Registry token. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The ID of the Container Registry Scope Map associated with the token.
-  final pulumi.Input<String>? scopeMapId;
+  final pulumi.Input<String?>? scopeMapId;
 
   /// Creates a new [RegistryTokenState].
   /// [containerRegistryName] The name of the Container Registry. Changing this forces a new resource to be created.

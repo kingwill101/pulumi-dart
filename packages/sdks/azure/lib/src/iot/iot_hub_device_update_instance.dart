@@ -201,12 +201,12 @@ import 'iot_hub_device_update_instance_state.dart';
 /// 		}
 /// 		_, err = iot.NewIotHubDeviceUpdateInstance(ctx, "example", &iot.IotHubDeviceUpdateInstanceArgs{
 /// 			Name:                  pulumi.String("example"),
-/// 			DeviceUpdateAccountId: exampleIotHubDeviceUpdateAccount.ID(),
-/// 			IothubId:              exampleIoTHub.ID(),
+/// 			DeviceUpdateAccountId: exampleIotHubDeviceUpdateAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			IothubId:              exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			DiagnosticEnabled:     pulumi.Bool(true),
 /// 			DiagnosticStorageAccount: &iot.IotHubDeviceUpdateInstanceDiagnosticStorageAccountArgs{
 /// 				ConnectionString: exampleAccount.PrimaryConnectionString,
-/// 				Id:               exampleAccount.ID(),
+/// 				Id:               exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"key": pulumi.String("value"),
@@ -431,14 +431,14 @@ class IotHubDeviceUpdateInstance extends pulumi.CustomResource {
           'azure:iot/iotHubDeviceUpdateInstance:IotHubDeviceUpdateInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     deviceUpdateAccountId = registerOutput<String>('deviceUpdateAccountId');
     diagnosticEnabled = registerOutput<bool?>('diagnosticEnabled');
     diagnosticStorageAccount = registerOutput<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?>('diagnosticStorageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IotHubDeviceUpdateInstance] resource's state with the given [name] and [id].
@@ -446,11 +446,12 @@ class IotHubDeviceUpdateInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IotHubDeviceUpdateInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IotHubDeviceUpdateInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -469,6 +470,23 @@ class IotHubDeviceUpdateInstance extends pulumi.CustomResource {
     diagnosticStorageAccount = registerOutput<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?>('diagnosticStorageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IotHubDeviceUpdateInstance] resource.
+  IotHubDeviceUpdateInstance.reference(String urn)
+    : super(
+        'azure:iot/iotHubDeviceUpdateInstance:IotHubDeviceUpdateInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deviceUpdateAccountId = registerOutput<String>('deviceUpdateAccountId');
+    diagnosticEnabled = registerOutput<bool?>('diagnosticEnabled');
+    diagnosticStorageAccount = registerOutput<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?>('diagnosticStorageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    iothubId = registerOutput<String>('iothubId');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

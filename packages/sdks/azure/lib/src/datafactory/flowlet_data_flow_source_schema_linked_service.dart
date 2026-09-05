@@ -6,7 +6,7 @@ class FlowletDataFlowSourceSchemaLinkedService {
   /// The name for the Data Factory Linked Service with schema.
   final pulumi.Input<String> name;
   /// A map of parameters to associate with the Data Factory Linked Service.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [FlowletDataFlowSourceSchemaLinkedService].
   /// [name] The name for the Data Factory Linked Service with schema.

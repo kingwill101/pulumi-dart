@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_network_rules_args.dart';
+import 'account_network_rules_private_link_access_rule.dart';
 import 'account_network_rules_state.dart';
 
 /// Manages network rules inside of a Azure Storage Account.
@@ -217,13 +218,13 @@ import 'account_network_rules_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = storage.NewAccountNetworkRules(ctx, "example", &storage.AccountNetworkRulesArgs{
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultAction:    pulumi.String("Allow"),
 /// 			IpRules: pulumi.StringArray{
 /// 				pulumi.String("127.0.0.1"),
 /// 			},
 /// 			VirtualNetworkSubnetIds: pulumi.StringArray{
-/// 				exampleSubnet.ID(),
+/// 				exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Bypasses: pulumi.StringArray{
 /// 				pulumi.String("Metrics"),
@@ -432,7 +433,7 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
   /// &gt; **Note:** User has to explicitly set `ipRules` to empty slice (`[]`) to remove it.
   late final pulumi.Output<List<String>?> ipRules;
   /// One or more `privateLinkAccess` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> privateLinkAccessRules;
+  late final pulumi.Output<List<AccountNetworkRulesPrivateLinkAccessRule>?> privateLinkAccessRules;
   /// Specifies the ID of the storage account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
   /// A list of virtual network subnet ids to secure the storage account.
@@ -452,14 +453,14 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
           'azure:storage/accountNetworkRules:AccountNetworkRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    bypasses = registerOutput<List<String>>('bypasses');
+    bypasses = registerOutput<List<String>>('bypasses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultAction = registerOutput<String>('defaultAction');
-    ipRules = registerOutput<List<String>?>('ipRules');
-    privateLinkAccessRules = registerOutput<List<Map<String, dynamic>>?>('privateLinkAccessRules');
+    ipRules = registerOutput<List<String>?>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateLinkAccessRules = registerOutput<List<AccountNetworkRulesPrivateLinkAccessRule>?>('privateLinkAccessRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountNetworkRulesPrivateLinkAccessRule>(guardedValue, (value) => AccountNetworkRulesPrivateLinkAccessRule.fromMap((value as Map).cast<String, dynamic>())); });
     storageAccountId = registerOutput<String>('storageAccountId');
-    virtualNetworkSubnetIds = registerOutput<List<String>?>('virtualNetworkSubnetIds');
+    virtualNetworkSubnetIds = registerOutput<List<String>?>('virtualNetworkSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [AccountNetworkRulesStorage] resource's state with the given [name] and [id].
@@ -467,11 +468,12 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountNetworkRulesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountNetworkRulesStorage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -485,11 +487,28 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    bypasses = registerOutput<List<String>>('bypasses');
+    bypasses = registerOutput<List<String>>('bypasses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultAction = registerOutput<String>('defaultAction');
-    ipRules = registerOutput<List<String>?>('ipRules');
-    privateLinkAccessRules = registerOutput<List<Map<String, dynamic>>?>('privateLinkAccessRules');
+    ipRules = registerOutput<List<String>?>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateLinkAccessRules = registerOutput<List<AccountNetworkRulesPrivateLinkAccessRule>?>('privateLinkAccessRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountNetworkRulesPrivateLinkAccessRule>(guardedValue, (value) => AccountNetworkRulesPrivateLinkAccessRule.fromMap((value as Map).cast<String, dynamic>())); });
     storageAccountId = registerOutput<String>('storageAccountId');
-    virtualNetworkSubnetIds = registerOutput<List<String>?>('virtualNetworkSubnetIds');
+    virtualNetworkSubnetIds = registerOutput<List<String>?>('virtualNetworkSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AccountNetworkRulesStorage] resource.
+  AccountNetworkRulesStorage.reference(String urn)
+    : super(
+        'azure:storage/accountNetworkRules:AccountNetworkRules',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bypasses = registerOutput<List<String>>('bypasses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultAction = registerOutput<String>('defaultAction');
+    ipRules = registerOutput<List<String>?>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateLinkAccessRules = registerOutput<List<AccountNetworkRulesPrivateLinkAccessRule>?>('privateLinkAccessRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountNetworkRulesPrivateLinkAccessRule>(guardedValue, (value) => AccountNetworkRulesPrivateLinkAccessRule.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccountId = registerOutput<String>('storageAccountId');
+    virtualNetworkSubnetIds = registerOutput<List<String>?>('virtualNetworkSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

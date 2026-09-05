@@ -134,9 +134,7 @@ class ScaleSetIdentity {
   /// 		if err != nil {
   /// 			return err
   /// 		}
-  /// 		ctx.Export("principalId", example.Identity.ApplyT(func(identity compute.ScaleSetIdentity) (*string, error) {
-  /// 			return identity.PrincipalId, nil
-  /// 		}).(pulumi.StringPtrOutput))
+  /// 		ctx.Export("principalId", example.Identity.PrincipalId())
   /// 		return nil
   /// 	})
   /// }
@@ -246,9 +244,9 @@ class ScaleSetIdentity {
   /// outputs:
   ///   principalId: ${example.identity.principalId}
   /// ```
-  final pulumi.Input<List<String>>? identityIds;
-  final pulumi.Input<String>? principalId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<List<String>?>? identityIds;
+  final pulumi.Input<String?>? principalId;
+  final pulumi.Input<String?>? tenantId;
   /// Specifies the identity type to be assigned to the scale set. Allowable values are `SystemAssigned` and `UserAssigned`. For the `SystemAssigned` identity the scale set's Service Principal ID (SPN) can be retrieved after the scale set has been created. See [documentation](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) for more information. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
   final pulumi.Input<String> type;
 

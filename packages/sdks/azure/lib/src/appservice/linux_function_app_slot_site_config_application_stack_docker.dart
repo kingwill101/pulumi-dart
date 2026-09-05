@@ -10,13 +10,13 @@ class LinuxFunctionAppSlotSiteConfigApplicationStackDocker {
   /// The password for the account to use to connect to the registry.
   ///
   /// &gt; **Note:** This value is required if `containerRegistryUseManagedIdentity` is not set to `true`.
-  final pulumi.Input<String>? registryPassword;
+  final pulumi.Input<String?>? registryPassword;
   /// The URL of the docker registry.
   final pulumi.Input<String> registryUrl;
   /// The username to use for connections to the registry.
   ///
   /// &gt; **Note:** This value is required if `containerRegistryUseManagedIdentity` is not set to `true`.
-  final pulumi.Input<String>? registryUsername;
+  final pulumi.Input<String?>? registryUsername;
 
   /// Creates a new [LinuxFunctionAppSlotSiteConfigApplicationStackDocker].
   /// [imageName] The name of the Docker image to use.

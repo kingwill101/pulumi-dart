@@ -10,7 +10,7 @@ class GetAppArgs {
   /// The name of the Container App.
   final pulumi.Input<String> name;
   /// Should the data source read the secrets from the Container App? Defaults to `true`.
-  final pulumi.Input<bool>? readSecrets;
+  final pulumi.Input<bool?>? readSecrets;
   /// The name of the Resource Group where this Container App exists.
   final pulumi.Input<String> resourceGroupName;
 

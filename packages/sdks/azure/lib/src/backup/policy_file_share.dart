@@ -509,7 +509,7 @@ class PolicyFileShare extends pulumi.CustomResource {
           'azure:backup/policyFileShare:PolicyFileShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backup = registerOutput<PolicyFileShareBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupTier = registerOutput<String?>('backupTier');
@@ -529,11 +529,12 @@ class PolicyFileShare extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyFileShareState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PolicyFileShare._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -547,6 +548,28 @@ class PolicyFileShare extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backup = registerOutput<PolicyFileShareBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backupTier = registerOutput<String?>('backupTier');
+    this.name = registerOutput<String>('name');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionDaily = registerOutput<PolicyFileShareRetentionDaily>('retentionDaily', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionDaily.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionMonthly = registerOutput<PolicyFileShareRetentionMonthly?>('retentionMonthly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionMonthly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionWeekly = registerOutput<PolicyFileShareRetentionWeekly?>('retentionWeekly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionWeekly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionYearly = registerOutput<PolicyFileShareRetentionYearly?>('retentionYearly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareRetentionYearly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    snapshotRetentionInDays = registerOutput<int?>('snapshotRetentionInDays');
+    timezone = registerOutput<String?>('timezone');
+  }
+
+  /// Creates a typed reference to an existing [PolicyFileShare] resource.
+  PolicyFileShare.reference(String urn)
+    : super(
+        'azure:backup/policyFileShare:PolicyFileShare',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backup = registerOutput<PolicyFileShareBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyFileShareBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupTier = registerOutput<String?>('backupTier');
     this.name = registerOutput<String>('name');

@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseDatabaseModule {
   /// Configuration options for the module (e.g. `ERROR_RATE 0.00 INITIAL_SIZE 400`). Changing this forces a new resource to be created. Defaults to `""`.
-  final pulumi.Input<String>? args;
+  final pulumi.Input<String?>? args;
   /// The name which should be used for this module. Possible values are `RedisBloom`, `RedisTimeSeries`, `RediSearch` and `RedisJSON`. Changing this forces a new Redis Enterprise Database to be created.
   final pulumi.Input<String> name;
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [EnterpriseDatabaseModule].
   /// [args] Configuration options for the module (e.g. `ERROR_RATE 0.00 INITIAL_SIZE 400`). Changing this forces a new resource to be created. Defaults to `""`.

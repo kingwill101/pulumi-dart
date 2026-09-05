@@ -237,14 +237,14 @@ class SharedImageGallery extends pulumi.CustomResource {
           'azure:compute/sharedImageGallery:SharedImageGallery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sharing = registerOutput<SharedImageGallerySharing?>('sharing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedImageGallerySharing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueName = registerOutput<String>('uniqueName');
   }
 
@@ -253,11 +253,12 @@ class SharedImageGallery extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SharedImageGalleryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SharedImageGallery._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,7 +277,25 @@ class SharedImageGallery extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sharing = registerOutput<SharedImageGallerySharing?>('sharing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedImageGallerySharing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uniqueName = registerOutput<String>('uniqueName');
+  }
+
+  /// Creates a typed reference to an existing [SharedImageGallery] resource.
+  SharedImageGallery.reference(String urn)
+    : super(
+        'azure:compute/sharedImageGallery:SharedImageGallery',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sharing = registerOutput<SharedImageGallerySharing?>('sharing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedImageGallerySharing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueName = registerOutput<String>('uniqueName');
   }
 }

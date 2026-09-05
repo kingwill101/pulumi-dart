@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentFrontendPublic {
   /// Specifies a list of Public IP Resource ID to this NGINX Deployment.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
 
   /// Creates a new [DeploymentFrontendPublic].
   /// [ipAddresses] Specifies a list of Public IP Resource ID to this NGINX Deployment.

@@ -137,7 +137,7 @@ import 'application_state.dart';
 /// 			ResourceGroupName:                example.Name,
 /// 			Location:                         example.Location,
 /// 			PoolAllocationMode:               pulumi.String("BatchService"),
-/// 			StorageAccountId:                 exampleAccount.ID(),
+/// 			StorageAccountId:                 exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountAuthenticationMode: pulumi.String("StorageKeys"),
 /// 		})
 /// 		if err != nil {
@@ -319,7 +319,7 @@ class Application extends pulumi.CustomResource {
           'azure:batch/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     allowUpdates = registerOutput<bool?>('allowUpdates');
@@ -334,11 +334,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -352,6 +353,23 @@ class Application extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountName = registerOutput<String>('accountName');
+    allowUpdates = registerOutput<bool?>('allowUpdates');
+    defaultVersion = registerOutput<String?>('defaultVersion');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'azure:batch/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountName = registerOutput<String>('accountName');
     allowUpdates = registerOutput<bool?>('allowUpdates');
     defaultVersion = registerOutput<String?>('defaultVersion');

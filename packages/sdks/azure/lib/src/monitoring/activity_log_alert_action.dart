@@ -6,7 +6,7 @@ class ActivityLogAlertAction {
   /// The ID of the Action Group can be sourced from the `azure.monitoring.ActionGroup` resource.
   final pulumi.Input<String> actionGroupId;
   /// The map of custom string properties to include with the post operation. These data are appended to the webhook payload.
-  final pulumi.Input<Map<String, String>>? webhookProperties;
+  final pulumi.Input<Map<String, String>?>? webhookProperties;
 
   /// Creates a new [ActivityLogAlertAction].
   /// [actionGroupId] The ID of the Action Group can be sourced from the `azure.monitoring.ActionGroup` resource.

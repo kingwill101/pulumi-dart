@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StandaloneGatewaySku {
   /// The number of deployed units of the SKU. Defaults to `1`.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// The name of the SKU. The only possible value is `WorkspaceGatewayPremium`.
   final pulumi.Input<String> name;
 
@@ -25,7 +25,7 @@ class StandaloneGatewaySku {
 
   factory StandaloneGatewaySku.fromMap(Map<String, dynamic> map) {
     return StandaloneGatewaySku(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

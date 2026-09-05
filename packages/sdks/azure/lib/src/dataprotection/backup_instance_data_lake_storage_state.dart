@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering BackupInstanceDataLakeStorage resources.
 class BackupInstanceDataLakeStorageState {
   /// The ID of the Backup Policy.
-  final pulumi.Input<String>? backupPolicyDataLakeStorageId;
+  final pulumi.Input<String?>? backupPolicyDataLakeStorageId;
   /// The ID of the Backup Vault within which the Backup Instance Data Lake Storage should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? dataProtectionBackupVaultId;
+  final pulumi.Input<String?>? dataProtectionBackupVaultId;
   /// The location of the source Storage Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Backup Instance Data Lake Storage. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The protection state of the Backup Instance Data Lake Storage.
-  final pulumi.Input<String>? protectionState;
+  final pulumi.Input<String?>? protectionState;
   /// The ID of the source Storage Account. The Storage Account must have Hierarchical Namespace enabled. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// The names of the storage containers of the source Storage Account.
-  final pulumi.Input<List<String>>? storageContainerNames;
+  final pulumi.Input<List<String>?>? storageContainerNames;
 
   /// Creates a new [BackupInstanceDataLakeStorageState].
   /// [backupPolicyDataLakeStorageId] The ID of the Backup Policy.

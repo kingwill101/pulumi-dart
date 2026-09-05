@@ -32,8 +32,8 @@ import 'output_table_state.dart';
 /// });
 /// const exampleOutputTable = new azure.streamanalytics.OutputTable("example", {
 ///     name: "output-to-storage-table",
-///     streamAnalyticsJobName: example.apply(example => example.name),
-///     resourceGroupName: example.apply(example => example.resourceGroupName),
+///     streamAnalyticsJobName: example.name,
+///     resourceGroupName: example.resourceGroupName,
 ///     storageAccountName: exampleAccount.name,
 ///     storageAccountKey: exampleAccount.primaryAccessKey,
 ///     table: exampleTable.name,
@@ -162,19 +162,15 @@ import 'output_table_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = streamanalytics.NewOutputTable(ctx, "example", &streamanalytics.OutputTableArgs{
-/// 			Name: pulumi.String("output-to-storage-table"),
-/// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.ResourceGroupName, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			StorageAccountName: exampleAccount.Name,
-/// 			StorageAccountKey:  exampleAccount.PrimaryAccessKey,
-/// 			Table:              exampleTable.Name,
-/// 			PartitionKey:       pulumi.String("foo"),
-/// 			RowKey:             pulumi.String("bar"),
-/// 			BatchSize:          pulumi.Int(100),
+/// 			Name:                   pulumi.String("output-to-storage-table"),
+/// 			StreamAnalyticsJobName: example.Name(),
+/// 			ResourceGroupName:      example.ResourceGroupName(),
+/// 			StorageAccountName:     exampleAccount.Name,
+/// 			StorageAccountKey:      exampleAccount.PrimaryAccessKey,
+/// 			Table:                  exampleTable.Name,
+/// 			PartitionKey:           pulumi.String("foo"),
+/// 			RowKey:                 pulumi.String("bar"),
+/// 			BatchSize:              pulumi.Int(100),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -385,15 +381,16 @@ class OutputTable extends pulumi.CustomResource {
           'azure:streamanalytics/outputTable:OutputTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountKey'],
         ) {
     batchSize = registerOutput<int>('batchSize');
-    columnsToRemoves = registerOutput<List<String>?>('columnsToRemoves');
+    columnsToRemoves = registerOutput<List<String>?>('columnsToRemoves', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     partitionKey = registerOutput<String>('partitionKey');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rowKey = registerOutput<String>('rowKey');
-    storageAccountKey = registerOutput<String>('storageAccountKey');
+    storageAccountKey = registerOutput<String>('storageAccountKey', isSecret: true);
     storageAccountName = registerOutput<String>('storageAccountName');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
     table = registerOutput<String>('table');
@@ -404,11 +401,12 @@ class OutputTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutputTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutputTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -423,12 +421,34 @@ class OutputTable extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     batchSize = registerOutput<int>('batchSize');
-    columnsToRemoves = registerOutput<List<String>?>('columnsToRemoves');
+    columnsToRemoves = registerOutput<List<String>?>('columnsToRemoves', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     partitionKey = registerOutput<String>('partitionKey');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rowKey = registerOutput<String>('rowKey');
-    storageAccountKey = registerOutput<String>('storageAccountKey');
+    storageAccountKey = registerOutput<String>('storageAccountKey', isSecret: true);
+    storageAccountName = registerOutput<String>('storageAccountName');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    table = registerOutput<String>('table');
+  }
+
+  /// Creates a typed reference to an existing [OutputTable] resource.
+  OutputTable.reference(String urn)
+    : super(
+        'azure:streamanalytics/outputTable:OutputTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountKey'],
+        isResourceReference: true,
+      ) {
+    batchSize = registerOutput<int>('batchSize');
+    columnsToRemoves = registerOutput<List<String>?>('columnsToRemoves', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    partitionKey = registerOutput<String>('partitionKey');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rowKey = registerOutput<String>('rowKey');
+    storageAccountKey = registerOutput<String>('storageAccountKey', isSecret: true);
     storageAccountName = registerOutput<String>('storageAccountName');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
     table = registerOutput<String>('table');

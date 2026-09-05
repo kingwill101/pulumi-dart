@@ -9,7 +9,7 @@ class FhirServiceAuthentication {
   /// Authority must be registered to Azure AD and in the following format: &lt;https://{Azure-AD-endpoint}/{tenant-id&gt;}.
   final pulumi.Input<String> authority;
   /// Whether smart proxy is enabled.
-  final pulumi.Input<bool>? smartProxyEnabled;
+  final pulumi.Input<bool?>? smartProxyEnabled;
 
   /// Creates a new [FhirServiceAuthentication].
   /// [audience] The intended audience to receive authentication tokens for the service.

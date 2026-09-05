@@ -12,9 +12,9 @@ class VaultEncryption {
   /// &gt; **Note:** `useSystemAssignedIdentity` only be able to set to `false` for **new** vaults. Any vaults containing existing items registered or attempted to be registered to it are not supported. Details can be found in [the document](https://learn.microsoft.com/en-us/azure/backup/encryption-at-rest-with-cmk?tabs=portal#before-you-start)
   ///
   /// &gt; **Note:** Once `infrastructureEncryptionEnabled` has been set it's not possible to change it.
-  final pulumi.Input<bool>? useSystemAssignedIdentity;
+  final pulumi.Input<bool?>? useSystemAssignedIdentity;
   /// Specifies the user assigned identity ID to be used.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
 
   /// Creates a new [VaultEncryption].
   /// [infrastructureEncryptionEnabled] Enabling/Disabling the Double Encryption state.

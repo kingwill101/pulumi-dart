@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterWorkloadAutoscalerProfile {
   /// Specifies whether KEDA Autoscaler can be used for workloads.
-  final pulumi.Input<bool>? kedaEnabled;
+  final pulumi.Input<bool?>? kedaEnabled;
   /// Specifies whether Vertical Pod Autoscaler should be enabled.
-  final pulumi.Input<bool>? verticalPodAutoscalerEnabled;
+  final pulumi.Input<bool?>? verticalPodAutoscalerEnabled;
 
   /// Creates a new [KubernetesClusterWorkloadAutoscalerProfile].
   /// [kedaEnabled] Specifies whether KEDA Autoscaler can be used for workloads.

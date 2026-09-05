@@ -12,7 +12,7 @@ class WindowsFunctionAppAuthSettingsV2AppleV2 {
   /// A list of Login Scopes provided by this Authentication Provider.
   ///
   /// &gt; **Note:** This is configured on the Authentication Provider side and is Read Only here.
-  final pulumi.Input<List<String>>? loginScopes;
+  final pulumi.Input<List<String>?>? loginScopes;
 
   /// Creates a new [WindowsFunctionAppAuthSettingsV2AppleV2].
   /// [clientId] The OpenID Connect Client ID for the Apple web application.

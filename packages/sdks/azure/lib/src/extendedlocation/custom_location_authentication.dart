@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomLocationAuthentication {
   /// Specifies the type of authentication.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Specifies the value of authentication.
   final pulumi.Input<String> value;
 

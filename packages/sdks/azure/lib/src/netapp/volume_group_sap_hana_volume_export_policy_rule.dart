@@ -10,13 +10,13 @@ class VolumeGroupSapHanaVolumeExportPolicyRule {
   /// Enables NFSv4.1. Please note that this cannot be enabled if volume has NFSv3 as its protocol.
   final pulumi.Input<bool> nfsv41Enabled;
   /// Is root access permitted to this volume? Defaults to `true`.
-  final pulumi.Input<bool>? rootAccessEnabled;
+  final pulumi.Input<bool?>? rootAccessEnabled;
   /// The index number of the rule, must start at 1 and maximum 5.
   final pulumi.Input<int> ruleIndex;
   /// Is the file system on unix read only? Defaults to `false.
-  final pulumi.Input<bool>? unixReadOnly;
+  final pulumi.Input<bool?>? unixReadOnly;
   /// Is the file system on unix read and write? Defaults to `true`.
-  final pulumi.Input<bool>? unixReadWrite;
+  final pulumi.Input<bool?>? unixReadWrite;
 
   /// Creates a new [VolumeGroupSapHanaVolumeExportPolicyRule].
   /// [allowedClients] A comma-sperated list of allowed client IPv4 addresses.
@@ -54,7 +54,7 @@ class VolumeGroupSapHanaVolumeExportPolicyRule {
       nfsv3Enabled: pulumi.Input.fromValue(map['nfsv3Enabled'] as bool),
       nfsv41Enabled: pulumi.Input.fromValue(map['nfsv41Enabled'] as bool),
       rootAccessEnabled: (() { final guardedValue = map['rootAccessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      ruleIndex: pulumi.Input.fromValue(map['ruleIndex'] as int),
+      ruleIndex: pulumi.Input.fromValue((map['ruleIndex'] as num).toInt()),
       unixReadOnly: (() { final guardedValue = map['unixReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       unixReadWrite: (() { final guardedValue = map['unixReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

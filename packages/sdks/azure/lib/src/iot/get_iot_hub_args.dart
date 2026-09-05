@@ -12,7 +12,7 @@ class GetIotHubArgs {
   /// The name of the Resource Group where the IoTHub exists.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the IoTHub.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetIotHubArgs].
   /// [name] The name of this IoTHub.

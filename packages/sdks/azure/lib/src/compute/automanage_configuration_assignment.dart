@@ -263,7 +263,7 @@ import 'automanage_configuration_assignment_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -280,7 +280,7 @@ import 'automanage_configuration_assignment_state.dart';
 /// 			AdminPassword:                 pulumi.String("P@$$w0rd1234!"),
 /// 			DisablePasswordAuthentication: pulumi.Bool(false),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			OsDisk: &compute.LinuxVirtualMachineOsDiskArgs{
 /// 				Caching:            pulumi.String("ReadWrite"),
@@ -305,8 +305,8 @@ import 'automanage_configuration_assignment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewAutomanageConfigurationAssignment(ctx, "example", &compute.AutomanageConfigurationAssignmentArgs{
-/// 			VirtualMachineId: exampleLinuxVirtualMachine.ID(),
-/// 			ConfigurationId:  exampleConfiguration.ID(),
+/// 			VirtualMachineId: exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
+/// 			ConfigurationId:  exampleConfiguration.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -586,7 +586,7 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
           'azure:compute/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     configurationId = registerOutput<String>('configurationId');
     virtualMachineId = registerOutput<String>('virtualMachineId');
@@ -597,11 +597,12 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutomanageConfigurationAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutomanageConfigurationAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -615,6 +616,19 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    configurationId = registerOutput<String>('configurationId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+  }
+
+  /// Creates a typed reference to an existing [AutomanageConfigurationAssignment] resource.
+  AutomanageConfigurationAssignment.reference(String urn)
+    : super(
+        'azure:compute/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configurationId = registerOutput<String>('configurationId');
     virtualMachineId = registerOutput<String>('virtualMachineId');
   }

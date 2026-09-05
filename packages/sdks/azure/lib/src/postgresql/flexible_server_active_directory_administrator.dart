@@ -37,7 +37,7 @@ class FlexibleServerActiveDirectoryAdministrator extends pulumi.CustomResource {
           'azure:postgresql/flexibleServerActiveDirectoryAdministrator:FlexibleServerActiveDirectoryAdministrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     objectId = registerOutput<String>('objectId');
     principalName = registerOutput<String>('principalName');
@@ -52,11 +52,12 @@ class FlexibleServerActiveDirectoryAdministrator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlexibleServerActiveDirectoryAdministratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlexibleServerActiveDirectoryAdministrator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -70,6 +71,23 @@ class FlexibleServerActiveDirectoryAdministrator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    objectId = registerOutput<String>('objectId');
+    principalName = registerOutput<String>('principalName');
+    principalType = registerOutput<String>('principalType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [FlexibleServerActiveDirectoryAdministrator] resource.
+  FlexibleServerActiveDirectoryAdministrator.reference(String urn)
+    : super(
+        'azure:postgresql/flexibleServerActiveDirectoryAdministrator:FlexibleServerActiveDirectoryAdministrator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     objectId = registerOutput<String>('objectId');
     principalName = registerOutput<String>('principalName');
     principalType = registerOutput<String>('principalType');

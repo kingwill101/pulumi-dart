@@ -130,7 +130,7 @@ import 'spring_cloud_new_relic_application_performance_monitoring_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudNewRelicApplicationPerformanceMonitoring(ctx, "example", &appplatform.SpringCloudNewRelicApplicationPerformanceMonitoringArgs{
 /// 			Name:                 pulumi.String("example"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 			AppName:              pulumi.String("example-app-name"),
 /// 			LicenseKey:           pulumi.String("example-license-key"),
 /// 			AppServerPort:        pulumi.Int(8080),
@@ -315,7 +315,8 @@ class SpringCloudNewRelicApplicationPerformanceMonitoring extends pulumi.CustomR
           'azure:appplatform/springCloudNewRelicApplicationPerformanceMonitoring:SpringCloudNewRelicApplicationPerformanceMonitoring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['licenseKey'],
         ) {
     agentEnabled = registerOutput<bool?>('agentEnabled');
     appName = registerOutput<String>('appName');
@@ -325,8 +326,8 @@ class SpringCloudNewRelicApplicationPerformanceMonitoring extends pulumi.CustomR
     autoTransactionNamingEnabled = registerOutput<bool?>('autoTransactionNamingEnabled');
     customTracingEnabled = registerOutput<bool?>('customTracingEnabled');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
-    labels = registerOutput<Map<String, String>?>('labels');
-    licenseKey = registerOutput<String>('licenseKey');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    licenseKey = registerOutput<String>('licenseKey', isSecret: true);
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
@@ -336,11 +337,12 @@ class SpringCloudNewRelicApplicationPerformanceMonitoring extends pulumi.CustomR
     String name,
     pulumi.Input<String> id, {
     SpringCloudNewRelicApplicationPerformanceMonitoringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudNewRelicApplicationPerformanceMonitoring._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -362,8 +364,32 @@ class SpringCloudNewRelicApplicationPerformanceMonitoring extends pulumi.CustomR
     autoTransactionNamingEnabled = registerOutput<bool?>('autoTransactionNamingEnabled');
     customTracingEnabled = registerOutput<bool?>('customTracingEnabled');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
-    labels = registerOutput<Map<String, String>?>('labels');
-    licenseKey = registerOutput<String>('licenseKey');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    licenseKey = registerOutput<String>('licenseKey', isSecret: true);
+    this.name = registerOutput<String>('name');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudNewRelicApplicationPerformanceMonitoring] resource.
+  SpringCloudNewRelicApplicationPerformanceMonitoring.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudNewRelicApplicationPerformanceMonitoring:SpringCloudNewRelicApplicationPerformanceMonitoring',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['licenseKey'],
+        isResourceReference: true,
+      ) {
+    agentEnabled = registerOutput<bool?>('agentEnabled');
+    appName = registerOutput<String>('appName');
+    appServerPort = registerOutput<int?>('appServerPort');
+    auditModeEnabled = registerOutput<bool?>('auditModeEnabled');
+    autoAppNamingEnabled = registerOutput<bool?>('autoAppNamingEnabled');
+    autoTransactionNamingEnabled = registerOutput<bool?>('autoTransactionNamingEnabled');
+    customTracingEnabled = registerOutput<bool?>('customTracingEnabled');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    licenseKey = registerOutput<String>('licenseKey', isSecret: true);
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }

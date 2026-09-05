@@ -10,7 +10,7 @@ class ReplicaSetArgs {
   /// The ID of the Domain Service for which to create this Replica Set. Changing this forces a new resource to be created.
   final pulumi.Input<String> domainServiceId;
   /// The Azure location where this Replica Set should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the subnet in which to place this Replica Set. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
 

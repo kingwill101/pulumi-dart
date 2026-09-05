@@ -25,8 +25,8 @@ class HadoopClusterRolesWorkerNodeAutoscaleCapacity {
 
   factory HadoopClusterRolesWorkerNodeAutoscaleCapacity.fromMap(Map<String, dynamic> map) {
     return HadoopClusterRolesWorkerNodeAutoscaleCapacity(
-      maxInstanceCount: pulumi.Input.fromValue(map['maxInstanceCount'] as int),
-      minInstanceCount: pulumi.Input.fromValue(map['minInstanceCount'] as int),
+      maxInstanceCount: pulumi.Input.fromValue((map['maxInstanceCount'] as num).toInt()),
+      minInstanceCount: pulumi.Input.fromValue((map['minInstanceCount'] as num).toInt()),
     );
   }
 }

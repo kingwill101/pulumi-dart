@@ -5,15 +5,15 @@ import 'group_container_volume_git_repo.dart';
 
 class GroupContainerVolume {
   /// Boolean as to whether the mounted volume should be an empty directory. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? emptyDir;
+  final pulumi.Input<bool?>? emptyDir;
   /// A `gitRepo` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<GroupContainerVolumeGitRepo>? gitRepo;
+  final pulumi.Input<GroupContainerVolumeGitRepo?>? gitRepo;
   /// The path on which this volume is to be mounted. Changing this forces a new resource to be created.
   final pulumi.Input<String> mountPath;
   /// The name of the volume mount. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// Specify if the volume is to be mounted as read only or not. The default value is `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// A map of secrets that will be mounted as files in the volume. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Exactly one of `emptyDir` volume, `gitRepo` volume, `secret` volume or storage account volume (`shareName`, `storageAccountName`, and `storageAccountKey`) must be specified.
@@ -21,13 +21,13 @@ class GroupContainerVolume {
   /// &gt; **Note:** when using a storage account volume, all of `shareName`, `storageAccountName`, and `storageAccountKey` must be specified.
   ///
   /// &gt; **Note:** The secret values must be supplied as Base64 encoded strings. The secret values are decoded to their original values when mounted in the volume on the container.
-  final pulumi.Input<Map<String, String>>? secret;
+  final pulumi.Input<Map<String, String>?>? secret;
   /// The Azure storage share that is to be mounted as a volume. This must be created on the storage account specified as above. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? shareName;
+  final pulumi.Input<String?>? shareName;
   /// The access key for the Azure Storage account specified as above. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageAccountKey;
+  final pulumi.Input<String?>? storageAccountKey;
   /// The Azure storage account from which the volume is to be mounted. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [GroupContainerVolume].
   /// [emptyDir] Boolean as to whether the mounted volume should be an empty directory. Defaults to `false`. Changing this forces a new resource to be created.

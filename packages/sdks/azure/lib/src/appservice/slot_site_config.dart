@@ -7,87 +7,87 @@ import 'slot_site_config_scm_ip_restriction.dart';
 
 class SlotSiteConfig {
   /// Are Managed Identity Credentials used for Azure Container Registry pull
-  final pulumi.Input<bool>? acrUseManagedIdentityCredentials;
+  final pulumi.Input<bool?>? acrUseManagedIdentityCredentials;
   /// If using User Managed Identity, the User Managed Identity Client Id
   ///
   /// &gt; **NOTE:** When using User Managed Identity with Azure Container Registry the Identity will need to have the [ACRPull role assigned](https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity#example-1-access-with-a-user-assigned-identity)
-  final pulumi.Input<String>? acrUserManagedIdentityClientId;
+  final pulumi.Input<String?>? acrUserManagedIdentityClientId;
   /// Should the slot be loaded at all times? Defaults to `false`.
   ///
   /// &gt; **NOTE:** when using an App Service Plan in the `Free` or `Shared` Tiers `alwaysOn` must be set to `false`.
-  final pulumi.Input<bool>? alwaysOn;
+  final pulumi.Input<bool?>? alwaysOn;
   /// App command line to launch, e.g. `/sbin/myserver -b 0.0.0.0`.
-  final pulumi.Input<String>? appCommandLine;
+  final pulumi.Input<String?>? appCommandLine;
   /// The name of the slot to automatically swap to during deployment
-  final pulumi.Input<String>? autoSwapSlotName;
+  final pulumi.Input<String?>? autoSwapSlotName;
   /// A `cors` block as defined below.
-  final pulumi.Input<SlotSiteConfigCors>? cors;
+  final pulumi.Input<SlotSiteConfigCors?>? cors;
   /// The ordering of default documents to load, if an address isn't specified.
-  final pulumi.Input<List<String>>? defaultDocuments;
+  final pulumi.Input<List<String>?>? defaultDocuments;
   /// The version of the .NET framework's CLR used in this App Service Slot. Possible values are `v2.0` (which will use the latest version of the .NET framework for the .NET CLR v2 - currently `.net 3.5`), `v4.0` (which corresponds to the latest version of the .NET CLR v4 - which at the time of writing is `.net 4.7.1`), `v5.0` and `v6.0`. [For more information on which .NET CLR version to use based on the .NET framework you're targeting - please see this table](https://en.wikipedia.org/wiki/.NET_Framework_version_history#Overview). Defaults to `v4.0`.
-  final pulumi.Input<String>? dotnetFrameworkVersion;
+  final pulumi.Input<String?>? dotnetFrameworkVersion;
   /// State of FTP / FTPS service for this App Service Slot. Possible values include: `AllAllowed`, `FtpsOnly` and `Disabled`.
-  final pulumi.Input<String>? ftpsState;
+  final pulumi.Input<String?>? ftpsState;
   /// The health check path to be pinged by App Service Slot. [For more information - please see App Service health check announcement](https://azure.github.io/AppService/2020/08/24/healthcheck-on-app-service.html).
-  final pulumi.Input<String>? healthCheckPath;
+  final pulumi.Input<String?>? healthCheckPath;
   /// Is HTTP2 Enabled on this App Service? Defaults to `false`.
-  final pulumi.Input<bool>? http2Enabled;
+  final pulumi.Input<bool?>? http2Enabled;
   /// A list of objects representing ip restrictions as defined below.
   ///
   /// &gt; **NOTE** User has to explicitly set `ipRestriction` to empty slice (`[]`) to remove it.
-  final pulumi.Input<List<SlotSiteConfigIpRestriction>>? ipRestrictions;
+  final pulumi.Input<List<SlotSiteConfigIpRestriction>?>? ipRestrictions;
   /// The Java Container to use. If specified `javaVersion` and `javaContainerVersion` must also be specified. Possible values are `JAVA`, `JETTY`, and `TOMCAT`.
-  final pulumi.Input<String>? javaContainer;
+  final pulumi.Input<String?>? javaContainer;
   /// The version of the Java Container to use. If specified `javaVersion` and `javaContainer` must also be specified.
-  final pulumi.Input<String>? javaContainerVersion;
+  final pulumi.Input<String?>? javaContainerVersion;
   /// The version of Java to use. If specified `javaContainer` and `javaContainerVersion` must also be specified. Possible values are `1.7`, `1.8`, and `11` and their specific versions - except for Java 11 (e.g. `1.7.0_80`, `1.8.0_181`, `11`)
-  final pulumi.Input<String>? javaVersion;
+  final pulumi.Input<String?>? javaVersion;
   /// Linux App Framework and version for the App Service Slot. Possible options are a Docker container (`DOCKER|&lt;user/image:tag&gt;`), a base-64 encoded Docker Compose file (`COMPOSE|${filebase64("compose.yml")}`) or a base-64 encoded Kubernetes Manifest (`KUBE|${filebase64("kubernetes.yml")}`).
   ///
   /// &gt; **NOTE:** To set this property the App Service Plan to which the App belongs must be configured with `kind = "Linux"`, and `reserved = true` or the API will reject any value supplied.
-  final pulumi.Input<String>? linuxFxVersion;
+  final pulumi.Input<String?>? linuxFxVersion;
   /// Is "MySQL In App" Enabled? This runs a local MySQL instance with your app and shares resources from the App Service plan.
   ///
   /// &gt; **NOTE:** MySQL In App is not intended for production environments and will not scale beyond a single instance. Instead you may wish to use Azure Database for MySQL.
-  final pulumi.Input<bool>? localMysqlEnabled;
+  final pulumi.Input<bool?>? localMysqlEnabled;
   /// The Managed Pipeline Mode. Possible values are `Integrated` and `Classic`. Defaults to `Integrated`.
-  final pulumi.Input<String>? managedPipelineMode;
+  final pulumi.Input<String?>? managedPipelineMode;
   /// The minimum supported TLS version for the app service. Possible values are `1.0`, `1.1`, and `1.2`. Defaults to `1.2` for new app services.
-  final pulumi.Input<String>? minTlsVersion;
+  final pulumi.Input<String?>? minTlsVersion;
   /// The scaled number of workers (for per site scaling) of this App Service Slot. Requires that `perSiteScaling` is enabled on the `azure.appservice.Plan`. [For more information - please see Microsoft documentation on high-density hosting](https://docs.microsoft.com/azure/app-service/manage-scale-per-app).
-  final pulumi.Input<int>? numberOfWorkers;
+  final pulumi.Input<int?>? numberOfWorkers;
   /// The version of PHP to use in this App Service Slot. Possible values are `5.5`, `5.6`, `7.0`, `7.1`, `7.2`, `7.3`, and `7.4`.
-  final pulumi.Input<String>? phpVersion;
+  final pulumi.Input<String?>? phpVersion;
   /// The version of Python to use in this App Service Slot. Possible values are `2.7` and `3.4`.
-  final pulumi.Input<String>? pythonVersion;
+  final pulumi.Input<String?>? pythonVersion;
   /// Is Remote Debugging Enabled? Defaults to `false`.
-  final pulumi.Input<bool>? remoteDebuggingEnabled;
+  final pulumi.Input<bool?>? remoteDebuggingEnabled;
   /// Which version of Visual Studio should the Remote Debugger be compatible with? Currently only `VS2022` is supported.
-  final pulumi.Input<String>? remoteDebuggingVersion;
+  final pulumi.Input<String?>? remoteDebuggingVersion;
   /// A list of `scmIpRestriction` objects representing IP restrictions as defined below.
   ///
   /// &gt; **NOTE** User has to explicitly set `scmIpRestriction` to empty slice (`[]`) to remove it.
-  final pulumi.Input<List<SlotSiteConfigScmIpRestriction>>? scmIpRestrictions;
+  final pulumi.Input<List<SlotSiteConfigScmIpRestriction>?>? scmIpRestrictions;
   /// The type of Source Control enabled for this App Service Slot. Defaults to `None`. Possible values are: `BitbucketGit`, `BitbucketHg`, `CodePlexGit`, `CodePlexHg`, `Dropbox`, `ExternalGit`, `ExternalHg`, `GitHub`, `LocalGit`, `None`, `OneDrive`, `Tfs`, `VSO`, and `VSTSRM`
-  final pulumi.Input<String>? scmType;
+  final pulumi.Input<String?>? scmType;
   /// IP security restrictions for scm to use main. Defaults to `false`.
   ///
   /// &gt; **NOTE** Any `scmIpRestriction` blocks configured are ignored by the service when `scmUseMainIpRestriction` is set to `true`. Any scm restrictions will become active if this is subsequently set to `false` or removed.
-  final pulumi.Input<bool>? scmUseMainIpRestriction;
+  final pulumi.Input<bool?>? scmUseMainIpRestriction;
   /// Should the App Service Slot run in 32 bit mode, rather than 64 bit mode?
   ///
   /// &gt; **NOTE:** when using an App Service Plan in the `Free` or `Shared` Tiers `use32BitWorkerProcess` must be set to `true`.
-  final pulumi.Input<bool>? use32BitWorkerProcess;
+  final pulumi.Input<bool?>? use32BitWorkerProcess;
   /// Should all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied? Defaults to `false`.
   ///
   /// &gt; **NOTE:** This setting supersedes the previous mechanism of setting the `appSettings` value of `WEBSITE_VNET_ROUTE_ALL`. However, to prevent older configurations breaking Terraform will update this value if it not explicitly set to the value in `app_settings.WEBSITE_VNET_ROUTE_ALL`.
-  final pulumi.Input<bool>? vnetRouteAllEnabled;
+  final pulumi.Input<bool?>? vnetRouteAllEnabled;
   /// Should WebSockets be enabled?
-  final pulumi.Input<bool>? websocketsEnabled;
+  final pulumi.Input<bool?>? websocketsEnabled;
   /// The Windows Docker container image (`DOCKER|&lt;user/image:tag&gt;`)
   ///
   /// Additional examples of how to run Containers via the `azure.appservice.Slot` resource can be found in the `./examples/app-service` directory within the GitHub Repository.
-  final pulumi.Input<String>? windowsFxVersion;
+  final pulumi.Input<String?>? windowsFxVersion;
 
   /// Creates a new [SlotSiteConfig].
   /// [acrUseManagedIdentityCredentials] Are Managed Identity Credentials used for Azure Container Registry pull
@@ -212,7 +212,7 @@ class SlotSiteConfig {
       localMysqlEnabled: (() { final guardedValue = map['localMysqlEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       managedPipelineMode: (() { final guardedValue = map['managedPipelineMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minTlsVersion: (() { final guardedValue = map['minTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfWorkers: (() { final guardedValue = map['numberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfWorkers: (() { final guardedValue = map['numberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       phpVersion: (() { final guardedValue = map['phpVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pythonVersion: (() { final guardedValue = map['pythonVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       remoteDebuggingEnabled: (() { final guardedValue = map['remoteDebuggingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

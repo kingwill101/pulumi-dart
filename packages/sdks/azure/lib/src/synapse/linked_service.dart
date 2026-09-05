@@ -233,7 +233,7 @@ import 'linked_service_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -242,7 +242,7 @@ import 'linked_service_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			ManagedVirtualNetworkEnabled:    pulumi.Bool(true),
@@ -255,7 +255,7 @@ import 'linked_service_state.dart';
 /// 		}
 /// 		exampleFirewallRule, err := synapse.NewFirewallRule(ctx, "example", &synapse.FirewallRuleArgs{
 /// 			Name:               pulumi.String("allowAll"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			StartIpAddress:     pulumi.String("0.0.0.0"),
 /// 			EndIpAddress:       pulumi.String("255.255.255.255"),
 /// 		})
@@ -264,7 +264,7 @@ import 'linked_service_state.dart';
 /// 		}
 /// 		exampleIntegrationRuntimeAzure, err := synapse.NewIntegrationRuntimeAzure(ctx, "example", &synapse.IntegrationRuntimeAzureArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:           example.Location,
 /// 		})
 /// 		if err != nil {
@@ -272,7 +272,7 @@ import 'linked_service_state.dart';
 /// 		}
 /// 		_, err = synapse.NewLinkedService(ctx, "example", &synapse.LinkedServiceArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:               pulumi.String("AzureBlobStorage"),
 /// 			TypePropertiesJson: exampleAccount.PrimaryConnectionString.ApplyT(func(primaryConnectionString string) (string, error) {
 /// 				return fmt.Sprintf("{\n  \\\"connectionString\\\": \\\"%v\\\"\n}\n", primaryConnectionString), nil
@@ -569,14 +569,14 @@ class LinkedService extends pulumi.CustomResource {
           'azure:synapse/linkedService:LinkedService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     integrationRuntime = registerOutput<LinkedServiceIntegrationRuntime?>('integrationRuntime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceIntegrationRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
     type = registerOutput<String>('type');
     typePropertiesJson = registerOutput<String>('typePropertiesJson');
@@ -587,11 +587,12 @@ class LinkedService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -605,12 +606,32 @@ class LinkedService extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     integrationRuntime = registerOutput<LinkedServiceIntegrationRuntime?>('integrationRuntime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceIntegrationRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+    type = registerOutput<String>('type');
+    typePropertiesJson = registerOutput<String>('typePropertiesJson');
+  }
+
+  /// Creates a typed reference to an existing [LinkedService] resource.
+  LinkedService.reference(String urn)
+    : super(
+        'azure:synapse/linkedService:LinkedService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    integrationRuntime = registerOutput<LinkedServiceIntegrationRuntime?>('integrationRuntime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceIntegrationRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
     type = registerOutput<String>('type');
     typePropertiesJson = registerOutput<String>('typePropertiesJson');

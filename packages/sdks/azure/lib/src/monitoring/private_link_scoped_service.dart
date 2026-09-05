@@ -130,7 +130,7 @@ import 'private_link_scoped_service_state.dart';
 /// 			Name:              pulumi.String("example-amplsservice"),
 /// 			ResourceGroupName: example.Name,
 /// 			ScopeName:         examplePrivateLinkScope.Name,
-/// 			LinkedResourceId:  exampleInsights.ID(),
+/// 			LinkedResourceId:  exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -291,7 +291,7 @@ class PrivateLinkScopedService extends pulumi.CustomResource {
           'azure:monitoring/privateLinkScopedService:PrivateLinkScopedService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     linkedResourceId = registerOutput<String>('linkedResourceId');
     this.name = registerOutput<String>('name');
@@ -304,11 +304,12 @@ class PrivateLinkScopedService extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivateLinkScopedServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivateLinkScopedService._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -322,6 +323,21 @@ class PrivateLinkScopedService extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    linkedResourceId = registerOutput<String>('linkedResourceId');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scopeName = registerOutput<String>('scopeName');
+  }
+
+  /// Creates a typed reference to an existing [PrivateLinkScopedService] resource.
+  PrivateLinkScopedService.reference(String urn)
+    : super(
+        'azure:monitoring/privateLinkScopedService:PrivateLinkScopedService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     linkedResourceId = registerOutput<String>('linkedResourceId');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

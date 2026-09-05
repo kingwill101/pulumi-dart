@@ -6,11 +6,11 @@ class WindowsFunctionAppSlotAuthSettingsFacebook {
   /// The App ID of the Facebook app used for login.
   final pulumi.Input<String> appId;
   /// The App Secret of the Facebook app used for Facebook login. Cannot be specified with `appSecretSettingName`.
-  final pulumi.Input<String>? appSecret;
+  final pulumi.Input<String?>? appSecret;
   /// The app setting name that contains the `appSecret` value used for Facebook login. Cannot be specified with `appSecret`.
-  final pulumi.Input<String>? appSecretSettingName;
+  final pulumi.Input<String?>? appSecretSettingName;
   /// Specifies a list of OAuth 2.0 scopes to be requested as part of Facebook Login authentication.
-  final pulumi.Input<List<String>>? oauthScopes;
+  final pulumi.Input<List<String>?>? oauthScopes;
 
   /// Creates a new [WindowsFunctionAppSlotAuthSettingsFacebook].
   /// [appId] The App ID of the Facebook app used for login.

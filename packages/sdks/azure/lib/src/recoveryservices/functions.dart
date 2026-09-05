@@ -134,3 +134,14 @@ Future<GetVaultResult> getVault(
   );
   return GetVaultResult.fromMap(result);
 }
+
+pulumi.Output<GetVaultResult> getVaultOutput(
+  GetVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:recoveryservices/getVault:getVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVaultResult.fromMap);
+}

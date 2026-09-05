@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ProductPolicy resources.
 class ProductPolicyState {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// The ID of the API Management Product within the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? productId;
+  final pulumi.Input<String?>? productId;
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The XML Content for this Policy.
-  final pulumi.Input<String>? xmlContent;
+  final pulumi.Input<String?>? xmlContent;
   /// A link to a Policy XML Document, which must be publicly available.
-  final pulumi.Input<String>? xmlLink;
+  final pulumi.Input<String?>? xmlLink;
 
   /// Creates a new [ProductPolicyState].
   /// [apiManagementName] The name of the API Management Service. Changing this forces a new resource to be created.

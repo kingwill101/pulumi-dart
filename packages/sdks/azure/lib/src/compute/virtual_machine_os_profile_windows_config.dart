@@ -6,17 +6,17 @@ import 'virtual_machine_os_profile_windows_config_winrm.dart';
 
 class VirtualMachineOsProfileWindowsConfig {
   /// An `additionalUnattendConfig` block as defined below.
-  final pulumi.Input<List<VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfig>>? additionalUnattendConfigs;
+  final pulumi.Input<List<VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfig>?>? additionalUnattendConfigs;
   /// Are automatic updates enabled on this Virtual Machine? Defaults to `false`.
-  final pulumi.Input<bool>? enableAutomaticUpgrades;
+  final pulumi.Input<bool?>? enableAutomaticUpgrades;
   /// Should the Azure Virtual Machine Guest Agent be installed on this Virtual Machine? Defaults to `false`.
   ///
   /// &gt; **NOTE:** This is different from the Default value used for this field within Azure.
-  final pulumi.Input<bool>? provisionVmAgent;
+  final pulumi.Input<bool?>? provisionVmAgent;
   /// Specifies the time zone of the virtual machine, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/). Changing this forces a new resource to be created.
-  final pulumi.Input<String>? timezone;
+  final pulumi.Input<String?>? timezone;
   /// One or more `winrm` blocks as defined below.
-  final pulumi.Input<List<VirtualMachineOsProfileWindowsConfigWinrm>>? winrms;
+  final pulumi.Input<List<VirtualMachineOsProfileWindowsConfigWinrm>?>? winrms;
 
   /// Creates a new [VirtualMachineOsProfileWindowsConfig].
   /// [additionalUnattendConfigs] An `additionalUnattendConfig` block as defined below.

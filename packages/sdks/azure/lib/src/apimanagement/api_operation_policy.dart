@@ -432,7 +432,7 @@ class ApiOperationPolicy extends pulumi.CustomResource {
           'azure:apimanagement/apiOperationPolicy:ApiOperationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
@@ -447,11 +447,12 @@ class ApiOperationPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiOperationPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiOperationPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -465,6 +466,23 @@ class ApiOperationPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiName = registerOutput<String>('apiName');
+    operationId = registerOutput<String>('operationId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    xmlContent = registerOutput<String>('xmlContent');
+    xmlLink = registerOutput<String?>('xmlLink');
+  }
+
+  /// Creates a typed reference to an existing [ApiOperationPolicy] resource.
+  ApiOperationPolicy.reference(String urn)
+    : super(
+        'azure:apimanagement/apiOperationPolicy:ApiOperationPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
     operationId = registerOutput<String>('operationId');

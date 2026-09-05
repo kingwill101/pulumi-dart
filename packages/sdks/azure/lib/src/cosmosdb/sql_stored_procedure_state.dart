@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SqlStoredProcedure resources.
 class SqlStoredProcedureState {
   /// The name of the Cosmos DB Account to create the stored procedure within. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The body of the stored procedure.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// The name of the Cosmos DB SQL Container to create the stored procedure within. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// The name of the Cosmos DB SQL Database to create the stored procedure within. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Specifies the name of the Cosmos DB SQL Stored Procedure. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [SqlStoredProcedureState].
   /// [accountName] The name of the Cosmos DB Account to create the stored procedure within. Changing this forces a new resource to be created.

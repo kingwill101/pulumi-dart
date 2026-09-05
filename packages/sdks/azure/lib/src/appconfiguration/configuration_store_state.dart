@@ -12,53 +12,53 @@ import 'configuration_store_secondary_write_key.dart';
 /// Input properties used for looking up and filtering ConfigurationStore resources.
 class ConfigurationStoreState {
   /// The data plane proxy authentication mode. Possible values are `Local` and `Pass-through`. Defaults to `Local`.
-  final pulumi.Input<String>? dataPlaneProxyAuthenticationMode;
+  final pulumi.Input<String?>? dataPlaneProxyAuthenticationMode;
   /// Whether data plane proxy private link delegation is enabled. Defaults to `false`.
   ///
   /// &gt; **Note:** `dataPlaneProxyPrivateLinkDelegationEnabled` cannot be set to `true` when `dataPlaneProxyAuthenticationMode` is set to `Local`.
-  final pulumi.Input<bool>? dataPlaneProxyPrivateLinkDelegationEnabled;
+  final pulumi.Input<bool?>? dataPlaneProxyPrivateLinkDelegationEnabled;
   /// An `encryption` block as defined below.
-  final pulumi.Input<ConfigurationStoreEncryption>? encryption;
+  final pulumi.Input<ConfigurationStoreEncryption?>? encryption;
   /// The URL of the App Configuration Replica.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// An `identity` block as defined below.
-  final pulumi.Input<ConfigurationStoreIdentity>? identity;
+  final pulumi.Input<ConfigurationStoreIdentity?>? identity;
   /// Whether local authentication methods is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? localAuthEnabled;
+  final pulumi.Input<bool?>? localAuthEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the App Configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `primaryReadKey` block as defined below containing the primary read access key.
-  final pulumi.Input<List<ConfigurationStorePrimaryReadKey>>? primaryReadKeys;
+  final pulumi.Input<List<ConfigurationStorePrimaryReadKey>?>? primaryReadKeys;
   /// A `primaryWriteKey` block as defined below containing the primary write access key.
-  final pulumi.Input<List<ConfigurationStorePrimaryWriteKey>>? primaryWriteKeys;
+  final pulumi.Input<List<ConfigurationStorePrimaryWriteKey>?>? primaryWriteKeys;
   /// The Public Network Access setting of the App Configuration. Possible values are `Enabled` and `Disabled`.
   ///
   /// &gt; **Note:** If `publicNetworkAccess` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// Whether Purge Protection is enabled. This field only works for `standard` sku. Defaults to `false`.
   ///
   /// &gt; **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
-  final pulumi.Input<bool>? purgeProtectionEnabled;
+  final pulumi.Input<bool?>? purgeProtectionEnabled;
   /// One or more `replica` blocks as defined below.
-  final pulumi.Input<List<ConfigurationStoreReplica>>? replicas;
+  final pulumi.Input<List<ConfigurationStoreReplica>?>? replicas;
   /// The name of the resource group in which to create the App Configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `secondaryReadKey` block as defined below containing the secondary read access key.
-  final pulumi.Input<List<ConfigurationStoreSecondaryReadKey>>? secondaryReadKeys;
+  final pulumi.Input<List<ConfigurationStoreSecondaryReadKey>?>? secondaryReadKeys;
   /// A `secondaryWriteKey` block as defined below containing the secondary write access key.
-  final pulumi.Input<List<ConfigurationStoreSecondaryWriteKey>>? secondaryWriteKeys;
+  final pulumi.Input<List<ConfigurationStoreSecondaryWriteKey>?>? secondaryWriteKeys;
   /// The SKU name of the App Configuration. Possible values are `free`, `developer`, `standard` and `premium`. Defaults to `free`.
   ///
   /// &gt; **Note:** Azure does not support downgrading `sku` to a lower tier, except from `premium` to `standard`. Downgrading will force a new resource to be created.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// The number of days that items should be retained for once soft-deleted. This field only works for `standard` sku. This value can be between `1` and `7` days. Defaults to `7`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If Purge Protection is enabled, this field can only be configured one time and cannot be updated.
-  final pulumi.Input<int>? softDeleteRetentionDays;
+  final pulumi.Input<int?>? softDeleteRetentionDays;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConfigurationStoreState].
   /// [dataPlaneProxyAuthenticationMode] The data plane proxy authentication mode. Possible values are `Local` and `Pass-through`. Defaults to `Local`.
@@ -145,7 +145,7 @@ class ConfigurationStoreState {
       secondaryReadKeys: (() { final guardedValue = map['secondaryReadKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationStoreSecondaryReadKey>(guardedValue, (value) => ConfigurationStoreSecondaryReadKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
       secondaryWriteKeys: (() { final guardedValue = map['secondaryWriteKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationStoreSecondaryWriteKey>(guardedValue, (value) => ConfigurationStoreSecondaryWriteKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      softDeleteRetentionDays: (() { final guardedValue = map['softDeleteRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      softDeleteRetentionDays: (() { final guardedValue = map['softDeleteRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

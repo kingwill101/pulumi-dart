@@ -224,7 +224,7 @@ import 'protected_file_share_state.dart';
 /// 		protection_container, err := backup.NewContainerStorageAccount(ctx, "protection-container", &backup.ContainerStorageAccountArgs{
 /// 			ResourceGroupName: example.Name,
 /// 			RecoveryVaultName: vault.Name,
-/// 			StorageAccountId:  sa.ID(),
+/// 			StorageAccountId:  sa.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -249,7 +249,7 @@ import 'protected_file_share_state.dart';
 /// 			RecoveryVaultName:      vault.Name,
 /// 			SourceStorageAccountId: protection_container.StorageAccountId,
 /// 			SourceFileShareName:    exampleShare.Name,
-/// 			BackupPolicyId:         examplePolicyFileShare.ID(),
+/// 			BackupPolicyId:         examplePolicyFileShare.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -498,7 +498,7 @@ class ProtectedFileShare extends pulumi.CustomResource {
           'azure:backup/protectedFileShare:ProtectedFileShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
@@ -512,11 +512,12 @@ class ProtectedFileShare extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProtectedFileShareState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProtectedFileShare._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -530,6 +531,22 @@ class ProtectedFileShare extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceFileShareName = registerOutput<String>('sourceFileShareName');
+    sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [ProtectedFileShare] resource.
+  ProtectedFileShare.reference(String urn)
+    : super(
+        'azure:backup/protectedFileShare:ProtectedFileShare',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');

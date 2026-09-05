@@ -14,11 +14,11 @@ class BackupPolicyMysqlFlexibleServerArgs {
   /// A `defaultRetentionRule` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<BackupPolicyMysqlFlexibleServerDefaultRetentionRule> defaultRetentionRule;
   /// Specifies the name of the Backup Policy for the MySQL Flexible Server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `retentionRule` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<BackupPolicyMysqlFlexibleServerRetentionRule>>? retentionRules;
+  final pulumi.Input<List<BackupPolicyMysqlFlexibleServerRetentionRule>?>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// The ID of the Backup Vault where the Backup Policy MySQL Flexible Server should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> vaultId;
 

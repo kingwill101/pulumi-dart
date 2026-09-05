@@ -104,8 +104,8 @@ import 'mover_agent_state.dart';
 /// 		}
 /// 		_, err = storage.NewMoverAgent(ctx, "example", &storage.MoverAgentArgs{
 /// 			Name:           pulumi.String("example-sa"),
-/// 			StorageMoverId: exampleMover.ID(),
-/// 			ArcVirtualMachineId: example.ID().ApplyT(func(id string) (string, error) {
+/// 			StorageMoverId: exampleMover.ID().ToIDOutput().ToStringOutput(),
+/// 			ArcVirtualMachineId: example.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("%v/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 			ArcVirtualMachineUuid: pulumi.String("3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"),
@@ -252,7 +252,7 @@ class MoverAgent extends pulumi.CustomResource {
           'azure:storage/moverAgent:MoverAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     arcVirtualMachineId = registerOutput<String>('arcVirtualMachineId');
     arcVirtualMachineUuid = registerOutput<String>('arcVirtualMachineUuid');
@@ -266,11 +266,12 @@ class MoverAgent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MoverAgentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MoverAgent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -284,6 +285,22 @@ class MoverAgent extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arcVirtualMachineId = registerOutput<String>('arcVirtualMachineId');
+    arcVirtualMachineUuid = registerOutput<String>('arcVirtualMachineUuid');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    storageMoverId = registerOutput<String>('storageMoverId');
+  }
+
+  /// Creates a typed reference to an existing [MoverAgent] resource.
+  MoverAgent.reference(String urn)
+    : super(
+        'azure:storage/moverAgent:MoverAgent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arcVirtualMachineId = registerOutput<String>('arcVirtualMachineId');
     arcVirtualMachineUuid = registerOutput<String>('arcVirtualMachineUuid');
     description = registerOutput<String?>('description');

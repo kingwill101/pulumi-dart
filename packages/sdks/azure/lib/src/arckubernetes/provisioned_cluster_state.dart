@@ -7,35 +7,35 @@ import 'provisioned_cluster_identity.dart';
 /// Input properties used for looking up and filtering ProvisionedCluster resources.
 class ProvisionedClusterState {
   /// The version of the agent running on the cluster resource.
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// Whether the Arc agents will be upgraded automatically to the latest version. Defaults to `true`.
-  final pulumi.Input<bool>? arcAgentAutoUpgradeEnabled;
+  final pulumi.Input<bool?>? arcAgentAutoUpgradeEnabled;
   /// The version of the Arc agents to be installed on the cluster.
-  final pulumi.Input<String>? arcAgentDesiredVersion;
+  final pulumi.Input<String?>? arcAgentDesiredVersion;
   /// An `azureActiveDirectory` block as defined below.
-  final pulumi.Input<ProvisionedClusterAzureActiveDirectory>? azureActiveDirectory;
+  final pulumi.Input<ProvisionedClusterAzureActiveDirectory?>? azureActiveDirectory;
   /// The distribution running on this Arc Kubernetes Provisioned Cluster.
-  final pulumi.Input<String>? distribution;
+  final pulumi.Input<String?>? distribution;
   /// An `identity` block as defined below. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
-  final pulumi.Input<ProvisionedClusterIdentity>? identity;
+  final pulumi.Input<ProvisionedClusterIdentity?>? identity;
   /// The infrastructure on which the Arc Kubernetes Provisioned Cluster is running on.
-  final pulumi.Input<String>? infrastructure;
+  final pulumi.Input<String?>? infrastructure;
   /// The Kubernetes version of the cluster resource.
-  final pulumi.Input<String>? kubernetesVersion;
+  final pulumi.Input<String?>? kubernetesVersion;
   /// The Azure Region where the Arc Kubernetes Provisioned Cluster should exist. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Arc Kubernetes Provisioned Cluster. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The cluster offering.
-  final pulumi.Input<String>? offering;
+  final pulumi.Input<String?>? offering;
   /// The name of the Resource Group where the Arc Kubernetes Provisioned Cluster should exist. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Arc Kubernetes Provisioned Cluster.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The number of CPU cores present in the cluster resource.
-  final pulumi.Input<int>? totalCoreCount;
+  final pulumi.Input<int?>? totalCoreCount;
   /// The number of nodes present in the cluster resource.
-  final pulumi.Input<int>? totalNodeCount;
+  final pulumi.Input<int?>? totalNodeCount;
 
   /// Creates a new [ProvisionedClusterState].
   /// [agentVersion] The version of the agent running on the cluster resource.
@@ -106,8 +106,8 @@ class ProvisionedClusterState {
       offering: (() { final guardedValue = map['offering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      totalCoreCount: (() { final guardedValue = map['totalCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      totalNodeCount: (() { final guardedValue = map['totalNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      totalCoreCount: (() { final guardedValue = map['totalCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      totalNodeCount: (() { final guardedValue = map['totalNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedClusterAuthenticationCertificate {
   /// The certificate's CN.
-  final pulumi.Input<String>? commonName;
+  final pulumi.Input<String?>? commonName;
   /// The thumbprint of the certificate.
   final pulumi.Input<String> thumbprint;
   /// The type of the certificate. Can be `AdminClient` or `ReadOnlyClient`.

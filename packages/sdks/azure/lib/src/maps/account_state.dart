@@ -8,31 +8,31 @@ import 'account_identity.dart';
 /// Input properties used for looking up and filtering Account resources.
 class AccountState {
   /// A `cors` block as defined below
-  final pulumi.Input<AccountCors>? cors;
+  final pulumi.Input<AccountCors?>? cors;
   /// One or more `dataStore` blocks as defined below.
-  final pulumi.Input<List<AccountDataStore>>? dataStores;
+  final pulumi.Input<List<AccountDataStore>?>? dataStores;
   /// An `identity` block as defined below.
-  final pulumi.Input<AccountIdentity>? identity;
+  final pulumi.Input<AccountIdentity?>? identity;
   /// Is local authentication enabled for this Azure Maps Account? When `false`, all authentication to the Azure Maps data-plane REST API is disabled, except Azure AD authentication. Defaults to `true`.
-  final pulumi.Input<bool>? localAuthenticationEnabled;
+  final pulumi.Input<bool?>? localAuthenticationEnabled;
   /// The Location in which the Azure Maps Account should be provisioned. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Azure Maps Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The primary key used to authenticate and authorize access to the Maps REST APIs.
-  final pulumi.Input<String>? primaryAccessKey;
+  final pulumi.Input<String?>? primaryAccessKey;
   /// The name of the Resource Group in which the Azure Maps Account should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The secondary key used to authenticate and authorize access to the Maps REST APIs.
-  final pulumi.Input<String>? secondaryAccessKey;
+  final pulumi.Input<String?>? secondaryAccessKey;
   /// The SKU of the Azure Maps Account. Possible values are `S0`, `S1` and `G2`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Gen1 SKUs (`S0` and `S1`) are deprecated and can no longer be used for new deployments, which should instead use a Gen2 SKU (`G2`) - more information can be found [in the Azure documentation](https://learn.microsoft.com/azure/azure-maps/how-to-manage-pricing-tier).
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// A mapping of tags to assign to the Azure Maps Account.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A unique identifier for the Maps Account.
-  final pulumi.Input<String>? xMsClientId;
+  final pulumi.Input<String?>? xMsClientId;
 
   /// Creates a new [AccountState].
   /// [cors] A `cors` block as defined below

@@ -7,25 +7,25 @@ import 'eligible_role_assignment_ticket.dart';
 /// Input properties used for looking up and filtering EligibleRoleAssignment resources.
 class EligibleRoleAssignmentState {
   /// The condition that limits the resources that the role can be assigned to. See the [official conditions documentation](https://learn.microsoft.com/en-us/azure/role-based-access-control/conditions-overview#what-are-role-assignment-conditions) for details. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// The version of the condition. Supported values include `2.0`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `conditionVersion` is required when specifying `condition` and vice versa.
-  final pulumi.Input<String>? conditionVersion;
+  final pulumi.Input<String?>? conditionVersion;
   /// The justification of the role assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? justification;
+  final pulumi.Input<String?>? justification;
   /// Object ID of the principal for this eligible role assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// Type of principal to which the role will be assigned.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<String?>? principalType;
   /// The role definition ID for this eligible role assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
   /// A `schedule` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<EligibleRoleAssignmentSchedule>? schedule;
+  final pulumi.Input<EligibleRoleAssignmentSchedule?>? schedule;
   /// The scope for this eligible role assignment, should be a valid resource ID. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// A `ticket` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<EligibleRoleAssignmentTicket>? ticket;
+  final pulumi.Input<EligibleRoleAssignmentTicket?>? ticket;
 
   /// Creates a new [EligibleRoleAssignmentState].
   /// [condition] The condition that limits the resources that the role can be assigned to. See the [official conditions documentation](https://learn.microsoft.com/en-us/azure/role-based-access-control/conditions-overview#what-are-role-assignment-conditions) for details. Changing this forces a new resource to be created.

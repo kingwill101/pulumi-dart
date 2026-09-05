@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesMachineLearning {
-  final pulumi.Input<bool>? purgeSoftDeletedWorkspaceOnDestroy;
+  final pulumi.Input<bool?>? purgeSoftDeletedWorkspaceOnDestroy;
 
   /// Creates a new [FeaturesMachineLearning].
   /// [purgeSoftDeletedWorkspaceOnDestroy] Optional.

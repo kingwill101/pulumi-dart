@@ -7,25 +7,25 @@ import 'spring_cloud_gateway_route_config_route.dart';
 /// Input properties used for looking up and filtering SpringCloudGatewayRouteConfig resources.
 class SpringCloudGatewayRouteConfigState {
   /// Specifies a list of filters which are used to modify the request before sending it to the target endpoint, or the received response in app level.
-  final pulumi.Input<List<String>>? filters;
+  final pulumi.Input<List<String>?>? filters;
   /// The name which should be used for this Spring Cloud Gateway Route Config. Changing this forces a new Spring Cloud Gateway Route Config to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `openApi` blocks as defined below.
-  final pulumi.Input<SpringCloudGatewayRouteConfigOpenApi>? openApi;
+  final pulumi.Input<SpringCloudGatewayRouteConfigOpenApi?>? openApi;
   /// Specifies a list of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request.
-  final pulumi.Input<List<String>>? predicates;
+  final pulumi.Input<List<String>?>? predicates;
   /// Specifies the protocol of routed Spring Cloud App. Allowed values are `HTTP` and `HTTPS`.
   ///
   /// &gt; **Note:** You likely want to use `HTTPS` in a production environment, since `HTTP` offers no encryption.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// One or more `route` blocks as defined below.
-  final pulumi.Input<List<SpringCloudGatewayRouteConfigRoute>>? routes;
+  final pulumi.Input<List<SpringCloudGatewayRouteConfigRoute>?>? routes;
   /// The ID of the Spring Cloud App.
-  final pulumi.Input<String>? springCloudAppId;
+  final pulumi.Input<String?>? springCloudAppId;
   /// The ID of the Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway Route Config to be created.
-  final pulumi.Input<String>? springCloudGatewayId;
+  final pulumi.Input<String?>? springCloudGatewayId;
   /// Should the sso validation be enabled in app level?
-  final pulumi.Input<bool>? ssoValidationEnabled;
+  final pulumi.Input<bool?>? ssoValidationEnabled;
 
   /// Creates a new [SpringCloudGatewayRouteConfigState].
   /// [filters] Specifies a list of filters which are used to modify the request before sending it to the target endpoint, or the received response in app level.

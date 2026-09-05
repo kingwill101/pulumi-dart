@@ -9,15 +9,15 @@ import 'subscription_rule_correlation_filter.dart';
 /// {@macro pulumi_servicebus_subscription_rule_subscription_rule_args_doc}
 class SubscriptionRuleArgs {
   /// Represents set of actions written in SQL language-based syntax that is performed against a BrokeredMessage.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// A `correlationFilter` block as documented below to be evaluated against a BrokeredMessage. Required when `filterType` is set to `CorrelationFilter`.
-  final pulumi.Input<SubscriptionRuleCorrelationFilter>? correlationFilter;
+  final pulumi.Input<SubscriptionRuleCorrelationFilter?>? correlationFilter;
   /// Type of filter to be applied to a BrokeredMessage. Possible values are `SqlFilter` and `CorrelationFilter`.
   final pulumi.Input<String> filterType;
   /// Specifies the name of the ServiceBus Subscription Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filterType` is set to `SqlFilter`.
-  final pulumi.Input<String>? sqlFilter;
+  final pulumi.Input<String?>? sqlFilter;
   /// The ID of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> subscriptionId;
 

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetDelimitedTextAzureBlobFsLocation {
   /// Is the `fileSystem` using dynamic expression, function or system variables? Defaults to `false`.
-  final pulumi.Input<bool>? dynamicFileSystemEnabled;
+  final pulumi.Input<bool?>? dynamicFileSystemEnabled;
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
-  final pulumi.Input<bool>? dynamicFilenameEnabled;
+  final pulumi.Input<bool?>? dynamicFilenameEnabled;
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
-  final pulumi.Input<bool>? dynamicPathEnabled;
+  final pulumi.Input<bool?>? dynamicPathEnabled;
   /// The storage data lake gen2 file system on the Azure Blob Storage Account hosting the file.
-  final pulumi.Input<String>? fileSystem;
+  final pulumi.Input<String?>? fileSystem;
   /// The filename of the file.
-  final pulumi.Input<String>? filename;
+  final pulumi.Input<String?>? filename;
   /// The folder path to the file.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [DatasetDelimitedTextAzureBlobFsLocation].
   /// [dynamicFileSystemEnabled] Is the `fileSystem` using dynamic expression, function or system variables? Defaults to `false`.

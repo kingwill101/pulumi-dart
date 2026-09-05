@@ -149,8 +149,8 @@ import 'storage_insights_state.dart';
 /// 		_, err = loganalytics.NewStorageInsights(ctx, "example", &loganalytics.StorageInsightsArgs{
 /// 			Name:              pulumi.String("example-storageinsightconfig"),
 /// 			ResourceGroupName: example.Name,
-/// 			WorkspaceId:       exampleAnalyticsWorkspace.ID(),
-/// 			StorageAccountId:  exampleAccount.ID(),
+/// 			WorkspaceId:       exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:  exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountKey: exampleAccount.PrimaryAccessKey,
 /// 		})
 /// 		if err != nil {
@@ -333,14 +333,15 @@ class StorageInsights extends pulumi.CustomResource {
           'azure:loganalytics/storageInsights:StorageInsights',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountKey'],
         ) {
-    blobContainerNames = registerOutput<List<String>?>('blobContainerNames');
+    blobContainerNames = registerOutput<List<String>?>('blobContainerNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageAccountId = registerOutput<String>('storageAccountId');
-    storageAccountKey = registerOutput<String>('storageAccountKey');
-    tableNames = registerOutput<List<String>?>('tableNames');
+    storageAccountKey = registerOutput<String>('storageAccountKey', isSecret: true);
+    tableNames = registerOutput<List<String>?>('tableNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 
@@ -349,11 +350,12 @@ class StorageInsights extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StorageInsightsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StorageInsights._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -367,12 +369,31 @@ class StorageInsights extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    blobContainerNames = registerOutput<List<String>?>('blobContainerNames');
+    blobContainerNames = registerOutput<List<String>?>('blobContainerNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageAccountId = registerOutput<String>('storageAccountId');
-    storageAccountKey = registerOutput<String>('storageAccountKey');
-    tableNames = registerOutput<List<String>?>('tableNames');
+    storageAccountKey = registerOutput<String>('storageAccountKey', isSecret: true);
+    tableNames = registerOutput<List<String>?>('tableNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [StorageInsights] resource.
+  StorageInsights.reference(String urn)
+    : super(
+        'azure:loganalytics/storageInsights:StorageInsights',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountKey'],
+        isResourceReference: true,
+      ) {
+    blobContainerNames = registerOutput<List<String>?>('blobContainerNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    storageAccountKey = registerOutput<String>('storageAccountKey', isSecret: true);
+    tableNames = registerOutput<List<String>?>('tableNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     workspaceId = registerOutput<String>('workspaceId');
   }
 }

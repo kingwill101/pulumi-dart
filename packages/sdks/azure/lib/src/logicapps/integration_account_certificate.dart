@@ -258,7 +258,7 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
           'azure:logicapps/integrationAccountCertificate:IntegrationAccountCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     integrationAccountName = registerOutput<String>('integrationAccountName');
     keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>('keyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountCertificateKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -273,11 +273,12 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationAccountCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationAccountCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -291,6 +292,23 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>('keyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountCertificateKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadata = registerOutput<String?>('metadata');
+    this.name = registerOutput<String>('name');
+    publicCertificate = registerOutput<String?>('publicCertificate');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccountCertificate] resource.
+  IntegrationAccountCertificate.reference(String urn)
+    : super(
+        'azure:logicapps/integrationAccountCertificate:IntegrationAccountCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     integrationAccountName = registerOutput<String>('integrationAccountName');
     keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>('keyVaultKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountCertificateKeyVaultKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadata = registerOutput<String?>('metadata');

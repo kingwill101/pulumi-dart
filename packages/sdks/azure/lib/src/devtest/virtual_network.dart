@@ -294,14 +294,14 @@ class VirtualNetwork extends pulumi.CustomResource {
           'azure:devtest/virtualNetwork:VirtualNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     labName = registerOutput<String>('labName');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnet = registerOutput<VirtualNetworkSubnet>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkSubnet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }
 
@@ -310,11 +310,12 @@ class VirtualNetwork extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNetwork._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,7 +334,25 @@ class VirtualNetwork extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnet = registerOutput<VirtualNetworkSubnet>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkSubnet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetwork] resource.
+  VirtualNetwork.reference(String urn)
+    : super(
+        'azure:devtest/virtualNetwork:VirtualNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    labName = registerOutput<String>('labName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnet = registerOutput<VirtualNetworkSubnet>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkSubnet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }
 }

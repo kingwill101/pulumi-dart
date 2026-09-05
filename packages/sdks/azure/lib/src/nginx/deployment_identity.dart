@@ -6,9 +6,9 @@ class DeploymentIdentity {
   /// Specifies a list of user managed identity ids to be assigned.
   ///
   /// &gt; **Note:** This is required when `type` is set to `UserAssigned`.
-  final pulumi.Input<List<String>>? identityIds;
-  final pulumi.Input<String>? principalId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<List<String>?>? identityIds;
+  final pulumi.Input<String?>? principalId;
+  final pulumi.Input<String?>? tenantId;
   /// Specifies the identity type of the NGINX Deployment. Possible values are `SystemAssigned`, `UserAssigned` or `SystemAssigned, UserAssigned`.
   final pulumi.Input<String> type;
 

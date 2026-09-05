@@ -292,14 +292,15 @@ class ChannelSms extends pulumi.CustomResource {
           'azure:bot/channelSms:ChannelSms',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['smsChannelAuthToken'],
         ) {
     botName = registerOutput<String>('botName');
     location = registerOutput<String>('location');
     phoneNumber = registerOutput<String>('phoneNumber');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     smsChannelAccountSecurityId = registerOutput<String>('smsChannelAccountSecurityId');
-    smsChannelAuthToken = registerOutput<String>('smsChannelAuthToken');
+    smsChannelAuthToken = registerOutput<String>('smsChannelAuthToken', isSecret: true);
   }
 
   /// Gets an existing [ChannelSms] resource's state with the given [name] and [id].
@@ -307,11 +308,12 @@ class ChannelSms extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelSmsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ChannelSms._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -330,6 +332,24 @@ class ChannelSms extends pulumi.CustomResource {
     phoneNumber = registerOutput<String>('phoneNumber');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     smsChannelAccountSecurityId = registerOutput<String>('smsChannelAccountSecurityId');
-    smsChannelAuthToken = registerOutput<String>('smsChannelAuthToken');
+    smsChannelAuthToken = registerOutput<String>('smsChannelAuthToken', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ChannelSms] resource.
+  ChannelSms.reference(String urn)
+    : super(
+        'azure:bot/channelSms:ChannelSms',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['smsChannelAuthToken'],
+        isResourceReference: true,
+      ) {
+    botName = registerOutput<String>('botName');
+    location = registerOutput<String>('location');
+    phoneNumber = registerOutput<String>('phoneNumber');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    smsChannelAccountSecurityId = registerOutput<String>('smsChannelAccountSecurityId');
+    smsChannelAuthToken = registerOutput<String>('smsChannelAuthToken', isSecret: true);
   }
 }

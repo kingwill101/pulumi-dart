@@ -6,9 +6,9 @@ class EndpointDeliveryRuleRequestMethodCondition {
   /// Valid values are `DELETE`, `GET`, `HEAD`, `OPTIONS`, `POST` and `PUT`.
   final pulumi.Input<List<String>> matchValues;
   /// Defaults to `false`.
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Valid values are `Equal`. Defaults to `Equal`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
 
   /// Creates a new [EndpointDeliveryRuleRequestMethodCondition].
   /// [matchValues] Valid values are `DELETE`, `GET`, `HEAD`, `OPTIONS`, `POST` and `PUT`.

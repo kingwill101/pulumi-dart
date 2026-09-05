@@ -6,9 +6,9 @@ class JobTemplateContainerEnv {
   /// The name of the environment variable.
   final pulumi.Input<String> name;
   /// Name of the Container App secret from which to pull the environment variable value.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
   /// The value of the environment variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [JobTemplateContainerEnv].
   /// [name] The name of the environment variable.

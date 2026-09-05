@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_args.dart';
+import 'server_ipv4_firewall_rule.dart';
 import 'server_state.dart';
 
 /// Manages an Analysis Services Server.
@@ -267,7 +268,7 @@ class Server extends pulumi.CustomResource {
   /// URI and SAS token for a blob container to store backups.
   late final pulumi.Output<String?> backupBlobContainerUri;
   /// One or more `ipv4FirewallRule` block(s) as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipv4FirewallRules;
+  late final pulumi.Output<List<ServerIpv4FirewallRule>?> ipv4FirewallRules;
   /// The Azure location where the Analysis Services Server exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name of the Analysis Services Server. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
@@ -299,11 +300,12 @@ class Server extends pulumi.CustomResource {
           'azure:analysisservices/server:Server',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['backupBlobContainerUri'],
         ) {
-    adminUsers = registerOutput<List<String>?>('adminUsers');
-    backupBlobContainerUri = registerOutput<String?>('backupBlobContainerUri');
-    ipv4FirewallRules = registerOutput<List<Map<String, dynamic>>?>('ipv4FirewallRules');
+    adminUsers = registerOutput<List<String>?>('adminUsers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    backupBlobContainerUri = registerOutput<String?>('backupBlobContainerUri', isSecret: true);
+    ipv4FirewallRules = registerOutput<List<ServerIpv4FirewallRule>?>('ipv4FirewallRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerIpv4FirewallRule>(guardedValue, (value) => ServerIpv4FirewallRule.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     powerBiServiceEnabled = registerOutput<bool?>('powerBiServiceEnabled');
@@ -311,7 +313,7 @@ class Server extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverFullName = registerOutput<String>('serverFullName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Server] resource's state with the given [name] and [id].
@@ -319,11 +321,12 @@ class Server extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Server._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -337,9 +340,9 @@ class Server extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    adminUsers = registerOutput<List<String>?>('adminUsers');
-    backupBlobContainerUri = registerOutput<String?>('backupBlobContainerUri');
-    ipv4FirewallRules = registerOutput<List<Map<String, dynamic>>?>('ipv4FirewallRules');
+    adminUsers = registerOutput<List<String>?>('adminUsers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    backupBlobContainerUri = registerOutput<String?>('backupBlobContainerUri', isSecret: true);
+    ipv4FirewallRules = registerOutput<List<ServerIpv4FirewallRule>?>('ipv4FirewallRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerIpv4FirewallRule>(guardedValue, (value) => ServerIpv4FirewallRule.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     powerBiServiceEnabled = registerOutput<bool?>('powerBiServiceEnabled');
@@ -347,6 +350,29 @@ class Server extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverFullName = registerOutput<String>('serverFullName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Server] resource.
+  Server.reference(String urn)
+    : super(
+        'azure:analysisservices/server:Server',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['backupBlobContainerUri'],
+        isResourceReference: true,
+      ) {
+    adminUsers = registerOutput<List<String>?>('adminUsers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    backupBlobContainerUri = registerOutput<String?>('backupBlobContainerUri', isSecret: true);
+    ipv4FirewallRules = registerOutput<List<ServerIpv4FirewallRule>?>('ipv4FirewallRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerIpv4FirewallRule>(guardedValue, (value) => ServerIpv4FirewallRule.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    powerBiServiceEnabled = registerOutput<bool?>('powerBiServiceEnabled');
+    querypoolConnectionMode = registerOutput<String?>('querypoolConnectionMode');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverFullName = registerOutput<String>('serverFullName');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

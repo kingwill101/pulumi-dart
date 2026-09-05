@@ -10,7 +10,7 @@ class ActionGroupLogicAppReceiver {
   /// The Azure resource ID of the logic app.
   final pulumi.Input<String> resourceId;
   /// Enables or disables the common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [ActionGroupLogicAppReceiver].
   /// [callbackUrl] The callback url where HTTP request sent to.

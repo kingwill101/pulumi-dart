@@ -8,19 +8,19 @@ class DefinitionState {
   /// One or more assignable scopes for this Role Definition, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, `/providers/Microsoft.Management/managementGroups/0b1f6471-1bf0-4dda-aec3-111122223333` , or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`.
   ///
   /// &gt; **NOTE:** The value for `scope` is automatically included in this list if no other values supplied.
-  final pulumi.Input<List<String>>? assignableScopes;
+  final pulumi.Input<List<String>?>? assignableScopes;
   /// A description of the Role Definition.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the Role Definition.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `permissions` block as defined below.
-  final pulumi.Input<List<DefinitionPermission>>? permissions;
+  final pulumi.Input<List<DefinitionPermission>?>? permissions;
   /// A unique UUID/GUID which identifies this role - one will be generated if not specified. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
   /// The Azure Resource Manager ID for the resource.
-  final pulumi.Input<String>? roleDefinitionResourceId;
+  final pulumi.Input<String?>? roleDefinitionResourceId;
   /// The scope at which the Role Definition applies to, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, `/providers/Microsoft.Management/managementGroups/0b1f6471-1bf0-4dda-aec3-111122223333`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`. It is recommended to use the first entry of the `assignableScopes`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [DefinitionState].
   /// [assignableScopes] One or more assignable scopes for this Role Definition, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, `/providers/Microsoft.Management/managementGroups/0b1f6471-1bf0-4dda-aec3-111122223333` , or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`.

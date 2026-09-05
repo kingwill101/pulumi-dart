@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'autoscale_setting_args.dart';
 import 'autoscale_setting_notification.dart';
 import 'autoscale_setting_predictive.dart';
+import 'autoscale_setting_profile.dart';
 import 'autoscale_setting_state.dart';
 
 /// Manages a AutoScale Setting which can be applied to Virtual Machine Scale Sets, App Services and other scalable resources.
@@ -494,7 +495,7 @@ import 'autoscale_setting_state.dart';
 /// 						&compute.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs{
 /// 							Name:     pulumi.String("TestIPConfiguration"),
 /// 							Primary:  pulumi.Bool(true),
-/// 							SubnetId: exampleSubnet.ID(),
+/// 							SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -517,7 +518,7 @@ import 'autoscale_setting_state.dart';
 /// 			Name:              pulumi.String("myAutoscaleSetting"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			TargetResourceId:  exampleLinuxVirtualMachineScaleSet.ID(),
+/// 			TargetResourceId:  exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 			Profiles: monitoring.AutoscaleSettingProfileArray{
 /// 				&monitoring.AutoscaleSettingProfileArgs{
 /// 					Name: pulumi.String("defaultProfile"),
@@ -530,7 +531,7 @@ import 'autoscale_setting_state.dart';
 /// 						&monitoring.AutoscaleSettingProfileRuleArgs{
 /// 							MetricTrigger: &monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs{
 /// 								MetricName:       pulumi.String("Percentage CPU"),
-/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID(),
+/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 								TimeGrain:        pulumi.String("PT1M"),
 /// 								Statistic:        pulumi.String("Average"),
 /// 								TimeWindow:       pulumi.String("PT5M"),
@@ -558,7 +559,7 @@ import 'autoscale_setting_state.dart';
 /// 						&monitoring.AutoscaleSettingProfileRuleArgs{
 /// 							MetricTrigger: &monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs{
 /// 								MetricName:       pulumi.String("Percentage CPU"),
-/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID(),
+/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 								TimeGrain:        pulumi.String("PT1M"),
 /// 								Statistic:        pulumi.String("Average"),
 /// 								TimeWindow:       pulumi.String("PT5M"),
@@ -1484,7 +1485,7 @@ import 'autoscale_setting_state.dart';
 /// 						&compute.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs{
 /// 							Name:     pulumi.String("TestIPConfiguration"),
 /// 							Primary:  pulumi.Bool(true),
-/// 							SubnetId: exampleSubnet.ID(),
+/// 							SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -1507,7 +1508,7 @@ import 'autoscale_setting_state.dart';
 /// 			Name:              pulumi.String("myAutoscaleSetting"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			TargetResourceId:  exampleLinuxVirtualMachineScaleSet.ID(),
+/// 			TargetResourceId:  exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 			Profiles: monitoring.AutoscaleSettingProfileArray{
 /// 				&monitoring.AutoscaleSettingProfileArgs{
 /// 					Name: pulumi.String("Weekends"),
@@ -1520,7 +1521,7 @@ import 'autoscale_setting_state.dart';
 /// 						&monitoring.AutoscaleSettingProfileRuleArgs{
 /// 							MetricTrigger: &monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs{
 /// 								MetricName:       pulumi.String("Percentage CPU"),
-/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID(),
+/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 								TimeGrain:        pulumi.String("PT1M"),
 /// 								Statistic:        pulumi.String("Average"),
 /// 								TimeWindow:       pulumi.String("PT5M"),
@@ -1538,7 +1539,7 @@ import 'autoscale_setting_state.dart';
 /// 						&monitoring.AutoscaleSettingProfileRuleArgs{
 /// 							MetricTrigger: &monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs{
 /// 								MetricName:       pulumi.String("Percentage CPU"),
-/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID(),
+/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 								TimeGrain:        pulumi.String("PT1M"),
 /// 								Statistic:        pulumi.String("Average"),
 /// 								TimeWindow:       pulumi.String("PT5M"),
@@ -2450,7 +2451,7 @@ import 'autoscale_setting_state.dart';
 /// 						&compute.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs{
 /// 							Name:     pulumi.String("TestIPConfiguration"),
 /// 							Primary:  pulumi.Bool(true),
-/// 							SubnetId: exampleSubnet.ID(),
+/// 							SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -2474,7 +2475,7 @@ import 'autoscale_setting_state.dart';
 /// 			Enabled:           pulumi.Bool(true),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			TargetResourceId:  exampleLinuxVirtualMachineScaleSet.ID(),
+/// 			TargetResourceId:  exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 			Profiles: monitoring.AutoscaleSettingProfileArray{
 /// 				&monitoring.AutoscaleSettingProfileArgs{
 /// 					Name: pulumi.String("forJuly"),
@@ -2487,7 +2488,7 @@ import 'autoscale_setting_state.dart';
 /// 						&monitoring.AutoscaleSettingProfileRuleArgs{
 /// 							MetricTrigger: &monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs{
 /// 								MetricName:       pulumi.String("Percentage CPU"),
-/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID(),
+/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 								TimeGrain:        pulumi.String("PT1M"),
 /// 								Statistic:        pulumi.String("Average"),
 /// 								TimeWindow:       pulumi.String("PT5M"),
@@ -2505,7 +2506,7 @@ import 'autoscale_setting_state.dart';
 /// 						&monitoring.AutoscaleSettingProfileRuleArgs{
 /// 							MetricTrigger: &monitoring.AutoscaleSettingProfileRuleMetricTriggerArgs{
 /// 								MetricName:       pulumi.String("Percentage CPU"),
-/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID(),
+/// 								MetricResourceId: exampleLinuxVirtualMachineScaleSet.ID().ToIDOutput().ToStringOutput(),
 /// 								TimeGrain:        pulumi.String("PT1M"),
 /// 								Statistic:        pulumi.String("Average"),
 /// 								TimeWindow:       pulumi.String("PT5M"),
@@ -2965,7 +2966,7 @@ class AutoscaleSetting extends pulumi.CustomResource {
   /// A `predictive` block as defined below.
   late final pulumi.Output<AutoscaleSettingPredictive?> predictive;
   /// Specifies one or more (up to 20) `profile` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> profiles;
+  late final pulumi.Output<List<AutoscaleSettingProfile>> profiles;
   /// The name of the Resource Group in the AutoScale Setting should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
@@ -2985,16 +2986,16 @@ class AutoscaleSetting extends pulumi.CustomResource {
           'azure:monitoring/autoscaleSetting:AutoscaleSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     notification = registerOutput<AutoscaleSettingNotification?>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleSettingNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     predictive = registerOutput<AutoscaleSettingPredictive?>('predictive', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleSettingPredictive.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    profiles = registerOutput<List<Map<String, dynamic>>>('profiles');
+    profiles = registerOutput<List<AutoscaleSettingProfile>>('profiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutoscaleSettingProfile>(guardedValue, (value) => AutoscaleSettingProfile.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetResourceId = registerOutput<String>('targetResourceId');
   }
 
@@ -3003,11 +3004,12 @@ class AutoscaleSetting extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutoscaleSettingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutoscaleSetting._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3026,9 +3028,29 @@ class AutoscaleSetting extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notification = registerOutput<AutoscaleSettingNotification?>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleSettingNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     predictive = registerOutput<AutoscaleSettingPredictive?>('predictive', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleSettingPredictive.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    profiles = registerOutput<List<Map<String, dynamic>>>('profiles');
+    profiles = registerOutput<List<AutoscaleSettingProfile>>('profiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutoscaleSettingProfile>(guardedValue, (value) => AutoscaleSettingProfile.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetResourceId = registerOutput<String>('targetResourceId');
+  }
+
+  /// Creates a typed reference to an existing [AutoscaleSetting] resource.
+  AutoscaleSetting.reference(String urn)
+    : super(
+        'azure:monitoring/autoscaleSetting:AutoscaleSetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notification = registerOutput<AutoscaleSettingNotification?>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleSettingNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    predictive = registerOutput<AutoscaleSettingPredictive?>('predictive', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleSettingPredictive.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    profiles = registerOutput<List<AutoscaleSettingProfile>>('profiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutoscaleSettingProfile>(guardedValue, (value) => AutoscaleSettingProfile.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetResourceId = registerOutput<String>('targetResourceId');
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiContact {
   /// The email address of the contact person/organization.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The name of the contact person/organization.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Absolute URL of the contact information.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ApiContact].
   /// [email] The email address of the contact person/organization.

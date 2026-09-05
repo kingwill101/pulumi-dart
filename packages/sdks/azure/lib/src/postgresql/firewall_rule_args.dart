@@ -12,7 +12,7 @@ class FirewallRuleArgs {
   /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `startIpAddress` and `endIpAddress` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
   final pulumi.Input<String> endIpAddress;
   /// Specifies the name of the PostgreSQL Firewall Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the PostgreSQL Server exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.

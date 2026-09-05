@@ -8,59 +8,59 @@ import 'scheduled_query_rules_alert_v2_identity.dart';
 /// Input properties used for looking up and filtering ScheduledQueryRulesAlertV2 resources.
 class ScheduledQueryRulesAlertV2State {
   /// An `action` block as defined below.
-  final pulumi.Input<ScheduledQueryRulesAlertV2Action>? action;
+  final pulumi.Input<ScheduledQueryRulesAlertV2Action?>? action;
   /// Specifies the flag that indicates whether the alert should be automatically resolved or not. Value should be `true` or `false`. The default is `false`.
-  final pulumi.Input<bool>? autoMitigationEnabled;
+  final pulumi.Input<bool?>? autoMitigationEnabled;
   /// The api-version used when creating this alert rule.
-  final pulumi.Input<String>? createdWithApiVersion;
+  final pulumi.Input<String?>? createdWithApiVersion;
   /// A `criteria` block as defined below.
-  final pulumi.Input<List<ScheduledQueryRulesAlertV2Criteria>>? criterias;
+  final pulumi.Input<List<ScheduledQueryRulesAlertV2Criteria>?>? criterias;
   /// Specifies the description of the scheduled query rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the display name of the alert rule.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies the flag which indicates whether this scheduled query rule is enabled. Value should be `true` or `false`. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// How often the scheduled query rule is evaluated, represented in ISO 8601 duration format. Possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`.
   ///
   /// &gt; **Note:** `evaluationFrequency` cannot be greater than the query look back which is `windowDuration`*`numberOfEvaluationPeriods`.
   ///
   /// &gt; **Note:** `evaluationFrequency` cannot be greater than the `muteActionsAfterAlertDuration`.
-  final pulumi.Input<String>? evaluationFrequency;
+  final pulumi.Input<String?>? evaluationFrequency;
   /// An `identity` block as defined below.
-  final pulumi.Input<ScheduledQueryRulesAlertV2Identity>? identity;
+  final pulumi.Input<ScheduledQueryRulesAlertV2Identity?>? identity;
   /// True if this alert rule is a legacy Log Analytic Rule.
-  final pulumi.Input<bool>? isALegacyLogAnalyticsRule;
+  final pulumi.Input<bool?>? isALegacyLogAnalyticsRule;
   /// The flag indicates whether this Scheduled Query Rule has been configured to be stored in the customer's storage.
-  final pulumi.Input<bool>? isWorkspaceAlertsStorageConfigured;
+  final pulumi.Input<bool?>? isWorkspaceAlertsStorageConfigured;
   /// Specifies the Azure Region where the Monitor Scheduled Query Rule should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Mute actions for the chosen period of time in ISO 8601 duration format after the alert is fired. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
   ///
   /// &gt; **Note:** `autoMitigationEnabled` and `muteActionsAfterAlertDuration` are mutually exclusive and cannot both be set.
-  final pulumi.Input<String>? muteActionsAfterAlertDuration;
+  final pulumi.Input<String?>? muteActionsAfterAlertDuration;
   /// Specifies the name which should be used for this Monitor Scheduled Query Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Set this if the alert evaluation period is different from the query time range. If not specified, the value is `windowDuration`*`numberOfEvaluationPeriods`. Possible values are `PT5M`, `PT10M`, `PT15M`, `PT20M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D` and `P2D`.
   ///
   /// &gt; **Note:** `queryTimeRangeOverride` cannot be less than the query look back which is `windowDuration`*`numberOfEvaluationPeriods`.
-  final pulumi.Input<String>? queryTimeRangeOverride;
+  final pulumi.Input<String?>? queryTimeRangeOverride;
   /// Specifies the name of the Resource Group where the Monitor Scheduled Query Rule should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Specifies the list of resource IDs that this scheduled query rule is scoped to. Changing this forces a new resource to be created. Currently, the API supports exactly 1 resource ID in the scopes list.
-  final pulumi.Input<String>? scopes;
+  final pulumi.Input<String?>? scopes;
   /// Severity of the alert. Should be an integer between 0 and 4. Value of 0 is severest.
-  final pulumi.Input<int>? severity;
+  final pulumi.Input<int?>? severity;
   /// Specifies the flag which indicates whether the provided query should be validated or not. The default is false.
-  final pulumi.Input<bool>? skipQueryValidation;
+  final pulumi.Input<bool?>? skipQueryValidation;
   /// A mapping of tags which should be assigned to the Monitor Scheduled Query Rule.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is `Microsoft.Compute/virtualMachines`, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria.
-  final pulumi.Input<List<String>>? targetResourceTypes;
+  final pulumi.Input<List<String>?>? targetResourceTypes;
   /// Specifies the period of time in ISO 8601 duration format on which the Scheduled Query Rule will be executed (bin size). If `evaluationFrequency` is `PT1M`, possible values are `PT1M`, `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, and `PT6H`. Otherwise, possible values are `PT5M`, `PT10M`, `PT15M`, `PT30M`, `PT45M`, `PT1H`, `PT2H`, `PT3H`, `PT4H`, `PT5H`, `PT6H`, `P1D`, and `P2D`.
-  final pulumi.Input<String>? windowDuration;
+  final pulumi.Input<String?>? windowDuration;
   /// Specifies the flag which indicates whether this scheduled query rule check if storage is configured. Value should be `true` or `false`. The default is `false`.
-  final pulumi.Input<bool>? workspaceAlertsStorageEnabled;
+  final pulumi.Input<bool?>? workspaceAlertsStorageEnabled;
 
   /// Creates a new [ScheduledQueryRulesAlertV2State].
   /// [action] An `action` block as defined below.
@@ -159,7 +159,7 @@ class ScheduledQueryRulesAlertV2State {
       queryTimeRangeOverride: (() { final guardedValue = map['queryTimeRangeOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       skipQueryValidation: (() { final guardedValue = map['skipQueryValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetResourceTypes: (() { final guardedValue = map['targetResourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

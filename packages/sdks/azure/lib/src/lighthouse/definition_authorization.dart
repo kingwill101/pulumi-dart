@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefinitionAuthorization {
   /// The set of role definition ids which define all the permissions that the principal id can assign.
-  final pulumi.Input<List<String>>? delegatedRoleDefinitionIds;
+  final pulumi.Input<List<String>?>? delegatedRoleDefinitionIds;
   /// The display name of the security group/service principal/user that would be assigned permissions to the projected subscription.
-  final pulumi.Input<String>? principalDisplayName;
+  final pulumi.Input<String?>? principalDisplayName;
   /// Principal ID of the security group/service principal/user that would be assigned permissions to the projected subscription.
   final pulumi.Input<String> principalId;
   /// The role definition identifier. This role will define the permissions that are granted to the principal. This cannot be an `Owner` role.

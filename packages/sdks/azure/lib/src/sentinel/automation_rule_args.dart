@@ -11,31 +11,31 @@ import 'automation_rule_action_playbook.dart';
 /// {@macro pulumi_sentinel_automation_rule_automation_rule_args_doc}
 class AutomationRuleArgs {
   /// One or more `actionIncidentTask` blocks as defined below.
-  final pulumi.Input<List<AutomationRuleActionIncidentTask>>? actionIncidentTasks;
+  final pulumi.Input<List<AutomationRuleActionIncidentTask>?>? actionIncidentTasks;
   /// One or more `actionIncident` blocks as defined below.
-  final pulumi.Input<List<AutomationRuleActionIncident>>? actionIncidents;
+  final pulumi.Input<List<AutomationRuleActionIncident>?>? actionIncidents;
   /// One or more `actionPlaybook` blocks as defined below.
   ///
   /// &gt; **Note:** Either one `actionIncident` block or `actionPlaybook` block has to be specified.
-  final pulumi.Input<List<AutomationRuleActionPlaybook>>? actionPlaybooks;
+  final pulumi.Input<List<AutomationRuleActionPlaybook>?>? actionPlaybooks;
   /// A JSON array of one or more condition JSON objects as is defined [here](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/create-or-update?tabs=HTTP#automationruletriggeringlogic).
-  final pulumi.Input<String>? conditionJson;
+  final pulumi.Input<String?>? conditionJson;
   /// The display name which should be used for this Sentinel Automation Rule.
   final pulumi.Input<String> displayName;
   /// Whether this Sentinel Automation Rule is enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The time in RFC3339 format of kind `UTC` that determines when this Automation Rule should expire and be disabled.
-  final pulumi.Input<String>? expiration;
+  final pulumi.Input<String?>? expiration;
   /// The ID of the Log Analytics Workspace where this Sentinel applies to. Changing this forces a new Sentinel Automation Rule to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
   /// The UUID which should be used for this Sentinel Automation Rule. Changing this forces a new Sentinel Automation Rule to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The order of this Sentinel Automation Rule. Possible values varies between `1` and `1000`.
   final pulumi.Input<int> order;
   /// Specifies what triggers this automation rule. Possible values are `Alerts` and `Incidents`. Defaults to `Incidents`.
-  final pulumi.Input<String>? triggersOn;
+  final pulumi.Input<String?>? triggersOn;
   /// Specifies when will this automation rule be triggered. Possible values are `Created` and `Updated`. Defaults to `Created`.
-  final pulumi.Input<String>? triggersWhen;
+  final pulumi.Input<String?>? triggersWhen;
 
   /// Creates a new [AutomationRuleArgs].
   /// [actionIncidentTasks] One or more `actionIncidentTask` blocks as defined below.
@@ -93,7 +93,7 @@ class AutomationRuleArgs {
       expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logAnalyticsWorkspaceId: pulumi.Input.fromValue(map['logAnalyticsWorkspaceId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
       triggersOn: (() { final guardedValue = map['triggersOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       triggersWhen: (() { final guardedValue = map['triggersWhen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

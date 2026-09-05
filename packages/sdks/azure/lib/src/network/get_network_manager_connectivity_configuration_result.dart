@@ -7,27 +7,27 @@ import 'get_network_manager_connectivity_configuration_hub.dart';
 /// Result data returned by getNetworkManagerConnectivityConfiguration.
 class GetNetworkManagerConnectivityConfigurationResult {
   /// An `appliesToGroup` block as defined below.
-  final List<GetNetworkManagerConnectivityConfigurationAppliesToGroup> appliesToGroups;
+  final List<GetNetworkManagerConnectivityConfigurationAppliesToGroup>? appliesToGroups;
   /// Whether connected group address overlap is enabled.
-  final bool connectedGroupAddressOverlapEnabled;
+  final bool? connectedGroupAddressOverlapEnabled;
   /// The scale of private endpoints allowed in the connected group.
-  final String connectedGroupPrivateEndpointsScale;
+  final String? connectedGroupPrivateEndpointsScale;
   /// The connectivity topology type.
-  final String connectivityTopology;
+  final String? connectivityTopology;
   /// Whether to current existing Virtual Network Peering in the Connectivity Configuration affected scope.
-  final bool deleteExistingPeeringEnabled;
+  final bool? deleteExistingPeeringEnabled;
   /// The description of the Connectivity Configuration.
-  final String description;
+  final String? description;
   /// Whether global mesh is supported.
-  final bool globalMeshEnabled;
+  final bool? globalMeshEnabled;
   /// A `hub` block as defined below.
-  final List<GetNetworkManagerConnectivityConfigurationHub> hubs;
+  final List<GetNetworkManagerConnectivityConfigurationHub>? hubs;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String networkManagerId;
+  final String? id;
+  final String? name;
+  final String? networkManagerId;
   /// Whether peering enforcement is enabled.
-  final bool peeringEnforcementEnabled;
+  final bool? peeringEnforcementEnabled;
 
   /// Creates a new [GetNetworkManagerConnectivityConfigurationResult].
   /// [appliesToGroups] An `appliesToGroup` block as defined below.
@@ -39,55 +39,55 @@ class GetNetworkManagerConnectivityConfigurationResult {
   /// [globalMeshEnabled] Whether global mesh is supported.
   /// [hubs] A `hub` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [networkManagerId] Required.
+  /// [name] Optional.
+  /// [networkManagerId] Optional.
   /// [peeringEnforcementEnabled] Whether peering enforcement is enabled.
   const GetNetworkManagerConnectivityConfigurationResult({
-    required this.appliesToGroups,
-    required this.connectedGroupAddressOverlapEnabled,
-    required this.connectedGroupPrivateEndpointsScale,
-    required this.connectivityTopology,
-    required this.deleteExistingPeeringEnabled,
-    required this.description,
-    required this.globalMeshEnabled,
-    required this.hubs,
-    required this.id,
-    required this.name,
-    required this.networkManagerId,
-    required this.peeringEnforcementEnabled,
+    this.appliesToGroups,
+    this.connectedGroupAddressOverlapEnabled,
+    this.connectedGroupPrivateEndpointsScale,
+    this.connectivityTopology,
+    this.deleteExistingPeeringEnabled,
+    this.description,
+    this.globalMeshEnabled,
+    this.hubs,
+    this.id,
+    this.name,
+    this.networkManagerId,
+    this.peeringEnforcementEnabled,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appliesToGroups': pulumi.Input.encodeList<GetNetworkManagerConnectivityConfigurationAppliesToGroup, Map<String, dynamic>>(appliesToGroups, (value) => value.toMap()),
-      'connectedGroupAddressOverlapEnabled': connectedGroupAddressOverlapEnabled,
-      'connectedGroupPrivateEndpointsScale': connectedGroupPrivateEndpointsScale,
-      'connectivityTopology': connectivityTopology,
-      'deleteExistingPeeringEnabled': deleteExistingPeeringEnabled,
-      'description': description,
-      'globalMeshEnabled': globalMeshEnabled,
-      'hubs': pulumi.Input.encodeList<GetNetworkManagerConnectivityConfigurationHub, Map<String, dynamic>>(hubs, (value) => value.toMap()),
-      'id': id,
-      'name': name,
-      'networkManagerId': networkManagerId,
-      'peeringEnforcementEnabled': peeringEnforcementEnabled,
+      'appliesToGroups': ?(() { final guardedValue = appliesToGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkManagerConnectivityConfigurationAppliesToGroup, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'connectedGroupAddressOverlapEnabled': ?connectedGroupAddressOverlapEnabled,
+      'connectedGroupPrivateEndpointsScale': ?connectedGroupPrivateEndpointsScale,
+      'connectivityTopology': ?connectivityTopology,
+      'deleteExistingPeeringEnabled': ?deleteExistingPeeringEnabled,
+      'description': ?description,
+      'globalMeshEnabled': ?globalMeshEnabled,
+      'hubs': ?(() { final guardedValue = hubs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkManagerConnectivityConfigurationHub, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'name': ?name,
+      'networkManagerId': ?networkManagerId,
+      'peeringEnforcementEnabled': ?peeringEnforcementEnabled,
     };
   }
 
   factory GetNetworkManagerConnectivityConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerConnectivityConfigurationResult(
-      appliesToGroups: pulumi.Input.decodeList<GetNetworkManagerConnectivityConfigurationAppliesToGroup>(map['appliesToGroups']!, (value) => GetNetworkManagerConnectivityConfigurationAppliesToGroup.fromMap((value as Map).cast<String, dynamic>())),
-      connectedGroupAddressOverlapEnabled: map['connectedGroupAddressOverlapEnabled'] as bool,
-      connectedGroupPrivateEndpointsScale: map['connectedGroupPrivateEndpointsScale'] as String,
-      connectivityTopology: map['connectivityTopology'] as String,
-      deleteExistingPeeringEnabled: map['deleteExistingPeeringEnabled'] as bool,
-      description: map['description'] as String,
-      globalMeshEnabled: map['globalMeshEnabled'] as bool,
-      hubs: pulumi.Input.decodeList<GetNetworkManagerConnectivityConfigurationHub>(map['hubs']!, (value) => GetNetworkManagerConnectivityConfigurationHub.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      networkManagerId: map['networkManagerId'] as String,
-      peeringEnforcementEnabled: map['peeringEnforcementEnabled'] as bool,
+      appliesToGroups: (() { final guardedValue = map['appliesToGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkManagerConnectivityConfigurationAppliesToGroup>(guardedValue, (value) => GetNetworkManagerConnectivityConfigurationAppliesToGroup.fromMap((value as Map).cast<String, dynamic>())); })(),
+      connectedGroupAddressOverlapEnabled: (() { final guardedValue = map['connectedGroupAddressOverlapEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      connectedGroupPrivateEndpointsScale: (() { final guardedValue = map['connectedGroupPrivateEndpointsScale']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectivityTopology: (() { final guardedValue = map['connectivityTopology']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deleteExistingPeeringEnabled: (() { final guardedValue = map['deleteExistingPeeringEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      globalMeshEnabled: (() { final guardedValue = map['globalMeshEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      hubs: (() { final guardedValue = map['hubs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkManagerConnectivityConfigurationHub>(guardedValue, (value) => GetNetworkManagerConnectivityConfigurationHub.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkManagerId: (() { final guardedValue = map['networkManagerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peeringEnforcementEnabled: (() { final guardedValue = map['peeringEnforcementEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

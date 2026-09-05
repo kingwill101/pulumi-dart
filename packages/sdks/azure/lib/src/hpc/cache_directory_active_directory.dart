@@ -8,7 +8,7 @@ class CacheDirectoryActiveDirectory {
   /// The primary DNS IP address used to resolve the Active Directory domain controller's FQDN.
   final pulumi.Input<String> dnsPrimaryIp;
   /// The secondary DNS IP address used to resolve the Active Directory domain controller's FQDN.
-  final pulumi.Input<String>? dnsSecondaryIp;
+  final pulumi.Input<String?>? dnsSecondaryIp;
   /// The fully qualified domain name of the Active Directory domain controller.
   final pulumi.Input<String> domainName;
   /// The Active Directory domain's NetBIOS name.

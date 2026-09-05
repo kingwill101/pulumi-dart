@@ -37,7 +37,7 @@ import 'get_server_result.dart';
 ///     name: "example-mssql-db",
 ///     serverId: exampleServer.id,
 /// });
-/// export const databaseId = example.apply(example => example.id);
+/// export const databaseId = example.id;
 /// ```
 /// ```python
 /// import pulumi
@@ -124,11 +124,9 @@ import 'get_server_result.dart';
 /// 		}
 /// 		example := mssql.LookupDatabaseOutput(ctx, mssql.GetDatabaseOutputArgs{
 /// 			Name:     pulumi.String("example-mssql-db"),
-/// 			ServerId: exampleServer.ID(),
+/// 			ServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
-/// 		ctx.Export("databaseId", example.ApplyT(func(example mssql.GetDatabaseResult) (*string, error) {
-/// 			return example.Id, nil
-/// 		}).(pulumi.StringPtrOutput))
+/// 		ctx.Export("databaseId", example.Id())
 /// 		return nil
 /// 	})
 /// }
@@ -260,6 +258,17 @@ Future<GetDatabaseResult> getDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:mssql/getDatabase:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
 }
 
 /// Use this data source to access information about an existing SQL elastic pool.
@@ -416,6 +425,17 @@ Future<GetElasticPoolResult> getElasticPool(
   return GetElasticPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetElasticPoolResult> getElasticPoolOutput(
+  GetElasticPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:mssql/getElasticPool:getElasticPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetElasticPoolResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Microsoft Azure SQL Failover Group.
 ///
 /// ## Example Usage
@@ -563,6 +583,17 @@ Future<GetFailoverGroupResult> getFailoverGroup(
   return GetFailoverGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetFailoverGroupResult> getFailoverGroupOutput(
+  GetFailoverGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:mssql/getFailoverGroup:getFailoverGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFailoverGroupResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Azure SQL Azure Managed Database.
 ///
 /// ## Example Usage
@@ -614,6 +645,17 @@ Future<GetManagedDatabaseResult> getManagedDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedDatabaseResult> getManagedDatabaseOutput(
+  GetManagedDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:mssql/getManagedDatabase:getManagedDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedDatabaseResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Microsoft SQL Azure Managed Instance.
@@ -747,6 +789,17 @@ Future<GetManagedInstanceResult> getManagedInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedInstanceResult> getManagedInstanceOutput(
+  GetManagedInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:mssql/getManagedInstance:getManagedInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedInstanceResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Microsoft SQL Server.
@@ -894,4 +947,15 @@ Future<GetServerResult> getServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerResult.fromMap(result);
+}
+
+pulumi.Output<GetServerResult> getServerOutput(
+  GetServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:mssql/getServer:getServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerResult.fromMap);
 }

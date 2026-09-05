@@ -103,7 +103,7 @@ import 'local_rulestack_fqdn_list_state.dart';
 /// 		}
 /// 		_, err = paloalto.NewLocalRulestackFqdnList(ctx, "example", &paloalto.LocalRulestackFqdnListArgs{
 /// 			Name:        pulumi.String("example"),
-/// 			RulestackId: exampleLocalRulestack.ID(),
+/// 			RulestackId: exampleLocalRulestack.ID().ToIDOutput().ToStringOutput(),
 /// 			FullyQualifiedDomainNames: pulumi.StringArray{
 /// 				pulumi.String("contoso.com"),
 /// 			},
@@ -247,11 +247,11 @@ class LocalRulestackFqdnList extends pulumi.CustomResource {
           'azure:paloalto/localRulestackFqdnList:LocalRulestackFqdnList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     auditComment = registerOutput<String?>('auditComment');
     description = registerOutput<String?>('description');
-    fullyQualifiedDomainNames = registerOutput<List<String>>('fullyQualifiedDomainNames');
+    fullyQualifiedDomainNames = registerOutput<List<String>>('fullyQualifiedDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     rulestackId = registerOutput<String>('rulestackId');
   }
@@ -261,11 +261,12 @@ class LocalRulestackFqdnList extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocalRulestackFqdnListState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocalRulestackFqdnList._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -281,7 +282,23 @@ class LocalRulestackFqdnList extends pulumi.CustomResource {
         ) {
     auditComment = registerOutput<String?>('auditComment');
     description = registerOutput<String?>('description');
-    fullyQualifiedDomainNames = registerOutput<List<String>>('fullyQualifiedDomainNames');
+    fullyQualifiedDomainNames = registerOutput<List<String>>('fullyQualifiedDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    rulestackId = registerOutput<String>('rulestackId');
+  }
+
+  /// Creates a typed reference to an existing [LocalRulestackFqdnList] resource.
+  LocalRulestackFqdnList.reference(String urn)
+    : super(
+        'azure:paloalto/localRulestackFqdnList:LocalRulestackFqdnList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    auditComment = registerOutput<String?>('auditComment');
+    description = registerOutput<String?>('description');
+    fullyQualifiedDomainNames = registerOutput<List<String>>('fullyQualifiedDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     rulestackId = registerOutput<String>('rulestackId');
   }

@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScaleSetStorageProfileImageReference {
   /// Specifies the ID of the (custom) image to use to create the virtual machine scale set, as in the example below.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the offer of the image used to create the virtual machines.
-  final pulumi.Input<String>? offer;
+  final pulumi.Input<String?>? offer;
   /// Specifies the publisher of the image used to create the virtual machines.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// Specifies the SKU of the image used to create the virtual machines.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// Specifies the version of the image used to create the virtual machines.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ScaleSetStorageProfileImageReference].
   /// [id] Specifies the ID of the (custom) image to use to create the virtual machine scale set, as in the example below.

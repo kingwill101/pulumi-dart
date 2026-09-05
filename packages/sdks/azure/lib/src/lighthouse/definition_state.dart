@@ -8,21 +8,21 @@ import 'definition_plan.dart';
 /// Input properties used for looking up and filtering Definition resources.
 class DefinitionState {
   /// An `authorization` block as defined below.
-  final pulumi.Input<List<DefinitionAuthorization>>? authorizations;
+  final pulumi.Input<List<DefinitionAuthorization>?>? authorizations;
   /// A description of the Lighthouse Definition.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An `eligibleAuthorization` block as defined below.
-  final pulumi.Input<List<DefinitionEligibleAuthorization>>? eligibleAuthorizations;
+  final pulumi.Input<List<DefinitionEligibleAuthorization>?>? eligibleAuthorizations;
   /// A unique UUID/GUID which identifies this lighthouse definition - one will be generated if not specified. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? lighthouseDefinitionId;
+  final pulumi.Input<String?>? lighthouseDefinitionId;
   /// The ID of the managing tenant. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? managingTenantId;
+  final pulumi.Input<String?>? managingTenantId;
   /// The name of the Lighthouse Definition. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `plan` block as defined below.
-  final pulumi.Input<DefinitionPlan>? plan;
+  final pulumi.Input<DefinitionPlan?>? plan;
   /// The ID of the managed subscription. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [DefinitionState].
   /// [authorizations] An `authorization` block as defined below.

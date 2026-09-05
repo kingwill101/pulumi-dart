@@ -18,43 +18,43 @@ class AppServiceArgs {
   /// The ID of the App Service Plan within which to create this App Service.
   final pulumi.Input<String> appServicePlanId;
   /// A key-value pair of App Settings.
-  final pulumi.Input<Map<String, String>>? appSettings;
+  final pulumi.Input<Map<String, String>?>? appSettings;
   /// A `authSettings` block as defined below.
-  final pulumi.Input<AppServiceAuthSettings>? authSettings;
+  final pulumi.Input<AppServiceAuthSettings?>? authSettings;
   /// A `backup` block as defined below.
-  final pulumi.Input<AppServiceBackup>? backup;
+  final pulumi.Input<AppServiceBackup?>? backup;
   /// Should the App Service send session affinity cookies, which route client requests in the same session to the same instance?
-  final pulumi.Input<bool>? clientAffinityEnabled;
+  final pulumi.Input<bool?>? clientAffinityEnabled;
   /// Does the App Service require client certificates for incoming requests? Defaults to `false`.
-  final pulumi.Input<bool>? clientCertEnabled;
+  final pulumi.Input<bool?>? clientCertEnabled;
   /// Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `clientCertEnabled` must be set to `true`, otherwise this parameter is ignored.
-  final pulumi.Input<String>? clientCertMode;
+  final pulumi.Input<String?>? clientCertMode;
   /// One or more `connectionString` blocks as defined below.
-  final pulumi.Input<List<AppServiceConnectionString>>? connectionStrings;
+  final pulumi.Input<List<AppServiceConnectionString>?>? connectionStrings;
   /// Is the App Service Enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Can the App Service only be accessed via HTTPS? Defaults to `false`.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// An `identity` block as defined below.
-  final pulumi.Input<AppServiceIdentity>? identity;
+  final pulumi.Input<AppServiceIdentity?>? identity;
   /// The User Assigned Identity Id used for looking up KeyVault secrets. The identity must be assigned to the application. [For more information see - Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity)
-  final pulumi.Input<String>? keyVaultReferenceIdentityId;
+  final pulumi.Input<String?>? keyVaultReferenceIdentityId;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `logs` block as defined below.
-  final pulumi.Input<AppServiceLogs>? logs;
+  final pulumi.Input<AppServiceLogs?>? logs;
   /// Specifies the name of the App Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `siteConfig` block as defined below.
-  final pulumi.Input<AppServiceSiteConfig>? siteConfig;
+  final pulumi.Input<AppServiceSiteConfig?>? siteConfig;
   /// A `sourceControl` block as defined below.
-  final pulumi.Input<AppServiceSourceControl>? sourceControl;
+  final pulumi.Input<AppServiceSourceControl?>? sourceControl;
   /// One or more `storageAccount` blocks as defined below.
-  final pulumi.Input<List<AppServiceStorageAccount>>? storageAccounts;
+  final pulumi.Input<List<AppServiceStorageAccount>?>? storageAccounts;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AppServiceArgs].
   /// [appServicePlanId] The ID of the App Service Plan within which to create this App Service.

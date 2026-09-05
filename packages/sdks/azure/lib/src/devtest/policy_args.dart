@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devtest_policy_policy_args_doc}
 class PolicyArgs {
   /// A description for the Policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Evaluation Type used for this Policy. Possible values include: 'AllowedValuesPolicy', 'MaxValuePolicy'. Changing this forces a new resource to be created.
   final pulumi.Input<String> evaluatorType;
   /// The Fact Data for this Policy.
-  final pulumi.Input<String>? factData;
+  final pulumi.Input<String?>? factData;
   /// Specifies the name of the Dev Test Lab in which the Policy should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> labName;
   /// Specifies the name of the Dev Test Policy. Possible values are `GalleryImage`, `LabPremiumVmCount`, `LabTargetCost`, `LabVmCount`, `LabVmSize`, `UserOwnedLabPremiumVmCount`, `UserOwnedLabVmCount` and `UserOwnedLabVmCountInSubnet`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Policy Set within the Dev Test Lab where this policy should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> policySetName;
   /// The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Threshold for this Policy.
   final pulumi.Input<String> threshold;
 

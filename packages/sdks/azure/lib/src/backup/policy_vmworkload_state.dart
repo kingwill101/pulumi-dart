@@ -7,17 +7,17 @@ import 'policy_vmworkload_settings.dart';
 /// Input properties used for looking up and filtering PolicyVMWorkload resources.
 class PolicyVMWorkloadState {
   /// The name of the VM Workload Backup Policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `protectionPolicy` blocks as defined below.
-  final pulumi.Input<List<PolicyVMWorkloadProtectionPolicy>>? protectionPolicies;
+  final pulumi.Input<List<PolicyVMWorkloadProtectionPolicy>?>? protectionPolicies;
   /// The name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? recoveryVaultName;
+  final pulumi.Input<String?>? recoveryVaultName;
   /// The name of the resource group in which to create the VM Workload Backup Policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `settings` block as defined below.
-  final pulumi.Input<PolicyVMWorkloadSettings>? settings;
+  final pulumi.Input<PolicyVMWorkloadSettings?>? settings;
   /// The VM Workload type for the Backup Policy. Possible values are `SQLDataBase` and `SAPHanaDatabase`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? workloadType;
+  final pulumi.Input<String?>? workloadType;
 
   /// Creates a new [PolicyVMWorkloadState].
   /// [name] The name of the VM Workload Backup Policy. Changing this forces a new resource to be created.

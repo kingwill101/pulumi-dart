@@ -127,7 +127,7 @@ import 'standard_web_test_validation_rules.dart';
 /// 			Name:                  pulumi.String("example-test"),
 /// 			ResourceGroupName:     example.Name,
 /// 			Location:              pulumi.String("West Europe"),
-/// 			ApplicationInsightsId: exampleInsights.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			GeoLocations: pulumi.StringArray{
 /// 				pulumi.String("example"),
 /// 			},
@@ -312,20 +312,20 @@ class StandardWebTest extends pulumi.CustomResource {
           'azure:appinsights/standardWebTest:StandardWebTest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     frequency = registerOutput<int?>('frequency');
-    geoLocations = registerOutput<List<String>>('geoLocations');
+    geoLocations = registerOutput<List<String>>('geoLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     request = registerOutput<StandardWebTestRequest>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardWebTestRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retryEnabled = registerOutput<bool?>('retryEnabled');
     syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeout = registerOutput<int?>('timeout');
     validationRules = registerOutput<StandardWebTestValidationRules?>('validationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardWebTestValidationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -335,11 +335,12 @@ class StandardWebTest extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StandardWebTestState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StandardWebTest._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -357,14 +358,39 @@ class StandardWebTest extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     frequency = registerOutput<int?>('frequency');
-    geoLocations = registerOutput<List<String>>('geoLocations');
+    geoLocations = registerOutput<List<String>>('geoLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     request = registerOutput<StandardWebTestRequest>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardWebTestRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retryEnabled = registerOutput<bool?>('retryEnabled');
     syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeout = registerOutput<int?>('timeout');
+    validationRules = registerOutput<StandardWebTestValidationRules?>('validationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardWebTestValidationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [StandardWebTest] resource.
+  StandardWebTest.reference(String urn)
+    : super(
+        'azure:appinsights/standardWebTest:StandardWebTest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    frequency = registerOutput<int?>('frequency');
+    geoLocations = registerOutput<List<String>>('geoLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    request = registerOutput<StandardWebTestRequest>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardWebTestRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retryEnabled = registerOutput<bool?>('retryEnabled');
+    syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeout = registerOutput<int?>('timeout');
     validationRules = registerOutput<StandardWebTestValidationRules?>('validationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardWebTestValidationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

@@ -4,34 +4,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceHostnameConfigurationProxy {
   /// The Base64 Encoded Certificate.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// The password associated with the certificate provided above.
   ///
   /// &gt; **Note:** Either `keyVaultCertificateId` or `certificate` and `certificatePassword` must be specified.
-  final pulumi.Input<String>? certificatePassword;
+  final pulumi.Input<String?>? certificatePassword;
   /// The source of the certificate.
-  final pulumi.Input<String>? certificateSource;
+  final pulumi.Input<String?>? certificateSource;
   /// The status of the certificate.
-  final pulumi.Input<String>? certificateStatus;
+  final pulumi.Input<String?>? certificateStatus;
   /// Is the certificate associated with this Hostname the Default SSL Certificate? This is used when an SNI header isn't specified by a client. Defaults to `false`.
-  final pulumi.Input<bool>? defaultSslBinding;
+  final pulumi.Input<bool?>? defaultSslBinding;
   /// The expiration date of the certificate in RFC3339 format: `2000-01-02T03:04:05Z`.
-  final pulumi.Input<String>? expiry;
+  final pulumi.Input<String?>? expiry;
   /// The Hostname to use for the Management API.
   final pulumi.Input<String> hostName;
   /// The ID of the Key Vault Secret containing the SSL Certificate, which must be of the type `application/x-pkcs12`.
   ///
   /// &gt; **Note:** Setting this field requires the `identity` block to be specified, since this identity is used for to retrieve the Key Vault Certificate. Auto-updating the Certificate from the Key Vault requires the Secret version isn't specified.
-  final pulumi.Input<String>? keyVaultCertificateId;
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultCertificateId;
+  final pulumi.Input<String?>? keyVaultId;
   /// Should Client Certificate Negotiation be enabled for this Hostname? Defaults to `false`.
-  final pulumi.Input<bool>? negotiateClientCertificate;
+  final pulumi.Input<bool?>? negotiateClientCertificate;
   /// The Managed Identity Client ID to use to access the Key Vault. This Identity must be specified in the `identity` block to be used.
-  final pulumi.Input<String>? sslKeyvaultIdentityClientId;
+  final pulumi.Input<String?>? sslKeyvaultIdentityClientId;
   /// The subject of the certificate.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
   /// The thumbprint of the certificate.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [ServiceHostnameConfigurationProxy].
   /// [certificate] The Base64 Encoded Certificate.

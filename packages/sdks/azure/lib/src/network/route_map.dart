@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_map_args.dart';
+import 'route_map_rule.dart';
 import 'route_map_state.dart';
 
 /// Manages a Route Map.
@@ -185,7 +186,7 @@ import 'route_map_state.dart';
 /// 			Name:              pulumi.String("example-vhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -193,7 +194,7 @@ import 'route_map_state.dart';
 /// 		}
 /// 		_, err = network.NewRouteMapResource(ctx, "example", &network.RouteMapResourceArgs{
 /// 			Name:         pulumi.String("example-rm"),
-/// 			VirtualHubId: exampleVirtualHub.ID(),
+/// 			VirtualHubId: exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: network.RouteMapRuleArray{
 /// 				&network.RouteMapRuleArgs{
 /// 					Name:              pulumi.String("rule1"),
@@ -406,7 +407,7 @@ class RouteMap extends pulumi.CustomResource {
   /// The name which should be used for this Route Map. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// A `rule` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<RouteMapRule>?> rules;
   /// The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
 
@@ -422,10 +423,10 @@ class RouteMap extends pulumi.CustomResource {
           'azure:network/routeMap:RouteMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<RouteMapRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteMapRule>(guardedValue, (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>())); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 
@@ -434,11 +435,12 @@ class RouteMap extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteMapState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteMap._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -453,7 +455,21 @@ class RouteMap extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<RouteMapRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteMapRule>(guardedValue, (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>())); });
+    virtualHubId = registerOutput<String>('virtualHubId');
+  }
+
+  /// Creates a typed reference to an existing [RouteMap] resource.
+  RouteMap.reference(String urn)
+    : super(
+        'azure:network/routeMap:RouteMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.name = registerOutput<String>('name');
+    rules = registerOutput<List<RouteMapRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteMapRule>(guardedValue, (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>())); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 }

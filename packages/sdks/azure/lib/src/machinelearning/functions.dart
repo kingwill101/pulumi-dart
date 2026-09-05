@@ -148,3 +148,14 @@ Future<GetWorkspaceResult> getWorkspace(
   );
   return GetWorkspaceResult.fromMap(result);
 }
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:machinelearning/getWorkspace:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
+}

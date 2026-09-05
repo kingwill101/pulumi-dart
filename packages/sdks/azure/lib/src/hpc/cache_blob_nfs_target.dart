@@ -51,7 +51,7 @@ class CacheBlobNfsTarget extends pulumi.CustomResource {
           'azure:hpc/cacheBlobNfsTarget:CacheBlobNfsTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accessPolicyName = registerOutput<String?>('accessPolicyName');
     cacheName = registerOutput<String>('cacheName');
@@ -69,11 +69,12 @@ class CacheBlobNfsTarget extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CacheBlobNfsTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CacheBlobNfsTarget._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -87,6 +88,26 @@ class CacheBlobNfsTarget extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicyName = registerOutput<String?>('accessPolicyName');
+    cacheName = registerOutput<String>('cacheName');
+    this.name = registerOutput<String>('name');
+    namespacePath = registerOutput<String>('namespacePath');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageContainerId = registerOutput<String>('storageContainerId');
+    usageModel = registerOutput<String>('usageModel');
+    verificationTimerInSeconds = registerOutput<int?>('verificationTimerInSeconds');
+    writeBackTimerInSeconds = registerOutput<int?>('writeBackTimerInSeconds');
+  }
+
+  /// Creates a typed reference to an existing [CacheBlobNfsTarget] resource.
+  CacheBlobNfsTarget.reference(String urn)
+    : super(
+        'azure:hpc/cacheBlobNfsTarget:CacheBlobNfsTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicyName = registerOutput<String?>('accessPolicyName');
     cacheName = registerOutput<String>('cacheName');
     this.name = registerOutput<String>('name');

@@ -6,9 +6,9 @@ import 'management_policy_rule.dart';
 /// Input properties used for looking up and filtering ManagementPolicy resources.
 class ManagementPolicyState {
   /// A `rule` block as documented below.
-  final pulumi.Input<List<ManagementPolicyRule>>? rules;
+  final pulumi.Input<List<ManagementPolicyRule>?>? rules;
   /// Specifies the id of the storage account to apply the management policy to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
 
   /// Creates a new [ManagementPolicyState].
   /// [rules] A `rule` block as documented below.

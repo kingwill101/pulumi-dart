@@ -9,15 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuthorizationRuleArgs {
   /// Specifies the name of the EventHub.
   final pulumi.Input<String> eventhubName;
-  final pulumi.Input<bool>? listen;
-  final pulumi.Input<bool>? manage;
+  final pulumi.Input<bool?>? listen;
+  final pulumi.Input<bool?>? manage;
   /// Specifies the name of the EventHub Authorization Rule resource. be created.
   final pulumi.Input<String> name;
   /// Specifies the name of the grandparent EventHub Namespace.
   final pulumi.Input<String> namespaceName;
   /// The name of the resource group in which the EventHub Authorization Rule's grandparent Namespace exists.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<bool>? send;
+  final pulumi.Input<bool?>? send;
 
   /// Creates a new [GetAuthorizationRuleArgs].
   /// [eventhubName] Specifies the name of the EventHub.

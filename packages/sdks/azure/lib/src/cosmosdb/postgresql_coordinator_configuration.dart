@@ -124,7 +124,7 @@ import 'postgresql_coordinator_configuration_state.dart';
 /// 		}
 /// 		_, err = cosmosdb.NewPostgresqlCoordinatorConfiguration(ctx, "example", &cosmosdb.PostgresqlCoordinatorConfigurationArgs{
 /// 			Name:      pulumi.String("array_nulls"),
-/// 			ClusterId: example.ID(),
+/// 			ClusterId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Value:     pulumi.String("on"),
 /// 		})
 /// 		if err != nil {
@@ -278,7 +278,7 @@ class PostgresqlCoordinatorConfiguration extends pulumi.CustomResource {
           'azure:cosmosdb/postgresqlCoordinatorConfiguration:PostgresqlCoordinatorConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
@@ -290,11 +290,12 @@ class PostgresqlCoordinatorConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PostgresqlCoordinatorConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PostgresqlCoordinatorConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -308,6 +309,20 @@ class PostgresqlCoordinatorConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clusterId = registerOutput<String>('clusterId');
+    this.name = registerOutput<String>('name');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [PostgresqlCoordinatorConfiguration] resource.
+  PostgresqlCoordinatorConfiguration.reference(String urn)
+    : super(
+        'azure:cosmosdb/postgresqlCoordinatorConfiguration:PostgresqlCoordinatorConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
     value = registerOutput<String>('value');

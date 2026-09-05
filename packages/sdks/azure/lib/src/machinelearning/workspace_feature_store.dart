@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceFeatureStore {
   /// The version of Spark runtime.
-  final pulumi.Input<String>? computerSparkRuntimeVersion;
+  final pulumi.Input<String?>? computerSparkRuntimeVersion;
   /// The name of offline store connection.
-  final pulumi.Input<String>? offlineConnectionName;
+  final pulumi.Input<String?>? offlineConnectionName;
   /// The name of online store connection.
   ///
   /// &gt; **Note:** `featureStore` must be set when`kind` is `FeatureStore`
-  final pulumi.Input<String>? onlineConnectionName;
+  final pulumi.Input<String?>? onlineConnectionName;
 
   /// Creates a new [WorkspaceFeatureStore].
   /// [computerSparkRuntimeVersion] The version of Spark runtime.

@@ -167,14 +167,14 @@ import 'endpoint_servicebus_state.dart';
 /// 		}
 /// 		exampleTopic, err := servicebus.NewTopic(ctx, "example", &servicebus.TopicArgs{
 /// 			Name:        pulumi.String("exampleservicebustopic"),
-/// 			NamespaceId: exampleNamespace.ID(),
+/// 			NamespaceId: exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleTopicAuthorizationRule, err := servicebus.NewTopicAuthorizationRule(ctx, "example", &servicebus.TopicAuthorizationRuleArgs{
 /// 			Name:    pulumi.String("example-rule"),
-/// 			TopicId: exampleTopic.ID(),
+/// 			TopicId: exampleTopic.ID().ToIDOutput().ToStringOutput(),
 /// 			Listen:  pulumi.Bool(false),
 /// 			Send:    pulumi.Bool(true),
 /// 			Manage:  pulumi.Bool(false),
@@ -184,7 +184,7 @@ import 'endpoint_servicebus_state.dart';
 /// 		}
 /// 		_, err = digitaltwins.NewEndpointServicebus(ctx, "example", &digitaltwins.EndpointServicebusArgs{
 /// 			Name:                                pulumi.String("example-EndpointSB"),
-/// 			DigitalTwinsId:                      exampleInstance.ID(),
+/// 			DigitalTwinsId:                      exampleInstance.ID().ToIDOutput().ToStringOutput(),
 /// 			ServicebusPrimaryConnectionString:   exampleTopicAuthorizationRule.PrimaryConnectionString,
 /// 			ServicebusSecondaryConnectionString: exampleTopicAuthorizationRule.SecondaryConnectionString,
 /// 		})
@@ -395,13 +395,14 @@ class EndpointServicebus extends pulumi.CustomResource {
           'azure:digitaltwins/endpointServicebus:EndpointServicebus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['deadLetterStorageSecret', 'servicebusPrimaryConnectionString', 'servicebusSecondaryConnectionString'],
         ) {
-    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
+    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret', isSecret: true);
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
     this.name = registerOutput<String>('name');
-    servicebusPrimaryConnectionString = registerOutput<String>('servicebusPrimaryConnectionString');
-    servicebusSecondaryConnectionString = registerOutput<String>('servicebusSecondaryConnectionString');
+    servicebusPrimaryConnectionString = registerOutput<String>('servicebusPrimaryConnectionString', isSecret: true);
+    servicebusSecondaryConnectionString = registerOutput<String>('servicebusSecondaryConnectionString', isSecret: true);
   }
 
   /// Gets an existing [EndpointServicebus] resource's state with the given [name] and [id].
@@ -409,11 +410,12 @@ class EndpointServicebus extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointServicebusState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointServicebus._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -427,10 +429,27 @@ class EndpointServicebus extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
+    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret', isSecret: true);
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
     this.name = registerOutput<String>('name');
-    servicebusPrimaryConnectionString = registerOutput<String>('servicebusPrimaryConnectionString');
-    servicebusSecondaryConnectionString = registerOutput<String>('servicebusSecondaryConnectionString');
+    servicebusPrimaryConnectionString = registerOutput<String>('servicebusPrimaryConnectionString', isSecret: true);
+    servicebusSecondaryConnectionString = registerOutput<String>('servicebusSecondaryConnectionString', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [EndpointServicebus] resource.
+  EndpointServicebus.reference(String urn)
+    : super(
+        'azure:digitaltwins/endpointServicebus:EndpointServicebus',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['deadLetterStorageSecret', 'servicebusPrimaryConnectionString', 'servicebusSecondaryConnectionString'],
+        isResourceReference: true,
+      ) {
+    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret', isSecret: true);
+    digitalTwinsId = registerOutput<String>('digitalTwinsId');
+    this.name = registerOutput<String>('name');
+    servicebusPrimaryConnectionString = registerOutput<String>('servicebusPrimaryConnectionString', isSecret: true);
+    servicebusSecondaryConnectionString = registerOutput<String>('servicebusSecondaryConnectionString', isSecret: true);
   }
 }

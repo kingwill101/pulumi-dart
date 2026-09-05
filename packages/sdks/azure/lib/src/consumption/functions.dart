@@ -151,6 +151,17 @@ Future<GetBudgetResourceGroupResult> getBudgetResourceGroup(
   return GetBudgetResourceGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetBudgetResourceGroupResult> getBudgetResourceGroupOutput(
+  GetBudgetResourceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:consumption/getBudgetResourceGroup:getBudgetResourceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBudgetResourceGroupResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Consumption Budget for a specific subscription.
 ///
 /// ## Example Usage
@@ -296,4 +307,15 @@ Future<GetBudgetSubscriptionResult> getBudgetSubscription(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBudgetSubscriptionResult.fromMap(result);
+}
+
+pulumi.Output<GetBudgetSubscriptionResult> getBudgetSubscriptionOutput(
+  GetBudgetSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:consumption/getBudgetSubscription:getBudgetSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBudgetSubscriptionResult.fromMap);
 }

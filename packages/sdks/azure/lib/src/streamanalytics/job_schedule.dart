@@ -391,7 +391,7 @@ import 'job_schedule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = streamanalytics.NewJobSchedule(ctx, "example", &streamanalytics.JobScheduleArgs{
-/// 			StreamAnalyticsJobId: exampleJob.ID(),
+/// 			StreamAnalyticsJobId: exampleJob.ID().ToIDOutput().ToStringOutput(),
 /// 			StartMode:            pulumi.String("CustomTime"),
 /// 			StartTime:            pulumi.String("2022-09-21T00:00:00Z"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -760,7 +760,7 @@ class JobSchedule extends pulumi.CustomResource {
           'azure:streamanalytics/jobSchedule:JobSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     lastOutputTime = registerOutput<String>('lastOutputTime');
     startMode = registerOutput<String>('startMode');
@@ -773,11 +773,12 @@ class JobSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -791,6 +792,21 @@ class JobSchedule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    lastOutputTime = registerOutput<String>('lastOutputTime');
+    startMode = registerOutput<String>('startMode');
+    startTime = registerOutput<String>('startTime');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+  }
+
+  /// Creates a typed reference to an existing [JobSchedule] resource.
+  JobSchedule.reference(String urn)
+    : super(
+        'azure:streamanalytics/jobSchedule:JobSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     lastOutputTime = registerOutput<String>('lastOutputTime');
     startMode = registerOutput<String>('startMode');
     startTime = registerOutput<String>('startTime');

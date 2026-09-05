@@ -10,7 +10,7 @@ class GetFhirServiceArgs {
   /// The name of the Healthcare FHIR Service.
   final pulumi.Input<String> name;
   /// The map of tags assigned to the Healthcare FHIR Service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The id of the Healthcare Workspace in which the Healthcare FHIR Service exists.
   final pulumi.Input<String> workspaceId;
 

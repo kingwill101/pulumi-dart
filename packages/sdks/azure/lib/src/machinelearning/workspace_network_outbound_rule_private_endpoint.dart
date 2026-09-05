@@ -26,6 +26,7 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 ///     name: "workspaceexamplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 /// });
@@ -81,6 +82,7 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 ///     name="workspaceexamplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium")
 /// example_account = azure.storage.Account("example",
@@ -143,6 +145,7 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 ///         Name = "workspaceexamplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///     });
@@ -228,11 +231,12 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:              pulumi.String("workspaceexamplekeyvault"),
-/// 			Location:          example.Location,
-/// 			ResourceGroupName: example.Name,
-/// 			TenantId:          pulumi.String(current.TenantId),
-/// 			SkuName:           pulumi.String("premium"),
+/// 			Name:                     pulumi.String("workspaceexamplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -251,9 +255,9 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 /// 			Name:                  pulumi.String("example-workspace"),
 /// 			Location:              example.Location,
 /// 			ResourceGroupName:     example.Name,
-/// 			ApplicationInsightsId: exampleInsights.ID(),
-/// 			KeyVaultId:            exampleKeyVault.ID(),
-/// 			StorageAccountId:      exampleAccount.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultId:            exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:      exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			ManagedNetwork: &machinelearning.WorkspaceManagedNetworkArgs{
 /// 				IsolationMode: pulumi.String("AllowOnlyApprovedOutbound"),
 /// 			},
@@ -276,8 +280,8 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 /// 		}
 /// 		_, err = machinelearning.NewWorkspaceNetworkOutboundRulePrivateEndpoint(ctx, "example", &machinelearning.WorkspaceNetworkOutboundRulePrivateEndpointArgs{
 /// 			Name:              pulumi.String("example-outboundrule"),
-/// 			WorkspaceId:       exampleWorkspace.ID(),
-/// 			ServiceResourceId: example2.ID(),
+/// 			WorkspaceId:       exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			ServiceResourceId: example2.ID().ToIDOutput().ToStringOutput(),
 /// 			SubResourceTarget: pulumi.String("blob"),
 /// 		})
 /// 		if err != nil {
@@ -310,11 +314,12 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 ///   application_type    = "web"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "workspaceexamplekeyvault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name            = "premium"
+///   name                       = "workspaceexamplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
 /// }
 /// resource "azure_storage_account" "example" {
 ///   name                     = "workspacestorageaccount"
@@ -403,6 +408,7 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 ///             .name("workspaceexamplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .build());
@@ -470,6 +476,7 @@ import 'workspace_network_outbound_rule_private_endpoint_state.dart';
 ///       name: workspaceexamplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///   exampleAccount:
@@ -566,7 +573,7 @@ class WorkspaceNetworkOutboundRulePrivateEndpoint extends pulumi.CustomResource 
           'azure:machinelearning/workspaceNetworkOutboundRulePrivateEndpoint:WorkspaceNetworkOutboundRulePrivateEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     serviceResourceId = registerOutput<String>('serviceResourceId');
@@ -580,11 +587,12 @@ class WorkspaceNetworkOutboundRulePrivateEndpoint extends pulumi.CustomResource 
     String name,
     pulumi.Input<String> id, {
     WorkspaceNetworkOutboundRulePrivateEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceNetworkOutboundRulePrivateEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -598,6 +606,22 @@ class WorkspaceNetworkOutboundRulePrivateEndpoint extends pulumi.CustomResource 
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    serviceResourceId = registerOutput<String>('serviceResourceId');
+    sparkEnabled = registerOutput<bool?>('sparkEnabled');
+    subResourceTarget = registerOutput<String>('subResourceTarget');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceNetworkOutboundRulePrivateEndpoint] resource.
+  WorkspaceNetworkOutboundRulePrivateEndpoint.reference(String urn)
+    : super(
+        'azure:machinelearning/workspaceNetworkOutboundRulePrivateEndpoint:WorkspaceNetworkOutboundRulePrivateEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     serviceResourceId = registerOutput<String>('serviceResourceId');
     sparkEnabled = registerOutput<bool?>('sparkEnabled');

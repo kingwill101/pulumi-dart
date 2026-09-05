@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_group_sap_hana_args.dart';
 import 'volume_group_sap_hana_state.dart';
+import 'volume_group_sap_hana_volume.dart';
 
 /// Manages a Application Volume Group for SAP HANA application.
 ///
@@ -748,7 +749,7 @@ import 'volume_group_sap_hana_state.dart';
 /// 			Name:                      pulumi.Sprintf("%v-avset", prefix),
 /// 			Location:                  exampleResourceGroup.Location,
 /// 			ResourceGroupName:         exampleResourceGroup.Name,
-/// 			ProximityPlacementGroupId: examplePlacementGroup.ID(),
+/// 			ProximityPlacementGroupId: examplePlacementGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -760,7 +761,7 @@ import 'volume_group_sap_hana_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   example1.ID(),
+/// 					SubnetId:                   example1.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -776,10 +777,10 @@ import 'volume_group_sap_hana_state.dart';
 /// 			AdminUsername:                 pulumi.String(adminUsername),
 /// 			AdminPassword:                 pulumi.Any(adminPassword),
 /// 			DisablePasswordAuthentication: pulumi.Bool(false),
-/// 			ProximityPlacementGroupId:     examplePlacementGroup.ID(),
-/// 			AvailabilitySetId:             exampleAvailabilitySet.ID(),
+/// 			ProximityPlacementGroupId:     examplePlacementGroup.ID().ToIDOutput().ToStringOutput(),
+/// 			AvailabilitySetId:             exampleAvailabilitySet.ID().ToIDOutput().ToStringOutput(),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			SourceImageReference: &compute.LinuxVirtualMachineSourceImageReferenceArgs{
 /// 				Publisher: pulumi.String("Canonical"),
@@ -830,9 +831,9 @@ import 'volume_group_sap_hana_state.dart';
 /// 					Name:                      pulumi.Sprintf("%v-netapp-volume-1", prefix),
 /// 					VolumePath:                pulumi.String("my-unique-file-path-1"),
 /// 					ServiceLevel:              pulumi.String("Standard"),
-/// 					CapacityPoolId:            examplePool.ID(),
-/// 					SubnetId:                  exampleSubnet.ID(),
-/// 					ProximityPlacementGroupId: examplePlacementGroup.ID(),
+/// 					CapacityPoolId:            examplePool.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                  exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					ProximityPlacementGroupId: examplePlacementGroup.ID().ToIDOutput().ToStringOutput(),
 /// 					VolumeSpecName:            pulumi.String("data"),
 /// 					StorageQuotaInGb:          pulumi.Int(1024),
 /// 					ThroughputInMibps:         pulumi.Float64(24),
@@ -858,9 +859,9 @@ import 'volume_group_sap_hana_state.dart';
 /// 					Name:                      pulumi.Sprintf("%v-netapp-volume-2", prefix),
 /// 					VolumePath:                pulumi.String("my-unique-file-path-2"),
 /// 					ServiceLevel:              pulumi.String("Standard"),
-/// 					CapacityPoolId:            examplePool.ID(),
-/// 					SubnetId:                  exampleSubnet.ID(),
-/// 					ProximityPlacementGroupId: examplePlacementGroup.ID(),
+/// 					CapacityPoolId:            examplePool.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                  exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					ProximityPlacementGroupId: examplePlacementGroup.ID().ToIDOutput().ToStringOutput(),
 /// 					VolumeSpecName:            pulumi.String("log"),
 /// 					StorageQuotaInGb:          pulumi.Int(1024),
 /// 					ThroughputInMibps:         pulumi.Float64(24),
@@ -886,9 +887,9 @@ import 'volume_group_sap_hana_state.dart';
 /// 					Name:                      pulumi.Sprintf("%v-netapp-volume-3", prefix),
 /// 					VolumePath:                pulumi.String("my-unique-file-path-3"),
 /// 					ServiceLevel:              pulumi.String("Standard"),
-/// 					CapacityPoolId:            examplePool.ID(),
-/// 					SubnetId:                  exampleSubnet.ID(),
-/// 					ProximityPlacementGroupId: examplePlacementGroup.ID(),
+/// 					CapacityPoolId:            examplePool.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                  exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 					ProximityPlacementGroupId: examplePlacementGroup.ID().ToIDOutput().ToStringOutput(),
 /// 					VolumeSpecName:            pulumi.String("shared"),
 /// 					StorageQuotaInGb:          pulumi.Int(1024),
 /// 					ThroughputInMibps:         pulumi.Float64(24),
@@ -1617,6 +1618,7 @@ import 'volume_group_sap_hana_state.dart';
 ///     name: `${prefix}kv`,
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     purgeProtectionEnabled: true,
@@ -1824,6 +1826,7 @@ import 'volume_group_sap_hana_state.dart';
 ///     name=f"{prefix}kv",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     purge_protection_enabled=True,
@@ -2061,6 +2064,7 @@ import 'volume_group_sap_hana_state.dart';
 ///         Name = $"{prefix}kv",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         PurgeProtectionEnabled = true,
@@ -2351,6 +2355,7 @@ import 'volume_group_sap_hana_state.dart';
 /// 			Name:                         pulumi.Sprintf("%vkv", prefix),
 /// 			Location:                     example.Location,
 /// 			ResourceGroupName:            example.Name,
+/// 			RbacAuthorizationEnabled:     pulumi.Bool(false),
 /// 			TenantId:                     pulumi.String(current.TenantId),
 /// 			SkuName:                      pulumi.String("standard"),
 /// 			PurgeProtectionEnabled:       pulumi.Bool(true),
@@ -2373,12 +2378,8 @@ import 'volume_group_sap_hana_state.dart';
 /// 					},
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
-/// 					TenantId: exampleAccount.Identity.ApplyT(func(identity netapp.AccountIdentity) (*string, error) {
-/// 						return identity.TenantId, nil
-/// 					}).(pulumi.StringPtrOutput),
-/// 					ObjectId: exampleAccount.Identity.ApplyT(func(identity netapp.AccountIdentity) (*string, error) {
-/// 						return identity.PrincipalId, nil
-/// 					}).(pulumi.StringPtrOutput),
+/// 					TenantId: exampleAccount.Identity.TenantId(),
+/// 					ObjectId: exampleAccount.Identity.PrincipalId(),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Get"),
 /// 						pulumi.String("Encrypt"),
@@ -2392,7 +2393,7 @@ import 'volume_group_sap_hana_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.Sprintf("%v-key", prefix),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -2408,11 +2409,9 @@ import 'volume_group_sap_hana_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAccountEncryption, err := netapp.NewAccountEncryption(ctx, "example", &netapp.AccountEncryptionArgs{
-/// 			NetappAccountId: exampleAccount.ID(),
-/// 			SystemAssignedIdentityPrincipalId: pulumi.String(exampleAccount.Identity.ApplyT(func(identity netapp.AccountIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			EncryptionKey: exampleKey.VersionlessId,
+/// 			NetappAccountId:                   exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			SystemAssignedIdentityPrincipalId: exampleAccount.Identity.PrincipalId(),
+/// 			EncryptionKey:                     exampleKey.VersionlessId,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2421,10 +2420,10 @@ import 'volume_group_sap_hana_state.dart';
 /// 			Name:              pulumi.Sprintf("%v-pe-kv", prefix),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			SubnetId:          examplePrivateEndpoint.ID(),
+/// 			SubnetId:          examplePrivateEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 			PrivateServiceConnection: &privatelink.EndpointPrivateServiceConnectionArgs{
 /// 				Name:                        pulumi.Sprintf("%v-pe-sc-kv", prefix),
-/// 				PrivateConnectionResourceId: exampleKeyVault.ID(),
+/// 				PrivateConnectionResourceId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 				IsManualConnection:          pulumi.Bool(false),
 /// 				SubresourceNames: pulumi.StringArray{
 /// 					pulumi.String("Vault"),
@@ -2460,8 +2459,8 @@ import 'volume_group_sap_hana_state.dart';
 /// 					Name:                      pulumi.Sprintf("%v-netapp-volume-data", prefix),
 /// 					VolumePath:                pulumi.String("my-unique-file-path-data"),
 /// 					ServiceLevel:              pulumi.String("Standard"),
-/// 					CapacityPoolId:            examplePool.ID(),
-/// 					SubnetId:                  exampleDelegated.ID(),
+/// 					CapacityPoolId:            examplePool.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                  exampleDelegated.ID().ToIDOutput().ToStringOutput(),
 /// 					Zone:                      pulumi.String("1"),
 /// 					VolumeSpecName:            pulumi.String("data"),
 /// 					StorageQuotaInGb:          pulumi.Int(1024),
@@ -2471,7 +2470,7 @@ import 'volume_group_sap_hana_state.dart';
 /// 					SnapshotDirectoryVisible:  pulumi.Bool(false),
 /// 					NetworkFeatures:           pulumi.String("Standard"),
 /// 					EncryptionKeySource:       pulumi.String("Microsoft.KeyVault"),
-/// 					KeyVaultPrivateEndpointId: exampleEndpoint.ID(),
+/// 					KeyVaultPrivateEndpointId: exampleEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 					ExportPolicyRules: netapp.VolumeGroupSapHanaVolumeExportPolicyRuleArray{
 /// 						&netapp.VolumeGroupSapHanaVolumeExportPolicyRuleArgs{
 /// 							RuleIndex:         pulumi.Int(1),
@@ -2488,8 +2487,8 @@ import 'volume_group_sap_hana_state.dart';
 /// 					Name:                      pulumi.Sprintf("%v-netapp-volume-log", prefix),
 /// 					VolumePath:                pulumi.String("my-unique-file-path-log"),
 /// 					ServiceLevel:              pulumi.String("Standard"),
-/// 					CapacityPoolId:            examplePool.ID(),
-/// 					SubnetId:                  exampleDelegated.ID(),
+/// 					CapacityPoolId:            examplePool.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                  exampleDelegated.ID().ToIDOutput().ToStringOutput(),
 /// 					Zone:                      pulumi.String("1"),
 /// 					VolumeSpecName:            pulumi.String("log"),
 /// 					StorageQuotaInGb:          pulumi.Int(1024),
@@ -2499,7 +2498,7 @@ import 'volume_group_sap_hana_state.dart';
 /// 					SnapshotDirectoryVisible:  pulumi.Bool(false),
 /// 					NetworkFeatures:           pulumi.String("Standard"),
 /// 					EncryptionKeySource:       pulumi.String("Microsoft.KeyVault"),
-/// 					KeyVaultPrivateEndpointId: exampleEndpoint.ID(),
+/// 					KeyVaultPrivateEndpointId: exampleEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 					ExportPolicyRules: netapp.VolumeGroupSapHanaVolumeExportPolicyRuleArray{
 /// 						&netapp.VolumeGroupSapHanaVolumeExportPolicyRuleArgs{
 /// 							RuleIndex:         pulumi.Int(1),
@@ -2516,8 +2515,8 @@ import 'volume_group_sap_hana_state.dart';
 /// 					Name:                      pulumi.Sprintf("%v-netapp-volume-shared", prefix),
 /// 					VolumePath:                pulumi.String("my-unique-file-path-shared"),
 /// 					ServiceLevel:              pulumi.String("Standard"),
-/// 					CapacityPoolId:            examplePool.ID(),
-/// 					SubnetId:                  exampleDelegated.ID(),
+/// 					CapacityPoolId:            examplePool.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                  exampleDelegated.ID().ToIDOutput().ToStringOutput(),
 /// 					Zone:                      pulumi.String("1"),
 /// 					VolumeSpecName:            pulumi.String("shared"),
 /// 					StorageQuotaInGb:          pulumi.Int(1024),
@@ -2527,7 +2526,7 @@ import 'volume_group_sap_hana_state.dart';
 /// 					SnapshotDirectoryVisible:  pulumi.Bool(false),
 /// 					NetworkFeatures:           pulumi.String("Standard"),
 /// 					EncryptionKeySource:       pulumi.String("Microsoft.KeyVault"),
-/// 					KeyVaultPrivateEndpointId: exampleEndpoint.ID(),
+/// 					KeyVaultPrivateEndpointId: exampleEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 					ExportPolicyRules: netapp.VolumeGroupSapHanaVolumeExportPolicyRuleArray{
 /// 						&netapp.VolumeGroupSapHanaVolumeExportPolicyRuleArgs{
 /// 							RuleIndex:         pulumi.Int(1),
@@ -2602,6 +2601,7 @@ import 'volume_group_sap_hana_state.dart';
 ///   name                            ="${prefix}kv"
 ///   location                        = azure_core_resourcegroup.example.location
 ///   resource_group_name             = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled      = false
 ///   tenant_id                       = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                        = "standard"
 ///   purge_protection_enabled        = true
@@ -2839,6 +2839,7 @@ import 'volume_group_sap_hana_state.dart';
 ///             .name(String.format("%skv", prefix))
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .purgeProtectionEnabled(true)
@@ -3062,6 +3063,7 @@ import 'volume_group_sap_hana_state.dart';
 ///       name: ${prefix}kv
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       purgeProtectionEnabled: true
@@ -3252,7 +3254,7 @@ class VolumeGroupSapHana extends pulumi.CustomResource {
   /// The name of the Resource Group where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   late final pulumi.Output<String> resourceGroupName;
   /// One or more `volume` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> volumes;
+  late final pulumi.Output<List<VolumeGroupSapHanaVolume>> volumes;
 
   /// Creates a new [VolumeGroupSapHana].
   /// [name] The Pulumi resource name.
@@ -3266,7 +3268,7 @@ class VolumeGroupSapHana extends pulumi.CustomResource {
           'azure:netapp/volumeGroupSapHana:VolumeGroupSapHana',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     applicationIdentifier = registerOutput<String>('applicationIdentifier');
@@ -3274,7 +3276,7 @@ class VolumeGroupSapHana extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    volumes = registerOutput<List<Map<String, dynamic>>>('volumes');
+    volumes = registerOutput<List<VolumeGroupSapHanaVolume>>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeGroupSapHanaVolume>(guardedValue, (value) => VolumeGroupSapHanaVolume.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [VolumeGroupSapHana] resource's state with the given [name] and [id].
@@ -3282,11 +3284,12 @@ class VolumeGroupSapHana extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeGroupSapHanaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeGroupSapHana._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3306,6 +3309,24 @@ class VolumeGroupSapHana extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    volumes = registerOutput<List<Map<String, dynamic>>>('volumes');
+    volumes = registerOutput<List<VolumeGroupSapHanaVolume>>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeGroupSapHanaVolume>(guardedValue, (value) => VolumeGroupSapHanaVolume.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [VolumeGroupSapHana] resource.
+  VolumeGroupSapHana.reference(String urn)
+    : super(
+        'azure:netapp/volumeGroupSapHana:VolumeGroupSapHana',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    applicationIdentifier = registerOutput<String>('applicationIdentifier');
+    groupDescription = registerOutput<String>('groupDescription');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    volumes = registerOutput<List<VolumeGroupSapHanaVolume>>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeGroupSapHanaVolume>(guardedValue, (value) => VolumeGroupSapHanaVolume.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -6,17 +6,17 @@ import 'iot_hub_device_update_instance_diagnostic_storage_account.dart';
 /// Input properties used for looking up and filtering IotHubDeviceUpdateInstance resources.
 class IotHubDeviceUpdateInstanceState {
   /// Specifies the ID of the IoT Hub Device Update Account where the IoT Hub Device Update Instance exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? deviceUpdateAccountId;
+  final pulumi.Input<String?>? deviceUpdateAccountId;
   /// Whether the diagnostic log collection is enabled. Possible values are `true` and `false`. Defaults to `false`.
-  final pulumi.Input<bool>? diagnosticEnabled;
+  final pulumi.Input<bool?>? diagnosticEnabled;
   /// A `diagnosticStorageAccount` block as defined below.
-  final pulumi.Input<IotHubDeviceUpdateInstanceDiagnosticStorageAccount>? diagnosticStorageAccount;
+  final pulumi.Input<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?>? diagnosticStorageAccount;
   /// Specifies the ID of the IoT Hub associated with the IoT Hub Device Update Instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? iothubId;
+  final pulumi.Input<String?>? iothubId;
   /// Specifies the name which should be used for this IoT Hub Device Update Instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags which should be assigned to the IoT Hub Device Update Instance.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IotHubDeviceUpdateInstanceState].
   /// [deviceUpdateAccountId] Specifies the ID of the IoT Hub Device Update Account where the IoT Hub Device Update Instance exists. Changing this forces a new resource to be created.

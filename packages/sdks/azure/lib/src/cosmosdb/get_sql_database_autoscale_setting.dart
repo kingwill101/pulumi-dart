@@ -20,7 +20,7 @@ class GetSqlDatabaseAutoscaleSetting {
 
   factory GetSqlDatabaseAutoscaleSetting.fromMap(Map<String, dynamic> map) {
     return GetSqlDatabaseAutoscaleSetting(
-      maxThroughput: pulumi.Input.fromValue(map['maxThroughput'] as int),
+      maxThroughput: pulumi.Input.fromValue((map['maxThroughput'] as num).toInt()),
     );
   }
 }

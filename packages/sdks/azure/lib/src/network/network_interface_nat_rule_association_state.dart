@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkInterfaceNatRuleAssociation resources.
 class NetworkInterfaceNatRuleAssociationState {
   /// The Name of the IP Configuration within the Network Interface which should be connected to the NAT Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? ipConfigurationName;
+  final pulumi.Input<String?>? ipConfigurationName;
   /// The ID of the Load Balancer NAT Rule which this Network Interface which should be connected to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? natRuleId;
+  final pulumi.Input<String?>? natRuleId;
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
 
   /// Creates a new [NetworkInterfaceNatRuleAssociationState].
   /// [ipConfigurationName] The Name of the IP Configuration within the Network Interface which should be connected to the NAT Rule. Changing this forces a new resource to be created.

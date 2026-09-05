@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyPolicySettingsLogScrubbingRule {
   /// Describes if the managed rule is in enabled state or disabled state. Defaults to `false`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   final pulumi.Input<String> matchVariable;
   /// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
-  final pulumi.Input<String>? selector;
-  final pulumi.Input<String>? selectorMatchOperator;
+  final pulumi.Input<String?>? selector;
+  final pulumi.Input<String?>? selectorMatchOperator;
 
   /// Creates a new [PolicyPolicySettingsLogScrubbingRule].
   /// [enabled] Describes if the managed rule is in enabled state or disabled state. Defaults to `false`.

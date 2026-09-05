@@ -278,7 +278,7 @@ class VaultResourceGuardAssociation extends pulumi.CustomResource {
           'azure:recoveryservices/vaultResourceGuardAssociation:VaultResourceGuardAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     resourceGuardId = registerOutput<String>('resourceGuardId');
     vaultId = registerOutput<String>('vaultId');
@@ -289,11 +289,12 @@ class VaultResourceGuardAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VaultResourceGuardAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VaultResourceGuardAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -307,6 +308,19 @@ class VaultResourceGuardAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    resourceGuardId = registerOutput<String>('resourceGuardId');
+    vaultId = registerOutput<String>('vaultId');
+  }
+
+  /// Creates a typed reference to an existing [VaultResourceGuardAssociation] resource.
+  VaultResourceGuardAssociation.reference(String urn)
+    : super(
+        'azure:recoveryservices/vaultResourceGuardAssociation:VaultResourceGuardAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     resourceGuardId = registerOutput<String>('resourceGuardId');
     vaultId = registerOutput<String>('vaultId');
   }

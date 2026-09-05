@@ -157,6 +157,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cosmosdb/getAccount:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Cosmos DB Mongo Database.
 ///
 /// ## Example Usage
@@ -311,6 +322,17 @@ Future<GetMongoDatabaseResult> getMongoDatabase(
   return GetMongoDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetMongoDatabaseResult> getMongoDatabaseOutput(
+  GetMongoDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cosmosdb/getMongoDatabase:getMongoDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMongoDatabaseResult.fromMap);
+}
+
 /// Use this data source to access information about Cosmos DB Restorable Database Accounts.
 ///
 /// ## Example Usage
@@ -458,6 +480,17 @@ Future<GetRestorableDatabaseAccountsResult> getRestorableDatabaseAccounts(
   return GetRestorableDatabaseAccountsResult.fromMap(result);
 }
 
+pulumi.Output<GetRestorableDatabaseAccountsResult> getRestorableDatabaseAccountsOutput(
+  GetRestorableDatabaseAccountsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cosmosdb/getRestorableDatabaseAccounts:getRestorableDatabaseAccounts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRestorableDatabaseAccountsResult.fromMap);
+}
+
 /// Use this data source to access information about an existing CosmosDB SQL Database.
 ///
 /// ## Example Usage
@@ -598,6 +631,17 @@ Future<GetSqlDatabaseResult> getSqlDatabase(
   return GetSqlDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlDatabaseResult> getSqlDatabaseOutput(
+  GetSqlDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cosmosdb/getSqlDatabase:getSqlDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlDatabaseResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Cosmos DB SQL Role Definition.
 ///
 /// ## Example Usage
@@ -736,4 +780,15 @@ Future<GetSqlRoleDefinitionResult> getSqlRoleDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlRoleDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlRoleDefinitionResult> getSqlRoleDefinitionOutput(
+  GetSqlRoleDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:cosmosdb/getSqlRoleDefinition:getSqlRoleDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlRoleDefinitionResult.fromMap);
 }

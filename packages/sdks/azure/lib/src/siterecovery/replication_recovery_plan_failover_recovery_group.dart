@@ -6,9 +6,9 @@ import 'replication_recovery_plan_failover_recovery_group_pre_action.dart';
 
 class ReplicationRecoveryPlanFailoverRecoveryGroup {
   /// one or more `action` block as defined below. which will be executed after the group recovery.
-  final pulumi.Input<List<ReplicationRecoveryPlanFailoverRecoveryGroupPostAction>>? postActions;
+  final pulumi.Input<List<ReplicationRecoveryPlanFailoverRecoveryGroupPostAction>?>? postActions;
   /// one or more `action` block as defined below. which will be executed before the group recovery.
-  final pulumi.Input<List<ReplicationRecoveryPlanFailoverRecoveryGroupPreAction>>? preActions;
+  final pulumi.Input<List<ReplicationRecoveryPlanFailoverRecoveryGroupPreAction>?>? preActions;
 
   /// Creates a new [ReplicationRecoveryPlanFailoverRecoveryGroup].
   /// [postActions] one or more `action` block as defined below. which will be executed after the group recovery.

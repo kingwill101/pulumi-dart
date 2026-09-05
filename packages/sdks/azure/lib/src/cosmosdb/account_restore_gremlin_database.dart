@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountRestoreGremlinDatabase {
   /// A list of the Graph names for the restore request. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? graphNames;
+  final pulumi.Input<List<String>?>? graphNames;
   /// The Gremlin Database name for the restore request. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
 

@@ -5,7 +5,7 @@ import 'blob_inventory_policy_rule_filter.dart';
 
 class BlobInventoryPolicyRule {
   /// A `filter` block as defined above.
-  final pulumi.Input<BlobInventoryPolicyRuleFilter>? filter;
+  final pulumi.Input<BlobInventoryPolicyRuleFilter?>? filter;
   /// The format of the inventory files. Possible values are `Csv` and `Parquet`.
   final pulumi.Input<String> format;
   /// The name which should be used for this Blob Inventory Policy Rule.

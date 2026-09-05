@@ -9,23 +9,23 @@ import 'hci_cluster_identity.dart';
 /// {@macro pulumi_stack_hci_cluster_hci_cluster_args_doc}
 class HciClusterArgs {
   /// The ID of the Automanage Configuration assigned to the Azure Stack HCI Cluster.
-  final pulumi.Input<String>? automanageConfigurationId;
+  final pulumi.Input<String?>? automanageConfigurationId;
   /// The Client ID of the Azure Active Directory Application which is used by the Azure Stack HCI Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// An `identity` block as defined below.
-  final pulumi.Input<HciClusterIdentity>? identity;
+  final pulumi.Input<HciClusterIdentity?>? identity;
   /// The Azure Region where the Azure Stack HCI Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Azure Stack HCI Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Azure Stack HCI Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Azure Stack HCI Cluster.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Tenant ID of the Azure Active Directory which is used by the Azure Stack HCI Cluster. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If unspecified the Tenant ID of the Provider will be used.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [HciClusterArgs].
   /// [automanageConfigurationId] The ID of the Automanage Configuration assigned to the Azure Stack HCI Cluster.

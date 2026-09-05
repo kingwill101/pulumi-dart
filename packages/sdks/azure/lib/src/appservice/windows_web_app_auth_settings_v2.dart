@@ -14,55 +14,55 @@ import 'windows_web_app_auth_settings_v2_twitter_v2.dart';
 
 class WindowsWebAppAuthSettingsV2 {
   /// An `activeDirectoryV2` block as defined below.
-  final pulumi.Input<WindowsWebAppAuthSettingsV2ActiveDirectoryV2>? activeDirectoryV2;
+  final pulumi.Input<WindowsWebAppAuthSettingsV2ActiveDirectoryV2?>? activeDirectoryV2;
   /// An `appleV2` block as defined below.
-  final pulumi.Input<WindowsWebAppAuthSettingsV2AppleV2>? appleV2;
+  final pulumi.Input<WindowsWebAppAuthSettingsV2AppleV2?>? appleV2;
   /// Should the AuthV2 Settings be enabled. Defaults to `false`.
-  final pulumi.Input<bool>? authEnabled;
+  final pulumi.Input<bool?>? authEnabled;
   /// An `azureStaticWebAppV2` block as defined below.
-  final pulumi.Input<WindowsWebAppAuthSettingsV2AzureStaticWebAppV2>? azureStaticWebAppV2;
+  final pulumi.Input<WindowsWebAppAuthSettingsV2AzureStaticWebAppV2?>? azureStaticWebAppV2;
   /// The path to the App Auth settings.
   ///
   /// &gt; **Note:** Relative Paths are evaluated from the Site Root directory.
-  final pulumi.Input<String>? configFilePath;
+  final pulumi.Input<String?>? configFilePath;
   /// Zero or more `customOidcV2` blocks as defined below.
-  final pulumi.Input<List<WindowsWebAppAuthSettingsV2CustomOidcV2>>? customOidcV2s;
+  final pulumi.Input<List<WindowsWebAppAuthSettingsV2CustomOidcV2>?>? customOidcV2s;
   /// The Default Authentication Provider to use when the `unauthenticatedAction` is set to `RedirectToLoginPage`. Possible values include: `apple`, `azureactivedirectory`, `facebook`, `github`, `google`, `twitter` and the `name` of your `customOidcV2` provider.
   ///
   /// &gt; **Note:** Whilst any value will be accepted by the API for `defaultProvider`, it can leave the app in an unusable state if this value does not correspond to the name of a known provider (either built-in value, or customOidc name) as it is used to build the auth endpoint URI.
-  final pulumi.Input<String>? defaultProvider;
+  final pulumi.Input<String?>? defaultProvider;
   /// The paths which should be excluded from the `unauthenticatedAction` when it is set to `RedirectToLoginPage`.
   ///
   /// &gt; **Note:** This list should be used instead of setting `WEBSITE_WARMUP_PATH` in `appSettings` as it takes priority.
-  final pulumi.Input<List<String>>? excludedPaths;
+  final pulumi.Input<List<String>?>? excludedPaths;
   /// A `facebookV2` block as defined below.
-  final pulumi.Input<WindowsWebAppAuthSettingsV2FacebookV2>? facebookV2;
+  final pulumi.Input<WindowsWebAppAuthSettingsV2FacebookV2?>? facebookV2;
   /// The convention used to determine the url of the request made. Possible values include `NoProxy`, `Standard`, `Custom`. Defaults to `NoProxy`.
-  final pulumi.Input<String>? forwardProxyConvention;
+  final pulumi.Input<String?>? forwardProxyConvention;
   /// The name of the custom header containing the host of the request.
-  final pulumi.Input<String>? forwardProxyCustomHostHeaderName;
+  final pulumi.Input<String?>? forwardProxyCustomHostHeaderName;
   /// The name of the custom header containing the scheme of the request.
-  final pulumi.Input<String>? forwardProxyCustomSchemeHeaderName;
+  final pulumi.Input<String?>? forwardProxyCustomSchemeHeaderName;
   /// A `githubV2` block as defined below.
-  final pulumi.Input<WindowsWebAppAuthSettingsV2GithubV2>? githubV2;
+  final pulumi.Input<WindowsWebAppAuthSettingsV2GithubV2?>? githubV2;
   /// A `googleV2` block as defined below.
-  final pulumi.Input<WindowsWebAppAuthSettingsV2GoogleV2>? googleV2;
+  final pulumi.Input<WindowsWebAppAuthSettingsV2GoogleV2?>? googleV2;
   /// The prefix that should precede all the authentication and authorisation paths. Defaults to `/.auth`.
-  final pulumi.Input<String>? httpRouteApiPrefix;
+  final pulumi.Input<String?>? httpRouteApiPrefix;
   /// A `login` block as defined below.
   final pulumi.Input<WindowsWebAppAuthSettingsV2Login> login;
   /// A `microsoftV2` block as defined below.
-  final pulumi.Input<WindowsWebAppAuthSettingsV2MicrosoftV2>? microsoftV2;
+  final pulumi.Input<WindowsWebAppAuthSettingsV2MicrosoftV2?>? microsoftV2;
   /// Should the authentication flow be used for all requests.
-  final pulumi.Input<bool>? requireAuthentication;
+  final pulumi.Input<bool?>? requireAuthentication;
   /// Should HTTPS be required on connections? Defaults to `true`.
-  final pulumi.Input<bool>? requireHttps;
+  final pulumi.Input<bool?>? requireHttps;
   /// The Runtime Version of the Authentication and Authorisation feature of this App. Defaults to `~1`.
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
   /// A `twitterV2` block as defined below.
-  final pulumi.Input<WindowsWebAppAuthSettingsV2TwitterV2>? twitterV2;
+  final pulumi.Input<WindowsWebAppAuthSettingsV2TwitterV2?>? twitterV2;
   /// The action to take for requests made without authentication. Possible values include `RedirectToLoginPage`, `AllowAnonymous`, `Return401`, and `Return403`. Defaults to `RedirectToLoginPage`.
-  final pulumi.Input<String>? unauthenticatedAction;
+  final pulumi.Input<String?>? unauthenticatedAction;
 
   /// Creates a new [WindowsWebAppAuthSettingsV2].
   /// [activeDirectoryV2] An `activeDirectoryV2` block as defined below.

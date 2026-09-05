@@ -6,13 +6,13 @@ import 'module_module_link.dart';
 /// Input properties used for looking up and filtering Module resources.
 class ModuleState {
   /// The name of the automation account in which the Module is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? automationAccountName;
+  final pulumi.Input<String?>? automationAccountName;
   /// A `moduleLink` block as defined below.
-  final pulumi.Input<ModuleModuleLink>? moduleLink;
+  final pulumi.Input<ModuleModuleLink?>? moduleLink;
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Module is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ModuleState].
   /// [automationAccountName] The name of the automation account in which the Module is created. Changing this forces a new resource to be created.

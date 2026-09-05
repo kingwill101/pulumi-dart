@@ -10,13 +10,13 @@ class AutoscaleSettingProfile {
   /// A `capacity` block as defined below.
   final pulumi.Input<AutoscaleSettingProfileCapacity> capacity;
   /// A `fixedDate` block as defined below. This cannot be specified if a `recurrence` block is specified.
-  final pulumi.Input<AutoscaleSettingProfileFixedDate>? fixedDate;
+  final pulumi.Input<AutoscaleSettingProfileFixedDate?>? fixedDate;
   /// Specifies the name of the profile.
   final pulumi.Input<String> name;
   /// A `recurrence` block as defined below. This cannot be specified if a `fixedDate` block is specified.
-  final pulumi.Input<AutoscaleSettingProfileRecurrence>? recurrence;
+  final pulumi.Input<AutoscaleSettingProfileRecurrence?>? recurrence;
   /// One or more (up to 10) `rule` blocks as defined below.
-  final pulumi.Input<List<AutoscaleSettingProfileRule>>? rules;
+  final pulumi.Input<List<AutoscaleSettingProfileRule>?>? rules;
 
   /// Creates a new [AutoscaleSettingProfile].
   /// [capacity] A `capacity` block as defined below.

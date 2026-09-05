@@ -10,31 +10,31 @@ import 'get_data_collection_rule_stream_declaration.dart';
 /// Result data returned by getDataCollectionRule.
 class GetDataCollectionRuleResult {
   /// The resource ID of the Data Collection Endpoint that this rule can be used with.
-  final String dataCollectionEndpointId;
+  final String? dataCollectionEndpointId;
   /// One or more `dataFlow` blocks as defined below.
-  final List<GetDataCollectionRuleDataFlow> dataFlows;
+  final List<GetDataCollectionRuleDataFlow>? dataFlows;
   /// A `dataSources` block as defined below. This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
-  final List<GetDataCollectionRuleDataSource> dataSources;
+  final List<GetDataCollectionRuleDataSource>? dataSources;
   /// The description of the Data Collection Rule.
-  final String description;
+  final String? description;
   /// Specifies a list of destination names. A `azureMonitorMetrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
-  final List<GetDataCollectionRuleDestination> destinations;
+  final List<GetDataCollectionRuleDestination>? destinations;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// An `identity` block as defined below.
-  final List<GetDataCollectionRuleIdentity> identities;
-  final String immutableId;
+  final List<GetDataCollectionRuleIdentity>? identities;
+  final String? immutableId;
   /// The kind of the Data Collection Rule. Possible values are `Linux`, `Windows`,and `AgentDirectToStore`. A rule of kind `Linux` does not allow for `windowsEventLog` data sources. And a rule of kind `Windows` does not allow for `syslog` data sources. If kind is not specified, all kinds of data sources are allowed.
-  final String kind;
+  final String? kind;
   /// The Azure Region where the Data Collection Rule should exist. Changing this forces a new Data Collection Rule to be created.
-  final String location;
+  final String? location;
   /// The name which should be used for this data source. This name should be unique across all data sources regardless of type within the Data Collection Rule.
-  final String name;
-  final String resourceGroupName;
+  final String? name;
+  final String? resourceGroupName;
   /// A `streamDeclaration` block as defined below.
-  final List<GetDataCollectionRuleStreamDeclaration> streamDeclarations;
+  final List<GetDataCollectionRuleStreamDeclaration>? streamDeclarations;
   /// A mapping of tags which should be assigned to the Data Collection Rule.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetDataCollectionRuleResult].
   /// [dataCollectionEndpointId] The resource ID of the Data Collection Endpoint that this rule can be used with.
@@ -44,65 +44,65 @@ class GetDataCollectionRuleResult {
   /// [destinations] Specifies a list of destination names. A `azureMonitorMetrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below.
-  /// [immutableId] Required.
+  /// [immutableId] Optional.
   /// [kind] The kind of the Data Collection Rule. Possible values are `Linux`, `Windows`,and `AgentDirectToStore`. A rule of kind `Linux` does not allow for `windowsEventLog` data sources. And a rule of kind `Windows` does not allow for `syslog` data sources. If kind is not specified, all kinds of data sources are allowed.
   /// [location] The Azure Region where the Data Collection Rule should exist. Changing this forces a new Data Collection Rule to be created.
   /// [name] The name which should be used for this data source. This name should be unique across all data sources regardless of type within the Data Collection Rule.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [streamDeclarations] A `streamDeclaration` block as defined below.
   /// [tags] A mapping of tags which should be assigned to the Data Collection Rule.
   const GetDataCollectionRuleResult({
-    required this.dataCollectionEndpointId,
-    required this.dataFlows,
-    required this.dataSources,
-    required this.description,
-    required this.destinations,
-    required this.id,
-    required this.identities,
-    required this.immutableId,
-    required this.kind,
-    required this.location,
-    required this.name,
-    required this.resourceGroupName,
-    required this.streamDeclarations,
-    required this.tags,
+    this.dataCollectionEndpointId,
+    this.dataFlows,
+    this.dataSources,
+    this.description,
+    this.destinations,
+    this.id,
+    this.identities,
+    this.immutableId,
+    this.kind,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.streamDeclarations,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataCollectionEndpointId': dataCollectionEndpointId,
-      'dataFlows': pulumi.Input.encodeList<GetDataCollectionRuleDataFlow, Map<String, dynamic>>(dataFlows, (value) => value.toMap()),
-      'dataSources': pulumi.Input.encodeList<GetDataCollectionRuleDataSource, Map<String, dynamic>>(dataSources, (value) => value.toMap()),
-      'description': description,
-      'destinations': pulumi.Input.encodeList<GetDataCollectionRuleDestination, Map<String, dynamic>>(destinations, (value) => value.toMap()),
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetDataCollectionRuleIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'immutableId': immutableId,
-      'kind': kind,
-      'location': location,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'streamDeclarations': pulumi.Input.encodeList<GetDataCollectionRuleStreamDeclaration, Map<String, dynamic>>(streamDeclarations, (value) => value.toMap()),
-      'tags': tags,
+      'dataCollectionEndpointId': ?dataCollectionEndpointId,
+      'dataFlows': ?(() { final guardedValue = dataFlows; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDataCollectionRuleDataFlow, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'dataSources': ?(() { final guardedValue = dataSources; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDataCollectionRuleDataSource, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'description': ?description,
+      'destinations': ?(() { final guardedValue = destinations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDataCollectionRuleDestination, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDataCollectionRuleIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'immutableId': ?immutableId,
+      'kind': ?kind,
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'streamDeclarations': ?(() { final guardedValue = streamDeclarations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDataCollectionRuleStreamDeclaration, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
     };
   }
 
   factory GetDataCollectionRuleResult.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleResult(
-      dataCollectionEndpointId: map['dataCollectionEndpointId'] as String,
-      dataFlows: pulumi.Input.decodeList<GetDataCollectionRuleDataFlow>(map['dataFlows']!, (value) => GetDataCollectionRuleDataFlow.fromMap((value as Map).cast<String, dynamic>())),
-      dataSources: pulumi.Input.decodeList<GetDataCollectionRuleDataSource>(map['dataSources']!, (value) => GetDataCollectionRuleDataSource.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] as String,
-      destinations: pulumi.Input.decodeList<GetDataCollectionRuleDestination>(map['destinations']!, (value) => GetDataCollectionRuleDestination.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetDataCollectionRuleIdentity>(map['identities']!, (value) => GetDataCollectionRuleIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      immutableId: map['immutableId'] as String,
-      kind: map['kind'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      streamDeclarations: pulumi.Input.decodeList<GetDataCollectionRuleStreamDeclaration>(map['streamDeclarations']!, (value) => GetDataCollectionRuleStreamDeclaration.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as Map).cast<String, String>(),
+      dataCollectionEndpointId: (() { final guardedValue = map['dataCollectionEndpointId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataFlows: (() { final guardedValue = map['dataFlows']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDataCollectionRuleDataFlow>(guardedValue, (value) => GetDataCollectionRuleDataFlow.fromMap((value as Map).cast<String, dynamic>())); })(),
+      dataSources: (() { final guardedValue = map['dataSources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDataCollectionRuleDataSource>(guardedValue, (value) => GetDataCollectionRuleDataSource.fromMap((value as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDataCollectionRuleDestination>(guardedValue, (value) => GetDataCollectionRuleDestination.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDataCollectionRuleIdentity>(guardedValue, (value) => GetDataCollectionRuleIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      immutableId: (() { final guardedValue = map['immutableId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      streamDeclarations: (() { final guardedValue = map['streamDeclarations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDataCollectionRuleStreamDeclaration>(guardedValue, (value) => GetDataCollectionRuleStreamDeclaration.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

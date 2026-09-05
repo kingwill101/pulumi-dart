@@ -288,7 +288,7 @@ import 'assignment_virtual_machine_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -309,7 +309,7 @@ import 'assignment_virtual_machine_state.dart';
 /// 			Size:              pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			AdminSshKeys: compute.LinuxVirtualMachineAdminSshKeyArray{
 /// 				&compute.LinuxVirtualMachineAdminSshKeyArgs{
@@ -342,8 +342,8 @@ import 'assignment_virtual_machine_state.dart';
 /// 		}
 /// 		_, err = maintenance.NewAssignmentVirtualMachine(ctx, "example", &maintenance.AssignmentVirtualMachineArgs{
 /// 			Location:                   example.Location,
-/// 			MaintenanceConfigurationId: exampleConfiguration.ID(),
-/// 			VirtualMachineId:           exampleLinuxVirtualMachine.ID(),
+/// 			MaintenanceConfigurationId: exampleConfiguration.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualMachineId:           exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -649,7 +649,7 @@ class AssignmentVirtualMachine extends pulumi.CustomResource {
           'azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
@@ -661,11 +661,12 @@ class AssignmentVirtualMachine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssignmentVirtualMachineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssignmentVirtualMachine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -679,6 +680,20 @@ class AssignmentVirtualMachine extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    location = registerOutput<String>('location');
+    maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+  }
+
+  /// Creates a typed reference to an existing [AssignmentVirtualMachine] resource.
+  AssignmentVirtualMachine.reference(String urn)
+    : super(
+        'azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
     virtualMachineId = registerOutput<String>('virtualMachineId');

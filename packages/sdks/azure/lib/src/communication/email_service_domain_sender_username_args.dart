@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_communication_email_service_domain_sender_username_email_service_domain_sender_username_args_doc}
 class EmailServiceDomainSenderUsernameArgs {
   /// The display name for the Email Communication Service Domain Sender Username resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The ID of the Email Communication Service Domain resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> emailServiceDomainId;
   /// The name of the Email Communication Service Domain Sender Username resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [EmailServiceDomainSenderUsernameArgs].
   /// [displayName] The display name for the Email Communication Service Domain Sender Username resource.

@@ -7,29 +7,31 @@ class OrchestratedVirtualMachineScaleSetNetworkInterface {
   /// Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections` and `Floating`.
   ///
   /// &gt; **Note:** `auxiliaryMode` is in **Preview** and requires that the prerequisites are enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
-  final pulumi.Input<String>? auxiliaryMode;
+  final pulumi.Input<String?>? auxiliaryMode;
   /// Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A1`, `A2`, `A4`, and `A8`.
   ///
   /// &gt; **Note:** `auxiliarySku` is in **Preview** and requires that the prerequisites are enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
   ///
   /// &gt; **Note:** `auxiliaryMode` and `auxiliarySku` must be specified together, and both fields require `networkApiVersion` later than `2020-11-01`.
-  final pulumi.Input<String>? auxiliarySku;
+  final pulumi.Input<String?>? auxiliarySku;
   /// A list of IP Addresses of DNS Servers which should be assigned to the Network Interface.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Does this Network Interface support Accelerated Networking? Possible values are `true` and `false`. Defaults to `false`.
-  final pulumi.Input<bool>? enableAcceleratedNetworking;
+  final pulumi.Input<bool?>? enableAcceleratedNetworking;
   /// Does this Network Interface support IP Forwarding? Possible values are `true` and `false`. Defaults to `false`.
-  final pulumi.Input<bool>? enableIpForwarding;
+  final pulumi.Input<bool?>? enableIpForwarding;
   /// One or more `ipConfiguration` blocks as defined above.
   final pulumi.Input<List<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration>> ipConfigurations;
   /// The Name which should be used for this Network Interface. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// The ID of a Network Security Group which should be assigned to this Network Interface.
-  final pulumi.Input<String>? networkSecurityGroupId;
+  final pulumi.Input<String?>? networkSecurityGroupId;
   /// Is this the Primary IP Configuration? Possible values are `true` and `false`. Defaults to `false`.
   ///
   /// &gt; **Note:** If multiple `networkInterface` blocks are specified, one must be set to `primary`.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
+  /// A mapping of tags to assign to the Network Interface created by this Network Interface Configuration.
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetNetworkInterface].
   /// [auxiliaryMode] Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections` and `Floating`.
@@ -41,6 +43,7 @@ class OrchestratedVirtualMachineScaleSetNetworkInterface {
   /// [name] The Name which should be used for this Network Interface. Changing this forces a new resource to be created.
   /// [networkSecurityGroupId] The ID of a Network Security Group which should be assigned to this Network Interface.
   /// [primary] Is this the Primary IP Configuration? Possible values are `true` and `false`. Defaults to `false`.
+  /// [tags] A mapping of tags to assign to the Network Interface created by this Network Interface Configuration.
   const OrchestratedVirtualMachineScaleSetNetworkInterface({
     this.auxiliaryMode,
     this.auxiliarySku,
@@ -51,6 +54,7 @@ class OrchestratedVirtualMachineScaleSetNetworkInterface {
     required this.name,
     this.networkSecurityGroupId,
     this.primary,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
@@ -64,6 +68,7 @@ class OrchestratedVirtualMachineScaleSetNetworkInterface {
       'name': name,
       'networkSecurityGroupId': ?networkSecurityGroupId,
       'primary': ?primary,
+      'tags': ?tags,
     };
   }
 
@@ -78,6 +83,7 @@ class OrchestratedVirtualMachineScaleSetNetworkInterface {
       name: pulumi.Input.fromValue(map['name'] as String),
       networkSecurityGroupId: (() { final guardedValue = map['networkSecurityGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }

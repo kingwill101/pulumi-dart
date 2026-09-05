@@ -6,11 +6,11 @@ import 'fleet_update_strategy_stage.dart';
 /// Input properties used for looking up and filtering FleetUpdateStrategy resources.
 class FleetUpdateStrategyState {
   /// The ID of the Fleet Manager. Changing this forces a new Kubernetes Fleet Update Strategy to be created.
-  final pulumi.Input<String>? kubernetesFleetManagerId;
+  final pulumi.Input<String?>? kubernetesFleetManagerId;
   /// The name which should be used for this Kubernetes Fleet Update Strategy. Changing this forces a new Kubernetes Fleet Update Strategy to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `stage` blocks as defined below.
-  final pulumi.Input<List<FleetUpdateStrategyStage>>? stages;
+  final pulumi.Input<List<FleetUpdateStrategyStage>?>? stages;
 
   /// Creates a new [FleetUpdateStrategyState].
   /// [kubernetesFleetManagerId] The ID of the Fleet Manager. Changing this forces a new Kubernetes Fleet Update Strategy to be created.

@@ -275,7 +275,7 @@ class DiscoveryVirtualInstance extends pulumi.CustomResource {
           'azure:workloadssap/discoveryVirtualInstance:DiscoveryVirtualInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     centralServerVirtualMachineId = registerOutput<String>('centralServerVirtualMachineId');
     environment = registerOutput<String>('environment');
@@ -287,7 +287,7 @@ class DiscoveryVirtualInstance extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sapProduct = registerOutput<String>('sapProduct');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DiscoveryVirtualInstance] resource's state with the given [name] and [id].
@@ -295,11 +295,12 @@ class DiscoveryVirtualInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DiscoveryVirtualInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DiscoveryVirtualInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -323,6 +324,28 @@ class DiscoveryVirtualInstance extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sapProduct = registerOutput<String>('sapProduct');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DiscoveryVirtualInstance] resource.
+  DiscoveryVirtualInstance.reference(String urn)
+    : super(
+        'azure:workloadssap/discoveryVirtualInstance:DiscoveryVirtualInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    centralServerVirtualMachineId = registerOutput<String>('centralServerVirtualMachineId');
+    environment = registerOutput<String>('environment');
+    identity = registerOutput<DiscoveryVirtualInstanceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiscoveryVirtualInstanceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
+    managedResourcesNetworkAccessType = registerOutput<String?>('managedResourcesNetworkAccessType');
+    managedStorageAccountName = registerOutput<String?>('managedStorageAccountName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sapProduct = registerOutput<String>('sapProduct');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

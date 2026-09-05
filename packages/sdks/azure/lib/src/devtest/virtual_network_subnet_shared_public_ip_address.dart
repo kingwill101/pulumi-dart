@@ -5,7 +5,7 @@ import 'virtual_network_subnet_shared_public_ip_address_allowed_port.dart';
 
 class VirtualNetworkSubnetSharedPublicIpAddress {
   /// A list of `allowedPorts` blocks as defined below.
-  final pulumi.Input<List<VirtualNetworkSubnetSharedPublicIpAddressAllowedPort>>? allowedPorts;
+  final pulumi.Input<List<VirtualNetworkSubnetSharedPublicIpAddressAllowedPort>?>? allowedPorts;
 
   /// Creates a new [VirtualNetworkSubnetSharedPublicIpAddress].
   /// [allowedPorts] A list of `allowedPorts` blocks as defined below.

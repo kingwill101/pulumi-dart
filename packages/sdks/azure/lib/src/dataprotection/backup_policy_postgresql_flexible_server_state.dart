@@ -7,17 +7,17 @@ import 'backup_policy_postgresql_flexible_server_retention_rule.dart';
 /// Input properties used for looking up and filtering BackupPolicyPostgresqlFlexibleServer resources.
 class BackupPolicyPostgresqlFlexibleServerState {
   /// Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval format. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? backupRepeatingTimeIntervals;
+  final pulumi.Input<List<String>?>? backupRepeatingTimeIntervals;
   /// A `defaultRetentionRule` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule>? defaultRetentionRule;
+  final pulumi.Input<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule?>? defaultRetentionRule;
   /// Specifies the name of the Backup Policy for the PostgreSQL Flexible Server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `retentionRule` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<BackupPolicyPostgresqlFlexibleServerRetentionRule>>? retentionRules;
+  final pulumi.Input<List<BackupPolicyPostgresqlFlexibleServerRetentionRule>?>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// The ID of the Backup Vault where the Backup Policy PostgreSQL Flexible Server should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? vaultId;
+  final pulumi.Input<String?>? vaultId;
 
   /// Creates a new [BackupPolicyPostgresqlFlexibleServerState].
   /// [backupRepeatingTimeIntervals] Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval format. Changing this forces a new resource to be created.

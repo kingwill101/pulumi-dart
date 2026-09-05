@@ -25,7 +25,7 @@ class ApplicationGatewayBackendHttpSettingConnectionDraining {
 
   factory ApplicationGatewayBackendHttpSettingConnectionDraining.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendHttpSettingConnectionDraining(
-      drainTimeoutSec: pulumi.Input.fromValue(map['drainTimeoutSec'] as int),
+      drainTimeoutSec: pulumi.Input.fromValue((map['drainTimeoutSec'] as num).toInt()),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }

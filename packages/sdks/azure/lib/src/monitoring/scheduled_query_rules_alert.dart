@@ -332,7 +332,7 @@ import 'scheduled_query_rules_alert_trigger.dart';
 /// 				EmailSubject:         pulumi.String("Email Header"),
 /// 				CustomWebhookPayload: pulumi.String("{}"),
 /// 			},
-/// 			DataSourceId: exampleInsights.ID(),
+/// 			DataSourceId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:  pulumi.String("Alert when total results cross threshold"),
 /// 			Enabled:      pulumi.Bool(true),
 /// 			Query:        pulumi.String("requests\n  | where tolong(resultCode) >= 500\n  | summarize count() by bin(timestamp, 5m)\n"),
@@ -357,7 +357,7 @@ import 'scheduled_query_rules_alert_trigger.dart';
 ///   | where toint(resultCode) >= 500 | extend fail=1; a
 ///   | join b on fail
 /// `,
-/// 			Args: pulumi.StringArray{
+/// 			Args: pulumi.IDArray{
 /// 				example2.ID(),
 /// 			},
 /// 		}, nil)
@@ -370,14 +370,14 @@ import 'scheduled_query_rules_alert_trigger.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			AuthorizedResourceIds: pulumi.StringArray{
-/// 				example2.ID(),
+/// 				example2.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Action: &monitoring.ScheduledQueryRulesAlertActionArgs{
 /// 				ActionGroups:         pulumi.StringArray{},
 /// 				EmailSubject:         pulumi.String("Email Header"),
 /// 				CustomWebhookPayload: pulumi.String("{}"),
 /// 			},
-/// 			DataSourceId: exampleInsights.ID(),
+/// 			DataSourceId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:  pulumi.String("Query may access data within multiple resources"),
 /// 			Enabled:      pulumi.Bool(true),
 /// 			Query:        pulumi.String(invokeFormat.Result),
@@ -752,10 +752,10 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
           'azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     action = registerOutput<ScheduledQueryRulesAlertAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds');
+    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
@@ -767,7 +767,7 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
     queryType = registerOutput<String?>('queryType');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     severity = registerOutput<int?>('severity');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throttling = registerOutput<int?>('throttling');
     timeWindow = registerOutput<int>('timeWindow');
     trigger = registerOutput<ScheduledQueryRulesAlertTrigger>('trigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -778,11 +778,12 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScheduledQueryRulesAlertState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScheduledQueryRulesAlert._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -797,7 +798,7 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     action = registerOutput<ScheduledQueryRulesAlertAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds');
+    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
     dataSourceId = registerOutput<String>('dataSourceId');
     description = registerOutput<String?>('description');
@@ -809,7 +810,35 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
     queryType = registerOutput<String?>('queryType');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     severity = registerOutput<int?>('severity');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throttling = registerOutput<int?>('throttling');
+    timeWindow = registerOutput<int>('timeWindow');
+    trigger = registerOutput<ScheduledQueryRulesAlertTrigger>('trigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ScheduledQueryRulesAlert] resource.
+  ScheduledQueryRulesAlert.reference(String urn)
+    : super(
+        'azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<ScheduledQueryRulesAlertAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    frequency = registerOutput<int>('frequency');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    query = registerOutput<String>('query');
+    queryType = registerOutput<String?>('queryType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    severity = registerOutput<int?>('severity');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throttling = registerOutput<int?>('throttling');
     timeWindow = registerOutput<int>('timeWindow');
     trigger = registerOutput<ScheduledQueryRulesAlertTrigger>('trigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });

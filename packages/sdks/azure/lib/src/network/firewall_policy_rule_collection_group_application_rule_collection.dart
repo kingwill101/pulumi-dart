@@ -38,7 +38,7 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollection {
     return FirewallPolicyRuleCollectionGroupApplicationRuleCollection(
       action: pulumi.Input.fromValue(map['action'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       rules: pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule>(map['rules']!, (value) => FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

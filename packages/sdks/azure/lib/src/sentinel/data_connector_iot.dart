@@ -108,7 +108,7 @@ import 'data_connector_iot_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -258,7 +258,7 @@ class DataConnectorIot extends pulumi.CustomResource {
           'azure:sentinel/dataConnectorIot:DataConnectorIot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
@@ -270,11 +270,12 @@ class DataConnectorIot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataConnectorIotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataConnectorIot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -288,6 +289,20 @@ class DataConnectorIot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [DataConnectorIot] resource.
+  DataConnectorIot.reference(String urn)
+    : super(
+        'azure:sentinel/dataConnectorIot:DataConnectorIot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
     subscriptionId = registerOutput<String>('subscriptionId');

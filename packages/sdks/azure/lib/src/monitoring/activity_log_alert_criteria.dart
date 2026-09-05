@@ -6,65 +6,65 @@ import 'activity_log_alert_criteria_service_health.dart';
 
 class ActivityLogAlertCriteria {
   /// The email address or Azure Active Directory identifier of the user who performed the operation.
-  final pulumi.Input<String>? caller;
+  final pulumi.Input<String?>? caller;
   /// The category of the operation. Possible values are `Administrative`, `Autoscale`, `Policy`, `Recommendation`, `ResourceHealth`, `Security` and `ServiceHealth`.
   final pulumi.Input<String> category;
   /// The severity level of the event. Possible values are `Verbose`, `Informational`, `Warning`, `Error`, and `Critical`.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
   /// A list of severity level of the event. Possible values are `Verbose`, `Informational`, `Warning`, `Error`, and `Critical`.
   ///
   /// &gt; **Note:** `level` and `levels` are mutually exclusive.
-  final pulumi.Input<List<String>>? levels;
+  final pulumi.Input<List<String>?>? levels;
   /// The Resource Manager Role-Based Access Control operation name. Supported operation should be of the form: `&lt;resourceProvider&gt;/&lt;resourceType&gt;/&lt;operation&gt;`.
-  final pulumi.Input<String>? operationName;
+  final pulumi.Input<String?>? operationName;
   /// The recommendation category of the event. Possible values are `Cost`, `Reliability`, `OperationalExcellence`, `HighAvailability`, `Performance` and `Security`.
-  final pulumi.Input<String>? recommendationCategory;
+  final pulumi.Input<String?>? recommendationCategory;
   /// The recommendation impact of the event. Possible values are `High`, `Medium` and `Low`.
   ///
   /// &gt; **Note:** The `recommendationType`, `recommendationCategory`, and `recommendationImpact` fields can only be defined if the `category` field has been set to `Recommendation`.
-  final pulumi.Input<String>? recommendationImpact;
+  final pulumi.Input<String?>? recommendationImpact;
   /// The recommendation type of the event.
-  final pulumi.Input<String>? recommendationType;
+  final pulumi.Input<String?>? recommendationType;
   /// The name of resource group monitored by the activity log alert.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// A list of names of resource groups monitored by the activity log alert.
   ///
   /// &gt; **Note:** `resourceGroup` and `resourceGroups` are mutually exclusive.
-  final pulumi.Input<List<String>>? resourceGroups;
+  final pulumi.Input<List<String>?>? resourceGroups;
   /// A block to define fine grain resource health settings.
-  final pulumi.Input<ActivityLogAlertCriteriaResourceHealth>? resourceHealth;
+  final pulumi.Input<ActivityLogAlertCriteriaResourceHealth?>? resourceHealth;
   /// The specific resource monitored by the activity log alert. It should be within one of the `scopes`.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// A list of specific resources monitored by the activity log alert. It should be within one of the `scopes`.
   ///
   /// &gt; **Note:** `resourceId` and `resourceIds` are mutually exclusive.
-  final pulumi.Input<List<String>>? resourceIds;
+  final pulumi.Input<List<String>?>? resourceIds;
   /// The name of the resource provider monitored by the activity log alert.
-  final pulumi.Input<String>? resourceProvider;
+  final pulumi.Input<String?>? resourceProvider;
   /// A list of names of resource providers monitored by the activity log alert.
   ///
   /// &gt; **Note:** `resourceProvider` and `resourceProviders` are mutually exclusive.
-  final pulumi.Input<List<String>>? resourceProviders;
+  final pulumi.Input<List<String>?>? resourceProviders;
   /// The resource type monitored by the activity log alert.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// A list of resource types monitored by the activity log alert.
   ///
   /// &gt; **Note:** `resourceType` and `resourceTypes` are mutually exclusive.
-  final pulumi.Input<List<String>>? resourceTypes;
+  final pulumi.Input<List<String>?>? resourceTypes;
   /// A block to define fine grain service health settings.
-  final pulumi.Input<ActivityLogAlertCriteriaServiceHealth>? serviceHealth;
+  final pulumi.Input<ActivityLogAlertCriteriaServiceHealth?>? serviceHealth;
   /// The status of the event. For example, `Started`, `Failed`, or `Succeeded`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A list of status of the event. For example, `Started`, `Failed`, or `Succeeded`.
   ///
   /// &gt; **Note:** `status` and `statuses` are mutually exclusive.
-  final pulumi.Input<List<String>>? statuses;
+  final pulumi.Input<List<String>?>? statuses;
   /// The sub status of the event.
-  final pulumi.Input<String>? subStatus;
+  final pulumi.Input<String?>? subStatus;
   /// A list of sub status of the event.
   ///
   /// &gt; **Note:** `subStatus` and `subStatuses` are mutually exclusive.
-  final pulumi.Input<List<String>>? subStatuses;
+  final pulumi.Input<List<String>?>? subStatuses;
 
   /// Creates a new [ActivityLogAlertCriteria].
   /// [caller] The email address or Azure Active Directory identifier of the user who performed the operation.

@@ -8,7 +8,7 @@ class MonitorUser {
   /// The name which should be used for this user_info. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// Phone number of the user used by Datadog for contacting them if needed. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? phoneNumber;
+  final pulumi.Input<String?>? phoneNumber;
 
   /// Creates a new [MonitorUser].
   /// [email] Email of the user used by Datadog for contacting them if needed. Changing this forces a new Datadog Monitor to be created.

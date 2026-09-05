@@ -6,15 +6,15 @@ class ProtectionContainerMappingAutomaticUpdate {
   /// The authentication type used for automation account. Possible values are `RunAsAccount` and `SystemAssignedIdentity`. Defaults to `SystemAssignedIdentity`.
   ///
   /// &gt; **Note:** `RunAsAccount` of `authenticationType` is deprecated and will retire on September 30, 2023. Details could be found [here](https://learn.microsoft.com/en-us/azure/automation/whats-new#support-for-run-as-accounts).
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// The automation account ID which holds the automatic update runbook and authenticates to Azure resources.
   ///
   /// &gt; **Note:** `automationAccountId` is required when `enabled` is specified.
-  final pulumi.Input<String>? automationAccountId;
+  final pulumi.Input<String?>? automationAccountId;
   /// Should the Mobility service installed on Azure virtual machines be automatically updated. Defaults to `false`.
   ///
   /// &gt; **Note:** The setting applies to all Azure VMs protected in the same container. For more details see [this document](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-autoupdate#enable-automatic-updates)
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ProtectionContainerMappingAutomaticUpdate].
   /// [authenticationType] The authentication type used for automation account. Possible values are `RunAsAccount` and `SystemAssignedIdentity`. Defaults to `SystemAssignedIdentity`.

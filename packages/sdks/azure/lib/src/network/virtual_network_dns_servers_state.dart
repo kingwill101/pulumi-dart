@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VirtualNetworkDnsServers resources.
 class VirtualNetworkDnsServersState {
   /// List of IP addresses of DNS servers
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
 
   /// Creates a new [VirtualNetworkDnsServersState].
   /// [dnsServers] List of IP addresses of DNS servers

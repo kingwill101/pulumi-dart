@@ -6,23 +6,23 @@ class AuthomationRuleActionIncident {
   /// The classification of the incident, when closing it. Possible values are: `BenignPositive_SuspiciousButExpected`, `FalsePositive_InaccurateData`, `FalsePositive_IncorrectAlertLogic`, `TruePositive_SuspiciousActivity` and `Undetermined`.
   ///
   /// &gt; **Note:** The `classification` is required when `status` is `Closed`.
-  final pulumi.Input<String>? classification;
+  final pulumi.Input<String?>? classification;
   /// The comment why the incident is to be closed.
   ///
   /// &gt; **Note:** The `classificationComment` is allowed to set only when `status` is `Closed`.
-  final pulumi.Input<String>? classificationComment;
+  final pulumi.Input<String?>? classificationComment;
   /// Specifies a list of labels to add to the incident.
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// The execution order of this action.
   final pulumi.Input<int> order;
   /// The object ID of the entity this incident is assigned to.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// The severity to add to the incident. Possible values are `High`, `Informational`, `Low` and `Medium`.
   ///
   /// &gt; **Note:** At least one of `status`, `labels`, `ownerId` and `severity` has to be set.
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// The status to set to the incident. Possible values are: `Active`, `Closed`, `New`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AuthomationRuleActionIncident].
   /// [classification] The classification of the incident, when closing it. Possible values are: `BenignPositive_SuspiciousButExpected`, `FalsePositive_InaccurateData`, `FalsePositive_IncorrectAlertLogic`, `TruePositive_SuspiciousActivity` and `Undetermined`.
@@ -59,7 +59,7 @@ class AuthomationRuleActionIncident {
       classification: (() { final guardedValue = map['classification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       classificationComment: (() { final guardedValue = map['classificationComment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
       ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

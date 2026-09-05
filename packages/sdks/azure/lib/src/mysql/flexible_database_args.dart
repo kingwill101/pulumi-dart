@@ -12,7 +12,7 @@ class FlexibleDatabaseArgs {
   /// Specifies the Collation for the MySQL Database, which needs [to be a valid MySQL Collation](https://dev.mysql.com/doc/refman/5.7/en/charset-mysql.html). Changing this forces a new resource to be created.
   final pulumi.Input<String> collation;
   /// Specifies the name of the MySQL Database, which needs [to be a valid MySQL identifier](https://dev.mysql.com/doc/refman/5.7/en/identifiers.html). Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the MySQL Server exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.

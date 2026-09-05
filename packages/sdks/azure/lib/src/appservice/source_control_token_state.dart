@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SourceControlToken resources.
 class SourceControlTokenState {
   /// The Access Token.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
   /// The Access Token Secret.
   ///
   /// &gt; **Note:** The token used for deploying App Service needs the following permissions: `repo` and `workflow`.
-  final pulumi.Input<String>? tokenSecret;
+  final pulumi.Input<String?>? tokenSecret;
   /// The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SourceControlTokenState].
   /// [token] The Access Token.

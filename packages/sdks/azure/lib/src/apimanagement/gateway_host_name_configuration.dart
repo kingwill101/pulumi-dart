@@ -193,7 +193,7 @@ import 'gateway_host_name_configuration_state.dart';
 /// 		}
 /// 		exampleGateway, err := apimanagement.NewGateway(ctx, "example", &apimanagement.GatewayArgs{
 /// 			Name:            pulumi.String("example-gateway"),
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:     pulumi.String("Example API Management gateway"),
 /// 			LocationData: &apimanagement.GatewayLocationDataArgs{
 /// 				Name:     pulumi.String("example name"),
@@ -222,9 +222,9 @@ import 'gateway_host_name_configuration_state.dart';
 /// 		}
 /// 		_, err = apimanagement.NewGatewayHostNameConfiguration(ctx, "example", &apimanagement.GatewayHostNameConfigurationArgs{
 /// 			Name:                            pulumi.String("example-host-name-configuration"),
-/// 			ApiManagementId:                 exampleService.ID(),
+/// 			ApiManagementId:                 exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			GatewayName:                     exampleGateway.Name,
-/// 			CertificateId:                   exampleCertificate.ID(),
+/// 			CertificateId:                   exampleCertificate.ID().ToIDOutput().ToStringOutput(),
 /// 			HostName:                        pulumi.String("example-host-name"),
 /// 			RequestClientCertificateEnabled: pulumi.Bool(true),
 /// 			Http2Enabled:                    pulumi.Bool(true),
@@ -477,7 +477,7 @@ class GatewayHostNameConfiguration extends pulumi.CustomResource {
           'azure:apimanagement/gatewayHostNameConfiguration:GatewayHostNameConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     certificateId = registerOutput<String>('certificateId');
@@ -495,11 +495,12 @@ class GatewayHostNameConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GatewayHostNameConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GatewayHostNameConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -513,6 +514,26 @@ class GatewayHostNameConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    certificateId = registerOutput<String>('certificateId');
+    gatewayName = registerOutput<String>('gatewayName');
+    hostName = registerOutput<String>('hostName');
+    http2Enabled = registerOutput<bool?>('http2Enabled');
+    this.name = registerOutput<String>('name');
+    requestClientCertificateEnabled = registerOutput<bool?>('requestClientCertificateEnabled');
+    tls10Enabled = registerOutput<bool?>('tls10Enabled');
+    tls11Enabled = registerOutput<bool?>('tls11Enabled');
+  }
+
+  /// Creates a typed reference to an existing [GatewayHostNameConfiguration] resource.
+  GatewayHostNameConfiguration.reference(String urn)
+    : super(
+        'azure:apimanagement/gatewayHostNameConfiguration:GatewayHostNameConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     certificateId = registerOutput<String>('certificateId');
     gatewayName = registerOutput<String>('gatewayName');

@@ -12,17 +12,17 @@ class ApiSchemaArgs {
   /// The name of the API within the API Management Service where this API Schema should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiName;
   /// Types definitions. Used for Swagger/OpenAPI v2/v3 schemas only.
-  final pulumi.Input<String>? components;
+  final pulumi.Input<String?>? components;
   /// The content type of the API Schema.
   final pulumi.Input<String> contentType;
   /// Types definitions. Used for Swagger/OpenAPI v1 schemas only.
-  final pulumi.Input<String>? definitions;
+  final pulumi.Input<String?>? definitions;
   /// The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A unique identifier for this API Schema. Changing this forces a new resource to be created.
   final pulumi.Input<String> schemaId;
   /// The JSON escaped string defining the document representing the Schema.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ApiSchemaArgs].
   /// [apiManagementName] The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.

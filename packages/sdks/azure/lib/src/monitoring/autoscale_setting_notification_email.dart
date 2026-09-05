@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutoscaleSettingNotificationEmail {
   /// Specifies a list of custom email addresses to which the email notifications will be sent.
-  final pulumi.Input<List<String>>? customEmails;
+  final pulumi.Input<List<String>?>? customEmails;
   /// Should email notifications be sent to the subscription administrator? Defaults to `false`.
-  final pulumi.Input<bool>? sendToSubscriptionAdministrator;
+  final pulumi.Input<bool?>? sendToSubscriptionAdministrator;
   /// Should email notifications be sent to the subscription co-administrator? Defaults to `false`.
-  final pulumi.Input<bool>? sendToSubscriptionCoAdministrator;
+  final pulumi.Input<bool?>? sendToSubscriptionCoAdministrator;
 
   /// Creates a new [AutoscaleSettingNotificationEmail].
   /// [customEmails] Specifies a list of custom email addresses to which the email notifications will be sent.

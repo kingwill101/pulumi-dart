@@ -1,3 +1,15 @@
+export 'containerservice/automatic_cluster.dart';
+export 'containerservice/automatic_cluster_api_server_access.dart';
+export 'containerservice/automatic_cluster_args.dart';
+export 'containerservice/automatic_cluster_hosted_system.dart';
+export 'containerservice/automatic_cluster_identity.dart';
+export 'containerservice/automatic_cluster_kube_config.dart';
+export 'containerservice/automatic_cluster_private_cluster.dart';
+export 'containerservice/automatic_cluster_service_mesh.dart';
+export 'containerservice/automatic_cluster_service_mesh_certificate_authority.dart';
+export 'containerservice/automatic_cluster_state.dart';
+export 'containerservice/automatic_cluster_web_app_routing_ingress.dart';
+export 'containerservice/automatic_cluster_web_app_routing_ingress_web_app_routing_identity.dart';
 export 'containerservice/cluster_deployment_safeguard.dart';
 export 'containerservice/cluster_deployment_safeguard_args.dart';
 export 'containerservice/cluster_deployment_safeguard_state.dart';

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ProductApi resources.
 class ProductApiState {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// The Name of the API Management API within the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiName;
+  final pulumi.Input<String?>? apiName;
   /// The ID of the API Management Product within the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? productId;
+  final pulumi.Input<String?>? productId;
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ProductApiState].
   /// [apiManagementName] The name of the API Management Service. Changing this forces a new resource to be created.

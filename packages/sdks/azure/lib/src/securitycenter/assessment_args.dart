@@ -9,7 +9,7 @@ import 'assessment_status.dart';
 /// {@macro pulumi_securitycenter_assessment_assessment_args_doc}
 class AssessmentArgs {
   /// A map of additional data to associate with the assessment.
-  final pulumi.Input<Map<String, String>>? additionalData;
+  final pulumi.Input<Map<String, String>?>? additionalData;
   /// The ID of the security Assessment policy to apply to this resource. Changing this forces a new security Assessment to be created.
   final pulumi.Input<String> assessmentPolicyId;
   /// A `status` block as defined below.

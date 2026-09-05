@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workbook_template_args.dart';
+import 'workbook_template_gallery.dart';
 import 'workbook_template_state.dart';
 
 /// Manages an Application Insights Workbook Template.
@@ -272,7 +273,7 @@ import 'workbook_template_state.dart';
 /// 			"items": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"type": 1,
-/// 					"content": map[string]interface{}{
+/// 					"content": map[string]string{
 /// 						"json": "## New workbook\n---\n\nWelcome to your new workbook.",
 /// 					},
 /// 					"name": "text - 2",
@@ -285,7 +286,7 @@ import 'workbook_template_state.dart';
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal(map[string][]map[string]interface{}{
 /// 			"ar": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"galleries": []map[string]interface{}{
@@ -302,7 +303,7 @@ import 'workbook_template_state.dart';
 /// 						"items": []map[string]interface{}{
 /// 							map[string]interface{}{
 /// 								"type": 1,
-/// 								"content": map[string]interface{}{
+/// 								"content": map[string]string{
 /// 									"json": "## New workbook\n---\n\nWelcome to your new workbook.",
 /// 								},
 /// 								"name": "text - 2",
@@ -591,7 +592,7 @@ class WorkbookTemplate extends pulumi.CustomResource {
   /// Information about the author of the workbook template.
   late final pulumi.Output<String?> author;
   /// A `galleries` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> galleries;
+  late final pulumi.Output<List<WorkbookTemplateGallery>> galleries;
   /// Key value pairs of localized gallery. Each key is the locale code of languages supported by the Azure portal.
   late final pulumi.Output<String?> localized;
   /// Specifies the Azure Region where the Application Insights Workbook Template should exist. Changing this forces a new Application Insights Workbook Template to be created.
@@ -619,16 +620,16 @@ class WorkbookTemplate extends pulumi.CustomResource {
           'azure:appinsights/workbookTemplate:WorkbookTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     author = registerOutput<String?>('author');
-    galleries = registerOutput<List<Map<String, dynamic>>>('galleries');
+    galleries = registerOutput<List<WorkbookTemplateGallery>>('galleries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkbookTemplateGallery>(guardedValue, (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>())); });
     localized = registerOutput<String?>('localized');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int?>('priority');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateData = registerOutput<String>('templateData');
   }
 
@@ -637,11 +638,12 @@ class WorkbookTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkbookTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkbookTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -656,13 +658,33 @@ class WorkbookTemplate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     author = registerOutput<String?>('author');
-    galleries = registerOutput<List<Map<String, dynamic>>>('galleries');
+    galleries = registerOutput<List<WorkbookTemplateGallery>>('galleries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkbookTemplateGallery>(guardedValue, (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>())); });
     localized = registerOutput<String?>('localized');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int?>('priority');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateData = registerOutput<String>('templateData');
+  }
+
+  /// Creates a typed reference to an existing [WorkbookTemplate] resource.
+  WorkbookTemplate.reference(String urn)
+    : super(
+        'azure:appinsights/workbookTemplate:WorkbookTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    author = registerOutput<String?>('author');
+    galleries = registerOutput<List<WorkbookTemplateGallery>>('galleries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkbookTemplateGallery>(guardedValue, (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>())); });
+    localized = registerOutput<String?>('localized');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int?>('priority');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateData = registerOutput<String>('templateData');
   }
 }

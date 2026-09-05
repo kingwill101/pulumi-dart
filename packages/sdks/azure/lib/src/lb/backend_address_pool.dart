@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_address_pool_args.dart';
 import 'backend_address_pool_state.dart';
+import 'backend_address_pool_tunnel_interface.dart';
 
 /// Manages a Load Balancer Backend Address Pool.
 ///
@@ -141,7 +142,7 @@ import 'backend_address_pool_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String("PublicIPAddress"),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -149,7 +150,7 @@ import 'backend_address_pool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lb.NewBackendAddressPool(ctx, "example", &lb.BackendAddressPoolArgs{
-/// 			LoadbalancerId: exampleLoadBalancer.ID(),
+/// 			LoadbalancerId: exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:           pulumi.String("BackEndAddressPool"),
 /// 		})
 /// 		if err != nil {
@@ -316,7 +317,7 @@ class BackendAddressPool extends pulumi.CustomResource {
   /// &gt; **Note:** The `synchronousMode` can set only for Load Balancer with `Standard` SKU.
   late final pulumi.Output<String?> synchronousMode;
   /// One or more `tunnelInterface` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tunnelInterfaces;
+  late final pulumi.Output<List<BackendAddressPoolTunnelInterface>?> tunnelInterfaces;
   /// The ID of the Virtual Network within which the Backend Address Pool should exist.
   late final pulumi.Output<String?> virtualNetworkId;
 
@@ -332,16 +333,16 @@ class BackendAddressPool extends pulumi.CustomResource {
           'azure:lb/backendAddressPool:BackendAddressPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    backendIpConfigurations = registerOutput<List<String>>('backendIpConfigurations');
-    inboundNatRules = registerOutput<List<String>>('inboundNatRules');
-    loadBalancingRules = registerOutput<List<String>>('loadBalancingRules');
+    backendIpConfigurations = registerOutput<List<String>>('backendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inboundNatRules = registerOutput<List<String>>('inboundNatRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadBalancingRules = registerOutput<List<String>>('loadBalancingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    outboundRules = registerOutput<List<String>>('outboundRules');
+    outboundRules = registerOutput<List<String>>('outboundRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     synchronousMode = registerOutput<String?>('synchronousMode');
-    tunnelInterfaces = registerOutput<List<Map<String, dynamic>>?>('tunnelInterfaces');
+    tunnelInterfaces = registerOutput<List<BackendAddressPoolTunnelInterface>?>('tunnelInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendAddressPoolTunnelInterface>(guardedValue, (value) => BackendAddressPoolTunnelInterface.fromMap((value as Map).cast<String, dynamic>())); });
     virtualNetworkId = registerOutput<String?>('virtualNetworkId');
   }
 
@@ -350,11 +351,12 @@ class BackendAddressPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackendAddressPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackendAddressPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,14 +370,34 @@ class BackendAddressPool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    backendIpConfigurations = registerOutput<List<String>>('backendIpConfigurations');
-    inboundNatRules = registerOutput<List<String>>('inboundNatRules');
-    loadBalancingRules = registerOutput<List<String>>('loadBalancingRules');
+    backendIpConfigurations = registerOutput<List<String>>('backendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inboundNatRules = registerOutput<List<String>>('inboundNatRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadBalancingRules = registerOutput<List<String>>('loadBalancingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    outboundRules = registerOutput<List<String>>('outboundRules');
+    outboundRules = registerOutput<List<String>>('outboundRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     synchronousMode = registerOutput<String?>('synchronousMode');
-    tunnelInterfaces = registerOutput<List<Map<String, dynamic>>?>('tunnelInterfaces');
+    tunnelInterfaces = registerOutput<List<BackendAddressPoolTunnelInterface>?>('tunnelInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendAddressPoolTunnelInterface>(guardedValue, (value) => BackendAddressPoolTunnelInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    virtualNetworkId = registerOutput<String?>('virtualNetworkId');
+  }
+
+  /// Creates a typed reference to an existing [BackendAddressPool] resource.
+  BackendAddressPool.reference(String urn)
+    : super(
+        'azure:lb/backendAddressPool:BackendAddressPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backendIpConfigurations = registerOutput<List<String>>('backendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inboundNatRules = registerOutput<List<String>>('inboundNatRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadBalancingRules = registerOutput<List<String>>('loadBalancingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadbalancerId = registerOutput<String>('loadbalancerId');
+    this.name = registerOutput<String>('name');
+    outboundRules = registerOutput<List<String>>('outboundRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    synchronousMode = registerOutput<String?>('synchronousMode');
+    tunnelInterfaces = registerOutput<List<BackendAddressPoolTunnelInterface>?>('tunnelInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendAddressPoolTunnelInterface>(guardedValue, (value) => BackendAddressPoolTunnelInterface.fromMap((value as Map).cast<String, dynamic>())); });
     virtualNetworkId = registerOutput<String?>('virtualNetworkId');
   }
 }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountSharePropertiesRetentionPolicy {
   /// Specifies the number of days that the `azure.storage.Share` should be retained, between `1` and `365` days. Defaults to `7`.
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
 
   /// Creates a new [AccountSharePropertiesRetentionPolicy].
   /// [days] Specifies the number of days that the `azure.storage.Share` should be retained, between `1` and `365` days. Defaults to `7`.
@@ -20,7 +20,7 @@ class AccountSharePropertiesRetentionPolicy {
 
   factory AccountSharePropertiesRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return AccountSharePropertiesRetentionPolicy(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering WorkspaceApplicationGroupAssociation resources.
 class WorkspaceApplicationGroupAssociationState {
   /// The resource ID for the Virtual Desktop Application Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? applicationGroupId;
+  final pulumi.Input<String?>? applicationGroupId;
   /// The resource ID for the Virtual Desktop Workspace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [WorkspaceApplicationGroupAssociationState].
   /// [applicationGroupId] The resource ID for the Virtual Desktop Application Group. Changing this forces a new resource to be created.

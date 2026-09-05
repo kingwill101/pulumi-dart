@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudGatewayLocalResponseCachePerInstance {
   /// Specifies the maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// Specifies the time before a cached entry is expired (300s, 5m, 1h...).
-  final pulumi.Input<String>? timeToLive;
+  final pulumi.Input<String?>? timeToLive;
 
   /// Creates a new [SpringCloudGatewayLocalResponseCachePerInstance].
   /// [size] Specifies the maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.

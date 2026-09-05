@@ -6,9 +6,9 @@ import 'linux_web_app_slot_site_config_auto_heal_setting_trigger.dart';
 
 class LinuxWebAppSlotSiteConfigAutoHealSetting {
   /// A `action` block as defined above.
-  final pulumi.Input<LinuxWebAppSlotSiteConfigAutoHealSettingAction>? action;
+  final pulumi.Input<LinuxWebAppSlotSiteConfigAutoHealSettingAction?>? action;
   /// A `trigger` block as defined below.
-  final pulumi.Input<LinuxWebAppSlotSiteConfigAutoHealSettingTrigger>? trigger;
+  final pulumi.Input<LinuxWebAppSlotSiteConfigAutoHealSettingTrigger?>? trigger;
 
   /// Creates a new [LinuxWebAppSlotSiteConfigAutoHealSetting].
   /// [action] A `action` block as defined above.

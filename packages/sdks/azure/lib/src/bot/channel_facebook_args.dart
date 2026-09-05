@@ -15,7 +15,7 @@ class ChannelFacebookArgs {
   /// The Facebook Application Secret for the Facebook Channel.
   final pulumi.Input<String> facebookApplicationSecret;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// One or more `page` blocks as defined below.
   final pulumi.Input<List<ChannelFacebookPage>> pages;
   /// The name of the resource group where the Facebook Channel should be created. Changing this forces a new resource to be created.

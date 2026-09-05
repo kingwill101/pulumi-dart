@@ -4,35 +4,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountBlobContainerSASPermissions {
   /// Should Add permissions be enabled for this SAS?
-  final pulumi.Input<bool>? add;
+  final pulumi.Input<bool?>? add;
   /// Should Create permissions be enabled for this SAS?
-  final pulumi.Input<bool>? create;
+  final pulumi.Input<bool?>? create;
   /// Should Delete permissions be enabled for this SAS?
-  final pulumi.Input<bool>? delete;
+  final pulumi.Input<bool?>? delete;
   /// Should Delete version permissions be enabled for this SAS?
-  final pulumi.Input<bool>? deleteVersion;
+  final pulumi.Input<bool?>? deleteVersion;
   /// Should Execute permissions be enabled for this SAS?
-  final pulumi.Input<bool>? execute;
+  final pulumi.Input<bool?>? execute;
   /// Should Find permissions be enabled for this SAS?
-  final pulumi.Input<bool>? find;
+  final pulumi.Input<bool?>? find;
   /// Should List permissions be enabled for this SAS?
-  final pulumi.Input<bool>? list;
+  final pulumi.Input<bool?>? list;
   /// Should Move permissions be enabled for this SAS?
-  final pulumi.Input<bool>? move;
+  final pulumi.Input<bool?>? move;
   /// Should Ownership permissions be enabled for this SAS?
-  final pulumi.Input<bool>? ownership;
+  final pulumi.Input<bool?>? ownership;
   /// Should Permissions permissions be enabled for this SAS?
-  final pulumi.Input<bool>? permissions;
+  final pulumi.Input<bool?>? permissions;
   /// Should Read permissions be enabled for this SAS?
-  final pulumi.Input<bool>? read;
+  final pulumi.Input<bool?>? read;
   /// Should Set Immutability Policy permissions be enabled for this SAS?
-  final pulumi.Input<bool>? setImmutabilityPolicy;
+  final pulumi.Input<bool?>? setImmutabilityPolicy;
   /// Should Tags permissions be enabled for this SAS?
-  final pulumi.Input<bool>? tags;
+  final pulumi.Input<bool?>? tags;
   /// Should Write permissions be enabled for this SAS?
   ///
   /// &gt; **Note:** Refer to the [SAS creation reference from Azure](https://docs.microsoft.com/rest/api/storageservices/create-service-sas) for additional details on the fields above.
-  final pulumi.Input<bool>? write;
+  final pulumi.Input<bool?>? write;
 
   /// Creates a new [GetAccountBlobContainerSASPermissions].
   /// [add] Should Add permissions be enabled for this SAS?

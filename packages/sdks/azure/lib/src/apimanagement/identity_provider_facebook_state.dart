@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IdentityProviderFacebook resources.
 class IdentityProviderFacebookState {
   /// The Name of the API Management Service where this Facebook Identity Provider should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// App ID for Facebook.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// App Secret for Facebook.
-  final pulumi.Input<String>? appSecret;
+  final pulumi.Input<String?>? appSecret;
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [IdentityProviderFacebookState].
   /// [apiManagementName] The Name of the API Management Service where this Facebook Identity Provider should be created. Changing this forces a new resource to be created.

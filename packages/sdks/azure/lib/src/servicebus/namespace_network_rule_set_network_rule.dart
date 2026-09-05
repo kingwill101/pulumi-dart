@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NamespaceNetworkRuleSetNetworkRule {
   /// Should the Service Bus Namespace Network Rule Set ignore missing Virtual Network Service Endpoint option in the Subnet? Defaults to `false`.
-  final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
+  final pulumi.Input<bool?>? ignoreMissingVnetServiceEndpoint;
   /// The Subnet ID which should be able to access this Service Bus Namespace.
   final pulumi.Input<String> subnetId;
 

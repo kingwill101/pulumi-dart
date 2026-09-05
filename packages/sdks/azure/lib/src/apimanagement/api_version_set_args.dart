@@ -10,21 +10,21 @@ class ApiVersionSetArgs {
   /// The name of the API Management Service in which the API Version Set should exist. May only contain alphanumeric characters and dashes up to 50 characters in length. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
   /// The description of API Version Set.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of this API Version Set.
   final pulumi.Input<String> displayName;
   /// The name of the API Version Set. May only contain alphanumeric characters and dashes up to 80 characters in length. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group in which the parent API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Header which should be read from Inbound Requests which defines the API Version.
   ///
   /// &gt; **Note:** This must be specified when `versioningScheme` is set to `Header`.
-  final pulumi.Input<String>? versionHeaderName;
+  final pulumi.Input<String?>? versionHeaderName;
   /// The name of the Query String which should be read from Inbound Requests which defines the API Version.
   ///
   /// &gt; **Note:** This must be specified when `versioningScheme` is set to `Query`.
-  final pulumi.Input<String>? versionQueryName;
+  final pulumi.Input<String?>? versionQueryName;
   /// Specifies where in an Inbound HTTP Request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
   final pulumi.Input<String> versioningScheme;
 

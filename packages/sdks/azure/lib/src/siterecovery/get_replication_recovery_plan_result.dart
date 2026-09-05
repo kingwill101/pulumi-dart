@@ -6,63 +6,63 @@ import 'get_replication_recovery_plan_recovery_group.dart';
 
 /// Result data returned by getReplicationRecoveryPlan.
 class GetReplicationRecoveryPlanResult {
-  final List<GetReplicationRecoveryPlanAzureToAzureSetting> azureToAzureSettings;
-  final String failoverDeploymentModel;
+  final List<GetReplicationRecoveryPlanAzureToAzureSetting>? azureToAzureSettings;
+  final String? failoverDeploymentModel;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Name of the Action.
-  final String name;
+  final String? name;
   /// `recoveryGroup` block defined as below.
-  final List<GetReplicationRecoveryPlanRecoveryGroup> recoveryGroups;
-  final String recoveryVaultId;
+  final List<GetReplicationRecoveryPlanRecoveryGroup>? recoveryGroups;
+  final String? recoveryVaultId;
   /// The ID of source fabric to be recovered from.
-  final String sourceRecoveryFabricId;
+  final String? sourceRecoveryFabricId;
   /// The ID of target fabric to recover.
-  final String targetRecoveryFabricId;
+  final String? targetRecoveryFabricId;
 
   /// Creates a new [GetReplicationRecoveryPlanResult].
-  /// [azureToAzureSettings] Required.
-  /// [failoverDeploymentModel] Required.
+  /// [azureToAzureSettings] Optional.
+  /// [failoverDeploymentModel] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Name of the Action.
   /// [recoveryGroups] `recoveryGroup` block defined as below.
-  /// [recoveryVaultId] Required.
+  /// [recoveryVaultId] Optional.
   /// [sourceRecoveryFabricId] The ID of source fabric to be recovered from.
   /// [targetRecoveryFabricId] The ID of target fabric to recover.
   const GetReplicationRecoveryPlanResult({
-    required this.azureToAzureSettings,
-    required this.failoverDeploymentModel,
-    required this.id,
-    required this.name,
-    required this.recoveryGroups,
-    required this.recoveryVaultId,
-    required this.sourceRecoveryFabricId,
-    required this.targetRecoveryFabricId,
+    this.azureToAzureSettings,
+    this.failoverDeploymentModel,
+    this.id,
+    this.name,
+    this.recoveryGroups,
+    this.recoveryVaultId,
+    this.sourceRecoveryFabricId,
+    this.targetRecoveryFabricId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureToAzureSettings': pulumi.Input.encodeList<GetReplicationRecoveryPlanAzureToAzureSetting, Map<String, dynamic>>(azureToAzureSettings, (value) => value.toMap()),
-      'failoverDeploymentModel': failoverDeploymentModel,
-      'id': id,
-      'name': name,
-      'recoveryGroups': pulumi.Input.encodeList<GetReplicationRecoveryPlanRecoveryGroup, Map<String, dynamic>>(recoveryGroups, (value) => value.toMap()),
-      'recoveryVaultId': recoveryVaultId,
-      'sourceRecoveryFabricId': sourceRecoveryFabricId,
-      'targetRecoveryFabricId': targetRecoveryFabricId,
+      'azureToAzureSettings': ?(() { final guardedValue = azureToAzureSettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetReplicationRecoveryPlanAzureToAzureSetting, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'failoverDeploymentModel': ?failoverDeploymentModel,
+      'id': ?id,
+      'name': ?name,
+      'recoveryGroups': ?(() { final guardedValue = recoveryGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetReplicationRecoveryPlanRecoveryGroup, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'recoveryVaultId': ?recoveryVaultId,
+      'sourceRecoveryFabricId': ?sourceRecoveryFabricId,
+      'targetRecoveryFabricId': ?targetRecoveryFabricId,
     };
   }
 
   factory GetReplicationRecoveryPlanResult.fromMap(Map<String, dynamic> map) {
     return GetReplicationRecoveryPlanResult(
-      azureToAzureSettings: pulumi.Input.decodeList<GetReplicationRecoveryPlanAzureToAzureSetting>(map['azureToAzureSettings']!, (value) => GetReplicationRecoveryPlanAzureToAzureSetting.fromMap((value as Map).cast<String, dynamic>())),
-      failoverDeploymentModel: map['failoverDeploymentModel'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      recoveryGroups: pulumi.Input.decodeList<GetReplicationRecoveryPlanRecoveryGroup>(map['recoveryGroups']!, (value) => GetReplicationRecoveryPlanRecoveryGroup.fromMap((value as Map).cast<String, dynamic>())),
-      recoveryVaultId: map['recoveryVaultId'] as String,
-      sourceRecoveryFabricId: map['sourceRecoveryFabricId'] as String,
-      targetRecoveryFabricId: map['targetRecoveryFabricId'] as String,
+      azureToAzureSettings: (() { final guardedValue = map['azureToAzureSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReplicationRecoveryPlanAzureToAzureSetting>(guardedValue, (value) => GetReplicationRecoveryPlanAzureToAzureSetting.fromMap((value as Map).cast<String, dynamic>())); })(),
+      failoverDeploymentModel: (() { final guardedValue = map['failoverDeploymentModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      recoveryGroups: (() { final guardedValue = map['recoveryGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReplicationRecoveryPlanRecoveryGroup>(guardedValue, (value) => GetReplicationRecoveryPlanRecoveryGroup.fromMap((value as Map).cast<String, dynamic>())); })(),
+      recoveryVaultId: (() { final guardedValue = map['recoveryVaultId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceRecoveryFabricId: (() { final guardedValue = map['sourceRecoveryFabricId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      targetRecoveryFabricId: (() { final guardedValue = map['targetRecoveryFabricId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

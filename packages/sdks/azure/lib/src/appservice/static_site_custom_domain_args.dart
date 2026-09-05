@@ -12,7 +12,7 @@ class StaticSiteCustomDomainArgs {
   /// The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   final pulumi.Input<String> staticSiteId;
   /// One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
-  final pulumi.Input<String>? validationType;
+  final pulumi.Input<String?>? validationType;
 
   /// Creates a new [StaticSiteCustomDomainArgs].
   /// [domainName] The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.

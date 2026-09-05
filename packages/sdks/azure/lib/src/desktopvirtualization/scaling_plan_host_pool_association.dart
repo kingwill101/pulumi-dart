@@ -33,7 +33,7 @@ class ScalingPlanHostPoolAssociation extends pulumi.CustomResource {
           'azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     hostPoolId = registerOutput<String>('hostPoolId');
@@ -45,11 +45,12 @@ class ScalingPlanHostPoolAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScalingPlanHostPoolAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScalingPlanHostPoolAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -63,6 +64,20 @@ class ScalingPlanHostPoolAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enabled = registerOutput<bool>('enabled');
+    hostPoolId = registerOutput<String>('hostPoolId');
+    scalingPlanId = registerOutput<String>('scalingPlanId');
+  }
+
+  /// Creates a typed reference to an existing [ScalingPlanHostPoolAssociation] resource.
+  ScalingPlanHostPoolAssociation.reference(String urn)
+    : super(
+        'azure:desktopvirtualization/scalingPlanHostPoolAssociation:ScalingPlanHostPoolAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enabled = registerOutput<bool>('enabled');
     hostPoolId = registerOutput<String>('hostPoolId');
     scalingPlanId = registerOutput<String>('scalingPlanId');

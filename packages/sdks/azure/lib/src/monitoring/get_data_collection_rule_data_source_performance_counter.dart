@@ -37,7 +37,7 @@ class GetDataCollectionRuleDataSourcePerformanceCounter {
     return GetDataCollectionRuleDataSourcePerformanceCounter(
       counterSpecifiers: pulumi.Input.fromValue((map['counterSpecifiers'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
-      samplingFrequencyInSeconds: pulumi.Input.fromValue(map['samplingFrequencyInSeconds'] as int),
+      samplingFrequencyInSeconds: pulumi.Input.fromValue((map['samplingFrequencyInSeconds'] as num).toInt()),
       streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
     );
   }

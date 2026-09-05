@@ -6,7 +6,7 @@ class WindowsWebAppSiteConfigAutoHealSettingActionCustomAction {
   /// The executable to run for the `customAction`.
   final pulumi.Input<String> executable;
   /// The parameters to pass to the specified `executable`.
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
 
   /// Creates a new [WindowsWebAppSiteConfigAutoHealSettingActionCustomAction].
   /// [executable] The executable to run for the `customAction`.

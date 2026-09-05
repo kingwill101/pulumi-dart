@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SlotVirtualNetworkSwiftConnection resources.
 class SlotVirtualNetworkSwiftConnectionState {
   /// The ID of the App Service or Function App to associate to the VNet. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? appServiceId;
+  final pulumi.Input<String?>? appServiceId;
   /// The name of the App Service Slot or Function App Slot. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? slotName;
+  final pulumi.Input<String?>? slotName;
   /// The ID of the subnet the app service will be associated to (the subnet must have a `serviceDelegation` configured for `Microsoft.Web/serverFarms`).
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [SlotVirtualNetworkSwiftConnectionState].
   /// [appServiceId] The ID of the App Service or Function App to associate to the VNet. Changing this forces a new resource to be created.

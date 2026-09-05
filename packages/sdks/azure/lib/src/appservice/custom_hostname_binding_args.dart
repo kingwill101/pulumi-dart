@@ -16,11 +16,11 @@ class CustomHostnameBindingArgs {
   /// The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sslState;
+  final pulumi.Input<String?>? sslState;
   /// The SSL certificate thumbprint. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `thumbprint` must be specified when `sslState` is set.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [CustomHostnameBindingArgs].
   /// [appServiceName] The name of the App Service in which to add the Custom Hostname Binding. Changing this forces a new resource to be created.

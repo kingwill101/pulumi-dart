@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackupInstanceKubernetesClusterBackupDatasourceParameters {
   /// Whether to include cluster scope resources during backup. Default to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? clusterScopedResourcesEnabled;
+  final pulumi.Input<bool?>? clusterScopedResourcesEnabled;
   /// Specifies the namespaces to be excluded during backup. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? excludedNamespaces;
+  final pulumi.Input<List<String>?>? excludedNamespaces;
   /// Specifies the resource types to be excluded during backup. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? excludedResourceTypes;
+  final pulumi.Input<List<String>?>? excludedResourceTypes;
   /// Specifies the namespaces to be included during backup. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? includedNamespaces;
+  final pulumi.Input<List<String>?>? includedNamespaces;
   /// Specifies the resource types to be included during backup. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? includedResourceTypes;
+  final pulumi.Input<List<String>?>? includedResourceTypes;
   /// Specifies the resources with such label selectors to be included during backup. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? labelSelectors;
+  final pulumi.Input<List<String>?>? labelSelectors;
   /// Whether to take volume snapshots during backup. Default to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? volumeSnapshotEnabled;
+  final pulumi.Input<bool?>? volumeSnapshotEnabled;
 
   /// Creates a new [BackupInstanceKubernetesClusterBackupDatasourceParameters].
   /// [clusterScopedResourcesEnabled] Whether to include cluster scope resources during backup. Default to `false`. Changing this forces a new resource to be created.

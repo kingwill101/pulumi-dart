@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_group_oracle_args.dart';
 import 'volume_group_oracle_state.dart';
+import 'volume_group_oracle_volume.dart';
 
 /// Manages a Application Volume Group for Oracle application.
 ///
@@ -455,8 +456,8 @@ import 'volume_group_oracle_state.dart';
 /// 					Name:                     pulumi.Sprintf("%v-volume-ora1", prefix),
 /// 					VolumePath:               pulumi.Sprintf("%v-my-unique-file-ora-path-1", prefix),
 /// 					ServiceLevel:             pulumi.String("Standard"),
-/// 					CapacityPoolId:           examplePool.ID(),
-/// 					SubnetId:                 exampleSubnet.ID(),
+/// 					CapacityPoolId:           examplePool.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                 exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					Zone:                     pulumi.String("1"),
 /// 					VolumeSpecName:           pulumi.String("ora-data1"),
 /// 					StorageQuotaInGb:         pulumi.Int(1024),
@@ -480,8 +481,8 @@ import 'volume_group_oracle_state.dart';
 /// 					Name:                     pulumi.Sprintf("%v-volume-oraLog", prefix),
 /// 					VolumePath:               pulumi.Sprintf("%v-my-unique-file-oralog-path", prefix),
 /// 					ServiceLevel:             pulumi.String("Standard"),
-/// 					CapacityPoolId:           examplePool.ID(),
-/// 					SubnetId:                 exampleSubnet.ID(),
+/// 					CapacityPoolId:           examplePool.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                 exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					Zone:                     pulumi.String("1"),
 /// 					VolumeSpecName:           pulumi.String("ora-log"),
 /// 					StorageQuotaInGb:         pulumi.Int(1024),
@@ -1023,7 +1024,7 @@ import 'volume_group_oracle_state.dart';
 ///         dataProtectionReplication: {
 ///             endpointType: "dst",
 ///             remoteVolumeLocation: example.location,
-///             remoteVolumeResourceId: examplePrimaryVolumeGroupOracle.volumes.apply(volumes => volumes[0].id),
+///             remoteVolumeResourceId: examplePrimaryVolumeGroupOracle.volumes[0].id,
 ///             replicationFrequency: "10minutes",
 ///         },
 ///     }],
@@ -1573,8 +1574,8 @@ import 'volume_group_oracle_state.dart';
 /// 					Name:                     pulumi.Sprintf("%v-volume-ora1-primary", prefix),
 /// 					VolumePath:               pulumi.Sprintf("%v-my-unique-file-ora-path-1-primary", prefix),
 /// 					ServiceLevel:             pulumi.String("Standard"),
-/// 					CapacityPoolId:           examplePrimaryPool.ID(),
-/// 					SubnetId:                 examplePrimarySubnet.ID(),
+/// 					CapacityPoolId:           examplePrimaryPool.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                 examplePrimarySubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					VolumeSpecName:           pulumi.String("ora-data1"),
 /// 					StorageQuotaInGb:         pulumi.Int(1024),
 /// 					ThroughputInMibps:        pulumi.Float64(24),
@@ -1611,8 +1612,8 @@ import 'volume_group_oracle_state.dart';
 /// 					Name:                     pulumi.Sprintf("%v-volume-ora1-secondary", prefix),
 /// 					VolumePath:               pulumi.Sprintf("%v-my-unique-file-ora-path-1-secondary", prefix),
 /// 					ServiceLevel:             pulumi.String("Standard"),
-/// 					CapacityPoolId:           exampleSecondaryPool.ID(),
-/// 					SubnetId:                 exampleSecondarySubnet.ID(),
+/// 					CapacityPoolId:           exampleSecondaryPool.ID().ToIDOutput().ToStringOutput(),
+/// 					SubnetId:                 exampleSecondarySubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					VolumeSpecName:           pulumi.String("ora-data1"),
 /// 					StorageQuotaInGb:         pulumi.Int(1024),
 /// 					ThroughputInMibps:        pulumi.Float64(24),
@@ -2218,7 +2219,7 @@ class VolumeGroupOracle extends pulumi.CustomResource {
   /// The name of the Resource Group where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   late final pulumi.Output<String> resourceGroupName;
   /// One or more `volume` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> volumes;
+  late final pulumi.Output<List<VolumeGroupOracleVolume>> volumes;
 
   /// Creates a new [VolumeGroupOracle].
   /// [name] The Pulumi resource name.
@@ -2232,7 +2233,7 @@ class VolumeGroupOracle extends pulumi.CustomResource {
           'azure:netapp/volumeGroupOracle:VolumeGroupOracle',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     applicationIdentifier = registerOutput<String>('applicationIdentifier');
@@ -2240,7 +2241,7 @@ class VolumeGroupOracle extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    volumes = registerOutput<List<Map<String, dynamic>>>('volumes');
+    volumes = registerOutput<List<VolumeGroupOracleVolume>>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeGroupOracleVolume>(guardedValue, (value) => VolumeGroupOracleVolume.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [VolumeGroupOracle] resource's state with the given [name] and [id].
@@ -2248,11 +2249,12 @@ class VolumeGroupOracle extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeGroupOracleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeGroupOracle._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2272,6 +2274,24 @@ class VolumeGroupOracle extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    volumes = registerOutput<List<Map<String, dynamic>>>('volumes');
+    volumes = registerOutput<List<VolumeGroupOracleVolume>>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeGroupOracleVolume>(guardedValue, (value) => VolumeGroupOracleVolume.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [VolumeGroupOracle] resource.
+  VolumeGroupOracle.reference(String urn)
+    : super(
+        'azure:netapp/volumeGroupOracle:VolumeGroupOracle',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    applicationIdentifier = registerOutput<String>('applicationIdentifier');
+    groupDescription = registerOutput<String>('groupDescription');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    volumes = registerOutput<List<VolumeGroupOracleVolume>>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeGroupOracleVolume>(guardedValue, (value) => VolumeGroupOracleVolume.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

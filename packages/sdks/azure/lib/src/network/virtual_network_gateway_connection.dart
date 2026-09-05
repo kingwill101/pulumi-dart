@@ -286,9 +286,9 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// 			Sku:               pulumi.String("Basic"),
 /// 			IpConfigurations: network.VirtualNetworkGatewayIpConfigurationArray{
 /// 				&network.VirtualNetworkGatewayIpConfigurationArgs{
-/// 					PublicIpAddressId:          examplePublicIp.ID(),
+/// 					PublicIpAddressId:          examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -300,8 +300,8 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
 /// 			Type:                    pulumi.String("IPsec"),
-/// 			VirtualNetworkGatewayId: exampleVirtualNetworkGateway.ID(),
-/// 			LocalNetworkGatewayId:   onpremise.ID(),
+/// 			VirtualNetworkGatewayId: exampleVirtualNetworkGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			LocalNetworkGatewayId:   onpremise.ID().ToIDOutput().ToStringOutput(),
 /// 			SharedKey:               pulumi.String("4-v3ry-53cr37-1p53c-5h4r3d-k3y"),
 /// 		})
 /// 		if err != nil {
@@ -923,9 +923,9 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// 			Sku:               pulumi.String("Basic"),
 /// 			IpConfigurations: network.VirtualNetworkGatewayIpConfigurationArray{
 /// 				&network.VirtualNetworkGatewayIpConfigurationArgs{
-/// 					PublicIpAddressId:          usPublicIp.ID(),
+/// 					PublicIpAddressId:          usPublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
-/// 					SubnetId:                   usGateway.ID(),
+/// 					SubnetId:                   usGateway.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -979,9 +979,9 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// 			Sku:               pulumi.String("Basic"),
 /// 			IpConfigurations: network.VirtualNetworkGatewayIpConfigurationArray{
 /// 				&network.VirtualNetworkGatewayIpConfigurationArgs{
-/// 					PublicIpAddressId:          europePublicIp.ID(),
+/// 					PublicIpAddressId:          europePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
-/// 					SubnetId:                   europeGateway.ID(),
+/// 					SubnetId:                   europeGateway.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -993,8 +993,8 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// 			Location:                    us.Location,
 /// 			ResourceGroupName:           us.Name,
 /// 			Type:                        pulumi.String("Vnet2Vnet"),
-/// 			VirtualNetworkGatewayId:     usVirtualNetworkGateway.ID(),
-/// 			PeerVirtualNetworkGatewayId: europeVirtualNetworkGateway.ID(),
+/// 			VirtualNetworkGatewayId:     usVirtualNetworkGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerVirtualNetworkGatewayId: europeVirtualNetworkGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			SharedKey:                   pulumi.String("4-v3ry-53cr37-1p53c-5h4r3d-k3y"),
 /// 		})
 /// 		if err != nil {
@@ -1005,8 +1005,8 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// 			Location:                    europe.Location,
 /// 			ResourceGroupName:           europe.Name,
 /// 			Type:                        pulumi.String("Vnet2Vnet"),
-/// 			VirtualNetworkGatewayId:     europeVirtualNetworkGateway.ID(),
-/// 			PeerVirtualNetworkGatewayId: usVirtualNetworkGateway.ID(),
+/// 			VirtualNetworkGatewayId:     europeVirtualNetworkGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerVirtualNetworkGatewayId: usVirtualNetworkGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			SharedKey:                   pulumi.String("4-v3ry-53cr37-1p53c-5h4r3d-k3y"),
 /// 		})
 /// 		if err != nil {
@@ -1452,19 +1452,20 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
           'azure:network/virtualNetworkGatewayConnection:VirtualNetworkGatewayConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['authorizationKey', 'sharedKey'],
         ) {
-    authorizationKey = registerOutput<String?>('authorizationKey');
+    authorizationKey = registerOutput<String?>('authorizationKey', isSecret: true);
     bgpEnabled = registerOutput<bool>('bgpEnabled');
     connectionMode = registerOutput<String?>('connectionMode');
     connectionProtocol = registerOutput<String>('connectionProtocol');
     customBgpAddresses = registerOutput<VirtualNetworkGatewayConnectionCustomBgpAddresses?>('customBgpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dpdTimeoutSeconds = registerOutput<int?>('dpdTimeoutSeconds');
-    egressNatRuleIds = registerOutput<List<String>?>('egressNatRuleIds');
+    egressNatRuleIds = registerOutput<List<String>?>('egressNatRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enableBgp = registerOutput<bool>('enableBgp');
     expressRouteCircuitId = registerOutput<String?>('expressRouteCircuitId');
     expressRouteGatewayBypass = registerOutput<bool>('expressRouteGatewayBypass');
-    ingressNatRuleIds = registerOutput<List<String>?>('ingressNatRuleIds');
+    ingressNatRuleIds = registerOutput<List<String>?>('ingressNatRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipsecPolicy = registerOutput<VirtualNetworkGatewayConnectionIpsecPolicy?>('ipsecPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionIpsecPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAzureIpAddressEnabled = registerOutput<bool?>('localAzureIpAddressEnabled');
     localNetworkGatewayId = registerOutput<String?>('localNetworkGatewayId');
@@ -1474,8 +1475,8 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     privateLinkFastPathEnabled = registerOutput<bool?>('privateLinkFastPathEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routingWeight = registerOutput<int>('routingWeight');
-    sharedKey = registerOutput<String>('sharedKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    sharedKey = registerOutput<String>('sharedKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficSelectorPolicy = registerOutput<VirtualNetworkGatewayConnectionTrafficSelectorPolicy?>('trafficSelectorPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     usePolicyBasedTrafficSelectors = registerOutput<bool>('usePolicyBasedTrafficSelectors');
@@ -1487,11 +1488,12 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNetworkGatewayConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNetworkGatewayConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1505,17 +1507,17 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authorizationKey = registerOutput<String?>('authorizationKey');
+    authorizationKey = registerOutput<String?>('authorizationKey', isSecret: true);
     bgpEnabled = registerOutput<bool>('bgpEnabled');
     connectionMode = registerOutput<String?>('connectionMode');
     connectionProtocol = registerOutput<String>('connectionProtocol');
     customBgpAddresses = registerOutput<VirtualNetworkGatewayConnectionCustomBgpAddresses?>('customBgpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dpdTimeoutSeconds = registerOutput<int?>('dpdTimeoutSeconds');
-    egressNatRuleIds = registerOutput<List<String>?>('egressNatRuleIds');
+    egressNatRuleIds = registerOutput<List<String>?>('egressNatRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enableBgp = registerOutput<bool>('enableBgp');
     expressRouteCircuitId = registerOutput<String?>('expressRouteCircuitId');
     expressRouteGatewayBypass = registerOutput<bool>('expressRouteGatewayBypass');
-    ingressNatRuleIds = registerOutput<List<String>?>('ingressNatRuleIds');
+    ingressNatRuleIds = registerOutput<List<String>?>('ingressNatRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipsecPolicy = registerOutput<VirtualNetworkGatewayConnectionIpsecPolicy?>('ipsecPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionIpsecPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAzureIpAddressEnabled = registerOutput<bool?>('localAzureIpAddressEnabled');
     localNetworkGatewayId = registerOutput<String?>('localNetworkGatewayId');
@@ -1525,8 +1527,46 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     privateLinkFastPathEnabled = registerOutput<bool?>('privateLinkFastPathEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     routingWeight = registerOutput<int>('routingWeight');
-    sharedKey = registerOutput<String>('sharedKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    sharedKey = registerOutput<String>('sharedKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trafficSelectorPolicy = registerOutput<VirtualNetworkGatewayConnectionTrafficSelectorPolicy?>('trafficSelectorPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    usePolicyBasedTrafficSelectors = registerOutput<bool>('usePolicyBasedTrafficSelectors');
+    virtualNetworkGatewayId = registerOutput<String>('virtualNetworkGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkGatewayConnection] resource.
+  VirtualNetworkGatewayConnection.reference(String urn)
+    : super(
+        'azure:network/virtualNetworkGatewayConnection:VirtualNetworkGatewayConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['authorizationKey', 'sharedKey'],
+        isResourceReference: true,
+      ) {
+    authorizationKey = registerOutput<String?>('authorizationKey', isSecret: true);
+    bgpEnabled = registerOutput<bool>('bgpEnabled');
+    connectionMode = registerOutput<String?>('connectionMode');
+    connectionProtocol = registerOutput<String>('connectionProtocol');
+    customBgpAddresses = registerOutput<VirtualNetworkGatewayConnectionCustomBgpAddresses?>('customBgpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionCustomBgpAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dpdTimeoutSeconds = registerOutput<int?>('dpdTimeoutSeconds');
+    egressNatRuleIds = registerOutput<List<String>?>('egressNatRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enableBgp = registerOutput<bool>('enableBgp');
+    expressRouteCircuitId = registerOutput<String?>('expressRouteCircuitId');
+    expressRouteGatewayBypass = registerOutput<bool>('expressRouteGatewayBypass');
+    ingressNatRuleIds = registerOutput<List<String>?>('ingressNatRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipsecPolicy = registerOutput<VirtualNetworkGatewayConnectionIpsecPolicy?>('ipsecPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionIpsecPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAzureIpAddressEnabled = registerOutput<bool?>('localAzureIpAddressEnabled');
+    localNetworkGatewayId = registerOutput<String?>('localNetworkGatewayId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    peerVirtualNetworkGatewayId = registerOutput<String?>('peerVirtualNetworkGatewayId');
+    privateLinkFastPathEnabled = registerOutput<bool?>('privateLinkFastPathEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routingWeight = registerOutput<int>('routingWeight');
+    sharedKey = registerOutput<String>('sharedKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficSelectorPolicy = registerOutput<VirtualNetworkGatewayConnectionTrafficSelectorPolicy?>('trafficSelectorPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     usePolicyBasedTrafficSelectors = registerOutput<bool>('usePolicyBasedTrafficSelectors');

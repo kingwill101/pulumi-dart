@@ -622,7 +622,7 @@ class Configuration extends pulumi.CustomResource {
           'azure:automanage/configuration:Configuration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     antimalware = registerOutput<ConfigurationAntimalware?>('antimalware', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAntimalware.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automationAccountEnabled = registerOutput<bool?>('automationAccountEnabled');
@@ -636,7 +636,7 @@ class Configuration extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     statusChangeAlertEnabled = registerOutput<bool?>('statusChangeAlertEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Configuration] resource's state with the given [name] and [id].
@@ -644,11 +644,12 @@ class Configuration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Configuration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -674,6 +675,30 @@ class Configuration extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     statusChangeAlertEnabled = registerOutput<bool?>('statusChangeAlertEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Configuration] resource.
+  Configuration.reference(String urn)
+    : super(
+        'azure:automanage/configuration:Configuration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    antimalware = registerOutput<ConfigurationAntimalware?>('antimalware', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAntimalware.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    automationAccountEnabled = registerOutput<bool?>('automationAccountEnabled');
+    azureSecurityBaseline = registerOutput<ConfigurationAzureSecurityBaseline?>('azureSecurityBaseline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAzureSecurityBaseline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backup = registerOutput<ConfigurationBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bootDiagnosticsEnabled = registerOutput<bool?>('bootDiagnosticsEnabled');
+    defenderForCloudEnabled = registerOutput<bool?>('defenderForCloudEnabled');
+    guestConfigurationEnabled = registerOutput<bool?>('guestConfigurationEnabled');
+    location = registerOutput<String>('location');
+    logAnalyticsEnabled = registerOutput<bool?>('logAnalyticsEnabled');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    statusChangeAlertEnabled = registerOutput<bool?>('statusChangeAlertEnabled');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -119,7 +119,7 @@ import 'topic_state.dart';
 /// 		}
 /// 		_, err = servicebus.NewTopic(ctx, "example", &servicebus.TopicArgs{
 /// 			Name:                pulumi.String("tfex_servicebus_topic"),
-/// 			NamespaceId:         exampleNamespace.ID(),
+/// 			NamespaceId:         exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitioningEnabled: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -289,7 +289,7 @@ class Topic extends pulumi.CustomResource {
           'azure:eventhub/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
     batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
@@ -313,11 +313,12 @@ class Topic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Topic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -331,6 +332,32 @@ class Topic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
+    batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
+    defaultMessageTtl = registerOutput<String?>('defaultMessageTtl');
+    duplicateDetectionHistoryTimeWindow = registerOutput<String?>('duplicateDetectionHistoryTimeWindow');
+    expressEnabled = registerOutput<bool?>('expressEnabled');
+    maxMessageSizeInKilobytes = registerOutput<int>('maxMessageSizeInKilobytes');
+    maxSizeInMegabytes = registerOutput<int>('maxSizeInMegabytes');
+    this.name = registerOutput<String>('name');
+    namespaceId = registerOutput<String>('namespaceId');
+    namespaceName = registerOutput<String>('namespaceName');
+    partitioningEnabled = registerOutput<bool?>('partitioningEnabled');
+    requiresDuplicateDetection = registerOutput<bool?>('requiresDuplicateDetection');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    status = registerOutput<String?>('status');
+    supportOrdering = registerOutput<bool?>('supportOrdering');
+  }
+
+  /// Creates a typed reference to an existing [Topic] resource.
+  Topic.reference(String urn)
+    : super(
+        'azure:eventhub/topic:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
     batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
     defaultMessageTtl = registerOutput<String?>('defaultMessageTtl');

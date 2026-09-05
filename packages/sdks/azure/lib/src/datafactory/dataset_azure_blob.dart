@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_azure_blob_args.dart';
+import 'dataset_azure_blob_schema_column.dart';
 import 'dataset_azure_blob_state.dart';
 
 /// Manages an Azure Blob Dataset inside an Azure Data Factory.
@@ -27,7 +28,7 @@ import 'dataset_azure_blob_state.dart';
 /// const exampleLinkedServiceAzureBlobStorage = new azure.datafactory.LinkedServiceAzureBlobStorage("example", {
 ///     name: "example",
 ///     dataFactoryId: exampleFactory.id,
-///     connectionString: example.apply(example => example.primaryConnectionString),
+///     connectionString: example.primaryConnectionString,
 /// });
 /// const exampleDatasetAzureBlob = new azure.datafactory.DatasetAzureBlob("example", {
 ///     name: "example",
@@ -138,18 +139,16 @@ import 'dataset_azure_blob_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLinkedServiceAzureBlobStorage, err := datafactory.NewLinkedServiceAzureBlobStorage(ctx, "example", &datafactory.LinkedServiceAzureBlobStorageArgs{
-/// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
-/// 			ConnectionString: pulumi.String(example.ApplyT(func(example storage.GetAccountResult) (*string, error) {
-/// 				return example.PrimaryConnectionString, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:             pulumi.String("example"),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			ConnectionString: example.PrimaryConnectionString(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = datafactory.NewDatasetAzureBlob(ctx, "example", &datafactory.DatasetAzureBlobArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedServiceAzureBlobStorage.Name,
 /// 			Path:              pulumi.String("foo"),
 /// 			Filename:          pulumi.String("bar.png"),
@@ -335,7 +334,7 @@ class DatasetAzureBlob extends pulumi.CustomResource {
   /// The path of the Azure Blob.
   late final pulumi.Output<String?> path;
   /// A `schemaColumn` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
+  late final pulumi.Output<List<DatasetAzureBlobSchemaColumn>?> schemaColumns;
 
   /// Creates a new [DatasetAzureBlob].
   /// [name] The Pulumi resource name.
@@ -349,10 +348,10 @@ class DatasetAzureBlob extends pulumi.CustomResource {
           'azure:datafactory/datasetAzureBlob:DatasetAzureBlob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     dynamicFilenameEnabled = registerOutput<bool?>('dynamicFilenameEnabled');
@@ -361,9 +360,9 @@ class DatasetAzureBlob extends pulumi.CustomResource {
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     path = registerOutput<String?>('path');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    schemaColumns = registerOutput<List<DatasetAzureBlobSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAzureBlobSchemaColumn>(guardedValue, (value) => DatasetAzureBlobSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DatasetAzureBlob] resource's state with the given [name] and [id].
@@ -371,11 +370,12 @@ class DatasetAzureBlob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetAzureBlobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetAzureBlob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -389,8 +389,8 @@ class DatasetAzureBlob extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     dynamicFilenameEnabled = registerOutput<bool?>('dynamicFilenameEnabled');
@@ -399,8 +399,32 @@ class DatasetAzureBlob extends pulumi.CustomResource {
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     path = registerOutput<String?>('path');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    schemaColumns = registerOutput<List<DatasetAzureBlobSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAzureBlobSchemaColumn>(guardedValue, (value) => DatasetAzureBlobSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DatasetAzureBlob] resource.
+  DatasetAzureBlob.reference(String urn)
+    : super(
+        'azure:datafactory/datasetAzureBlob:DatasetAzureBlob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    dynamicFilenameEnabled = registerOutput<bool?>('dynamicFilenameEnabled');
+    dynamicPathEnabled = registerOutput<bool?>('dynamicPathEnabled');
+    filename = registerOutput<String?>('filename');
+    folder = registerOutput<String?>('folder');
+    linkedServiceName = registerOutput<String>('linkedServiceName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    path = registerOutput<String?>('path');
+    schemaColumns = registerOutput<List<DatasetAzureBlobSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAzureBlobSchemaColumn>(guardedValue, (value) => DatasetAzureBlobSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

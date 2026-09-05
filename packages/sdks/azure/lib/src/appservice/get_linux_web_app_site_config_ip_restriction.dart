@@ -60,7 +60,7 @@ class GetLinuxWebAppSiteConfigIpRestriction {
       headers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxWebAppSiteConfigIpRestrictionHeader>(map['headers']!, (value) => GetLinuxWebAppSiteConfigIpRestrictionHeader.fromMap((value as Map).cast<String, dynamic>()))),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       serviceTag: pulumi.Input.fromValue(map['serviceTag'] as String),
       virtualNetworkSubnetId: pulumi.Input.fromValue(map['virtualNetworkSubnetId'] as String),
     );

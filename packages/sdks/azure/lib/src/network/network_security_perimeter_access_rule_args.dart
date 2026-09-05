@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_network_security_perimeter_access_rule_network_security_perimeter_access_rule_args_doc}
 class NetworkSecurityPerimeterAccessRuleArgs {
   /// Specifies a list of CIDRs. Can only be specified when direction is set to `Inbound`. Conflicts with `fqdns`, `serviceTags`, `subscriptionIds`.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// The direction of the rule. Possible values are `Inbound` and `Outbound`. Changing this forces a new Network Security Perimeter Access Rule to be created.
   final pulumi.Input<String> direction;
   /// Specifies a list of fully qualified domain names. Can only be specified when direction is set to `Outbound`. Conflicts with `addressPrefixes`, `serviceTags`, and `subscriptionIds`.
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   /// The name which should be used for this Network Security Perimeter Access Rule. Changing this forces a new Network Security Perimeter Access Rule to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Network Security Perimeter Profile within which this Access Rule is created. Changing this forces a new Network Security Perimeter Access Rule to be created.
   final pulumi.Input<String> networkSecurityPerimeterProfileId;
   /// Specifies a list of service tags. Can only be specified when direction is set to `Inbound`. Conflicts with `addressPrefixes`, `fqdns`, and `subscriptionIds`.
-  final pulumi.Input<List<String>>? serviceTags;
+  final pulumi.Input<List<String>?>? serviceTags;
   /// Specifies a list of subscription IDs this rule applies to. Can only be specified when direction is set to `Inbound`. Conflicts with `addressPrefixes`, `fqdns`, and `serviceTags`.
-  final pulumi.Input<List<String>>? subscriptionIds;
+  final pulumi.Input<List<String>?>? subscriptionIds;
 
   /// Creates a new [NetworkSecurityPerimeterAccessRuleArgs].
   /// [addressPrefixes] Specifies a list of CIDRs. Can only be specified when direction is set to `Inbound`. Conflicts with `fqdns`, `serviceTags`, `subscriptionIds`.

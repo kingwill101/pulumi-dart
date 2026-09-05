@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames {
   /// A list of alternative DNS names (FQDNs) identified by the Certificate.
-  final pulumi.Input<List<String>>? dnsNames;
+  final pulumi.Input<List<String>?>? dnsNames;
   /// A list of email addresses identified by this Certificate.
-  final pulumi.Input<List<String>>? emails;
+  final pulumi.Input<List<String>?>? emails;
   /// A list of User Principal Names identified by the Certificate.
-  final pulumi.Input<List<String>>? upns;
+  final pulumi.Input<List<String>?>? upns;
 
   /// Creates a new [CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames].
   /// [dnsNames] A list of alternative DNS names (FQDNs) identified by the Certificate.

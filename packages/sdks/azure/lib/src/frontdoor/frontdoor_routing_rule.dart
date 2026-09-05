@@ -8,19 +8,19 @@ class FrontdoorRoutingRule {
   /// Protocol schemes to match for the Backend Routing Rule. Possible values are `Http` and `Https`.
   final pulumi.Input<List<String>> acceptedProtocols;
   /// `Enable` or `Disable` use of this Backend Routing Rule. Permitted values are `true` or `false`. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A `forwardingConfiguration` block as defined below.
-  final pulumi.Input<FrontdoorRoutingRuleForwardingConfiguration>? forwardingConfiguration;
+  final pulumi.Input<FrontdoorRoutingRuleForwardingConfiguration?>? forwardingConfiguration;
   /// The names of the `frontendEndpoint` blocks within this resource to associate with this `routingRule`.
   final pulumi.Input<List<String>> frontendEndpoints;
   /// The ID of the FrontDoor.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the name of the Routing Rule.
   final pulumi.Input<String> name;
   /// The route patterns for the Backend Routing Rule.
   final pulumi.Input<List<String>> patternsToMatches;
   /// A `redirectConfiguration` block as defined below.
-  final pulumi.Input<FrontdoorRoutingRuleRedirectConfiguration>? redirectConfiguration;
+  final pulumi.Input<FrontdoorRoutingRuleRedirectConfiguration?>? redirectConfiguration;
 
   /// Creates a new [FrontdoorRoutingRule].
   /// [acceptedProtocols] Protocol schemes to match for the Backend Routing Rule. Possible values are `Http` and `Https`.

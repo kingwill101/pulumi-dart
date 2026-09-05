@@ -8,19 +8,19 @@ class ApiOperationRequestRepresentation {
   /// The Content Type of this representation, such as `application/json`.
   final pulumi.Input<String> contentType;
   /// One or more `example` blocks as defined above.
-  final pulumi.Input<List<ApiOperationRequestRepresentationExample>>? examples;
+  final pulumi.Input<List<ApiOperationRequestRepresentationExample>?>? examples;
   /// One or more `formParameter` block as defined above.
   ///
   /// &gt; **Note:** This is Required when `contentType` is set to `application/x-www-form-urlencoded` or `multipart/form-data`.
-  final pulumi.Input<List<ApiOperationRequestRepresentationFormParameter>>? formParameters;
+  final pulumi.Input<List<ApiOperationRequestRepresentationFormParameter>?>? formParameters;
   /// The ID of an API Management Schema which represents this Response.
   ///
   /// &gt; **Note:** This can only be specified when `contentType` is not set to `application/x-www-form-urlencoded` or `multipart/form-data`.
-  final pulumi.Input<String>? schemaId;
+  final pulumi.Input<String?>? schemaId;
   /// The Type Name defined by the Schema.
   ///
   /// &gt; **Note:** This can only be specified when `contentType` is not set to `application/x-www-form-urlencoded` or `multipart/form-data`.
-  final pulumi.Input<String>? typeName;
+  final pulumi.Input<String?>? typeName;
 
   /// Creates a new [ApiOperationRequestRepresentation].
   /// [contentType] The Content Type of this representation, such as `application/json`.

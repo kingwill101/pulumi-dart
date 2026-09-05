@@ -10,11 +10,11 @@ class ActionGroupEventHubReceiver {
   /// The name of the EventHub Receiver, must be unique within action group.
   final pulumi.Input<String> name;
   /// The ID for the subscription containing this Event Hub. Default to the subscription ID of the Action Group.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The Tenant ID for the subscription containing this Event Hub.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Indicates whether to use common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [ActionGroupEventHubReceiver].
   /// [eventHubName] The name of the specific Event Hub queue.

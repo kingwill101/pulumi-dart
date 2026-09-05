@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NamespaceTopic resources.
 class NamespaceTopicState {
   /// Event retention for the namespace topic expressed in days. Defaults to `7`.
-  final pulumi.Input<int>? eventRetentionInDays;
+  final pulumi.Input<int?>? eventRetentionInDays;
   /// The ID of the Event Grid Namespace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventgridNamespaceId;
+  final pulumi.Input<String?>? eventgridNamespaceId;
   /// The name which should be used for this Event Grid Namespace Topic. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [NamespaceTopicState].
   /// [eventRetentionInDays] Event retention for the namespace topic expressed in days. Defaults to `7`.
@@ -31,7 +31,7 @@ class NamespaceTopicState {
 
   factory NamespaceTopicState.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicState(
-      eventRetentionInDays: (() { final guardedValue = map['eventRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      eventRetentionInDays: (() { final guardedValue = map['eventRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       eventgridNamespaceId: (() { final guardedValue = map['eventgridNamespaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

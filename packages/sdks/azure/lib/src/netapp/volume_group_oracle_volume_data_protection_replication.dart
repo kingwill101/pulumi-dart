@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeGroupOracleVolumeDataProtectionReplication {
   /// The endpoint type. Possible values are `dst` and `src`. Defaults to `dst`. Changing this forces a new Application Volume Group to be created and data will be lost.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<String?>? endpointType;
   /// Location of the primary volume.
   final pulumi.Input<String> remoteVolumeLocation;
   /// Resource ID of the primary volume. Changing this forces a new Application Volume Group to be created and data will be lost.

@@ -10,7 +10,7 @@ class SourceCodeTokenArgs {
   /// The OAuth access token.
   final pulumi.Input<String> token;
   /// The OAuth access token secret.
-  final pulumi.Input<String>? tokenSecret;
+  final pulumi.Input<String?>? tokenSecret;
   /// The source control type. Possible values are `BitBucket`, `Dropbox`, `GitHub` and `OneDrive`.
   final pulumi.Input<String> type;
 

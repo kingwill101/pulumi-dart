@@ -237,16 +237,17 @@ class VirtualMachineManagerServer extends pulumi.CustomResource {
           'azure:systemcenter/virtualMachineManagerServer:VirtualMachineManagerServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     customLocationId = registerOutput<String>('customLocationId');
     fqdn = registerOutput<String>('fqdn');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     port = registerOutput<int?>('port');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     username = registerOutput<String>('username');
   }
 
@@ -255,11 +256,12 @@ class VirtualMachineManagerServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualMachineManagerServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualMachineManagerServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -277,10 +279,31 @@ class VirtualMachineManagerServer extends pulumi.CustomResource {
     fqdn = registerOutput<String>('fqdn');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     port = registerOutput<int?>('port');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineManagerServer] resource.
+  VirtualMachineManagerServer.reference(String urn)
+    : super(
+        'azure:systemcenter/virtualMachineManagerServer:VirtualMachineManagerServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    fqdn = registerOutput<String>('fqdn');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
+    port = registerOutput<int?>('port');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     username = registerOutput<String>('username');
   }
 }

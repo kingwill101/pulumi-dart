@@ -9,61 +9,61 @@ import 'threat_intelligence_indicator_parsed_pattern.dart';
 /// Input properties used for looking up and filtering ThreatIntelligenceIndicator resources.
 class ThreatIntelligenceIndicatorState {
   /// Confidence levels of the Threat Intelligence Indicator.
-  final pulumi.Input<int>? confidence;
+  final pulumi.Input<int?>? confidence;
   /// The creator of the Threat Intelligence Indicator.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// The date of this Threat Intelligence Indicator created.
-  final pulumi.Input<String>? createdOn;
+  final pulumi.Input<String?>? createdOn;
   /// Whether the Threat Intelligence entity is defanged?
-  final pulumi.Input<bool>? defanged;
+  final pulumi.Input<bool?>? defanged;
   /// The description of the Threat Intelligence Indicator.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the Threat Intelligence Indicator.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The extension config of the Threat Intelligence Indicator in JSON format.
-  final pulumi.Input<String>? extension;
+  final pulumi.Input<String?>? extension;
   /// The external ID of the Threat Intelligence Indicator.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// the External last updated time in UTC.
-  final pulumi.Input<String>? externalLastUpdatedTimeUtc;
+  final pulumi.Input<String?>? externalLastUpdatedTimeUtc;
   /// One or more `externalReference` blocks as defined below.
-  final pulumi.Input<List<ThreatIntelligenceIndicatorExternalReference>>? externalReferences;
+  final pulumi.Input<List<ThreatIntelligenceIndicatorExternalReference>?>? externalReferences;
   /// One or more `granularMarking` blocks as defined below.
-  final pulumi.Input<List<ThreatIntelligenceIndicatorGranularMarking>>? granularMarkings;
+  final pulumi.Input<List<ThreatIntelligenceIndicatorGranularMarking>?>? granularMarkings;
   /// The guid of this Sentinel Threat Intelligence Indicator.
-  final pulumi.Input<String>? guid;
+  final pulumi.Input<String?>? guid;
   /// A list of indicator types of this Threat Intelligence Indicator.
-  final pulumi.Input<List<String>>? indicatorTypes;
+  final pulumi.Input<List<String>?>? indicatorTypes;
   /// One or more `killChainPhase` blocks as defined below.
-  final pulumi.Input<List<ThreatIntelligenceIndicatorKillChainPhase>>? killChainPhases;
+  final pulumi.Input<List<ThreatIntelligenceIndicatorKillChainPhase>?>? killChainPhases;
   /// The language of the Threat Intelligence Indicator.
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// The last updated time of the Threat Intelligence Indicator in UTC.
-  final pulumi.Input<String>? lastUpdatedTimeUtc;
+  final pulumi.Input<String?>? lastUpdatedTimeUtc;
   /// Specifies a list of Threat Intelligence marking references.
-  final pulumi.Input<List<String>>? objectMarkingRefs;
+  final pulumi.Input<List<String>?>? objectMarkingRefs;
   /// A `parsedPattern` block as defined below.
-  final pulumi.Input<List<ThreatIntelligenceIndicatorParsedPattern>>? parsedPatterns;
+  final pulumi.Input<List<ThreatIntelligenceIndicatorParsedPattern>?>? parsedPatterns;
   /// The pattern used by the Threat Intelligence Indicator. When `patternType` set to `file`, `pattern` must be specified with `&lt;HashName&gt;:&lt;Value&gt;` format, such as `MD5:78ecc5c05cd8b79af480df2f8fba0b9d`.
-  final pulumi.Input<String>? pattern;
+  final pulumi.Input<String?>? pattern;
   /// The type of pattern used by the Threat Intelligence Indicator. Possible values are `domain-name`, `file`, `ipv4-addr`, `ipv6-addr` and `url`.
-  final pulumi.Input<String>? patternType;
+  final pulumi.Input<String?>? patternType;
   /// The version of a Threat Intelligence entity.
-  final pulumi.Input<String>? patternVersion;
+  final pulumi.Input<String?>? patternVersion;
   /// Whether the Threat Intelligence entity revoked.
-  final pulumi.Input<bool>? revoked;
+  final pulumi.Input<bool?>? revoked;
   /// Source of the Threat Intelligence Indicator. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Specifies a list of tags of the Threat Intelligence Indicator.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Specifies a list of threat types of this Threat Intelligence Indicator.
-  final pulumi.Input<List<String>>? threatTypes;
+  final pulumi.Input<List<String>?>? threatTypes;
   /// The start of validate date in RFC3339.
-  final pulumi.Input<String>? validateFromUtc;
+  final pulumi.Input<String?>? validateFromUtc;
   /// The end of validate date of the Threat Intelligence Indicator in RFC3339 format.
-  final pulumi.Input<String>? validateUntilUtc;
+  final pulumi.Input<String?>? validateUntilUtc;
   /// The ID of the Log Analytics Workspace. Changing this forces a new Sentinel Threat Intelligence Indicator to be created.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [ThreatIntelligenceIndicatorState].
   /// [confidence] Confidence levels of the Threat Intelligence Indicator.
@@ -160,7 +160,7 @@ class ThreatIntelligenceIndicatorState {
 
   factory ThreatIntelligenceIndicatorState.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceIndicatorState(
-      confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defanged: (() { final guardedValue = map['defanged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

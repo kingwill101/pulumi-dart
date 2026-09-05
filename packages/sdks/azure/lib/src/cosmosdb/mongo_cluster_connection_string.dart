@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MongoClusterConnectionString {
   /// The description of the connection string.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name which should be used for the MongoDB Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the Mongo Cluster connection string. The `&lt;user&gt;:&lt;password&gt;` placeholder returned from API will be replaced by the real `administratorUsername` and `administratorPassword` if available in the state.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [MongoClusterConnectionString].
   /// [description] The description of the connection string.

@@ -236,7 +236,7 @@ class NatGateway extends pulumi.CustomResource {
           'azure:network/natGateway:NatGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     location = registerOutput<String>('location');
@@ -244,8 +244,8 @@ class NatGateway extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceGuid = registerOutput<String>('resourceGuid');
     skuName = registerOutput<String?>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>?>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [NatGateway] resource's state with the given [name] and [id].
@@ -253,11 +253,12 @@ class NatGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NatGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NatGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -277,7 +278,26 @@ class NatGateway extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     resourceGuid = registerOutput<String>('resourceGuid');
     skuName = registerOutput<String?>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>?>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NatGateway] resource.
+  NatGateway.reference(String urn)
+    : super(
+        'azure:network/natGateway:NatGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    skuName = registerOutput<String?>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

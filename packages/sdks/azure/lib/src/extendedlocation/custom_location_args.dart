@@ -9,19 +9,19 @@ import 'custom_location_authentication.dart';
 /// {@macro pulumi_extendedlocation_custom_location_custom_location_args_doc}
 class CustomLocationArgs {
   /// An `authentication` block as defined below.
-  final pulumi.Input<CustomLocationAuthentication>? authentication;
+  final pulumi.Input<CustomLocationAuthentication?>? authentication;
   /// Specifies the list of Cluster Extension IDs.
   final pulumi.Input<List<String>> clusterExtensionIds;
   /// Specifies the display name of the Custom Location.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies the host resource ID. Changing this forces a new resource to be created.
   final pulumi.Input<String> hostResourceId;
   /// Specifies the host type of the Custom Location. The only possible values is `KubernetesCluster`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? hostType;
+  final pulumi.Input<String?>? hostType;
   /// Specifies the Azure location where the Custom Location should exist. Changing this forces a new Custom Location to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this Custom Location. Changing this forces a new Custom Location to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the namespace of the Custom Location. Changing this forces a new Custom Location to be created.
   final pulumi.Input<String> namespace;
   /// Specifies the name of the Resource Group where the Custom Location should exist. Changing this forces a new Custom Location to be created.
