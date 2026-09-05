@@ -71,7 +71,7 @@ func buildObjectClassSpec(
 			FieldName:         propertyFieldName(property.Name, usedFieldNames),
 			Comment:           strings.TrimSpace(property.Comment),
 			Required:          property.IsRequired(),
-			DefaultExpression: schemaDefaultInputExpression(property.DefaultValue),
+			DefaultExpression: schemaDefaultExpression(property.DefaultValue, typeSpec, usesInputTypes),
 			TypeSpec:          typeSpec,
 			DartType:          typeSpec.DartType,
 			ReferenceKind:     referenceKind,

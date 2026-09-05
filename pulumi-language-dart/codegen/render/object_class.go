@@ -65,7 +65,11 @@ func writeObjectConstructor(b *strings.Builder, declaration dartir.ObjectClass) 
 	fmt.Fprintf(b, "  %s%s({\n", constructorModifier, declaration.Name)
 	for _, property := range declaration.Properties {
 		if property.DefaultExpression != "" {
-			fmt.Fprintf(b, "    %s %s,\n", property.FieldType, property.FieldName)
+			parameterType := property.FieldType
+			if !strings.HasSuffix(parameterType, "?") {
+				parameterType += "?"
+			}
+			fmt.Fprintf(b, "    %s %s,\n", parameterType, property.FieldName)
 		} else if property.Required {
 			fmt.Fprintf(b, "    required this.%s,\n", property.FieldName)
 		} else {
