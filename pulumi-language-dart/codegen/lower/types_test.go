@@ -31,7 +31,7 @@ func TestDecodeExpressionForNestedObjectCollection(t *testing.T) {
 func TestDecodeExpressionNormalizesWireNumbers(t *testing.T) {
 	t.Parallel()
 
-	require.Equal(t, "(raw as num).toInt()", DecodeExpression(schemair.Type{Kind: "scalar", DartType: "int"}, "raw"))
+	require.Equal(t, "((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(raw)", DecodeExpression(schemair.Type{Kind: "scalar", DartType: "int"}, "raw"))
 	require.Equal(t, "(raw as num).toDouble()", DecodeExpression(schemair.Type{Kind: "scalar", DartType: "double"}, "raw"))
 }
 

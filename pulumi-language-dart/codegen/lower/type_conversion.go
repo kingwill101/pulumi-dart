@@ -82,7 +82,7 @@ func DecodeExpression(typeSpec schemair.Type, sourceExpr string) string {
 			return sourceExpr
 		}
 		if typeSpec.DartType == "int" {
-			return fmt.Sprintf("(%s as num).toInt()", sourceExpr)
+			return fmt.Sprintf("((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(%s)", sourceExpr)
 		}
 		if typeSpec.DartType == "double" {
 			return fmt.Sprintf("(%s as num).toDouble()", sourceExpr)
