@@ -31,7 +31,7 @@ class GetDomainInterfaceAddressesInterfaceAddr {
   factory GetDomainInterfaceAddressesInterfaceAddr.fromMap(Map<String, dynamic> map) {
     return GetDomainInterfaceAddressesInterfaceAddr(
       addr: pulumi.Input.fromValue(map['addr'] as String),
-      prefix: pulumi.Input.fromValue(map['prefix'] as double),
+      prefix: pulumi.Input.fromValue((map['prefix'] as num).toDouble()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

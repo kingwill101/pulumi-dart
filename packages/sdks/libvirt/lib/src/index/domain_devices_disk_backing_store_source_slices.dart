@@ -5,7 +5,7 @@ import 'domain_devices_disk_backing_store_source_slices_slice.dart';
 
 class DomainDevicesDiskBackingStoreSourceSlices {
   /// Specifies individual slice configurations within the mirror source.
-  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceSlicesSlice>>? slices;
+  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceSlicesSlice>?>? slices;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceSlices].
   /// [slices] Specifies individual slice configurations within the mirror source.

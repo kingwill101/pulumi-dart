@@ -10,21 +10,21 @@ import 'domain_devices_console_target.dart';
 
 class DomainDevicesConsole {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesConsoleAcpi>? acpi;
+  final pulumi.Input<DomainDevicesConsoleAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesConsoleAlias>? alias;
+  final pulumi.Input<DomainDevicesConsoleAlias?>? alias;
   /// Specifies the logging options for the channel configuration.
-  final pulumi.Input<DomainDevicesConsoleLog>? log;
+  final pulumi.Input<DomainDevicesConsoleLog?>? log;
   /// Sets the protocol type for the EGD backend.
-  final pulumi.Input<DomainDevicesConsoleProtocol>? protocol;
+  final pulumi.Input<DomainDevicesConsoleProtocol?>? protocol;
   /// Defines the source settings for the EGD backend.
-  final pulumi.Input<DomainDevicesConsoleSource>? source;
+  final pulumi.Input<DomainDevicesConsoleSource?>? source;
   /// Defines the target configuration for the console output.
-  final pulumi.Input<DomainDevicesConsoleTarget>? target;
+  final pulumi.Input<DomainDevicesConsoleTarget?>? target;
   /// Defines the TTY settings for the console configuration.
-  final pulumi.Input<String>? tty;
+  final pulumi.Input<String?>? tty;
 
   /// Creates a new [DomainDevicesConsole].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

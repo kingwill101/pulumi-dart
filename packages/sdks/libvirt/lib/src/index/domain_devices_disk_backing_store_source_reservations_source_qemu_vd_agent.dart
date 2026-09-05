@@ -5,8 +5,8 @@ import 'domain_devices_disk_backing_store_source_reservations_source_qemu_vd_age
 import 'domain_devices_disk_backing_store_source_reservations_source_qemu_vd_agent_mouse.dart';
 
 class DomainDevicesDiskBackingStoreSourceReservationsSourceQemuVdAgent {
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceQemuVdAgentClipBoard>? clipBoard;
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceQemuVdAgentMouse>? mouse;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceQemuVdAgentClipBoard?>? clipBoard;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceQemuVdAgentMouse?>? mouse;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReservationsSourceQemuVdAgent].
   /// [clipBoard] Optional.

@@ -38,7 +38,7 @@ class PoolTargetEncryptionCipher {
       hash: pulumi.Input.fromValue(map['hash'] as String),
       mode: pulumi.Input.fromValue(map['mode'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      size: pulumi.Input.fromValue(map['size'] as double),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
     );
   }
 }

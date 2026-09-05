@@ -20,7 +20,7 @@ class DomainDevicesDiskDriverIoThreadsIoThreadQueue {
 
   factory DomainDevicesDiskDriverIoThreadsIoThreadQueue.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskDriverIoThreadsIoThreadQueue(
-      id: pulumi.Input.fromValue(map['id'] as double),
+      id: pulumi.Input.fromValue((map['id'] as num).toDouble()),
     );
   }
 }

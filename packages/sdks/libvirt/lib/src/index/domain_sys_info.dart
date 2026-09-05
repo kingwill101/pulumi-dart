@@ -6,9 +6,9 @@ import 'domain_sys_info_smbios.dart';
 
 class DomainSysInfo {
   /// Configures the firmware configuration settings for the virtual machine.
-  final pulumi.Input<DomainSysInfoFwCfg>? fwCfg;
+  final pulumi.Input<DomainSysInfoFwCfg?>? fwCfg;
   /// Configures the SMBIOS system information for the virtual machine.
-  final pulumi.Input<DomainSysInfoSmbios>? smbios;
+  final pulumi.Input<DomainSysInfoSmbios?>? smbios;
 
   /// Creates a new [DomainSysInfo].
   /// [fwCfg] Configures the firmware configuration settings for the virtual machine.

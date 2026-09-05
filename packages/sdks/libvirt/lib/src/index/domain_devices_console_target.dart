@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesConsoleTarget {
   /// Sets the port number used for the console target.
-  final pulumi.Input<double>? port;
+  final pulumi.Input<double?>? port;
   /// Specifies the type of the console target.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DomainDevicesConsoleTarget].
   /// [port] Sets the port number used for the console target.
@@ -25,7 +25,7 @@ class DomainDevicesConsoleTarget {
 
   factory DomainDevicesConsoleTarget.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleTarget(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

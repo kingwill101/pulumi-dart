@@ -6,11 +6,11 @@ import 'domain_devices_disk_backing_store_source.dart';
 
 class DomainDevicesDiskBackingStore {
   /// Defines the format of the data store used in the backing store source configuration.
-  final pulumi.Input<DomainDevicesDiskBackingStoreFormat>? format;
+  final pulumi.Input<DomainDevicesDiskBackingStoreFormat?>? format;
   /// Sets the index for the backing store in relation to other backing stores, managing their order and priority.
-  final pulumi.Input<double>? index;
+  final pulumi.Input<double?>? index;
   /// Specifies the source of the backing store, determining its origin and how it is accessed.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSource>? source;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSource?>? source;
 
   /// Creates a new [DomainDevicesDiskBackingStore].
   /// [format] Defines the format of the data store used in the backing store source configuration.
@@ -33,7 +33,7 @@ class DomainDevicesDiskBackingStore {
   factory DomainDevicesDiskBackingStore.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStore(
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskBackingStoreFormat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskBackingStoreSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -6,9 +6,9 @@ import 'domain_cpu_numa_interconnects_latency.dart';
 
 class DomainCpuNumaInterconnects {
   /// Configures the bandwidth characteristics for the interconnects among the NUMA nodes.
-  final pulumi.Input<List<DomainCpuNumaInterconnectsBandwidth>>? bandwidths;
+  final pulumi.Input<List<DomainCpuNumaInterconnectsBandwidth>?>? bandwidths;
   /// Specifies the latency measures associated with the interconnections between NUMA nodes.
-  final pulumi.Input<List<DomainCpuNumaInterconnectsLatency>>? latencies;
+  final pulumi.Input<List<DomainCpuNumaInterconnectsLatency>?>? latencies;
 
   /// Creates a new [DomainCpuNumaInterconnects].
   /// [bandwidths] Configures the bandwidth characteristics for the interconnects among the NUMA nodes.

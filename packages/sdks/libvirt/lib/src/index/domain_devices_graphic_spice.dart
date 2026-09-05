@@ -15,45 +15,45 @@ import 'domain_devices_graphic_spice_zlib.dart';
 
 class DomainDevicesGraphicSpice {
   /// Enables automatic port assignment for SPICE connections.
-  final pulumi.Input<bool>? autoPort;
+  final pulumi.Input<bool?>? autoPort;
   /// Configures the SPICE channels used for the graphics connection.
-  final pulumi.Input<List<DomainDevicesGraphicSpiceChannel>>? channels;
+  final pulumi.Input<List<DomainDevicesGraphicSpiceChannel>?>? channels;
   /// Enables or disables clipboard sharing between the guest and host through the Spice protocol.
-  final pulumi.Input<DomainDevicesGraphicSpiceClipBoard>? clipBoard;
+  final pulumi.Input<DomainDevicesGraphicSpiceClipBoard?>? clipBoard;
   /// Indicates whether the Spice graphical interface is currently connected to the client.
-  final pulumi.Input<String>? connected;
+  final pulumi.Input<String?>? connected;
   /// Sets the default graphical mode for the Spice display, defining initial display settings.
-  final pulumi.Input<String>? defaultMode;
+  final pulumi.Input<String?>? defaultMode;
   /// Configures file transfer capabilities over the Spice connection.
-  final pulumi.Input<DomainDevicesGraphicSpiceFileTransfer>? fileTransfer;
+  final pulumi.Input<DomainDevicesGraphicSpiceFileTransfer?>? fileTransfer;
   /// Configures settings for OpenGL rendering within the Spice graphical interface.
-  final pulumi.Input<DomainDevicesGraphicSpiceGl>? gl;
+  final pulumi.Input<DomainDevicesGraphicSpiceGl?>? gl;
   /// Configures graphical image settings for the Spice connection.
-  final pulumi.Input<DomainDevicesGraphicSpiceImage>? image;
+  final pulumi.Input<DomainDevicesGraphicSpiceImage?>? image;
   /// Configures JPEG image settings for the Spice graphical output.
-  final pulumi.Input<DomainDevicesGraphicSpiceJpeg>? jpeg;
+  final pulumi.Input<DomainDevicesGraphicSpiceJpeg?>? jpeg;
   /// Specifies the keymap used for the keyboard input in the Spice session.
-  final pulumi.Input<String>? keymap;
+  final pulumi.Input<String?>? keymap;
   /// Configures the listening criteria for the Spice server, determining how it accepts connections.
-  final pulumi.Input<String>? listen;
+  final pulumi.Input<String?>? listen;
   /// Defines listeners for the Spice channel, which are used for handling incoming connections.
-  final pulumi.Input<List<DomainDevicesGraphicSpiceListener>>? listeners;
+  final pulumi.Input<List<DomainDevicesGraphicSpiceListener>?>? listeners;
   /// Configures mouse settings for the Spice graphical interface, managing input behavior.
-  final pulumi.Input<DomainDevicesGraphicSpiceMouse>? mouse;
+  final pulumi.Input<DomainDevicesGraphicSpiceMouse?>? mouse;
   /// Specifies a password required for authentication when connecting to the Spice server.
-  final pulumi.Input<String>? passwd;
+  final pulumi.Input<String?>? passwd;
   /// Defines the expiration time for the Spice password, indicating when it becomes invalid.
-  final pulumi.Input<String>? passwdValidTo;
+  final pulumi.Input<String?>? passwdValidTo;
   /// Configures playback settings for multimedia content within the Spice graphical session.
-  final pulumi.Input<DomainDevicesGraphicSpicePlayback>? playback;
+  final pulumi.Input<DomainDevicesGraphicSpicePlayback?>? playback;
   /// Specifies the port number used by the Spice server for connections.
-  final pulumi.Input<double>? port;
+  final pulumi.Input<double?>? port;
   /// Configures streaming options for live content delivery through the Spice connection.
-  final pulumi.Input<DomainDevicesGraphicSpiceStreaming>? streaming;
+  final pulumi.Input<DomainDevicesGraphicSpiceStreaming?>? streaming;
   /// Specifies the port number for TLS connections in the Spice protocol to enhance security.
-  final pulumi.Input<double>? tlsPort;
+  final pulumi.Input<double?>? tlsPort;
   /// Configures settings for zlib compression within the Spice graphical environment.
-  final pulumi.Input<DomainDevicesGraphicSpiceZlib>? zlib;
+  final pulumi.Input<DomainDevicesGraphicSpiceZlib?>? zlib;
 
   /// Creates a new [DomainDevicesGraphicSpice].
   /// [autoPort] Enables automatic port assignment for SPICE connections.
@@ -142,9 +142,9 @@ class DomainDevicesGraphicSpice {
       passwd: (() { final guardedValue = map['passwd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwdValidTo: (() { final guardedValue = map['passwdValidTo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       playback: (() { final guardedValue = map['playback']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesGraphicSpicePlayback.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       streaming: (() { final guardedValue = map['streaming']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesGraphicSpiceStreaming.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      tlsPort: (() { final guardedValue = map['tlsPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      tlsPort: (() { final guardedValue = map['tlsPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       zlib: (() { final guardedValue = map['zlib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesGraphicSpiceZlib.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -5,7 +5,7 @@ import 'domain_devices_disk_throttle_filters_throttle_filter.dart';
 
 class DomainDevicesDiskThrottleFilters {
   /// Specifies individual throttle filter settings for the disk device.
-  final pulumi.Input<List<DomainDevicesDiskThrottleFiltersThrottleFilter>>? throttleFilters;
+  final pulumi.Input<List<DomainDevicesDiskThrottleFiltersThrottleFilter>?>? throttleFilters;
 
   /// Creates a new [DomainDevicesDiskThrottleFilters].
   /// [throttleFilters] Specifies individual throttle filter settings for the disk device.

@@ -7,15 +7,15 @@ import 'domain_devices_interface_source_hostdev_usb_vendor.dart';
 
 class DomainDevicesInterfaceSourceHostdevUsb {
   /// Defines the address configuration for the USB subsystem source.
-  final pulumi.Input<DomainDevicesInterfaceSourceHostdevUsbAddress>? address;
+  final pulumi.Input<DomainDevicesInterfaceSourceHostdevUsbAddress?>? address;
   /// Controls whether the guest can reset the USB device.
-  final pulumi.Input<String>? guestReset;
+  final pulumi.Input<String?>? guestReset;
   /// Identifies the vendor of the USB device.
-  final pulumi.Input<DomainDevicesInterfaceSourceHostdevUsbProduct>? product;
+  final pulumi.Input<DomainDevicesInterfaceSourceHostdevUsbProduct?>? product;
   /// Configures the startup policy for the USB subsystem device.
-  final pulumi.Input<String>? startUpPolicy;
+  final pulumi.Input<String?>? startUpPolicy;
   /// Identifies the vendor of the USB device.
-  final pulumi.Input<DomainDevicesInterfaceSourceHostdevUsbVendor>? vendor;
+  final pulumi.Input<DomainDevicesInterfaceSourceHostdevUsbVendor?>? vendor;
 
   /// Creates a new [DomainDevicesInterfaceSourceHostdevUsb].
   /// [address] Defines the address configuration for the USB subsystem source.

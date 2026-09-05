@@ -6,9 +6,9 @@ import 'domain_devices_filesystem_id_map_uid.dart';
 
 class DomainDevicesFilesystemIdMap {
   /// Configures group ID mapping for the filesystem.
-  final pulumi.Input<List<DomainDevicesFilesystemIdMapGid>>? gids;
+  final pulumi.Input<List<DomainDevicesFilesystemIdMapGid>?>? gids;
   /// Configures user ID mapping for the filesystem.
-  final pulumi.Input<List<DomainDevicesFilesystemIdMapUid>>? uids;
+  final pulumi.Input<List<DomainDevicesFilesystemIdMapUid>?>? uids;
 
   /// Creates a new [DomainDevicesFilesystemIdMap].
   /// [gids] Configures group ID mapping for the filesystem.

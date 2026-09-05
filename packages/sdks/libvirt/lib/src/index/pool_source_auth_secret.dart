@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolSourceAuthSecret {
   /// Indicates the intended usage for the authentication secret.
-  final pulumi.Input<String>? usage;
+  final pulumi.Input<String?>? usage;
   /// Sets the UUID for the authentication secret tied to the storage source connection.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [PoolSourceAuthSecret].
   /// [usage] Indicates the intended usage for the authentication secret.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuMaxPhysAddr {
   /// Defines the number of bits that represent the maximum physical address.
-  final pulumi.Input<double>? bits;
+  final pulumi.Input<double?>? bits;
   /// Sets an upper limit on the maximum physical address that can be used by the domain.
-  final pulumi.Input<double>? limit;
+  final pulumi.Input<double?>? limit;
   /// Specifies the addressing mode that applies to the maximum physical address.
   final pulumi.Input<String> mode;
 
@@ -30,8 +30,8 @@ class DomainCpuMaxPhysAddr {
 
   factory DomainCpuMaxPhysAddr.fromMap(Map<String, dynamic> map) {
     return DomainCpuMaxPhysAddr(
-      bits: (() { final guardedValue = map['bits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bits: (() { final guardedValue = map['bits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }

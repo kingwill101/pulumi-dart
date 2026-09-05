@@ -7,7 +7,7 @@ class DomainOsNvRamSourceReservationsSourcePipe {
   /// Sets the path for the pipe source in the EGD backend.
   final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final pulumi.Input<List<DomainOsNvRamSourceReservationsSourcePipeSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainOsNvRamSourceReservationsSourcePipeSecLabel>?>? secLabels;
 
   /// Creates a new [DomainOsNvRamSourceReservationsSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.

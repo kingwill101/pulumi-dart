@@ -5,11 +5,11 @@ import 'domain_devices_disk_mirror_backing_store_source_file_sec_label.dart';
 
 class DomainDevicesDiskMirrorBackingStoreSourceFile {
   /// Sets the file descriptor group for the file specified in the backing store source.
-  final pulumi.Input<String>? fdGroup;
+  final pulumi.Input<String?>? fdGroup;
   /// Specifies the actual file referenced in the backing store source configuration.
-  final pulumi.Input<String>? file;
+  final pulumi.Input<String?>? file;
   /// Configures the security label associated with the file in the backing store source.
-  final pulumi.Input<List<DomainDevicesDiskMirrorBackingStoreSourceFileSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskMirrorBackingStoreSourceFileSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceFile].
   /// [fdGroup] Sets the file descriptor group for the file specified in the backing store source.

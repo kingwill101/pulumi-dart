@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevSubsysScsiHostSource {
   /// Defines the protocol type for the SCSI host source.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Specifies the World Wide Port Name (WWPN) for the SCSI host source.
-  final pulumi.Input<String>? wwpn;
+  final pulumi.Input<String?>? wwpn;
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiHostSource].
   /// [protocol] Defines the protocol type for the SCSI host source.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainIoThreadIDsIoThreadPoll {
   /// Sets the policy for growing the I/O thread's polling behavior.
-  final pulumi.Input<double>? grow;
+  final pulumi.Input<double?>? grow;
   /// Configures the maximum polling rate for the I/O thread.
-  final pulumi.Input<double>? max;
+  final pulumi.Input<double?>? max;
   /// Sets the policy for shrinking the I/O thread's polling behavior.
-  final pulumi.Input<double>? shrink;
+  final pulumi.Input<double?>? shrink;
 
   /// Creates a new [DomainIoThreadIDsIoThreadPoll].
   /// [grow] Sets the policy for growing the I/O thread's polling behavior.
@@ -30,9 +30,9 @@ class DomainIoThreadIDsIoThreadPoll {
 
   factory DomainIoThreadIDsIoThreadPoll.fromMap(Map<String, dynamic> map) {
     return DomainIoThreadIDsIoThreadPoll(
-      grow: (() { final guardedValue = map['grow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      shrink: (() { final guardedValue = map['shrink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      grow: (() { final guardedValue = map['grow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      shrink: (() { final guardedValue = map['shrink']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'domain_os_nv_ram_source_network_initiator_iqn.dart';
 
 class DomainOsNvRamSourceNetworkInitiator {
   /// Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.
-  final pulumi.Input<DomainOsNvRamSourceNetworkInitiatorIqn>? iqn;
+  final pulumi.Input<DomainOsNvRamSourceNetworkInitiatorIqn?>? iqn;
 
   /// Creates a new [DomainOsNvRamSourceNetworkInitiator].
   /// [iqn] Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.

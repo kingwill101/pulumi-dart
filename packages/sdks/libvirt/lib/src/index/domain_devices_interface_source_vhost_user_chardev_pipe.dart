@@ -7,7 +7,7 @@ class DomainDevicesInterfaceSourceVhostUserChardevPipe {
   /// Sets the path for the pipe source in the EGD backend.
   final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesInterfaceSourceVhostUserChardevPipeSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesInterfaceSourceVhostUserChardevPipeSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevPipe].
   /// [path] Sets the path for the pipe source in the EGD backend.

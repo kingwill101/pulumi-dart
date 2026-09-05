@@ -6,9 +6,9 @@ import 'domain_devices_interface_source_hostdev_usb.dart';
 
 class DomainDevicesInterfaceSourceHostdev {
   /// Specifies the source configuration for the PCI device being passed through.
-  final pulumi.Input<DomainDevicesInterfaceSourceHostdevPci>? pci;
+  final pulumi.Input<DomainDevicesInterfaceSourceHostdevPci?>? pci;
   /// Specifies the source attributes for the USB subsystem device, detailing its origin.
-  final pulumi.Input<DomainDevicesInterfaceSourceHostdevUsb>? usb;
+  final pulumi.Input<DomainDevicesInterfaceSourceHostdevUsb?>? usb;
 
   /// Creates a new [DomainDevicesInterfaceSourceHostdev].
   /// [pci] Specifies the source configuration for the PCI device being passed through.

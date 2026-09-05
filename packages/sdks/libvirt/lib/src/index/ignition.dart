@@ -68,11 +68,12 @@ class Ignition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IgnitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Ignition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -86,6 +87,22 @@ class Ignition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    content = registerOutput<String>('content');
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String>('path');
+    size = registerOutput<double>('size');
+  }
+
+  /// Creates a typed reference to an existing [Ignition] resource.
+  Ignition.reference(String urn)
+    : super(
+        'libvirt:index/ignition:Ignition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          registerPackageRequest: package_registration.registerPackageRequest,
+        isResourceReference: true,
+      ) {
     content = registerOutput<String>('content');
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');

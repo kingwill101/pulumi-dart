@@ -10,19 +10,19 @@ import 'domain_devices_channel_target.dart';
 
 class DomainDevicesChannel {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesChannelAcpi>? acpi;
+  final pulumi.Input<DomainDevicesChannelAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesChannelAlias>? alias;
+  final pulumi.Input<DomainDevicesChannelAlias?>? alias;
   /// Specifies the logging options for the channel configuration.
-  final pulumi.Input<DomainDevicesChannelLog>? log;
+  final pulumi.Input<DomainDevicesChannelLog?>? log;
   /// Sets the protocol type for the EGD backend.
-  final pulumi.Input<DomainDevicesChannelProtocol>? protocol;
+  final pulumi.Input<DomainDevicesChannelProtocol?>? protocol;
   /// Defines the source settings for the EGD backend.
-  final pulumi.Input<DomainDevicesChannelSource>? source;
+  final pulumi.Input<DomainDevicesChannelSource?>? source;
   /// This field defines the target configuration for the virtual channel.
-  final pulumi.Input<DomainDevicesChannelTarget>? target;
+  final pulumi.Input<DomainDevicesChannelTarget?>? target;
 
   /// Creates a new [DomainDevicesChannel].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

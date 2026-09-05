@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicRdpListenerSocket {
   /// Defines the socket's attributes for listener configurations in the Spice protocol.
-  final pulumi.Input<String>? socket;
+  final pulumi.Input<String?>? socket;
 
   /// Creates a new [DomainDevicesGraphicRdpListenerSocket].
   /// [socket] Defines the socket's attributes for listener configurations in the Spice protocol.

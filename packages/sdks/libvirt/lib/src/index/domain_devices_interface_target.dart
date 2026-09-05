@@ -6,7 +6,7 @@ class DomainDevicesInterfaceTarget {
   /// Specifies the device associated with the target interface.
   final pulumi.Input<String> dev;
   /// Controls whether the target interface is managed by the virtual network.
-  final pulumi.Input<bool>? managed;
+  final pulumi.Input<bool?>? managed;
 
   /// Creates a new [DomainDevicesInterfaceTarget].
   /// [dev] Specifies the device associated with the target interface.

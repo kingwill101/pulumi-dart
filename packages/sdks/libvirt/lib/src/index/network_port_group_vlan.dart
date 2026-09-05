@@ -5,9 +5,9 @@ import 'network_port_group_vlan_tag.dart';
 
 class NetworkPortGroupVlan {
   /// Configures a VLAN tag group for the specified network port group.
-  final pulumi.Input<List<NetworkPortGroupVlanTag>>? tags;
+  final pulumi.Input<List<NetworkPortGroupVlanTag>?>? tags;
   /// Controls whether the VLAN tag allows trunking for the network port group.
-  final pulumi.Input<String>? trunk;
+  final pulumi.Input<String?>? trunk;
 
   /// Creates a new [NetworkPortGroupVlan].
   /// [tags] Configures a VLAN tag group for the specified network port group.

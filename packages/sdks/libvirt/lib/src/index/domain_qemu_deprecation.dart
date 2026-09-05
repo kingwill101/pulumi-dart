@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainQemuDeprecation {
   /// Sets the deprecation handling mode requested from libvirt for QEMU-specific deprecated behavior.
-  final pulumi.Input<String>? behavior;
+  final pulumi.Input<String?>? behavior;
 
   /// Creates a new [DomainQemuDeprecation].
   /// [behavior] Sets the deprecation handling mode requested from libvirt for QEMU-specific deprecated behavior.

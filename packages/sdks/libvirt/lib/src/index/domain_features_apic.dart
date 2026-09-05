@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesApic {
   /// Determines the EOI (End of Interrupt) behavior for APIC, allowing customization of how interrupts are acknowledged.
-  final pulumi.Input<String>? eoi;
+  final pulumi.Input<String?>? eoi;
 
   /// Creates a new [DomainFeaturesApic].
   /// [eoi] Determines the EOI (End of Interrupt) behavior for APIC, allowing customization of how interrupts are acknowledged.

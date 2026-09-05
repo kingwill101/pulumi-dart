@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceDirect {
   /// Defines the physical device name for the direct attachment of the network interface.
-  final pulumi.Input<String>? dev;
+  final pulumi.Input<String?>? dev;
   /// Sets the mode for the direct connection of the network interface, specifying how it interacts with the host.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [DomainDevicesInterfaceSourceDirect].
   /// [dev] Defines the physical device name for the direct attachment of the network interface.

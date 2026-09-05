@@ -41,81 +41,81 @@ import 'domain_features_capabilities_wake_alarm.dart';
 
 class DomainFeaturesCapabilities {
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesAuditControl>? auditControl;
+  final pulumi.Input<DomainFeaturesCapabilitiesAuditControl?>? auditControl;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesAuditWrite>? auditWrite;
+  final pulumi.Input<DomainFeaturesCapabilitiesAuditWrite?>? auditWrite;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesBlockSuspend>? blockSuspend;
+  final pulumi.Input<DomainFeaturesCapabilitiesBlockSuspend?>? blockSuspend;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesChown>? chown;
+  final pulumi.Input<DomainFeaturesCapabilitiesChown?>? chown;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesDacOverride>? dacOverride;
+  final pulumi.Input<DomainFeaturesCapabilitiesDacOverride?>? dacOverride;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesDacReadSearch>? dacReadSearch;
+  final pulumi.Input<DomainFeaturesCapabilitiesDacReadSearch?>? dacReadSearch;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesFowner>? fowner;
+  final pulumi.Input<DomainFeaturesCapabilitiesFowner?>? fowner;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesFsetId>? fsetId;
+  final pulumi.Input<DomainFeaturesCapabilitiesFsetId?>? fsetId;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesIpcLock>? ipcLock;
+  final pulumi.Input<DomainFeaturesCapabilitiesIpcLock?>? ipcLock;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesIpcOwner>? ipcOwner;
+  final pulumi.Input<DomainFeaturesCapabilitiesIpcOwner?>? ipcOwner;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesKill>? kill;
+  final pulumi.Input<DomainFeaturesCapabilitiesKill?>? kill;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesLease>? lease;
+  final pulumi.Input<DomainFeaturesCapabilitiesLease?>? lease;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesLinuxImmutable>? linuxImmutable;
+  final pulumi.Input<DomainFeaturesCapabilitiesLinuxImmutable?>? linuxImmutable;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesMacAdmin>? macAdmin;
+  final pulumi.Input<DomainFeaturesCapabilitiesMacAdmin?>? macAdmin;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesMacOverride>? macOverride;
+  final pulumi.Input<DomainFeaturesCapabilitiesMacOverride?>? macOverride;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesMkNod>? mkNod;
+  final pulumi.Input<DomainFeaturesCapabilitiesMkNod?>? mkNod;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesNetAdmin>? netAdmin;
+  final pulumi.Input<DomainFeaturesCapabilitiesNetAdmin?>? netAdmin;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesNetBindService>? netBindService;
+  final pulumi.Input<DomainFeaturesCapabilitiesNetBindService?>? netBindService;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesNetBroadcast>? netBroadcast;
+  final pulumi.Input<DomainFeaturesCapabilitiesNetBroadcast?>? netBroadcast;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesNetRaw>? netRaw;
+  final pulumi.Input<DomainFeaturesCapabilitiesNetRaw?>? netRaw;
   /// Specifies the security policy applied to the domain features.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSetFCap>? setFCap;
+  final pulumi.Input<DomainFeaturesCapabilitiesSetFCap?>? setFCap;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSetGid>? setGid;
+  final pulumi.Input<DomainFeaturesCapabilitiesSetGid?>? setGid;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSetPCap>? setPCap;
+  final pulumi.Input<DomainFeaturesCapabilitiesSetPCap?>? setPCap;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSetUid>? setUid;
+  final pulumi.Input<DomainFeaturesCapabilitiesSetUid?>? setUid;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysAdmin>? sysAdmin;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysAdmin?>? sysAdmin;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysBoot>? sysBoot;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysBoot?>? sysBoot;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysChRoot>? sysChRoot;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysChRoot?>? sysChRoot;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysLog>? sysLog;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysLog?>? sysLog;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysModule>? sysModule;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysModule?>? sysModule;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysNice>? sysNice;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysNice?>? sysNice;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysPAcct>? sysPAcct;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysPAcct?>? sysPAcct;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysPTrace>? sysPTrace;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysPTrace?>? sysPTrace;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysRawIo>? sysRawIo;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysRawIo?>? sysRawIo;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysResource>? sysResource;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysResource?>? sysResource;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysTime>? sysTime;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysTime?>? sysTime;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesSysTtyCnofig>? sysTtyCnofig;
+  final pulumi.Input<DomainFeaturesCapabilitiesSysTtyCnofig?>? sysTtyCnofig;
   /// Configures whether the domain can wake from an alarm.
-  final pulumi.Input<DomainFeaturesCapabilitiesWakeAlarm>? wakeAlarm;
+  final pulumi.Input<DomainFeaturesCapabilitiesWakeAlarm?>? wakeAlarm;
 
   /// Creates a new [DomainFeaturesCapabilities].
   /// [auditControl] Configures whether the domain can wake from an alarm.

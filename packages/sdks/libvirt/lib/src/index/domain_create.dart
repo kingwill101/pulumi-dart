@@ -3,12 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCreate {
-  final pulumi.Input<bool>? autodestroy;
-  final pulumi.Input<bool>? bypassCache;
-  final pulumi.Input<bool>? forceBoot;
-  final pulumi.Input<bool>? paused;
-  final pulumi.Input<bool>? resetNvram;
-  final pulumi.Input<bool>? validate;
+  final pulumi.Input<bool?>? autodestroy;
+  final pulumi.Input<bool?>? bypassCache;
+  final pulumi.Input<bool?>? forceBoot;
+  final pulumi.Input<bool?>? paused;
+  final pulumi.Input<bool?>? resetNvram;
+  final pulumi.Input<bool?>? validate;
 
   /// Creates a new [DomainCreate].
   /// [autodestroy] Optional.

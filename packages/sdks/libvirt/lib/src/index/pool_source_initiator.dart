@@ -5,7 +5,7 @@ import 'pool_source_initiator_iqn.dart';
 
 class PoolSourceInitiator {
   /// Configures the iSCSI Qualified Name (IQN) for the initiator connecting to the storage source.
-  final pulumi.Input<PoolSourceInitiatorIqn>? iqn;
+  final pulumi.Input<PoolSourceInitiatorIqn?>? iqn;
 
   /// Creates a new [PoolSourceInitiator].
   /// [iqn] Configures the iSCSI Qualified Name (IQN) for the initiator connecting to the storage source.

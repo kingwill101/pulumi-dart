@@ -6,13 +6,13 @@ import 'domain_features_hyper_vtlb_flush_extended.dart';
 
 class DomainFeaturesHyperVTlbFlush {
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVTlbFlushDirect>? direct;
+  final pulumi.Input<DomainFeaturesHyperVTlbFlushDirect?>? direct;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVTlbFlushExtended>? extended;
+  final pulumi.Input<DomainFeaturesHyperVTlbFlushExtended?>? extended;
   /// Sets the PS2 feature state; valid values are usually "on" or "off" to enable or disable the PS/2-related feature for the domain.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#hypervisor-features&gt;
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [DomainFeaturesHyperVTlbFlush].
   /// [direct] Enables or disables support for PS/2 devices in the virtual machine.

@@ -5,11 +5,11 @@ import 'domain_devices_rng_backend_egd.dart';
 
 class DomainDevicesRngBackend {
   /// Specifies that the random number generator source is built-in to the system.
-  final pulumi.Input<bool>? builtIn;
+  final pulumi.Input<bool?>? builtIn;
   /// Configures the Entropy Gathering Daemon (EGD) as the backend for the random number generator.
-  final pulumi.Input<DomainDevicesRngBackendEgd>? egd;
+  final pulumi.Input<DomainDevicesRngBackendEgd?>? egd;
   /// Configures the random number generator backend used for providing randomness.
-  final pulumi.Input<String>? random;
+  final pulumi.Input<String?>? random;
 
   /// Creates a new [DomainDevicesRngBackend].
   /// [builtIn] Specifies that the random number generator source is built-in to the system.

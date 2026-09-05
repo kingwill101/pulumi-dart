@@ -6,9 +6,9 @@ import 'domain_pm_suspend_to_mem.dart';
 
 class DomainPm {
   /// Configures the suspend to disk feature for power management.
-  final pulumi.Input<DomainPmSuspendToDisk>? suspendToDisk;
+  final pulumi.Input<DomainPmSuspendToDisk?>? suspendToDisk;
   /// Configures the suspend to disk feature for power management.
-  final pulumi.Input<DomainPmSuspendToMem>? suspendToMem;
+  final pulumi.Input<DomainPmSuspendToMem?>? suspendToMem;
 
   /// Creates a new [DomainPm].
   /// [suspendToDisk] Configures the suspend to disk feature for power management.

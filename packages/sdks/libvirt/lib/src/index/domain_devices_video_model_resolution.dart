@@ -25,8 +25,8 @@ class DomainDevicesVideoModelResolution {
 
   factory DomainDevicesVideoModelResolution.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVideoModelResolution(
-      x: pulumi.Input.fromValue(map['x'] as double),
-      y: pulumi.Input.fromValue(map['y'] as double),
+      x: pulumi.Input.fromValue((map['x'] as num).toDouble()),
+      y: pulumi.Input.fromValue((map['y'] as num).toDouble()),
     );
   }
 }

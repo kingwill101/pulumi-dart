@@ -18,35 +18,35 @@ import 'domain_devices_interface_source_vhost_user.dart';
 
 class DomainDevicesInterfaceSource {
   /// Sets the bridge configuration for the network interface, allowing the interface to connect via a bridge.
-  final pulumi.Input<DomainDevicesInterfaceSourceBridge>? bridge;
+  final pulumi.Input<DomainDevicesInterfaceSourceBridge?>? bridge;
   /// Configures the client source for the network interface, typically used for user-mode networking.
-  final pulumi.Input<DomainDevicesInterfaceSourceClient>? client;
+  final pulumi.Input<DomainDevicesInterfaceSourceClient?>? client;
   /// Configures settings for direct attachment to a physical interface for the network interface.
-  final pulumi.Input<DomainDevicesInterfaceSourceDirect>? direct;
+  final pulumi.Input<DomainDevicesInterfaceSourceDirect?>? direct;
   /// Configures Ethernet settings for the network interface, allowing for low-level network configurations.
-  final pulumi.Input<DomainDevicesInterfaceSourceEthernet>? ethernet;
+  final pulumi.Input<DomainDevicesInterfaceSourceEthernet?>? ethernet;
   /// Configures the settings for a host device used in the network interface configuration.
-  final pulumi.Input<DomainDevicesInterfaceSourceHostdev>? hostdev;
+  final pulumi.Input<DomainDevicesInterfaceSourceHostdev?>? hostdev;
   /// Configures the internal settings for the network interface, typically for non-connected setups.
-  final pulumi.Input<DomainDevicesInterfaceSourceInternal>? internal;
+  final pulumi.Input<DomainDevicesInterfaceSourceInternal?>? internal;
   /// Configures the multicast settings for the network interface, enabling multicast communication.
-  final pulumi.Input<DomainDevicesInterfaceSourceMcast>? mcast;
+  final pulumi.Input<DomainDevicesInterfaceSourceMcast?>? mcast;
   /// Specifies network settings for the interface, configuring its connection to a given network.
-  final pulumi.Input<DomainDevicesInterfaceSourceNetwork>? network;
+  final pulumi.Input<DomainDevicesInterfaceSourceNetwork?>? network;
   /// Specifies that the network interface does not connect to any active source, effectively disabling it.
-  final pulumi.Input<bool>? null_;
+  final pulumi.Input<bool?>? null_;
   /// Configures source settings to connect the network interface to a specific server.
-  final pulumi.Input<DomainDevicesInterfaceSourceServer>? server;
+  final pulumi.Input<DomainDevicesInterfaceSourceServer?>? server;
   /// Configures UDP settings for the network interface, allowing for UDP-based communications.
-  final pulumi.Input<DomainDevicesInterfaceSourceUdp>? udp;
+  final pulumi.Input<DomainDevicesInterfaceSourceUdp?>? udp;
   /// Configures user-based settings for the network interface, allowing for user management of the connection.
-  final pulumi.Input<DomainDevicesInterfaceSourceUser>? user;
+  final pulumi.Input<DomainDevicesInterfaceSourceUser?>? user;
   /// Configures settings for using a vDPA network device with the interface, enabling specialized network performance.
-  final pulumi.Input<DomainDevicesInterfaceSourceVdpa>? vdpa;
+  final pulumi.Input<DomainDevicesInterfaceSourceVdpa?>? vdpa;
   /// Configures settings for using a vDS network source with the interface, supporting advanced network features.
-  final pulumi.Input<DomainDevicesInterfaceSourceVds>? vds;
+  final pulumi.Input<DomainDevicesInterfaceSourceVds?>? vds;
   /// Sets configurations for using vhost-user to connect the network interface to a user space application.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUser>? vhostUser;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUser?>? vhostUser;
 
   /// Creates a new [DomainDevicesInterfaceSource].
   /// [bridge] Sets the bridge configuration for the network interface, allowing the interface to connect via a bridge.

@@ -7,13 +7,13 @@ import 'volume_target_encryption_secret.dart';
 
 class VolumeTargetEncryption {
   /// Sets the encryption cipher for the storage volume to be applied.
-  final pulumi.Input<VolumeTargetEncryptionCipher>? cipher;
+  final pulumi.Input<VolumeTargetEncryptionCipher?>? cipher;
   /// Defines the format of the encryption for the storage volume.
   final pulumi.Input<String> format;
   /// Controls the initialization vector generation settings for the encryption.
-  final pulumi.Input<VolumeTargetEncryptionIvgen>? ivgen;
+  final pulumi.Input<VolumeTargetEncryptionIvgen?>? ivgen;
   /// Provides the configuration for the secret used in the encryption process.
-  final pulumi.Input<VolumeTargetEncryptionSecret>? secret;
+  final pulumi.Input<VolumeTargetEncryptionSecret?>? secret;
 
   /// Creates a new [VolumeTargetEncryption].
   /// [cipher] Sets the encryption cipher for the storage volume to be applied.

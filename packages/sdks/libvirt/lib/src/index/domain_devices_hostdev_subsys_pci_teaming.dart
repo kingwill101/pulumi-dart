@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevSubsysPciTeaming {
   /// Specifies if the teaming configuration is persistent across reboots.
-  final pulumi.Input<String>? persistent;
+  final pulumi.Input<String?>? persistent;
   /// Defines the type of teaming used for the PCI device.
   final pulumi.Input<String> type;
 

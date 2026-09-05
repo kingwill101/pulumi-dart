@@ -7,7 +7,7 @@ class DomainDevicesParallelSourcePipe {
   /// Sets the path for the pipe source in the EGD backend.
   final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesParallelSourcePipeSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesParallelSourcePipeSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesParallelSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesVideoDriver {
   /// Enables or disables Address Translation Services (ATS) for the video device driver.
-  final pulumi.Input<String>? ats;
+  final pulumi.Input<String?>? ats;
   /// Controls whether the IOMMU (Input/Output Memory Management Unit) is used by the video device driver.
-  final pulumi.Input<String>? iommu;
+  final pulumi.Input<String?>? iommu;
   /// Specifies the name of the driver to be used for the video device.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Determines if the driver supports packed queues for the video device.
-  final pulumi.Input<String>? packed;
+  final pulumi.Input<String?>? packed;
   /// Controls the use of a page per Virtqueue (VQ) for the video device driver.
-  final pulumi.Input<String>? pagePerVq;
+  final pulumi.Input<String?>? pagePerVq;
   /// Configures the VGA options for the video device driver.
-  final pulumi.Input<String>? vgaConf;
+  final pulumi.Input<String?>? vgaConf;
 
   /// Creates a new [DomainDevicesVideoDriver].
   /// [ats] Enables or disables Address Translation Services (ATS) for the video device driver.

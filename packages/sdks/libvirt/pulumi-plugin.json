@@ -1,0 +1,10 @@
+{
+  "resource": true,
+  "name": "terraform-provider",
+  "version": "1.0.1",
+  "parameterization": {
+    "name": "libvirt",
+    "version": "0.9.9",
+    "value": "eyJyZW1vdGUiOnsidXJsIjoicmVnaXN0cnkub3BlbnRvZnUub3JnL2RtYWN2aWNhci9saWJ2aXJ0IiwidmVyc2lvbiI6IjAuOS45In19"
+  }
+}

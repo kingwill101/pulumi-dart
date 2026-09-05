@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_dnsmasq_options_option.dart';
 
 class NetworkDnsmasqOptions {
-  final pulumi.Input<List<NetworkDnsmasqOptionsOption>>? options;
+  final pulumi.Input<List<NetworkDnsmasqOptionsOption>?>? options;
 
   /// Creates a new [NetworkDnsmasqOptions].
   /// [options] Optional.

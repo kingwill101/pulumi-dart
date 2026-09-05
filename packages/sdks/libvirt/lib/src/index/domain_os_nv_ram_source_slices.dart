@@ -5,7 +5,7 @@ import 'domain_os_nv_ram_source_slices_slice.dart';
 
 class DomainOsNvRamSourceSlices {
   /// Specifies individual slice configurations within the mirror source.
-  final pulumi.Input<List<DomainOsNvRamSourceSlicesSlice>>? slices;
+  final pulumi.Input<List<DomainOsNvRamSourceSlicesSlice>?>? slices;
 
   /// Creates a new [DomainOsNvRamSourceSlices].
   /// [slices] Specifies individual slice configurations within the mirror source.

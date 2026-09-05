@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInputDriver {
   /// Controls the Address Translation Services (ATS) feature for the input device driver.
-  final pulumi.Input<String>? ats;
+  final pulumi.Input<String?>? ats;
   /// Enables or disables the IOMMU feature for the input device driver.
-  final pulumi.Input<String>? iommu;
+  final pulumi.Input<String?>? iommu;
   /// Configures whether the input device driver uses packed ring.
-  final pulumi.Input<String>? packed;
+  final pulumi.Input<String?>? packed;
   /// Sets the page per virtual queue option for the input device driver.
-  final pulumi.Input<String>? pagePerVq;
+  final pulumi.Input<String?>? pagePerVq;
 
   /// Creates a new [DomainDevicesInputDriver].
   /// [ats] Controls the Address Translation Services (ATS) feature for the input device driver.

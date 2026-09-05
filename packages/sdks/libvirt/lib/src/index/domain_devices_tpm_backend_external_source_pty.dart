@@ -7,7 +7,7 @@ class DomainDevicesTpmBackendExternalSourcePty {
   /// Sets the path for the PTY source in the EGD backend.
   final pulumi.Input<String> path;
   /// This field configures the security label for the Pseudo TTY device, enabling security controls over access.
-  final pulumi.Input<List<DomainDevicesTpmBackendExternalSourcePtySecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesTpmBackendExternalSourcePtySecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesTpmBackendExternalSourcePty].
   /// [path] Sets the path for the PTY source in the EGD backend.

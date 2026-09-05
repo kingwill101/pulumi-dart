@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesVideoModelAccel {
   /// Enables or disables 2D acceleration for the video device.
-  final pulumi.Input<String>? accel2d;
+  final pulumi.Input<String?>? accel2d;
   /// Enables or disables 3D acceleration for the video device.
-  final pulumi.Input<String>? accel3d;
+  final pulumi.Input<String?>? accel3d;
   /// Defines the render node for the video device's acceleration features.
-  final pulumi.Input<String>? renderNode;
+  final pulumi.Input<String?>? renderNode;
 
   /// Creates a new [DomainDevicesVideoModelAccel].
   /// [accel2d] Enables or disables 2D acceleration for the video device.

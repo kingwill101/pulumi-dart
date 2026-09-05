@@ -15,31 +15,31 @@ import 'domain_devices_audio_spice.dart';
 
 class DomainDevicesAudio {
   /// Configures ALSA audio settings for the domain, enabling audio playback and recording using the ALSA framework.
-  final pulumi.Input<DomainDevicesAudioAlsa>? alsa;
+  final pulumi.Input<DomainDevicesAudioAlsa?>? alsa;
   /// Configures the CoreAudio audio device for the guest.
-  final pulumi.Input<DomainDevicesAudioCoreAudio>? coreAudio;
+  final pulumi.Input<DomainDevicesAudioCoreAudio?>? coreAudio;
   /// Configures the D-Bus audio device for the guest.
-  final pulumi.Input<DomainDevicesAudioDbus>? dbus;
+  final pulumi.Input<DomainDevicesAudioDbus?>? dbus;
   /// Configures the file-based audio device for the guest.
-  final pulumi.Input<DomainDevicesAudioFile>? file;
+  final pulumi.Input<DomainDevicesAudioFile?>? file;
   /// Assigns a unique identifier to the audio device.
   final pulumi.Input<double> id;
   /// Configures the Jack audio device for the guest.
-  final pulumi.Input<DomainDevicesAudioJack>? jack;
+  final pulumi.Input<DomainDevicesAudioJack?>? jack;
   /// Configures the None audio device for the guest.
-  final pulumi.Input<DomainDevicesAudioNone>? none;
+  final pulumi.Input<DomainDevicesAudioNone?>? none;
   /// Configures the OSS audio device for the guest.
-  final pulumi.Input<DomainDevicesAudioOss>? oss;
+  final pulumi.Input<DomainDevicesAudioOss?>? oss;
   /// Configures the PipeWire audio device for the guest.
-  final pulumi.Input<DomainDevicesAudioPipeWire>? pipeWire;
+  final pulumi.Input<DomainDevicesAudioPipeWire?>? pipeWire;
   /// Configures the PulseAudio audio backend for the virtual machine.
-  final pulumi.Input<DomainDevicesAudioPulseAudio>? pulseAudio;
+  final pulumi.Input<DomainDevicesAudioPulseAudio?>? pulseAudio;
   /// Configures the SDL audio backend for the virtual machine.
-  final pulumi.Input<DomainDevicesAudioSdl>? sdl;
+  final pulumi.Input<DomainDevicesAudioSdl?>? sdl;
   /// Configures the SPICE audio backend for the virtual machine.
-  final pulumi.Input<DomainDevicesAudioSpice>? spice;
+  final pulumi.Input<DomainDevicesAudioSpice?>? spice;
   /// Sets the timer period for the audio devices in the configuration.
-  final pulumi.Input<double>? timerPeriod;
+  final pulumi.Input<double?>? timerPeriod;
 
   /// Creates a new [DomainDevicesAudio].
   /// [alsa] Configures ALSA audio settings for the domain, enabling audio playback and recording using the ALSA framework.
@@ -95,7 +95,7 @@ class DomainDevicesAudio {
       coreAudio: (() { final guardedValue = map['coreAudio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioCoreAudio.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dbus: (() { final guardedValue = map['dbus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioDbus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      id: pulumi.Input.fromValue(map['id'] as double),
+      id: pulumi.Input.fromValue((map['id'] as num).toDouble()),
       jack: (() { final guardedValue = map['jack']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioJack.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       none: (() { final guardedValue = map['none']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioNone.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       oss: (() { final guardedValue = map['oss']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioOss.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -103,7 +103,7 @@ class DomainDevicesAudio {
       pulseAudio: (() { final guardedValue = map['pulseAudio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioPulseAudio.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sdl: (() { final guardedValue = map['sdl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioSdl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spice: (() { final guardedValue = map['spice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioSpice.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      timerPeriod: (() { final guardedValue = map['timerPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      timerPeriod: (() { final guardedValue = map['timerPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

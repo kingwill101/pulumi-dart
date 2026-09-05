@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainClockTimerCatchUp {
   /// Specifies the limit for how much time the guest clock can catch up in one adjustment.
-  final pulumi.Input<double>? limit;
+  final pulumi.Input<double?>? limit;
   /// Sets the rate at which the clock can be adjusted to catch up lost time.
-  final pulumi.Input<double>? slew;
+  final pulumi.Input<double?>? slew;
   /// Defines the time difference threshold at which catch-up adjustments are triggered.
-  final pulumi.Input<double>? threshold;
+  final pulumi.Input<double?>? threshold;
 
   /// Creates a new [DomainClockTimerCatchUp].
   /// [limit] Specifies the limit for how much time the guest clock can catch up in one adjustment.
@@ -30,9 +30,9 @@ class DomainClockTimerCatchUp {
 
   factory DomainClockTimerCatchUp.fromMap(Map<String, dynamic> map) {
     return DomainClockTimerCatchUp(
-      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      slew: (() { final guardedValue = map['slew']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      slew: (() { final guardedValue = map['slew']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

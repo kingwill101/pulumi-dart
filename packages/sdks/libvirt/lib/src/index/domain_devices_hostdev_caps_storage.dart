@@ -5,7 +5,7 @@ import 'domain_devices_hostdev_caps_storage_source.dart';
 
 class DomainDevicesHostdevCapsStorage {
   /// Sets the source attributes for the host device's storage capabilities.
-  final pulumi.Input<DomainDevicesHostdevCapsStorageSource>? source;
+  final pulumi.Input<DomainDevicesHostdevCapsStorageSource?>? source;
 
   /// Creates a new [DomainDevicesHostdevCapsStorage].
   /// [source] Sets the source attributes for the host device's storage capabilities.

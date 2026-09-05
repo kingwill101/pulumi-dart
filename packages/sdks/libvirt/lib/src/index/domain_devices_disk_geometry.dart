@@ -10,7 +10,7 @@ class DomainDevicesDiskGeometry {
   /// Configures the number of sectors per track in the disk's geometry, influencing data density and performance.
   final pulumi.Input<double> sectors;
   /// Indicates the type of translation used for the disk geometry, affecting how it maps its virtual space to physical storage.
-  final pulumi.Input<String>? trans;
+  final pulumi.Input<String?>? trans;
 
   /// Creates a new [DomainDevicesDiskGeometry].
   /// [cylinders] Specifies the number of cylinders in the disk geometry, affecting how the disk's storage is organized.
@@ -35,9 +35,9 @@ class DomainDevicesDiskGeometry {
 
   factory DomainDevicesDiskGeometry.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskGeometry(
-      cylinders: pulumi.Input.fromValue(map['cylinders'] as double),
-      headers: pulumi.Input.fromValue(map['headers'] as double),
-      sectors: pulumi.Input.fromValue(map['sectors'] as double),
+      cylinders: pulumi.Input.fromValue((map['cylinders'] as num).toDouble()),
+      headers: pulumi.Input.fromValue((map['headers'] as num).toDouble()),
+      sectors: pulumi.Input.fromValue((map['sectors'] as num).toDouble()),
       trans: (() { final guardedValue = map['trans']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

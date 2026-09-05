@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesRngBackendEgdSourceFileSecLabel {
   /// Configures the label for the security attributes of the UNIX domain socket.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Determines whether to skip the label check for the security label in the UNIX socket.
-  final pulumi.Input<String>? labelSkip;
+  final pulumi.Input<String?>? labelSkip;
   /// Sets the model type for the security label in the UNIX domain socket configuration.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Enables or disables relabeling for the security label in the UNIX domain socket.
-  final pulumi.Input<String>? relabel;
+  final pulumi.Input<String?>? relabel;
 
   /// Creates a new [DomainDevicesRngBackendEgdSourceFileSecLabel].
   /// [label] Configures the label for the security attributes of the UNIX domain socket.

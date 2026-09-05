@@ -5,8 +5,8 @@ import 'domain_os_nv_ram_source_vhost_user_qemu_vd_agent_clip_board.dart';
 import 'domain_os_nv_ram_source_vhost_user_qemu_vd_agent_mouse.dart';
 
 class DomainOsNvRamSourceVhostUserQemuVdAgent {
-  final pulumi.Input<DomainOsNvRamSourceVhostUserQemuVdAgentClipBoard>? clipBoard;
-  final pulumi.Input<DomainOsNvRamSourceVhostUserQemuVdAgentMouse>? mouse;
+  final pulumi.Input<DomainOsNvRamSourceVhostUserQemuVdAgentClipBoard?>? clipBoard;
+  final pulumi.Input<DomainOsNvRamSourceVhostUserQemuVdAgentMouse?>? mouse;
 
   /// Creates a new [DomainOsNvRamSourceVhostUserQemuVdAgent].
   /// [clipBoard] Optional.

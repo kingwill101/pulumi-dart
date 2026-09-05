@@ -13,37 +13,37 @@ import 'pool_target.dart';
 /// Input properties used for looking up and filtering Pool resources.
 class PoolState {
   /// Configures the amount of storage allocated to the pool, determining capacity usage.
-  final pulumi.Input<double>? allocation;
+  final pulumi.Input<double?>? allocation;
   /// Specifies the unit type for the pool's allocated storage, defining measurement standards.
-  final pulumi.Input<String>? allocationUnit;
+  final pulumi.Input<String?>? allocationUnit;
   /// Indicates the amount of available storage within the pool for new allocations.
-  final pulumi.Input<double>? available;
+  final pulumi.Input<double?>? available;
   /// Sets the unit type for measuring available storage within the pool.
-  final pulumi.Input<String>? availableUnit;
+  final pulumi.Input<String?>? availableUnit;
   /// Configures the total capacity of the storage pool, defining its maximum size.
-  final pulumi.Input<double>? capacity;
+  final pulumi.Input<double?>? capacity;
   /// Specifies the unit type for measuring the total capacity of the storage pool.
-  final pulumi.Input<String>? capacityUnit;
+  final pulumi.Input<String?>? capacityUnit;
   /// Experimental: provider-specific lifecycle controls for create-time operations after pool definition. Subject to change in future releases.
-  final pulumi.Input<PoolCreate>? create;
+  final pulumi.Input<PoolCreate?>? create;
   /// Experimental: provider-specific lifecycle controls for delete-time operations beyond undefine. Subject to change in future releases.
-  final pulumi.Input<PoolDestroy>? destroy;
+  final pulumi.Input<PoolDestroy?>? destroy;
   /// Defines optional features supported by the storage pool, enhancing functional capabilities.
-  final pulumi.Input<PoolFeatures>? features;
-  final pulumi.Input<PoolFsCommandline>? fsCommandline;
+  final pulumi.Input<PoolFeatures?>? features;
+  final pulumi.Input<PoolFsCommandline?>? fsCommandline;
   /// Sets the unique name for the storage pool, required for identification on the host.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<PoolRbdCommandline>? rbdCommandline;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<PoolRbdCommandline?>? rbdCommandline;
   /// Controls the refresh behavior of the storage pool and associated volumes.
-  final pulumi.Input<PoolRefresh>? refresh;
+  final pulumi.Input<PoolRefresh?>? refresh;
   /// Source location for the storage pool
-  final pulumi.Input<PoolSource>? source;
+  final pulumi.Input<PoolSource?>? source;
   /// Target path and permissions for the storage pool
-  final pulumi.Input<PoolTarget>? target;
+  final pulumi.Input<PoolTarget?>? target;
   /// Specifies the type of the storage pool being defined.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Sets the universally unique identifier for the storage pool.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [PoolState].
   /// [allocation] Configures the amount of storage allocated to the pool, determining capacity usage.
@@ -107,11 +107,11 @@ class PoolState {
 
   factory PoolState.fromMap(Map<String, dynamic> map) {
     return PoolState(
-      allocation: (() { final guardedValue = map['allocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      allocation: (() { final guardedValue = map['allocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       allocationUnit: (() { final guardedValue = map['allocationUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      available: (() { final guardedValue = map['available']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      available: (() { final guardedValue = map['available']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       availableUnit: (() { final guardedValue = map['availableUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       capacityUnit: (() { final guardedValue = map['capacityUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       create: (() { final guardedValue = map['create']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PoolCreate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       destroy: (() { final guardedValue = map['destroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PoolDestroy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

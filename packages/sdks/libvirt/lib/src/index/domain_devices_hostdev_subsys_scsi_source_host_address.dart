@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevSubsysScsiSourceHostAddress {
   /// Configures the bus number for the SCSI host address.
-  final pulumi.Input<double>? bus;
+  final pulumi.Input<double?>? bus;
   /// Defines the SCSI controller number for the device's address.
-  final pulumi.Input<double>? controller;
+  final pulumi.Input<double?>? controller;
   /// Specifies the target ID for the SCSI device's address.
-  final pulumi.Input<double>? target;
+  final pulumi.Input<double?>? target;
   /// Indicates the unit number in the SCSI address for the device.
-  final pulumi.Input<double>? unit;
+  final pulumi.Input<double?>? unit;
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiSourceHostAddress].
   /// [bus] Configures the bus number for the SCSI host address.
@@ -35,10 +35,10 @@ class DomainDevicesHostdevSubsysScsiSourceHostAddress {
 
   factory DomainDevicesHostdevSubsysScsiSourceHostAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysScsiSourceHostAddress(
-      bus: (() { final guardedValue = map['bus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      controller: (() { final guardedValue = map['controller']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bus: (() { final guardedValue = map['bus']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      controller: (() { final guardedValue = map['controller']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

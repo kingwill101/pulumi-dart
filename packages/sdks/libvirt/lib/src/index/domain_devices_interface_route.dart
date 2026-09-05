@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceRoute {
   /// Specifies the route destination address.
-  final pulumi.Input<String> address;
+  final pulumi.Input<String?>? address;
   /// Defines the address family for the routing configuration.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// Sets the gateway address for the route.
   final pulumi.Input<String> gateway;
   /// Configures the routing metric for determining the best route.
-  final pulumi.Input<double>? metric;
+  final pulumi.Input<double?>? metric;
   /// Specifies the netmask for the route configuration.
-  final pulumi.Input<String>? netmask;
+  final pulumi.Input<String?>? netmask;
   /// Sets the prefix length for the route configuration.
-  final pulumi.Input<double>? prefix;
+  final pulumi.Input<double?>? prefix;
 
   /// Creates a new [DomainDevicesInterfaceRoute].
   /// [address] Specifies the route destination address.
@@ -24,7 +24,7 @@ class DomainDevicesInterfaceRoute {
   /// [netmask] Specifies the netmask for the route configuration.
   /// [prefix] Sets the prefix length for the route configuration.
   const DomainDevicesInterfaceRoute({
-    required this.address,
+    this.address,
     this.family,
     required this.gateway,
     this.metric,
@@ -34,7 +34,7 @@ class DomainDevicesInterfaceRoute {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'address': address,
+      'address': ?address,
       'family': ?family,
       'gateway': gateway,
       'metric': ?metric,
@@ -45,12 +45,12 @@ class DomainDevicesInterfaceRoute {
 
   factory DomainDevicesInterfaceRoute.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceRoute(
-      address: pulumi.Input.fromValue(map['address'] as String),
+      address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gateway: pulumi.Input.fromValue(map['gateway'] as String),
-      metric: (() { final guardedValue = map['metric']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      metric: (() { final guardedValue = map['metric']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       netmask: (() { final guardedValue = map['netmask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

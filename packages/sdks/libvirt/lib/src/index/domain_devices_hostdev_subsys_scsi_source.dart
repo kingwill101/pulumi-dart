@@ -6,9 +6,9 @@ import 'domain_devices_hostdev_subsys_scsi_source_iscsi.dart';
 
 class DomainDevicesHostdevSubsysScsiSource {
   /// Configures the host settings for the SCSI device source.
-  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceHost>? host;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceHost?>? host;
   /// Defines the iSCSI source parameters for the SCSI device.
-  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsi>? iscsi;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsi?>? iscsi;
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiSource].
   /// [host] Configures the host settings for the SCSI device source.

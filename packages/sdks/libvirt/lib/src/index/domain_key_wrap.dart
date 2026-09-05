@@ -5,7 +5,7 @@ import 'domain_key_wrap_cipher.dart';
 
 class DomainKeyWrap {
   /// Defines the cipher algorithms used for key wrapping in the domain.
-  final pulumi.Input<List<DomainKeyWrapCipher>>? ciphers;
+  final pulumi.Input<List<DomainKeyWrapCipher>?>? ciphers;
 
   /// Creates a new [DomainKeyWrap].
   /// [ciphers] Defines the cipher algorithms used for key wrapping in the domain.

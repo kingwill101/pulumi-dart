@@ -5,7 +5,7 @@ import 'domain_devices_disk_mirror_source_slices_slice.dart';
 
 class DomainDevicesDiskMirrorSourceSlices {
   /// Specifies individual slice configurations within the mirror source.
-  final pulumi.Input<List<DomainDevicesDiskMirrorSourceSlicesSlice>>? slices;
+  final pulumi.Input<List<DomainDevicesDiskMirrorSourceSlicesSlice>?>? slices;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceSlices].
   /// [slices] Specifies individual slice configurations within the mirror source.

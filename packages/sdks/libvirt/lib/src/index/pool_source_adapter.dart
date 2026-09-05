@@ -5,19 +5,19 @@ import 'pool_source_adapter_parent_addr.dart';
 
 class PoolSourceAdapter {
   /// Indicates whether the adapter is managed by the virtualization framework.
-  final pulumi.Input<bool>? managed;
+  final pulumi.Input<bool?>? managed;
   /// Sets the name of the adapter for identification purposes.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the parent identifier of the adapter if applicable, linking it to a higher-level entity.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Provides the address details of the adapter's parent device.
-  final pulumi.Input<PoolSourceAdapterParentAddr>? parentAddr;
+  final pulumi.Input<PoolSourceAdapterParentAddr?>? parentAddr;
   /// Sets the type of the adapter being used for the storage source connection.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Defines the World Wide Name for the node of the adapter used in the storage source context.
-  final pulumi.Input<String>? wwnn;
+  final pulumi.Input<String?>? wwnn;
   /// Configures the World Wide Name for the portal of the adapter connected to the storage source.
-  final pulumi.Input<String>? wwpn;
+  final pulumi.Input<String?>? wwpn;
 
   /// Creates a new [PoolSourceAdapter].
   /// [managed] Indicates whether the adapter is managed by the virtualization framework.

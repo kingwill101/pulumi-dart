@@ -5,15 +5,15 @@ import 'domain_launch_security_tdx_quote_generation_service.dart';
 
 class DomainLaunchSecurityTdx {
   /// Sets the MR configuration identifier for TDX in the domain.
-  final pulumi.Input<String>? mrConfigId;
+  final pulumi.Input<String?>? mrConfigId;
   /// Configures the MR owner field for TDX security in the domain.
-  final pulumi.Input<String>? mrOwner;
+  final pulumi.Input<String?>? mrOwner;
   /// Sets the configuration for the MR owner in the TDX environment.
-  final pulumi.Input<String>? mrOwnerConfig;
+  final pulumi.Input<String?>? mrOwnerConfig;
   /// Configures the security policy for TDX operations within the domain.
-  final pulumi.Input<double>? policy;
+  final pulumi.Input<double?>? policy;
   /// Configures the quote generation service for TDX in the domain.
-  final pulumi.Input<DomainLaunchSecurityTdxQuoteGenerationService>? quoteGenerationService;
+  final pulumi.Input<DomainLaunchSecurityTdxQuoteGenerationService?>? quoteGenerationService;
 
   /// Creates a new [DomainLaunchSecurityTdx].
   /// [mrConfigId] Sets the MR configuration identifier for TDX in the domain.
@@ -44,7 +44,7 @@ class DomainLaunchSecurityTdx {
       mrConfigId: (() { final guardedValue = map['mrConfigId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mrOwner: (() { final guardedValue = map['mrOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mrOwnerConfig: (() { final guardedValue = map['mrOwnerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       quoteGenerationService: (() { final guardedValue = map['quoteGenerationService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainLaunchSecurityTdxQuoteGenerationService.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

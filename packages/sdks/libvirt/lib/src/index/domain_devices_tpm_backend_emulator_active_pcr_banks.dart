@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesTpmBackendEmulatorActivePcrBanks {
   /// Configures the SHA-1 PCR bank as active for the emulator TPM settings.
-  final pulumi.Input<bool>? sha1;
+  final pulumi.Input<bool?>? sha1;
   /// Configures the SHA-256 PCR bank as active for the emulator TPM settings.
-  final pulumi.Input<bool>? sha256;
+  final pulumi.Input<bool?>? sha256;
   /// Configures the SHA-384 PCR bank as active for the emulator TPM settings.
-  final pulumi.Input<bool>? sha384;
+  final pulumi.Input<bool?>? sha384;
   /// Configures the SHA-512 PCR bank as active for the emulator TPM settings.
-  final pulumi.Input<bool>? sha512;
+  final pulumi.Input<bool?>? sha512;
 
   /// Creates a new [DomainDevicesTpmBackendEmulatorActivePcrBanks].
   /// [sha1] Configures the SHA-1 PCR bank as active for the emulator TPM settings.

@@ -5,16 +5,16 @@ import 'domain_devices_audio_oss_input_settings.dart';
 
 class DomainDevicesAudioOssInput {
   /// Sets the number of output buffers for the OSS audio device.
-  final pulumi.Input<double>? bufferCount;
-  final pulumi.Input<double>? bufferLength;
+  final pulumi.Input<double?>? bufferCount;
+  final pulumi.Input<double?>? bufferLength;
   /// Sets the device node for the OSS audio output.
-  final pulumi.Input<String>? dev;
-  final pulumi.Input<String>? fixedSettings;
-  final pulumi.Input<String>? mixingEngine;
-  final pulumi.Input<DomainDevicesAudioOssInputSettings>? settings;
+  final pulumi.Input<String?>? dev;
+  final pulumi.Input<String?>? fixedSettings;
+  final pulumi.Input<String?>? mixingEngine;
+  final pulumi.Input<DomainDevicesAudioOssInputSettings?>? settings;
   /// Configures polling for the OSS audio output.
-  final pulumi.Input<String>? tryPoll;
-  final pulumi.Input<double>? voices;
+  final pulumi.Input<String?>? tryPoll;
+  final pulumi.Input<double?>? voices;
 
   /// Creates a new [DomainDevicesAudioOssInput].
   /// [bufferCount] Sets the number of output buffers for the OSS audio device.
@@ -51,14 +51,14 @@ class DomainDevicesAudioOssInput {
 
   factory DomainDevicesAudioOssInput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioOssInput(
-      bufferCount: (() { final guardedValue = map['bufferCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      bufferLength: (() { final guardedValue = map['bufferLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bufferCount: (() { final guardedValue = map['bufferCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      bufferLength: (() { final guardedValue = map['bufferLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       dev: (() { final guardedValue = map['dev']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fixedSettings: (() { final guardedValue = map['fixedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mixingEngine: (() { final guardedValue = map['mixingEngine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioOssInputSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tryPoll: (() { final guardedValue = map['tryPoll']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      voices: (() { final guardedValue = map['voices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      voices: (() { final guardedValue = map['voices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

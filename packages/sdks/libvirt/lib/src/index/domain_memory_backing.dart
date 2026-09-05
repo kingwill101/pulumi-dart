@@ -8,19 +8,19 @@ import 'domain_memory_backing_memory_source.dart';
 
 class DomainMemoryBacking {
   /// Defines the access mode for the memory backing, which influences how memory is treated by the hypervisor.
-  final pulumi.Input<DomainMemoryBackingMemoryAccess>? memoryAccess;
+  final pulumi.Input<DomainMemoryBackingMemoryAccess?>? memoryAccess;
   /// Configures the allocation properties for the memory backing of the domain, affecting its performance.
-  final pulumi.Input<DomainMemoryBackingMemoryAllocation>? memoryAllocation;
+  final pulumi.Input<DomainMemoryBackingMemoryAllocation?>? memoryAllocation;
   /// Controls whether memory discard is enabled, allowing the hypervisor to reclaim unused memory.
-  final pulumi.Input<bool>? memoryDiscard;
+  final pulumi.Input<bool?>? memoryDiscard;
   /// Configures the use of huge pages for memory allocation, which can improve performance by reducing page table overhead.
-  final pulumi.Input<DomainMemoryBackingMemoryHugePages>? memoryHugePages;
+  final pulumi.Input<DomainMemoryBackingMemoryHugePages?>? memoryHugePages;
   /// Controls whether the memory backing is locked, preventing it from being swapped or moved.
-  final pulumi.Input<bool>? memoryLocked;
+  final pulumi.Input<bool?>? memoryLocked;
   /// Configures whether shared pages are forbidden for the domain, affecting memory sharing behaviors.
-  final pulumi.Input<bool>? memoryNosharepages;
+  final pulumi.Input<bool?>? memoryNosharepages;
   /// Specifies the source from which the memory backing is allocated, influencing its origin.
-  final pulumi.Input<DomainMemoryBackingMemorySource>? memorySource;
+  final pulumi.Input<DomainMemoryBackingMemorySource?>? memorySource;
 
   /// Creates a new [DomainMemoryBacking].
   /// [memoryAccess] Defines the access mode for the memory backing, which influences how memory is treated by the hypervisor.

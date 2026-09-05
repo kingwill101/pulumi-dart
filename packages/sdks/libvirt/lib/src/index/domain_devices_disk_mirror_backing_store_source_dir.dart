@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskMirrorBackingStoreSourceDir {
   /// Defines the specific directory path for the backing store source configuration.
-  final pulumi.Input<String>? dir;
+  final pulumi.Input<String?>? dir;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceDir].
   /// [dir] Defines the specific directory path for the backing store source configuration.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicEglHeadlessGl {
   /// Specifies the render node for the headless EGL graphics OpenGL settings.
-  final pulumi.Input<String>? renderNode;
+  final pulumi.Input<String?>? renderNode;
 
   /// Creates a new [DomainDevicesGraphicEglHeadlessGl].
   /// [renderNode] Specifies the render node for the headless EGL graphics OpenGL settings.

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainSecLabel {
   /// Specifies the base label for the domain's security configuration.
-  final pulumi.Input<String>? baseLabel;
+  final pulumi.Input<String?>? baseLabel;
   /// Sets the image label for the domain's security configuration.
-  final pulumi.Input<String>? imageLabel;
+  final pulumi.Input<String?>? imageLabel;
   /// Specifies the security label for the domain.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Configures the model for the domain's security label.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Controls if the domain's security label should be relabeled.
-  final pulumi.Input<String>? relabel;
+  final pulumi.Input<String?>? relabel;
   /// Sets the type of the security label for the domain.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DomainSecLabel].
   /// [baseLabel] Specifies the base label for the domain's security configuration.

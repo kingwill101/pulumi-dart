@@ -5,9 +5,9 @@ import 'domain_devices_controller_usb_master.dart';
 
 class DomainDevicesControllerUsb {
   /// Specifies the master configuration for the USB controller device.
-  final pulumi.Input<DomainDevicesControllerUsbMaster>? master;
+  final pulumi.Input<DomainDevicesControllerUsbMaster?>? master;
   /// Configures the number of ports available on the USB controller device.
-  final pulumi.Input<double>? port;
+  final pulumi.Input<double?>? port;
 
   /// Creates a new [DomainDevicesControllerUsb].
   /// [master] Specifies the master configuration for the USB controller device.
@@ -27,7 +27,7 @@ class DomainDevicesControllerUsb {
   factory DomainDevicesControllerUsb.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerUsb(
       master: (() { final guardedValue = map['master']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesControllerUsbMaster.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

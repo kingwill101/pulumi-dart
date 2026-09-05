@@ -7,11 +7,11 @@ import 'domain_devices_hostdev_subsys_scsi_source_iscsi_initiator.dart';
 
 class DomainDevicesHostdevSubsysScsiSourceIscsi {
   /// Configures authentication settings for the iSCSI source.
-  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiAuth>? auth;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiAuth?>? auth;
   /// Configures the iSCSI host settings for the device source.
-  final pulumi.Input<List<DomainDevicesHostdevSubsysScsiSourceIscsiHost>>? hosts;
+  final pulumi.Input<List<DomainDevicesHostdevSubsysScsiSourceIscsiHost>?>? hosts;
   /// Configures the iSCSI initiator settings for the device source.
-  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiInitiator>? initiator;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiInitiator?>? initiator;
   /// Specifies the name for the iSCSI source configuration.
   final pulumi.Input<String> name;
 

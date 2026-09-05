@@ -5,7 +5,7 @@ import 'domain_devices_disk_backing_store_source_data_store_format_metadata_cach
 
 class DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache {
   /// Sets the maximum size for the metadata cache in the data store format configuration.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize>? maxSize;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCacheMaxSize?>? maxSize;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceDataStoreFormatMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.

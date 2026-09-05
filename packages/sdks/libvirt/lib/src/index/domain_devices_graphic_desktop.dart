@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicDesktop {
   /// Sets the display option for the desktop graphics configuration.
-  final pulumi.Input<String>? display;
+  final pulumi.Input<String?>? display;
   /// Configures the fullscreen setting for the desktop graphics display.
-  final pulumi.Input<String>? fullScreen;
+  final pulumi.Input<String?>? fullScreen;
 
   /// Creates a new [DomainDevicesGraphicDesktop].
   /// [display] Sets the display option for the desktop graphics configuration.

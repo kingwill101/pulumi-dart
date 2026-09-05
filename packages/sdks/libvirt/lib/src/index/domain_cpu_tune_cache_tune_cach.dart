@@ -40,9 +40,9 @@ class DomainCpuTuneCacheTuneCach {
 
   factory DomainCpuTuneCacheTuneCach.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneCacheTuneCach(
-      id: pulumi.Input.fromValue(map['id'] as double),
-      level: pulumi.Input.fromValue(map['level'] as double),
-      size: pulumi.Input.fromValue(map['size'] as double),
+      id: pulumi.Input.fromValue((map['id'] as num).toDouble()),
+      level: pulumi.Input.fromValue((map['level'] as num).toDouble()),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
       type: pulumi.Input.fromValue(map['type'] as String),
       unit: pulumi.Input.fromValue(map['unit'] as String),
     );

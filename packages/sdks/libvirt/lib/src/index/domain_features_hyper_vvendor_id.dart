@@ -6,9 +6,9 @@ class DomainFeaturesHyperVVendorId {
   /// Sets the PS2 feature state; valid values are usually "on" or "off" to enable or disable the PS/2-related feature for the domain.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#hypervisor-features&gt;
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Sets the value for the vendor ID used in Hyper-V.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DomainFeaturesHyperVVendorId].
   /// [state] Sets the PS2 feature state; valid values are usually "on" or "off" to enable or disable the PS/2-related feature for the domain.

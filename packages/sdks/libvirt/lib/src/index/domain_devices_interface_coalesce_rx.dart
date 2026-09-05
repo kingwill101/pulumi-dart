@@ -5,7 +5,7 @@ import 'domain_devices_interface_coalesce_rx_frames.dart';
 
 class DomainDevicesInterfaceCoalesceRx {
   /// Configures frame settings for received packets in coalescing, impacting how received packets are grouped for processing.
-  final pulumi.Input<DomainDevicesInterfaceCoalesceRxFrames>? frames;
+  final pulumi.Input<DomainDevicesInterfaceCoalesceRxFrames?>? frames;
 
   /// Creates a new [DomainDevicesInterfaceCoalesceRx].
   /// [frames] Configures frame settings for received packets in coalescing, impacting how received packets are grouped for processing.

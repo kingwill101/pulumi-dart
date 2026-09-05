@@ -5,11 +5,11 @@ import 'domain_devices_interface_source_udp_local.dart';
 
 class DomainDevicesInterfaceSourceUdp {
   /// Defines the UDP address for the network interface, specifying where UDP packets are sent or received.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Controls local UDP settings for the network interface, managing configurations for local UDP traffic.
-  final pulumi.Input<DomainDevicesInterfaceSourceUdpLocal>? local;
+  final pulumi.Input<DomainDevicesInterfaceSourceUdpLocal?>? local;
   /// Defines the UDP port number for the network interface, determining the endpoint for UDP communications.
-  final pulumi.Input<double>? port;
+  final pulumi.Input<double?>? port;
 
   /// Creates a new [DomainDevicesInterfaceSourceUdp].
   /// [address] Defines the UDP address for the network interface, specifying where UDP packets are sent or received.
@@ -33,7 +33,7 @@ class DomainDevicesInterfaceSourceUdp {
     return DomainDevicesInterfaceSourceUdp(
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       local: (() { final guardedValue = map['local']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesInterfaceSourceUdpLocal.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'domain_devices_disk_backing_store_source_network_auth_secret.dart';
 
 class DomainDevicesDiskBackingStoreSourceNetworkAuth {
   /// Specifies the secret used for authenticating the iSCSI connection.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkAuthSecret>? secret;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkAuthSecret?>? secret;
   /// Sets the username for iSCSI authentication.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceNetworkAuth].
   /// [secret] Specifies the secret used for authenticating the iSCSI connection.

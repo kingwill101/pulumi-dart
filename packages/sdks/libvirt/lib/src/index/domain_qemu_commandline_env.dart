@@ -8,7 +8,7 @@ class DomainQemuCommandlineEnv {
   /// Sets the optional value for the named QEMU environment variable; if omitted, the variable is declared without an explicit value.
   ///
   /// See: &lt;https://libvirt.org/kbase/qemu-passthrough-security.html#xml-document-additions&gt;
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DomainQemuCommandlineEnv].
   /// [name] Configures the name of the domain, which should be unique within the host environment.

@@ -8,17 +8,17 @@ import 'network_dns_tx_t.dart';
 
 class NetworkDns {
   /// Sets whether DNS features are enabled for the network, allowing the network to resolve domain names.
-  final pulumi.Input<String>? enable;
+  final pulumi.Input<String?>? enable;
   /// Configures the option to forward plain names in DNS resolution, affecting how traffic is managed for unqualified names.
-  final pulumi.Input<String>? forwardPlainNames;
+  final pulumi.Input<String?>? forwardPlainNames;
   /// Specifies the DNS forwarders for the network, indicating external servers that handle DNS queries.
-  final pulumi.Input<List<NetworkDnsForwarder>>? forwarders;
+  final pulumi.Input<List<NetworkDnsForwarder>?>? forwarders;
   /// Defines the host settings for DNS within the virtual network, controlling how local hostnames are resolved.
-  final pulumi.Input<List<NetworkDnsHost>>? hosts;
+  final pulumi.Input<List<NetworkDnsHost>?>? hosts;
   /// Configures the SRV records for the DNS entries.
-  final pulumi.Input<List<NetworkDnsSrV>>? srVs;
+  final pulumi.Input<List<NetworkDnsSrV>?>? srVs;
   /// Configures TXT records for DNS entries.
-  final pulumi.Input<List<NetworkDnsTxT>>? txTs;
+  final pulumi.Input<List<NetworkDnsTxT>?>? txTs;
 
   /// Creates a new [NetworkDns].
   /// [enable] Sets whether DNS features are enabled for the network, allowing the network to resolve domain names.

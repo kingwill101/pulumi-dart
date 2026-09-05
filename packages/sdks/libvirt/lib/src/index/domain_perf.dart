@@ -5,7 +5,7 @@ import 'domain_perf_event.dart';
 
 class DomainPerf {
   /// Specifies performance events to monitor within the domain.
-  final pulumi.Input<List<DomainPerfEvent>>? events;
+  final pulumi.Input<List<DomainPerfEvent>?>? events;
 
   /// Creates a new [DomainPerf].
   /// [events] Specifies performance events to monitor within the domain.

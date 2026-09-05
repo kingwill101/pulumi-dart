@@ -6,9 +6,9 @@ import 'domain_devices_interface_bandwidth_outbound.dart';
 
 class DomainDevicesInterfaceBandwidth {
   /// Defines outbound bandwidth settings for the interface, managing traffic shaping and quality of service for outgoing traffic.
-  final pulumi.Input<DomainDevicesInterfaceBandwidthInbound>? inbound;
+  final pulumi.Input<DomainDevicesInterfaceBandwidthInbound?>? inbound;
   /// Defines outbound bandwidth settings for the interface, managing traffic shaping and quality of service for outgoing traffic.
-  final pulumi.Input<DomainDevicesInterfaceBandwidthOutbound>? outbound;
+  final pulumi.Input<DomainDevicesInterfaceBandwidthOutbound?>? outbound;
 
   /// Creates a new [DomainDevicesInterfaceBandwidth].
   /// [inbound] Defines outbound bandwidth settings for the interface, managing traffic shaping and quality of service for outgoing traffic.

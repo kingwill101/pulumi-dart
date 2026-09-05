@@ -5,19 +5,22 @@ import 'domain_os_nv_ram_source_reservations_source.dart';
 
 class DomainOsNvRamSourceReservations {
   /// Controls whether reservations are enabled for the network storage source.
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
   /// Specifies if the reservations are managed by a higher-level resource management layer.
-  final pulumi.Input<bool>? managed;
+  final pulumi.Input<bool?>? managed;
+  final pulumi.Input<String?>? migration;
   /// Configures the source from which reservations are allocated for network storage.
-  final pulumi.Input<DomainOsNvRamSourceReservationsSource>? source;
+  final pulumi.Input<DomainOsNvRamSourceReservationsSource?>? source;
 
   /// Creates a new [DomainOsNvRamSourceReservations].
   /// [enabled] Controls whether reservations are enabled for the network storage source.
   /// [managed] Specifies if the reservations are managed by a higher-level resource management layer.
+  /// [migration] Optional.
   /// [source] Configures the source from which reservations are allocated for network storage.
   const DomainOsNvRamSourceReservations({
     this.enabled,
     this.managed,
+    this.migration,
     this.source,
   });
 
@@ -25,6 +28,7 @@ class DomainOsNvRamSourceReservations {
     return <String, dynamic>{
       'enabled': ?enabled,
       'managed': ?managed,
+      'migration': ?migration,
       'source': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceReservationsSource, Map<String, dynamic>>(source, (value) => value.toMap()),
     };
   }
@@ -33,6 +37,7 @@ class DomainOsNvRamSourceReservations {
     return DomainOsNvRamSourceReservations(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managed: (() { final guardedValue = map['managed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      migration: (() { final guardedValue = map['migration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainOsNvRamSourceReservationsSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

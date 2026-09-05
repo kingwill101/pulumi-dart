@@ -6,9 +6,9 @@ import 'domain_id_map_ui_d.dart';
 
 class DomainIdMap {
   /// Defines the group ID mapping for identity management within the domain.
-  final pulumi.Input<List<DomainIdMapGiD>>? giDs;
+  final pulumi.Input<List<DomainIdMapGiD>?>? giDs;
   /// Configures the UID mapping for the domain.
-  final pulumi.Input<List<DomainIdMapUiD>>? uiDs;
+  final pulumi.Input<List<DomainIdMapUiD>?>? uiDs;
 
   /// Creates a new [DomainIdMap].
   /// [giDs] Defines the group ID mapping for identity management within the domain.

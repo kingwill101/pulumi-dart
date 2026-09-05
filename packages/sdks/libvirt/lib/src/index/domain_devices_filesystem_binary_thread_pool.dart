@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemBinaryThreadPool {
   /// Specifies the number of threads in the thread pool for the binary filesystem.
-  final pulumi.Input<double>? size;
+  final pulumi.Input<double?>? size;
 
   /// Creates a new [DomainDevicesFilesystemBinaryThreadPool].
   /// [size] Specifies the number of threads in the thread pool for the binary filesystem.
@@ -20,7 +20,7 @@ class DomainDevicesFilesystemBinaryThreadPool {
 
   factory DomainDevicesFilesystemBinaryThreadPool.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemBinaryThreadPool(
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

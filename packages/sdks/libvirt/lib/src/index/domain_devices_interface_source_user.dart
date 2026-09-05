@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceUser {
   /// Sets the device identifier for the user-managed network connection.
-  final pulumi.Input<String>? dev;
+  final pulumi.Input<String?>? dev;
 
   /// Creates a new [DomainDevicesInterfaceSourceUser].
   /// [dev] Sets the device identifier for the user-managed network connection.

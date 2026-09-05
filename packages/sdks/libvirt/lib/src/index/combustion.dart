@@ -72,11 +72,12 @@ class Combustion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CombustionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Combustion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -90,6 +91,22 @@ class Combustion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    content = registerOutput<String>('content');
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String>('path');
+    size = registerOutput<double>('size');
+  }
+
+  /// Creates a typed reference to an existing [Combustion] resource.
+  Combustion.reference(String urn)
+    : super(
+        'libvirt:index/combustion:Combustion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          registerPackageRequest: package_registration.registerPackageRequest,
+        isResourceReference: true,
+      ) {
     content = registerOutput<String>('content');
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');

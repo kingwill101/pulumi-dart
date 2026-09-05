@@ -13,6 +13,7 @@ import 'domain_devices.dart';
 import 'domain_features.dart';
 import 'domain_id_map.dart';
 import 'domain_io_thread_ids.dart';
+import 'domain_iommufd.dart';
 import 'domain_key_wrap.dart';
 import 'domain_launch_security.dart';
 import 'domain_lxc_namespace.dart';
@@ -38,157 +39,158 @@ import 'domain_xen_commandline.dart';
 /// Input properties used for looking up and filtering Domain resources.
 class DomainState {
   /// Whether the domain should be started automatically when the host boots.
-  final pulumi.Input<bool>? autostart;
+  final pulumi.Input<bool?>? autostart;
   /// Configures bhyve-specific command-line passthrough for a domain, allowing extra arguments and environment variables to be appended through the bhyve XML namespace.
-  final pulumi.Input<DomainBhyveCommandline>? bhyveCommandline;
+  final pulumi.Input<DomainBhyveCommandline?>? bhyveCommandline;
   /// Configures block I/O tuning parameters for the domain, allowing control over I/O performance settings.
-  final pulumi.Input<DomainBlockIoTune>? blockIoTune;
+  final pulumi.Input<DomainBlockIoTune?>? blockIoTune;
   /// Specifies the bootloader that the domain uses to boot the operating system.
-  final pulumi.Input<String>? bootloader;
+  final pulumi.Input<String?>? bootloader;
   /// Defines arguments passed to the bootloader during the boot process.
-  final pulumi.Input<String>? bootloaderArgs;
+  final pulumi.Input<String?>? bootloaderArgs;
   /// Configures the timing settings for the domain's virtual clock.
-  final pulumi.Input<DomainClock>? clock;
+  final pulumi.Input<DomainClock?>? clock;
   /// CPU allocation and topology configuration
-  final pulumi.Input<DomainCpu>? cpu;
+  final pulumi.Input<DomainCpu?>? cpu;
   /// Configures CPU tuning options that affect performance management for the domain.
-  final pulumi.Input<DomainCpuTune>? cpuTune;
+  final pulumi.Input<DomainCpuTune?>? cpuTune;
   /// Start behavior flags passed to libvirt when running is true.
-  final pulumi.Input<DomainCreate>? create;
+  final pulumi.Input<DomainCreate?>? create;
   /// Specifies the current amount of memory assigned to the domain, impacting its operational capacity and performance.
-  final pulumi.Input<double>? currentMemory;
+  final pulumi.Input<double?>? currentMemory;
   /// Defines the unit of measurement for the current memory assigned to the domain, ensuring clarity in memory specifications.
-  final pulumi.Input<String>? currentMemoryUnit;
+  final pulumi.Input<String?>? currentMemoryUnit;
   /// Sets the default IO thread configuration for the domain, facilitating efficient management of IO operations.
-  final pulumi.Input<DomainDefaultIoThread>? defaultIoThread;
+  final pulumi.Input<DomainDefaultIoThread?>? defaultIoThread;
   /// Provides a human-readable description of the domain, assisting in the identification and documentation of domain settings.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<DomainDestroy>? destroy;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<DomainDestroy?>? destroy;
   /// Devices provided to the guest domain
-  final pulumi.Input<DomainDevices>? devices;
+  final pulumi.Input<DomainDevices?>? devices;
   /// Exposes the numeric domain ID assigned by libvirt at runtime; this value is computed by libvirt and is read-only.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#element-and-attribute-overview&gt;
-  final pulumi.Input<double>? domainId;
+  final pulumi.Input<double?>? domainId;
   /// Hypervisor features that can be toggled on/off
-  final pulumi.Input<DomainFeatures>? features;
+  final pulumi.Input<DomainFeatures?>? features;
   /// Holds the generation ID for the domain, used to track configuration changes and provide uniqueness.
-  final pulumi.Input<String>? genId;
+  final pulumi.Input<String?>? genId;
   /// Sets a unique identifier for the hardware of the domain, allowing system management tools to refer to it distinctly.
-  final pulumi.Input<String>? hwuuid;
+  final pulumi.Input<String?>? hwuuid;
   /// Configures the mapping of user IDs for the domain, allowing control over user permissions and access.
-  final pulumi.Input<DomainIdMap>? idMap;
+  final pulumi.Input<DomainIdMap?>? idMap;
   /// Configures the identification of I/O threads used by the domain.
-  final pulumi.Input<DomainIoThreadIDs>? ioThreadIDs;
+  final pulumi.Input<DomainIoThreadIDs?>? ioThreadIDs;
   /// Sets the number of I/O threads allocated to the domain for processing.
-  final pulumi.Input<double>? ioThreads;
+  final pulumi.Input<double?>? ioThreads;
+  final pulumi.Input<DomainIommufd?>? iommufd;
   /// Configures key wrapping for cryptographic operations in the domain.
-  final pulumi.Input<DomainKeyWrap>? keyWrap;
+  final pulumi.Input<DomainKeyWrap?>? keyWrap;
   /// Configures launch security features for the domain to protect sensitive information.
-  final pulumi.Input<DomainLaunchSecurity>? launchSecurity;
+  final pulumi.Input<DomainLaunchSecurity?>? launchSecurity;
   /// Configures inherited Linux namespaces for LXC guests, allowing selected namespaces to be shared with another process or namespace provider.
-  final pulumi.Input<DomainLxcNamespace>? lxcNamespace;
+  final pulumi.Input<DomainLxcNamespace?>? lxcNamespace;
   /// Configures the maximum memory allocation for the domain at boot time.
-  final pulumi.Input<double>? maximumMemory;
+  final pulumi.Input<double?>? maximumMemory;
   /// Configures the total number of memory slots that can be used in the domain.
-  final pulumi.Input<double>? maximumMemorySlots;
+  final pulumi.Input<double?>? maximumMemorySlots;
   /// Sets the unit for maximum memory allocation in the domain configuration.
-  final pulumi.Input<String>? maximumMemoryUnit;
+  final pulumi.Input<String?>? maximumMemoryUnit;
   /// Maximum memory allocation for the guest at boot time
-  final pulumi.Input<double>? memory;
+  final pulumi.Input<double?>? memory;
   /// Configures how the guest’s RAM is backed by host memory, including huge pages, locking, sharing, access policy, allocation policy, and discard behavior.
-  final pulumi.Input<DomainMemoryBacking>? memoryBacking;
+  final pulumi.Input<DomainMemoryBacking?>? memoryBacking;
   /// Controls whether guest memory is included in the core dump when the domain crashes, by setting the memory attribute (dumpCore) on the domain element; valid values are user-provided according to libvirt’s dumpCore policy (e.g. enabling or disabling memory dumping).
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#memory-allocation&gt;
-  final pulumi.Input<String>? memoryDumpCore;
+  final pulumi.Input<String?>? memoryDumpCore;
   /// Configures memory tuning parameters for the guest, including soft, hard, and swap limits and minimum guarantees.
-  final pulumi.Input<DomainMemoryTune>? memoryTune;
+  final pulumi.Input<DomainMemoryTune?>? memoryTune;
   /// Sets the unit for the domain’s main memory value, typically as a memory size unit such as KiB, MiB, or GiB; the string is user-provided and must match libvirt’s accepted memory units.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#memory-allocation&gt;
-  final pulumi.Input<String>? memoryUnit;
+  final pulumi.Input<String?>? memoryUnit;
   /// Configures an arbitrary metadata block associated with the domain, typically used to store application- or tool-specific XML or other structured data.
-  final pulumi.Input<DomainMetadata>? metadata;
+  final pulumi.Input<DomainMetadata?>? metadata;
   /// Configures the name of the domain, which should be unique within the host environment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configures NUMA policy for the domain process and its memory, controlling how guest CPUs and memory are placed on host NUMA nodes.
-  final pulumi.Input<DomainNumaTune>? numaTune;
+  final pulumi.Input<DomainNumaTune?>? numaTune;
   /// Sets the action libvirt takes when the guest crashes; valid values include "destroy", "restart", "preserve", "coredump-destroy", "coredump-restart", "rename-restart", "ignore", or "pause". Example: "coredump-restart" keeps a crash dump and then restarts the domain.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#events-configuration&gt;
-  final pulumi.Input<String>? onCrash;
+  final pulumi.Input<String?>? onCrash;
   /// Sets the action libvirt takes when the guest issues a poweroff/shutdown; valid values include "destroy", "restart", "preserve", or "rename-restart". If unset, the hypervisor default is used.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#events-configuration&gt;
-  final pulumi.Input<String>? onPoweroff;
+  final pulumi.Input<String?>? onPoweroff;
   /// Sets the action libvirt takes when the guest reboots; valid values include "destroy", "restart", "preserve", "rename-restart", "ignore", or "pause". If unset, the hypervisor default is used.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#events-configuration&gt;
-  final pulumi.Input<String>? onReboot;
+  final pulumi.Input<String?>? onReboot;
   /// Groups configuration of how the guest operating system is booted, including firmware, BIOS, boot devices, kernel parameters, and related options. All sub-attributes are optional and user-provided.
-  final pulumi.Input<DomainOs>? os;
+  final pulumi.Input<DomainOs?>? os;
   /// Enables configuration of performance monitoring events exposed to the guest and collected by the hypervisor.
-  final pulumi.Input<DomainPerf>? perf;
+  final pulumi.Input<DomainPerf?>? perf;
   /// Configures power management behavior advertised to the guest, such as support for suspend-to-RAM and suspend-to-disk.
-  final pulumi.Input<DomainPm>? pm;
+  final pulumi.Input<DomainPm?>? pm;
   /// Configures QEMU capability toggles through the QEMU namespace, allowing named capabilities to be explicitly added to or removed from the launched device model.
-  final pulumi.Input<DomainQemuCapabilities>? qemuCapabilities;
+  final pulumi.Input<DomainQemuCapabilities?>? qemuCapabilities;
   /// Configures QEMU-specific command-line passthrough for a domain, allowing explicit extra arguments and environment variables to be passed through the dedicated QEMU XML namespace.
-  final pulumi.Input<DomainQemuCommandline>? qemuCommandline;
+  final pulumi.Input<DomainQemuCommandline?>? qemuCommandline;
   /// Configures the QEMU namespace deprecation behavior for the domain.
-  final pulumi.Input<DomainQemuDeprecation>? qemuDeprecation;
+  final pulumi.Input<DomainQemuDeprecation?>? qemuDeprecation;
   /// Configures QEMU frontend property overrides in the QEMU namespace, targeting specific devices by alias and setting named frontend properties.
-  final pulumi.Input<DomainQemuOverride>? qemuOverride;
+  final pulumi.Input<DomainQemuOverride?>? qemuOverride;
   /// Groups resource-partitioning settings that associate the domain with hypervisor-specific resource partitions or classes.
-  final pulumi.Input<DomainResource>? resource;
+  final pulumi.Input<DomainResource?>? resource;
   /// Whether the domain should be started after creation.
-  final pulumi.Input<bool>? running;
+  final pulumi.Input<bool?>? running;
   /// Configures one security label configuration for the domain, controlling how a security driver (such as SELinux or DAC) labels and isolates the domain and its resources.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#security-label&gt;
-  final pulumi.Input<List<DomainSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainSecLabel>?>? secLabels;
   /// Configures system information presented to the guest (such as SMBIOS and fw_cfg data), allowing customization of what hardware/firmware details the guest sees.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#smbios-system-information&gt;
-  final pulumi.Input<List<DomainSysInfo>>? sysInfos;
+  final pulumi.Input<List<DomainSysInfo>?>? sysInfos;
   /// Enables configuration of one or more named disk I/O throttle groups that can be referenced by disk `throttlefilters` to apply shared I/O rate limits.
-  final pulumi.Input<DomainThrottleGroups>? throttleGroups;
+  final pulumi.Input<DomainThrottleGroups?>? throttleGroups;
   /// Sets a human‑readable title for the domain, which is user‑provided free text and may be used by management tools but has no functional effect on the guest.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#general-metadata&gt;
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// Sets the type of domain, specifying which hypervisor is to be used for running the virtual machine.
-  final pulumi.Input<String>? type;
-  final pulumi.Input<DomainUpdate>? update;
+  final pulumi.Input<String?>? type;
+  final pulumi.Input<DomainUpdate?>? update;
   /// Sets the domain’s UUID; if omitted libvirt generates one, and any provided value must be a valid RFC‑4122‑style UUID string.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#general-metadata&gt;
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
   /// Sets the maximum number of virtual CPUs configured for the guest, as a positive integer within the hypervisor’s supported range (for example 1–255).
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#cpu-allocation&gt;
-  final pulumi.Input<double>? vcpu;
+  final pulumi.Input<double?>? vcpu;
   /// Sets the optional CPU affinity for all vCPUs using a cpuset expression (for example "0-3,8"), corresponding to the vcpu element’s cpuset attribute.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#cpu-allocation&gt;
-  final pulumi.Input<String>? vcpuCpuset;
+  final pulumi.Input<String?>? vcpuCpuset;
   /// Sets the number of vCPUs that are initially online at boot via the vcpu element’s current attribute, as a positive integer not exceeding domain.vcpu.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#cpu-allocation&gt;
-  final pulumi.Input<double>? vcpuCurrent;
+  final pulumi.Input<double?>? vcpuCurrent;
   /// Sets the vCPU placement policy via the vcpu element’s placement attribute, typically "static" or "auto", controlling whether libvirt chooses NUMA/CPU placement automatically.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#cpu-allocation&gt;
-  final pulumi.Input<String>? vcpuPlacement;
+  final pulumi.Input<String?>? vcpuPlacement;
   /// Enables per‑vCPU configuration; when present, it contains one or more vcpu entries that can individually control online state and pinning.
-  final pulumi.Input<DomainVcpus>? vcpus;
+  final pulumi.Input<DomainVcpus?>? vcpus;
   /// Sets the VMware datacenter path associated with the domain when using the VMware driver, matching the datacenter-oriented path conventions used by libvirt `vpx://` connections.
   ///
   /// See: &lt;https://libvirt.org/drvesx.html&gt;
-  final pulumi.Input<String>? vmwareDataCenterPath;
+  final pulumi.Input<String?>? vmwareDataCenterPath;
   /// Configures Xen-specific command-line passthrough to the qemu device model, using the Xen XML namespace for additional arguments.
-  final pulumi.Input<DomainXenCommandline>? xenCommandline;
+  final pulumi.Input<DomainXenCommandline?>? xenCommandline;
 
   /// Creates a new [DomainState].
   /// [autostart] Whether the domain should be started automatically when the host boots.
@@ -213,6 +215,7 @@ class DomainState {
   /// [idMap] Configures the mapping of user IDs for the domain, allowing control over user permissions and access.
   /// [ioThreadIDs] Configures the identification of I/O threads used by the domain.
   /// [ioThreads] Sets the number of I/O threads allocated to the domain for processing.
+  /// [iommufd] Optional.
   /// [keyWrap] Configures key wrapping for cryptographic operations in the domain.
   /// [launchSecurity] Configures launch security features for the domain to protect sensitive information.
   /// [lxcNamespace] Configures inherited Linux namespaces for LXC guests, allowing selected namespaces to be shared with another process or namespace provider.
@@ -276,6 +279,7 @@ class DomainState {
     this.idMap,
     this.ioThreadIDs,
     this.ioThreads,
+    this.iommufd,
     this.keyWrap,
     this.launchSecurity,
     this.lxcNamespace,
@@ -342,6 +346,7 @@ class DomainState {
       'idMap': ?pulumi.Input.mapOptionalInputValue<DomainIdMap, Map<String, dynamic>>(idMap, (value) => value.toMap()),
       'ioThreadIDs': ?pulumi.Input.mapOptionalInputValue<DomainIoThreadIDs, Map<String, dynamic>>(ioThreadIDs, (value) => value.toMap()),
       'ioThreads': ?ioThreads,
+      'iommufd': ?pulumi.Input.mapOptionalInputValue<DomainIommufd, Map<String, dynamic>>(iommufd, (value) => value.toMap()),
       'keyWrap': ?pulumi.Input.mapOptionalInputValue<DomainKeyWrap, Map<String, dynamic>>(keyWrap, (value) => value.toMap()),
       'launchSecurity': ?pulumi.Input.mapOptionalInputValue<DomainLaunchSecurity, Map<String, dynamic>>(launchSecurity, (value) => value.toMap()),
       'lxcNamespace': ?pulumi.Input.mapOptionalInputValue<DomainLxcNamespace, Map<String, dynamic>>(lxcNamespace, (value) => value.toMap()),
@@ -396,26 +401,27 @@ class DomainState {
       cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainCpu.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cpuTune: (() { final guardedValue = map['cpuTune']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainCpuTune.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       create: (() { final guardedValue = map['create']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainCreate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      currentMemory: (() { final guardedValue = map['currentMemory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      currentMemory: (() { final guardedValue = map['currentMemory']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       currentMemoryUnit: (() { final guardedValue = map['currentMemoryUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultIoThread: (() { final guardedValue = map['defaultIoThread']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDefaultIoThread.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destroy: (() { final guardedValue = map['destroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDestroy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       devices: (() { final guardedValue = map['devices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevices.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      domainId: (() { final guardedValue = map['domainId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      domainId: (() { final guardedValue = map['domainId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainFeatures.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       genId: (() { final guardedValue = map['genId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hwuuid: (() { final guardedValue = map['hwuuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       idMap: (() { final guardedValue = map['idMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainIdMap.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ioThreadIDs: (() { final guardedValue = map['ioThreadIDs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainIoThreadIDs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      ioThreads: (() { final guardedValue = map['ioThreads']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      ioThreads: (() { final guardedValue = map['ioThreads']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      iommufd: (() { final guardedValue = map['iommufd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainIommufd.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyWrap: (() { final guardedValue = map['keyWrap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainKeyWrap.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       launchSecurity: (() { final guardedValue = map['launchSecurity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainLaunchSecurity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       lxcNamespace: (() { final guardedValue = map['lxcNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainLxcNamespace.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maximumMemory: (() { final guardedValue = map['maximumMemory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      maximumMemorySlots: (() { final guardedValue = map['maximumMemorySlots']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maximumMemory: (() { final guardedValue = map['maximumMemory']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      maximumMemorySlots: (() { final guardedValue = map['maximumMemorySlots']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       maximumMemoryUnit: (() { final guardedValue = map['maximumMemoryUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       memoryBacking: (() { final guardedValue = map['memoryBacking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainMemoryBacking.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       memoryDumpCore: (() { final guardedValue = map['memoryDumpCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       memoryTune: (() { final guardedValue = map['memoryTune']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainMemoryTune.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -442,9 +448,9 @@ class DomainState {
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       update: (() { final guardedValue = map['update']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainUpdate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vcpu: (() { final guardedValue = map['vcpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      vcpu: (() { final guardedValue = map['vcpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       vcpuCpuset: (() { final guardedValue = map['vcpuCpuset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vcpuCurrent: (() { final guardedValue = map['vcpuCurrent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      vcpuCurrent: (() { final guardedValue = map['vcpuCurrent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       vcpuPlacement: (() { final guardedValue = map['vcpuPlacement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vcpus: (() { final guardedValue = map['vcpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainVcpus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vmwareDataCenterPath: (() { final guardedValue = map['vmwareDataCenterPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

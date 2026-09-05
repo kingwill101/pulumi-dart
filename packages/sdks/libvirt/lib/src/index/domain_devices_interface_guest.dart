@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceGuest {
   /// Indicates the actual guest device identifier.
-  final pulumi.Input<String>? actual;
+  final pulumi.Input<String?>? actual;
   /// Sets the device identifier for the guest network interface.
-  final pulumi.Input<String>? dev;
+  final pulumi.Input<String?>? dev;
 
   /// Creates a new [DomainDevicesInterfaceGuest].
   /// [actual] Indicates the actual guest device identifier.

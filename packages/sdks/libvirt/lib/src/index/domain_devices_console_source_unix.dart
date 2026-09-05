@@ -6,13 +6,13 @@ import 'domain_devices_console_source_unix_sec_label.dart';
 
 class DomainDevicesConsoleSourceUnix {
   /// Sets the mode attribute for the UNIX domain socket in the random number generator backend.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Specifies the path to the UNIX domain socket for connection.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Configures reconnect settings for the UNIX domain socket in the backend.
-  final pulumi.Input<DomainDevicesConsoleSourceUnixReconnect>? reconnect;
+  final pulumi.Input<DomainDevicesConsoleSourceUnixReconnect?>? reconnect;
   /// Configures the security label for the UNIX domain socket.
-  final pulumi.Input<List<DomainDevicesConsoleSourceUnixSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesConsoleSourceUnixSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesConsoleSourceUnix].
   /// [mode] Sets the mode attribute for the UNIX domain socket in the random number generator backend.

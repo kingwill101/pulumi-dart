@@ -5,7 +5,7 @@ import 'domain_devices_controller_driver_io_threads_io_thread.dart';
 
 class DomainDevicesControllerDriverIoThreads {
   /// Configures details for a specific I/O thread associated with the controller driver.
-  final pulumi.Input<List<DomainDevicesControllerDriverIoThreadsIoThread>>? ioThreads;
+  final pulumi.Input<List<DomainDevicesControllerDriverIoThreadsIoThread>?>? ioThreads;
 
   /// Creates a new [DomainDevicesControllerDriverIoThreads].
   /// [ioThreads] Configures details for a specific I/O thread associated with the controller driver.

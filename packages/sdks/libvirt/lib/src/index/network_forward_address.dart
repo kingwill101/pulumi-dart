@@ -5,7 +5,7 @@ import 'network_forward_address_pci.dart';
 
 class NetworkForwardAddress {
   /// Configures forwarding for PCI addresses.
-  final pulumi.Input<NetworkForwardAddressPci>? pci;
+  final pulumi.Input<NetworkForwardAddressPci?>? pci;
 
   /// Creates a new [NetworkForwardAddress].
   /// [pci] Configures forwarding for PCI addresses.

@@ -5,9 +5,9 @@ import 'domain_resource_fibre_channel.dart';
 
 class DomainResource {
   /// Configures the Fibre Channel resource settings for the domain.
-  final pulumi.Input<DomainResourceFibreChannel>? fibreChannel;
+  final pulumi.Input<DomainResourceFibreChannel?>? fibreChannel;
   /// Defines the partition resource settings for the domain.
-  final pulumi.Input<String>? partition;
+  final pulumi.Input<String?>? partition;
 
   /// Creates a new [DomainResource].
   /// [fibreChannel] Configures the Fibre Channel resource settings for the domain.

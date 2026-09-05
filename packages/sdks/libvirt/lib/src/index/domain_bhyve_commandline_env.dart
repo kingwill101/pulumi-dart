@@ -6,7 +6,7 @@ class DomainBhyveCommandlineEnv {
   /// Configures the name of the domain, which should be unique within the host environment.
   final pulumi.Input<String> name;
   /// Sets the optional value for the named bhyve environment variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DomainBhyveCommandlineEnv].
   /// [name] Configures the name of the domain, which should be unique within the host environment.

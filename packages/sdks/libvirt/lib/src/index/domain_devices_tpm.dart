@@ -7,15 +7,15 @@ import 'domain_devices_tpm_backend.dart';
 
 class DomainDevicesTpm {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesTpmAcpi>? acpi;
+  final pulumi.Input<DomainDevicesTpmAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesTpmAlias>? alias;
+  final pulumi.Input<DomainDevicesTpmAlias?>? alias;
   /// Configures the backend settings for the TPM device, determining its operation mode.
-  final pulumi.Input<DomainDevicesTpmBackend>? backend;
+  final pulumi.Input<DomainDevicesTpmBackend?>? backend;
   /// Defines the model of the TPM device to be used by the domain.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
 
   /// Creates a new [DomainDevicesTpm].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

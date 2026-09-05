@@ -5,7 +5,7 @@ import 'network_port_group_virtual_port_params.dart';
 
 class NetworkPortGroupVirtualPort {
   /// Defines parameters for the virtual port in the port group.
-  final pulumi.Input<NetworkPortGroupVirtualPortParams>? params;
+  final pulumi.Input<NetworkPortGroupVirtualPortParams?>? params;
 
   /// Creates a new [NetworkPortGroupVirtualPort].
   /// [params] Defines parameters for the virtual port in the port group.

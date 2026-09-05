@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkMac {
   /// Specifies the actual MAC address associated with the network.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
 
   /// Creates a new [NetworkMac].
   /// [address] Specifies the actual MAC address associated with the network.

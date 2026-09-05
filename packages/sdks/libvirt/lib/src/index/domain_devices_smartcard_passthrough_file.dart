@@ -5,11 +5,11 @@ import 'domain_devices_smartcard_passthrough_file_sec_label.dart';
 
 class DomainDevicesSmartcardPassthroughFile {
   /// Specifies if data should be appended to the file used as a source.
-  final pulumi.Input<String>? append;
+  final pulumi.Input<String?>? append;
   /// Sets the file path for the RNG source in the EGD backend.
   final pulumi.Input<String> path;
   /// Configures security label settings for the file source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesSmartcardPassthroughFileSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesSmartcardPassthroughFileSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesSmartcardPassthroughFile].
   /// [append] Specifies if data should be appended to the file used as a source.

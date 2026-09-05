@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainOsBios {
   /// Defines the timeout duration for rebooting the domain, controlling wait time before action is taken.
-  final pulumi.Input<double>? rebootTimeout;
+  final pulumi.Input<double?>? rebootTimeout;
   /// Configures whether the BIOS should use the serial console for output.
-  final pulumi.Input<String>? useSerial;
+  final pulumi.Input<String?>? useSerial;
 
   /// Creates a new [DomainOsBios].
   /// [rebootTimeout] Defines the timeout duration for rebooting the domain, controlling wait time before action is taken.
@@ -25,7 +25,7 @@ class DomainOsBios {
 
   factory DomainOsBios.fromMap(Map<String, dynamic> map) {
     return DomainOsBios(
-      rebootTimeout: (() { final guardedValue = map['rebootTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      rebootTimeout: (() { final guardedValue = map['rebootTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       useSerial: (() { final guardedValue = map['useSerial']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -6,9 +6,9 @@ import 'domain_cpu_numa_interconnects.dart';
 
 class DomainCpuNuma {
   /// Defines specific CPU NUMA cell properties, allowing for fine-tuning of resources.
-  final pulumi.Input<List<DomainCpuNumaCell>>? cells;
+  final pulumi.Input<List<DomainCpuNumaCell>?>? cells;
   /// Defines the interconnects between NUMA nodes, configuring how they communicate.
-  final pulumi.Input<DomainCpuNumaInterconnects>? interconnects;
+  final pulumi.Input<DomainCpuNumaInterconnects?>? interconnects;
 
   /// Creates a new [DomainCpuNuma].
   /// [cells] Defines specific CPU NUMA cell properties, allowing for fine-tuning of resources.

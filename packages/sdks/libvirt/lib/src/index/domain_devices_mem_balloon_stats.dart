@@ -20,7 +20,7 @@ class DomainDevicesMemBalloonStats {
 
   factory DomainDevicesMemBalloonStats.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemBalloonStats(
-      period: pulumi.Input.fromValue(map['period'] as double),
+      period: pulumi.Input.fromValue((map['period'] as num).toDouble()),
     );
   }
 }

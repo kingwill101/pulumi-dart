@@ -6,9 +6,9 @@ class DomainQemuOverrideDeviceFrontendProperty {
   /// Configures the name of the domain, which should be unique within the host environment.
   final pulumi.Input<String> name;
   /// Sets the type of domain, specifying which hypervisor is to be used for running the virtual machine.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Sets the optional value assigned to the named QEMU frontend property.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DomainQemuOverrideDeviceFrontendProperty].
   /// [name] Configures the name of the domain, which should be unique within the host environment.

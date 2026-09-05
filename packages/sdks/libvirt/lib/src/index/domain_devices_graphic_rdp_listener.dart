@@ -7,11 +7,11 @@ import 'domain_devices_graphic_rdp_listener_socket.dart';
 
 class DomainDevicesGraphicRdpListener {
   /// Specifies the address settings for the Spice listener.
-  final pulumi.Input<DomainDevicesGraphicRdpListenerAddress>? address;
+  final pulumi.Input<DomainDevicesGraphicRdpListenerAddress?>? address;
   /// Defines network listener settings for the Spice channel, focusing on network-based connections.
-  final pulumi.Input<DomainDevicesGraphicRdpListenerNetwork>? network;
+  final pulumi.Input<DomainDevicesGraphicRdpListenerNetwork?>? network;
   /// Configures socket listener settings for the Spice channel, enabling socket-based connections.
-  final pulumi.Input<DomainDevicesGraphicRdpListenerSocket>? socket;
+  final pulumi.Input<DomainDevicesGraphicRdpListenerSocket?>? socket;
 
   /// Creates a new [DomainDevicesGraphicRdpListener].
   /// [address] Specifies the address settings for the Spice listener.

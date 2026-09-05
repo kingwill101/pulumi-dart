@@ -11,19 +11,19 @@ import 'domain_sys_info_smbios_system.dart';
 
 class DomainSysInfoSmbios {
   /// Sets the base board information for the SMBIOS configuration.
-  final pulumi.Input<List<DomainSysInfoSmbiosBaseBoard>>? baseBoards;
+  final pulumi.Input<List<DomainSysInfoSmbiosBaseBoard>?>? baseBoards;
   /// Configures the BIOS information for the virtual machine's SMBIOS.
-  final pulumi.Input<DomainSysInfoSmbiosBios>? bios;
+  final pulumi.Input<DomainSysInfoSmbiosBios?>? bios;
   /// Configures the chassis information for the SMBIOS configuration.
-  final pulumi.Input<DomainSysInfoSmbiosChassis>? chassis;
+  final pulumi.Input<DomainSysInfoSmbiosChassis?>? chassis;
   /// Configures the memory information for the SMBIOS system.
-  final pulumi.Input<List<DomainSysInfoSmbiosMemory>>? memories;
+  final pulumi.Input<List<DomainSysInfoSmbiosMemory>?>? memories;
   /// Configures OEM strings within the SMBIOS information.
-  final pulumi.Input<DomainSysInfoSmbiosOemStrings>? oemStrings;
+  final pulumi.Input<DomainSysInfoSmbiosOemStrings?>? oemStrings;
   /// Sets processor information in the SMBIOS configuration.
-  final pulumi.Input<List<DomainSysInfoSmbiosProcessor>>? processors;
+  final pulumi.Input<List<DomainSysInfoSmbiosProcessor>?>? processors;
   /// Configures system information for the SMBIOS configuration.
-  final pulumi.Input<DomainSysInfoSmbiosSystem>? system;
+  final pulumi.Input<DomainSysInfoSmbiosSystem?>? system;
 
   /// Creates a new [DomainSysInfoSmbios].
   /// [baseBoards] Sets the base board information for the SMBIOS configuration.

@@ -7,7 +7,7 @@ class DomainDevicesParallelSourceDev {
   /// Specifies the path to the device file for the EGD backend.
   final pulumi.Input<String> path;
   /// Configures the security label settings for the device source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesParallelSourceDevSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesParallelSourceDevSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesParallelSourceDev].
   /// [path] Specifies the path to the device file for the EGD backend.

@@ -8,15 +8,15 @@ import 'domain_devices_video_model.dart';
 
 class DomainDevicesVideo {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesVideoAcpi>? acpi;
+  final pulumi.Input<DomainDevicesVideoAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesVideoAlias>? alias;
+  final pulumi.Input<DomainDevicesVideoAlias?>? alias;
   /// Configures the driver properties for the video device.
-  final pulumi.Input<DomainDevicesVideoDriver>? driver;
+  final pulumi.Input<DomainDevicesVideoDriver?>? driver;
   /// Defines the specific model of the video device being used.
-  final pulumi.Input<DomainDevicesVideoModel>? model;
+  final pulumi.Input<DomainDevicesVideoModel?>? model;
 
   /// Creates a new [DomainDevicesVideo].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

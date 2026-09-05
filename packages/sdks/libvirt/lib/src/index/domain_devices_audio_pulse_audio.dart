@@ -6,11 +6,11 @@ import 'domain_devices_audio_pulse_audio_output.dart';
 
 class DomainDevicesAudioPulseAudio {
   /// Configures the output settings for the PipeWire audio device.
-  final pulumi.Input<DomainDevicesAudioPulseAudioInput>? input;
+  final pulumi.Input<DomainDevicesAudioPulseAudioInput?>? input;
   /// Configures the output settings for the PipeWire audio device.
-  final pulumi.Input<DomainDevicesAudioPulseAudioOutput>? output;
+  final pulumi.Input<DomainDevicesAudioPulseAudioOutput?>? output;
   /// Specifies the server name for the PulseAudio audio backend configuration.
-  final pulumi.Input<String>? serverName;
+  final pulumi.Input<String?>? serverName;
 
   /// Creates a new [DomainDevicesAudioPulseAudio].
   /// [input] Configures the output settings for the PipeWire audio device.

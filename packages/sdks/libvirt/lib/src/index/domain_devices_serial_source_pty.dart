@@ -7,7 +7,7 @@ class DomainDevicesSerialSourcePty {
   /// Sets the path for the PTY source in the EGD backend.
   final pulumi.Input<String> path;
   /// This field configures the security label for the Pseudo TTY device, enabling security controls over access.
-  final pulumi.Input<List<DomainDevicesSerialSourcePtySecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesSerialSourcePtySecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesSerialSourcePty].
   /// [path] Sets the path for the PTY source in the EGD backend.

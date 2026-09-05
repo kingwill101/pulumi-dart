@@ -30,7 +30,7 @@ class DomainNumaTuneMemNode {
 
   factory DomainNumaTuneMemNode.fromMap(Map<String, dynamic> map) {
     return DomainNumaTuneMemNode(
-      cellId: pulumi.Input.fromValue(map['cellId'] as double),
+      cellId: pulumi.Input.fromValue((map['cellId'] as num).toDouble()),
       mode: pulumi.Input.fromValue(map['mode'] as String),
       nodeset: pulumi.Input.fromValue(map['nodeset'] as String),
     );

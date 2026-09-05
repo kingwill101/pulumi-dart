@@ -5,7 +5,7 @@ import 'domain_devices_disk_backing_store_format_metadata_cache.dart';
 
 class DomainDevicesDiskBackingStoreFormat {
   /// Configures the metadata cache settings for the data store format within the backing store source.
-  final pulumi.Input<DomainDevicesDiskBackingStoreFormatMetadataCache>? metadataCache;
+  final pulumi.Input<DomainDevicesDiskBackingStoreFormatMetadataCache?>? metadataCache;
   /// Specifies the type of the data store format being used in the backing store source.
   final pulumi.Input<String> type;
 

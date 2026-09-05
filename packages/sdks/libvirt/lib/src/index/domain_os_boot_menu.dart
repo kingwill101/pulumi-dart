@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainOsBootMenu {
   /// Enables or disables the boot menu for user selection during startup.
-  final pulumi.Input<String>? enable;
+  final pulumi.Input<String?>? enable;
   /// Sets the amount of time the boot menu remains visible before booting the default device.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [DomainOsBootMenu].
   /// [enable] Enables or disables the boot menu for user selection during startup.

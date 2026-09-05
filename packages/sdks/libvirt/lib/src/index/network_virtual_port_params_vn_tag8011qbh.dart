@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkVirtualPortParamsVnTag8011qbh {
   /// Specifies the profile ID for VNTag 8011QBH virtual port parameters.
-  final pulumi.Input<String>? profileId;
+  final pulumi.Input<String?>? profileId;
 
   /// Creates a new [NetworkVirtualPortParamsVnTag8011qbh].
   /// [profileId] Specifies the profile ID for VNTag 8011QBH virtual port parameters.

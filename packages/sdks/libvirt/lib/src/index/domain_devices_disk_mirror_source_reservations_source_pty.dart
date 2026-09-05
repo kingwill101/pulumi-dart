@@ -7,7 +7,7 @@ class DomainDevicesDiskMirrorSourceReservationsSourcePty {
   /// Sets the path for the PTY source in the EGD backend.
   final pulumi.Input<String> path;
   /// This field configures the security label for the Pseudo TTY device, enabling security controls over access.
-  final pulumi.Input<List<DomainDevicesDiskMirrorSourceReservationsSourcePtySecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskMirrorSourceReservationsSourcePtySecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceReservationsSourcePty].
   /// [path] Sets the path for the PTY source in the EGD backend.

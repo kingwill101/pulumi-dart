@@ -7,7 +7,7 @@ class DomainDevicesDiskBackingStoreSourceReservationsSourceDev {
   /// Specifies the path to the device file for the EGD backend.
   final pulumi.Input<String> path;
   /// Configures the security label settings for the device source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceReservationsSourceDevSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReservationsSourceDev].
   /// [path] Specifies the path to the device file for the EGD backend.

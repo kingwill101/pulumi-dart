@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskBoot {
   /// Sets the load parameter for the booting process of the redirected device, influencing how it is activated.
-  final pulumi.Input<String>? loadParm;
+  final pulumi.Input<String?>? loadParm;
   /// Specifies the boot order for the redirected device, controlling the sequence of device initialization.
   final pulumi.Input<double> order;
 
@@ -26,7 +26,7 @@ class DomainDevicesDiskBoot {
   factory DomainDevicesDiskBoot.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBoot(
       loadParm: (() { final guardedValue = map['loadParm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      order: pulumi.Input.fromValue(map['order'] as double),
+      order: pulumi.Input.fromValue((map['order'] as num).toDouble()),
     );
   }
 }

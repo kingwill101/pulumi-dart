@@ -15,34 +15,34 @@ import 'domain_devices_tpm_backend_external_source_unix.dart';
 
 class DomainDevicesTpmBackendExternalSource {
   /// Configures the DBus source for the EGD backend.
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourceDbus>? dbus;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourceDbus?>? dbus;
   /// Defines the device path for the source of the EGD backend.
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourceDev>? dev;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourceDev?>? dev;
   /// Defines a file source for the RNG EGD backend.
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourceFile>? file;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourceFile?>? file;
   /// Configures the NMDM (null modem) device source for the EGD backend.
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourceNmdm>? nmdm;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourceNmdm?>? nmdm;
   /// Configures a null device source, which is equivalent to a device that receives no input.
-  final pulumi.Input<bool>? null_;
+  final pulumi.Input<bool?>? null_;
   /// Defines a pipe source for the EGD backend.
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourcePipe>? pipe;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourcePipe?>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourcePty>? pty;
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourceQemuVdAgent>? qemuVdAgent;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourcePty?>? pty;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourceQemuVdAgent?>? qemuVdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourceSpicePort>? spicePort;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourceSpicePort?>? spicePort;
   /// Configures a SPICE Virtual Machine Channel as a source for enhanced communication with guests.
-  final pulumi.Input<bool>? spiceVmc;
+  final pulumi.Input<bool?>? spiceVmc;
   /// Configures standard input/output for device interactions, allowing typical stdin/stdout handling.
-  final pulumi.Input<bool>? stdIo;
+  final pulumi.Input<bool?>? stdIo;
   /// Configures TCP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourceTcp>? tcp;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourceTcp?>? tcp;
   /// Configures UDP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourceUdp>? udp;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourceUdp?>? udp;
   /// Configures UNIX domain socket settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourceUnix>? unix;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourceUnix?>? unix;
   /// Configures a virtual console as a source for communication, enabling interaction with the guest.
-  final pulumi.Input<bool>? vc;
+  final pulumi.Input<bool?>? vc;
 
   /// Creates a new [DomainDevicesTpmBackendExternalSource].
   /// [dbus] Configures the DBus source for the EGD backend.

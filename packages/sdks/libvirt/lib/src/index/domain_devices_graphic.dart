@@ -12,21 +12,21 @@ import 'domain_devices_graphic_vnc.dart';
 
 class DomainDevicesGraphic {
   /// Configures the audio settings for the graphics device in the guest.
-  final pulumi.Input<DomainDevicesGraphicAudio>? audio;
+  final pulumi.Input<DomainDevicesGraphicAudio?>? audio;
   /// Specifies the D-Bus settings for inter-process communication for the graphics display.
-  final pulumi.Input<DomainDevicesGraphicDbus>? dbus;
+  final pulumi.Input<DomainDevicesGraphicDbus?>? dbus;
   /// Configures the desktop environment settings for the graphics display.
-  final pulumi.Input<DomainDevicesGraphicDesktop>? desktop;
+  final pulumi.Input<DomainDevicesGraphicDesktop?>? desktop;
   /// Configures headless EGL graphics settings for the domain.
-  final pulumi.Input<DomainDevicesGraphicEglHeadless>? eglHeadless;
+  final pulumi.Input<DomainDevicesGraphicEglHeadless?>? eglHeadless;
   /// Configures the RDP settings for remote desktop access to the graphics device.
-  final pulumi.Input<DomainDevicesGraphicRdp>? rdp;
+  final pulumi.Input<DomainDevicesGraphicRdp?>? rdp;
   /// Configures the SDL display settings for graphics output.
-  final pulumi.Input<DomainDevicesGraphicSdl>? sdl;
+  final pulumi.Input<DomainDevicesGraphicSdl?>? sdl;
   /// Configures the SPICE settings for graphical interaction with the guest.
-  final pulumi.Input<DomainDevicesGraphicSpice>? spice;
+  final pulumi.Input<DomainDevicesGraphicSpice?>? spice;
   /// Configures the VNC graphical interface settings for the virtual machine.
-  final pulumi.Input<DomainDevicesGraphicVnc>? vnc;
+  final pulumi.Input<DomainDevicesGraphicVnc?>? vnc;
 
   /// Creates a new [DomainDevicesGraphic].
   /// [audio] Configures the audio settings for the graphics device in the guest.

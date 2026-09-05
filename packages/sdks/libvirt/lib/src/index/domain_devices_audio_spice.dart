@@ -6,9 +6,9 @@ import 'domain_devices_audio_spice_output.dart';
 
 class DomainDevicesAudioSpice {
   /// Specifies the output settings for the SPICE audio backend.
-  final pulumi.Input<DomainDevicesAudioSpiceInput>? input;
+  final pulumi.Input<DomainDevicesAudioSpiceInput?>? input;
   /// Specifies the output settings for the SPICE audio backend.
-  final pulumi.Input<DomainDevicesAudioSpiceOutput>? output;
+  final pulumi.Input<DomainDevicesAudioSpiceOutput?>? output;
 
   /// Creates a new [DomainDevicesAudioSpice].
   /// [input] Specifies the output settings for the SPICE audio backend.

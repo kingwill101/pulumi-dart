@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_node_devices_get_node_devices_args_doc}
 class GetNodeDevicesArgs {
-  final pulumi.Input<String>? capability;
+  final pulumi.Input<String?>? capability;
 
   /// Creates a new [GetNodeDevicesArgs].
   /// [capability] Optional.

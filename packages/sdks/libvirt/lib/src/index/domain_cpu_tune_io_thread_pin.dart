@@ -26,7 +26,7 @@ class DomainCpuTuneIoThreadPin {
   factory DomainCpuTuneIoThreadPin.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneIoThreadPin(
       cpuSet: pulumi.Input.fromValue(map['cpuSet'] as String),
-      ioThread: pulumi.Input.fromValue(map['ioThread'] as double),
+      ioThread: pulumi.Input.fromValue((map['ioThread'] as num).toDouble()),
     );
   }
 }

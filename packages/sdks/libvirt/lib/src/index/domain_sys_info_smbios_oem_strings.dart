@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainSysInfoSmbiosOemStrings {
   /// Defines individual entries for the OEM strings in the SMBIOS configuration.
-  final pulumi.Input<List<String>>? entries;
+  final pulumi.Input<List<String>?>? entries;
 
   /// Creates a new [DomainSysInfoSmbiosOemStrings].
   /// [entries] Defines individual entries for the OEM strings in the SMBIOS configuration.

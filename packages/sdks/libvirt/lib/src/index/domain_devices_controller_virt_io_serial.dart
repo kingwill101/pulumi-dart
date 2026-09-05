@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesControllerVirtIoSerial {
   /// Specifies the number of ports available on the VirtIO serial controller device.
-  final pulumi.Input<double>? ports;
+  final pulumi.Input<double?>? ports;
   /// Sets the number of vectors allocated for the VirtIO serial controller device.
-  final pulumi.Input<double>? vectors;
+  final pulumi.Input<double?>? vectors;
 
   /// Creates a new [DomainDevicesControllerVirtIoSerial].
   /// [ports] Specifies the number of ports available on the VirtIO serial controller device.
@@ -25,8 +25,8 @@ class DomainDevicesControllerVirtIoSerial {
 
   factory DomainDevicesControllerVirtIoSerial.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerVirtIoSerial(
-      ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      vectors: (() { final guardedValue = map['vectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      vectors: (() { final guardedValue = map['vectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

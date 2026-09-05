@@ -5,17 +5,17 @@ import 'domain_clock_timer.dart';
 
 class DomainClock {
   /// Sets the amount by which the guest's clock is adjusted during timekeeping.
-  final pulumi.Input<String>? adjustment;
+  final pulumi.Input<String?>? adjustment;
   /// Specifies the basis for the clock adjustments, usually defining a time reference.
-  final pulumi.Input<String>? basis;
+  final pulumi.Input<String?>? basis;
   /// Configures an offset to the guest's clock time, allowing for time synchronization.
-  final pulumi.Input<String>? offset;
+  final pulumi.Input<String?>? offset;
   /// Determines when the clock starts, affecting how time is counted in the guest.
-  final pulumi.Input<double>? start;
+  final pulumi.Input<double?>? start;
   /// Sets the time zone for the guest clock, influencing the display of local time.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// Configures timer settings that manage clock updates and adjustments.
-  final pulumi.Input<List<DomainClockTimer>>? timers;
+  final pulumi.Input<List<DomainClockTimer>?>? timers;
 
   /// Creates a new [DomainClock].
   /// [adjustment] Sets the amount by which the guest's clock is adjusted during timekeeping.
@@ -49,7 +49,7 @@ class DomainClock {
       adjustment: (() { final guardedValue = map['adjustment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       basis: (() { final guardedValue = map['basis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timers: (() { final guardedValue = map['timers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainClockTimer>(guardedValue, (value) => DomainClockTimer.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

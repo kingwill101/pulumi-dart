@@ -6,31 +6,33 @@ import 'domain_devices_video_model_resolution.dart';
 
 class DomainDevicesVideoModel {
   /// Configures acceleration features for the video device model.
-  final pulumi.Input<DomainDevicesVideoModelAccel>? accel;
+  final pulumi.Input<DomainDevicesVideoModelAccel?>? accel;
   /// Configures the blob attribute for the video device model.
-  final pulumi.Input<String>? blob;
+  final pulumi.Input<String?>? blob;
+  final pulumi.Input<String?>? device;
   /// Specifies the Extended Display Identification Data (EDID) for the video device model.
-  final pulumi.Input<String>? edid;
+  final pulumi.Input<String?>? edid;
   /// Sets the number of heads for the video device model, which may define multiple display outputs.
-  final pulumi.Input<double>? heads;
+  final pulumi.Input<double?>? heads;
   /// Marks the video device as the primary display output for the virtual machine.
-  final pulumi.Input<String>? primary;
+  final pulumi.Input<String?>? primary;
   /// Defines the memory allocation for the video device model.
-  final pulumi.Input<double>? ram;
+  final pulumi.Input<double?>? ram;
   /// Specifies the resolution settings for the video device model.
-  final pulumi.Input<DomainDevicesVideoModelResolution>? resolution;
+  final pulumi.Input<DomainDevicesVideoModelResolution?>? resolution;
   /// Defines the type of video device being configured.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Configures the amount of memory allocated for the video graphics array (VGA) for the video device model.
-  final pulumi.Input<double>? vgaMem;
+  final pulumi.Input<double?>? vgaMem;
   /// Specifies the video RAM allocation for the video device model.
-  final pulumi.Input<double>? vram;
+  final pulumi.Input<double?>? vram;
   /// Specifies the 64-bit video RAM configuration for the video device model.
-  final pulumi.Input<double>? vram64;
+  final pulumi.Input<double?>? vram64;
 
   /// Creates a new [DomainDevicesVideoModel].
   /// [accel] Configures acceleration features for the video device model.
   /// [blob] Configures the blob attribute for the video device model.
+  /// [device] Optional.
   /// [edid] Specifies the Extended Display Identification Data (EDID) for the video device model.
   /// [heads] Sets the number of heads for the video device model, which may define multiple display outputs.
   /// [primary] Marks the video device as the primary display output for the virtual machine.
@@ -43,6 +45,7 @@ class DomainDevicesVideoModel {
   const DomainDevicesVideoModel({
     this.accel,
     this.blob,
+    this.device,
     this.edid,
     this.heads,
     this.primary,
@@ -58,6 +61,7 @@ class DomainDevicesVideoModel {
     return <String, dynamic>{
       'accel': ?pulumi.Input.mapOptionalInputValue<DomainDevicesVideoModelAccel, Map<String, dynamic>>(accel, (value) => value.toMap()),
       'blob': ?blob,
+      'device': ?device,
       'edid': ?edid,
       'heads': ?heads,
       'primary': ?primary,
@@ -74,15 +78,16 @@ class DomainDevicesVideoModel {
     return DomainDevicesVideoModel(
       accel: (() { final guardedValue = map['accel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesVideoModelAccel.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       blob: (() { final guardedValue = map['blob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      device: (() { final guardedValue = map['device']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       edid: (() { final guardedValue = map['edid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      heads: (() { final guardedValue = map['heads']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      heads: (() { final guardedValue = map['heads']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ram: (() { final guardedValue = map['ram']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      ram: (() { final guardedValue = map['ram']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       resolution: (() { final guardedValue = map['resolution']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesVideoModelResolution.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vgaMem: (() { final guardedValue = map['vgaMem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      vram: (() { final guardedValue = map['vram']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      vram64: (() { final guardedValue = map['vram64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      vgaMem: (() { final guardedValue = map['vgaMem']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      vram: (() { final guardedValue = map['vram']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      vram64: (() { final guardedValue = map['vram64']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

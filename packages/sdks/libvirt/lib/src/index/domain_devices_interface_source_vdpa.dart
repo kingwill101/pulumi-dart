@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceVdpa {
   /// Defines the specific vDPA device used for the network interface, facilitating optimized data paths.
-  final pulumi.Input<String>? device;
+  final pulumi.Input<String?>? device;
 
   /// Creates a new [DomainDevicesInterfaceSourceVdpa].
   /// [device] Defines the specific vDPA device used for the network interface, facilitating optimized data paths.

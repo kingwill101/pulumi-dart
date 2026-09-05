@@ -5,7 +5,7 @@ import 'domain_sys_info_smbios_processor_entry.dart';
 
 class DomainSysInfoSmbiosProcessor {
   /// Specifies individual entries for processor information in the SMBIOS.
-  final pulumi.Input<List<DomainSysInfoSmbiosProcessorEntry>>? entries;
+  final pulumi.Input<List<DomainSysInfoSmbiosProcessorEntry>?>? entries;
 
   /// Creates a new [DomainSysInfoSmbiosProcessor].
   /// [entries] Specifies individual entries for processor information in the SMBIOS.

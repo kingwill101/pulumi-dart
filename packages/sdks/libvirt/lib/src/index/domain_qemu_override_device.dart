@@ -7,7 +7,7 @@ class DomainQemuOverrideDevice {
   /// Sets the libvirt device alias identifying which frontend device the override applies to.
   final pulumi.Input<String> alias;
   /// Configures frontend property overrides for the selected QEMU device.
-  final pulumi.Input<DomainQemuOverrideDeviceFrontend>? frontend;
+  final pulumi.Input<DomainQemuOverrideDeviceFrontend?>? frontend;
 
   /// Creates a new [DomainQemuOverrideDevice].
   /// [alias] Sets the libvirt device alias identifying which frontend device the override applies to.

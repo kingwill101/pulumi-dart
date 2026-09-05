@@ -9,15 +9,15 @@ import 'domain_features_kvm_pvipi.dart';
 
 class DomainFeaturesKvm {
   /// Configures the dirty ring feature for KVM, which optimizes memory management during virtual machine execution.
-  final pulumi.Input<DomainFeaturesKvmDirtyRing>? dirtyRing;
+  final pulumi.Input<DomainFeaturesKvmDirtyRing?>? dirtyRing;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesKvmHidden>? hidden;
+  final pulumi.Input<DomainFeaturesKvmHidden?>? hidden;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesKvmHintDedicated>? hintDedicated;
+  final pulumi.Input<DomainFeaturesKvmHintDedicated?>? hintDedicated;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesKvmPollControl>? pollControl;
+  final pulumi.Input<DomainFeaturesKvmPollControl?>? pollControl;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesKvmPvipi>? pvipi;
+  final pulumi.Input<DomainFeaturesKvmPvipi?>? pvipi;
 
   /// Creates a new [DomainFeaturesKvm].
   /// [dirtyRing] Configures the dirty ring feature for KVM, which optimizes memory management during virtual machine execution.

@@ -10,19 +10,19 @@ import 'domain_devices_serial_target.dart';
 
 class DomainDevicesSerial {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesSerialAcpi>? acpi;
+  final pulumi.Input<DomainDevicesSerialAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesSerialAlias>? alias;
+  final pulumi.Input<DomainDevicesSerialAlias?>? alias;
   /// Specifies the logging options for the channel configuration.
-  final pulumi.Input<DomainDevicesSerialLog>? log;
+  final pulumi.Input<DomainDevicesSerialLog?>? log;
   /// Sets the protocol type for the EGD backend.
-  final pulumi.Input<DomainDevicesSerialProtocol>? protocol;
+  final pulumi.Input<DomainDevicesSerialProtocol?>? protocol;
   /// Defines the source settings for the EGD backend.
-  final pulumi.Input<DomainDevicesSerialSource>? source;
+  final pulumi.Input<DomainDevicesSerialSource?>? source;
   /// Configures the target settings for the serial device, specifying where output is directed.
-  final pulumi.Input<DomainDevicesSerialTarget>? target;
+  final pulumi.Input<DomainDevicesSerialTarget?>? target;
 
   /// Creates a new [DomainDevicesSerial].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

@@ -5,15 +5,15 @@ import 'domain_devices_hostdev_subsys_scsi_source.dart';
 
 class DomainDevicesHostdevSubsysScsi {
   /// Indicates whether raw I/O access is enabled for the SCSI device.
-  final pulumi.Input<String>? rawIo;
+  final pulumi.Input<String?>? rawIo;
   /// Specifies if the SCSI device is set to read-only mode.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// Controls whether SCSI generic I/O is enabled for the device.
-  final pulumi.Input<String>? sgio;
+  final pulumi.Input<String?>? sgio;
   /// Indicates if the SCSI device can be shared among different guests.
-  final pulumi.Input<bool>? shareable;
+  final pulumi.Input<bool?>? shareable;
   /// Specifies the source configuration for the SCSI device being passed through.
-  final pulumi.Input<DomainDevicesHostdevSubsysScsiSource>? source;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiSource?>? source;
 
   /// Creates a new [DomainDevicesHostdevSubsysScsi].
   /// [rawIo] Indicates whether raw I/O access is enabled for the SCSI device.

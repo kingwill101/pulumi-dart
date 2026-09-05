@@ -8,9 +8,9 @@ class DomainBhyveCommandline {
   /// Lists additional bhyve command-line arguments to append in order when starting the domain.
   ///
   /// See: &lt;https://libvirt.org/drvbhyve.html&gt;
-  final pulumi.Input<List<DomainBhyveCommandlineArg>>? args;
+  final pulumi.Input<List<DomainBhyveCommandlineArg>?>? args;
   /// Lists environment variables to provide to the bhyve process when starting the domain.
-  final pulumi.Input<List<DomainBhyveCommandlineEnv>>? envs;
+  final pulumi.Input<List<DomainBhyveCommandlineEnv>?>? envs;
 
   /// Creates a new [DomainBhyveCommandline].
   /// [args] Lists additional bhyve command-line arguments to append in order when starting the domain.

@@ -12,43 +12,43 @@ import 'domain_devices_filesystem_target.dart';
 
 class DomainDevicesFilesystem {
   /// Sets the access mode for filesystem devices, controlling permissions.
-  final pulumi.Input<String>? accessMode;
+  final pulumi.Input<String?>? accessMode;
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesFilesystemAcpi>? acpi;
+  final pulumi.Input<DomainDevicesFilesystemAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesFilesystemAlias>? alias;
+  final pulumi.Input<DomainDevicesFilesystemAlias?>? alias;
   /// Configures binary options for the filesystem device, including cache settings.
-  final pulumi.Input<DomainDevicesFilesystemBinary>? binary;
+  final pulumi.Input<DomainDevicesFilesystemBinary?>? binary;
   /// Configures the boot settings for the redirected device, controlling its initialization at domain startup.
-  final pulumi.Input<DomainDevicesFilesystemBoot>? boot;
+  final pulumi.Input<DomainDevicesFilesystemBoot?>? boot;
   /// Configures the directory mode for the filesystem.
-  final pulumi.Input<String>? dmode;
+  final pulumi.Input<String?>? dmode;
   /// Specifies the driver used for the filesystem.
-  final pulumi.Input<DomainDevicesFilesystemDriver>? driver;
+  final pulumi.Input<DomainDevicesFilesystemDriver?>? driver;
   /// Configures the file mode for the filesystem.
-  final pulumi.Input<String>? fmode;
+  final pulumi.Input<String?>? fmode;
   /// Sets up ID mapping for the filesystem to control access permissions.
-  final pulumi.Input<DomainDevicesFilesystemIdMap>? idMap;
+  final pulumi.Input<DomainDevicesFilesystemIdMap?>? idMap;
   /// Sets the emulated model for the filesystem.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Configures whether multiple devices can be attached to the filesystem.
-  final pulumi.Input<String>? multiDevs;
+  final pulumi.Input<String?>? multiDevs;
   /// Specifies if the filesystem is read-only.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// Defines the source for the filesystem.
-  final pulumi.Input<DomainDevicesFilesystemSource>? source;
+  final pulumi.Input<DomainDevicesFilesystemSource?>? source;
   /// Configures the hard limit on the space allocated for the filesystem.
-  final pulumi.Input<double>? spaceHardLimit;
+  final pulumi.Input<double?>? spaceHardLimit;
   /// Sets the unit of measure for the hard limit space allocation for the filesystem.
-  final pulumi.Input<String>? spaceHardLimitUnit;
+  final pulumi.Input<String?>? spaceHardLimitUnit;
   /// Configures the soft limit on the space allocated for the filesystem.
-  final pulumi.Input<double>? spaceSoftLimit;
+  final pulumi.Input<double?>? spaceSoftLimit;
   /// Sets the unit of measure for the soft limit space allocation for the filesystem.
-  final pulumi.Input<String>? spaceSoftLimitUnit;
+  final pulumi.Input<String?>? spaceSoftLimitUnit;
   /// Specifies the target element defining where the filesystem is mounted in the guest.
-  final pulumi.Input<DomainDevicesFilesystemTarget>? target;
+  final pulumi.Input<DomainDevicesFilesystemTarget?>? target;
 
   /// Creates a new [DomainDevicesFilesystem].
   /// [accessMode] Sets the access mode for filesystem devices, controlling permissions.
@@ -132,9 +132,9 @@ class DomainDevicesFilesystem {
       multiDevs: (() { final guardedValue = map['multiDevs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesFilesystemSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      spaceHardLimit: (() { final guardedValue = map['spaceHardLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      spaceHardLimit: (() { final guardedValue = map['spaceHardLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       spaceHardLimitUnit: (() { final guardedValue = map['spaceHardLimitUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      spaceSoftLimit: (() { final guardedValue = map['spaceSoftLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      spaceSoftLimit: (() { final guardedValue = map['spaceSoftLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       spaceSoftLimitUnit: (() { final guardedValue = map['spaceSoftLimitUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesFilesystemTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

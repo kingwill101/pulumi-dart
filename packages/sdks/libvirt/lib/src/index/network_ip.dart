@@ -6,19 +6,19 @@ import 'network_ip_tftp.dart';
 
 class NetworkIp {
   /// Sets the specific IP address for the associated configuration.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Enables and configures DHCP settings for the network.
-  final pulumi.Input<NetworkIpDhcp>? dhcp;
+  final pulumi.Input<NetworkIpDhcp?>? dhcp;
   /// Determines the IP family (IPv4 or IPv6) for the network configuration.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// Configures the local pointer for the IP address, used in DNS resolution.
-  final pulumi.Input<String>? localPtr;
+  final pulumi.Input<String?>? localPtr;
   /// Specifies the subnet mask for the IP address configuration.
-  final pulumi.Input<String>? netmask;
+  final pulumi.Input<String?>? netmask;
   /// Sets the prefix length for CIDR notation in the network's IP configuration.
-  final pulumi.Input<double>? prefix;
+  final pulumi.Input<double?>? prefix;
   /// Configures TFTP settings for the network.
-  final pulumi.Input<NetworkIpTftp>? tftp;
+  final pulumi.Input<NetworkIpTftp?>? tftp;
 
   /// Creates a new [NetworkIp].
   /// [address] Sets the specific IP address for the associated configuration.
@@ -57,7 +57,7 @@ class NetworkIp {
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       localPtr: (() { final guardedValue = map['localPtr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       netmask: (() { final guardedValue = map['netmask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       tftp: (() { final guardedValue = map['tftp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkIpTftp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

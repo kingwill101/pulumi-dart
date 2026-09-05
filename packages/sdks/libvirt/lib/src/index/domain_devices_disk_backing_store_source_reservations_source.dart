@@ -15,34 +15,34 @@ import 'domain_devices_disk_backing_store_source_reservations_source_unix.dart';
 
 class DomainDevicesDiskBackingStoreSourceReservationsSource {
   /// Configures the DBus source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceDbus>? dbus;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceDbus?>? dbus;
   /// Defines the device path for the source of the EGD backend.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceDev>? dev;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceDev?>? dev;
   /// Defines a file source for the RNG EGD backend.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceFile>? file;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceFile?>? file;
   /// Configures the NMDM (null modem) device source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceNmdm>? nmdm;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceNmdm?>? nmdm;
   /// Configures settings for a null device used in reservations for storage.
-  final pulumi.Input<bool>? null_;
+  final pulumi.Input<bool?>? null_;
   /// Defines a pipe source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourcePipe>? pipe;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourcePipe?>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourcePty>? pty;
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceQemuVdAgent>? qemuVdAgent;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourcePty?>? pty;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceQemuVdAgent?>? qemuVdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceSpicePort>? spicePort;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceSpicePort?>? spicePort;
   /// Configures settings for the SPICE VMC used in reservations related to disk mirroring.
-  final pulumi.Input<bool>? spiceVmc;
+  final pulumi.Input<bool?>? spiceVmc;
   /// Manages standard I/O settings for the reservations in disk mirroring.
-  final pulumi.Input<bool>? stdIo;
+  final pulumi.Input<bool?>? stdIo;
   /// Configures TCP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceTcp>? tcp;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceTcp?>? tcp;
   /// Configures UDP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceUdp>? udp;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceUdp?>? udp;
   /// Configures UNIX domain socket settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceUnix>? unix;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceUnix?>? unix;
   /// Configures settings for the VC source in the backing store for disk mirroring reservations.
-  final pulumi.Input<bool>? vc;
+  final pulumi.Input<bool?>? vc;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReservationsSource].
   /// [dbus] Configures the DBus source for the EGD backend.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesControllerXenBus {
   /// Sets the maximum number of event channels supported by the Xen bus controller device.
-  final pulumi.Input<double>? maxEventChannels;
+  final pulumi.Input<double?>? maxEventChannels;
   /// Configures the maximum number of grant frames allowed for the Xen bus controller device.
-  final pulumi.Input<double>? maxGrantFrames;
+  final pulumi.Input<double?>? maxGrantFrames;
 
   /// Creates a new [DomainDevicesControllerXenBus].
   /// [maxEventChannels] Sets the maximum number of event channels supported by the Xen bus controller device.
@@ -25,8 +25,8 @@ class DomainDevicesControllerXenBus {
 
   factory DomainDevicesControllerXenBus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerXenBus(
-      maxEventChannels: (() { final guardedValue = map['maxEventChannels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      maxGrantFrames: (() { final guardedValue = map['maxGrantFrames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxEventChannels: (() { final guardedValue = map['maxEventChannels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      maxGrantFrames: (() { final guardedValue = map['maxGrantFrames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

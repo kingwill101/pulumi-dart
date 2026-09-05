@@ -5,7 +5,7 @@ import 'domain_os_firmware_info_feature.dart';
 
 class DomainOsFirmwareInfo {
   /// Lists the optional features supported by the firmware.
-  final pulumi.Input<List<DomainOsFirmwareInfoFeature>>? features;
+  final pulumi.Input<List<DomainOsFirmwareInfoFeature>?>? features;
 
   /// Creates a new [DomainOsFirmwareInfo].
   /// [features] Lists the optional features supported by the firmware.

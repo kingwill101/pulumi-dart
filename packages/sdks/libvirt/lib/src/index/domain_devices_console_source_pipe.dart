@@ -7,7 +7,7 @@ class DomainDevicesConsoleSourcePipe {
   /// Sets the path for the pipe source in the EGD backend.
   final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesConsoleSourcePipeSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesConsoleSourcePipeSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesConsoleSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.

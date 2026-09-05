@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesIoapic {
   /// Specifies the driver to be used for the I/O APIC feature.
-  final pulumi.Input<String>? driver;
+  final pulumi.Input<String?>? driver;
 
   /// Creates a new [DomainFeaturesIoapic].
   /// [driver] Specifies the driver to be used for the I/O APIC feature.

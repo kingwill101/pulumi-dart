@@ -7,7 +7,7 @@ class DomainDevicesDiskBackingStoreSourceVhostUserPipe {
   /// Sets the path for the pipe source in the EGD backend.
   final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceVhostUserPipeSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceVhostUserPipe].
   /// [path] Sets the path for the pipe source in the EGD backend.

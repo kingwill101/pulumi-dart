@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesHpt {
   /// Configures the maximum page size supported by the hypervisor for the HPT feature.
-  final pulumi.Input<String>? maxPageSize;
+  final pulumi.Input<String?>? maxPageSize;
   /// Sets the unit for the maximum page size configured for the HPT feature.
-  final pulumi.Input<String>? maxPageSizeUnit;
+  final pulumi.Input<String?>? maxPageSizeUnit;
   /// Controls whether the resizing of physical pages for the HPT feature is allowed.
-  final pulumi.Input<String>? resizing;
+  final pulumi.Input<String?>? resizing;
 
   /// Creates a new [DomainFeaturesHpt].
   /// [maxPageSize] Configures the maximum page size supported by the hypervisor for the HPT feature.

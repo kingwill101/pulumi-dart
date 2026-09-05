@@ -7,7 +7,7 @@ class DomainDevicesTpmBackendExternalSourcePipe {
   /// Sets the path for the pipe source in the EGD backend.
   final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesTpmBackendExternalSourcePipeSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesTpmBackendExternalSourcePipeSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesTpmBackendExternalSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.

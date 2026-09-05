@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceNetwork {
   /// Defines the bridge device that connects the network interface to the host's network.
-  final pulumi.Input<String>? bridge;
+  final pulumi.Input<String?>? bridge;
   /// Sets the name of the virtual network to which the network interface connects.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Configures the port group for the network interface, categorizing it within network management frameworks.
-  final pulumi.Input<String>? portGroup;
+  final pulumi.Input<String?>? portGroup;
   /// Defines the identifier for the port within the network configuration, aiding in managing network traffic.
-  final pulumi.Input<String>? portId;
+  final pulumi.Input<String?>? portId;
 
   /// Creates a new [DomainDevicesInterfaceSourceNetwork].
   /// [bridge] Defines the bridge device that connects the network interface to the host's network.

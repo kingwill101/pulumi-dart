@@ -7,13 +7,13 @@ import 'domain_launch_security_tdx.dart';
 
 class DomainLaunchSecurity {
   /// Enables protection mode for s390 virtual machines to enhance security.
-  final pulumi.Input<bool>? s390pv;
+  final pulumi.Input<bool?>? s390pv;
   /// Configures Secure Encrypted Virtualization (SEV) features for the domain.
-  final pulumi.Input<DomainLaunchSecuritySev>? sev;
+  final pulumi.Input<DomainLaunchSecuritySev?>? sev;
   /// Configures protection mode for SEV-Shared Non-Pageable (SEV-SNP) in the domain.
-  final pulumi.Input<DomainLaunchSecuritySevsnp>? sevsnp;
+  final pulumi.Input<DomainLaunchSecuritySevsnp?>? sevsnp;
   /// Configures Trusted Domain Extensions (TDX) security features for the domain.
-  final pulumi.Input<DomainLaunchSecurityTdx>? tdx;
+  final pulumi.Input<DomainLaunchSecurityTdx?>? tdx;
 
   /// Creates a new [DomainLaunchSecurity].
   /// [s390pv] Enables protection mode for s390 virtual machines to enhance security.

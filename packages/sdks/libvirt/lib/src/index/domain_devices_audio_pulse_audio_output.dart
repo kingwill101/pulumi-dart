@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_audio_pulse_audio_output_settings.dart';
 
 class DomainDevicesAudioPulseAudioOutput {
-  final pulumi.Input<double>? bufferLength;
-  final pulumi.Input<String>? fixedSettings;
+  final pulumi.Input<double?>? bufferLength;
+  final pulumi.Input<String?>? fixedSettings;
   /// Sets the output latency for the PipeWire audio device.
-  final pulumi.Input<double>? latency;
-  final pulumi.Input<String>? mixingEngine;
+  final pulumi.Input<double?>? latency;
+  final pulumi.Input<String?>? mixingEngine;
   /// Sets the name for the PipeWire audio output.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<DomainDevicesAudioPulseAudioOutputSettings>? settings;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<DomainDevicesAudioPulseAudioOutputSettings?>? settings;
   /// Sets the stream name for the PipeWire audio output.
-  final pulumi.Input<String>? streamName;
-  final pulumi.Input<double>? voices;
+  final pulumi.Input<String?>? streamName;
+  final pulumi.Input<double?>? voices;
 
   /// Creates a new [DomainDevicesAudioPulseAudioOutput].
   /// [bufferLength] Optional.
@@ -51,14 +51,14 @@ class DomainDevicesAudioPulseAudioOutput {
 
   factory DomainDevicesAudioPulseAudioOutput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioPulseAudioOutput(
-      bufferLength: (() { final guardedValue = map['bufferLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bufferLength: (() { final guardedValue = map['bufferLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       fixedSettings: (() { final guardedValue = map['fixedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      latency: (() { final guardedValue = map['latency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      latency: (() { final guardedValue = map['latency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       mixingEngine: (() { final guardedValue = map['mixingEngine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioPulseAudioOutputSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       streamName: (() { final guardedValue = map['streamName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      voices: (() { final guardedValue = map['voices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      voices: (() { final guardedValue = map['voices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

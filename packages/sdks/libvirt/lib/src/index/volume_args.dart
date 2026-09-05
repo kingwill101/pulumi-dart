@@ -10,27 +10,30 @@ import 'volume_target.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_volume_volume_args_doc}
 class VolumeArgs {
+  /// Initial volume allocation in bytes. Omit to use libvirt's default full allocation; set below capacity to request sparse allocation where supported.
+  final pulumi.Input<double?>? allocation;
   /// Specifies the units for the allocated space in the storage volume.
-  final pulumi.Input<String>? allocationUnit;
+  final pulumi.Input<String?>? allocationUnit;
   /// Backing store configuration for copy-on-write volumes
-  final pulumi.Input<VolumeBackingStore>? backingStore;
+  final pulumi.Input<VolumeBackingStore?>? backingStore;
   /// Volume capacity in bytes (required unless using create.content)
-  final pulumi.Input<double>? capacity;
+  final pulumi.Input<double?>? capacity;
   /// Specifies the units for the total capacity in the storage volume.
-  final pulumi.Input<String>? capacityUnit;
+  final pulumi.Input<String?>? capacityUnit;
   /// Volume creation options for initializing volume content from external sources
-  final pulumi.Input<VolumeCreate>? create;
+  final pulumi.Input<VolumeCreate?>? create;
   /// Sets the name for the storage volume, which must be unique within the pool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the units for the physical size in the storage volume.
-  final pulumi.Input<String>? physicalUnit;
+  final pulumi.Input<String?>? physicalUnit;
   /// Name of the storage pool where the volume will be created
   final pulumi.Input<String> pool;
-  final pulumi.Input<VolumeTarget>? target;
+  final pulumi.Input<VolumeTarget?>? target;
   /// Specifies the type of the storage volume, allowing for distinction of different volume types.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [VolumeArgs].
+  /// [allocation] Initial volume allocation in bytes. Omit to use libvirt's default full allocation; set below capacity to request sparse allocation where supported.
   /// [allocationUnit] Specifies the units for the allocated space in the storage volume.
   /// [backingStore] Backing store configuration for copy-on-write volumes
   /// [capacity] Volume capacity in bytes (required unless using create.content)
@@ -42,6 +45,7 @@ class VolumeArgs {
   /// [target] Optional.
   /// [type] Specifies the type of the storage volume, allowing for distinction of different volume types.
   const VolumeArgs({
+    this.allocation,
     this.allocationUnit,
     this.backingStore,
     this.capacity,
@@ -56,6 +60,7 @@ class VolumeArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'allocation': ?allocation,
       'allocationUnit': ?allocationUnit,
       'backingStore': ?pulumi.Input.mapOptionalInputValue<VolumeBackingStore, Map<String, dynamic>>(backingStore, (value) => value.toMap()),
       'capacity': ?capacity,
@@ -71,9 +76,10 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
+      allocation: (() { final guardedValue = map['allocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       allocationUnit: (() { final guardedValue = map['allocationUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       backingStore: (() { final guardedValue = map['backingStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeBackingStore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       capacityUnit: (() { final guardedValue = map['capacityUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       create: (() { final guardedValue = map['create']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeCreate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

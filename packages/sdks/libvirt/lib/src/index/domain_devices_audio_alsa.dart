@@ -6,9 +6,9 @@ import 'domain_devices_audio_alsa_output.dart';
 
 class DomainDevicesAudioAlsa {
   /// Configures the output settings for the ALSA audio device.
-  final pulumi.Input<DomainDevicesAudioAlsaInput>? input;
+  final pulumi.Input<DomainDevicesAudioAlsaInput?>? input;
   /// Configures the output settings for the ALSA audio device.
-  final pulumi.Input<DomainDevicesAudioAlsaOutput>? output;
+  final pulumi.Input<DomainDevicesAudioAlsaOutput?>? output;
 
   /// Creates a new [DomainDevicesAudioAlsa].
   /// [input] Configures the output settings for the ALSA audio device.

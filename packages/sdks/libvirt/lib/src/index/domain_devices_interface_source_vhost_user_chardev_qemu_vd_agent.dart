@@ -5,8 +5,8 @@ import 'domain_devices_interface_source_vhost_user_chardev_qemu_vd_agent_clip_bo
 import 'domain_devices_interface_source_vhost_user_chardev_qemu_vd_agent_mouse.dart';
 
 class DomainDevicesInterfaceSourceVhostUserChardevQemuVdAgent {
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevQemuVdAgentClipBoard>? clipBoard;
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevQemuVdAgentMouse>? mouse;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevQemuVdAgentClipBoard?>? clipBoard;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevQemuVdAgentMouse?>? mouse;
 
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevQemuVdAgent].
   /// [clipBoard] Optional.

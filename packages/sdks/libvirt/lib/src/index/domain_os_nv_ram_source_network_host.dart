@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainOsNvRamSourceNetworkHost {
   /// Defines the name of the iSCSI host for the source configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the port number for the iSCSI host connection.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
   /// Sets the socket configuration for the iSCSI host connection.
-  final pulumi.Input<String>? socket;
+  final pulumi.Input<String?>? socket;
   /// Specifies the transport method used for the iSCSI host connection.
-  final pulumi.Input<String>? transport;
+  final pulumi.Input<String?>? transport;
 
   /// Creates a new [DomainOsNvRamSourceNetworkHost].
   /// [name] Defines the name of the iSCSI host for the source configuration.

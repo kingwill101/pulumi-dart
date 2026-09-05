@@ -5,7 +5,7 @@ import 'domain_devices_disk_source_data_store_format.dart';
 
 class DomainDevicesDiskSourceDataStore {
   /// Defines the format of the data store used in the backing store source configuration.
-  final pulumi.Input<DomainDevicesDiskSourceDataStoreFormat>? format;
+  final pulumi.Input<DomainDevicesDiskSourceDataStoreFormat?>? format;
 
   /// Creates a new [DomainDevicesDiskSourceDataStore].
   /// [format] Defines the format of the data store used in the backing store source configuration.

@@ -5,7 +5,7 @@ import 'domain_devices_disk_mirror_source_data_store_format_metadata_cache_max_s
 
 class DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCache {
   /// Sets the maximum size for the metadata cache in the data store format configuration.
-  final pulumi.Input<DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheMaxSize>? maxSize;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCacheMaxSize?>? maxSize;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceDataStoreFormatMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.

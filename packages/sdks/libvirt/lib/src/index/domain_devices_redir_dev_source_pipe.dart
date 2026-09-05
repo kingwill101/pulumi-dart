@@ -7,7 +7,7 @@ class DomainDevicesRedirDevSourcePipe {
   /// Sets the path for the pipe source in the EGD backend.
   final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesRedirDevSourcePipeSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesRedirDevSourcePipeSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesRedirDevSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.

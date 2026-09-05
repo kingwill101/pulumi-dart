@@ -5,7 +5,7 @@ import 'domain_devices_disk_driver_metadata_cache_max_size.dart';
 
 class DomainDevicesDiskDriverMetadataCache {
   /// Sets the maximum size for the metadata cache in the data store format configuration.
-  final pulumi.Input<DomainDevicesDiskDriverMetadataCacheMaxSize>? maxSize;
+  final pulumi.Input<DomainDevicesDiskDriverMetadataCacheMaxSize?>? maxSize;
 
   /// Creates a new [DomainDevicesDiskDriverMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.

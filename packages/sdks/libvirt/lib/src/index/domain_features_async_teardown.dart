@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesAsyncTeardown {
   /// Enables or disables the asynchronous teardown feature, which can reduce downtime during the shutdown of the virtual machine.
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
 
   /// Creates a new [DomainFeaturesAsyncTeardown].
   /// [enabled] Enables or disables the asynchronous teardown feature, which can reduce downtime during the shutdown of the virtual machine.

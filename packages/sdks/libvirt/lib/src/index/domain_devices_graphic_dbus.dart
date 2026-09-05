@@ -5,11 +5,11 @@ import 'domain_devices_graphic_dbus_gl.dart';
 
 class DomainDevicesGraphicDbus {
   /// Configures the address for the D-Bus connection in the graphics configuration.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Sets the OpenGL settings for the D-Bus graphics configuration.
-  final pulumi.Input<DomainDevicesGraphicDbusGl>? gl;
+  final pulumi.Input<DomainDevicesGraphicDbusGl?>? gl;
   /// Enables or disables peer-to-peer memory access in D-Bus for graphics.
-  final pulumi.Input<String>? p2p;
+  final pulumi.Input<String?>? p2p;
 
   /// Creates a new [DomainDevicesGraphicDbus].
   /// [address] Configures the address for the D-Bus connection in the graphics configuration.

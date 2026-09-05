@@ -5,7 +5,7 @@ import 'domain_devices_interface_virtual_port_params.dart';
 
 class DomainDevicesInterfaceVirtualPort {
   /// Contains parameters settings for the virtual port.
-  final pulumi.Input<DomainDevicesInterfaceVirtualPortParams>? params;
+  final pulumi.Input<DomainDevicesInterfaceVirtualPortParams?>? params;
 
   /// Creates a new [DomainDevicesInterfaceVirtualPort].
   /// [params] Contains parameters settings for the virtual port.

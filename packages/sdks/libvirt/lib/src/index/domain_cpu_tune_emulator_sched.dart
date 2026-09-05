@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuTuneEmulatorSched {
   /// Sets the priority level for the emulator's scheduling, influencing its responsiveness relative to other processes.
-  final pulumi.Input<double>? priority;
+  final pulumi.Input<double?>? priority;
   /// Specifies the scheduler type for the emulator, determining how tasks are scheduled and executed on CPUs.
-  final pulumi.Input<String>? scheduler;
+  final pulumi.Input<String?>? scheduler;
 
   /// Creates a new [DomainCpuTuneEmulatorSched].
   /// [priority] Sets the priority level for the emulator's scheduling, influencing its responsiveness relative to other processes.
@@ -25,7 +25,7 @@ class DomainCpuTuneEmulatorSched {
 
   factory DomainCpuTuneEmulatorSched.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneEmulatorSched(
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       scheduler: (() { final guardedValue = map['scheduler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

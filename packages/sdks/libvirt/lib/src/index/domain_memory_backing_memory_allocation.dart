@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainMemoryBackingMemoryAllocation {
   /// Sets the mode of memory allocation, determining if it is static, dynamic, or configured otherwise.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Specifies the number of threads allocated for managing memory allocation tasks in the domain.
-  final pulumi.Input<double>? threads;
+  final pulumi.Input<double?>? threads;
 
   /// Creates a new [DomainMemoryBackingMemoryAllocation].
   /// [mode] Sets the mode of memory allocation, determining if it is static, dynamic, or configured otherwise.
@@ -26,7 +26,7 @@ class DomainMemoryBackingMemoryAllocation {
   factory DomainMemoryBackingMemoryAllocation.fromMap(Map<String, dynamic> map) {
     return DomainMemoryBackingMemoryAllocation(
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      threads: (() { final guardedValue = map['threads']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      threads: (() { final guardedValue = map['threads']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

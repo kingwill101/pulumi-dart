@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesHyperVSynic {
   /// Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [DomainFeaturesHyperVSynic].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.

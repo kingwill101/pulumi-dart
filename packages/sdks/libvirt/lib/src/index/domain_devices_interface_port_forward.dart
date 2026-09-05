@@ -5,13 +5,13 @@ import 'domain_devices_interface_port_forward_range.dart';
 
 class DomainDevicesInterfacePortForward {
   /// Specifies the address to which packets are forwarded.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Sets the device associated with the port forwarding configuration.
-  final pulumi.Input<String>? dev;
+  final pulumi.Input<String?>? dev;
   /// Configures the protocol used for port forwarding (e.g., TCP or UDP).
   final pulumi.Input<String> proto;
   /// Defines the range of ports to be forwarded.
-  final pulumi.Input<List<DomainDevicesInterfacePortForwardRange>>? ranges;
+  final pulumi.Input<List<DomainDevicesInterfacePortForwardRange>?>? ranges;
 
   /// Creates a new [DomainDevicesInterfacePortForward].
   /// [address] Specifies the address to which packets are forwarded.

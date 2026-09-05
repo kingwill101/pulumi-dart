@@ -7,11 +7,11 @@ import 'domain_devices_channel_target_xen.dart';
 
 class DomainDevicesChannelTarget {
   /// This field configures the guest forwarding settings for the channel target.
-  final pulumi.Input<DomainDevicesChannelTargetGuestFwd>? guestFwd;
+  final pulumi.Input<DomainDevicesChannelTargetGuestFwd?>? guestFwd;
   /// This field defines the target configuration for the VirtIO channel.
-  final pulumi.Input<DomainDevicesChannelTargetVirtIo>? virtIo;
+  final pulumi.Input<DomainDevicesChannelTargetVirtIo?>? virtIo;
   /// This field specifies the channel target configuration for Xen.
-  final pulumi.Input<DomainDevicesChannelTargetXen>? xen;
+  final pulumi.Input<DomainDevicesChannelTargetXen?>? xen;
 
   /// Creates a new [DomainDevicesChannelTarget].
   /// [guestFwd] This field configures the guest forwarding settings for the channel target.

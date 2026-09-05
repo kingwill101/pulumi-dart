@@ -5,7 +5,7 @@ import 'domain_sys_info_fw_cfg_entry.dart';
 
 class DomainSysInfoFwCfg {
   /// Sets individual entries for the firmware configuration.
-  final pulumi.Input<List<DomainSysInfoFwCfgEntry>>? entries;
+  final pulumi.Input<List<DomainSysInfoFwCfgEntry>?>? entries;
 
   /// Creates a new [DomainSysInfoFwCfg].
   /// [entries] Sets individual entries for the firmware configuration.

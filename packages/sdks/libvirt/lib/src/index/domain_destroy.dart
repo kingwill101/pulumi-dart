@@ -5,9 +5,9 @@ import 'domain_destroy_shutdown.dart';
 
 class DomainDestroy {
   /// Experimental: request graceful behavior when using DomainDestroyFlags during domain stop. Subject to change in future releases.
-  final pulumi.Input<bool>? graceful;
+  final pulumi.Input<bool?>? graceful;
   /// Experimental: request a guest shutdown and wait for shutoff before undefine. Subject to change in future releases.
-  final pulumi.Input<DomainDestroyShutdown>? shutdown;
+  final pulumi.Input<DomainDestroyShutdown?>? shutdown;
 
   /// Creates a new [DomainDestroy].
   /// [graceful] Experimental: request graceful behavior when using DomainDestroyFlags during domain stop. Subject to change in future releases.

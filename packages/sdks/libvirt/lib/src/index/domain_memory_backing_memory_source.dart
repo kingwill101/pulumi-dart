@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainMemoryBackingMemorySource {
   /// Sets the type of the memory source, determining how the memory backing is fetched.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DomainMemoryBackingMemorySource].
   /// [type] Sets the type of the memory source, determining how the memory backing is fetched.

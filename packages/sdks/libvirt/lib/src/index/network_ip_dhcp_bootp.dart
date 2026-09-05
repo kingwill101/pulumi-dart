@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkIpDhcpBootp {
   /// Specifies a file used for BOOTP configurations.
-  final pulumi.Input<String>? file;
+  final pulumi.Input<String?>? file;
   /// Sets the server address for the BOOTP configuration.
-  final pulumi.Input<String>? server;
+  final pulumi.Input<String?>? server;
 
   /// Creates a new [NetworkIpDhcpBootp].
   /// [file] Specifies a file used for BOOTP configurations.

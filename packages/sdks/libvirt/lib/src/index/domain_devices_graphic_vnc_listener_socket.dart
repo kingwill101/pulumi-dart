@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicVncListenerSocket {
   /// Defines the socket's attributes for listener configurations in the Spice protocol.
-  final pulumi.Input<String>? socket;
+  final pulumi.Input<String?>? socket;
 
   /// Creates a new [DomainDevicesGraphicVncListenerSocket].
   /// [socket] Defines the socket's attributes for listener configurations in the Spice protocol.

@@ -5,7 +5,7 @@ import 'domain_qemu_override_device_frontend_property.dart';
 
 class DomainQemuOverrideDeviceFrontend {
   /// Lists individual QEMU frontend properties to override on the selected device.
-  final pulumi.Input<List<DomainQemuOverrideDeviceFrontendProperty>>? properties;
+  final pulumi.Input<List<DomainQemuOverrideDeviceFrontendProperty>?>? properties;
 
   /// Creates a new [DomainQemuOverrideDeviceFrontend].
   /// [properties] Lists individual QEMU frontend properties to override on the selected device.

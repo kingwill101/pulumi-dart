@@ -5,7 +5,7 @@ import 'domain_devices_disk_source_network_initiator_iqn.dart';
 
 class DomainDevicesDiskSourceNetworkInitiator {
   /// Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.
-  final pulumi.Input<DomainDevicesDiskSourceNetworkInitiatorIqn>? iqn;
+  final pulumi.Input<DomainDevicesDiskSourceNetworkInitiatorIqn?>? iqn;
 
   /// Creates a new [DomainDevicesDiskSourceNetworkInitiator].
   /// [iqn] Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.

@@ -5,7 +5,7 @@ import 'network_dns_host_hostname.dart';
 
 class NetworkDnsHost {
   /// Configures the hostname settings for DNS, specifying how hosts within the network are identified.
-  final pulumi.Input<List<NetworkDnsHostHostname>>? hostnames;
+  final pulumi.Input<List<NetworkDnsHostHostname>?>? hostnames;
   /// Sets the IP address of the host for DNS resolution.
   final pulumi.Input<String> ip;
 

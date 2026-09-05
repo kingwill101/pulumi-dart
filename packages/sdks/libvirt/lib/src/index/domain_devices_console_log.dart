@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesConsoleLog {
   /// Indicates whether to append log data to the existing log file.
-  final pulumi.Input<String>? append;
+  final pulumi.Input<String?>? append;
   /// Defines the file path where channel logs will be written.
   final pulumi.Input<String> file;
 

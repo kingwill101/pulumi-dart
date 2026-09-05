@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicVncListenerAddress {
   /// Sets the actual network address where the Spice listener will accept connections.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
 
   /// Creates a new [DomainDevicesGraphicVncListenerAddress].
   /// [address] Sets the actual network address where the Spice listener will accept connections.

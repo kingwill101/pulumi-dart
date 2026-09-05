@@ -5,7 +5,7 @@ import 'domain_devices_disk_mirror_backing_store_source_network_initiator_iqn.da
 
 class DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiator {
   /// Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqn>? iqn;
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqn?>? iqn;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiator].
   /// [iqn] Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.

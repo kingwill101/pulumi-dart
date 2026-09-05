@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceDriverGuest {
   /// Enables or disables checksum offloading for the guest driver, optimizing how checksums are handled for network traffic.
-  final pulumi.Input<String>? csum;
+  final pulumi.Input<String?>? csum;
   /// Configures Explicit Congestion Notification (ECN) support for the guest driver, influencing traffic management strategies.
-  final pulumi.Input<String>? ecn;
+  final pulumi.Input<String?>? ecn;
   /// Controls TCP Segmentation Offloading (TSO) for IPv4 in the guest driver, enhancing network performance by offloading packet segmentation.
-  final pulumi.Input<String>? tso4;
+  final pulumi.Input<String?>? tso4;
   /// Controls TCP Segmentation Offloading (TSO) for IPv6 in the guest driver, enhancing network performance by offloading packet segmentation.
-  final pulumi.Input<String>? tso6;
+  final pulumi.Input<String?>? tso6;
   /// Enables or disables UDP Fragmentation Offloading (UFO) for the guest driver, optimizing the handling of UDP packets.
-  final pulumi.Input<String>? ufo;
+  final pulumi.Input<String?>? ufo;
 
   /// Creates a new [DomainDevicesInterfaceDriverGuest].
   /// [csum] Enables or disables checksum offloading for the guest driver, optimizing how checksums are handled for network traffic.

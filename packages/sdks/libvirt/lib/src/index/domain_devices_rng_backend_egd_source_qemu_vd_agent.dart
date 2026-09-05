@@ -5,8 +5,8 @@ import 'domain_devices_rng_backend_egd_source_qemu_vd_agent_clip_board.dart';
 import 'domain_devices_rng_backend_egd_source_qemu_vd_agent_mouse.dart';
 
 class DomainDevicesRngBackendEgdSourceQemuVdAgent {
-  final pulumi.Input<DomainDevicesRngBackendEgdSourceQemuVdAgentClipBoard>? clipBoard;
-  final pulumi.Input<DomainDevicesRngBackendEgdSourceQemuVdAgentMouse>? mouse;
+  final pulumi.Input<DomainDevicesRngBackendEgdSourceQemuVdAgentClipBoard?>? clipBoard;
+  final pulumi.Input<DomainDevicesRngBackendEgdSourceQemuVdAgentMouse?>? mouse;
 
   /// Creates a new [DomainDevicesRngBackendEgdSourceQemuVdAgent].
   /// [clipBoard] Optional.

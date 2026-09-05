@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesShmemMsi {
   /// Enables or disables MSI for the shared memory device, controlling interrupt generation.
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
   /// Configures the IO event file descriptor for MSI handling in the shared memory device.
-  final pulumi.Input<String>? ioEventFd;
+  final pulumi.Input<String?>? ioEventFd;
   /// Sets the number of IRQ vectors available for the MSI configuration of the shared memory device.
-  final pulumi.Input<double>? vectors;
+  final pulumi.Input<double?>? vectors;
 
   /// Creates a new [DomainDevicesShmemMsi].
   /// [enabled] Enables or disables MSI for the shared memory device, controlling interrupt generation.
@@ -32,7 +32,7 @@ class DomainDevicesShmemMsi {
     return DomainDevicesShmemMsi(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ioEventFd: (() { final guardedValue = map['ioEventFd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vectors: (() { final guardedValue = map['vectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      vectors: (() { final guardedValue = map['vectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

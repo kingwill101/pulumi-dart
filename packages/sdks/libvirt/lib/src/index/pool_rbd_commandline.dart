@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pool_rbd_commandline_option.dart';
 
 class PoolRbdCommandline {
-  final pulumi.Input<List<PoolRbdCommandlineOption>>? options;
+  final pulumi.Input<List<PoolRbdCommandlineOption>?>? options;
 
   /// Creates a new [PoolRbdCommandline].
   /// [options] Optional.

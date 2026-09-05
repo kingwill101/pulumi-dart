@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_disk_source_block.dart';
 import 'domain_devices_disk_source_cookies.dart';
+import 'domain_devices_disk_source_ctl.dart';
 import 'domain_devices_disk_source_data_store.dart';
 import 'domain_devices_disk_source_dir.dart';
 import 'domain_devices_disk_source_encryption.dart';
@@ -19,45 +20,47 @@ import 'domain_devices_disk_source_volume.dart';
 
 class DomainDevicesDiskSource {
   /// Configures the source block for the backing store, indicating its role within the mirroring setup.
-  final pulumi.Input<DomainDevicesDiskSourceBlock>? block;
+  final pulumi.Input<DomainDevicesDiskSourceBlock?>? block;
   /// Configures settings related to cookie management for the backing store source.
-  final pulumi.Input<DomainDevicesDiskSourceCookies>? cookies;
+  final pulumi.Input<DomainDevicesDiskSourceCookies?>? cookies;
+  final pulumi.Input<DomainDevicesDiskSourceCtl?>? ctl;
   /// Configures the data store for the backing store, specifying the storage location.
-  final pulumi.Input<DomainDevicesDiskSourceDataStore>? dataStore;
+  final pulumi.Input<DomainDevicesDiskSourceDataStore?>? dataStore;
   /// Configures the directory for the backing store source, indicating its physical location.
-  final pulumi.Input<DomainDevicesDiskSourceDir>? dir;
+  final pulumi.Input<DomainDevicesDiskSourceDir?>? dir;
   /// Configures encryption settings for the disk, enhancing data security.
-  final pulumi.Input<DomainDevicesDiskSourceEncryption>? encryption;
+  final pulumi.Input<DomainDevicesDiskSourceEncryption?>? encryption;
   /// Configures file-specific settings for the backing store source, managing its file access.
-  final pulumi.Input<DomainDevicesDiskSourceFile>? file;
+  final pulumi.Input<DomainDevicesDiskSourceFile?>? file;
   /// Configures the index for the backing store source configuration, indicating its order.
-  final pulumi.Input<double>? index;
+  final pulumi.Input<double?>? index;
   /// Configures network-specific settings for the backing store source, facilitating network access.
-  final pulumi.Input<DomainDevicesDiskSourceNetwork>? network;
+  final pulumi.Input<DomainDevicesDiskSourceNetwork?>? network;
   /// Configures NVMe settings for accessing network storage, enabling optimized performance.
-  final pulumi.Input<Map<String, dynamic>>? nvme;
+  final pulumi.Input<Map<String, dynamic>?>? nvme;
   /// Sets the readahead configuration, optimizing I/O performance for network block devices.
-  final pulumi.Input<DomainDevicesDiskSourceReadahead>? readahead;
+  final pulumi.Input<DomainDevicesDiskSourceReadahead?>? readahead;
   /// Defines reservations settings for network storage sources, enabling resource management.
-  final pulumi.Input<DomainDevicesDiskSourceReservations>? reservations;
+  final pulumi.Input<DomainDevicesDiskSourceReservations?>? reservations;
   /// Configures slices for the mirror source device.
-  final pulumi.Input<DomainDevicesDiskSourceSlices>? slices;
+  final pulumi.Input<DomainDevicesDiskSourceSlices?>? slices;
   /// Configures SSL settings for the backing store source in disk mirroring.
-  final pulumi.Input<DomainDevicesDiskSourceSsl>? ssl;
+  final pulumi.Input<DomainDevicesDiskSourceSsl?>? ssl;
   /// Sets the startup policy for the backing store source in disk mirroring.
-  final pulumi.Input<String>? startupPolicy;
+  final pulumi.Input<String?>? startupPolicy;
   /// Configures the timeout settings for the backing store source in disk mirroring.
-  final pulumi.Input<DomainDevicesDiskSourceTimeout>? timeout;
+  final pulumi.Input<DomainDevicesDiskSourceTimeout?>? timeout;
   /// Configures VHostUser settings for the backing store source in disk mirroring.
-  final pulumi.Input<DomainDevicesDiskSourceVhostUser>? vhostUser;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUser?>? vhostUser;
   /// Configures the VHostVDPA settings for the source backing store.
-  final pulumi.Input<DomainDevicesDiskSourceVhostVdpa>? vhostVdpa;
+  final pulumi.Input<DomainDevicesDiskSourceVhostVdpa?>? vhostVdpa;
   /// Configures the source volume settings for the mirror backing store.
-  final pulumi.Input<DomainDevicesDiskSourceVolume>? volume;
+  final pulumi.Input<DomainDevicesDiskSourceVolume?>? volume;
 
   /// Creates a new [DomainDevicesDiskSource].
   /// [block] Configures the source block for the backing store, indicating its role within the mirroring setup.
   /// [cookies] Configures settings related to cookie management for the backing store source.
+  /// [ctl] Optional.
   /// [dataStore] Configures the data store for the backing store, specifying the storage location.
   /// [dir] Configures the directory for the backing store source, indicating its physical location.
   /// [encryption] Configures encryption settings for the disk, enhancing data security.
@@ -77,6 +80,7 @@ class DomainDevicesDiskSource {
   const DomainDevicesDiskSource({
     this.block,
     this.cookies,
+    this.ctl,
     this.dataStore,
     this.dir,
     this.encryption,
@@ -99,6 +103,7 @@ class DomainDevicesDiskSource {
     return <String, dynamic>{
       'block': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskSourceBlock, Map<String, dynamic>>(block, (value) => value.toMap()),
       'cookies': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskSourceCookies, Map<String, dynamic>>(cookies, (value) => value.toMap()),
+      'ctl': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskSourceCtl, Map<String, dynamic>>(ctl, (value) => value.toMap()),
       'dataStore': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskSourceDataStore, Map<String, dynamic>>(dataStore, (value) => value.toMap()),
       'dir': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskSourceDir, Map<String, dynamic>>(dir, (value) => value.toMap()),
       'encryption': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskSourceEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
@@ -122,11 +127,12 @@ class DomainDevicesDiskSource {
     return DomainDevicesDiskSource(
       block: (() { final guardedValue = map['block']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskSourceBlock.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cookies: (() { final guardedValue = map['cookies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskSourceCookies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      ctl: (() { final guardedValue = map['ctl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskSourceCtl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataStore: (() { final guardedValue = map['dataStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskSourceDataStore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dir: (() { final guardedValue = map['dir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskSourceDir.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskSourceEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskSourceFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskSourceNetwork.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nvme: (() { final guardedValue = map['nvme']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       readahead: (() { final guardedValue = map['readahead']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskSourceReadahead.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

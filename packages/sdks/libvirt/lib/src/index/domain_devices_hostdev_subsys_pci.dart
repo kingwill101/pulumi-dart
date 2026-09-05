@@ -7,15 +7,15 @@ import 'domain_devices_hostdev_subsys_pci_teaming.dart';
 
 class DomainDevicesHostdevSubsysPci {
   /// Sets the display attributes for the PCI subsystem device.
-  final pulumi.Input<String>? display;
+  final pulumi.Input<String?>? display;
   /// Defines the driver configuration for the PCI subsystem device.
-  final pulumi.Input<DomainDevicesHostdevSubsysPciDriver>? driver;
+  final pulumi.Input<DomainDevicesHostdevSubsysPciDriver?>? driver;
   /// Configures the use of framebuffer memory for the PCI device.
-  final pulumi.Input<String>? ramFb;
+  final pulumi.Input<String?>? ramFb;
   /// Specifies the source configuration for the PCI device being passed through.
-  final pulumi.Input<DomainDevicesHostdevSubsysPciSource>? source;
+  final pulumi.Input<DomainDevicesHostdevSubsysPciSource?>? source;
   /// Configures the teaming settings for the PCI device.
-  final pulumi.Input<DomainDevicesHostdevSubsysPciTeaming>? teaming;
+  final pulumi.Input<DomainDevicesHostdevSubsysPciTeaming?>? teaming;
 
   /// Creates a new [DomainDevicesHostdevSubsysPci].
   /// [display] Sets the display attributes for the PCI subsystem device.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainOsNvRamSourceDir {
   /// Defines the specific directory path for the backing store source configuration.
-  final pulumi.Input<String>? dir;
+  final pulumi.Input<String?>? dir;
 
   /// Creates a new [DomainOsNvRamSourceDir].
   /// [dir] Defines the specific directory path for the backing store source configuration.

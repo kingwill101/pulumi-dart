@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesXenPassthrough {
   /// Sets the mode of the passthrough feature, which affects how devices are exposed to the guest.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Configures the state of the passthrough feature, indicating its activation status.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [DomainFeaturesXenPassthrough].
   /// [mode] Sets the mode of the passthrough feature, which affects how devices are exposed to the guest.

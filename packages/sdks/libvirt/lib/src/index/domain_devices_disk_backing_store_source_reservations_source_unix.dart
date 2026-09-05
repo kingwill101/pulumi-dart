@@ -6,13 +6,13 @@ import 'domain_devices_disk_backing_store_source_reservations_source_unix_sec_la
 
 class DomainDevicesDiskBackingStoreSourceReservationsSourceUnix {
   /// Sets the mode attribute for the UNIX domain socket in the random number generator backend.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Specifies the path to the UNIX domain socket for connection.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Configures reconnect settings for the UNIX domain socket in the backend.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceUnixReconnect>? reconnect;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceReservationsSourceUnixReconnect?>? reconnect;
   /// Configures the security label for the UNIX domain socket.
-  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceReservationsSourceUnixSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceReservationsSourceUnixSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReservationsSourceUnix].
   /// [mode] Sets the mode attribute for the UNIX domain socket in the random number generator backend.

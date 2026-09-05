@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceVirtualPortParamsAny {
   /// Sets the instance ID for the virtual port parameter.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Specifies the interface ID for the virtual port parameter.
-  final pulumi.Input<String>? interfaceId;
+  final pulumi.Input<String?>? interfaceId;
   /// Identifies the manager ID associated with the virtual port parameter.
-  final pulumi.Input<double>? managerId;
+  final pulumi.Input<double?>? managerId;
   /// Sets the profile ID for the virtual port parameter.
-  final pulumi.Input<String>? profileId;
+  final pulumi.Input<String?>? profileId;
   /// Specifies the type ID for the virtual port parameter.
-  final pulumi.Input<double>? typeId;
+  final pulumi.Input<double?>? typeId;
   /// Indicates the version of the type ID for the virtual port parameter.
-  final pulumi.Input<double>? typeIdVersion;
+  final pulumi.Input<double?>? typeIdVersion;
 
   /// Creates a new [DomainDevicesInterfaceVirtualPortParamsAny].
   /// [instanceId] Sets the instance ID for the virtual port parameter.
@@ -47,10 +47,10 @@ class DomainDevicesInterfaceVirtualPortParamsAny {
     return DomainDevicesInterfaceVirtualPortParamsAny(
       instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       interfaceId: (() { final guardedValue = map['interfaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      managerId: (() { final guardedValue = map['managerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      managerId: (() { final guardedValue = map['managerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       profileId: (() { final guardedValue = map['profileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      typeId: (() { final guardedValue = map['typeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      typeIdVersion: (() { final guardedValue = map['typeIdVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      typeId: (() { final guardedValue = map['typeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      typeIdVersion: (() { final guardedValue = map['typeIdVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -2,6 +2,10 @@
 
 All notable changes to this package will be documented in this file.
 
+## 0.9.9+1
+
+- Regenerate the Dart SDK from upstream provider schema.
+
 ## 0.9.8+1
 
 - Add provider documentation and a runnable example.

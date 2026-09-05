@@ -5,9 +5,9 @@ import 'domain_devices_hostdev_subsys_scsi_host_source.dart';
 
 class DomainDevicesHostdevSubsysScsiHost {
   /// Sets the model attribute for the SCSI host device.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Specifies the source configuration for the SCSI host device.
-  final pulumi.Input<DomainDevicesHostdevSubsysScsiHostSource>? source;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiHostSource?>? source;
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiHost].
   /// [model] Sets the model attribute for the SCSI host device.

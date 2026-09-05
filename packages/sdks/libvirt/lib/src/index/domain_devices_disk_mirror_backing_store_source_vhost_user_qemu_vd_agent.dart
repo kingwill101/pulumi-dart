@@ -5,8 +5,8 @@ import 'domain_devices_disk_mirror_backing_store_source_vhost_user_qemu_vd_agent
 import 'domain_devices_disk_mirror_backing_store_source_vhost_user_qemu_vd_agent_mouse.dart';
 
 class DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuVdAgent {
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuVdAgentClipBoard>? clipBoard;
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuVdAgentMouse>? mouse;
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuVdAgentClipBoard?>? clipBoard;
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuVdAgentMouse?>? mouse;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceVhostUserQemuVdAgent].
   /// [clipBoard] Optional.

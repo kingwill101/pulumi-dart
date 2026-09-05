@@ -5,11 +5,11 @@ import 'domain_os_nv_ram_source_encryption_secret.dart';
 
 class DomainOsNvRamSourceEncryption {
   /// Specifies the encryption engine utilized for encrypting the disk.
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// Configures the format of the encrypted disk storage, determining how the data is stored and accessed.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// Specifies the secrets used for encryption, which can include various elements needed for accessing encrypted data.
-  final pulumi.Input<List<DomainOsNvRamSourceEncryptionSecret>>? secrets;
+  final pulumi.Input<List<DomainOsNvRamSourceEncryptionSecret>?>? secrets;
 
   /// Creates a new [DomainOsNvRamSourceEncryption].
   /// [engine] Specifies the encryption engine utilized for encrypting the disk.

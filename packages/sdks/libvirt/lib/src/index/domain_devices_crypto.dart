@@ -6,15 +6,15 @@ import 'domain_devices_crypto_backend.dart';
 
 class DomainDevicesCrypto {
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesCryptoAlias>? alias;
+  final pulumi.Input<DomainDevicesCryptoAlias?>? alias;
   /// Sets the backend configuration for the crypto device.
-  final pulumi.Input<DomainDevicesCryptoBackend>? backend;
+  final pulumi.Input<DomainDevicesCryptoBackend?>? backend;
   /// Specifies the model type for the crypto device.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Sets the type attribute for the crypto device.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DomainDevicesCrypto].
   /// [address] Specifies the memory address for the persistent storage device in the guest's address space.

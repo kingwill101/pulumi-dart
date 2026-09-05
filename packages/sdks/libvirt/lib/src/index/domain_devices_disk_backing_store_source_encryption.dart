@@ -5,11 +5,11 @@ import 'domain_devices_disk_backing_store_source_encryption_secret.dart';
 
 class DomainDevicesDiskBackingStoreSourceEncryption {
   /// Specifies the encryption engine utilized for encrypting the disk.
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// Configures the format of the encrypted disk storage, determining how the data is stored and accessed.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// Specifies the secrets used for encryption, which can include various elements needed for accessing encrypted data.
-  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceEncryptionSecret>>? secrets;
+  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceEncryptionSecret>?>? secrets;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceEncryption].
   /// [engine] Specifies the encryption engine utilized for encrypting the disk.

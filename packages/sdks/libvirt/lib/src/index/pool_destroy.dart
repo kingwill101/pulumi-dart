@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolDestroy {
   /// Experimental: whether to run StoragePoolDelete on destroy. If unset, provider default behavior applies. Subject to change.
-  final pulumi.Input<bool>? delete;
+  final pulumi.Input<bool?>? delete;
 
   /// Creates a new [PoolDestroy].
   /// [delete] Experimental: whether to run StoragePoolDelete on destroy. If unset, provider default behavior applies. Subject to change.

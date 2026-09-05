@@ -8,21 +8,21 @@ import 'domain_devices_mem_balloon_stats.dart';
 
 class DomainDevicesMemBalloon {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesMemBalloonAcpi>? acpi;
+  final pulumi.Input<DomainDevicesMemBalloonAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesMemBalloonAlias>? alias;
+  final pulumi.Input<DomainDevicesMemBalloonAlias?>? alias;
   /// Configures automatic deflation of the memory balloon device when memory is freed.
-  final pulumi.Input<String>? autoDeflate;
+  final pulumi.Input<String?>? autoDeflate;
   /// Specifies the driver configuration used for the memory balloon device, determining its operational parameters.
-  final pulumi.Input<DomainDevicesMemBalloonDriver>? driver;
+  final pulumi.Input<DomainDevicesMemBalloonDriver?>? driver;
   /// Enables reporting of free pages by the memory balloon device, assisting with memory management.
-  final pulumi.Input<String>? freePageReporting;
+  final pulumi.Input<String?>? freePageReporting;
   /// Sets the model for the memory balloon device, determining its specific implementation details.
   final pulumi.Input<String> model;
   /// Configures statistics collection for the memory balloon device, enabling performance monitoring.
-  final pulumi.Input<DomainDevicesMemBalloonStats>? stats;
+  final pulumi.Input<DomainDevicesMemBalloonStats?>? stats;
 
   /// Creates a new [DomainDevicesMemBalloon].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

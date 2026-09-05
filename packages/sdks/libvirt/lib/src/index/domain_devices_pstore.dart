@@ -6,11 +6,11 @@ import 'domain_devices_pstore_alias.dart';
 
 class DomainDevicesPstore {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesPstoreAcpi>? acpi;
+  final pulumi.Input<DomainDevicesPstoreAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesPstoreAlias>? alias;
+  final pulumi.Input<DomainDevicesPstoreAlias?>? alias;
   /// Defines the backend type of the persistent storage device, determining its underlying implementation.
   final pulumi.Input<String> backend;
   /// Specifies the file path for where the persistent store data will be written on the host.
@@ -18,7 +18,7 @@ class DomainDevicesPstore {
   /// Configures the size of the persistent storage device, determining its capacity for storing logs and states.
   final pulumi.Input<double> size;
   /// Sets the unit of measurement for the size of the persistent storage device, indicating its size metric.
-  final pulumi.Input<String>? sizeUnit;
+  final pulumi.Input<String?>? sizeUnit;
 
   /// Creates a new [DomainDevicesPstore].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
@@ -57,7 +57,7 @@ class DomainDevicesPstore {
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesPstoreAlias.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       backend: pulumi.Input.fromValue(map['backend'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
-      size: pulumi.Input.fromValue(map['size'] as double),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
       sizeUnit: (() { final guardedValue = map['sizeUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -7,13 +7,13 @@ import 'pool_target_timestamps.dart';
 
 class PoolTarget {
   /// Configures the encryption settings for the storage volume.
-  final pulumi.Input<PoolTargetEncryption>? encryption;
+  final pulumi.Input<PoolTargetEncryption?>? encryption;
   /// Defines the path in the host filesystem where the storage pool is mapped.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Configures the permissions for the storage pool target.
-  final pulumi.Input<PoolTargetPermissions>? permissions;
+  final pulumi.Input<PoolTargetPermissions?>? permissions;
   /// Sets the timestamp attributes for the storage pool target.
-  final pulumi.Input<PoolTargetTimestamps>? timestamps;
+  final pulumi.Input<PoolTargetTimestamps?>? timestamps;
 
   /// Creates a new [PoolTarget].
   /// [encryption] Configures the encryption settings for the storage volume.

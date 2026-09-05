@@ -10,7 +10,7 @@ class CombustionArgs {
   /// Combustion script content (shell script)
   final pulumi.Input<String> content;
   /// Name for this combustion resource
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CombustionArgs].
   /// [content] Combustion script content (shell script)

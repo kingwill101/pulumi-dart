@@ -10,7 +10,7 @@ class IgnitionArgs {
   /// Ignition configuration content (JSON)
   final pulumi.Input<String> content;
   /// Name for this ignition resource
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [IgnitionArgs].
   /// [content] Ignition configuration content (JSON)

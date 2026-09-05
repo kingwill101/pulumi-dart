@@ -6,11 +6,11 @@ import 'network_bandwidth_outbound.dart';
 
 class NetworkBandwidth {
   /// Sets the class identifier for the bandwidth configuration, categorizing the type of bandwidth used for the network.
-  final pulumi.Input<double>? classId;
+  final pulumi.Input<double?>? classId;
   /// Configures the settings for outbound bandwidth, controlling the data flow sent by the network.
-  final pulumi.Input<NetworkBandwidthInbound>? inbound;
+  final pulumi.Input<NetworkBandwidthInbound?>? inbound;
   /// Configures the settings for outbound bandwidth, controlling the data flow sent by the network.
-  final pulumi.Input<NetworkBandwidthOutbound>? outbound;
+  final pulumi.Input<NetworkBandwidthOutbound?>? outbound;
 
   /// Creates a new [NetworkBandwidth].
   /// [classId] Sets the class identifier for the bandwidth configuration, categorizing the type of bandwidth used for the network.
@@ -32,7 +32,7 @@ class NetworkBandwidth {
 
   factory NetworkBandwidth.fromMap(Map<String, dynamic> map) {
     return NetworkBandwidth(
-      classId: (() { final guardedValue = map['classId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      classId: (() { final guardedValue = map['classId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       inbound: (() { final guardedValue = map['inbound']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkBandwidthInbound.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       outbound: (() { final guardedValue = map['outbound']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkBandwidthOutbound.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

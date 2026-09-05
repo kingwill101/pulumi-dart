@@ -15,34 +15,34 @@ import 'domain_devices_disk_source_vhost_user_unix.dart';
 
 class DomainDevicesDiskSourceVhostUser {
   /// Configures the DBus source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskSourceVhostUserDbus>? dbus;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUserDbus?>? dbus;
   /// Defines the device path for the source of the EGD backend.
-  final pulumi.Input<DomainDevicesDiskSourceVhostUserDev>? dev;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUserDev?>? dev;
   /// Defines a file source for the RNG EGD backend.
-  final pulumi.Input<DomainDevicesDiskSourceVhostUserFile>? file;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUserFile?>? file;
   /// Configures the NMDM (null modem) device source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskSourceVhostUserNmdm>? nmdm;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUserNmdm?>? nmdm;
   /// Configures a null device type in the VHostUser source configuration for the mirrored disk.
-  final pulumi.Input<bool>? null_;
+  final pulumi.Input<bool?>? null_;
   /// Defines a pipe source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskSourceVhostUserPipe>? pipe;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUserPipe?>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskSourceVhostUserPty>? pty;
-  final pulumi.Input<DomainDevicesDiskSourceVhostUserQemuVdAgent>? qemuVdAgent;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUserPty?>? pty;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUserQemuVdAgent?>? qemuVdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskSourceVhostUserSpicePort>? spicePort;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUserSpicePort?>? spicePort;
   /// Configures the Spice VMC settings in the VHostUser source configuration for the mirrored disk.
-  final pulumi.Input<bool>? spiceVmc;
+  final pulumi.Input<bool?>? spiceVmc;
   /// Configures standard I/O settings for the VHostUser interface associated with the mirrored disk.
-  final pulumi.Input<bool>? stdIo;
+  final pulumi.Input<bool?>? stdIo;
   /// Configures TCP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskSourceVhostUserTcp>? tcp;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUserTcp?>? tcp;
   /// Configures UDP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskSourceVhostUserUdp>? udp;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUserUdp?>? udp;
   /// Configures UNIX domain socket settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskSourceVhostUserUnix>? unix;
+  final pulumi.Input<DomainDevicesDiskSourceVhostUserUnix?>? unix;
   /// Configures the VHostUser virtual channel settings for the source backing store.
-  final pulumi.Input<bool>? vc;
+  final pulumi.Input<bool?>? vc;
 
   /// Creates a new [DomainDevicesDiskSourceVhostUser].
   /// [dbus] Configures the DBus source for the EGD backend.

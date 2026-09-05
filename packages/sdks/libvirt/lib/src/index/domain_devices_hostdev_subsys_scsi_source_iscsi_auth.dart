@@ -5,9 +5,9 @@ import 'domain_devices_hostdev_subsys_scsi_source_iscsi_auth_secret.dart';
 
 class DomainDevicesHostdevSubsysScsiSourceIscsiAuth {
   /// Specifies the secret used for authenticating the iSCSI connection.
-  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret>? secret;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret?>? secret;
   /// Sets the username for iSCSI authentication.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiSourceIscsiAuth].
   /// [secret] Specifies the secret used for authenticating the iSCSI connection.
