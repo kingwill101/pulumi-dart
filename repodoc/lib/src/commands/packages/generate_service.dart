@@ -275,6 +275,11 @@ void prependChangelogRelease(
   required String previous,
 }) {
   final firstRelease = RegExp(r'^## ', multiLine: true).firstMatch(previous);
+  if (firstRelease != null &&
+      previous.startsWith('## $version', firstRelease.start)) {
+    changelog.writeAsStringSync(previous);
+    return;
+  }
   final history = firstRelease == null
       ? previous.trim()
       : previous.substring(firstRelease.start).trim();

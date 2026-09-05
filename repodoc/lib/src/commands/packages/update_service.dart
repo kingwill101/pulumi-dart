@@ -120,7 +120,11 @@ final class PackageUpdater {
     return bytes;
   }
 
-  Future<int> apply(PackageUpdatePlan plan, List<int> schemaBytes) async {
+  Future<int> apply(
+    PackageUpdatePlan plan,
+    List<int> schemaBytes, {
+    bool analyze = true,
+  }) async {
     final schema = File(plan.schemaPath);
     final temporary = File('${schema.path}.repodoc-new-$pid');
     final backup = File('${schema.path}.repodoc-backup-$pid');
@@ -139,14 +143,16 @@ final class PackageUpdater {
       ]);
       if (exitCode != 0) throw StateError('Generation failed ($exitCode).');
 
-      final analyze = await _dart.start(
-        ['analyze', '--no-fatal-warnings', plan.packagePath],
-        workingDirectory: repositoryRoot.path,
-        mode: ProcessStartMode.inheritStdio,
-      );
-      final analyzeStatus = await analyze.exitCode;
-      if (analyzeStatus != 0) {
-        throw StateError('Package analysis failed ($analyzeStatus).');
+      if (analyze) {
+        final analysis = await _dart.start(
+          ['analyze', '--no-fatal-warnings', plan.packagePath],
+          workingDirectory: repositoryRoot.path,
+          mode: ProcessStartMode.inheritStdio,
+        );
+        final analyzeStatus = await analysis.exitCode;
+        if (analyzeStatus != 0) {
+          throw StateError('Package analysis failed ($analyzeStatus).');
+        }
       }
       backup.deleteSync();
       return 0;
