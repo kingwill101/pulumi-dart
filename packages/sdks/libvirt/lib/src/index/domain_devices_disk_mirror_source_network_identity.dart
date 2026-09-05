@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskMirrorSourceNetworkIdentity {
   /// Configures the agent socket for network identity in the backing store source.
-  final pulumi.Input<String>? agentSock;
+  final pulumi.Input<String?>? agentSock;
   /// Sets the group identifier for network identity in the backing store source.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// Defines the key file used for network identity in the backing store source configuration.
-  final pulumi.Input<String>? keyfile;
+  final pulumi.Input<String?>? keyfile;
   /// Configures the user associated with the network identity in the backing store source.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
   /// Sets the user name for network identity in the backing store source configuration.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceNetworkIdentity].
   /// [agentSock] Configures the agent socket for network identity in the backing store source.

@@ -5,8 +5,8 @@ import 'domain_devices_disk_mirror_source_reservations_source_qemu_vd_agent_clip
 import 'domain_devices_disk_mirror_source_reservations_source_qemu_vd_agent_mouse.dart';
 
 class DomainDevicesDiskMirrorSourceReservationsSourceQemuVdAgent {
-  final pulumi.Input<DomainDevicesDiskMirrorSourceReservationsSourceQemuVdAgentClipBoard>? clipBoard;
-  final pulumi.Input<DomainDevicesDiskMirrorSourceReservationsSourceQemuVdAgentMouse>? mouse;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceReservationsSourceQemuVdAgentClipBoard?>? clipBoard;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceReservationsSourceQemuVdAgentMouse?>? mouse;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceReservationsSourceQemuVdAgent].
   /// [clipBoard] Optional.

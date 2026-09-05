@@ -5,7 +5,7 @@ import 'pool_refresh_volume.dart';
 
 class PoolRefresh {
   /// Configures the refresh settings for individual volumes within the storage pool.
-  final pulumi.Input<PoolRefreshVolume>? volume;
+  final pulumi.Input<PoolRefreshVolume?>? volume;
 
   /// Creates a new [PoolRefresh].
   /// [volume] Configures the refresh settings for individual volumes within the storage pool.

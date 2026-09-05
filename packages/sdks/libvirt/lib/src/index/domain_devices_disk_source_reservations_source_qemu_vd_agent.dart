@@ -5,8 +5,8 @@ import 'domain_devices_disk_source_reservations_source_qemu_vd_agent_clip_board.
 import 'domain_devices_disk_source_reservations_source_qemu_vd_agent_mouse.dart';
 
 class DomainDevicesDiskSourceReservationsSourceQemuVdAgent {
-  final pulumi.Input<DomainDevicesDiskSourceReservationsSourceQemuVdAgentClipBoard>? clipBoard;
-  final pulumi.Input<DomainDevicesDiskSourceReservationsSourceQemuVdAgentMouse>? mouse;
+  final pulumi.Input<DomainDevicesDiskSourceReservationsSourceQemuVdAgentClipBoard?>? clipBoard;
+  final pulumi.Input<DomainDevicesDiskSourceReservationsSourceQemuVdAgentMouse?>? mouse;
 
   /// Creates a new [DomainDevicesDiskSourceReservationsSourceQemuVdAgent].
   /// [clipBoard] Optional.

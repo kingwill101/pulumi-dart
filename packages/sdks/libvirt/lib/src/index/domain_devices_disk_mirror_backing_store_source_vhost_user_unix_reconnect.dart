@@ -6,7 +6,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnect {
   /// Enables or disables the automatic reconnection feature for the UNIX domain socket.
   final pulumi.Input<String> enabled;
   /// Sets the timeout duration for reconnections in the UNIX socket settings.
-  final pulumi.Input<double>? timeout;
+  final pulumi.Input<double?>? timeout;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnect].
   /// [enabled] Enables or disables the automatic reconnection feature for the UNIX domain socket.
@@ -26,7 +26,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnect {
   factory DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnect.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceVhostUserUnixReconnect(
       enabled: pulumi.Input.fromValue(map['enabled'] as String),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'domain_os_nv_ram_source_network_auth_secret.dart';
 
 class DomainOsNvRamSourceNetworkAuth {
   /// Specifies the secret used for authenticating the iSCSI connection.
-  final pulumi.Input<DomainOsNvRamSourceNetworkAuthSecret>? secret;
+  final pulumi.Input<DomainOsNvRamSourceNetworkAuthSecret?>? secret;
   /// Sets the username for iSCSI authentication.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [DomainOsNvRamSourceNetworkAuth].
   /// [secret] Specifies the secret used for authenticating the iSCSI connection.

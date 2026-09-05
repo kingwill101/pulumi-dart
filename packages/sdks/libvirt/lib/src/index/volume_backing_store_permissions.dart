@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeBackingStorePermissions {
   /// Sets the group ownership for the backing store permissions of the volume.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// Configures the label associated with the backing store permissions.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Specifies the mode (file permissions) for the backing store of the volume.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Defines the owner of the backing store permissions for the volume.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
 
   /// Creates a new [VolumeBackingStorePermissions].
   /// [group] Sets the group ownership for the backing store permissions of the volume.

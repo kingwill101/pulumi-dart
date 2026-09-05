@@ -5,13 +5,13 @@ import 'domain_devices_controller_pci_model.dart';
 
 class DomainDevicesControllerPci {
   /// Indicates whether the PCI controller device supports a 64-bit hole for PCI address space.
-  final pulumi.Input<double>? hole64;
+  final pulumi.Input<double?>? hole64;
   /// Specifies the unit for the 64-bit hole in the PCI address space for the device.
-  final pulumi.Input<String>? hole64Unit;
+  final pulumi.Input<String?>? hole64Unit;
   /// Configures the model for the PCI controller device.
-  final pulumi.Input<DomainDevicesControllerPciModel>? model;
+  final pulumi.Input<DomainDevicesControllerPciModel?>? model;
   /// Sets the target configuration for the PCI controller device.
-  final pulumi.Input<Map<String, dynamic>>? target;
+  final pulumi.Input<Map<String, dynamic>?>? target;
 
   /// Creates a new [DomainDevicesControllerPci].
   /// [hole64] Indicates whether the PCI controller device supports a 64-bit hole for PCI address space.
@@ -36,7 +36,7 @@ class DomainDevicesControllerPci {
 
   factory DomainDevicesControllerPci.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerPci(
-      hole64: (() { final guardedValue = map['hole64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      hole64: (() { final guardedValue = map['hole64']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       hole64Unit: (() { final guardedValue = map['hole64Unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesControllerPciModel.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),

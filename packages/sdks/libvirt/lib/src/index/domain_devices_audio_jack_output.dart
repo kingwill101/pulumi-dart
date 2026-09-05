@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_audio_jack_output_settings.dart';
 
 class DomainDevicesAudioJackOutput {
-  final pulumi.Input<double>? bufferLength;
+  final pulumi.Input<double?>? bufferLength;
   /// Sets the client name for the Jack audio output.
-  final pulumi.Input<String>? clientName;
+  final pulumi.Input<String?>? clientName;
   /// Specifies the connection ports for the Jack audio output.
-  final pulumi.Input<String>? connectPorts;
+  final pulumi.Input<String?>? connectPorts;
   /// Sets the exact client name for the Jack audio output.
-  final pulumi.Input<String>? exactName;
-  final pulumi.Input<String>? fixedSettings;
-  final pulumi.Input<String>? mixingEngine;
+  final pulumi.Input<String?>? exactName;
+  final pulumi.Input<String?>? fixedSettings;
+  final pulumi.Input<String?>? mixingEngine;
   /// Sets the server name for the Jack audio output.
-  final pulumi.Input<String>? serverName;
-  final pulumi.Input<DomainDevicesAudioJackOutputSettings>? settings;
-  final pulumi.Input<double>? voices;
+  final pulumi.Input<String?>? serverName;
+  final pulumi.Input<DomainDevicesAudioJackOutputSettings?>? settings;
+  final pulumi.Input<double?>? voices;
 
   /// Creates a new [DomainDevicesAudioJackOutput].
   /// [bufferLength] Optional.
@@ -56,7 +56,7 @@ class DomainDevicesAudioJackOutput {
 
   factory DomainDevicesAudioJackOutput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioJackOutput(
-      bufferLength: (() { final guardedValue = map['bufferLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bufferLength: (() { final guardedValue = map['bufferLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       clientName: (() { final guardedValue = map['clientName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       connectPorts: (() { final guardedValue = map['connectPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exactName: (() { final guardedValue = map['exactName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -64,7 +64,7 @@ class DomainDevicesAudioJackOutput {
       mixingEngine: (() { final guardedValue = map['mixingEngine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverName: (() { final guardedValue = map['serverName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioJackOutputSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      voices: (() { final guardedValue = map['voices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      voices: (() { final guardedValue = map['voices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -4,25 +4,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskTarget {
   /// Sets the bus type for the disk device target, determining how it connects to the guest.
-  final pulumi.Input<String>? bus;
+  final pulumi.Input<String?>? bus;
   /// Specifies the target device name for the disk device within the guest.
-  final pulumi.Input<String>? dev;
+  final pulumi.Input<String?>? dev;
+  final pulumi.Input<String?>? dpofua;
   /// Indicates whether the disk device is removable within the guest.
-  final pulumi.Input<String>? removable;
+  final pulumi.Input<String?>? removable;
   /// Sets the rotational speed for the disk device, affecting its performance characteristics.
-  final pulumi.Input<double>? rotationRate;
+  final pulumi.Input<double?>? rotationRate;
   /// Configures the tray setting for the disk device, indicating whether the tray is open or closed.
-  final pulumi.Input<String>? tray;
+  final pulumi.Input<String?>? tray;
 
   /// Creates a new [DomainDevicesDiskTarget].
   /// [bus] Sets the bus type for the disk device target, determining how it connects to the guest.
   /// [dev] Specifies the target device name for the disk device within the guest.
+  /// [dpofua] Optional.
   /// [removable] Indicates whether the disk device is removable within the guest.
   /// [rotationRate] Sets the rotational speed for the disk device, affecting its performance characteristics.
   /// [tray] Configures the tray setting for the disk device, indicating whether the tray is open or closed.
   const DomainDevicesDiskTarget({
     this.bus,
     this.dev,
+    this.dpofua,
     this.removable,
     this.rotationRate,
     this.tray,
@@ -32,6 +35,7 @@ class DomainDevicesDiskTarget {
     return <String, dynamic>{
       'bus': ?bus,
       'dev': ?dev,
+      'dpofua': ?dpofua,
       'removable': ?removable,
       'rotationRate': ?rotationRate,
       'tray': ?tray,
@@ -42,8 +46,9 @@ class DomainDevicesDiskTarget {
     return DomainDevicesDiskTarget(
       bus: (() { final guardedValue = map['bus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dev: (() { final guardedValue = map['dev']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dpofua: (() { final guardedValue = map['dpofua']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       removable: (() { final guardedValue = map['removable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rotationRate: (() { final guardedValue = map['rotationRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      rotationRate: (() { final guardedValue = map['rotationRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       tray: (() { final guardedValue = map['tray']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

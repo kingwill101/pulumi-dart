@@ -5,7 +5,7 @@ import 'domain_devices_interface_coalesce_rx.dart';
 
 class DomainDevicesInterfaceCoalesce {
   /// Controls the coalescing settings specifically for received network packets at the interface.
-  final pulumi.Input<DomainDevicesInterfaceCoalesceRx>? rx;
+  final pulumi.Input<DomainDevicesInterfaceCoalesceRx?>? rx;
 
   /// Creates a new [DomainDevicesInterfaceCoalesce].
   /// [rx] Controls the coalescing settings specifically for received network packets at the interface.

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesVsockDriver {
   /// Enables or disables Address Translation Services (ATS) for the vsock device driver.
-  final pulumi.Input<String>? ats;
+  final pulumi.Input<String?>? ats;
   /// Controls whether IOMMU support is enabled for the vsock device driver.
-  final pulumi.Input<String>? iommu;
+  final pulumi.Input<String?>? iommu;
   /// Determines if the driver supports packed queues for the vsock device.
-  final pulumi.Input<String>? packed;
+  final pulumi.Input<String?>? packed;
   /// Configures the use of a page per Virtqueue (VQ) for the vsock device driver.
-  final pulumi.Input<String>? pagePerVq;
+  final pulumi.Input<String?>? pagePerVq;
 
   /// Creates a new [DomainDevicesVsockDriver].
   /// [ats] Enables or disables Address Translation Services (ATS) for the vsock device driver.

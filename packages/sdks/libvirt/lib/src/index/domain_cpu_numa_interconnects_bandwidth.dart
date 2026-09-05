@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuNumaInterconnectsBandwidth {
   /// Specifies the bandwidth allocation for cache-specific interconnects between NUMA nodes.
-  final pulumi.Input<double>? cache;
+  final pulumi.Input<double?>? cache;
   /// Defines the initiator's bandwidth constraints for interconnecting NUMA cells.
   final pulumi.Input<double> initiator;
   /// Configures the target's bandwidth limitations for interconnecting NUMA nodes.
@@ -45,12 +45,12 @@ class DomainCpuNumaInterconnectsBandwidth {
 
   factory DomainCpuNumaInterconnectsBandwidth.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaInterconnectsBandwidth(
-      cache: (() { final guardedValue = map['cache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      initiator: pulumi.Input.fromValue(map['initiator'] as double),
-      target: pulumi.Input.fromValue(map['target'] as double),
+      cache: (() { final guardedValue = map['cache']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      initiator: pulumi.Input.fromValue((map['initiator'] as num).toDouble()),
+      target: pulumi.Input.fromValue((map['target'] as num).toDouble()),
       type: pulumi.Input.fromValue(map['type'] as String),
       unit: pulumi.Input.fromValue(map['unit'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

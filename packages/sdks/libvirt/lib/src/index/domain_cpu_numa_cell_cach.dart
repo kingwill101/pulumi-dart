@@ -10,11 +10,11 @@ class DomainCpuNumaCellCach {
   /// Sets the cache level in the cache hierarchy, indicating whether it is L1, L2, L3, etc.
   final pulumi.Input<double> level;
   /// Specifies the cache line size which dictates how much data is fetched from memory in one cache transaction.
-  final pulumi.Input<DomainCpuNumaCellCachLine>? line;
+  final pulumi.Input<DomainCpuNumaCellCachLine?>? line;
   /// Specifies the cache management policy that dictates how cache entries are allocated and evicted.
   final pulumi.Input<String> policy;
   /// Configures the total size of the cache, determining its capacity for storing cache lines.
-  final pulumi.Input<DomainCpuNumaCellCachSize>? size;
+  final pulumi.Input<DomainCpuNumaCellCachSize?>? size;
 
   /// Creates a new [DomainCpuNumaCellCach].
   /// [associativity] Configures the number of ways in which cache lines can be mapped into the cache.
@@ -43,7 +43,7 @@ class DomainCpuNumaCellCach {
   factory DomainCpuNumaCellCach.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaCellCach(
       associativity: pulumi.Input.fromValue(map['associativity'] as String),
-      level: pulumi.Input.fromValue(map['level'] as double),
+      level: pulumi.Input.fromValue((map['level'] as num).toDouble()),
       line: (() { final guardedValue = map['line']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainCpuNumaCellCachLine.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       policy: pulumi.Input.fromValue(map['policy'] as String),
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainCpuNumaCellCachSize.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

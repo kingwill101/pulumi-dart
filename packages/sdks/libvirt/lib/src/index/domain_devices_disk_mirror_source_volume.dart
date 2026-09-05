@@ -5,13 +5,13 @@ import 'domain_devices_disk_mirror_source_volume_sec_label.dart';
 
 class DomainDevicesDiskMirrorSourceVolume {
   /// Sets the mode for the volume source in the backing store configuration.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Specifies the pool from which the volume source is derived in the backing store.
-  final pulumi.Input<String>? pool;
+  final pulumi.Input<String?>? pool;
   /// Configures the security label settings for the volume in the backing store.
-  final pulumi.Input<List<DomainDevicesDiskMirrorSourceVolumeSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskMirrorSourceVolumeSecLabel>?>? secLabels;
   /// Provides the volume definition used as the backing store source.
-  final pulumi.Input<String>? volume;
+  final pulumi.Input<String?>? volume;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceVolume].
   /// [mode] Sets the mode for the volume source in the backing store configuration.

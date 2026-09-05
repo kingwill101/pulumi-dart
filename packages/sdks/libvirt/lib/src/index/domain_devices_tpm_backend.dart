@@ -7,11 +7,11 @@ import 'domain_devices_tpm_backend_passthrough.dart';
 
 class DomainDevicesTpmBackend {
   /// Configures the emulator backend for the TPM device, which handles its operations.
-  final pulumi.Input<DomainDevicesTpmBackendEmulator>? emulator;
+  final pulumi.Input<DomainDevicesTpmBackendEmulator?>? emulator;
   /// Configures external settings for the TPM backend to use an external TPM device.
-  final pulumi.Input<DomainDevicesTpmBackendExternal>? external;
+  final pulumi.Input<DomainDevicesTpmBackendExternal?>? external;
   /// Configures the backend for the TPM device to be in passthrough mode, allowing direct access to the host's TPM functionality.
-  final pulumi.Input<DomainDevicesTpmBackendPassthrough>? passthrough;
+  final pulumi.Input<DomainDevicesTpmBackendPassthrough?>? passthrough;
 
   /// Creates a new [DomainDevicesTpmBackend].
   /// [emulator] Configures the emulator backend for the TPM device, which handles its operations.

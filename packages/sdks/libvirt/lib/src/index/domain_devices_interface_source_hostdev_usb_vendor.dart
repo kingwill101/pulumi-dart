@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceHostdevUsbVendor {
   /// Specifies the unique identifier for the vendor of the USB device.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [DomainDevicesInterfaceSourceHostdevUsbVendor].
   /// [id] Specifies the unique identifier for the vendor of the USB device.

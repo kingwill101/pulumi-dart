@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceVirtualPortParamsOpenVSwitch {
   /// Specifies the interface ID for the Open vSwitch virtual port parameters.
-  final pulumi.Input<String>? interfaceId;
+  final pulumi.Input<String?>? interfaceId;
   /// Sets the profile ID for the Open vSwitch virtual port parameters.
-  final pulumi.Input<String>? profileId;
+  final pulumi.Input<String?>? profileId;
 
   /// Creates a new [DomainDevicesInterfaceVirtualPortParamsOpenVSwitch].
   /// [interfaceId] Specifies the interface ID for the Open vSwitch virtual port parameters.

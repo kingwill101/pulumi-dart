@@ -5,7 +5,7 @@ import 'domain_throttle_groups_throttle_group.dart';
 
 class DomainThrottleGroups {
   /// Sets individual throttle group configurations.
-  final pulumi.Input<List<DomainThrottleGroupsThrottleGroup>>? throttleGroups;
+  final pulumi.Input<List<DomainThrottleGroupsThrottleGroup>?>? throttleGroups;
 
   /// Creates a new [DomainThrottleGroups].
   /// [throttleGroups] Sets individual throttle group configurations.

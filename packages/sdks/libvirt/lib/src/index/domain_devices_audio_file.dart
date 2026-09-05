@@ -6,11 +6,11 @@ import 'domain_devices_audio_file_output.dart';
 
 class DomainDevicesAudioFile {
   /// Configures the output settings for the file-based audio device.
-  final pulumi.Input<DomainDevicesAudioFileInput>? input;
+  final pulumi.Input<DomainDevicesAudioFileInput?>? input;
   /// Configures the output settings for the file-based audio device.
-  final pulumi.Input<DomainDevicesAudioFileOutput>? output;
+  final pulumi.Input<DomainDevicesAudioFileOutput?>? output;
   /// Sets the file path for the file-based audio device.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [DomainDevicesAudioFile].
   /// [input] Configures the output settings for the file-based audio device.

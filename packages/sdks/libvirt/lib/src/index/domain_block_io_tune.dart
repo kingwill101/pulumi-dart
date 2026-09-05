@@ -5,9 +5,9 @@ import 'domain_block_io_tune_device.dart';
 
 class DomainBlockIoTune {
   /// Defines specific device settings for block I/O tuning, enabling per-device performance modifications.
-  final pulumi.Input<List<DomainBlockIoTuneDevice>>? devices;
+  final pulumi.Input<List<DomainBlockIoTuneDevice>?>? devices;
   /// Configures the overall weight for the block I/O tuning, affecting the global I/O scheduling policy.
-  final pulumi.Input<double>? weight;
+  final pulumi.Input<double?>? weight;
 
   /// Creates a new [DomainBlockIoTune].
   /// [devices] Defines specific device settings for block I/O tuning, enabling per-device performance modifications.
@@ -27,7 +27,7 @@ class DomainBlockIoTune {
   factory DomainBlockIoTune.fromMap(Map<String, dynamic> map) {
     return DomainBlockIoTune(
       devices: (() { final guardedValue = map['devices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainBlockIoTuneDevice>(guardedValue, (value) => DomainBlockIoTuneDevice.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

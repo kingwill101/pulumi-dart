@@ -5,7 +5,7 @@ import 'domain_devices_disk_mirror_format_metadata_cache_max_size.dart';
 
 class DomainDevicesDiskMirrorFormatMetadataCache {
   /// Sets the maximum size for the metadata cache in the data store format configuration.
-  final pulumi.Input<DomainDevicesDiskMirrorFormatMetadataCacheMaxSize>? maxSize;
+  final pulumi.Input<DomainDevicesDiskMirrorFormatMetadataCacheMaxSize?>? maxSize;
 
   /// Creates a new [DomainDevicesDiskMirrorFormatMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.

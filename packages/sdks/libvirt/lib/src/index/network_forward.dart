@@ -9,21 +9,21 @@ import 'network_forward_pf.dart';
 
 class NetworkForward {
   /// Defines the addresses to which traffic should be forwarded.
-  final pulumi.Input<List<NetworkForwardAddress>>? addresses;
+  final pulumi.Input<List<NetworkForwardAddress>?>? addresses;
   /// Sets the specific device for the forwarding configuration.
-  final pulumi.Input<String>? dev;
+  final pulumi.Input<String?>? dev;
   /// Configures the driver used for the network forwarding.
-  final pulumi.Input<NetworkForwardDriver>? driver;
+  final pulumi.Input<NetworkForwardDriver?>? driver;
   /// Defines the interfaces to be used for forwarding.
-  final pulumi.Input<List<NetworkForwardInterface>>? interfaces;
+  final pulumi.Input<List<NetworkForwardInterface>?>? interfaces;
   /// Indicates whether the forwarding configuration is managed by libvirt.
-  final pulumi.Input<bool>? managed;
+  final pulumi.Input<bool?>? managed;
   /// Configures the mode of operation for the network forwarding.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Enables or disables NAT (Network Address Translation) for the forwarding configuration.
-  final pulumi.Input<NetworkForwardNat>? nat;
+  final pulumi.Input<NetworkForwardNat?>? nat;
   /// Configures per-packet forwarding service, enabling a fine-tuned forwarding operation.
-  final pulumi.Input<List<NetworkForwardPf>>? pfs;
+  final pulumi.Input<List<NetworkForwardPf>?>? pfs;
 
   /// Creates a new [NetworkForward].
   /// [addresses] Defines the addresses to which traffic should be forwarded.

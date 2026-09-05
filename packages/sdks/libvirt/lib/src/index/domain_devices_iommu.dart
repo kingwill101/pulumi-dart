@@ -7,13 +7,13 @@ import 'domain_devices_iommu_driver.dart';
 
 class DomainDevicesIommu {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesIommuAcpi>? acpi;
+  final pulumi.Input<DomainDevicesIommuAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesIommuAlias>? alias;
+  final pulumi.Input<DomainDevicesIommuAlias?>? alias;
   /// Specifies the driver settings for the IOMMU device.
-  final pulumi.Input<DomainDevicesIommuDriver>? driver;
+  final pulumi.Input<DomainDevicesIommuDriver?>? driver;
   /// Sets the model for the IOMMU device, determining its capabilities and behavior.
   final pulumi.Input<String> model;
 

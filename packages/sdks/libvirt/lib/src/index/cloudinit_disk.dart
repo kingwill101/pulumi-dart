@@ -49,11 +49,12 @@ class CloudinitDisk extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CloudinitDiskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CloudinitDisk._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -67,6 +68,24 @@ class CloudinitDisk extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    metaData = registerOutput<String>('metaData');
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<String?>('networkConfig');
+    path = registerOutput<String>('path');
+    size = registerOutput<double>('size');
+    userData = registerOutput<String>('userData');
+  }
+
+  /// Creates a typed reference to an existing [CloudinitDisk] resource.
+  CloudinitDisk.reference(String urn)
+    : super(
+        'libvirt:index/cloudinitDisk:CloudinitDisk',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          registerPackageRequest: package_registration.registerPackageRequest,
+        isResourceReference: true,
+      ) {
     metaData = registerOutput<String>('metaData');
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<String?>('networkConfig');

@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesAudioFileOutputSettings {
   /// Private communication channels between host and guest
-  final pulumi.Input<double>? channels;
-  final pulumi.Input<String>? format;
+  final pulumi.Input<double?>? channels;
+  final pulumi.Input<String?>? format;
   /// Configures the frequency of timer interrupts for managing clock updates.
-  final pulumi.Input<double>? frequency;
+  final pulumi.Input<double?>? frequency;
 
   /// Creates a new [DomainDevicesAudioFileOutputSettings].
   /// [channels] Private communication channels between host and guest
@@ -29,9 +29,9 @@ class DomainDevicesAudioFileOutputSettings {
 
   factory DomainDevicesAudioFileOutputSettings.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioFileOutputSettings(
-      channels: (() { final guardedValue = map['channels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      channels: (() { final guardedValue = map['channels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

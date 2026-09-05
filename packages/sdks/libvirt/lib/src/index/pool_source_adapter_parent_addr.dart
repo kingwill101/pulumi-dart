@@ -5,7 +5,7 @@ import 'pool_source_adapter_parent_addr_address.dart';
 
 class PoolSourceAdapterParentAddr {
   /// Configures the address information related to the parent device of the adapter.
-  final pulumi.Input<PoolSourceAdapterParentAddrAddress>? address;
+  final pulumi.Input<PoolSourceAdapterParentAddrAddress?>? address;
   /// Provides a unique identifier for the address of the parent adapter.
   final pulumi.Input<double> uniqueId;
 
@@ -27,7 +27,7 @@ class PoolSourceAdapterParentAddr {
   factory PoolSourceAdapterParentAddr.fromMap(Map<String, dynamic> map) {
     return PoolSourceAdapterParentAddr(
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PoolSourceAdapterParentAddrAddress.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      uniqueId: pulumi.Input.fromValue(map['uniqueId'] as double),
+      uniqueId: pulumi.Input.fromValue((map['uniqueId'] as num).toDouble()),
     );
   }
 }

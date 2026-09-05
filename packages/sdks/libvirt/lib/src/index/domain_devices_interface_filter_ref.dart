@@ -7,7 +7,7 @@ class DomainDevicesInterfaceFilterRef {
   /// Defines the specific filter to apply to the network interface.
   final pulumi.Input<String> filter;
   /// Configures parameters for the referenced filter.
-  final pulumi.Input<List<DomainDevicesInterfaceFilterRefParameter>>? parameters;
+  final pulumi.Input<List<DomainDevicesInterfaceFilterRefParameter>?>? parameters;
 
   /// Creates a new [DomainDevicesInterfaceFilterRef].
   /// [filter] Defines the specific filter to apply to the network interface.

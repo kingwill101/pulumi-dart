@@ -7,11 +7,11 @@ import 'domain_devices_graphic_vnc_listener_socket.dart';
 
 class DomainDevicesGraphicVncListener {
   /// Specifies the address settings for the Spice listener.
-  final pulumi.Input<DomainDevicesGraphicVncListenerAddress>? address;
+  final pulumi.Input<DomainDevicesGraphicVncListenerAddress?>? address;
   /// Defines network listener settings for the Spice channel, focusing on network-based connections.
-  final pulumi.Input<DomainDevicesGraphicVncListenerNetwork>? network;
+  final pulumi.Input<DomainDevicesGraphicVncListenerNetwork?>? network;
   /// Configures socket listener settings for the Spice channel, enabling socket-based connections.
-  final pulumi.Input<DomainDevicesGraphicVncListenerSocket>? socket;
+  final pulumi.Input<DomainDevicesGraphicVncListenerSocket?>? socket;
 
   /// Creates a new [DomainDevicesGraphicVncListener].
   /// [address] Specifies the address settings for the Spice listener.

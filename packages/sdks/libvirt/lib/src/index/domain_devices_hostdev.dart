@@ -16,33 +16,33 @@ import 'domain_devices_hostdev_subsys_usb.dart';
 
 class DomainDevicesHostdev {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesHostdevAcpi>? acpi;
+  final pulumi.Input<DomainDevicesHostdevAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesHostdevAlias>? alias;
+  final pulumi.Input<DomainDevicesHostdevAlias?>? alias;
   /// Configures the boot settings for the redirected device, controlling its initialization at domain startup.
-  final pulumi.Input<DomainDevicesHostdevBoot>? boot;
+  final pulumi.Input<DomainDevicesHostdevBoot?>? boot;
   /// Lists the miscellaneous capabilities for the host device, providing extended features available to it.
-  final pulumi.Input<DomainDevicesHostdevCapsMisc>? capsMisc;
+  final pulumi.Input<DomainDevicesHostdevCapsMisc?>? capsMisc;
   /// Enumerates the network capabilities available to the host device, detailing its network support.
-  final pulumi.Input<DomainDevicesHostdevCapsNet>? capsNet;
+  final pulumi.Input<DomainDevicesHostdevCapsNet?>? capsNet;
   /// Enumerates the storage capabilities of the host device, detailing its storage configuration.
-  final pulumi.Input<DomainDevicesHostdevCapsStorage>? capsStorage;
+  final pulumi.Input<DomainDevicesHostdevCapsStorage?>? capsStorage;
   /// Indicates whether the host device is managed by the hypervisor or managed externally.
-  final pulumi.Input<bool>? managed;
+  final pulumi.Input<bool?>? managed;
   /// Defines the ROM configuration for the host device, allowing for BIOS settings and options.
-  final pulumi.Input<DomainDevicesHostdevRom>? rom;
+  final pulumi.Input<DomainDevicesHostdevRom?>? rom;
   /// Configures the multimedia device for the host device, including device attributes and settings.
-  final pulumi.Input<DomainDevicesHostdevSubsysMDev>? subsysMDev;
+  final pulumi.Input<DomainDevicesHostdevSubsysMDev?>? subsysMDev;
   /// Configures the PCI subsystem settings for the host device, detailing PCI attributes.
-  final pulumi.Input<DomainDevicesHostdevSubsysPci>? subsysPci;
+  final pulumi.Input<DomainDevicesHostdevSubsysPci?>? subsysPci;
   /// Configures SCSI parameters for the host device passed through to the VM.
-  final pulumi.Input<DomainDevicesHostdevSubsysScsi>? subsysScsi;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsi?>? subsysScsi;
   /// Configures SCSI host device parameters for the host device passed through to the VM.
-  final pulumi.Input<DomainDevicesHostdevSubsysScsiHost>? subsysScsiHost;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiHost?>? subsysScsiHost;
   /// Configures a USB subsystem device to be utilized by the virtual machine.
-  final pulumi.Input<DomainDevicesHostdevSubsysUsb>? subsysUsb;
+  final pulumi.Input<DomainDevicesHostdevSubsysUsb?>? subsysUsb;
 
   /// Creates a new [DomainDevicesHostdev].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

@@ -6,11 +6,11 @@ import 'domain_devices_nvram_alias.dart';
 
 class DomainDevicesNvram {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesNvramAcpi>? acpi;
+  final pulumi.Input<DomainDevicesNvramAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesNvramAlias>? alias;
+  final pulumi.Input<DomainDevicesNvramAlias?>? alias;
 
   /// Creates a new [DomainDevicesNvram].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

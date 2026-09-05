@@ -5,7 +5,7 @@ import 'domain_cpu_numa_cell_distances_sibling.dart';
 
 class DomainCpuNumaCellDistances {
   /// Describes the sibling CPUs within the NUMA cell, defining distance metrics for optimized access.
-  final pulumi.Input<List<DomainCpuNumaCellDistancesSibling>>? siblings;
+  final pulumi.Input<List<DomainCpuNumaCellDistancesSibling>?>? siblings;
 
   /// Creates a new [DomainCpuNumaCellDistances].
   /// [siblings] Describes the sibling CPUs within the NUMA cell, defining distance metrics for optimized access.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesDiskTransient {
   /// Indicates if the transient disk device shares backing storage with other devices.
-  final pulumi.Input<String>? shareBacking;
+  final pulumi.Input<String?>? shareBacking;
 
   /// Creates a new [DomainDevicesDiskTransient].
   /// [shareBacking] Indicates if the transient disk device shares backing storage with other devices.

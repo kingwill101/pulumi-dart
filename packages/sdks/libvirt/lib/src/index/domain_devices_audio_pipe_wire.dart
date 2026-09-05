@@ -6,11 +6,11 @@ import 'domain_devices_audio_pipe_wire_output.dart';
 
 class DomainDevicesAudioPipeWire {
   /// Configures the output settings for the PipeWire audio device.
-  final pulumi.Input<DomainDevicesAudioPipeWireInput>? input;
+  final pulumi.Input<DomainDevicesAudioPipeWireInput?>? input;
   /// Configures the output settings for the PipeWire audio device.
-  final pulumi.Input<DomainDevicesAudioPipeWireOutput>? output;
+  final pulumi.Input<DomainDevicesAudioPipeWireOutput?>? output;
   /// Sets the runtime directory for the PipeWire audio system integration.
-  final pulumi.Input<String>? runtimeDir;
+  final pulumi.Input<String?>? runtimeDir;
 
   /// Creates a new [DomainDevicesAudioPipeWire].
   /// [input] Configures the output settings for the PipeWire audio device.

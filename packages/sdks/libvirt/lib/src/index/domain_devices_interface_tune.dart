@@ -20,7 +20,7 @@ class DomainDevicesInterfaceTune {
 
   factory DomainDevicesInterfaceTune.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceTune(
-      sndBuf: pulumi.Input.fromValue(map['sndBuf'] as double),
+      sndBuf: pulumi.Input.fromValue((map['sndBuf'] as num).toDouble()),
     );
   }
 }

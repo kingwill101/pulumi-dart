@@ -3,11 +3,11 @@
 import 'package:pulumi_libvirt/index.dart' as module_index;
 import 'package:pulumi_libvirt/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final CloudinitDisk = module_index.CloudinitDisk.new;
   final CloudinitDiskArgs = module_index.CloudinitDiskArgs.new;
   final CloudinitDiskState = module_index.CloudinitDiskState.new;
@@ -76,6 +76,10 @@ class _IndexModuleNamespace {
   final DomainCpuTuneEmulatorPinArgs = module_index.DomainCpuTuneEmulatorPin.new;
   final DomainCpuTuneEmulatorSched = module_index.DomainCpuTuneEmulatorSched.new;
   final DomainCpuTuneEmulatorSchedArgs = module_index.DomainCpuTuneEmulatorSched.new;
+  final DomainCpuTuneEnergyTune = module_index.DomainCpuTuneEnergyTune.new;
+  final DomainCpuTuneEnergyTuneArgs = module_index.DomainCpuTuneEnergyTune.new;
+  final DomainCpuTuneEnergyTuneMonitor = module_index.DomainCpuTuneEnergyTuneMonitor.new;
+  final DomainCpuTuneEnergyTuneMonitorArgs = module_index.DomainCpuTuneEnergyTuneMonitor.new;
   final DomainCpuTuneIoThreadPin = module_index.DomainCpuTuneIoThreadPin.new;
   final DomainCpuTuneIoThreadPinArgs = module_index.DomainCpuTuneIoThreadPin.new;
   final DomainCpuTuneIoThreadSched = module_index.DomainCpuTuneIoThreadSched.new;
@@ -390,6 +394,8 @@ class _IndexModuleNamespace {
   final DomainDevicesDiskBackingStoreSourceCookiesArgs = module_index.DomainDevicesDiskBackingStoreSourceCookies.new;
   final DomainDevicesDiskBackingStoreSourceCookiesCookie = module_index.DomainDevicesDiskBackingStoreSourceCookiesCookie.new;
   final DomainDevicesDiskBackingStoreSourceCookiesCookieArgs = module_index.DomainDevicesDiskBackingStoreSourceCookiesCookie.new;
+  final DomainDevicesDiskBackingStoreSourceCtl = module_index.DomainDevicesDiskBackingStoreSourceCtl.new;
+  final DomainDevicesDiskBackingStoreSourceCtlArgs = module_index.DomainDevicesDiskBackingStoreSourceCtl.new;
   final DomainDevicesDiskBackingStoreSourceDataStore = module_index.DomainDevicesDiskBackingStoreSourceDataStore.new;
   final DomainDevicesDiskBackingStoreSourceDataStoreArgs = module_index.DomainDevicesDiskBackingStoreSourceDataStore.new;
   final DomainDevicesDiskBackingStoreSourceDataStoreFormat = module_index.DomainDevicesDiskBackingStoreSourceDataStoreFormat.new;
@@ -548,6 +554,14 @@ class _IndexModuleNamespace {
   final DomainDevicesDiskDriverMetadataCacheArgs = module_index.DomainDevicesDiskDriverMetadataCache.new;
   final DomainDevicesDiskDriverMetadataCacheMaxSize = module_index.DomainDevicesDiskDriverMetadataCacheMaxSize.new;
   final DomainDevicesDiskDriverMetadataCacheMaxSizeArgs = module_index.DomainDevicesDiskDriverMetadataCacheMaxSize.new;
+  final DomainDevicesDiskDriverStatistics = module_index.DomainDevicesDiskDriverStatistics.new;
+  final DomainDevicesDiskDriverStatisticsArgs = module_index.DomainDevicesDiskDriverStatistics.new;
+  final DomainDevicesDiskDriverStatisticsLatencyHistogram = module_index.DomainDevicesDiskDriverStatisticsLatencyHistogram.new;
+  final DomainDevicesDiskDriverStatisticsLatencyHistogramArgs = module_index.DomainDevicesDiskDriverStatisticsLatencyHistogram.new;
+  final DomainDevicesDiskDriverStatisticsLatencyHistogramBin = module_index.DomainDevicesDiskDriverStatisticsLatencyHistogramBin.new;
+  final DomainDevicesDiskDriverStatisticsLatencyHistogramBinArgs = module_index.DomainDevicesDiskDriverStatisticsLatencyHistogramBin.new;
+  final DomainDevicesDiskDriverStatisticsStatistic = module_index.DomainDevicesDiskDriverStatisticsStatistic.new;
+  final DomainDevicesDiskDriverStatisticsStatisticArgs = module_index.DomainDevicesDiskDriverStatisticsStatistic.new;
   final DomainDevicesDiskEncryption = module_index.DomainDevicesDiskEncryption.new;
   final DomainDevicesDiskEncryptionArgs = module_index.DomainDevicesDiskEncryption.new;
   final DomainDevicesDiskEncryptionSecret = module_index.DomainDevicesDiskEncryptionSecret.new;
@@ -576,6 +590,8 @@ class _IndexModuleNamespace {
   final DomainDevicesDiskMirrorBackingStoreSourceCookiesArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceCookies.new;
   final DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie = module_index.DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie.new;
   final DomainDevicesDiskMirrorBackingStoreSourceCookiesCookieArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceCtl = module_index.DomainDevicesDiskMirrorBackingStoreSourceCtl.new;
+  final DomainDevicesDiskMirrorBackingStoreSourceCtlArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceCtl.new;
   final DomainDevicesDiskMirrorBackingStoreSourceDataStore = module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStore.new;
   final DomainDevicesDiskMirrorBackingStoreSourceDataStoreArgs = module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStore.new;
   final DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormat = module_index.DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormat.new;
@@ -734,6 +750,8 @@ class _IndexModuleNamespace {
   final DomainDevicesDiskMirrorSourceCookiesArgs = module_index.DomainDevicesDiskMirrorSourceCookies.new;
   final DomainDevicesDiskMirrorSourceCookiesCookie = module_index.DomainDevicesDiskMirrorSourceCookiesCookie.new;
   final DomainDevicesDiskMirrorSourceCookiesCookieArgs = module_index.DomainDevicesDiskMirrorSourceCookiesCookie.new;
+  final DomainDevicesDiskMirrorSourceCtl = module_index.DomainDevicesDiskMirrorSourceCtl.new;
+  final DomainDevicesDiskMirrorSourceCtlArgs = module_index.DomainDevicesDiskMirrorSourceCtl.new;
   final DomainDevicesDiskMirrorSourceDataStore = module_index.DomainDevicesDiskMirrorSourceDataStore.new;
   final DomainDevicesDiskMirrorSourceDataStoreArgs = module_index.DomainDevicesDiskMirrorSourceDataStore.new;
   final DomainDevicesDiskMirrorSourceDataStoreFormat = module_index.DomainDevicesDiskMirrorSourceDataStoreFormat.new;
@@ -886,6 +904,8 @@ class _IndexModuleNamespace {
   final DomainDevicesDiskSourceCookiesArgs = module_index.DomainDevicesDiskSourceCookies.new;
   final DomainDevicesDiskSourceCookiesCookie = module_index.DomainDevicesDiskSourceCookiesCookie.new;
   final DomainDevicesDiskSourceCookiesCookieArgs = module_index.DomainDevicesDiskSourceCookiesCookie.new;
+  final DomainDevicesDiskSourceCtl = module_index.DomainDevicesDiskSourceCtl.new;
+  final DomainDevicesDiskSourceCtlArgs = module_index.DomainDevicesDiskSourceCtl.new;
   final DomainDevicesDiskSourceDataStore = module_index.DomainDevicesDiskSourceDataStore.new;
   final DomainDevicesDiskSourceDataStoreArgs = module_index.DomainDevicesDiskSourceDataStore.new;
   final DomainDevicesDiskSourceDataStoreFormat = module_index.DomainDevicesDiskSourceDataStoreFormat.new;
@@ -1434,6 +1454,16 @@ class _IndexModuleNamespace {
   final DomainDevicesInterfaceVlanTagArgs = module_index.DomainDevicesInterfaceVlanTag.new;
   final DomainDevicesInterfaceWaitForIp = module_index.DomainDevicesInterfaceWaitForIp.new;
   final DomainDevicesInterfaceWaitForIpArgs = module_index.DomainDevicesInterfaceWaitForIp.new;
+  final DomainDevicesIommUse = module_index.DomainDevicesIommUse.new;
+  final DomainDevicesIommUseAcpi = module_index.DomainDevicesIommUseAcpi.new;
+  final DomainDevicesIommUseAcpiArgs = module_index.DomainDevicesIommUseAcpi.new;
+  final DomainDevicesIommUseAlias = module_index.DomainDevicesIommUseAlias.new;
+  final DomainDevicesIommUseAliasArgs = module_index.DomainDevicesIommUseAlias.new;
+  final DomainDevicesIommUseArgs = module_index.DomainDevicesIommUse.new;
+  final DomainDevicesIommUseDriver = module_index.DomainDevicesIommUseDriver.new;
+  final DomainDevicesIommUseDriverArgs = module_index.DomainDevicesIommUseDriver.new;
+  final DomainDevicesIommUseDriverGranule = module_index.DomainDevicesIommUseDriverGranule.new;
+  final DomainDevicesIommUseDriverGranuleArgs = module_index.DomainDevicesIommUseDriverGranule.new;
   final DomainDevicesIommu = module_index.DomainDevicesIommu.new;
   final DomainDevicesIommuAcpi = module_index.DomainDevicesIommuAcpi.new;
   final DomainDevicesIommuAcpiArgs = module_index.DomainDevicesIommuAcpi.new;
@@ -1442,6 +1472,8 @@ class _IndexModuleNamespace {
   final DomainDevicesIommuArgs = module_index.DomainDevicesIommu.new;
   final DomainDevicesIommuDriver = module_index.DomainDevicesIommuDriver.new;
   final DomainDevicesIommuDriverArgs = module_index.DomainDevicesIommuDriver.new;
+  final DomainDevicesIommuDriverGranule = module_index.DomainDevicesIommuDriverGranule.new;
+  final DomainDevicesIommuDriverGranuleArgs = module_index.DomainDevicesIommuDriverGranule.new;
   final DomainDevicesLease = module_index.DomainDevicesLease.new;
   final DomainDevicesLeaseArgs = module_index.DomainDevicesLease.new;
   final DomainDevicesLeaseTarget = module_index.DomainDevicesLeaseTarget.new;
@@ -1462,6 +1494,8 @@ class _IndexModuleNamespace {
   final DomainDevicesMemorydevAlias = module_index.DomainDevicesMemorydevAlias.new;
   final DomainDevicesMemorydevAliasArgs = module_index.DomainDevicesMemorydevAlias.new;
   final DomainDevicesMemorydevArgs = module_index.DomainDevicesMemorydev.new;
+  final DomainDevicesMemorydevDriver = module_index.DomainDevicesMemorydevDriver.new;
+  final DomainDevicesMemorydevDriverArgs = module_index.DomainDevicesMemorydevDriver.new;
   final DomainDevicesMemorydevSource = module_index.DomainDevicesMemorydevSource.new;
   final DomainDevicesMemorydevSourceArgs = module_index.DomainDevicesMemorydevSource.new;
   final DomainDevicesMemorydevTarget = module_index.DomainDevicesMemorydevTarget.new;
@@ -2082,6 +2116,8 @@ class _IndexModuleNamespace {
   final DomainIoThreadIDsIoThreadArgs = module_index.DomainIoThreadIDsIoThread.new;
   final DomainIoThreadIDsIoThreadPoll = module_index.DomainIoThreadIDsIoThreadPoll.new;
   final DomainIoThreadIDsIoThreadPollArgs = module_index.DomainIoThreadIDsIoThreadPoll.new;
+  final DomainIommufd = module_index.DomainIommufd.new;
+  final DomainIommufdArgs = module_index.DomainIommufd.new;
   final DomainKeyWrap = module_index.DomainKeyWrap.new;
   final DomainKeyWrapArgs = module_index.DomainKeyWrap.new;
   final DomainKeyWrapCipher = module_index.DomainKeyWrapCipher.new;
@@ -2156,6 +2192,8 @@ class _IndexModuleNamespace {
   final DomainOsNvRamSourceCookiesArgs = module_index.DomainOsNvRamSourceCookies.new;
   final DomainOsNvRamSourceCookiesCookie = module_index.DomainOsNvRamSourceCookiesCookie.new;
   final DomainOsNvRamSourceCookiesCookieArgs = module_index.DomainOsNvRamSourceCookiesCookie.new;
+  final DomainOsNvRamSourceCtl = module_index.DomainOsNvRamSourceCtl.new;
+  final DomainOsNvRamSourceCtlArgs = module_index.DomainOsNvRamSourceCtl.new;
   final DomainOsNvRamSourceDataStore = module_index.DomainOsNvRamSourceDataStore.new;
   final DomainOsNvRamSourceDataStoreArgs = module_index.DomainOsNvRamSourceDataStore.new;
   final DomainOsNvRamSourceDataStoreFormat = module_index.DomainOsNvRamSourceDataStoreFormat.new;
@@ -2300,6 +2338,8 @@ class _IndexModuleNamespace {
   final DomainOsNvRamSourceVolumeSecLabelArgs = module_index.DomainOsNvRamSourceVolumeSecLabel.new;
   final DomainOsSmBios = module_index.DomainOsSmBios.new;
   final DomainOsSmBiosArgs = module_index.DomainOsSmBios.new;
+  final DomainOsVarStore = module_index.DomainOsVarStore.new;
+  final DomainOsVarStoreArgs = module_index.DomainOsVarStore.new;
   final DomainPerf = module_index.DomainPerf.new;
   final DomainPerfArgs = module_index.DomainPerf.new;
   final DomainPerfEvent = module_index.DomainPerfEvent.new;
@@ -2630,7 +2670,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Libvirt = module_providers.ProviderProvider.new;
   final LibvirtArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

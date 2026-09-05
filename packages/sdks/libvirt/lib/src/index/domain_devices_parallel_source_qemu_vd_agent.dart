@@ -5,8 +5,8 @@ import 'domain_devices_parallel_source_qemu_vd_agent_clip_board.dart';
 import 'domain_devices_parallel_source_qemu_vd_agent_mouse.dart';
 
 class DomainDevicesParallelSourceQemuVdAgent {
-  final pulumi.Input<DomainDevicesParallelSourceQemuVdAgentClipBoard>? clipBoard;
-  final pulumi.Input<DomainDevicesParallelSourceQemuVdAgentMouse>? mouse;
+  final pulumi.Input<DomainDevicesParallelSourceQemuVdAgentClipBoard?>? clipBoard;
+  final pulumi.Input<DomainDevicesParallelSourceQemuVdAgentMouse?>? mouse;
 
   /// Creates a new [DomainDevicesParallelSourceQemuVdAgent].
   /// [clipBoard] Optional.

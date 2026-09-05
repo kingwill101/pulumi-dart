@@ -8,17 +8,17 @@ import 'domain_devices_vsock_driver.dart';
 
 class DomainDevicesVsock {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesVsockAcpi>? acpi;
+  final pulumi.Input<DomainDevicesVsockAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesVsockAlias>? alias;
+  final pulumi.Input<DomainDevicesVsockAlias?>? alias;
   /// Configures the connection identifier (CID) for the vsock device.
-  final pulumi.Input<DomainDevicesVsockCid>? cid;
+  final pulumi.Input<DomainDevicesVsockCid?>? cid;
   /// Configures driver options for the vsock device.
-  final pulumi.Input<DomainDevicesVsockDriver>? driver;
+  final pulumi.Input<DomainDevicesVsockDriver?>? driver;
   /// Defines the model of the vsock device for the domain.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
 
   /// Creates a new [DomainDevicesVsock].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesTpmBackendEmulatorSourceFile {
   /// Sets the path to the file source for the emulator TPM backend.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [DomainDevicesTpmBackendEmulatorSourceFile].
   /// [path] Sets the path to the file source for the emulator TPM backend.

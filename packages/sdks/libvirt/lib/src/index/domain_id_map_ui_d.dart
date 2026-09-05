@@ -30,9 +30,9 @@ class DomainIdMapUiD {
 
   factory DomainIdMapUiD.fromMap(Map<String, dynamic> map) {
     return DomainIdMapUiD(
-      count: pulumi.Input.fromValue(map['count'] as double),
-      start: pulumi.Input.fromValue(map['start'] as double),
-      target: pulumi.Input.fromValue(map['target'] as double),
+      count: pulumi.Input.fromValue((map['count'] as num).toDouble()),
+      start: pulumi.Input.fromValue((map['start'] as num).toDouble()),
+      target: pulumi.Input.fromValue((map['target'] as num).toDouble()),
     );
   }
 }

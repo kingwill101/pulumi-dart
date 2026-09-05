@@ -3,50 +3,52 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_disk_driver_io_threads.dart';
 import 'domain_devices_disk_driver_metadata_cache.dart';
+import 'domain_devices_disk_driver_statistics.dart';
 
 class DomainDevicesDiskDriver {
   /// Controls the Address Translation Services (ATS) for this disk device.
-  final pulumi.Input<String>? ats;
+  final pulumi.Input<String?>? ats;
   /// Sets the caching mode for the disk, affecting performance characteristics.
-  final pulumi.Input<String>? cache;
+  final pulumi.Input<String?>? cache;
   /// Configures whether copy-on-read functionality is enabled for the disk.
-  final pulumi.Input<String>? copyOnRead;
+  final pulumi.Input<String?>? copyOnRead;
   /// Determines if zero-detect features are enabled for the disk's driver.
-  final pulumi.Input<String>? detectZeros;
+  final pulumi.Input<String?>? detectZeros;
   /// Controls the handling of discard operations by the disk driver.
-  final pulumi.Input<String>? discard;
+  final pulumi.Input<String?>? discard;
   /// Indicates whether unreferenced blocks should be discarded.
-  final pulumi.Input<String>? discardNoUnref;
+  final pulumi.Input<String?>? discardNoUnref;
   /// Configures the policy for handling errors reported by the disk driver.
-  final pulumi.Input<String>? errorPolicy;
+  final pulumi.Input<String?>? errorPolicy;
   /// Sets the event index for the disk driver, which can be used in event handling.
-  final pulumi.Input<String>? eventIdx;
+  final pulumi.Input<String?>? eventIdx;
   /// Configures the I/O threading model for the disk driver to optimize performance.
-  final pulumi.Input<String>? io;
+  final pulumi.Input<String?>? io;
   /// Sets the I/O event file descriptor for monitoring I/O operations on the disk.
-  final pulumi.Input<String>? ioEventFd;
+  final pulumi.Input<String?>? ioEventFd;
   /// Specifies the I/O thread configuration for the disk driver.
-  final pulumi.Input<double>? ioThread;
+  final pulumi.Input<double?>? ioThread;
   /// Configures the number of I/O threads used for this disk.
-  final pulumi.Input<DomainDevicesDiskDriverIoThreads>? ioThreads;
+  final pulumi.Input<DomainDevicesDiskDriverIoThreads?>? ioThreads;
   /// Configures IOMMU support for the disk driver, affecting memory management.
-  final pulumi.Input<String>? iommu;
+  final pulumi.Input<String?>? iommu;
   /// Configures the metadata cache settings for the data store format within the backing store source.
-  final pulumi.Input<DomainDevicesDiskDriverMetadataCache>? metadataCache;
+  final pulumi.Input<DomainDevicesDiskDriverMetadataCache?>? metadataCache;
   /// Sets the name of the driver used for the disk device.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configures whether the disk driver is packed, impacting performance and resource usage.
-  final pulumi.Input<String>? packed;
+  final pulumi.Input<String?>? packed;
   /// Controls whether a page per virtqueue is used in the driver configuration.
-  final pulumi.Input<String>? pagePerVq;
+  final pulumi.Input<String?>? pagePerVq;
   /// Sets the size of the I/O queue for the disk driver.
-  final pulumi.Input<double>? queueSize;
+  final pulumi.Input<double?>? queueSize;
   /// Configures the number of queues for the disk driver, enhancing parallel processing.
-  final pulumi.Input<double>? queues;
+  final pulumi.Input<double?>? queues;
   /// Sets the policy for handling read errors encountered by the disk driver.
-  final pulumi.Input<String>? rerrorPolicy;
+  final pulumi.Input<String?>? rerrorPolicy;
+  final pulumi.Input<DomainDevicesDiskDriverStatistics?>? statistics;
   /// Configures the driver type to control how the disk interfaces with the system.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DomainDevicesDiskDriver].
   /// [ats] Controls the Address Translation Services (ATS) for this disk device.
@@ -69,6 +71,7 @@ class DomainDevicesDiskDriver {
   /// [queueSize] Sets the size of the I/O queue for the disk driver.
   /// [queues] Configures the number of queues for the disk driver, enhancing parallel processing.
   /// [rerrorPolicy] Sets the policy for handling read errors encountered by the disk driver.
+  /// [statistics] Optional.
   /// [type] Configures the driver type to control how the disk interfaces with the system.
   const DomainDevicesDiskDriver({
     this.ats,
@@ -91,6 +94,7 @@ class DomainDevicesDiskDriver {
     this.queueSize,
     this.queues,
     this.rerrorPolicy,
+    this.statistics,
     this.type,
   });
 
@@ -116,6 +120,7 @@ class DomainDevicesDiskDriver {
       'queueSize': ?queueSize,
       'queues': ?queues,
       'rerrorPolicy': ?rerrorPolicy,
+      'statistics': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskDriverStatistics, Map<String, dynamic>>(statistics, (value) => value.toMap()),
       'type': ?type,
     };
   }
@@ -132,16 +137,17 @@ class DomainDevicesDiskDriver {
       eventIdx: (() { final guardedValue = map['eventIdx']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       io: (() { final guardedValue = map['io']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ioEventFd: (() { final guardedValue = map['ioEventFd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ioThread: (() { final guardedValue = map['ioThread']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      ioThread: (() { final guardedValue = map['ioThread']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       ioThreads: (() { final guardedValue = map['ioThreads']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskDriverIoThreads.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       iommu: (() { final guardedValue = map['iommu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadataCache: (() { final guardedValue = map['metadataCache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskDriverMetadataCache.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       packed: (() { final guardedValue = map['packed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pagePerVq: (() { final guardedValue = map['pagePerVq']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queueSize: (() { final guardedValue = map['queueSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      queues: (() { final guardedValue = map['queues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      queueSize: (() { final guardedValue = map['queueSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      queues: (() { final guardedValue = map['queues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       rerrorPolicy: (() { final guardedValue = map['rerrorPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statistics: (() { final guardedValue = map['statistics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesDiskDriverStatistics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

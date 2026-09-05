@@ -15,34 +15,34 @@ import 'domain_devices_smartcard_passthrough_unix.dart';
 
 class DomainDevicesSmartcardPassthrough {
   /// Configures the DBus source for the EGD backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthroughDbus>? dbus;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughDbus?>? dbus;
   /// Defines the device path for the source of the EGD backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthroughDev>? dev;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughDev?>? dev;
   /// Defines a file source for the RNG EGD backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthroughFile>? file;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughFile?>? file;
   /// Configures the NMDM (null modem) device source for the EGD backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthroughNmdm>? nmdm;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughNmdm?>? nmdm;
   /// Configures a null source for the EGD backend.
-  final pulumi.Input<bool>? null_;
+  final pulumi.Input<bool?>? null_;
   /// Defines a pipe source for the EGD backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthroughPipe>? pipe;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughPipe?>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthroughPty>? pty;
-  final pulumi.Input<DomainDevicesSmartcardPassthroughQemuVdAgent>? qemuVdAgent;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughPty?>? pty;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughQemuVdAgent?>? qemuVdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthroughSpicePort>? spicePort;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughSpicePort?>? spicePort;
   /// Configures the SPICE VMC settings for the random number generator backend.
-  final pulumi.Input<bool>? spiceVmc;
+  final pulumi.Input<bool?>? spiceVmc;
   /// Configures standard input/output settings for the random number generator backend.
-  final pulumi.Input<bool>? stdIo;
+  final pulumi.Input<bool?>? stdIo;
   /// Configures TCP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthroughTcp>? tcp;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughTcp?>? tcp;
   /// Configures UDP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthroughUdp>? udp;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughUdp?>? udp;
   /// Configures UNIX domain socket settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthroughUnix>? unix;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughUnix?>? unix;
   /// Configures settings for the virtual console connection in the random number generator backend.
-  final pulumi.Input<bool>? vc;
+  final pulumi.Input<bool?>? vc;
 
   /// Creates a new [DomainDevicesSmartcardPassthrough].
   /// [dbus] Configures the DBus source for the EGD backend.

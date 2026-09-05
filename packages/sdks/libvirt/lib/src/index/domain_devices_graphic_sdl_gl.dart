@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicSdlGl {
   /// Configures whether OpenGL support is enabled in SDL graphics settings.
-  final pulumi.Input<String>? enable;
+  final pulumi.Input<String?>? enable;
 
   /// Creates a new [DomainDevicesGraphicSdlGl].
   /// [enable] Configures whether OpenGL support is enabled in SDL graphics settings.

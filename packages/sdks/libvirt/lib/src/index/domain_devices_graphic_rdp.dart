@@ -5,21 +5,21 @@ import 'domain_devices_graphic_rdp_listener.dart';
 
 class DomainDevicesGraphicRdp {
   /// Enables automatic port assignment for the RDP connection.
-  final pulumi.Input<bool>? autoPort;
+  final pulumi.Input<bool?>? autoPort;
   /// Configures the listening parameters for the RDP graphics connection.
-  final pulumi.Input<String>? listen;
+  final pulumi.Input<String?>? listen;
   /// Sets the configuration for RDP listeners that accept incoming connections.
-  final pulumi.Input<List<DomainDevicesGraphicRdpListener>>? listeners;
+  final pulumi.Input<List<DomainDevicesGraphicRdpListener>?>? listeners;
   /// Configures whether multi-user access is allowed on the RDP connection.
-  final pulumi.Input<String>? multiUser;
+  final pulumi.Input<String?>? multiUser;
   /// Sets the password required for RDP access to the graphics console.
-  final pulumi.Input<String>? passwd;
+  final pulumi.Input<String?>? passwd;
   /// Configures the port for the RDP connection to the virtual machine's graphics.
-  final pulumi.Input<double>? port;
+  final pulumi.Input<double?>? port;
   /// Determines if the default RDP user should be replaced with a specified one.
-  final pulumi.Input<String>? replaceUser;
+  final pulumi.Input<String?>? replaceUser;
   /// Sets the username for RDP authentication on the graphics connection.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [DomainDevicesGraphicRdp].
   /// [autoPort] Enables automatic port assignment for the RDP connection.
@@ -61,7 +61,7 @@ class DomainDevicesGraphicRdp {
       listeners: (() { final guardedValue = map['listeners']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesGraphicRdpListener>(guardedValue, (value) => DomainDevicesGraphicRdpListener.fromMap((value as Map).cast<String, dynamic>()))); })(),
       multiUser: (() { final guardedValue = map['multiUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwd: (() { final guardedValue = map['passwd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       replaceUser: (() { final guardedValue = map['replaceUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

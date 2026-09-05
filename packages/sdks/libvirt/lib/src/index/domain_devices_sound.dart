@@ -9,23 +9,23 @@ import 'domain_devices_sound_driver.dart';
 
 class DomainDevicesSound {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesSoundAcpi>? acpi;
+  final pulumi.Input<DomainDevicesSoundAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesSoundAlias>? alias;
+  final pulumi.Input<DomainDevicesSoundAlias?>? alias;
   /// This field specifies the audio configuration for the sound device in the guest domain.
-  final pulumi.Input<DomainDevicesSoundAudio>? audio;
+  final pulumi.Input<DomainDevicesSoundAudio?>? audio;
   /// This field configures the codec settings for the audio device in the domain.
-  final pulumi.Input<List<DomainDevicesSoundCodec>>? codecs;
+  final pulumi.Input<List<DomainDevicesSoundCodec>?>? codecs;
   /// This field sets the driver configuration for the sound device in the domain.
-  final pulumi.Input<DomainDevicesSoundDriver>? driver;
+  final pulumi.Input<DomainDevicesSoundDriver?>? driver;
   /// This field specifies the model of the sound device in the guest domain configuration.
   final pulumi.Input<String> model;
   /// Configures whether the sound device supports multi-channel audio output.
-  final pulumi.Input<String>? multiChannel;
+  final pulumi.Input<String?>? multiChannel;
   /// Sets the number of audio streams supported by the sound device.
-  final pulumi.Input<double>? streams;
+  final pulumi.Input<double?>? streams;
 
   /// Creates a new [DomainDevicesSound].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
@@ -73,7 +73,7 @@ class DomainDevicesSound {
       driver: (() { final guardedValue = map['driver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesSoundDriver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       model: pulumi.Input.fromValue(map['model'] as String),
       multiChannel: (() { final guardedValue = map['multiChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      streams: (() { final guardedValue = map['streams']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      streams: (() { final guardedValue = map['streams']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkPortOptions {
   /// Specifies whether the network port is isolated, preventing traffic flow from other ports.
-  final pulumi.Input<String>? isolated;
+  final pulumi.Input<String?>? isolated;
 
   /// Creates a new [NetworkPortOptions].
   /// [isolated] Specifies whether the network port is isolated, preventing traffic flow from other ports.

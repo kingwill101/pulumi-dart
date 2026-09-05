@@ -5,7 +5,7 @@ import 'domain_sys_info_smbios_system_entry.dart';
 
 class DomainSysInfoSmbiosSystem {
   /// Defines individual entries for system information in the SMBIOS configuration.
-  final pulumi.Input<List<DomainSysInfoSmbiosSystemEntry>>? entries;
+  final pulumi.Input<List<DomainSysInfoSmbiosSystemEntry>?>? entries;
 
   /// Creates a new [DomainSysInfoSmbiosSystem].
   /// [entries] Defines individual entries for system information in the SMBIOS configuration.

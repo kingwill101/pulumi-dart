@@ -10,7 +10,7 @@ class GetDomainInterfaceAddressesArgs {
   /// Domain UUID or name to query. Use `libvirt_domain.example.id` or `libvirt_domain.example.name` to reference a managed domain.
   final pulumi.Input<String> domain;
   /// Source to query for IP addresses:
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [GetDomainInterfaceAddressesArgs].
   /// [domain] Domain UUID or name to query. Use `libvirt_domain.example.id` or `libvirt_domain.example.name` to reference a managed domain.

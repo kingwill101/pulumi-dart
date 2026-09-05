@@ -7,7 +7,7 @@ class DomainOsNvRamSourceVhostUserDev {
   /// Specifies the path to the device file for the EGD backend.
   final pulumi.Input<String> path;
   /// Configures the security label settings for the device source in the EGD backend.
-  final pulumi.Input<List<DomainOsNvRamSourceVhostUserDevSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainOsNvRamSourceVhostUserDevSecLabel>?>? secLabels;
 
   /// Creates a new [DomainOsNvRamSourceVhostUserDev].
   /// [path] Specifies the path to the device file for the EGD backend.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevCapsNetRoute {
   /// Sets the destination address for the routing configuration of the host device.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Specifies the address family for the routing capabilities (IPv4 or IPv6) of the host device.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// Configures the gateway address for the routing capability associated with the host device.
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
 
   /// Creates a new [DomainDevicesHostdevCapsNetRoute].
   /// [address] Sets the destination address for the routing configuration of the host device.

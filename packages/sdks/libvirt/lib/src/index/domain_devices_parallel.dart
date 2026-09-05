@@ -10,19 +10,19 @@ import 'domain_devices_parallel_target.dart';
 
 class DomainDevicesParallel {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesParallelAcpi>? acpi;
+  final pulumi.Input<DomainDevicesParallelAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesParallelAlias>? alias;
+  final pulumi.Input<DomainDevicesParallelAlias?>? alias;
   /// Specifies the logging options for the channel configuration.
-  final pulumi.Input<DomainDevicesParallelLog>? log;
+  final pulumi.Input<DomainDevicesParallelLog?>? log;
   /// Sets the protocol type for the EGD backend.
-  final pulumi.Input<DomainDevicesParallelProtocol>? protocol;
+  final pulumi.Input<DomainDevicesParallelProtocol?>? protocol;
   /// Defines the source settings for the EGD backend.
-  final pulumi.Input<DomainDevicesParallelSource>? source;
+  final pulumi.Input<DomainDevicesParallelSource?>? source;
   /// Defines the target configuration for the parallel device settings within the domain.
-  final pulumi.Input<DomainDevicesParallelTarget>? target;
+  final pulumi.Input<DomainDevicesParallelTarget?>? target;
 
   /// Creates a new [DomainDevicesParallel].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

@@ -6,15 +6,15 @@ import 'network_port_group_vlan.dart';
 
 class NetworkPortGroup {
   /// Indicates the default status of the port group.
-  final pulumi.Input<String>? default_;
+  final pulumi.Input<String?>? default_;
   /// Sets the name for the specified port group within the network.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Controls whether to trust incoming packets based on guest-defined filters.
-  final pulumi.Input<String>? trustGuestRxFilters;
+  final pulumi.Input<String?>? trustGuestRxFilters;
   /// Configures the virtual port associated with a port group.
-  final pulumi.Input<NetworkPortGroupVirtualPort>? virtualPort;
+  final pulumi.Input<NetworkPortGroupVirtualPort?>? virtualPort;
   /// Defines VLAN settings for the port group in the network configuration.
-  final pulumi.Input<NetworkPortGroupVlan>? vlan;
+  final pulumi.Input<NetworkPortGroupVlan?>? vlan;
 
   /// Creates a new [NetworkPortGroup].
   /// [default_] Indicates the default status of the port group.

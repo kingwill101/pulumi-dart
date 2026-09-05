@@ -6,9 +6,9 @@ import 'domain_features_xen_passthrough.dart';
 
 class DomainFeaturesXen {
   /// Enables the use of the e820 memory map for the Xen hypervisor, improving memory management.
-  final pulumi.Input<DomainFeaturesXenE820host>? e820host;
+  final pulumi.Input<DomainFeaturesXenE820host?>? e820host;
   /// Configures the passthrough feature for Xen, allowing direct access to host devices from the guest.
-  final pulumi.Input<DomainFeaturesXenPassthrough>? passthrough;
+  final pulumi.Input<DomainFeaturesXenPassthrough?>? passthrough;
 
   /// Creates a new [DomainFeaturesXen].
   /// [e820host] Enables the use of the e820 memory map for the Xen hypervisor, improving memory management.

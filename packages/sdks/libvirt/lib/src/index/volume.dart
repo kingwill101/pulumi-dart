@@ -489,7 +489,7 @@ import '../internal/package_registration.dart' as package_registration;
 ///           url: /path/to/local/image.qcow2
 /// ```
 class Volume extends pulumi.CustomResource {
-  /// Configures the total amount of space allocated for the storage volume.
+  /// Initial volume allocation in bytes. Omit to use libvirt's default full allocation; set below capacity to request sparse allocation where supported.
   late final pulumi.Output<double> allocation;
   /// Specifies the units for the allocated space in the storage volume.
   late final pulumi.Output<String?> allocationUnit;
@@ -553,11 +553,12 @@ class Volume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Volume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -571,6 +572,32 @@ class Volume extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allocation = registerOutput<double>('allocation');
+    allocationUnit = registerOutput<String?>('allocationUnit');
+    backingStore = registerOutput<VolumeBackingStore?>('backingStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBackingStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    capacity = registerOutput<double>('capacity');
+    capacityUnit = registerOutput<String?>('capacityUnit');
+    create = registerOutput<VolumeCreate?>('create', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCreate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    key = registerOutput<String>('key');
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String>('path');
+    physical = registerOutput<double>('physical');
+    physicalUnit = registerOutput<String?>('physicalUnit');
+    pool = registerOutput<String>('pool');
+    target = registerOutput<VolumeTarget?>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [Volume] resource.
+  Volume.reference(String urn)
+    : super(
+        'libvirt:index/volume:Volume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          registerPackageRequest: package_registration.registerPackageRequest,
+        isResourceReference: true,
+      ) {
     allocation = registerOutput<double>('allocation');
     allocationUnit = registerOutput<String?>('allocationUnit');
     backingStore = registerOutput<VolumeBackingStore?>('backingStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBackingStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });

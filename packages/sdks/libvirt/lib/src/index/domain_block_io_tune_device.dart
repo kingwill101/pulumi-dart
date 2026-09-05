@@ -6,15 +6,15 @@ class DomainBlockIoTuneDevice {
   /// Specifies the path of the block device to which the tuning parameters apply.
   final pulumi.Input<String> path;
   /// Sets the maximum number of bytes per second that can be read from the device.
-  final pulumi.Input<double>? readBytesSec;
+  final pulumi.Input<double?>? readBytesSec;
   /// Sets the maximum number of read I/O operations per second that can be performed on the device.
-  final pulumi.Input<double>? readIopsSec;
+  final pulumi.Input<double?>? readIopsSec;
   /// Configures the relative weight of the device, influencing scheduling priority during I/O operations.
-  final pulumi.Input<double>? weight;
+  final pulumi.Input<double?>? weight;
   /// Sets the maximum number of bytes per second that can be written to the device.
-  final pulumi.Input<double>? writeBytesSec;
+  final pulumi.Input<double?>? writeBytesSec;
   /// Sets the maximum number of write I/O operations per second that can be performed on the device.
-  final pulumi.Input<double>? writeIopsSec;
+  final pulumi.Input<double?>? writeIopsSec;
 
   /// Creates a new [DomainBlockIoTuneDevice].
   /// [path] Specifies the path of the block device to which the tuning parameters apply.
@@ -46,11 +46,11 @@ class DomainBlockIoTuneDevice {
   factory DomainBlockIoTuneDevice.fromMap(Map<String, dynamic> map) {
     return DomainBlockIoTuneDevice(
       path: pulumi.Input.fromValue(map['path'] as String),
-      readBytesSec: (() { final guardedValue = map['readBytesSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      readIopsSec: (() { final guardedValue = map['readIopsSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      writeBytesSec: (() { final guardedValue = map['writeBytesSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      writeIopsSec: (() { final guardedValue = map['writeIopsSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      readBytesSec: (() { final guardedValue = map['readBytesSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      readIopsSec: (() { final guardedValue = map['readIopsSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      writeBytesSec: (() { final guardedValue = map['writeBytesSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      writeIopsSec: (() { final guardedValue = map['writeIopsSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

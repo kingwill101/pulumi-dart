@@ -6,9 +6,9 @@ class DomainDevicesInterfaceMac {
   /// Specifies the specific MAC address assigned to the network interface.
   final pulumi.Input<String> address;
   /// Determines whether to validate the MAC address format.
-  final pulumi.Input<String>? check;
+  final pulumi.Input<String?>? check;
   /// Configures the type of MAC address assignment (static or dynamic).
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DomainDevicesInterfaceMac].
   /// [address] Specifies the specific MAC address assigned to the network interface.

@@ -5,8 +5,8 @@ import 'domain_devices_smartcard_passthrough_qemu_vd_agent_clip_board.dart';
 import 'domain_devices_smartcard_passthrough_qemu_vd_agent_mouse.dart';
 
 class DomainDevicesSmartcardPassthroughQemuVdAgent {
-  final pulumi.Input<DomainDevicesSmartcardPassthroughQemuVdAgentClipBoard>? clipBoard;
-  final pulumi.Input<DomainDevicesSmartcardPassthroughQemuVdAgentMouse>? mouse;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughQemuVdAgentClipBoard?>? clipBoard;
+  final pulumi.Input<DomainDevicesSmartcardPassthroughQemuVdAgentMouse?>? mouse;
 
   /// Creates a new [DomainDevicesSmartcardPassthroughQemuVdAgent].
   /// [clipBoard] Optional.

@@ -9,19 +9,19 @@ import 'domain_devices_rng_rate.dart';
 
 class DomainDevicesRng {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesRngAcpi>? acpi;
+  final pulumi.Input<DomainDevicesRngAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesRngAlias>? alias;
+  final pulumi.Input<DomainDevicesRngAlias?>? alias;
   /// Configures the backend settings for the random number generator device.
-  final pulumi.Input<DomainDevicesRngBackend>? backend;
+  final pulumi.Input<DomainDevicesRngBackend?>? backend;
   /// Specifies the driver settings for the random number generator device.
-  final pulumi.Input<DomainDevicesRngDriver>? driver;
+  final pulumi.Input<DomainDevicesRngDriver?>? driver;
   /// Sets the model type for the random number generator device.
   final pulumi.Input<String> model;
   /// Configures the rate of data provided by the random number generator device.
-  final pulumi.Input<DomainDevicesRngRate>? rate;
+  final pulumi.Input<DomainDevicesRngRate?>? rate;
 
   /// Creates a new [DomainDevicesRng].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

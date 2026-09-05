@@ -30,65 +30,66 @@ import 'domain_features_xen.dart';
 
 class DomainFeatures {
   /// Controls ACPI support for the domain, allowing for power management and sleep states within the guest OS.
-  final pulumi.Input<bool>? acpi;
+  final pulumi.Input<bool?>? acpi;
   /// Enables or disables AIA (Advanced Interrupt Affinity) support for the domain, which optimizes interrupt handling.
-  final pulumi.Input<DomainFeaturesAia>? aia;
+  final pulumi.Input<DomainFeaturesAia?>? aia;
   /// Configures APIC (Advanced Programmable Interrupt Controller) support for the domain, which is essential for handling interrupts.
-  final pulumi.Input<DomainFeaturesApic>? apic;
+  final pulumi.Input<DomainFeaturesApic?>? apic;
   /// Configures asynchronous teardown behavior for the domain, enhancing performance during shutdown processes.
-  final pulumi.Input<DomainFeaturesAsyncTeardown>? asyncTeardown;
+  final pulumi.Input<DomainFeaturesAsyncTeardown?>? asyncTeardown;
   /// Defines the set of capabilities that can be enabled for the domain, influencing its operational features and constraints.
-  final pulumi.Input<DomainFeaturesCapabilities>? capabilities;
+  final pulumi.Input<DomainFeaturesCapabilities?>? capabilities;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesCcfAssist>? ccfAssist;
+  final pulumi.Input<DomainFeaturesCcfAssist?>? ccfAssist;
   /// Configures whether the domain supports CFPC features.
-  final pulumi.Input<DomainFeaturesCfpc>? cfpc;
+  final pulumi.Input<DomainFeaturesCfpc?>? cfpc;
   /// Configures whether the domain supports GIC (Generic Interrupt Controller) features.
-  final pulumi.Input<DomainFeaturesGic>? gic;
+  final pulumi.Input<DomainFeaturesGic?>? gic;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHap>? hap;
+  final pulumi.Input<DomainFeaturesHap?>? hap;
   /// Configures whether the domain supports Hardware Paging Translation (HPT).
-  final pulumi.Input<DomainFeaturesHpt>? hpt;
+  final pulumi.Input<DomainFeaturesHpt?>? hpt;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHtm>? htm;
+  final pulumi.Input<DomainFeaturesHtm?>? htm;
   /// Configures the availability of Hyper-V specific features for the domain.
-  final pulumi.Input<DomainFeaturesHyperV>? hyperV;
+  final pulumi.Input<DomainFeaturesHyperV?>? hyperV;
   /// Configures the Instruction Based Sampling feature for the domain.
-  final pulumi.Input<DomainFeaturesIbs>? ibs;
+  final pulumi.Input<DomainFeaturesIbs?>? ibs;
   /// Controls the configuration of the I/O APIC feature in the domain.
-  final pulumi.Input<DomainFeaturesIoapic>? ioapic;
+  final pulumi.Input<DomainFeaturesIoapic?>? ioapic;
   /// Configures the availability of KVM specific features for the domain.
-  final pulumi.Input<DomainFeaturesKvm>? kvm;
+  final pulumi.Input<DomainFeaturesKvm?>? kvm;
   /// Controls the management of Model Specific Registers (MSRs) for the guest, allowing for low-level CPU features.
-  final pulumi.Input<DomainFeaturesMsrs>? msrs;
+  final pulumi.Input<DomainFeaturesMsrs?>? msrs;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesNestedHv>? nestedHv;
+  final pulumi.Input<DomainFeaturesNestedHv?>? nestedHv;
   /// Enables PAE (Physical Address Extension) feature, allowing the guest to support more than 4GB of RAM.
-  final pulumi.Input<bool>? pae;
+  final pulumi.Input<bool?>? pae;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesPmu>? pmu;
+  final pulumi.Input<DomainFeaturesPmu?>? pmu;
   /// Configures the private network feature, allowing for isolated network configurations within the guest.
-  final pulumi.Input<bool>? privNet;
+  final pulumi.Input<bool?>? privNet;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesPs2>? ps2;
+  final pulumi.Input<DomainFeaturesPs2?>? ps2;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesPvSpinlock>? pvSpinlock;
+  final pulumi.Input<DomainFeaturesPvSpinlock?>? pvSpinlock;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesRas>? ras;
+  final pulumi.Input<DomainFeaturesRas?>? ras;
   /// Configures Shared Bandwidth Bridge Capability (SBBC) to optimize bandwidth sharing among VMs.
-  final pulumi.Input<DomainFeaturesSbbc>? sbbc;
+  final pulumi.Input<DomainFeaturesSbbc?>? sbbc;
   /// Enables Secure Memory Management (SMM), providing additional security features for the guest.
-  final pulumi.Input<DomainFeaturesSmm>? smm;
+  final pulumi.Input<DomainFeaturesSmm?>? smm;
   /// Enables Trusted Computing Group (TCG) features for secure computing environments.
-  final pulumi.Input<DomainFeaturesTcg>? tcg;
+  final pulumi.Input<DomainFeaturesTcg?>? tcg;
   /// Enables Viridian features for enhanced virtualization capabilities on Windows guests.
-  final pulumi.Input<bool>? viridian;
+  final pulumi.Input<bool?>? viridian;
+  final pulumi.Input<bool?>? virtualization;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesVmCoreInfo>? vmCoreInfo;
+  final pulumi.Input<DomainFeaturesVmCoreInfo?>? vmCoreInfo;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesVmPort>? vmPort;
+  final pulumi.Input<DomainFeaturesVmPort?>? vmPort;
   /// Enables or disables features specific to Xen virtualization, controlling various aspects of guest management.
-  final pulumi.Input<DomainFeaturesXen>? xen;
+  final pulumi.Input<DomainFeaturesXen?>? xen;
 
   /// Creates a new [DomainFeatures].
   /// [acpi] Controls ACPI support for the domain, allowing for power management and sleep states within the guest OS.
@@ -118,6 +119,7 @@ class DomainFeatures {
   /// [smm] Enables Secure Memory Management (SMM), providing additional security features for the guest.
   /// [tcg] Enables Trusted Computing Group (TCG) features for secure computing environments.
   /// [viridian] Enables Viridian features for enhanced virtualization capabilities on Windows guests.
+  /// [virtualization] Optional.
   /// [vmCoreInfo] Enables or disables support for PS/2 devices in the virtual machine.
   /// [vmPort] Enables or disables support for PS/2 devices in the virtual machine.
   /// [xen] Enables or disables features specific to Xen virtualization, controlling various aspects of guest management.
@@ -149,6 +151,7 @@ class DomainFeatures {
     this.smm,
     this.tcg,
     this.viridian,
+    this.virtualization,
     this.vmCoreInfo,
     this.vmPort,
     this.xen,
@@ -183,6 +186,7 @@ class DomainFeatures {
       'smm': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesSmm, Map<String, dynamic>>(smm, (value) => value.toMap()),
       'tcg': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesTcg, Map<String, dynamic>>(tcg, (value) => value.toMap()),
       'viridian': ?viridian,
+      'virtualization': ?virtualization,
       'vmCoreInfo': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesVmCoreInfo, Map<String, dynamic>>(vmCoreInfo, (value) => value.toMap()),
       'vmPort': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesVmPort, Map<String, dynamic>>(vmPort, (value) => value.toMap()),
       'xen': ?pulumi.Input.mapOptionalInputValue<DomainFeaturesXen, Map<String, dynamic>>(xen, (value) => value.toMap()),
@@ -218,6 +222,7 @@ class DomainFeatures {
       smm: (() { final guardedValue = map['smm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainFeaturesSmm.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tcg: (() { final guardedValue = map['tcg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainFeaturesTcg.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       viridian: (() { final guardedValue = map['viridian']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      virtualization: (() { final guardedValue = map['virtualization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       vmCoreInfo: (() { final guardedValue = map['vmCoreInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainFeaturesVmCoreInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vmPort: (() { final guardedValue = map['vmPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainFeaturesVmPort.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       xen: (() { final guardedValue = map['xen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainFeaturesXen.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

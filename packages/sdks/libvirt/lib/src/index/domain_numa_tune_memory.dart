@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainNumaTuneMemory {
   /// Sets the allocation mode for NUMA memory, influencing how memory is distributed across nodes.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Specifies the nodeset for memory allocation for the NUMA settings, allowing for tailored memory configurations.
-  final pulumi.Input<String>? nodeset;
+  final pulumi.Input<String?>? nodeset;
   /// Defines the placement strategy for NUMA memory, orienting memory allocation toward specific nodes.
-  final pulumi.Input<String>? placement;
+  final pulumi.Input<String?>? placement;
 
   /// Creates a new [DomainNumaTuneMemory].
   /// [mode] Sets the allocation mode for NUMA memory, influencing how memory is distributed across nodes.

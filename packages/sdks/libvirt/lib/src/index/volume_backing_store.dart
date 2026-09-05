@@ -6,11 +6,11 @@ import 'volume_backing_store_permissions.dart';
 
 class VolumeBackingStore {
   /// Sets the format type for the backing store of the storage volume.
-  final pulumi.Input<VolumeBackingStoreFormat>? format;
+  final pulumi.Input<VolumeBackingStoreFormat?>? format;
   /// Defines the path to the backing store for the storage volume.
   final pulumi.Input<String> path;
   /// Configures the permissions for the backing store of the storage volume.
-  final pulumi.Input<VolumeBackingStorePermissions>? permissions;
+  final pulumi.Input<VolumeBackingStorePermissions?>? permissions;
 
   /// Creates a new [VolumeBackingStore].
   /// [format] Sets the format type for the backing store of the storage volume.

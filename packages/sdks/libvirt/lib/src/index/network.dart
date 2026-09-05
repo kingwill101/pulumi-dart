@@ -6,10 +6,13 @@ import 'network_dns.dart';
 import 'network_dnsmasq_options.dart';
 import 'network_domain.dart';
 import 'network_forward.dart';
+import 'network_ip.dart';
 import 'network_mac.dart';
 import 'network_metadata.dart';
 import 'network_mtu.dart';
+import 'network_port_group.dart';
 import 'network_port_options.dart';
+import 'network_route.dart';
 import 'network_state.dart';
 import 'network_virtual_port.dart';
 import 'network_vlan.dart';
@@ -30,7 +33,7 @@ class Network extends pulumi.CustomResource {
   /// Network forwarding mode configuration
   late final pulumi.Output<NetworkForward?> forward;
   /// IP address configuration for the network
-  late final pulumi.Output<List<Map<String, dynamic>>?> ips;
+  late final pulumi.Output<List<NetworkIp>?> ips;
   /// Controls whether the network provides IPv6 support, as a boolean-like flag (`yes` or `no`).
   ///
   /// See: &lt;https://libvirt.org/formatnetwork.html#general-metadata&gt;
@@ -46,13 +49,13 @@ class Network extends pulumi.CustomResource {
   /// Defines one or more port groups that classify guest connections on this network, each with its own settings such as virtual port parameters or QoS.
   ///
   /// See: &lt;https://libvirt.org/formatnetwork.html#portgroups&gt;
-  late final pulumi.Output<List<Map<String, dynamic>>?> portGroups;
+  late final pulumi.Output<List<NetworkPortGroup>?> portGroups;
   /// Configures default per-port options for this virtual network, such as isolating traffic between guests connected to the same network.
   late final pulumi.Output<NetworkPortOptions?> portOptions;
   /// Configures one or more static routes associated with this virtual network, informing the host about networks reachable via guests.
   ///
   /// See: &lt;https://libvirt.org/formatnetwork.html#static-routes&gt;
-  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
+  late final pulumi.Output<List<NetworkRoute>?> routes;
   /// Controls whether the network as a whole trusts guests' receive-side filtering settings, corresponding to the yes/no trustGuestRxFilters flag on the network definition.
   ///
   /// See: &lt;https://libvirt.org/formatnetwork.html#general-metadata&gt;
@@ -88,15 +91,15 @@ class Network extends pulumi.CustomResource {
     dnsmasqOptions = registerOutput<NetworkDnsmasqOptions?>('dnsmasqOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDnsmasqOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domain = registerOutput<NetworkDomain?>('domain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forward = registerOutput<NetworkForward?>('forward', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkForward.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ips = registerOutput<List<Map<String, dynamic>>?>('ips');
+    ips = registerOutput<List<NetworkIp>?>('ips', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkIp>(guardedValue, (value) => NetworkIp.fromMap((value as Map).cast<String, dynamic>())); });
     ipv6 = registerOutput<String?>('ipv6');
     mac = registerOutput<NetworkMac?>('mac', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMac.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadata = registerOutput<NetworkMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mtu = registerOutput<NetworkMtu?>('mtu', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMtu.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    portGroups = registerOutput<List<Map<String, dynamic>>?>('portGroups');
+    portGroups = registerOutput<List<NetworkPortGroup>?>('portGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkPortGroup>(guardedValue, (value) => NetworkPortGroup.fromMap((value as Map).cast<String, dynamic>())); });
     portOptions = registerOutput<NetworkPortOptions?>('portOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPortOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    routes = registerOutput<List<NetworkRoute>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkRoute>(guardedValue, (value) => NetworkRoute.fromMap((value as Map).cast<String, dynamic>())); });
     trustGuestRxFilters = registerOutput<String?>('trustGuestRxFilters');
     uuid = registerOutput<String>('uuid');
     virtualPort = registerOutput<NetworkVirtualPort?>('virtualPort', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkVirtualPort.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -108,11 +111,12 @@ class Network extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Network._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -133,15 +137,47 @@ class Network extends pulumi.CustomResource {
     dnsmasqOptions = registerOutput<NetworkDnsmasqOptions?>('dnsmasqOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDnsmasqOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domain = registerOutput<NetworkDomain?>('domain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forward = registerOutput<NetworkForward?>('forward', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkForward.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ips = registerOutput<List<Map<String, dynamic>>?>('ips');
+    ips = registerOutput<List<NetworkIp>?>('ips', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkIp>(guardedValue, (value) => NetworkIp.fromMap((value as Map).cast<String, dynamic>())); });
     ipv6 = registerOutput<String?>('ipv6');
     mac = registerOutput<NetworkMac?>('mac', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMac.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadata = registerOutput<NetworkMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mtu = registerOutput<NetworkMtu?>('mtu', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMtu.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    portGroups = registerOutput<List<Map<String, dynamic>>?>('portGroups');
+    portGroups = registerOutput<List<NetworkPortGroup>?>('portGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkPortGroup>(guardedValue, (value) => NetworkPortGroup.fromMap((value as Map).cast<String, dynamic>())); });
     portOptions = registerOutput<NetworkPortOptions?>('portOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPortOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    routes = registerOutput<List<NetworkRoute>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkRoute>(guardedValue, (value) => NetworkRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    trustGuestRxFilters = registerOutput<String?>('trustGuestRxFilters');
+    uuid = registerOutput<String>('uuid');
+    virtualPort = registerOutput<NetworkVirtualPort?>('virtualPort', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkVirtualPort.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vlan = registerOutput<NetworkVlan?>('vlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkVlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Network] resource.
+  Network.reference(String urn)
+    : super(
+        'libvirt:index/network:Network',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          registerPackageRequest: package_registration.registerPackageRequest,
+        isResourceReference: true,
+      ) {
+    autostart = registerOutput<bool>('autostart');
+    bandwidth = registerOutput<NetworkBandwidth?>('bandwidth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkBandwidth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bridge = registerOutput<NetworkBridge?>('bridge', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkBridge.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dns = registerOutput<NetworkDns?>('dns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsmasqOptions = registerOutput<NetworkDnsmasqOptions?>('dnsmasqOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDnsmasqOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domain = registerOutput<NetworkDomain?>('domain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    forward = registerOutput<NetworkForward?>('forward', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkForward.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ips = registerOutput<List<NetworkIp>?>('ips', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkIp>(guardedValue, (value) => NetworkIp.fromMap((value as Map).cast<String, dynamic>())); });
+    ipv6 = registerOutput<String?>('ipv6');
+    mac = registerOutput<NetworkMac?>('mac', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMac.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadata = registerOutput<NetworkMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mtu = registerOutput<NetworkMtu?>('mtu', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkMtu.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    portGroups = registerOutput<List<NetworkPortGroup>?>('portGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkPortGroup>(guardedValue, (value) => NetworkPortGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    portOptions = registerOutput<NetworkPortOptions?>('portOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPortOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routes = registerOutput<List<NetworkRoute>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkRoute>(guardedValue, (value) => NetworkRoute.fromMap((value as Map).cast<String, dynamic>())); });
     trustGuestRxFilters = registerOutput<String?>('trustGuestRxFilters');
     uuid = registerOutput<String>('uuid');
     virtualPort = registerOutput<NetworkVirtualPort?>('virtualPort', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkVirtualPort.fromMap((guardedValue as Map).cast<String, dynamic>()); });

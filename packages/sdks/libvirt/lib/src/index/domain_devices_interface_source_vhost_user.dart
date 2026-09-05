@@ -5,7 +5,7 @@ import 'domain_devices_interface_source_vhost_user_chardev.dart';
 
 class DomainDevicesInterfaceSourceVhostUser {
   /// Defines the source settings for the EGD backend.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardev>? chardev;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardev?>? chardev;
   /// Indicates the device name for the VHostUser interface.
   final pulumi.Input<String> dev;
 

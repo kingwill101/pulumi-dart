@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolTargetPermissions {
   /// Sets the group ownership for the storage pool target permissions.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// Configures the label associated with the target permissions for the storage pool.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Defines the mode (file permissions) for the storage pool target.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Specifies the owner of the permissions for the storage pool target.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
 
   /// Creates a new [PoolTargetPermissions].
   /// [group] Sets the group ownership for the storage pool target permissions.

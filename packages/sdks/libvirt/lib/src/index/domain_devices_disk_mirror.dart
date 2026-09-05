@@ -7,15 +7,15 @@ import 'domain_devices_disk_mirror_source.dart';
 
 class DomainDevicesDiskMirror {
   /// Specifies the backing store settings for the mirrored disk, determining its source and configuration.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStore>? backingStore;
+  final pulumi.Input<DomainDevicesDiskMirrorBackingStore?>? backingStore;
   /// Defines the format of the data store used in the backing store source configuration.
-  final pulumi.Input<DomainDevicesDiskMirrorFormat>? format;
+  final pulumi.Input<DomainDevicesDiskMirrorFormat?>? format;
   /// Configures the job identifier associated with the disk mirror operation.
-  final pulumi.Input<String>? job;
+  final pulumi.Input<String?>? job;
   /// Indicates whether the disk mirror is ready for use.
-  final pulumi.Input<String>? ready;
+  final pulumi.Input<String?>? ready;
   /// Specifies the source of the backing store, determining its origin and how it is accessed.
-  final pulumi.Input<DomainDevicesDiskMirrorSource>? source;
+  final pulumi.Input<DomainDevicesDiskMirrorSource?>? source;
 
   /// Creates a new [DomainDevicesDiskMirror].
   /// [backingStore] Specifies the backing store settings for the mirrored disk, determining its source and configuration.

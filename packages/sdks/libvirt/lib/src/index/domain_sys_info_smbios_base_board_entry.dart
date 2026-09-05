@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainSysInfoSmbiosBaseBoardEntry {
   /// Specifies the file associated with the firmware configuration entry.
-  final pulumi.Input<String>? file;
+  final pulumi.Input<String?>? file;
   /// Defines the name of the firmware configuration entry.
   final pulumi.Input<String> name;
   /// Sets the value for the firmware configuration entry.

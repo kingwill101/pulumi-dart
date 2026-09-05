@@ -5,7 +5,7 @@ import 'domain_devices_redir_filter_usb.dart';
 
 class DomainDevicesRedirFilter {
   /// Sets the parameters for the USB device redirection filter.
-  final pulumi.Input<List<DomainDevicesRedirFilterUsb>>? usbs;
+  final pulumi.Input<List<DomainDevicesRedirFilterUsb>?>? usbs;
 
   /// Creates a new [DomainDevicesRedirFilter].
   /// [usbs] Sets the parameters for the USB device redirection filter.

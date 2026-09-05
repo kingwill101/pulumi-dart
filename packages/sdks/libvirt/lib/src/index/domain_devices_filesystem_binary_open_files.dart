@@ -20,7 +20,7 @@ class DomainDevicesFilesystemBinaryOpenFiles {
 
   factory DomainDevicesFilesystemBinaryOpenFiles.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemBinaryOpenFiles(
-      max: pulumi.Input.fromValue(map['max'] as double),
+      max: pulumi.Input.fromValue((map['max'] as num).toDouble()),
     );
   }
 }

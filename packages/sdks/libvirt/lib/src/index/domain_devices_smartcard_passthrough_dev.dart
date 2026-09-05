@@ -7,7 +7,7 @@ class DomainDevicesSmartcardPassthroughDev {
   /// Specifies the path to the device file for the EGD backend.
   final pulumi.Input<String> path;
   /// Configures the security label settings for the device source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesSmartcardPassthroughDevSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesSmartcardPassthroughDevSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesSmartcardPassthroughDev].
   /// [path] Specifies the path to the device file for the EGD backend.

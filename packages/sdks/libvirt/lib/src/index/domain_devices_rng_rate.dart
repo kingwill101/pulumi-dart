@@ -6,7 +6,7 @@ class DomainDevicesRngRate {
   /// Sets the rate of bytes per time unit for the random number generator.
   final pulumi.Input<double> bytes;
   /// Defines the period duration for the rate settings of the random number generator.
-  final pulumi.Input<double>? period;
+  final pulumi.Input<double?>? period;
 
   /// Creates a new [DomainDevicesRngRate].
   /// [bytes] Sets the rate of bytes per time unit for the random number generator.
@@ -25,8 +25,8 @@ class DomainDevicesRngRate {
 
   factory DomainDevicesRngRate.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRngRate(
-      bytes: pulumi.Input.fromValue(map['bytes'] as double),
-      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bytes: pulumi.Input.fromValue((map['bytes'] as num).toDouble()),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

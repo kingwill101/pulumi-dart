@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicSpiceGl {
   /// Enables or disables OpenGL support for graphical rendering in the Spice channel.
-  final pulumi.Input<String>? enable;
+  final pulumi.Input<String?>? enable;
   /// Specifies the render node to be used for OpenGL rendering in the Spice graphical environment.
-  final pulumi.Input<String>? renderNode;
+  final pulumi.Input<String?>? renderNode;
 
   /// Creates a new [DomainDevicesGraphicSpiceGl].
   /// [enable] Enables or disables OpenGL support for graphical rendering in the Spice channel.

@@ -5,15 +5,15 @@ import 'domain_devices_parallel_source_tcp_reconnect.dart';
 
 class DomainDevicesParallelSourceTcp {
   /// Sets the host address for the TCP connection in the random number generator backend.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Specifies the operation mode for TCP in the random number generator backend.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Configures reconnect settings for the UNIX domain socket in the backend.
-  final pulumi.Input<DomainDevicesParallelSourceTcpReconnect>? reconnect;
+  final pulumi.Input<DomainDevicesParallelSourceTcpReconnect?>? reconnect;
   /// Defines the service attribute for the TCP connection in the random number generator backend.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// Enables or disables TLS encryption for the TCP connection in the backend.
-  final pulumi.Input<String>? tls;
+  final pulumi.Input<String?>? tls;
 
   /// Creates a new [DomainDevicesParallelSourceTcp].
   /// [host] Sets the host address for the TCP connection in the random number generator backend.

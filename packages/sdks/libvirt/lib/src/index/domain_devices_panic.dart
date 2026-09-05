@@ -6,13 +6,13 @@ import 'domain_devices_panic_alias.dart';
 
 class DomainDevicesPanic {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesPanicAcpi>? acpi;
+  final pulumi.Input<DomainDevicesPanicAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesPanicAlias>? alias;
+  final pulumi.Input<DomainDevicesPanicAlias?>? alias;
   /// Sets the model type for the panic device configuration.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
 
   /// Creates a new [DomainDevicesPanic].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

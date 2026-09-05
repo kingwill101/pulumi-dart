@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesMemBalloonDriver {
   /// Enables the ATS (Address Translation Services) feature for the memory balloon device driver.
-  final pulumi.Input<String>? ats;
+  final pulumi.Input<String?>? ats;
   /// Configures the use of IOMMU support by the memory balloon device driver.
-  final pulumi.Input<String>? iommu;
+  final pulumi.Input<String?>? iommu;
   /// Sets the packed setting for the memory balloon device driver, allowing for optimized memory usage.
-  final pulumi.Input<String>? packed;
+  final pulumi.Input<String?>? packed;
   /// Configures the use of per-virtqueue pages for the memory balloon device driver, enhancing performance.
-  final pulumi.Input<String>? pagePerVq;
+  final pulumi.Input<String?>? pagePerVq;
 
   /// Creates a new [DomainDevicesMemBalloonDriver].
   /// [ats] Enables the ATS (Address Translation Services) feature for the memory balloon device driver.

@@ -7,11 +7,11 @@ import 'domain_devices_graphic_spice_listener_socket.dart';
 
 class DomainDevicesGraphicSpiceListener {
   /// Specifies the address settings for the Spice listener.
-  final pulumi.Input<DomainDevicesGraphicSpiceListenerAddress>? address;
+  final pulumi.Input<DomainDevicesGraphicSpiceListenerAddress?>? address;
   /// Defines network listener settings for the Spice channel, focusing on network-based connections.
-  final pulumi.Input<DomainDevicesGraphicSpiceListenerNetwork>? network;
+  final pulumi.Input<DomainDevicesGraphicSpiceListenerNetwork?>? network;
   /// Configures socket listener settings for the Spice channel, enabling socket-based connections.
-  final pulumi.Input<DomainDevicesGraphicSpiceListenerSocket>? socket;
+  final pulumi.Input<DomainDevicesGraphicSpiceListenerSocket?>? socket;
 
   /// Creates a new [DomainDevicesGraphicSpiceListener].
   /// [address] Specifies the address settings for the Spice listener.

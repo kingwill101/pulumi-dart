@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuCache {
   /// Specifies the cache level for CPU configurations, such as L1, L2, or L3.
-  final pulumi.Input<double>? level;
+  final pulumi.Input<double?>? level;
   /// Determines the mode of operation for CPU caches, affecting how data is stored and retrieved.
   final pulumi.Input<String> mode;
 
@@ -25,7 +25,7 @@ class DomainCpuCache {
 
   factory DomainCpuCache.fromMap(Map<String, dynamic> map) {
     return DomainCpuCache(
-      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }

@@ -6,9 +6,9 @@ import 'domain_cpu_tune_memory_tune_node.dart';
 
 class DomainCpuTuneMemoryTune {
   /// Configures monitoring options for memory tuning, allowing observation of memory usage trends and patterns.
-  final pulumi.Input<List<DomainCpuTuneMemoryTuneMonitor>>? monitors;
+  final pulumi.Input<List<DomainCpuTuneMemoryTuneMonitor>?>? monitors;
   /// Configures specific nodes for memory tuning, allowing targeted adjustments to the memory configuration.
-  final pulumi.Input<List<DomainCpuTuneMemoryTuneNode>>? nodes;
+  final pulumi.Input<List<DomainCpuTuneMemoryTuneNode>?>? nodes;
   /// Configures the virtual CPUs associated with memory tuning, indicating which CPUs' memory performance should be adjusted.
   final pulumi.Input<String> vcpus;
 

@@ -7,7 +7,7 @@ class DomainXenCommandline {
   /// Lists additional command-line arguments to pass to the Xen qemu device model in order.
   ///
   /// See: &lt;https://libvirt.org/drvxen.html&gt;
-  final pulumi.Input<List<DomainXenCommandlineArg>>? args;
+  final pulumi.Input<List<DomainXenCommandlineArg>?>? args;
 
   /// Creates a new [DomainXenCommandline].
   /// [args] Lists additional command-line arguments to pass to the Xen qemu device model in order.

@@ -5,7 +5,7 @@ import 'domain_sys_info_smbios_chassis_entry.dart';
 
 class DomainSysInfoSmbiosChassis {
   /// Defines individual entries for the chassis information in the SMBIOS configuration.
-  final pulumi.Input<List<DomainSysInfoSmbiosChassisEntry>>? entries;
+  final pulumi.Input<List<DomainSysInfoSmbiosChassisEntry>?>? entries;
 
   /// Creates a new [DomainSysInfoSmbiosChassis].
   /// [entries] Defines individual entries for the chassis information in the SMBIOS configuration.

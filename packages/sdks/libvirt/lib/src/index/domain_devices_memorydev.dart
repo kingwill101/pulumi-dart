@@ -3,28 +3,30 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_memorydev_acpi.dart';
 import 'domain_devices_memorydev_alias.dart';
+import 'domain_devices_memorydev_driver.dart';
 import 'domain_devices_memorydev_source.dart';
 import 'domain_devices_memorydev_target.dart';
 
 class DomainDevicesMemorydev {
   /// Sets the access mode for the memory device, controlling how the memory can be utilized.
-  final pulumi.Input<String>? access;
+  final pulumi.Input<String?>? access;
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesMemorydevAcpi>? acpi;
+  final pulumi.Input<DomainDevicesMemorydevAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesMemorydevAlias>? alias;
+  final pulumi.Input<DomainDevicesMemorydevAlias?>? alias;
   /// Configures the discard attribute for the memory device, indicating whether memory should be freed.
-  final pulumi.Input<String>? discard;
+  final pulumi.Input<String?>? discard;
+  final pulumi.Input<DomainDevicesMemorydevDriver?>? driver;
   /// Sets the model for the memory device, determining its type and capabilities.
   final pulumi.Input<String> model;
   /// Defines the source configuration for the memory device, indicating the memory backing.
-  final pulumi.Input<DomainDevicesMemorydevSource>? source;
+  final pulumi.Input<DomainDevicesMemorydevSource?>? source;
   /// Configures the target settings for the memory device, defining how it connects to the guest.
-  final pulumi.Input<DomainDevicesMemorydevTarget>? target;
+  final pulumi.Input<DomainDevicesMemorydevTarget?>? target;
   /// Sets the universally unique identifier for the memory device.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [DomainDevicesMemorydev].
   /// [access] Sets the access mode for the memory device, controlling how the memory can be utilized.
@@ -32,6 +34,7 @@ class DomainDevicesMemorydev {
   /// [address] Specifies the memory address for the persistent storage device in the guest's address space.
   /// [alias] Configures the alias for the persistent storage device, allowing for easier identification within the domain.
   /// [discard] Configures the discard attribute for the memory device, indicating whether memory should be freed.
+  /// [driver] Optional.
   /// [model] Sets the model for the memory device, determining its type and capabilities.
   /// [source] Defines the source configuration for the memory device, indicating the memory backing.
   /// [target] Configures the target settings for the memory device, defining how it connects to the guest.
@@ -42,6 +45,7 @@ class DomainDevicesMemorydev {
     this.address,
     this.alias,
     this.discard,
+    this.driver,
     required this.model,
     this.source,
     this.target,
@@ -55,6 +59,7 @@ class DomainDevicesMemorydev {
       'address': ?address,
       'alias': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevAlias, Map<String, dynamic>>(alias, (value) => value.toMap()),
       'discard': ?discard,
+      'driver': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevDriver, Map<String, dynamic>>(driver, (value) => value.toMap()),
       'model': model,
       'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevSource, Map<String, dynamic>>(source, (value) => value.toMap()),
       'target': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemorydevTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
@@ -69,6 +74,7 @@ class DomainDevicesMemorydev {
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesMemorydevAlias.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       discard: (() { final guardedValue = map['discard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      driver: (() { final guardedValue = map['driver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesMemorydevDriver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       model: pulumi.Input.fromValue(map['model'] as String),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesMemorydevSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesMemorydevTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesCapabilitiesChown {
   /// Sets the state of the capability to wake from an alarm.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [DomainFeaturesCapabilitiesChown].
   /// [state] Sets the state of the capability to wake from an alarm.

@@ -32,66 +32,66 @@ import 'domain_devices_interface_wait_for_ip.dart';
 
 class DomainDevicesInterface {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesInterfaceAcpi>? acpi;
+  final pulumi.Input<DomainDevicesInterfaceAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesInterfaceAlias>? alias;
+  final pulumi.Input<DomainDevicesInterfaceAlias?>? alias;
   /// Configures the backend settings for the network interface.
-  final pulumi.Input<DomainDevicesInterfaceBackend>? backend;
+  final pulumi.Input<DomainDevicesInterfaceBackend?>? backend;
   /// Specifies the backend domain associated with the interface, allowing for advanced network configurations.
-  final pulumi.Input<DomainDevicesInterfaceBackendDomain>? backendDomain;
+  final pulumi.Input<DomainDevicesInterfaceBackendDomain?>? backendDomain;
   /// Configures bandwidth parameters for the interface, controlling the traffic shaping and quality of service settings.
-  final pulumi.Input<DomainDevicesInterfaceBandwidth>? bandwidth;
+  final pulumi.Input<DomainDevicesInterfaceBandwidth?>? bandwidth;
   /// Configures the boot settings for the redirected device, controlling its initialization at domain startup.
-  final pulumi.Input<DomainDevicesInterfaceBoot>? boot;
+  final pulumi.Input<DomainDevicesInterfaceBoot?>? boot;
   /// Configures coalescing settings for the interface, optimizing the processing of network packets to reduce overhead and improve performance.
-  final pulumi.Input<DomainDevicesInterfaceCoalesce>? coalesce;
+  final pulumi.Input<DomainDevicesInterfaceCoalesce?>? coalesce;
   /// Specifies a script to be executed when the interface is taken down, allowing for custom cleanup or configuration actions.
-  final pulumi.Input<DomainDevicesInterfaceDownScript>? downScript;
+  final pulumi.Input<DomainDevicesInterfaceDownScript?>? downScript;
   /// Configures parameters for the interface driver, which manages the interaction between the virtual network interface and the guest OS.
-  final pulumi.Input<DomainDevicesInterfaceDriver>? driver;
+  final pulumi.Input<DomainDevicesInterfaceDriver?>? driver;
   /// Specifies a reference to a filter associated with the network interface.
-  final pulumi.Input<DomainDevicesInterfaceFilterRef>? filterRef;
+  final pulumi.Input<DomainDevicesInterfaceFilterRef?>? filterRef;
   /// Configures guest settings related to the network interface.
-  final pulumi.Input<DomainDevicesInterfaceGuest>? guest;
+  final pulumi.Input<DomainDevicesInterfaceGuest?>? guest;
   /// Configures the IP settings for the network interface.
-  final pulumi.Input<List<DomainDevicesInterfaceIp>>? ips;
+  final pulumi.Input<List<DomainDevicesInterfaceIp>?>? ips;
   /// Defines settings related to the link state of the network interface.
-  final pulumi.Input<DomainDevicesInterfaceLink>? link;
+  final pulumi.Input<DomainDevicesInterfaceLink?>? link;
   /// Sets the MAC address for the network interface.
-  final pulumi.Input<DomainDevicesInterfaceMac>? mac;
+  final pulumi.Input<DomainDevicesInterfaceMac?>? mac;
   /// Indicates whether the interface is managed by libvirt.
-  final pulumi.Input<bool>? managed;
+  final pulumi.Input<bool?>? managed;
   /// Configures the model type of the network interface.
-  final pulumi.Input<DomainDevicesInterfaceModel>? model;
+  final pulumi.Input<DomainDevicesInterfaceModel?>? model;
   /// Configures the maximum transmission unit size for the network interface.
-  final pulumi.Input<DomainDevicesInterfaceMtu>? mtu;
+  final pulumi.Input<DomainDevicesInterfaceMtu?>? mtu;
   /// Configures port forwarding settings for the network interface.
-  final pulumi.Input<List<DomainDevicesInterfacePortForward>>? portForwards;
+  final pulumi.Input<List<DomainDevicesInterfacePortForward>?>? portForwards;
   /// Configures additional options for network interface ports.
-  final pulumi.Input<DomainDevicesInterfacePortOptions>? portOptions;
+  final pulumi.Input<DomainDevicesInterfacePortOptions?>? portOptions;
   /// Defines the ROM configuration for the host device, allowing for BIOS settings and options.
-  final pulumi.Input<DomainDevicesInterfaceRom>? rom;
+  final pulumi.Input<DomainDevicesInterfaceRom?>? rom;
   /// Configures routing settings for the network interface.
-  final pulumi.Input<List<DomainDevicesInterfaceRoute>>? routes;
+  final pulumi.Input<List<DomainDevicesInterfaceRoute>?>? routes;
   /// Specifies a script to be executed when the interface is taken down, allowing for custom cleanup or configuration actions.
-  final pulumi.Input<DomainDevicesInterfaceScript>? script;
+  final pulumi.Input<DomainDevicesInterfaceScript?>? script;
   /// Configures the source of the network interface, specifying how the interface connects to the network.
-  final pulumi.Input<DomainDevicesInterfaceSource>? source;
+  final pulumi.Input<DomainDevicesInterfaceSource?>? source;
   /// Defines the target interface configuration for the virtual interface.
-  final pulumi.Input<DomainDevicesInterfaceTarget>? target;
+  final pulumi.Input<DomainDevicesInterfaceTarget?>? target;
   /// Configures the teaming settings for the PCI device.
-  final pulumi.Input<DomainDevicesInterfaceTeaming>? teaming;
+  final pulumi.Input<DomainDevicesInterfaceTeaming?>? teaming;
   /// Configures whether to trust guest receive filters on the virtual interface.
-  final pulumi.Input<String>? trustGuestRxFilters;
+  final pulumi.Input<String?>? trustGuestRxFilters;
   /// Provides tuning options for the network interface.
-  final pulumi.Input<DomainDevicesInterfaceTune>? tune;
+  final pulumi.Input<DomainDevicesInterfaceTune?>? tune;
   /// Configures the parameters for the virtual port associated with the interface.
-  final pulumi.Input<DomainDevicesInterfaceVirtualPort>? virtualPort;
+  final pulumi.Input<DomainDevicesInterfaceVirtualPort?>? virtualPort;
   /// Configures VLAN settings for the virtual network interface.
-  final pulumi.Input<DomainDevicesInterfaceVlan>? vlan;
-  final pulumi.Input<DomainDevicesInterfaceWaitForIp>? waitForIp;
+  final pulumi.Input<DomainDevicesInterfaceVlan?>? vlan;
+  final pulumi.Input<DomainDevicesInterfaceWaitForIp?>? waitForIp;
 
   /// Creates a new [DomainDevicesInterface].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

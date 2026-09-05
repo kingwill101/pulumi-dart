@@ -6,13 +6,13 @@ import 'domain_devices_watchdog_alias.dart';
 
 class DomainDevicesWatchdog {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesWatchdogAcpi>? acpi;
+  final pulumi.Input<DomainDevicesWatchdogAcpi?>? acpi;
   /// Defines the action that the watchdog device should take when its timeout period expires, such as resetting the virtual machine or performing a graceful shutdown.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesWatchdogAlias>? alias;
+  final pulumi.Input<DomainDevicesWatchdogAlias?>? alias;
   /// Configures the model of the watchdog device, which dictates its underlying functionality and behavior in the domain.
   final pulumi.Input<String> model;
 

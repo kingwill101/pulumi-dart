@@ -85,11 +85,12 @@ class Pool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -103,6 +104,35 @@ class Pool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allocation = registerOutput<double>('allocation');
+    allocationUnit = registerOutput<String?>('allocationUnit');
+    available = registerOutput<double>('available');
+    availableUnit = registerOutput<String?>('availableUnit');
+    capacity = registerOutput<double>('capacity');
+    capacityUnit = registerOutput<String?>('capacityUnit');
+    create = registerOutput<PoolCreate?>('create', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolCreate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destroy = registerOutput<PoolDestroy?>('destroy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolDestroy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    features = registerOutput<PoolFeatures?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolFeatures.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fsCommandline = registerOutput<PoolFsCommandline?>('fsCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolFsCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    rbdCommandline = registerOutput<PoolRbdCommandline?>('rbdCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolRbdCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    refresh = registerOutput<PoolRefresh?>('refresh', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolRefresh.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    source = registerOutput<PoolSource?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    target = registerOutput<PoolTarget?>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [Pool] resource.
+  Pool.reference(String urn)
+    : super(
+        'libvirt:index/pool:Pool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          registerPackageRequest: package_registration.registerPackageRequest,
+        isResourceReference: true,
+      ) {
     allocation = registerOutput<double>('allocation');
     allocationUnit = registerOutput<String?>('allocationUnit');
     available = registerOutput<double>('available');

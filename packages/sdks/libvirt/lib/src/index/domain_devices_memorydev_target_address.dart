@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesMemorydevTargetAddress {
   /// Configures the base address for the target of the memory device, specifying where it starts in memory.
-  final pulumi.Input<double>? base;
+  final pulumi.Input<double?>? base;
 
   /// Creates a new [DomainDevicesMemorydevTargetAddress].
   /// [base] Configures the base address for the target of the memory device, specifying where it starts in memory.
@@ -20,7 +20,7 @@ class DomainDevicesMemorydevTargetAddress {
 
   factory DomainDevicesMemorydevTargetAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemorydevTargetAddress(
-      base: (() { final guardedValue = map['base']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      base: (() { final guardedValue = map['base']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

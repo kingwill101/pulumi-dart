@@ -5,7 +5,7 @@ import 'domain_os_nv_ram_source_data_store_format_metadata_cache_max_size.dart';
 
 class DomainOsNvRamSourceDataStoreFormatMetadataCache {
   /// Sets the maximum size for the metadata cache in the data store format configuration.
-  final pulumi.Input<DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize>? maxSize;
+  final pulumi.Input<DomainOsNvRamSourceDataStoreFormatMetadataCacheMaxSize?>? maxSize;
 
   /// Creates a new [DomainOsNvRamSourceDataStoreFormatMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.

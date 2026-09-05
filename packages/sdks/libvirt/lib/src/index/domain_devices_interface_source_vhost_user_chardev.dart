@@ -15,34 +15,34 @@ import 'domain_devices_interface_source_vhost_user_chardev_unix.dart';
 
 class DomainDevicesInterfaceSourceVhostUserChardev {
   /// Configures the DBus source for the EGD backend.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevDbus>? dbus;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevDbus?>? dbus;
   /// Defines the device path for the source of the EGD backend.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevDev>? dev;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevDev?>? dev;
   /// Defines a file source for the RNG EGD backend.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevFile>? file;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevFile?>? file;
   /// Configures the NMDM (null modem) device source for the EGD backend.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevNmdm>? nmdm;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevNmdm?>? nmdm;
   /// Configures a null source for the EGD backend.
-  final pulumi.Input<bool>? null_;
+  final pulumi.Input<bool?>? null_;
   /// Defines a pipe source for the EGD backend.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevPipe>? pipe;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevPipe?>? pipe;
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevPty>? pty;
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevQemuVdAgent>? qemuVdAgent;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevPty?>? pty;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevQemuVdAgent?>? qemuVdAgent;
   /// Configures the SPICE port settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevSpicePort>? spicePort;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevSpicePort?>? spicePort;
   /// Configures the SPICE VMC settings for the random number generator backend.
-  final pulumi.Input<bool>? spiceVmc;
+  final pulumi.Input<bool?>? spiceVmc;
   /// Configures standard input/output settings for the random number generator backend.
-  final pulumi.Input<bool>? stdIo;
+  final pulumi.Input<bool?>? stdIo;
   /// Configures TCP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevTcp>? tcp;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevTcp?>? tcp;
   /// Configures UDP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevUdp>? udp;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevUdp?>? udp;
   /// Configures UNIX domain socket settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevUnix>? unix;
+  final pulumi.Input<DomainDevicesInterfaceSourceVhostUserChardevUnix?>? unix;
   /// Configures settings for the virtual console connection in the random number generator backend.
-  final pulumi.Input<bool>? vc;
+  final pulumi.Input<bool?>? vc;
 
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardev].
   /// [dbus] Configures the DBus source for the EGD backend.

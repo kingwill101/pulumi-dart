@@ -20,7 +20,7 @@ class DomainDevicesControllerUsbMaster {
 
   factory DomainDevicesControllerUsbMaster.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerUsbMaster(
-      startPort: pulumi.Input.fromValue(map['startPort'] as double),
+      startPort: pulumi.Input.fromValue((map['startPort'] as num).toDouble()),
     );
   }
 }

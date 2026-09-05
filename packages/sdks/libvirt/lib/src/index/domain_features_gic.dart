@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesGic {
   /// Sets the version of the GIC feature supported by the domain.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DomainFeaturesGic].
   /// [version] Sets the version of the GIC feature supported by the domain.

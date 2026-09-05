@@ -6,9 +6,9 @@ import 'domain_qemu_capabilities_del.dart';
 
 class DomainQemuCapabilities {
   /// Lists QEMU capabilities to add explicitly for this domain.
-  final pulumi.Input<List<DomainQemuCapabilitiesAdd>>? adds;
+  final pulumi.Input<List<DomainQemuCapabilitiesAdd>?>? adds;
   /// Lists QEMU capabilities to remove explicitly for this domain.
-  final pulumi.Input<List<DomainQemuCapabilitiesDel>>? dels;
+  final pulumi.Input<List<DomainQemuCapabilitiesDel>?>? dels;
 
   /// Creates a new [DomainQemuCapabilities].
   /// [adds] Lists QEMU capabilities to add explicitly for this domain.

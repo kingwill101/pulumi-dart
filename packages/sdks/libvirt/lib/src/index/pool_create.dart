@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolCreate {
   /// Experimental: whether to set pool autostart on the host. Defaults to true. Subject to change.
-  final pulumi.Input<bool>? autostart;
+  final pulumi.Input<bool?>? autostart;
   /// Experimental: whether to run StoragePoolBuild for this pool. If unset, provider default behavior applies. Subject to change.
-  final pulumi.Input<bool>? build;
+  final pulumi.Input<bool?>? build;
   /// Experimental: whether to start the pool after definition. Defaults to true. Subject to change.
-  final pulumi.Input<bool>? start;
+  final pulumi.Input<bool?>? start;
 
   /// Creates a new [PoolCreate].
   /// [autostart] Experimental: whether to set pool autostart on the host. Defaults to true. Subject to change.

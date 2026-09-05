@@ -12,6 +12,7 @@ import 'domain_devices.dart';
 import 'domain_features.dart';
 import 'domain_id_map.dart';
 import 'domain_io_thread_ids.dart';
+import 'domain_iommufd.dart';
 import 'domain_key_wrap.dart';
 import 'domain_launch_security.dart';
 import 'domain_lxc_namespace.dart';
@@ -27,7 +28,9 @@ import 'domain_qemu_commandline.dart';
 import 'domain_qemu_deprecation.dart';
 import 'domain_qemu_override.dart';
 import 'domain_resource.dart';
+import 'domain_sec_label.dart';
 import 'domain_state.dart';
+import 'domain_sys_info.dart';
 import 'domain_throttle_groups.dart';
 import 'domain_update.dart';
 import 'domain_vcpus.dart';
@@ -160,6 +163,7 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<DomainIoThreadIDs?> ioThreadIDs;
   /// Sets the number of I/O threads allocated to the domain for processing.
   late final pulumi.Output<double?> ioThreads;
+  late final pulumi.Output<DomainIommufd?> iommufd;
   /// Configures key wrapping for cryptographic operations in the domain.
   late final pulumi.Output<DomainKeyWrap?> keyWrap;
   /// Configures launch security features for the domain to protect sensitive information.
@@ -225,11 +229,11 @@ class Domain extends pulumi.CustomResource {
   /// Configures one security label configuration for the domain, controlling how a security driver (such as SELinux or DAC) labels and isolates the domain and its resources.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#security-label&gt;
-  late final pulumi.Output<List<Map<String, dynamic>>?> secLabels;
+  late final pulumi.Output<List<DomainSecLabel>?> secLabels;
   /// Configures system information presented to the guest (such as SMBIOS and fw_cfg data), allowing customization of what hardware/firmware details the guest sees.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#smbios-system-information&gt;
-  late final pulumi.Output<List<Map<String, dynamic>>?> sysInfos;
+  late final pulumi.Output<List<DomainSysInfo>?> sysInfos;
   /// Enables configuration of one or more named disk I/O throttle groups that can be referenced by disk `throttlefilters` to apply shared I/O rate limits.
   late final pulumi.Output<DomainThrottleGroups?> throttleGroups;
   /// Sets a human‑readable title for the domain, which is user‑provided free text and may be used by management tools but has no functional effect on the guest.
@@ -305,6 +309,7 @@ class Domain extends pulumi.CustomResource {
     idMap = registerOutput<DomainIdMap?>('idMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIdMap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ioThreadIDs = registerOutput<DomainIoThreadIDs?>('ioThreadIDs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIoThreadIDs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ioThreads = registerOutput<double?>('ioThreads');
+    iommufd = registerOutput<DomainIommufd?>('iommufd', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIommufd.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyWrap = registerOutput<DomainKeyWrap?>('keyWrap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainKeyWrap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     launchSecurity = registerOutput<DomainLaunchSecurity?>('launchSecurity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainLaunchSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lxcNamespace = registerOutput<DomainLxcNamespace?>('lxcNamespace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainLxcNamespace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -331,8 +336,8 @@ class Domain extends pulumi.CustomResource {
     qemuOverride = registerOutput<DomainQemuOverride?>('qemuOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resource = registerOutput<DomainResource?>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     running = registerOutput<bool?>('running');
-    secLabels = registerOutput<List<Map<String, dynamic>>?>('secLabels');
-    sysInfos = registerOutput<List<Map<String, dynamic>>?>('sysInfos');
+    secLabels = registerOutput<List<DomainSecLabel>?>('secLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainSecLabel>(guardedValue, (value) => DomainSecLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    sysInfos = registerOutput<List<DomainSysInfo>?>('sysInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainSysInfo>(guardedValue, (value) => DomainSysInfo.fromMap((value as Map).cast<String, dynamic>())); });
     throttleGroups = registerOutput<DomainThrottleGroups?>('throttleGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainThrottleGroups.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');
@@ -352,11 +357,12 @@ class Domain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Domain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -392,6 +398,7 @@ class Domain extends pulumi.CustomResource {
     idMap = registerOutput<DomainIdMap?>('idMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIdMap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ioThreadIDs = registerOutput<DomainIoThreadIDs?>('ioThreadIDs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIoThreadIDs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ioThreads = registerOutput<double?>('ioThreads');
+    iommufd = registerOutput<DomainIommufd?>('iommufd', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIommufd.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyWrap = registerOutput<DomainKeyWrap?>('keyWrap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainKeyWrap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     launchSecurity = registerOutput<DomainLaunchSecurity?>('launchSecurity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainLaunchSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lxcNamespace = registerOutput<DomainLxcNamespace?>('lxcNamespace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainLxcNamespace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -418,8 +425,83 @@ class Domain extends pulumi.CustomResource {
     qemuOverride = registerOutput<DomainQemuOverride?>('qemuOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resource = registerOutput<DomainResource?>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     running = registerOutput<bool?>('running');
-    secLabels = registerOutput<List<Map<String, dynamic>>?>('secLabels');
-    sysInfos = registerOutput<List<Map<String, dynamic>>?>('sysInfos');
+    secLabels = registerOutput<List<DomainSecLabel>?>('secLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainSecLabel>(guardedValue, (value) => DomainSecLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    sysInfos = registerOutput<List<DomainSysInfo>?>('sysInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainSysInfo>(guardedValue, (value) => DomainSysInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    throttleGroups = registerOutput<DomainThrottleGroups?>('throttleGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainThrottleGroups.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String?>('title');
+    type = registerOutput<String>('type');
+    update = registerOutput<DomainUpdate?>('update', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uuid = registerOutput<String>('uuid');
+    vcpu = registerOutput<double?>('vcpu');
+    vcpuCpuset = registerOutput<String?>('vcpuCpuset');
+    vcpuCurrent = registerOutput<double?>('vcpuCurrent');
+    vcpuPlacement = registerOutput<String?>('vcpuPlacement');
+    vcpus = registerOutput<DomainVcpus?>('vcpus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainVcpus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vmwareDataCenterPath = registerOutput<String?>('vmwareDataCenterPath');
+    xenCommandline = registerOutput<DomainXenCommandline?>('xenCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainXenCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'libvirt:index/domain:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          registerPackageRequest: package_registration.registerPackageRequest,
+        isResourceReference: true,
+      ) {
+    autostart = registerOutput<bool?>('autostart');
+    bhyveCommandline = registerOutput<DomainBhyveCommandline?>('bhyveCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainBhyveCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    blockIoTune = registerOutput<DomainBlockIoTune?>('blockIoTune', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainBlockIoTune.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bootloader = registerOutput<String?>('bootloader');
+    bootloaderArgs = registerOutput<String?>('bootloaderArgs');
+    clock = registerOutput<DomainClock?>('clock', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainClock.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cpu = registerOutput<DomainCpu?>('cpu', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainCpu.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cpuTune = registerOutput<DomainCpuTune?>('cpuTune', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainCpuTune.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    create = registerOutput<DomainCreate?>('create', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainCreate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    currentMemory = registerOutput<double?>('currentMemory');
+    currentMemoryUnit = registerOutput<String?>('currentMemoryUnit');
+    defaultIoThread = registerOutput<DomainDefaultIoThread?>('defaultIoThread', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDefaultIoThread.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    destroy = registerOutput<DomainDestroy?>('destroy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDestroy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    devices = registerOutput<DomainDevices?>('devices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainDevices.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainId = registerOutput<double>('domainId');
+    features = registerOutput<DomainFeatures?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainFeatures.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    genId = registerOutput<String?>('genId');
+    hwuuid = registerOutput<String?>('hwuuid');
+    idMap = registerOutput<DomainIdMap?>('idMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIdMap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ioThreadIDs = registerOutput<DomainIoThreadIDs?>('ioThreadIDs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIoThreadIDs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ioThreads = registerOutput<double?>('ioThreads');
+    iommufd = registerOutput<DomainIommufd?>('iommufd', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainIommufd.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyWrap = registerOutput<DomainKeyWrap?>('keyWrap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainKeyWrap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    launchSecurity = registerOutput<DomainLaunchSecurity?>('launchSecurity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainLaunchSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lxcNamespace = registerOutput<DomainLxcNamespace?>('lxcNamespace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainLxcNamespace.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maximumMemory = registerOutput<double?>('maximumMemory');
+    maximumMemorySlots = registerOutput<double?>('maximumMemorySlots');
+    maximumMemoryUnit = registerOutput<String?>('maximumMemoryUnit');
+    memory = registerOutput<double?>('memory');
+    memoryBacking = registerOutput<DomainMemoryBacking?>('memoryBacking', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMemoryBacking.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    memoryDumpCore = registerOutput<String?>('memoryDumpCore');
+    memoryTune = registerOutput<DomainMemoryTune?>('memoryTune', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMemoryTune.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    memoryUnit = registerOutput<String?>('memoryUnit');
+    metadata = registerOutput<DomainMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    numaTune = registerOutput<DomainNumaTune?>('numaTune', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNumaTune.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    onCrash = registerOutput<String?>('onCrash');
+    onPoweroff = registerOutput<String?>('onPoweroff');
+    onReboot = registerOutput<String?>('onReboot');
+    os = registerOutput<DomainOs?>('os', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainOs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    perf = registerOutput<DomainPerf?>('perf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainPerf.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pm = registerOutput<DomainPm?>('pm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainPm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuCapabilities = registerOutput<DomainQemuCapabilities?>('qemuCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuCommandline = registerOutput<DomainQemuCommandline?>('qemuCommandline', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuCommandline.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuDeprecation = registerOutput<DomainQemuDeprecation?>('qemuDeprecation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuDeprecation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qemuOverride = registerOutput<DomainQemuOverride?>('qemuOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainQemuOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resource = registerOutput<DomainResource?>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    running = registerOutput<bool?>('running');
+    secLabels = registerOutput<List<DomainSecLabel>?>('secLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainSecLabel>(guardedValue, (value) => DomainSecLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    sysInfos = registerOutput<List<DomainSysInfo>?>('sysInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainSysInfo>(guardedValue, (value) => DomainSysInfo.fromMap((value as Map).cast<String, dynamic>())); });
     throttleGroups = registerOutput<DomainThrottleGroups?>('throttleGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainThrottleGroups.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainFeaturesKvmPollControl {
   /// Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [DomainFeaturesKvmPollControl].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.

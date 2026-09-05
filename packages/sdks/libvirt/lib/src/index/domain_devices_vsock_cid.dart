@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesVsockCid {
   /// Defines the address attribute for the CID of the vsock device.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Indicates whether the CID is automatically assigned for the vsock device.
-  final pulumi.Input<String>? auto;
+  final pulumi.Input<String?>? auto;
 
   /// Creates a new [DomainDevicesVsockCid].
   /// [address] Defines the address attribute for the CID of the vsock device.

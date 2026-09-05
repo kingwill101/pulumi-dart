@@ -5,11 +5,11 @@ import 'domain_devices_interface_source_server_local.dart';
 
 class DomainDevicesInterfaceSourceServer {
   /// Sets the address of the server that the network interface will connect to.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Controls local UDP settings for the network interface, managing configurations for local UDP traffic.
-  final pulumi.Input<DomainDevicesInterfaceSourceServerLocal>? local;
+  final pulumi.Input<DomainDevicesInterfaceSourceServerLocal?>? local;
   /// Sets the port number used by the network interface to connect to the specified server.
-  final pulumi.Input<double>? port;
+  final pulumi.Input<double?>? port;
 
   /// Creates a new [DomainDevicesInterfaceSourceServer].
   /// [address] Sets the address of the server that the network interface will connect to.
@@ -33,7 +33,7 @@ class DomainDevicesInterfaceSourceServer {
     return DomainDevicesInterfaceSourceServer(
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       local: (() { final guardedValue = map['local']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesInterfaceSourceServerLocal.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

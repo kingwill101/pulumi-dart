@@ -12,31 +12,31 @@ import 'domain_os_nv_ram_source_network_snapshot.dart';
 
 class DomainOsNvRamSourceNetwork {
   /// Configures authentication settings for the iSCSI source.
-  final pulumi.Input<DomainOsNvRamSourceNetworkAuth>? auth;
+  final pulumi.Input<DomainOsNvRamSourceNetworkAuth?>? auth;
   /// Defines configuration settings for the network in the backing store source.
-  final pulumi.Input<DomainOsNvRamSourceNetworkConfig>? config;
+  final pulumi.Input<DomainOsNvRamSourceNetworkConfig?>? config;
   /// Configures the hosts within the network settings of the backing store source.
-  final pulumi.Input<List<DomainOsNvRamSourceNetworkHost>>? hosts;
+  final pulumi.Input<List<DomainOsNvRamSourceNetworkHost>?>? hosts;
   /// Sets the identity parameters for the network connection in the backing store source.
-  final pulumi.Input<DomainOsNvRamSourceNetworkIdentity>? identity;
+  final pulumi.Input<DomainOsNvRamSourceNetworkIdentity?>? identity;
   /// Sets the initiator for the network connection in the backing store source configuration.
-  final pulumi.Input<DomainOsNvRamSourceNetworkInitiator>? initiator;
+  final pulumi.Input<DomainOsNvRamSourceNetworkInitiator?>? initiator;
   /// Configures the known hosts used for authenticated connections in network storage operations.
-  final pulumi.Input<DomainOsNvRamSourceNetworkKnownHosts>? knownHosts;
+  final pulumi.Input<DomainOsNvRamSourceNetworkKnownHosts?>? knownHosts;
   /// Sets a name for the network block device, facilitating easier identification.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configures the protocol used for network storage access, such as iSCSI or NBD.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Controls query parameters that may influence the network connection establishment.
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
   /// Configures reconnect behavior for network storage connections, enhancing robustness in case of interruptions.
-  final pulumi.Input<DomainOsNvRamSourceNetworkReconnect>? reconnect;
+  final pulumi.Input<DomainOsNvRamSourceNetworkReconnect?>? reconnect;
   /// Enables snapshot capabilities for the network storage source, allowing for point-in-time volumes.
-  final pulumi.Input<DomainOsNvRamSourceNetworkSnapshot>? snapshot;
+  final pulumi.Input<DomainOsNvRamSourceNetworkSnapshot?>? snapshot;
   /// Controls whether TLS is used for secure connections to the network storage.
-  final pulumi.Input<String>? tls;
+  final pulumi.Input<String?>? tls;
   /// Sets the expected hostname for the TLS certificate validation during secure network access.
-  final pulumi.Input<String>? tlsHostname;
+  final pulumi.Input<String?>? tlsHostname;
 
   /// Creates a new [DomainOsNvRamSourceNetwork].
   /// [auth] Configures authentication settings for the iSCSI source.

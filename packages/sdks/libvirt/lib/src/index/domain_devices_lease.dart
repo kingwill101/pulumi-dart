@@ -9,7 +9,7 @@ class DomainDevicesLease {
   /// Configures the lockspace for the lease, ensuring exclusive access to the leased device.
   final pulumi.Input<String> lockspace;
   /// Specifies the target configuration for the lease, defining where the lease applies.
-  final pulumi.Input<DomainDevicesLeaseTarget>? target;
+  final pulumi.Input<DomainDevicesLeaseTarget?>? target;
 
   /// Creates a new [DomainDevicesLease].
   /// [key] Defines a unique key for identifying the lease within the domain configuration.

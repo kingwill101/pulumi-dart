@@ -5,9 +5,9 @@ import 'domain_devices_disk_auth_secret.dart';
 
 class DomainDevicesDiskAuth {
   /// Specifies the secret used for authenticating the iSCSI connection.
-  final pulumi.Input<DomainDevicesDiskAuthSecret>? secret;
+  final pulumi.Input<DomainDevicesDiskAuthSecret?>? secret;
   /// Sets the username for iSCSI authentication.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [DomainDevicesDiskAuth].
   /// [secret] Specifies the secret used for authenticating the iSCSI connection.

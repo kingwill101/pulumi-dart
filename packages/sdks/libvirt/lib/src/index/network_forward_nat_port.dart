@@ -25,8 +25,8 @@ class NetworkForwardNatPort {
 
   factory NetworkForwardNatPort.fromMap(Map<String, dynamic> map) {
     return NetworkForwardNatPort(
-      end: pulumi.Input.fromValue(map['end'] as double),
-      start: pulumi.Input.fromValue(map['start'] as double),
+      end: pulumi.Input.fromValue((map['end'] as num).toDouble()),
+      start: pulumi.Input.fromValue((map['start'] as num).toDouble()),
     );
   }
 }

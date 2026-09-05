@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuFeature {
   /// Specifies the name of a CPU feature that is being configured or controlled.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Sets the policy for how the specified CPU feature is utilized in the domain.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
 
   /// Creates a new [DomainCpuFeature].
   /// [name] Specifies the name of a CPU feature that is being configured or controlled.

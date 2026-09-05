@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesTpmBackendEmulatorProfile {
   /// Specifies the name of the profile for the emulator TPM backend.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configures whether to remove disabled profiles for the emulator TPM backend.
-  final pulumi.Input<String>? removeDisabled;
+  final pulumi.Input<String?>? removeDisabled;
   /// Sets the source configuration for the profile of the emulator TPM backend.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [DomainDevicesTpmBackendEmulatorProfile].
   /// [name] Specifies the name of the profile for the emulator TPM backend.

@@ -5,7 +5,7 @@ import 'domain_os_nv_ram_source_cookies_cookie.dart';
 
 class DomainOsNvRamSourceCookies {
   /// Configures cookies for the backing store source, allowing additional parameters for storage.
-  final pulumi.Input<List<DomainOsNvRamSourceCookiesCookie>>? cookies;
+  final pulumi.Input<List<DomainOsNvRamSourceCookiesCookie>?>? cookies;
 
   /// Creates a new [DomainOsNvRamSourceCookies].
   /// [cookies] Configures cookies for the backing store source, allowing additional parameters for storage.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemBinaryLock {
   /// Controls flocking for the binary filesystem device's lock settings.
-  final pulumi.Input<String>? flock;
+  final pulumi.Input<String?>? flock;
   /// Configures whether the lock for the binary filesystem is POSIX compliant.
-  final pulumi.Input<String>? posix;
+  final pulumi.Input<String?>? posix;
 
   /// Creates a new [DomainDevicesFilesystemBinaryLock].
   /// [flock] Controls flocking for the binary filesystem device's lock settings.

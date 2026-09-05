@@ -8,19 +8,19 @@ import 'domain_devices_input_source.dart';
 
 class DomainDevicesInput {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesInputAcpi>? acpi;
+  final pulumi.Input<DomainDevicesInputAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesInputAlias>? alias;
+  final pulumi.Input<DomainDevicesInputAlias?>? alias;
   /// Indicates the bus type for the input device configuration.
-  final pulumi.Input<String>? bus;
+  final pulumi.Input<String?>? bus;
   /// Configures the driver associated with the input device.
-  final pulumi.Input<DomainDevicesInputDriver>? driver;
+  final pulumi.Input<DomainDevicesInputDriver?>? driver;
   /// Specifies the model type for the input device.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Defines the source configuration for the input device.
-  final pulumi.Input<DomainDevicesInputSource>? source;
+  final pulumi.Input<DomainDevicesInputSource?>? source;
   /// Indicates the type of input device being configured.
   final pulumi.Input<String> type;
 

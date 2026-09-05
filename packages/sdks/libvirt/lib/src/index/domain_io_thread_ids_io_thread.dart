@@ -7,11 +7,11 @@ class DomainIoThreadIDsIoThread {
   /// Sets the identifier for a specific I/O thread in the domain.
   final pulumi.Input<double> id;
   /// Configures whether polling is enabled for a specific I/O thread.
-  final pulumi.Input<DomainIoThreadIDsIoThreadPoll>? poll;
+  final pulumi.Input<DomainIoThreadIDsIoThreadPoll?>? poll;
   /// Configures the maximum number of I/O threads for the domain.
-  final pulumi.Input<double>? poolMax;
+  final pulumi.Input<double?>? poolMax;
   /// Configures the minimum number of I/O threads for the domain.
-  final pulumi.Input<double>? poolMin;
+  final pulumi.Input<double?>? poolMin;
 
   /// Creates a new [DomainIoThreadIDsIoThread].
   /// [id] Sets the identifier for a specific I/O thread in the domain.
@@ -36,10 +36,10 @@ class DomainIoThreadIDsIoThread {
 
   factory DomainIoThreadIDsIoThread.fromMap(Map<String, dynamic> map) {
     return DomainIoThreadIDsIoThread(
-      id: pulumi.Input.fromValue(map['id'] as double),
+      id: pulumi.Input.fromValue((map['id'] as num).toDouble()),
       poll: (() { final guardedValue = map['poll']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainIoThreadIDsIoThreadPoll.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      poolMax: (() { final guardedValue = map['poolMax']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      poolMin: (() { final guardedValue = map['poolMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      poolMax: (() { final guardedValue = map['poolMax']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      poolMin: (() { final guardedValue = map['poolMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

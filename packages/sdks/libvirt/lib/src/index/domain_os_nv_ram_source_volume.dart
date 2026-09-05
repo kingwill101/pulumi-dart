@@ -5,13 +5,13 @@ import 'domain_os_nv_ram_source_volume_sec_label.dart';
 
 class DomainOsNvRamSourceVolume {
   /// Sets the mode for the volume source in the backing store configuration.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Specifies the pool from which the volume source is derived in the backing store.
-  final pulumi.Input<String>? pool;
+  final pulumi.Input<String?>? pool;
   /// Configures the security label settings for the volume in the backing store.
-  final pulumi.Input<List<DomainOsNvRamSourceVolumeSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainOsNvRamSourceVolumeSecLabel>?>? secLabels;
   /// Provides the volume definition used as the backing store source.
-  final pulumi.Input<String>? volume;
+  final pulumi.Input<String?>? volume;
 
   /// Creates a new [DomainOsNvRamSourceVolume].
   /// [mode] Sets the mode for the volume source in the backing store configuration.

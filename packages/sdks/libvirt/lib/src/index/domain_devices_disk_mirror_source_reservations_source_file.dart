@@ -5,11 +5,11 @@ import 'domain_devices_disk_mirror_source_reservations_source_file_sec_label.dar
 
 class DomainDevicesDiskMirrorSourceReservationsSourceFile {
   /// Specifies if data should be appended to the file used as a source.
-  final pulumi.Input<String>? append;
+  final pulumi.Input<String?>? append;
   /// Sets the file path for the RNG source in the EGD backend.
   final pulumi.Input<String> path;
   /// Configures security label settings for the file source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesDiskMirrorSourceReservationsSourceFileSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskMirrorSourceReservationsSourceFileSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceReservationsSourceFile].
   /// [append] Specifies if data should be appended to the file used as a source.

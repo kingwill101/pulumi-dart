@@ -7,11 +7,11 @@ import 'domain_devices_hostdev_caps_net_source.dart';
 
 class DomainDevicesHostdevCapsNet {
   /// Configures the IP attributes for the host device's network capabilities, including address settings.
-  final pulumi.Input<List<DomainDevicesHostdevCapsNetIp>>? ips;
+  final pulumi.Input<List<DomainDevicesHostdevCapsNetIp>?>? ips;
   /// Outlines the routing capabilities associated with the host device's network configuration.
-  final pulumi.Input<List<DomainDevicesHostdevCapsNetRoute>>? routes;
+  final pulumi.Input<List<DomainDevicesHostdevCapsNetRoute>?>? routes;
   /// Indicates the source parameters related to the host device's network capabilities.
-  final pulumi.Input<DomainDevicesHostdevCapsNetSource>? source;
+  final pulumi.Input<DomainDevicesHostdevCapsNetSource?>? source;
 
   /// Creates a new [DomainDevicesHostdevCapsNet].
   /// [ips] Configures the IP attributes for the host device's network capabilities, including address settings.

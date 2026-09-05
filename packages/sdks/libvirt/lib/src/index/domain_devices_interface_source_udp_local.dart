@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceSourceUdpLocal {
   /// Specifies the local address for UDP communications on the network interface.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Sets the local port number for UDP traffic on the network interface.
-  final pulumi.Input<double>? port;
+  final pulumi.Input<double?>? port;
 
   /// Creates a new [DomainDevicesInterfaceSourceUdpLocal].
   /// [address] Specifies the local address for UDP communications on the network interface.
@@ -26,7 +26,7 @@ class DomainDevicesInterfaceSourceUdpLocal {
   factory DomainDevicesInterfaceSourceUdpLocal.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceUdpLocal(
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

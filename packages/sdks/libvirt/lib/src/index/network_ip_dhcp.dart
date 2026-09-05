@@ -7,11 +7,11 @@ import 'network_ip_dhcp_range.dart';
 
 class NetworkIpDhcp {
   /// Configures BOOTP settings for the DHCP configuration.
-  final pulumi.Input<List<NetworkIpDhcpBootp>>? bootps;
+  final pulumi.Input<List<NetworkIpDhcpBootp>?>? bootps;
   /// Configures host entries for DHCP clients within the network.
-  final pulumi.Input<List<NetworkIpDhcpHost>>? hosts;
+  final pulumi.Input<List<NetworkIpDhcpHost>?>? hosts;
   /// Represents the DHCP range for IP addresses to be allocated.
-  final pulumi.Input<List<NetworkIpDhcpRange>>? ranges;
+  final pulumi.Input<List<NetworkIpDhcpRange>?>? ranges;
 
   /// Creates a new [NetworkIpDhcp].
   /// [bootps] Configures BOOTP settings for the DHCP configuration.

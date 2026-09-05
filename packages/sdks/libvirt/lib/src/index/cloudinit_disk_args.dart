@@ -10,9 +10,9 @@ class CloudinitDiskArgs {
   /// Cloud-init meta-data content (usually YAML)
   final pulumi.Input<String> metaData;
   /// Name for this cloud-init disk resource
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Cloud-init network configuration (optional, usually YAML)
-  final pulumi.Input<String>? networkConfig;
+  final pulumi.Input<String?>? networkConfig;
   /// Cloud-init user-data content (usually YAML)
   final pulumi.Input<String> userData;
 

@@ -5,11 +5,11 @@ import 'network_ip_dhcp_range_lease.dart';
 
 class NetworkIpDhcpRange {
   /// Sets the end IP address of the DHCP allocation range.
-  final pulumi.Input<String>? end;
+  final pulumi.Input<String?>? end;
   /// Configures lease settings for DHCP host entries.
-  final pulumi.Input<NetworkIpDhcpRangeLease>? lease;
+  final pulumi.Input<NetworkIpDhcpRangeLease?>? lease;
   /// Sets the start IP address of the DHCP allocation range.
-  final pulumi.Input<String>? start;
+  final pulumi.Input<String?>? start;
 
   /// Creates a new [NetworkIpDhcpRange].
   /// [end] Sets the end IP address of the DHCP allocation range.

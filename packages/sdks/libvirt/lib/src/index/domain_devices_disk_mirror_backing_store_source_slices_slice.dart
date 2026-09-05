@@ -30,8 +30,8 @@ class DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice {
 
   factory DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceSlicesSlice(
-      offset: pulumi.Input.fromValue(map['offset'] as double),
-      size: pulumi.Input.fromValue(map['size'] as double),
+      offset: pulumi.Input.fromValue((map['offset'] as num).toDouble()),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

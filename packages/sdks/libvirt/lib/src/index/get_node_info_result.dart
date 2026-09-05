@@ -4,21 +4,21 @@
 /// Result data returned by getNodeInfo.
 class GetNodeInfoResult {
   /// Number of CPU cores per socket.
-  final double cpuCoresPerSocket;
+  final double? cpuCoresPerSocket;
   /// Total number of logical CPU cores available on the host.
-  final double cpuCoresTotal;
+  final double? cpuCoresTotal;
   /// CPU model name (e.g., 'x86_64').
-  final String cpuModel;
+  final String? cpuModel;
   /// Number of CPU sockets on the host.
-  final double cpuSockets;
+  final double? cpuSockets;
   /// Number of threads per CPU core (e.g., 2 for hyper-threading).
-  final double cpuThreadsPerCore;
+  final double? cpuThreadsPerCore;
   /// Internal identifier for this data source (hash of all values).
-  final String id;
+  final String? id;
   /// Total memory available on the host in kilobytes.
-  final double memoryTotalKb;
+  final double? memoryTotalKb;
   /// Number of NUMA nodes on the host.
-  final double numaNodes;
+  final double? numaNodes;
 
   /// Creates a new [GetNodeInfoResult].
   /// [cpuCoresPerSocket] Number of CPU cores per socket.
@@ -30,39 +30,39 @@ class GetNodeInfoResult {
   /// [memoryTotalKb] Total memory available on the host in kilobytes.
   /// [numaNodes] Number of NUMA nodes on the host.
   const GetNodeInfoResult({
-    required this.cpuCoresPerSocket,
-    required this.cpuCoresTotal,
-    required this.cpuModel,
-    required this.cpuSockets,
-    required this.cpuThreadsPerCore,
-    required this.id,
-    required this.memoryTotalKb,
-    required this.numaNodes,
+    this.cpuCoresPerSocket,
+    this.cpuCoresTotal,
+    this.cpuModel,
+    this.cpuSockets,
+    this.cpuThreadsPerCore,
+    this.id,
+    this.memoryTotalKb,
+    this.numaNodes,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cpuCoresPerSocket': cpuCoresPerSocket,
-      'cpuCoresTotal': cpuCoresTotal,
-      'cpuModel': cpuModel,
-      'cpuSockets': cpuSockets,
-      'cpuThreadsPerCore': cpuThreadsPerCore,
-      'id': id,
-      'memoryTotalKb': memoryTotalKb,
-      'numaNodes': numaNodes,
+      'cpuCoresPerSocket': ?cpuCoresPerSocket,
+      'cpuCoresTotal': ?cpuCoresTotal,
+      'cpuModel': ?cpuModel,
+      'cpuSockets': ?cpuSockets,
+      'cpuThreadsPerCore': ?cpuThreadsPerCore,
+      'id': ?id,
+      'memoryTotalKb': ?memoryTotalKb,
+      'numaNodes': ?numaNodes,
     };
   }
 
   factory GetNodeInfoResult.fromMap(Map<String, dynamic> map) {
     return GetNodeInfoResult(
-      cpuCoresPerSocket: map['cpuCoresPerSocket'] as double,
-      cpuCoresTotal: map['cpuCoresTotal'] as double,
-      cpuModel: map['cpuModel'] as String,
-      cpuSockets: map['cpuSockets'] as double,
-      cpuThreadsPerCore: map['cpuThreadsPerCore'] as double,
-      id: map['id'] as String,
-      memoryTotalKb: map['memoryTotalKb'] as double,
-      numaNodes: map['numaNodes'] as double,
+      cpuCoresPerSocket: (() { final guardedValue = map['cpuCoresPerSocket']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      cpuCoresTotal: (() { final guardedValue = map['cpuCoresTotal']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      cpuModel: (() { final guardedValue = map['cpuModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cpuSockets: (() { final guardedValue = map['cpuSockets']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      cpuThreadsPerCore: (() { final guardedValue = map['cpuThreadsPerCore']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      memoryTotalKb: (() { final guardedValue = map['memoryTotalKb']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      numaNodes: (() { final guardedValue = map['numaNodes']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
     );
   }
 }

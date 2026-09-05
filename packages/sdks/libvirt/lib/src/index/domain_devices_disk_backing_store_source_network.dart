@@ -12,31 +12,31 @@ import 'domain_devices_disk_backing_store_source_network_snapshot.dart';
 
 class DomainDevicesDiskBackingStoreSourceNetwork {
   /// Configures authentication settings for the iSCSI source.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkAuth>? auth;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkAuth?>? auth;
   /// Defines configuration settings for the network in the backing store source.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkConfig>? config;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkConfig?>? config;
   /// Configures the hosts within the network settings of the backing store source.
-  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceNetworkHost>>? hosts;
+  final pulumi.Input<List<DomainDevicesDiskBackingStoreSourceNetworkHost>?>? hosts;
   /// Sets the identity parameters for the network connection in the backing store source.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkIdentity>? identity;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkIdentity?>? identity;
   /// Sets the initiator for the network connection in the backing store source configuration.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkInitiator>? initiator;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkInitiator?>? initiator;
   /// Configures the known hosts used for authenticated connections in network storage operations.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkKnownHosts>? knownHosts;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkKnownHosts?>? knownHosts;
   /// Sets a name for the network block device, facilitating easier identification.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configures the protocol used for network storage access, such as iSCSI or NBD.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Controls query parameters that may influence the network connection establishment.
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
   /// Configures reconnect behavior for network storage connections, enhancing robustness in case of interruptions.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkReconnect>? reconnect;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkReconnect?>? reconnect;
   /// Enables snapshot capabilities for the network storage source, allowing for point-in-time volumes.
-  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkSnapshot>? snapshot;
+  final pulumi.Input<DomainDevicesDiskBackingStoreSourceNetworkSnapshot?>? snapshot;
   /// Controls whether TLS is used for secure connections to the network storage.
-  final pulumi.Input<String>? tls;
+  final pulumi.Input<String?>? tls;
   /// Sets the expected hostname for the TLS certificate validation during secure network access.
-  final pulumi.Input<String>? tlsHostname;
+  final pulumi.Input<String?>? tlsHostname;
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceNetwork].
   /// [auth] Configures authentication settings for the iSCSI source.

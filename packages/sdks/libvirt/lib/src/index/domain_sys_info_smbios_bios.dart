@@ -5,7 +5,7 @@ import 'domain_sys_info_smbios_bios_entry.dart';
 
 class DomainSysInfoSmbiosBios {
   /// Specifies individual entries for the BIOS information in the SMBIOS.
-  final pulumi.Input<List<DomainSysInfoSmbiosBiosEntry>>? entries;
+  final pulumi.Input<List<DomainSysInfoSmbiosBiosEntry>?>? entries;
 
   /// Creates a new [DomainSysInfoSmbiosBios].
   /// [entries] Specifies individual entries for the BIOS information in the SMBIOS.

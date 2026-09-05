@@ -6,9 +6,9 @@ import 'domain_devices_audio_core_audio_output.dart';
 
 class DomainDevicesAudioCoreAudio {
   /// Configures the output settings for the CoreAudio audio device.
-  final pulumi.Input<DomainDevicesAudioCoreAudioInput>? input;
+  final pulumi.Input<DomainDevicesAudioCoreAudioInput?>? input;
   /// Configures the output settings for the CoreAudio audio device.
-  final pulumi.Input<DomainDevicesAudioCoreAudioOutput>? output;
+  final pulumi.Input<DomainDevicesAudioCoreAudioOutput?>? output;
 
   /// Creates a new [DomainDevicesAudioCoreAudio].
   /// [input] Configures the output settings for the CoreAudio audio device.

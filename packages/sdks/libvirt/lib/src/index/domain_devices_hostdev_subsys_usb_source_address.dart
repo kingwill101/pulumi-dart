@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevSubsysUsbSourceAddress {
   /// Sets the bus identifier where the USB device resides.
-  final pulumi.Input<double>? bus;
+  final pulumi.Input<double?>? bus;
   /// Specifies the device identifier corresponding to the USB device.
-  final pulumi.Input<double>? device;
+  final pulumi.Input<double?>? device;
   /// Indicates the port number for the USB device connection.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
 
   /// Creates a new [DomainDevicesHostdevSubsysUsbSourceAddress].
   /// [bus] Sets the bus identifier where the USB device resides.
@@ -30,8 +30,8 @@ class DomainDevicesHostdevSubsysUsbSourceAddress {
 
   factory DomainDevicesHostdevSubsysUsbSourceAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysUsbSourceAddress(
-      bus: (() { final guardedValue = map['bus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      device: (() { final guardedValue = map['device']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bus: (() { final guardedValue = map['bus']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      device: (() { final guardedValue = map['device']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

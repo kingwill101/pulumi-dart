@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicVncListenerNetwork {
   /// Sets the network address for the Spice network listener.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Specifies the network to which the Spice listener belongs.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
 
   /// Creates a new [DomainDevicesGraphicVncListenerNetwork].
   /// [address] Sets the network address for the Spice network listener.

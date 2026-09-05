@@ -13,6 +13,7 @@ import 'domain_devices_hostdev.dart';
 import 'domain_devices_hub.dart';
 import 'domain_devices_input.dart';
 import 'domain_devices_interface.dart';
+import 'domain_devices_iomm_use.dart';
 import 'domain_devices_iommu.dart';
 import 'domain_devices_lease.dart';
 import 'domain_devices_mem_balloon.dart';
@@ -35,119 +36,120 @@ import 'domain_devices_watchdog.dart';
 
 class DomainDevices {
   /// Specifies the audio devices allocated to the domain, supporting audio input and output functionality within the VM.
-  final pulumi.Input<List<DomainDevicesAudio>>? audios;
+  final pulumi.Input<List<DomainDevicesAudio>?>? audios;
   /// Private communication channels between host and guest
-  final pulumi.Input<List<DomainDevicesChannel>>? channels;
+  final pulumi.Input<List<DomainDevicesChannel>?>? channels;
   /// Configures one or more console devices for the guest, defining how serial consoles are exposed and connected.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#console&gt;
-  final pulumi.Input<List<DomainDevicesConsole>>? consoles;
+  final pulumi.Input<List<DomainDevicesConsole>?>? consoles;
   /// Declares one or more device controllers (PCI, USB, SCSI, virtio-serial, etc.) attached to the guest, controlling how device buses are exposed.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#controllers&gt;
-  final pulumi.Input<List<DomainDevicesController>>? controllers;
+  final pulumi.Input<List<DomainDevicesController>?>? controllers;
   /// Configures a virtio-based crypto device that offloads cryptographic operations to the host; the device type and backend parameters are specified in its child attributes.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#crypto&gt;
-  final pulumi.Input<List<DomainDevicesCrypto>>? cryptos;
+  final pulumi.Input<List<DomainDevicesCrypto>?>? cryptos;
   /// Declares one or more block devices (disks, CD-ROMs, etc.) attached to the guest, each with its own source, target, and optional tuning parameters.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#hard-drives-floppy-disks-cdroms&gt;
-  final pulumi.Input<List<DomainDevicesDisk>>? disks;
+  final pulumi.Input<List<DomainDevicesDisk>?>? disks;
   /// Sets the absolute path to the hypervisor emulator binary used to run this domain (for example "/usr/bin/qemu-system-x86_64").
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#devices&gt;
-  final pulumi.Input<String>? emulator;
+  final pulumi.Input<String?>? emulator;
   /// Declares one or more filesystem devices that expose host directories or block devices into the guest.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#filesystems&gt;
-  final pulumi.Input<List<DomainDevicesFilesystem>>? filesystems;
+  final pulumi.Input<List<DomainDevicesFilesystem>?>? filesystems;
   /// Configures one or more graphical framebuffer devices (such as VNC, SPICE, or DBus-based displays) for the guest.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#graphical-framebuffers&gt;
-  final pulumi.Input<List<DomainDevicesGraphic>>? graphics;
+  final pulumi.Input<List<DomainDevicesGraphic>?>? graphics;
   /// Defines one or more hostdev entries describing host devices (PCI, USB, SCSI, etc.) that are passed through directly to the guest.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#host-device-assignment&gt;
-  final pulumi.Input<List<DomainDevicesHostdev>>? hostdevs;
+  final pulumi.Input<List<DomainDevicesHostdev>?>? hostdevs;
   /// Declares one or more virtual hub devices attached to a guest bus, typically to provide additional USB ports to the guest.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#hub-devices&gt;
-  final pulumi.Input<List<DomainDevicesHub>>? hubs;
+  final pulumi.Input<List<DomainDevicesHub>?>? hubs;
   /// Declares one or more guest input devices such as tablets, mice, or keyboards, and configures their type, bus, and optional passthrough settings.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#input-devices&gt;
-  final pulumi.Input<List<DomainDevicesInput>>? inputs;
+  final pulumi.Input<List<DomainDevicesInput>?>? inputs;
   /// Defines one or more network interface devices attached to the guest, including their connection mode, model, addressing, and related options.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#network-interfaces&gt;
-  final pulumi.Input<List<DomainDevicesInterface>>? interfaces;
+  final pulumi.Input<List<DomainDevicesInterface>?>? interfaces;
+  final pulumi.Input<List<DomainDevicesIommUse>?>? iommUses;
   /// Configures an IOMMU device for the guest, enabling emulated or paravirtual IOMMU functionality; requires a model and may include driver and ACPI options.
-  final pulumi.Input<DomainDevicesIommu>? iommu;
+  final pulumi.Input<DomainDevicesIommu?>? iommu;
   /// Configures one or more device leases that must be acquired by the lock manager before the domain can start, each represented as a lease entry.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#device-leases&gt;
-  final pulumi.Input<List<DomainDevicesLease>>? leases;
+  final pulumi.Input<List<DomainDevicesLease>?>? leases;
   /// Configures the guest memory balloon device, which allows the host to dynamically adjust the guest’s available memory.
-  final pulumi.Input<DomainDevicesMemBalloon>? memBalloon;
+  final pulumi.Input<DomainDevicesMemBalloon?>? memBalloon;
   /// Defines one or more memory device entries (DIMM, NVDIMM, virtio-mem, etc.) that provide additional, hot-pluggable memory to the guest.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#memory-devices&gt;
-  final pulumi.Input<List<DomainDevicesMemorydev>>? memorydevs;
+  final pulumi.Input<List<DomainDevicesMemorydev>?>? memorydevs;
   /// Adds an NVRAM device to the domain, allowing firmware or platform-specific non-volatile state to be stored separately from normal disks.
-  final pulumi.Input<DomainDevicesNvram>? nvram;
+  final pulumi.Input<DomainDevicesNvram?>? nvram;
   /// Adds one or more panic devices that report guest panic events to the host, allowing external monitoring or automation on guest crashes.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#panic-device&gt;
-  final pulumi.Input<List<DomainDevicesPanic>>? panics;
+  final pulumi.Input<List<DomainDevicesPanic>?>? panics;
   /// Configures one or more parallel port character devices exposed to the guest, each represented by a parallel element with optional address, backend, and logging settings.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#parallel-port&gt;
-  final pulumi.Input<List<DomainDevicesParallel>>? parallels;
+  final pulumi.Input<List<DomainDevicesParallel>?>? parallels;
   /// Adds a pstore device to the guest for persistent storage of kernel oops/panic logs, mapping to a host backend.
-  final pulumi.Input<DomainDevicesPstore>? pstore;
+  final pulumi.Input<DomainDevicesPstore?>? pstore;
   /// Configures one or more redirected USB devices exposed to the guest via redirdev, typically used in conjunction with SPICE or similar frontends.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#redirected-devices&gt;
-  final pulumi.Input<List<DomainDevicesRedirDev>>? redirDevs;
+  final pulumi.Input<List<DomainDevicesRedirDev>?>? redirDevs;
   /// Configures one or more USB redirection filter rules that determine which redirected USB devices are allowed or denied to the guest.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#redirected-devices&gt;
-  final pulumi.Input<List<DomainDevicesRedirFilter>>? redirFilters;
+  final pulumi.Input<List<DomainDevicesRedirFilter>?>? redirFilters;
   /// Defines one or more virtual random number generator devices attached to the guest.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#random-number-generator-device&gt;
-  final pulumi.Input<List<DomainDevicesRng>>? rngs;
+  final pulumi.Input<List<DomainDevicesRng>?>? rngs;
   /// Configures one or more virtual serial port devices attached to the guest.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#serial-port&gt;
-  final pulumi.Input<List<DomainDevicesSerial>>? serials;
+  final pulumi.Input<List<DomainDevicesSerial>?>? serials;
   /// Defines one or more shared memory (ivshmem/shmem) devices used to share memory regions between this guest, other guests, and/or the host.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#shared-memory-device&gt;
-  final pulumi.Input<List<DomainDevicesShmem>>? shmems;
+  final pulumi.Input<List<DomainDevicesShmem>?>? shmems;
   /// Defines one or more virtual smartcard devices attached to the guest.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#smartcard-devices&gt;
-  final pulumi.Input<List<DomainDevicesSmartcard>>? smartcards;
+  final pulumi.Input<List<DomainDevicesSmartcard>?>? smartcards;
   /// Configures one or more virtual sound devices attached to the guest.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#sound-devices&gt;
-  final pulumi.Input<List<DomainDevicesSound>>? sounds;
+  final pulumi.Input<List<DomainDevicesSound>?>? sounds;
   /// Configures one or more TPM devices attached to the guest, including their backend implementation, addressing, and optional ACPI integration.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#tpm-device&gt;
-  final pulumi.Input<List<DomainDevicesTpm>>? tpms;
+  final pulumi.Input<List<DomainDevicesTpm>?>? tpms;
   /// Defines one or more video devices attached to the guest, each providing a virtual graphics adapter.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#video-devices&gt;
-  final pulumi.Input<List<DomainDevicesVideo>>? videos;
+  final pulumi.Input<List<DomainDevicesVideo>?>? videos;
   /// Configures a virtio vsock device that provides a host/guest communication channel using a CID-based socket interface.
-  final pulumi.Input<DomainDevicesVsock>? vsock;
+  final pulumi.Input<DomainDevicesVsock?>? vsock;
   /// Configures one or more virtual watchdog devices attached to the guest, each controlling timeout behavior and actions on failure.
   ///
   /// See: &lt;https://libvirt.org/formatdomain.html#watchdog-devices&gt;
-  final pulumi.Input<List<DomainDevicesWatchdog>>? watchdogs;
+  final pulumi.Input<List<DomainDevicesWatchdog>?>? watchdogs;
 
   /// Creates a new [DomainDevices].
   /// [audios] Specifies the audio devices allocated to the domain, supporting audio input and output functionality within the VM.
@@ -163,6 +165,7 @@ class DomainDevices {
   /// [hubs] Declares one or more virtual hub devices attached to a guest bus, typically to provide additional USB ports to the guest.
   /// [inputs] Declares one or more guest input devices such as tablets, mice, or keyboards, and configures their type, bus, and optional passthrough settings.
   /// [interfaces] Defines one or more network interface devices attached to the guest, including their connection mode, model, addressing, and related options.
+  /// [iommUses] Optional.
   /// [iommu] Configures an IOMMU device for the guest, enabling emulated or paravirtual IOMMU functionality; requires a model and may include driver and ACPI options.
   /// [leases] Configures one or more device leases that must be acquired by the lock manager before the domain can start, each represented as a lease entry.
   /// [memBalloon] Configures the guest memory balloon device, which allows the host to dynamically adjust the guest’s available memory.
@@ -196,6 +199,7 @@ class DomainDevices {
     this.hubs,
     this.inputs,
     this.interfaces,
+    this.iommUses,
     this.iommu,
     this.leases,
     this.memBalloon,
@@ -232,6 +236,7 @@ class DomainDevices {
       'hubs': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesHub>, List<Map<String, dynamic>>>(hubs, (value) => pulumi.Input.encodeList<DomainDevicesHub, Map<String, dynamic>>(value, (value) => value.toMap())),
       'inputs': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesInput>, List<Map<String, dynamic>>>(inputs, (value) => pulumi.Input.encodeList<DomainDevicesInput, Map<String, dynamic>>(value, (value) => value.toMap())),
       'interfaces': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesInterface>, List<Map<String, dynamic>>>(interfaces, (value) => pulumi.Input.encodeList<DomainDevicesInterface, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'iommUses': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesIommUse>, List<Map<String, dynamic>>>(iommUses, (value) => pulumi.Input.encodeList<DomainDevicesIommUse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'iommu': ?pulumi.Input.mapOptionalInputValue<DomainDevicesIommu, Map<String, dynamic>>(iommu, (value) => value.toMap()),
       'leases': ?pulumi.Input.mapOptionalInputValue<List<DomainDevicesLease>, List<Map<String, dynamic>>>(leases, (value) => pulumi.Input.encodeList<DomainDevicesLease, Map<String, dynamic>>(value, (value) => value.toMap())),
       'memBalloon': ?pulumi.Input.mapOptionalInputValue<DomainDevicesMemBalloon, Map<String, dynamic>>(memBalloon, (value) => value.toMap()),
@@ -269,6 +274,7 @@ class DomainDevices {
       hubs: (() { final guardedValue = map['hubs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesHub>(guardedValue, (value) => DomainDevicesHub.fromMap((value as Map).cast<String, dynamic>()))); })(),
       inputs: (() { final guardedValue = map['inputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesInput>(guardedValue, (value) => DomainDevicesInput.fromMap((value as Map).cast<String, dynamic>()))); })(),
       interfaces: (() { final guardedValue = map['interfaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesInterface>(guardedValue, (value) => DomainDevicesInterface.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      iommUses: (() { final guardedValue = map['iommUses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesIommUse>(guardedValue, (value) => DomainDevicesIommUse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       iommu: (() { final guardedValue = map['iommu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesIommu.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       leases: (() { final guardedValue = map['leases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesLease>(guardedValue, (value) => DomainDevicesLease.fromMap((value as Map).cast<String, dynamic>()))); })(),
       memBalloon: (() { final guardedValue = map['memBalloon']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesMemBalloon.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

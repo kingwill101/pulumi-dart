@@ -5,7 +5,7 @@ import 'domain_devices_disk_driver_io_threads_io_thread.dart';
 
 class DomainDevicesDiskDriverIoThreads {
   /// Defines individual I/O thread settings for the disk.
-  final pulumi.Input<List<DomainDevicesDiskDriverIoThreadsIoThread>>? ioThreads;
+  final pulumi.Input<List<DomainDevicesDiskDriverIoThreadsIoThread>?>? ioThreads;
 
   /// Creates a new [DomainDevicesDiskDriverIoThreads].
   /// [ioThreads] Defines individual I/O thread settings for the disk.

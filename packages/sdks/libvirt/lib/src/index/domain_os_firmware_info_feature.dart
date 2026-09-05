@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainOsFirmwareInfoFeature {
   /// Indicates whether a particular firmware feature is enabled or not.
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
   /// Sets the name identifier of a specific firmware feature.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DomainOsFirmwareInfoFeature].
   /// [enabled] Indicates whether a particular firmware feature is enabled or not.

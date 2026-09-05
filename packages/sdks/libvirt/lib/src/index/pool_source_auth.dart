@@ -5,7 +5,7 @@ import 'pool_source_auth_secret.dart';
 
 class PoolSourceAuth {
   /// Defines the secret used for authenticated access to the storage source.
-  final pulumi.Input<PoolSourceAuthSecret>? secret;
+  final pulumi.Input<PoolSourceAuthSecret?>? secret;
   /// Configures the type of authentication mechanism to be used on the storage source connection.
   final pulumi.Input<String> type;
   /// Sets the username for authenticating access to the storage source.

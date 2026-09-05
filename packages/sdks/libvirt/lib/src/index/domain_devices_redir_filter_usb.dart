@@ -6,13 +6,13 @@ class DomainDevicesRedirFilterUsb {
   /// Controls whether the USB device is allowed for redirection.
   final pulumi.Input<String> allow;
   /// Specifies the USB class type for the redirection filter.
-  final pulumi.Input<double>? class_;
+  final pulumi.Input<double?>? class_;
   /// Sets the product ID of the USB device for the redirection filter.
-  final pulumi.Input<double>? product;
+  final pulumi.Input<double?>? product;
   /// Specifies the vendor ID of the USB device for the redirection filter.
-  final pulumi.Input<double>? vendor;
+  final pulumi.Input<double?>? vendor;
   /// Sets the version of the USB device for the redirection filter.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DomainDevicesRedirFilterUsb].
   /// [allow] Controls whether the USB device is allowed for redirection.
@@ -41,9 +41,9 @@ class DomainDevicesRedirFilterUsb {
   factory DomainDevicesRedirFilterUsb.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRedirFilterUsb(
       allow: pulumi.Input.fromValue(map['allow'] as String),
-      class_: (() { final guardedValue = map['class']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      product: (() { final guardedValue = map['product']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      vendor: (() { final guardedValue = map['vendor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      class_: (() { final guardedValue = map['class']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      product: (() { final guardedValue = map['product']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      vendor: (() { final guardedValue = map['vendor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

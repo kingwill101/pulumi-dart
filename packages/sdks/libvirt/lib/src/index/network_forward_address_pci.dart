@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkForwardAddressPci {
   /// Specifies the bus number for the PCI forwarding address.
-  final pulumi.Input<double>? bus;
+  final pulumi.Input<double?>? bus;
   /// Sets the domain ID for the PCI forwarding address.
-  final pulumi.Input<double>? domain;
+  final pulumi.Input<double?>? domain;
   /// Defines the function number for the PCI forwarding address.
-  final pulumi.Input<double>? function;
+  final pulumi.Input<double?>? function;
   /// Specifies the slot number for the PCI forwarding address.
-  final pulumi.Input<double>? slot;
+  final pulumi.Input<double?>? slot;
 
   /// Creates a new [NetworkForwardAddressPci].
   /// [bus] Specifies the bus number for the PCI forwarding address.
@@ -35,10 +35,10 @@ class NetworkForwardAddressPci {
 
   factory NetworkForwardAddressPci.fromMap(Map<String, dynamic> map) {
     return NetworkForwardAddressPci(
-      bus: (() { final guardedValue = map['bus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      function: (() { final guardedValue = map['function']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      slot: (() { final guardedValue = map['slot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bus: (() { final guardedValue = map['bus']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      function: (() { final guardedValue = map['function']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      slot: (() { final guardedValue = map['slot']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

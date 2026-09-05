@@ -6,35 +6,35 @@ import 'domain_devices_interface_driver_host.dart';
 
 class DomainDevicesInterfaceDriver {
   /// Enables or disables Address Translation Services (ATS) for the interface driver, affecting how the interface processes addresses.
-  final pulumi.Input<String>? ats;
+  final pulumi.Input<String?>? ats;
   /// Controls the event index for the interface driver, which can influence how events are processed and reported.
-  final pulumi.Input<String>? eventIdx;
+  final pulumi.Input<String?>? eventIdx;
   /// Sets parameters specific to the guest OS for interface driver configuration, allowing for optimizations tailored to the guest environment.
-  final pulumi.Input<DomainDevicesInterfaceDriverGuest>? guest;
+  final pulumi.Input<DomainDevicesInterfaceDriverGuest?>? guest;
   /// Configures parameters specific to the host for interface driver settings, influencing how the host interacts with the interface.
-  final pulumi.Input<DomainDevicesInterfaceDriverHost>? host;
+  final pulumi.Input<DomainDevicesInterfaceDriverHost?>? host;
   /// Configures the use of I/O event file descriptors for the interface driver, impacting how I/O operations are managed.
-  final pulumi.Input<String>? ioEventFd;
+  final pulumi.Input<String?>? ioEventFd;
   /// Enables or disables Input/Output Memory Management Unit (IOMMU) support for the interface driver, which affects memory management for I/O operations.
-  final pulumi.Input<String>? iommu;
+  final pulumi.Input<String?>? iommu;
   /// Specifies the name of the driver associated with the interface, allowing for custom driver configurations.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configures whether packed ring support is enabled or disabled for the driver, impacting how packet data is managed.
-  final pulumi.Input<String>? packed;
+  final pulumi.Input<String?>? packed;
   /// Enables or disables the page per virtual queue feature for the driver, influencing memory management for packet queues.
-  final pulumi.Input<String>? pagePerVq;
+  final pulumi.Input<String?>? pagePerVq;
   /// Sets the number of queues for the driver, which can enhance performance by distributing traffic across multiple processing paths.
-  final pulumi.Input<double>? queues;
+  final pulumi.Input<double?>? queues;
   /// Enables or disables Receive Side Scaling (RSS) for the driver, allowing for better distribution of incoming traffic across CPUs.
-  final pulumi.Input<String>? rss;
+  final pulumi.Input<String?>? rss;
   /// Controls whether RSS hash reporting is enabled for the driver, influencing how hash values for packet routing are handled.
-  final pulumi.Input<String>? rssHashReport;
+  final pulumi.Input<String?>? rssHashReport;
   /// Configures the size of the receive queue for the driver, impacting how packets are buffered during reception.
-  final pulumi.Input<double>? rxQueueSize;
+  final pulumi.Input<double?>? rxQueueSize;
   /// Configures the transmission mode for the network interface driver.
-  final pulumi.Input<String>? txMode;
+  final pulumi.Input<String?>? txMode;
   /// Sets the size of the transmit queue for the network interface driver.
-  final pulumi.Input<double>? txQueueSize;
+  final pulumi.Input<double?>? txQueueSize;
 
   /// Creates a new [DomainDevicesInterfaceDriver].
   /// [ats] Enables or disables Address Translation Services (ATS) for the interface driver, affecting how the interface processes addresses.
@@ -101,12 +101,12 @@ class DomainDevicesInterfaceDriver {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       packed: (() { final guardedValue = map['packed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pagePerVq: (() { final guardedValue = map['pagePerVq']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queues: (() { final guardedValue = map['queues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      queues: (() { final guardedValue = map['queues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       rss: (() { final guardedValue = map['rss']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rssHashReport: (() { final guardedValue = map['rssHashReport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rxQueueSize: (() { final guardedValue = map['rxQueueSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      rxQueueSize: (() { final guardedValue = map['rxQueueSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       txMode: (() { final guardedValue = map['txMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      txQueueSize: (() { final guardedValue = map['txQueueSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      txQueueSize: (() { final guardedValue = map['txQueueSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

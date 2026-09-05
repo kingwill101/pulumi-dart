@@ -5,7 +5,7 @@ import 'domain_devices_hostdev_caps_misc_source.dart';
 
 class DomainDevicesHostdevCapsMisc {
   /// Specifies the source attributes for the miscellaneous capabilities of the host device.
-  final pulumi.Input<DomainDevicesHostdevCapsMiscSource>? source;
+  final pulumi.Input<DomainDevicesHostdevCapsMiscSource?>? source;
 
   /// Creates a new [DomainDevicesHostdevCapsMisc].
   /// [source] Specifies the source attributes for the miscellaneous capabilities of the host device.

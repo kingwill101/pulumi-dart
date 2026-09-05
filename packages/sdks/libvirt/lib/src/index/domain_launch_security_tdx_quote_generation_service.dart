@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainLaunchSecurityTdxQuoteGenerationService {
   /// Sets the path for the quote generation service used in TDX.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [DomainLaunchSecurityTdxQuoteGenerationService].
   /// [path] Sets the path for the quote generation service used in TDX.

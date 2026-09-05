@@ -5,7 +5,7 @@ import 'domain_devices_disk_source_cookies_cookie.dart';
 
 class DomainDevicesDiskSourceCookies {
   /// Configures cookies for the backing store source, allowing additional parameters for storage.
-  final pulumi.Input<List<DomainDevicesDiskSourceCookiesCookie>>? cookies;
+  final pulumi.Input<List<DomainDevicesDiskSourceCookiesCookie>?>? cookies;
 
   /// Creates a new [DomainDevicesDiskSourceCookies].
   /// [cookies] Configures cookies for the backing store source, allowing additional parameters for storage.

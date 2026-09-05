@@ -5,7 +5,7 @@ import 'domain_memory_backing_memory_huge_pages_hugepage.dart';
 
 class DomainMemoryBackingMemoryHugePages {
   /// Defines the configuration options for huge pages, particularly their count and characteristics.
-  final pulumi.Input<List<DomainMemoryBackingMemoryHugePagesHugepage>>? hugepages;
+  final pulumi.Input<List<DomainMemoryBackingMemoryHugePagesHugepage>?>? hugepages;
 
   /// Creates a new [DomainMemoryBackingMemoryHugePages].
   /// [hugepages] Defines the configuration options for huge pages, particularly their count and characteristics.

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Combustion resources.
 class CombustionState {
   /// Combustion script content (shell script)
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// Name for this combustion resource
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Full path to the generated combustion script file
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Size of the file in bytes
-  final pulumi.Input<double>? size;
+  final pulumi.Input<double?>? size;
 
   /// Creates a new [CombustionState].
   /// [content] Combustion script content (shell script)
@@ -39,7 +39,7 @@ class CombustionState {
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

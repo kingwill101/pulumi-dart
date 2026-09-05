@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDestroyShutdown {
   /// Experimental: seconds to wait for guest shutdown before failing destroy. Defaults to 30.
-  final pulumi.Input<double>? timeout;
+  final pulumi.Input<double?>? timeout;
 
   /// Creates a new [DomainDestroyShutdown].
   /// [timeout] Experimental: seconds to wait for guest shutdown before failing destroy. Defaults to 30.
@@ -20,7 +20,7 @@ class DomainDestroyShutdown {
 
   factory DomainDestroyShutdown.fromMap(Map<String, dynamic> map) {
     return DomainDestroyShutdown(
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

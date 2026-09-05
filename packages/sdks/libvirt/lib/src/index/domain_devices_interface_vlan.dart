@@ -5,9 +5,9 @@ import 'domain_devices_interface_vlan_tag.dart';
 
 class DomainDevicesInterfaceVlan {
   /// Defines the tags associated with the VLAN configuration.
-  final pulumi.Input<List<DomainDevicesInterfaceVlanTag>>? tags;
+  final pulumi.Input<List<DomainDevicesInterfaceVlanTag>?>? tags;
   /// Indicates if the VLAN is set to trunk mode.
-  final pulumi.Input<String>? trunk;
+  final pulumi.Input<String?>? trunk;
 
   /// Creates a new [DomainDevicesInterfaceVlan].
   /// [tags] Defines the tags associated with the VLAN configuration.

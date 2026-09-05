@@ -5,15 +5,15 @@ import 'domain_os_nv_ram_source.dart';
 
 class DomainOsNvRam {
   /// Sets the format type of the NVRAM storage.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// Specifies the non-volatile RAM configuration for the domain's NVRAM.
   final pulumi.Input<String> nvRam;
   /// Specifies the source of the backing store, determining its origin and how it is accessed.
-  final pulumi.Input<DomainOsNvRamSource>? source;
+  final pulumi.Input<DomainOsNvRamSource?>? source;
   /// Defines the template configuration for the NVRAM.
-  final pulumi.Input<String>? template;
+  final pulumi.Input<String?>? template;
   /// Specifies the format of the template for the NVRAM.
-  final pulumi.Input<String>? templateFormat;
+  final pulumi.Input<String?>? templateFormat;
 
   /// Creates a new [DomainOsNvRam].
   /// [format] Sets the format type of the NVRAM storage.

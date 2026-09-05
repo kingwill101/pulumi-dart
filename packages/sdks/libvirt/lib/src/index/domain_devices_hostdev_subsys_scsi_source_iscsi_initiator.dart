@@ -5,7 +5,7 @@ import 'domain_devices_hostdev_subsys_scsi_source_iscsi_initiator_iqn.dart';
 
 class DomainDevicesHostdevSubsysScsiSourceIscsiInitiator {
   /// Defines the IQN (iSCSI Qualified Name) for the iSCSI initiator.
-  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn>? iqn;
+  final pulumi.Input<DomainDevicesHostdevSubsysScsiSourceIscsiInitiatorIqn?>? iqn;
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiSourceIscsiInitiator].
   /// [iqn] Defines the IQN (iSCSI Qualified Name) for the iSCSI initiator.

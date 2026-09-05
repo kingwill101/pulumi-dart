@@ -21,41 +21,41 @@ import 'domain_features_hyper_vxmm_input.dart';
 
 class DomainFeaturesHyperV {
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVAvic>? avic;
+  final pulumi.Input<DomainFeaturesHyperVAvic?>? avic;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVEmsrBitmap>? emsrBitmap;
+  final pulumi.Input<DomainFeaturesHyperVEmsrBitmap?>? emsrBitmap;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVEvmcs>? evmcs;
+  final pulumi.Input<DomainFeaturesHyperVEvmcs?>? evmcs;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVFrequencies>? frequencies;
+  final pulumi.Input<DomainFeaturesHyperVFrequencies?>? frequencies;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVIpi>? ipi;
+  final pulumi.Input<DomainFeaturesHyperVIpi?>? ipi;
   /// Sets the mode of operation for Hyper-V features in the domain.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVReEnlightenment>? reEnlightenment;
+  final pulumi.Input<DomainFeaturesHyperVReEnlightenment?>? reEnlightenment;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVRelaxed>? relaxed;
+  final pulumi.Input<DomainFeaturesHyperVRelaxed?>? relaxed;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVReset>? reset;
+  final pulumi.Input<DomainFeaturesHyperVReset?>? reset;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVRuntime>? runtime;
+  final pulumi.Input<DomainFeaturesHyperVRuntime?>? runtime;
   /// Controls the spinlock feature settings for Hyper-V.
-  final pulumi.Input<DomainFeaturesHyperVSpinlocks>? spinlocks;
+  final pulumi.Input<DomainFeaturesHyperVSpinlocks?>? spinlocks;
   /// Configures synthetic timer functionality for Hyper-V.
-  final pulumi.Input<DomainFeaturesHyperVStimer>? stimer;
+  final pulumi.Input<DomainFeaturesHyperVStimer?>? stimer;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVSynic>? synic;
+  final pulumi.Input<DomainFeaturesHyperVSynic?>? synic;
   /// Controls the Translation Lookaside Buffer (TLB) flush functionality for Hyper-V.
-  final pulumi.Input<DomainFeaturesHyperVTlbFlush>? tlbFlush;
+  final pulumi.Input<DomainFeaturesHyperVTlbFlush?>? tlbFlush;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVVapic>? vapic;
+  final pulumi.Input<DomainFeaturesHyperVVapic?>? vapic;
   /// Configures the vendor ID presented to the guest operating system by Hyper-V.
-  final pulumi.Input<DomainFeaturesHyperVVendorId>? vendorId;
+  final pulumi.Input<DomainFeaturesHyperVVendorId?>? vendorId;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVVpIndex>? vpIndex;
+  final pulumi.Input<DomainFeaturesHyperVVpIndex?>? vpIndex;
   /// Enables or disables support for PS/2 devices in the virtual machine.
-  final pulumi.Input<DomainFeaturesHyperVXmmInput>? xmmInput;
+  final pulumi.Input<DomainFeaturesHyperVXmmInput?>? xmmInput;
 
   /// Creates a new [DomainFeaturesHyperV].
   /// [avic] Enables or disables support for PS/2 devices in the virtual machine.

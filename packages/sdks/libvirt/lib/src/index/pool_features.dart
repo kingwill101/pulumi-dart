@@ -5,7 +5,7 @@ import 'pool_features_cow.dart';
 
 class PoolFeatures {
   /// Indicates whether copy-on-write (COW) is enabled for the storage pool's images.
-  final pulumi.Input<PoolFeaturesCow>? cow;
+  final pulumi.Input<PoolFeaturesCow?>? cow;
 
   /// Creates a new [PoolFeatures].
   /// [cow] Indicates whether copy-on-write (COW) is enabled for the storage pool's images.

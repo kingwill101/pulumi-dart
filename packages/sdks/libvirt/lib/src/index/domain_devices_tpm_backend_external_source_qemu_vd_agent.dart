@@ -5,8 +5,8 @@ import 'domain_devices_tpm_backend_external_source_qemu_vd_agent_clip_board.dart
 import 'domain_devices_tpm_backend_external_source_qemu_vd_agent_mouse.dart';
 
 class DomainDevicesTpmBackendExternalSourceQemuVdAgent {
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourceQemuVdAgentClipBoard>? clipBoard;
-  final pulumi.Input<DomainDevicesTpmBackendExternalSourceQemuVdAgentMouse>? mouse;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourceQemuVdAgentClipBoard?>? clipBoard;
+  final pulumi.Input<DomainDevicesTpmBackendExternalSourceQemuVdAgentMouse?>? mouse;
 
   /// Creates a new [DomainDevicesTpmBackendExternalSourceQemuVdAgent].
   /// [clipBoard] Optional.

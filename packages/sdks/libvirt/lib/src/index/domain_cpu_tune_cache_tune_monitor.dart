@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuTuneCacheTuneMonitor {
   /// Configures the monitoring level for cache tuning, controlling the granularity of the monitored cache behavior.
-  final pulumi.Input<double>? level;
+  final pulumi.Input<double?>? level;
   /// Sets the number of virtual CPUs to monitor for cache tuning, allowing targeted performance observations.
-  final pulumi.Input<String>? vcpus;
+  final pulumi.Input<String?>? vcpus;
 
   /// Creates a new [DomainCpuTuneCacheTuneMonitor].
   /// [level] Configures the monitoring level for cache tuning, controlling the granularity of the monitored cache behavior.
@@ -25,7 +25,7 @@ class DomainCpuTuneCacheTuneMonitor {
 
   factory DomainCpuTuneCacheTuneMonitor.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneCacheTuneMonitor(
-      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       vcpus: (() { final guardedValue = map['vcpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

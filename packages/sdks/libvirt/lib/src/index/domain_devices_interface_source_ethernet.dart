@@ -6,9 +6,9 @@ import 'domain_devices_interface_source_ethernet_route.dart';
 
 class DomainDevicesInterfaceSourceEthernet {
   /// Configures the IP settings associated with the Ethernet source of the network interface.
-  final pulumi.Input<List<DomainDevicesInterfaceSourceEthernetIp>>? ips;
+  final pulumi.Input<List<DomainDevicesInterfaceSourceEthernetIp>?>? ips;
   /// Configures routing settings for the Ethernet interface, defining how network traffic is managed.
-  final pulumi.Input<List<DomainDevicesInterfaceSourceEthernetRoute>>? routes;
+  final pulumi.Input<List<DomainDevicesInterfaceSourceEthernetRoute>?>? routes;
 
   /// Creates a new [DomainDevicesInterfaceSourceEthernet].
   /// [ips] Configures the IP settings associated with the Ethernet source of the network interface.

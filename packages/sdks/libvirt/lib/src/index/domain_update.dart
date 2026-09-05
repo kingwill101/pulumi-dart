@@ -5,7 +5,7 @@ import 'domain_update_shutdown.dart';
 
 class DomainUpdate {
   /// Experimental: request a guest shutdown and wait for shutoff before forcing a stop during update. Subject to change in future releases.
-  final pulumi.Input<DomainUpdateShutdown>? shutdown;
+  final pulumi.Input<DomainUpdateShutdown?>? shutdown;
 
   /// Creates a new [DomainUpdate].
   /// [shutdown] Experimental: request a guest shutdown and wait for shutoff before forcing a stop during update. Subject to change in future releases.

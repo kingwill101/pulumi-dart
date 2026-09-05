@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesControllerNvme {
   /// Sets the serial number for the NVMe controller device.
-  final pulumi.Input<String>? serial;
+  final pulumi.Input<String?>? serial;
 
   /// Creates a new [DomainDevicesControllerNvme].
   /// [serial] Sets the serial number for the NVMe controller device.

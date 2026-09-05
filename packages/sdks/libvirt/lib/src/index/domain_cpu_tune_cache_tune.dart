@@ -6,13 +6,13 @@ import 'domain_cpu_tune_cache_tune_monitor.dart';
 
 class DomainCpuTuneCacheTune {
   /// Configures the cache-related tuning parameters for the domain's CPU.
-  final pulumi.Input<List<DomainCpuTuneCacheTuneCach>>? caches;
+  final pulumi.Input<List<DomainCpuTuneCacheTuneCach>?>? caches;
   /// Sets the identifier for the overall cache tuning configuration related to the CPUs.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies monitoring options for observing the effectiveness of cache tuning.
-  final pulumi.Input<List<DomainCpuTuneCacheTuneMonitor>>? monitors;
+  final pulumi.Input<List<DomainCpuTuneCacheTuneMonitor>?>? monitors;
   /// Configures the virtual CPUs associated with cache tuning, determining which CPUs are affected by the cache settings.
-  final pulumi.Input<String>? vcpus;
+  final pulumi.Input<String?>? vcpus;
 
   /// Creates a new [DomainCpuTuneCacheTune].
   /// [caches] Configures the cache-related tuning parameters for the domain's CPU.

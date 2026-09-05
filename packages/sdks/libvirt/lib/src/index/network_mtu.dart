@@ -20,7 +20,7 @@ class NetworkMtu {
 
   factory NetworkMtu.fromMap(Map<String, dynamic> map) {
     return NetworkMtu(
-      size: pulumi.Input.fromValue(map['size'] as double),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
     );
   }
 }

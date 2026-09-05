@@ -9,15 +9,15 @@ import 'network_port_group_virtual_port_params_vn_tag8011qbh.dart';
 
 class NetworkPortGroupVirtualPortParams {
   /// Specifies any parameters applicable to the virtual port configuration.
-  final pulumi.Input<NetworkPortGroupVirtualPortParamsAny>? any;
+  final pulumi.Input<NetworkPortGroupVirtualPortParamsAny?>? any;
   /// Configures parameters for MidoNet-related virtual ports.
-  final pulumi.Input<NetworkPortGroupVirtualPortParamsMidoNet>? midoNet;
+  final pulumi.Input<NetworkPortGroupVirtualPortParamsMidoNet?>? midoNet;
   /// Defines parameters for Open vSwitch-related virtual ports.
-  final pulumi.Input<NetworkPortGroupVirtualPortParamsOpenVSwitch>? openVSwitch;
+  final pulumi.Input<NetworkPortGroupVirtualPortParamsOpenVSwitch?>? openVSwitch;
   /// Configures parameters for VEPA 802.1Qbg-related virtual ports.
-  final pulumi.Input<NetworkPortGroupVirtualPortParamsVepa8021qbg>? vepa8021qbg;
+  final pulumi.Input<NetworkPortGroupVirtualPortParamsVepa8021qbg?>? vepa8021qbg;
   /// Configures parameters for VNTag 8011QBH-related virtual ports.
-  final pulumi.Input<NetworkPortGroupVirtualPortParamsVnTag8011qbh>? vnTag8011qbh;
+  final pulumi.Input<NetworkPortGroupVirtualPortParamsVnTag8011qbh?>? vnTag8011qbh;
 
   /// Creates a new [NetworkPortGroupVirtualPortParams].
   /// [any] Specifies any parameters applicable to the virtual port configuration.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevRom {
   /// Configures the BAR settings for the ROM attribute of the host device.
-  final pulumi.Input<String>? bar;
+  final pulumi.Input<String?>? bar;
   /// Sets whether the ROM of the host device is enabled or disabled.
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
   /// Specifies the path to the ROM file used by the host device for initialization.
-  final pulumi.Input<String>? file;
+  final pulumi.Input<String?>? file;
 
   /// Creates a new [DomainDevicesHostdevRom].
   /// [bar] Configures the BAR settings for the ROM attribute of the host device.

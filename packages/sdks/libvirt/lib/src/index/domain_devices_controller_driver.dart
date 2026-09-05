@@ -5,25 +5,25 @@ import 'domain_devices_controller_driver_io_threads.dart';
 
 class DomainDevicesControllerDriver {
   /// Enables or disables the Address Translation Services for the controller driver.
-  final pulumi.Input<String>? ats;
+  final pulumi.Input<String?>? ats;
   /// Sets the number of commands that can be issued per Logical Unit Number (LUN) by the controller driver.
-  final pulumi.Input<double>? cmdPerLun;
+  final pulumi.Input<double?>? cmdPerLun;
   /// Configures the I/O event file descriptor settings for the controller driver, optimizing event handling.
-  final pulumi.Input<String>? ioEventFd;
+  final pulumi.Input<String?>? ioEventFd;
   /// Specifies the I/O thread associated with the controller driver to improve efficiency.
-  final pulumi.Input<double>? ioThread;
+  final pulumi.Input<double?>? ioThread;
   /// Allows the definition of multiple I/O threads for the controller driver.
-  final pulumi.Input<DomainDevicesControllerDriverIoThreads>? ioThreads;
+  final pulumi.Input<DomainDevicesControllerDriverIoThreads?>? ioThreads;
   /// Enables or disables the I/O Memory Management Unit (IOMMU) for the controller driver.
-  final pulumi.Input<String>? iommu;
+  final pulumi.Input<String?>? iommu;
   /// Configures the maximum number of sectors that can be processed at once by the controller driver.
-  final pulumi.Input<double>? maxSectors;
+  final pulumi.Input<double?>? maxSectors;
   /// Enables or disables the packing of requests for the controller driver to improve efficiency.
-  final pulumi.Input<String>? packed;
+  final pulumi.Input<String?>? packed;
   /// Configures whether to allocate a separate page for each Virtqueue (VQ) in the controller driver.
-  final pulumi.Input<String>? pagePerVq;
+  final pulumi.Input<String?>? pagePerVq;
   /// Sets the number of queues that can be used by the controller driver.
-  final pulumi.Input<double>? queues;
+  final pulumi.Input<double?>? queues;
 
   /// Creates a new [DomainDevicesControllerDriver].
   /// [ats] Enables or disables the Address Translation Services for the controller driver.
@@ -67,15 +67,15 @@ class DomainDevicesControllerDriver {
   factory DomainDevicesControllerDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerDriver(
       ats: (() { final guardedValue = map['ats']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cmdPerLun: (() { final guardedValue = map['cmdPerLun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      cmdPerLun: (() { final guardedValue = map['cmdPerLun']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       ioEventFd: (() { final guardedValue = map['ioEventFd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ioThread: (() { final guardedValue = map['ioThread']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      ioThread: (() { final guardedValue = map['ioThread']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       ioThreads: (() { final guardedValue = map['ioThreads']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesControllerDriverIoThreads.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       iommu: (() { final guardedValue = map['iommu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxSectors: (() { final guardedValue = map['maxSectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxSectors: (() { final guardedValue = map['maxSectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       packed: (() { final guardedValue = map['packed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pagePerVq: (() { final guardedValue = map['pagePerVq']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queues: (() { final guardedValue = map['queues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      queues: (() { final guardedValue = map['queues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

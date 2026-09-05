@@ -5,9 +5,9 @@ import 'domain_devices_disk_source_block_sec_label.dart';
 
 class DomainDevicesDiskSourceBlock {
   /// Sets the device path for the block source of the backing store, defining the physical location of the data.
-  final pulumi.Input<String>? dev;
+  final pulumi.Input<String?>? dev;
   /// Specifies security label settings for the block source in the backing store, managing access controls.
-  final pulumi.Input<List<DomainDevicesDiskSourceBlockSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskSourceBlockSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesDiskSourceBlock].
   /// [dev] Sets the device path for the block source of the backing store, defining the physical location of the data.

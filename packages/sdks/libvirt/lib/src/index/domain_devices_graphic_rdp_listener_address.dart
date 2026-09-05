@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesGraphicRdpListenerAddress {
   /// Sets the actual network address where the Spice listener will accept connections.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
 
   /// Creates a new [DomainDevicesGraphicRdpListenerAddress].
   /// [address] Sets the actual network address where the Spice listener will accept connections.

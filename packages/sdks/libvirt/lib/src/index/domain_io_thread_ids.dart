@@ -5,7 +5,7 @@ import 'domain_io_thread_ids_io_thread.dart';
 
 class DomainIoThreadIDs {
   /// Defines the individual I/O threads associated with the domain.
-  final pulumi.Input<List<DomainIoThreadIDsIoThread>>? ioThreads;
+  final pulumi.Input<List<DomainIoThreadIDsIoThread>?>? ioThreads;
 
   /// Creates a new [DomainIoThreadIDs].
   /// [ioThreads] Defines the individual I/O threads associated with the domain.

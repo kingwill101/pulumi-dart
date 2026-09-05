@@ -24,6 +24,7 @@ class ProviderProvider extends pulumi.ProviderResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          registerPackageRequest: package_registration.registerPackageRequest,
         ) {
     uri = registerOutput<String?>('uri');
   }

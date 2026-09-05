@@ -16,27 +16,27 @@ import 'pool_target.dart';
 /// {@macro pulumi_index_pool_pool_args_doc}
 class PoolArgs {
   /// Specifies the unit type for the pool's allocated storage, defining measurement standards.
-  final pulumi.Input<String>? allocationUnit;
+  final pulumi.Input<String?>? allocationUnit;
   /// Sets the unit type for measuring available storage within the pool.
-  final pulumi.Input<String>? availableUnit;
+  final pulumi.Input<String?>? availableUnit;
   /// Specifies the unit type for measuring the total capacity of the storage pool.
-  final pulumi.Input<String>? capacityUnit;
+  final pulumi.Input<String?>? capacityUnit;
   /// Experimental: provider-specific lifecycle controls for create-time operations after pool definition. Subject to change in future releases.
-  final pulumi.Input<PoolCreate>? create;
+  final pulumi.Input<PoolCreate?>? create;
   /// Experimental: provider-specific lifecycle controls for delete-time operations beyond undefine. Subject to change in future releases.
-  final pulumi.Input<PoolDestroy>? destroy;
+  final pulumi.Input<PoolDestroy?>? destroy;
   /// Defines optional features supported by the storage pool, enhancing functional capabilities.
-  final pulumi.Input<PoolFeatures>? features;
-  final pulumi.Input<PoolFsCommandline>? fsCommandline;
+  final pulumi.Input<PoolFeatures?>? features;
+  final pulumi.Input<PoolFsCommandline?>? fsCommandline;
   /// Sets the unique name for the storage pool, required for identification on the host.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<PoolRbdCommandline>? rbdCommandline;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<PoolRbdCommandline?>? rbdCommandline;
   /// Controls the refresh behavior of the storage pool and associated volumes.
-  final pulumi.Input<PoolRefresh>? refresh;
+  final pulumi.Input<PoolRefresh?>? refresh;
   /// Source location for the storage pool
-  final pulumi.Input<PoolSource>? source;
+  final pulumi.Input<PoolSource?>? source;
   /// Target path and permissions for the storage pool
-  final pulumi.Input<PoolTarget>? target;
+  final pulumi.Input<PoolTarget?>? target;
   /// Specifies the type of the storage pool being defined.
   final pulumi.Input<String> type;
 

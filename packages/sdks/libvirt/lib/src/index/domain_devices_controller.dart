@@ -12,29 +12,29 @@ import 'domain_devices_controller_xen_bus.dart';
 
 class DomainDevicesController {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesControllerAcpi>? acpi;
+  final pulumi.Input<DomainDevicesControllerAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesControllerAlias>? alias;
+  final pulumi.Input<DomainDevicesControllerAlias?>? alias;
   /// Configures the driver for the controller device being used.
-  final pulumi.Input<DomainDevicesControllerDriver>? driver;
+  final pulumi.Input<DomainDevicesControllerDriver?>? driver;
   /// Defines the index position of the controller within the devices list.
-  final pulumi.Input<double>? index;
+  final pulumi.Input<double?>? index;
   /// Specifies the model type for the controller device.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Configures NVMe-specific settings for the controller, if applicable.
-  final pulumi.Input<DomainDevicesControllerNvme>? nvme;
+  final pulumi.Input<DomainDevicesControllerNvme?>? nvme;
   /// Configures settings related to the PCI controller device.
-  final pulumi.Input<DomainDevicesControllerPci>? pci;
+  final pulumi.Input<DomainDevicesControllerPci?>? pci;
   /// Defines the type of the controller device being configured.
   final pulumi.Input<String> type;
   /// Configures settings specific to the USB controller device.
-  final pulumi.Input<DomainDevicesControllerUsb>? usb;
+  final pulumi.Input<DomainDevicesControllerUsb?>? usb;
   /// Configures settings related to the VirtIO serial controller device.
-  final pulumi.Input<DomainDevicesControllerVirtIoSerial>? virtIoSerial;
+  final pulumi.Input<DomainDevicesControllerVirtIoSerial?>? virtIoSerial;
   /// Configures settings related to the Xen bus controller device.
-  final pulumi.Input<DomainDevicesControllerXenBus>? xenBus;
+  final pulumi.Input<DomainDevicesControllerXenBus?>? xenBus;
 
   /// Creates a new [DomainDevicesController].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
@@ -87,7 +87,7 @@ class DomainDevicesController {
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesControllerAlias.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       driver: (() { final guardedValue = map['driver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesControllerDriver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nvme: (() { final guardedValue = map['nvme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesControllerNvme.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pci: (() { final guardedValue = map['pci']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesControllerPci.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

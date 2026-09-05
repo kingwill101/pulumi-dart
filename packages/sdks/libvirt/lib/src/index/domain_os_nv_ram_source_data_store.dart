@@ -5,7 +5,7 @@ import 'domain_os_nv_ram_source_data_store_format.dart';
 
 class DomainOsNvRamSourceDataStore {
   /// Defines the format of the data store used in the backing store source configuration.
-  final pulumi.Input<DomainOsNvRamSourceDataStoreFormat>? format;
+  final pulumi.Input<DomainOsNvRamSourceDataStoreFormat?>? format;
 
   /// Creates a new [DomainOsNvRamSourceDataStore].
   /// [format] Defines the format of the data store used in the backing store source configuration.

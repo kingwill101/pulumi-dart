@@ -5,7 +5,7 @@ import 'domain_os_acpi_table.dart';
 
 class DomainOsAcpi {
   /// Configures ACPI tables that can be provided to the guest, influencing power management features.
-  final pulumi.Input<List<DomainOsAcpiTable>>? tables;
+  final pulumi.Input<List<DomainOsAcpiTable>?>? tables;
 
   /// Creates a new [DomainOsAcpi].
   /// [tables] Configures ACPI tables that can be provided to the guest, influencing power management features.

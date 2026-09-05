@@ -6,7 +6,7 @@ class PoolSourceHost {
   /// Sets the name of the host where the storage source is located.
   final pulumi.Input<String> name;
   /// Configures the port number to be used for connecting to the storage source on the host.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
 
   /// Creates a new [PoolSourceHost].
   /// [name] Sets the name of the host where the storage source is located.

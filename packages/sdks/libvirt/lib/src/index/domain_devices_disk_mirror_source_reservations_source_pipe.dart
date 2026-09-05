@@ -7,7 +7,7 @@ class DomainDevicesDiskMirrorSourceReservationsSourcePipe {
   /// Sets the path for the pipe source in the EGD backend.
   final pulumi.Input<String> path;
   /// Configures security label settings for the pipe source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesDiskMirrorSourceReservationsSourcePipeSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesDiskMirrorSourceReservationsSourcePipeSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceReservationsSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.

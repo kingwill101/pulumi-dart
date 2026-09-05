@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkPortGroupVirtualPortParamsMidoNet {
   /// Specifies the interface ID for MidoNet virtual port parameters.
-  final pulumi.Input<String>? interfaceId;
+  final pulumi.Input<String?>? interfaceId;
 
   /// Creates a new [NetworkPortGroupVirtualPortParamsMidoNet].
   /// [interfaceId] Specifies the interface ID for MidoNet virtual port parameters.

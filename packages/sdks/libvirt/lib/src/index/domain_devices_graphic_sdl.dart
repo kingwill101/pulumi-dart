@@ -5,13 +5,13 @@ import 'domain_devices_graphic_sdl_gl.dart';
 
 class DomainDevicesGraphicSdl {
   /// Sets the display attribute for SDL graphics configuration.
-  final pulumi.Input<String>? display;
+  final pulumi.Input<String?>? display;
   /// Configures whether the SDL graphics output should launch in fullscreen mode.
-  final pulumi.Input<String>? fullScreen;
+  final pulumi.Input<String?>? fullScreen;
   /// Sets the OpenGL settings specific to the SDL graphics configuration.
-  final pulumi.Input<DomainDevicesGraphicSdlGl>? gl;
+  final pulumi.Input<DomainDevicesGraphicSdlGl?>? gl;
   /// Configures X authentication for the SDL graphics display.
-  final pulumi.Input<String>? xauth;
+  final pulumi.Input<String?>? xauth;
 
   /// Creates a new [DomainDevicesGraphicSdl].
   /// [display] Sets the display attribute for SDL graphics configuration.

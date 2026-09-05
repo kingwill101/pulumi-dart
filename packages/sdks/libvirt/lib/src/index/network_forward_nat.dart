@@ -6,11 +6,11 @@ import 'network_forward_nat_port.dart';
 
 class NetworkForwardNat {
   /// Defines the addresses for NAT configuration.
-  final pulumi.Input<List<NetworkForwardNatAddress>>? addresses;
+  final pulumi.Input<List<NetworkForwardNatAddress>?>? addresses;
   /// Configures whether IPv6 is used for NAT in the forwarding settings.
-  final pulumi.Input<String>? ipv6;
+  final pulumi.Input<String?>? ipv6;
   /// Defines the ports to be used in NAT configuration.
-  final pulumi.Input<List<NetworkForwardNatPort>>? ports;
+  final pulumi.Input<List<NetworkForwardNatPort>?>? ports;
 
   /// Creates a new [NetworkForwardNat].
   /// [addresses] Defines the addresses for NAT configuration.

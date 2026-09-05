@@ -5,7 +5,7 @@ import 'domain_devices_disk_mirror_source_network_initiator_iqn.dart';
 
 class DomainDevicesDiskMirrorSourceNetworkInitiator {
   /// Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.
-  final pulumi.Input<DomainDevicesDiskMirrorSourceNetworkInitiatorIqn>? iqn;
+  final pulumi.Input<DomainDevicesDiskMirrorSourceNetworkInitiatorIqn?>? iqn;
 
   /// Creates a new [DomainDevicesDiskMirrorSourceNetworkInitiator].
   /// [iqn] Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.

@@ -9,19 +9,19 @@ import 'domain_devices_filesystem_binary_thread_pool.dart';
 
 class DomainDevicesFilesystemBinary {
   /// Manages cache settings for the binary filesystem device.
-  final pulumi.Input<DomainDevicesFilesystemBinaryCache>? cache;
+  final pulumi.Input<DomainDevicesFilesystemBinaryCache?>? cache;
   /// Specifies the locking behavior for the binary filesystem device.
-  final pulumi.Input<DomainDevicesFilesystemBinaryLock>? lock;
+  final pulumi.Input<DomainDevicesFilesystemBinaryLock?>? lock;
   /// Sets the maximum number of open files for the binary filesystem.
-  final pulumi.Input<DomainDevicesFilesystemBinaryOpenFiles>? openFiles;
+  final pulumi.Input<DomainDevicesFilesystemBinaryOpenFiles?>? openFiles;
   /// Specifies the file path for the binary filesystem.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Controls whether the binary filesystem operates in sandbox mode.
-  final pulumi.Input<DomainDevicesFilesystemBinarySandbox>? sandbox;
+  final pulumi.Input<DomainDevicesFilesystemBinarySandbox?>? sandbox;
   /// Configures the usage of a thread pool for handling operations in the binary filesystem.
-  final pulumi.Input<DomainDevicesFilesystemBinaryThreadPool>? threadPool;
+  final pulumi.Input<DomainDevicesFilesystemBinaryThreadPool?>? threadPool;
   /// Configures extended attributes for the binary filesystem.
-  final pulumi.Input<String>? xattr;
+  final pulumi.Input<String?>? xattr;
 
   /// Creates a new [DomainDevicesFilesystemBinary].
   /// [cache] Manages cache settings for the binary filesystem device.

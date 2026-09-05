@@ -5,13 +5,13 @@ import 'domain_devices_hostdev_subsys_mdev_source.dart';
 
 class DomainDevicesHostdevSubsysMDev {
   /// Sets the display attributes for the multimedia subsystem device.
-  final pulumi.Input<String>? display;
+  final pulumi.Input<String?>? display;
   /// Specifies the model of the multimedia subsystem device being used by the host device.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Configures the video memory settings for the multimedia subsystem device.
-  final pulumi.Input<String>? ramFb;
+  final pulumi.Input<String?>? ramFb;
   /// Defines the source attributes for the multimedia subsystem device.
-  final pulumi.Input<DomainDevicesHostdevSubsysMDevSource>? source;
+  final pulumi.Input<DomainDevicesHostdevSubsysMDevSource?>? source;
 
   /// Creates a new [DomainDevicesHostdevSubsysMDev].
   /// [display] Sets the display attributes for the multimedia subsystem device.

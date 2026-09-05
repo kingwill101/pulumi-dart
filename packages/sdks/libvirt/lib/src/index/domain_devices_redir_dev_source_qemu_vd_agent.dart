@@ -5,8 +5,8 @@ import 'domain_devices_redir_dev_source_qemu_vd_agent_clip_board.dart';
 import 'domain_devices_redir_dev_source_qemu_vd_agent_mouse.dart';
 
 class DomainDevicesRedirDevSourceQemuVdAgent {
-  final pulumi.Input<DomainDevicesRedirDevSourceQemuVdAgentClipBoard>? clipBoard;
-  final pulumi.Input<DomainDevicesRedirDevSourceQemuVdAgentMouse>? mouse;
+  final pulumi.Input<DomainDevicesRedirDevSourceQemuVdAgentClipBoard?>? clipBoard;
+  final pulumi.Input<DomainDevicesRedirDevSourceQemuVdAgentMouse?>? mouse;
 
   /// Creates a new [DomainDevicesRedirDevSourceQemuVdAgent].
   /// [clipBoard] Optional.

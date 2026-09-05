@@ -7,13 +7,13 @@ import 'pool_target_encryption_secret.dart';
 
 class PoolTargetEncryption {
   /// Sets the encryption cipher for the storage volume to be applied.
-  final pulumi.Input<PoolTargetEncryptionCipher>? cipher;
+  final pulumi.Input<PoolTargetEncryptionCipher?>? cipher;
   /// Defines the format of the encryption for the storage volume.
   final pulumi.Input<String> format;
   /// Controls the initialization vector generation settings for the encryption.
-  final pulumi.Input<PoolTargetEncryptionIvgen>? ivgen;
+  final pulumi.Input<PoolTargetEncryptionIvgen?>? ivgen;
   /// Provides the configuration for the secret used in the encryption process.
-  final pulumi.Input<PoolTargetEncryptionSecret>? secret;
+  final pulumi.Input<PoolTargetEncryptionSecret?>? secret;
 
   /// Creates a new [PoolTargetEncryption].
   /// [cipher] Sets the encryption cipher for the storage volume to be applied.

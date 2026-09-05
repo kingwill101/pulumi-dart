@@ -7,7 +7,7 @@ class DomainDevicesConsoleSourceDev {
   /// Specifies the path to the device file for the EGD backend.
   final pulumi.Input<String> path;
   /// Configures the security label settings for the device source in the EGD backend.
-  final pulumi.Input<List<DomainDevicesConsoleSourceDevSecLabel>>? secLabels;
+  final pulumi.Input<List<DomainDevicesConsoleSourceDevSecLabel>?>? secLabels;
 
   /// Creates a new [DomainDevicesConsoleSourceDev].
   /// [path] Specifies the path to the device file for the EGD backend.

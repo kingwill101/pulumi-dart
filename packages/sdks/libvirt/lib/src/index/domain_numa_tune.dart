@@ -6,9 +6,9 @@ import 'domain_numa_tune_memory.dart';
 
 class DomainNumaTune {
   /// Configures the specific NUMA node settings including memory assignments and other parameters.
-  final pulumi.Input<List<DomainNumaTuneMemNode>>? memNodes;
+  final pulumi.Input<List<DomainNumaTuneMemNode>?>? memNodes;
   /// Configures the total memory settings for NUMA nodes, controlling overall memory usage policy.
-  final pulumi.Input<DomainNumaTuneMemory>? memory;
+  final pulumi.Input<DomainNumaTuneMemory?>? memory;
 
   /// Creates a new [DomainNumaTune].
   /// [memNodes] Configures the specific NUMA node settings including memory assignments and other parameters.

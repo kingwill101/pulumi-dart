@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_devices_audio_alsa_output_settings.dart';
 
 class DomainDevicesAudioAlsaOutput {
-  final pulumi.Input<double>? bufferLength;
+  final pulumi.Input<double?>? bufferLength;
   /// Sets the device node for the ALSA audio output.
-  final pulumi.Input<String>? dev;
-  final pulumi.Input<String>? fixedSettings;
-  final pulumi.Input<String>? mixingEngine;
-  final pulumi.Input<DomainDevicesAudioAlsaOutputSettings>? settings;
-  final pulumi.Input<double>? voices;
+  final pulumi.Input<String?>? dev;
+  final pulumi.Input<String?>? fixedSettings;
+  final pulumi.Input<String?>? mixingEngine;
+  final pulumi.Input<DomainDevicesAudioAlsaOutputSettings?>? settings;
+  final pulumi.Input<double?>? voices;
 
   /// Creates a new [DomainDevicesAudioAlsaOutput].
   /// [bufferLength] Optional.
@@ -41,12 +41,12 @@ class DomainDevicesAudioAlsaOutput {
 
   factory DomainDevicesAudioAlsaOutput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioAlsaOutput(
-      bufferLength: (() { final guardedValue = map['bufferLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bufferLength: (() { final guardedValue = map['bufferLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       dev: (() { final guardedValue = map['dev']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fixedSettings: (() { final guardedValue = map['fixedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mixingEngine: (() { final guardedValue = map['mixingEngine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainDevicesAudioAlsaOutputSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      voices: (() { final guardedValue = map['voices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      voices: (() { final guardedValue = map['voices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

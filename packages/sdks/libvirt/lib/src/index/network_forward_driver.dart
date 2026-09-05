@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkForwardDriver {
   /// Specifies the model of the forwarding driver.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Sets the name of the forwarding driver.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [NetworkForwardDriver].
   /// [model] Specifies the model of the forwarding driver.

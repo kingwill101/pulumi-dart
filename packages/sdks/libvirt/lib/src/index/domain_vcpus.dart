@@ -5,7 +5,7 @@ import 'domain_vcpus_vcpus.dart';
 
 class DomainVcpus {
   /// Represents a single virtual CPU configuration within the domain, allowing for detailed settings per vCPU.
-  final pulumi.Input<List<DomainVcpusVcpus>>? vcpus;
+  final pulumi.Input<List<DomainVcpusVcpus>?>? vcpus;
 
   /// Creates a new [DomainVcpus].
   /// [vcpus] Represents a single virtual CPU configuration within the domain, allowing for detailed settings per vCPU.

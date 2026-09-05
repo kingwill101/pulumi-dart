@@ -5,7 +5,7 @@ import 'domain_qemu_override_device.dart';
 
 class DomainQemuOverride {
   /// Devices provided to the guest domain
-  final pulumi.Input<List<DomainQemuOverrideDevice>>? devices;
+  final pulumi.Input<List<DomainQemuOverrideDevice>?>? devices;
 
   /// Creates a new [DomainQemuOverride].
   /// [devices] Devices provided to the guest domain

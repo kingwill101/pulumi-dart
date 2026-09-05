@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkIpTftp {
   /// Defines the root directory for TFTP services provided by the network.
-  final pulumi.Input<String>? root;
+  final pulumi.Input<String?>? root;
 
   /// Creates a new [NetworkIpTftp].
   /// [root] Defines the root directory for TFTP services provided by the network.

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesRngDriver {
   /// Enables or disables Address Translation Services (ATS) for the random number generator driver.
-  final pulumi.Input<String>? ats;
+  final pulumi.Input<String?>? ats;
   /// Enables or disables I/O Memory Management Unit (IOMMU) for the random number generator driver.
-  final pulumi.Input<String>? iommu;
+  final pulumi.Input<String?>? iommu;
   /// Indicates whether packed ring buffers are used for the random number generator driver.
-  final pulumi.Input<String>? packed;
+  final pulumi.Input<String?>? packed;
   /// Configures the page per virtual queue setting for the random number generator driver.
-  final pulumi.Input<String>? pagePerVq;
+  final pulumi.Input<String?>? pagePerVq;
 
   /// Creates a new [DomainDevicesRngDriver].
   /// [ats] Enables or disables Address Translation Services (ATS) for the random number generator driver.

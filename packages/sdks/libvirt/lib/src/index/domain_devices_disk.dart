@@ -20,61 +20,61 @@ import 'domain_devices_disk_transient.dart';
 
 class DomainDevicesDisk {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesDiskAcpi>? acpi;
+  final pulumi.Input<DomainDevicesDiskAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesDiskAlias>? alias;
+  final pulumi.Input<DomainDevicesDiskAlias?>? alias;
   /// Configures authentication settings for the iSCSI source.
-  final pulumi.Input<DomainDevicesDiskAuth>? auth;
+  final pulumi.Input<DomainDevicesDiskAuth?>? auth;
   /// Specifies the backend domain associated with the interface, allowing for advanced network configurations.
-  final pulumi.Input<DomainDevicesDiskBackendDomain>? backendDomain;
+  final pulumi.Input<DomainDevicesDiskBackendDomain?>? backendDomain;
   /// Specifies the backing store settings for the mirrored disk, determining its source and configuration.
-  final pulumi.Input<DomainDevicesDiskBackingStore>? backingStore;
+  final pulumi.Input<DomainDevicesDiskBackingStore?>? backingStore;
   /// Configures block I/O settings for the disk.
-  final pulumi.Input<DomainDevicesDiskBlockIo>? blockIo;
+  final pulumi.Input<DomainDevicesDiskBlockIo?>? blockIo;
   /// Configures the boot settings for the redirected device, controlling its initialization at domain startup.
-  final pulumi.Input<DomainDevicesDiskBoot>? boot;
+  final pulumi.Input<DomainDevicesDiskBoot?>? boot;
   /// Specifies the device identifier for the disk.
-  final pulumi.Input<String>? device;
+  final pulumi.Input<String?>? device;
   /// Configures the driver settings for the disk device.
-  final pulumi.Input<DomainDevicesDiskDriver>? driver;
+  final pulumi.Input<DomainDevicesDiskDriver?>? driver;
   /// Configures encryption settings for the disk, enhancing data security.
-  final pulumi.Input<DomainDevicesDiskEncryption>? encryption;
+  final pulumi.Input<DomainDevicesDiskEncryption?>? encryption;
   /// Configures the geometry of the disk, including parameters that define its layout and structure.
-  final pulumi.Input<DomainDevicesDiskGeometry>? geometry;
+  final pulumi.Input<DomainDevicesDiskGeometry?>? geometry;
   /// Provides I/O tuning settings for the disk, allowing various performance optimizations based on workload.
-  final pulumi.Input<DomainDevicesDiskIoTune>? ioTune;
+  final pulumi.Input<DomainDevicesDiskIoTune?>? ioTune;
   /// Configures the disk as a mirror, providing redundancy and improved data integrity through synchronization.
-  final pulumi.Input<DomainDevicesDiskMirror>? mirror;
+  final pulumi.Input<DomainDevicesDiskMirror?>? mirror;
   /// Configures the model type for the disk device in the VM.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Specifies the product name of the disk device presented to the guest.
-  final pulumi.Input<String>? product;
+  final pulumi.Input<String?>? product;
   /// Enables or disables raw I/O operations for the disk device.
-  final pulumi.Input<String>? rawIo;
+  final pulumi.Input<String?>? rawIo;
   /// Configures the read-only state for the disk, preventing write operations.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// Sets the serial number for the disk device, making it identifiable.
-  final pulumi.Input<String>? serial;
+  final pulumi.Input<String?>? serial;
   /// Configures SGIO (SCSI Generic I/O) for the disk, affecting how I/O requests are processed.
-  final pulumi.Input<String>? sgio;
+  final pulumi.Input<String?>? sgio;
   /// Specifies whether the disk can be shared among multiple guests.
-  final pulumi.Input<bool>? shareable;
+  final pulumi.Input<bool?>? shareable;
   /// Indicates whether the disk is a snapshot of another disk image.
-  final pulumi.Input<String>? snapshot;
+  final pulumi.Input<String?>? snapshot;
   /// Specifies the source of the backing store, determining its origin and how it is accessed.
-  final pulumi.Input<DomainDevicesDiskSource>? source;
+  final pulumi.Input<DomainDevicesDiskSource?>? source;
   /// Configures the target settings for the disk device.
-  final pulumi.Input<DomainDevicesDiskTarget>? target;
+  final pulumi.Input<DomainDevicesDiskTarget?>? target;
   /// Manages the throttle filters applied to the disk device for I/O regulation.
-  final pulumi.Input<DomainDevicesDiskThrottleFilters>? throttleFilters;
+  final pulumi.Input<DomainDevicesDiskThrottleFilters?>? throttleFilters;
   /// Controls whether the disk device is defined as a transient resource.
-  final pulumi.Input<DomainDevicesDiskTransient>? transient;
+  final pulumi.Input<DomainDevicesDiskTransient?>? transient;
   /// Specifies the vendor name associated with the disk device.
-  final pulumi.Input<String>? vendor;
+  final pulumi.Input<String?>? vendor;
   /// Configures the World Wide Name (WWN) for the disk device to uniquely identify it.
-  final pulumi.Input<String>? wwn;
+  final pulumi.Input<String?>? wwn;
 
   /// Creates a new [DomainDevicesDisk].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

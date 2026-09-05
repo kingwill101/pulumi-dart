@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pool_fs_commandline_option.dart';
 
 class PoolFsCommandline {
-  final pulumi.Input<List<PoolFsCommandlineOption>>? options;
+  final pulumi.Input<List<PoolFsCommandlineOption>?>? options;
 
   /// Creates a new [PoolFsCommandline].
   /// [options] Optional.

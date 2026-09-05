@@ -6,9 +6,9 @@ import 'domain_devices_audio_none_output.dart';
 
 class DomainDevicesAudioNone {
   /// Configures the output settings for the None audio device.
-  final pulumi.Input<DomainDevicesAudioNoneInput>? input;
+  final pulumi.Input<DomainDevicesAudioNoneInput?>? input;
   /// Configures the output settings for the None audio device.
-  final pulumi.Input<DomainDevicesAudioNoneOutput>? output;
+  final pulumi.Input<DomainDevicesAudioNoneOutput?>? output;
 
   /// Creates a new [DomainDevicesAudioNone].
   /// [input] Configures the output settings for the None audio device.

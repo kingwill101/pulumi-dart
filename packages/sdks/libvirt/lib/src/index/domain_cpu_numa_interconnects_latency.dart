@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCpuNumaInterconnectsLatency {
   /// Sets latency configurations specifically related to cache interconnections in the NUMA setup.
-  final pulumi.Input<double>? cache;
+  final pulumi.Input<double?>? cache;
   /// Configures the latency attributes for the initiator in NUMA interconnections.
   final pulumi.Input<double> initiator;
   /// Defines the latency settings for the target in interconnects between NUMA cells.
@@ -40,11 +40,11 @@ class DomainCpuNumaInterconnectsLatency {
 
   factory DomainCpuNumaInterconnectsLatency.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaInterconnectsLatency(
-      cache: (() { final guardedValue = map['cache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      initiator: pulumi.Input.fromValue(map['initiator'] as double),
-      target: pulumi.Input.fromValue(map['target'] as double),
+      cache: (() { final guardedValue = map['cache']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      initiator: pulumi.Input.fromValue((map['initiator'] as num).toDouble()),
+      target: pulumi.Input.fromValue((map['target'] as num).toDouble()),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

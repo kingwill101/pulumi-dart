@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolSourceInitiatorIqn {
   /// Sets the name attribute of the iSCSI IQN for identification.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PoolSourceInitiatorIqn].
   /// [name] Sets the name attribute of the iSCSI IQN for identification.

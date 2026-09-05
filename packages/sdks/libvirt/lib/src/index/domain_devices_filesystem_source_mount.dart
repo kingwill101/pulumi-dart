@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesFilesystemSourceMount {
   /// Sets the directory used as the mount point for the filesystem source.
-  final pulumi.Input<String>? dir;
+  final pulumi.Input<String?>? dir;
   /// Indicates if the mount point is a socket.
-  final pulumi.Input<String>? socket;
+  final pulumi.Input<String?>? socket;
 
   /// Creates a new [DomainDevicesFilesystemSourceMount].
   /// [dir] Sets the directory used as the mount point for the filesystem source.

@@ -7,11 +7,11 @@ import 'domain_lxc_namespace_share_uts.dart';
 
 class DomainLxcNamespace {
   /// Configures sharing of the UTS namespace for the LXC guest instead of creating a private one.
-  final pulumi.Input<DomainLxcNamespaceShareIpc>? shareIpc;
+  final pulumi.Input<DomainLxcNamespaceShareIpc?>? shareIpc;
   /// Configures sharing of the UTS namespace for the LXC guest instead of creating a private one.
-  final pulumi.Input<DomainLxcNamespaceShareNet>? shareNet;
+  final pulumi.Input<DomainLxcNamespaceShareNet?>? shareNet;
   /// Configures sharing of the UTS namespace for the LXC guest instead of creating a private one.
-  final pulumi.Input<DomainLxcNamespaceShareUts>? shareUts;
+  final pulumi.Input<DomainLxcNamespaceShareUts?>? shareUts;
 
   /// Creates a new [DomainLxcNamespace].
   /// [shareIpc] Configures sharing of the UTS namespace for the LXC guest instead of creating a private one.

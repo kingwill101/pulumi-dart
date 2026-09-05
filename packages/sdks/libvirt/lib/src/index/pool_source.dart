@@ -14,27 +14,27 @@ import 'pool_source_vendor.dart';
 
 class PoolSource {
   /// Configures the details of the adapter used for connecting to the storage source.
-  final pulumi.Input<PoolSourceAdapter>? adapter;
+  final pulumi.Input<PoolSourceAdapter?>? adapter;
   /// Specifies the authentication method used when connecting to the storage source.
-  final pulumi.Input<PoolSourceAuth>? auth;
+  final pulumi.Input<PoolSourceAuth?>? auth;
   /// Specifies the device to be used as the source for the storage pool.
-  final pulumi.Input<List<PoolSourceDevice>>? devices;
+  final pulumi.Input<List<PoolSourceDevice>?>? devices;
   /// Indicates the directory used as a source for the storage pool.
-  final pulumi.Input<PoolSourceDir>? dir;
+  final pulumi.Input<PoolSourceDir?>? dir;
   /// Sets the format of the storage source being used, affecting how data is stored and accessed.
-  final pulumi.Input<PoolSourceFormat>? format;
+  final pulumi.Input<PoolSourceFormat?>? format;
   /// Specifies the host details for connecting to the storage source.
-  final pulumi.Input<List<PoolSourceHost>>? hosts;
+  final pulumi.Input<List<PoolSourceHost>?>? hosts;
   /// Defines the iSCSI initiator settings associated with the storage source.
-  final pulumi.Input<PoolSourceInitiator>? initiator;
+  final pulumi.Input<PoolSourceInitiator?>? initiator;
   /// Specifies the name of the source for the storage pool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Identifies the product details associated with the storage source.
-  final pulumi.Input<PoolSourceProduct>? product;
+  final pulumi.Input<PoolSourceProduct?>? product;
   /// Sets the protocol used to connect to the storage source.
-  final pulumi.Input<PoolSourceProtocol>? protocol;
+  final pulumi.Input<PoolSourceProtocol?>? protocol;
   /// Specifies the vendor information for the storage source being used.
-  final pulumi.Input<PoolSourceVendor>? vendor;
+  final pulumi.Input<PoolSourceVendor?>? vendor;
 
   /// Creates a new [PoolSource].
   /// [adapter] Configures the details of the adapter used for connecting to the storage source.

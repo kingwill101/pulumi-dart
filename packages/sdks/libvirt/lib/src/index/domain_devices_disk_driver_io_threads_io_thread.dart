@@ -7,7 +7,7 @@ class DomainDevicesDiskDriverIoThreadsIoThread {
   /// Specifies the identifier for the I/O thread configuration.
   final pulumi.Input<double> id;
   /// Sets the queues for the I/O thread to manage I/O requests.
-  final pulumi.Input<List<DomainDevicesDiskDriverIoThreadsIoThreadQueue>>? queues;
+  final pulumi.Input<List<DomainDevicesDiskDriverIoThreadsIoThreadQueue>?>? queues;
 
   /// Creates a new [DomainDevicesDiskDriverIoThreadsIoThread].
   /// [id] Specifies the identifier for the I/O thread configuration.
@@ -26,7 +26,7 @@ class DomainDevicesDiskDriverIoThreadsIoThread {
 
   factory DomainDevicesDiskDriverIoThreadsIoThread.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskDriverIoThreadsIoThread(
-      id: pulumi.Input.fromValue(map['id'] as double),
+      id: pulumi.Input.fromValue((map['id'] as num).toDouble()),
       queues: (() { final guardedValue = map['queues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainDevicesDiskDriverIoThreadsIoThreadQueue>(guardedValue, (value) => DomainDevicesDiskDriverIoThreadsIoThreadQueue.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

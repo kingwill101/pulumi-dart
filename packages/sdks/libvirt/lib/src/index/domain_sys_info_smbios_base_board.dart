@@ -5,7 +5,7 @@ import 'domain_sys_info_smbios_base_board_entry.dart';
 
 class DomainSysInfoSmbiosBaseBoard {
   /// Defines individual entries for the base board information.
-  final pulumi.Input<List<DomainSysInfoSmbiosBaseBoardEntry>>? entries;
+  final pulumi.Input<List<DomainSysInfoSmbiosBaseBoardEntry>?>? entries;
 
   /// Creates a new [DomainSysInfoSmbiosBaseBoard].
   /// [entries] Defines individual entries for the base board information.

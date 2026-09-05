@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesShmemServer {
   /// Specifies the path for the server related to the shared memory device.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [DomainDevicesShmemServer].
   /// [path] Specifies the path for the server related to the shared memory device.

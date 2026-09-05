@@ -11,19 +11,19 @@ import 'domain_devices_filesystem_source_volume.dart';
 
 class DomainDevicesFilesystemSource {
   /// Configures the binding source for the filesystem.
-  final pulumi.Input<DomainDevicesFilesystemSourceBind>? bind;
+  final pulumi.Input<DomainDevicesFilesystemSourceBind?>? bind;
   /// Specifies a block device as the source for the filesystem.
-  final pulumi.Input<DomainDevicesFilesystemSourceBlock>? block;
+  final pulumi.Input<DomainDevicesFilesystemSourceBlock?>? block;
   /// Defines a file as the source for the filesystem.
-  final pulumi.Input<DomainDevicesFilesystemSourceFile>? file;
+  final pulumi.Input<DomainDevicesFilesystemSourceFile?>? file;
   /// Configures a mount point for the filesystem source.
-  final pulumi.Input<DomainDevicesFilesystemSourceMount>? mount;
+  final pulumi.Input<DomainDevicesFilesystemSourceMount?>? mount;
   /// Configures a RAM source for the filesystem.
-  final pulumi.Input<DomainDevicesFilesystemSourceRam>? ram;
+  final pulumi.Input<DomainDevicesFilesystemSourceRam?>? ram;
   /// Configures the template source for the filesystem.
-  final pulumi.Input<DomainDevicesFilesystemSourceTemplate>? template;
+  final pulumi.Input<DomainDevicesFilesystemSourceTemplate?>? template;
   /// Sets the volume element that specifies the source volume for the filesystem.
-  final pulumi.Input<DomainDevicesFilesystemSourceVolume>? volume;
+  final pulumi.Input<DomainDevicesFilesystemSourceVolume?>? volume;
 
   /// Creates a new [DomainDevicesFilesystemSource].
   /// [bind] Configures the binding source for the filesystem.

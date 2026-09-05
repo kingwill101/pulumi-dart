@@ -27,6 +27,18 @@ Future<GetDomainInterfaceAddressesResult> getDomainInterfaceAddresses(
   return GetDomainInterfaceAddressesResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainInterfaceAddressesResult> getDomainInterfaceAddressesOutput(
+  GetDomainInterfaceAddressesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'libvirt:index/getDomainInterfaceAddresses:getDomainInterfaceAddresses',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+    registerPackageRequest: package_registration.registerPackageRequest,
+  ).apply(GetDomainInterfaceAddressesResult.fromMap);
+}
+
 /// Fetches detailed information about a specific libvirt host node device.
 ///
 /// This data source provides comprehensive details about hardware devices, including PCI devices for passthrough, USB devices, network interfaces, and storage devices.
@@ -44,6 +56,18 @@ Future<GetNodeDeviceInfoResult> getNodeDeviceInfo(
     registerPackageRequest: package_registration.registerPackageRequest,
   );
   return GetNodeDeviceInfoResult.fromMap(result);
+}
+
+pulumi.Output<GetNodeDeviceInfoResult> getNodeDeviceInfoOutput(
+  GetNodeDeviceInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'libvirt:index/getNodeDeviceInfo:getNodeDeviceInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+    registerPackageRequest: package_registration.registerPackageRequest,
+  ).apply(GetNodeDeviceInfoResult.fromMap);
 }
 
 /// Enumerates devices available on the libvirt host node.
@@ -293,6 +317,18 @@ Future<GetNodeDevicesResult> getNodeDevices(
   return GetNodeDevicesResult.fromMap(result);
 }
 
+pulumi.Output<GetNodeDevicesResult> getNodeDevicesOutput(
+  GetNodeDevicesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'libvirt:index/getNodeDevices:getNodeDevices',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+    registerPackageRequest: package_registration.registerPackageRequest,
+  ).apply(GetNodeDevicesResult.fromMap);
+}
+
 /// Fetches information about the libvirt host node.
 ///
 /// This data source provides details about the host system's hardware capabilities, including CPU model, memory, and processor topology.
@@ -424,4 +460,16 @@ Future<GetNodeInfoResult> getNodeInfo(
     registerPackageRequest: package_registration.registerPackageRequest,
   );
   return GetNodeInfoResult.fromMap(result);
+}
+
+pulumi.Output<GetNodeInfoResult> getNodeInfoOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'libvirt:index/getNodeInfo:getNodeInfo',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+    registerPackageRequest: package_registration.registerPackageRequest,
+  ).apply(GetNodeInfoResult.fromMap);
 }

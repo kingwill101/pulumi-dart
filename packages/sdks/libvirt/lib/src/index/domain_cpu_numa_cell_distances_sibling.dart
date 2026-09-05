@@ -25,8 +25,8 @@ class DomainCpuNumaCellDistancesSibling {
 
   factory DomainCpuNumaCellDistancesSibling.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaCellDistancesSibling(
-      id: pulumi.Input.fromValue(map['id'] as double),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      id: pulumi.Input.fromValue((map['id'] as num).toDouble()),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

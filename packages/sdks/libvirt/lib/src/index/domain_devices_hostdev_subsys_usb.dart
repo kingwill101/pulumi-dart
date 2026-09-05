@@ -5,7 +5,7 @@ import 'domain_devices_hostdev_subsys_usb_source.dart';
 
 class DomainDevicesHostdevSubsysUsb {
   /// Specifies the source attributes for the USB subsystem device, detailing its origin.
-  final pulumi.Input<DomainDevicesHostdevSubsysUsbSource>? source;
+  final pulumi.Input<DomainDevicesHostdevSubsysUsbSource?>? source;
 
   /// Creates a new [DomainDevicesHostdevSubsysUsb].
   /// [source] Specifies the source attributes for the USB subsystem device, detailing its origin.

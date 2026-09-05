@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainMemoryBackingMemoryAccess {
   /// Specifies the mode for memory access, determining how memory can be accessed, such as shared or exclusive.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [DomainMemoryBackingMemoryAccess].
   /// [mode] Specifies the mode for memory access, determining how memory can be accessed, such as shared or exclusive.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesInterfaceVirtualPortParamsMidoNet {
   /// Sets the interface ID for the MidoNet virtual port parameters.
-  final pulumi.Input<String>? interfaceId;
+  final pulumi.Input<String?>? interfaceId;
 
   /// Creates a new [DomainDevicesInterfaceVirtualPortParamsMidoNet].
   /// [interfaceId] Sets the interface ID for the MidoNet virtual port parameters.

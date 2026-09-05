@@ -6,11 +6,11 @@ class DomainDevicesInputSourceEvDev {
   /// Specifies the device file for the event device source.
   final pulumi.Input<String> dev;
   /// Controls whether the input device source should grab input focus.
-  final pulumi.Input<String>? grab;
+  final pulumi.Input<String?>? grab;
   /// Configures grab toggle settings for the event device source.
-  final pulumi.Input<String>? grabToggle;
+  final pulumi.Input<String?>? grabToggle;
   /// Sets repeat settings for events from the input device source.
-  final pulumi.Input<String>? repeat;
+  final pulumi.Input<String?>? repeat;
 
   /// Creates a new [DomainDevicesInputSourceEvDev].
   /// [dev] Specifies the device file for the event device source.

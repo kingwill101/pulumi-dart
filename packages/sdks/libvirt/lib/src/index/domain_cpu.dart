@@ -9,33 +9,33 @@ import 'domain_cpu_topology.dart';
 
 class DomainCpu {
   /// Sets caching parameters for the domain's CPU, affecting performance characteristics.
-  final pulumi.Input<DomainCpuCache>? cache;
+  final pulumi.Input<DomainCpuCache?>? cache;
   /// Indicates whether to perform additional checks on the CPU model and features.
-  final pulumi.Input<String>? check;
+  final pulumi.Input<String?>? check;
   /// Lists deprecated CPU features that should not be used in the domain configuration.
-  final pulumi.Input<String>? deprecatedFeatures;
+  final pulumi.Input<String?>? deprecatedFeatures;
   /// Defines specific CPU features that can be enabled or disabled for the domain.
-  final pulumi.Input<List<DomainCpuFeature>>? features;
+  final pulumi.Input<List<DomainCpuFeature>?>? features;
   /// Configures CPU model matching options to optimize performance and compatibility.
-  final pulumi.Input<String>? match;
+  final pulumi.Input<String?>? match;
   /// Specifies the maximum physical address space size accessible to the domain.
-  final pulumi.Input<DomainCpuMaxPhysAddr>? maxPhysAddr;
+  final pulumi.Input<DomainCpuMaxPhysAddr?>? maxPhysAddr;
   /// Configures whether the CPU settings can be changed while the domain is running.
-  final pulumi.Input<bool>? migratable;
+  final pulumi.Input<bool?>? migratable;
   /// Defines the operational mode for the CPU configuration, affecting virtualization behavior.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Specifies the CPU model used by the domain, influencing its performance characteristics.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Sets the CPU model fallback configurations in case the specified model is unavailable.
-  final pulumi.Input<String>? modelFallback;
+  final pulumi.Input<String?>? modelFallback;
   /// Determines the vendor ID for the CPU model, affecting compatibility.
-  final pulumi.Input<String>? modelVendorId;
+  final pulumi.Input<String?>? modelVendorId;
   /// Configures NUMA (Non-Uniform Memory Access) settings for balancing memory allocation.
-  final pulumi.Input<DomainCpuNuma>? numa;
+  final pulumi.Input<DomainCpuNuma?>? numa;
   /// Configures the CPU topology for the domain, specifying the physical arrangement of CPUs.
-  final pulumi.Input<DomainCpuTopology>? topology;
+  final pulumi.Input<DomainCpuTopology?>? topology;
   /// Specifies the vendor name of the CPU model being used for the domain.
-  final pulumi.Input<String>? vendor;
+  final pulumi.Input<String?>? vendor;
 
   /// Creates a new [DomainCpu].
   /// [cache] Sets caching parameters for the domain's CPU, affecting performance characteristics.

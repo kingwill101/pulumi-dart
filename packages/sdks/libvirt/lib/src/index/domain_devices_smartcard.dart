@@ -9,21 +9,21 @@ import 'domain_devices_smartcard_protocol.dart';
 
 class DomainDevicesSmartcard {
   /// Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
-  final pulumi.Input<DomainDevicesSmartcardAcpi>? acpi;
+  final pulumi.Input<DomainDevicesSmartcardAcpi?>? acpi;
   /// Specifies the memory address for the persistent storage device in the guest's address space.
-  final pulumi.Input<Map<String, dynamic>>? address;
+  final pulumi.Input<Map<String, dynamic>?>? address;
   /// Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  final pulumi.Input<DomainDevicesSmartcardAlias>? alias;
+  final pulumi.Input<DomainDevicesSmartcardAlias?>? alias;
   /// Specifies the file path to the database to be used by the smartcard.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Configures the host reference for the smartcard device.
-  final pulumi.Input<bool>? host;
+  final pulumi.Input<bool?>? host;
   /// Defines the path to the host certificates used for the smartcard.
-  final pulumi.Input<List<DomainDevicesSmartcardHostCert>>? hostCerts;
+  final pulumi.Input<List<DomainDevicesSmartcardHostCert>?>? hostCerts;
   /// Defines the source settings for the EGD backend.
-  final pulumi.Input<DomainDevicesSmartcardPassthrough>? passthrough;
+  final pulumi.Input<DomainDevicesSmartcardPassthrough?>? passthrough;
   /// Sets the protocol type for the EGD backend.
-  final pulumi.Input<DomainDevicesSmartcardProtocol>? protocol;
+  final pulumi.Input<DomainDevicesSmartcardProtocol?>? protocol;
 
   /// Creates a new [DomainDevicesSmartcard].
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.

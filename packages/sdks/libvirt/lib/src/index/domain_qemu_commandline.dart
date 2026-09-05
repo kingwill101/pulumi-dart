@@ -8,11 +8,11 @@ class DomainQemuCommandline {
   /// Lists additional QEMU command-line arguments to append in order; each item represents one argument token rather than a shell-joined string.
   ///
   /// See: &lt;https://libvirt.org/kbase/qemu-passthrough-security.html#xml-document-additions&gt;
-  final pulumi.Input<List<DomainQemuCommandlineArg>>? args;
+  final pulumi.Input<List<DomainQemuCommandlineArg>?>? args;
   /// Lists environment variables to expose to the QEMU process when starting the domain.
   ///
   /// See: &lt;https://libvirt.org/kbase/qemu-passthrough-security.html#xml-document-additions&gt;
-  final pulumi.Input<List<DomainQemuCommandlineEnv>>? envs;
+  final pulumi.Input<List<DomainQemuCommandlineEnv>?>? envs;
 
   /// Creates a new [DomainQemuCommandline].
   /// [args] Lists additional QEMU command-line arguments to append in order; each item represents one argument token rather than a shell-joined string.

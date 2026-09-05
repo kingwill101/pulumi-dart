@@ -5,7 +5,7 @@ import 'domain_devices_graphic_egl_headless_gl.dart';
 
 class DomainDevicesGraphicEglHeadless {
   /// Sets OpenGL configuration options for the headless EGL graphics display.
-  final pulumi.Input<DomainDevicesGraphicEglHeadlessGl>? gl;
+  final pulumi.Input<DomainDevicesGraphicEglHeadlessGl?>? gl;
 
   /// Creates a new [DomainDevicesGraphicEglHeadless].
   /// [gl] Sets OpenGL configuration options for the headless EGL graphics display.

@@ -20,7 +20,7 @@ class DomainDevicesSoundAudio {
 
   factory DomainDevicesSoundAudio.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSoundAudio(
-      id: pulumi.Input.fromValue(map['id'] as double),
+      id: pulumi.Input.fromValue((map['id'] as num).toDouble()),
     );
   }
 }

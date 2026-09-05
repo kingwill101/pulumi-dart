@@ -5,9 +5,9 @@ import 'domain_devices_hostdev_subsys_pci_source_address.dart';
 
 class DomainDevicesHostdevSubsysPciSource {
   /// Defines the address settings for the PCI device source.
-  final pulumi.Input<DomainDevicesHostdevSubsysPciSourceAddress>? address;
+  final pulumi.Input<DomainDevicesHostdevSubsysPciSourceAddress?>? address;
   /// Controls whether write filtering is enabled for the PCI device source.
-  final pulumi.Input<String>? writeFiltering;
+  final pulumi.Input<String?>? writeFiltering;
 
   /// Creates a new [DomainDevicesHostdevSubsysPciSource].
   /// [address] Defines the address settings for the PCI device source.

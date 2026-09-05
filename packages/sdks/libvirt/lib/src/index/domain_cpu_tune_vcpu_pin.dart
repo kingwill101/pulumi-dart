@@ -26,7 +26,7 @@ class DomainCpuTuneVcpuPin {
   factory DomainCpuTuneVcpuPin.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneVcpuPin(
       cpuSet: pulumi.Input.fromValue(map['cpuSet'] as String),
-      vcpu: pulumi.Input.fromValue(map['vcpu'] as double),
+      vcpu: pulumi.Input.fromValue((map['vcpu'] as num).toDouble()),
     );
   }
 }

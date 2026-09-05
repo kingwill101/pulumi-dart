@@ -6,9 +6,9 @@ import 'domain_devices_audio_jack_output.dart';
 
 class DomainDevicesAudioJack {
   /// Configures the output settings for the Jack audio device.
-  final pulumi.Input<DomainDevicesAudioJackInput>? input;
+  final pulumi.Input<DomainDevicesAudioJackInput?>? input;
   /// Configures the output settings for the Jack audio device.
-  final pulumi.Input<DomainDevicesAudioJackOutput>? output;
+  final pulumi.Input<DomainDevicesAudioJackOutput?>? output;
 
   /// Creates a new [DomainDevicesAudioJack].
   /// [input] Configures the output settings for the Jack audio device.

@@ -9,15 +9,15 @@ import 'domain_devices_interface_virtual_port_params_vn_tag8011qbh.dart';
 
 class DomainDevicesInterfaceVirtualPortParams {
   /// Defines any additional parameters for the virtual port configuration.
-  final pulumi.Input<DomainDevicesInterfaceVirtualPortParamsAny>? any;
+  final pulumi.Input<DomainDevicesInterfaceVirtualPortParamsAny?>? any;
   /// Configures parameters specific to the MidoNet virtual port configuration.
-  final pulumi.Input<DomainDevicesInterfaceVirtualPortParamsMidoNet>? midoNet;
+  final pulumi.Input<DomainDevicesInterfaceVirtualPortParamsMidoNet?>? midoNet;
   /// Defines parameters specific to the Open vSwitch configuration for the virtual port.
-  final pulumi.Input<DomainDevicesInterfaceVirtualPortParamsOpenVSwitch>? openVSwitch;
+  final pulumi.Input<DomainDevicesInterfaceVirtualPortParamsOpenVSwitch?>? openVSwitch;
   /// Configures parameters for the VEPA8021QBG virtual port.
-  final pulumi.Input<DomainDevicesInterfaceVirtualPortParamsVepa8021qbg>? vepa8021qbg;
+  final pulumi.Input<DomainDevicesInterfaceVirtualPortParamsVepa8021qbg?>? vepa8021qbg;
   /// Configures parameters for the VNTag8011QBH virtual port.
-  final pulumi.Input<DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh>? vnTag8011qbh;
+  final pulumi.Input<DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh?>? vnTag8011qbh;
 
   /// Creates a new [DomainDevicesInterfaceVirtualPortParams].
   /// [any] Defines any additional parameters for the virtual port configuration.

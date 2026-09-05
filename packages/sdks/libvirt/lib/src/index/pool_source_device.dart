@@ -5,9 +5,9 @@ import 'pool_source_device_free_extent.dart';
 
 class PoolSourceDevice {
   /// Controls the free extents available for allocation within the source device.
-  final pulumi.Input<List<PoolSourceDeviceFreeExtent>>? freeExtents;
+  final pulumi.Input<List<PoolSourceDeviceFreeExtent>?>? freeExtents;
   /// Configures the separator character used for partitioning in the device path.
-  final pulumi.Input<String>? partSeparator;
+  final pulumi.Input<String?>? partSeparator;
   /// Specifies the physical path to the device used as the source for the storage pool.
   final pulumi.Input<String> path;
 

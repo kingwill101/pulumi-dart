@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret {
   /// Sets the type of secret used for iSCSI authentication.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Defines the usage context for the iSCSI authentication secret.
-  final pulumi.Input<String>? usage;
+  final pulumi.Input<String?>? usage;
   /// Specifies the UUID of the iSCSI authentication secret.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret].
   /// [type] Sets the type of secret used for iSCSI authentication.

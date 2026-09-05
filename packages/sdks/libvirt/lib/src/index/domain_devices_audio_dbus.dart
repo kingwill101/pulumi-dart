@@ -6,9 +6,9 @@ import 'domain_devices_audio_dbus_output.dart';
 
 class DomainDevicesAudioDbus {
   /// Configures the output settings for the D-Bus audio device.
-  final pulumi.Input<DomainDevicesAudioDbusInput>? input;
+  final pulumi.Input<DomainDevicesAudioDbusInput?>? input;
   /// Configures the output settings for the D-Bus audio device.
-  final pulumi.Input<DomainDevicesAudioDbusOutput>? output;
+  final pulumi.Input<DomainDevicesAudioDbusOutput?>? output;
 
   /// Creates a new [DomainDevicesAudioDbus].
   /// [input] Configures the output settings for the D-Bus audio device.
