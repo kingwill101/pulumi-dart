@@ -110,7 +110,8 @@ jobs:
         run: |
           dart run repodoc packages:update \
             --provider "${{ matrix.provider }}" \
-            --allow-same-version
+            --allow-same-version \
+            --skip-analysis
 
       - name: Create or update provider pull request
         if: steps.drift.outputs.drift == 'true'
@@ -127,6 +128,6 @@ jobs:
 
             - Local schema version: `${{ steps.drift.outputs.local_version }}`
             - Upstream schema version: `${{ steps.drift.outputs.upstream_version }}`
-            - Generated with: `dart run repodoc packages:update --provider ${{ matrix.provider }} --allow-same-version`
+            - Generated with: `dart run repodoc packages:update --provider ${{ matrix.provider }} --allow-same-version --skip-analysis`
 
             This PR is updated in place if drift remains on a later run. Review and merge it normally after CI passes.
