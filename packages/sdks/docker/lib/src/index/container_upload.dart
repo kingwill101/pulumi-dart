@@ -4,25 +4,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerUpload {
   /// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text. Conflicts with `contentBase64` & `source`
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for larger binary content such as the result of the `base64encode` interpolation function. See here for the reason. Conflicts with `content` & `source`
-  final pulumi.Input<String>? contentBase64;
+  final pulumi.Input<String?>? contentBase64;
   /// If `true`, the file will be uploaded with user executable permission. Defaults to `false`.
-  final pulumi.Input<bool>? executable;
+  final pulumi.Input<bool?>? executable;
   /// Path to the file in the container where is upload goes to
   final pulumi.Input<String> file;
+  /// The group of the file in the container. Names are resolved using the Terraform host's group database; numeric IDs can be used directly.
+  final pulumi.Input<String?>? group;
+  /// The owner of the file in the container. Names are resolved using the Terraform host's user database; numeric IDs can be used directly.
+  final pulumi.Input<String?>? owner;
   /// The permission mode for the file in the container. Has precedence over `executable`.
-  final pulumi.Input<String>? permissions;
+  final pulumi.Input<String?>? permissions;
   /// A filename that references a file which will be uploaded as the object content. This allows for large file uploads that do not get stored in state. Conflicts with `content` & `contentBase64`
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// If using `source`, this will force an update if the file content has updated but the filename has not.
-  final pulumi.Input<String>? sourceHash;
+  final pulumi.Input<String?>? sourceHash;
 
   /// Creates a new [ContainerUpload].
   /// [content] Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text. Conflicts with `contentBase64` & `source`
   /// [contentBase64] Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for larger binary content such as the result of the `base64encode` interpolation function. See here for the reason. Conflicts with `content` & `source`
   /// [executable] If `true`, the file will be uploaded with user executable permission. Defaults to `false`.
   /// [file] Path to the file in the container where is upload goes to
+  /// [group] The group of the file in the container. Names are resolved using the Terraform host's group database; numeric IDs can be used directly.
+  /// [owner] The owner of the file in the container. Names are resolved using the Terraform host's user database; numeric IDs can be used directly.
   /// [permissions] The permission mode for the file in the container. Has precedence over `executable`.
   /// [source] A filename that references a file which will be uploaded as the object content. This allows for large file uploads that do not get stored in state. Conflicts with `content` & `contentBase64`
   /// [sourceHash] If using `source`, this will force an update if the file content has updated but the filename has not.
@@ -31,6 +37,8 @@ class ContainerUpload {
     this.contentBase64,
     this.executable,
     required this.file,
+    this.group,
+    this.owner,
     this.permissions,
     this.source,
     this.sourceHash,
@@ -42,6 +50,8 @@ class ContainerUpload {
       'contentBase64': ?contentBase64,
       'executable': ?executable,
       'file': file,
+      'group': ?group,
+      'owner': ?owner,
       'permissions': ?permissions,
       'source': ?source,
       'sourceHash': ?sourceHash,
@@ -54,6 +64,8 @@ class ContainerUpload {
       contentBase64: (() { final guardedValue = map['contentBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executable: (() { final guardedValue = map['executable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       file: pulumi.Input.fromValue(map['file'] as String),
+      group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceHash: (() { final guardedValue = map['sourceHash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

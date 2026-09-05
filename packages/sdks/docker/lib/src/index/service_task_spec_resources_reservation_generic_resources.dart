@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecResourcesReservationGenericResources {
   /// The Integer resources
-  final pulumi.Input<List<String>>? discreteResourcesSpecs;
+  final pulumi.Input<List<String>?>? discreteResourcesSpecs;
   /// The String resources
-  final pulumi.Input<List<String>>? namedResourcesSpecs;
+  final pulumi.Input<List<String>?>? namedResourcesSpecs;
 
   /// Creates a new [ServiceTaskSpecResourcesReservationGenericResources].
   /// [discreteResourcesSpecs] The Integer resources

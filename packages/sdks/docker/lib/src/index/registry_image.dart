@@ -205,7 +205,7 @@ class RegistryImage extends pulumi.CustomResource {
           'docker:index/registryImage:RegistryImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
         ) {
     authConfig = registerOutput<RegistryImageAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryImageAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     build = registerOutput<RegistryImageBuild?>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryImageBuild.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -213,7 +213,7 @@ class RegistryImage extends pulumi.CustomResource {
     keepRemotely = registerOutput<bool?>('keepRemotely');
     this.name = registerOutput<String>('name');
     sha256Digest = registerOutput<String>('sha256Digest');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RegistryImage] resource's state with the given [name] and [id].
@@ -221,11 +221,12 @@ class RegistryImage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryImageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryImage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -245,6 +246,24 @@ class RegistryImage extends pulumi.CustomResource {
     keepRemotely = registerOutput<bool?>('keepRemotely');
     this.name = registerOutput<String>('name');
     sha256Digest = registerOutput<String>('sha256Digest');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RegistryImage] resource.
+  RegistryImage.reference(String urn)
+    : super(
+        'docker:index/registryImage:RegistryImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authConfig = registerOutput<RegistryImageAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryImageAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    build = registerOutput<RegistryImageBuild?>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryImageBuild.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    insecureSkipVerify = registerOutput<bool?>('insecureSkipVerify');
+    keepRemotely = registerOutput<bool?>('keepRemotely');
+    this.name = registerOutput<String>('name');
+    sha256Digest = registerOutput<String>('sha256Digest');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

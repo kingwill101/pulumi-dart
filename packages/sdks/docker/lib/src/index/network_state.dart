@@ -7,29 +7,29 @@ import 'network_label.dart';
 /// Input properties used for looking up and filtering Network resources.
 class NetworkState {
   /// Enable manual container attachment to the network.
-  final pulumi.Input<bool>? attachable;
+  final pulumi.Input<bool?>? attachable;
   /// The driver of the Docker network. Possible values are `bridge`, `host`, `overlay`, `macvlan`. See [network docs](https://docs.docker.com/network/#network-drivers) for more details.
-  final pulumi.Input<String>? driver;
+  final pulumi.Input<String?>? driver;
   /// Create swarm routing-mesh network. Defaults to `false`.
-  final pulumi.Input<bool>? ingress;
+  final pulumi.Input<bool?>? ingress;
   /// Whether the network is internal.
-  final pulumi.Input<bool>? internal;
+  final pulumi.Input<bool?>? internal;
   /// The IPAM configuration options
-  final pulumi.Input<List<NetworkIpamConfig>>? ipamConfigs;
+  final pulumi.Input<List<NetworkIpamConfig>?>? ipamConfigs;
   /// Driver used by the custom IP scheme of the network. Defaults to `default`
-  final pulumi.Input<String>? ipamDriver;
+  final pulumi.Input<String?>? ipamDriver;
   /// Provide explicit options to the IPAM driver. Valid options vary with `ipamDriver` and refer to that driver's documentation for more details.
-  final pulumi.Input<Map<String, String>>? ipamOptions;
+  final pulumi.Input<Map<String, String>?>? ipamOptions;
   /// Enable IPv6 networking. Defaults to `false`.
-  final pulumi.Input<bool>? ipv6;
+  final pulumi.Input<bool?>? ipv6;
   /// User-defined key/value metadata
-  final pulumi.Input<List<NetworkLabel>>? labels;
+  final pulumi.Input<List<NetworkLabel>?>? labels;
   /// The name of the Docker network.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Only available with bridge networks. See [bridge options docs](https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options) for more details.
-  final pulumi.Input<Map<String, String>>? options;
+  final pulumi.Input<Map<String, String>?>? options;
   /// Scope of the network. One of `swarm`, `global`, or `local`.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [NetworkState].
   /// [attachable] Enable manual container attachment to the network.

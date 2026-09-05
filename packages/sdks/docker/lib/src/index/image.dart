@@ -387,9 +387,9 @@ import 'image_args.dart';
 ///     },
 ///     imageName: pulumi.interpolate`${ecrRepository.repositoryUrl}:latest`,
 ///     registry: {
-///         password: pulumi.secret(authToken.apply(authToken => authToken.password)),
+///         password: pulumi.secret(authToken.password),
 ///         server: ecrRepository.repositoryUrl,
-///         username: authToken.apply(authToken => authToken.userName),
+///         username: authToken.userName,
 ///     },
 /// }, {
 ///     version: "v4.1.2",
@@ -520,13 +520,9 @@ import 'image_args.dart';
 /// 				return fmt.Sprintf("%v:latest", repositoryUrl), nil
 /// 			}).(pulumi.StringOutput),
 /// 			Registry: &docker.RegistryArgs{
-/// 				Password: pulumi.ToSecret(authToken.ApplyT(func(authToken ecr.GetAuthorizationTokenResult) (*string, error) {
-/// 					return authToken.Password, nil
-/// 				}).(pulumi.StringPtrOutput)).(pulumi.StringOutput),
-/// 				Server: ecrRepository.RepositoryUrl,
-/// 				Username: authToken.ApplyT(func(authToken ecr.GetAuthorizationTokenResult) (*string, error) {
-/// 					return authToken.UserName, nil
-/// 				}).(pulumi.StringPtrOutput),
+/// 				Password: pulumi.ToSecret(authToken.Password()).(pulumi.StringPtrOutput),
+/// 				Server:   ecrRepository.RepositoryUrl,
+/// 				Username: authToken.UserName(),
 /// 			},
 /// 		}, pulumi.Version("v4.1.2"))
 /// 		if err != nil {
@@ -669,8 +665,26 @@ class Image extends pulumi.CustomResource {
           'docker:index/image:Image',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
         ) {
+    baseImageName = registerOutput<String>('baseImageName');
+    context = registerOutput<String>('context');
+    dockerfile = registerOutput<String>('dockerfile');
+    imageName = registerOutput<String>('imageName');
+    platform = registerOutput<String?>('platform');
+    registryServer = registerOutput<String>('registryServer');
+    repoDigest = registerOutput<String>('repoDigest');
+  }
+
+  /// Creates a typed reference to an existing [Image] resource.
+  Image.reference(String urn)
+    : super(
+        'docker:index/image:Image',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     baseImageName = registerOutput<String>('baseImageName');
     context = registerOutput<String>('context');
     dockerfile = registerOutput<String>('dockerfile');

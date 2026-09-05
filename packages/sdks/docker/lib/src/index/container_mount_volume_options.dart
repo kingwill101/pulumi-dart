@@ -5,15 +5,15 @@ import 'container_mount_volume_options_label.dart';
 
 class ContainerMountVolumeOptions {
   /// Name of the driver to use to create the volume.
-  final pulumi.Input<String>? driverName;
+  final pulumi.Input<String?>? driverName;
   /// key/value map of driver specific options.
-  final pulumi.Input<Map<String, String>>? driverOptions;
+  final pulumi.Input<Map<String, String>?>? driverOptions;
   /// User-defined key/value metadata.
-  final pulumi.Input<List<ContainerMountVolumeOptionsLabel>>? labels;
+  final pulumi.Input<List<ContainerMountVolumeOptionsLabel>?>? labels;
   /// Populate volume with data from the target.
-  final pulumi.Input<bool>? noCopy;
+  final pulumi.Input<bool?>? noCopy;
   /// Path within the volume to mount. Requires docker server version 1.45 or higher.
-  final pulumi.Input<String>? subpath;
+  final pulumi.Input<String?>? subpath;
 
   /// Creates a new [ContainerMountVolumeOptions].
   /// [driverName] Name of the driver to use to create the volume.

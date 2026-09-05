@@ -11,33 +11,33 @@ import 'buildx_builder_remote.dart';
 /// {@macro pulumi_index_buildx_builder_buildx_builder_args_doc}
 class BuildxBuilderArgs {
   /// Append a node to builder instead of changing it
-  final pulumi.Input<bool>? append;
+  final pulumi.Input<bool?>? append;
   /// Automatically boot the builder after creation. Defaults to `false`
-  final pulumi.Input<bool>? bootstrap;
+  final pulumi.Input<bool?>? bootstrap;
   /// BuildKit daemon config file
-  final pulumi.Input<String>? buildkitConfig;
+  final pulumi.Input<String?>? buildkitConfig;
   /// BuildKit flags to set for the builder.
-  final pulumi.Input<String>? buildkitFlags;
+  final pulumi.Input<String?>? buildkitFlags;
   /// Configuration block for the Docker-Container driver.
-  final pulumi.Input<BuildxBuilderDockerContainer>? dockerContainer;
+  final pulumi.Input<BuildxBuilderDockerContainer?>? dockerContainer;
   /// The driver to use for the Buildx builder (e.g., docker-container, kubernetes).
-  final pulumi.Input<String>? driver;
+  final pulumi.Input<String?>? driver;
   /// Additional options for the Buildx driver in the form of `key=value,...`. These options are driver-specific.
-  final pulumi.Input<Map<String, String>>? driverOptions;
+  final pulumi.Input<Map<String, String>?>? driverOptions;
   /// The endpoint or context to use for the Buildx builder, where context is the name of a context from docker context ls and endpoint is the address for Docker socket (eg. DOCKER_HOST value). By default, the current Docker configuration is used for determining the context/endpoint value.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Configuration block for the Kubernetes driver.
-  final pulumi.Input<BuildxBuilderKubernetes>? kubernetes;
+  final pulumi.Input<BuildxBuilderKubernetes?>? kubernetes;
   /// The name of the Buildx builder. IF not specified, a random name will be generated.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Create/modify node with given name
-  final pulumi.Input<String>? node;
+  final pulumi.Input<String?>? node;
   /// Fixed platforms for current node
-  final pulumi.Input<List<String>>? platforms;
+  final pulumi.Input<List<String>?>? platforms;
   /// Configuration block for the Remote driver.
-  final pulumi.Input<BuildxBuilderRemote>? remote;
+  final pulumi.Input<BuildxBuilderRemote?>? remote;
   /// Set the current builder instance as the default for the current context.
-  final pulumi.Input<bool>? use;
+  final pulumi.Input<bool?>? use;
 
   /// Creates a new [BuildxBuilderArgs].
   /// [append] Append a node to builder instead of changing it

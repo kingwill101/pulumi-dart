@@ -6,23 +6,23 @@ import 'remote_image_build.dart';
 /// Input properties used for looking up and filtering RemoteImage resources.
 class RemoteImageState {
   /// Configuration to build an image. Requires the `Use containerd for pulling and storing images` option to be disabled in the Docker Host(https://github.com/kreuzwerker/terraform-provider-docker/issues/534). Please see [docker build command reference](https://docs.docker.com/engine/reference/commandline/build/#options) too.
-  final pulumi.Input<RemoteImageBuild>? build;
+  final pulumi.Input<RemoteImageBuild?>? build;
   /// If true, then the image is removed forcibly when the resource is destroyed.
-  final pulumi.Input<bool>? forceRemove;
+  final pulumi.Input<bool?>? forceRemove;
   /// The ID of the image (as seen when executing `docker inspect` on the image). Can be used to reference the image via its ID in other resources.
-  final pulumi.Input<String>? imageId;
+  final pulumi.Input<String?>? imageId;
   /// If true, then the Docker image won't be deleted on destroy operation. If this is false, it will delete the image from the docker local storage on destroy operation.
-  final pulumi.Input<bool>? keepLocally;
+  final pulumi.Input<bool?>? keepLocally;
   /// The name of the Docker image, including any tags or SHA256 repo digests.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The platform to use when pulling the image. Defaults to the platform of the current machine.
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? platform;
   /// List of values which cause an image pull when changed. This is used to store the image digest from the registry when using the docker*registry*image.
-  final pulumi.Input<List<String>>? pullTriggers;
+  final pulumi.Input<List<String>?>? pullTriggers;
   /// The image sha256 digest in the form of `repo[:tag]@sha256:&lt;hash&gt;`. This may not be populated when building an image, because it is read from the local Docker client and so may be available only when the image was either pulled from the repo or pushed to the repo (perhaps using `docker.RegistryImage`) in a previous run.
-  final pulumi.Input<String>? repoDigest;
+  final pulumi.Input<String?>? repoDigest;
   /// A map of arbitrary strings that, when changed, will force the `docker.RemoteImage` resource to be replaced. This can be used to rebuild an image when contents of source code folders change
-  final pulumi.Input<Map<String, String>>? triggers;
+  final pulumi.Input<Map<String, String>?>? triggers;
 
   /// Creates a new [RemoteImageState].
   /// [build] Configuration to build an image. Requires the `Use containerd for pulling and storing images` option to be disabled in the Docker Host(https://github.com/kreuzwerker/terraform-provider-docker/issues/534). Please see [docker build command reference](https://docs.docker.com/engine/reference/commandline/build/#options) too.

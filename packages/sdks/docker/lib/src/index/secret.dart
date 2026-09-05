@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_args.dart';
+import 'secret_label.dart';
 import 'secret_state.dart';
 
 /// &lt;!-- Bug: Type and Name are switched --&gt;
@@ -62,7 +63,7 @@ import 'secret_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		invokeBase64encode, err := std.Base64encode(ctx, map[string]interface{}{
+/// 		invokeBase64encode, err := std.Base64encode(ctx, map[string]string{
 /// 			"input": "{\"foo\": \"s3cr3t\"}",
 /// 		}, nil)
 /// 		if err != nil {
@@ -149,7 +150,7 @@ class Secret extends pulumi.CustomResource {
   /// Base64-url-safe-encoded secret data
   late final pulumi.Output<String> data;
   /// User-defined key/value metadata
-  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+  late final pulumi.Output<List<SecretLabel>?> labels;
   /// User-defined name of the secret
   late final pulumi.Output<String> name;
 
@@ -165,10 +166,11 @@ class Secret extends pulumi.CustomResource {
           'docker:index/secret:Secret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
+          additionalSecretOutputs: const ['data'],
         ) {
-    data = registerOutput<String>('data');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    data = registerOutput<String>('data', isSecret: true);
+    labels = registerOutput<List<SecretLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretLabel>(guardedValue, (value) => SecretLabel.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 
@@ -177,11 +179,12 @@ class Secret extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecretState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Secret._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -195,8 +198,23 @@ class Secret extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    data = registerOutput<String>('data');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    data = registerOutput<String>('data', isSecret: true);
+    labels = registerOutput<List<SecretLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretLabel>(guardedValue, (value) => SecretLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [Secret] resource.
+  Secret.reference(String urn)
+    : super(
+        'docker:index/secret:Secret',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['data'],
+        isResourceReference: true,
+      ) {
+    data = registerOutput<String>('data', isSecret: true);
+    labels = registerOutput<List<SecretLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretLabel>(guardedValue, (value) => SecretLabel.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 }

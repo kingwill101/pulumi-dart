@@ -4,31 +4,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuildxBuilderDockerContainer {
   /// Sets the cgroup parent of the container if Docker is using the "cgroupfs" driver.
-  final pulumi.Input<String>? cgroupParent;
+  final pulumi.Input<String?>? cgroupParent;
   /// Sets the CPU CFS scheduler period for the container.
-  final pulumi.Input<String>? cpuPeriod;
+  final pulumi.Input<String?>? cpuPeriod;
   /// Imposes a CPU CFS quota on the container.
-  final pulumi.Input<String>? cpuQuota;
+  final pulumi.Input<String?>? cpuQuota;
   /// Configures CPU shares (relative weight) of the container.
-  final pulumi.Input<String>? cpuShares;
+  final pulumi.Input<String?>? cpuShares;
   /// Limits the set of CPU cores the container can use.
-  final pulumi.Input<String>? cpusetCpus;
+  final pulumi.Input<String?>? cpusetCpus;
   /// Limits the set of CPU memory nodes the container can use.
-  final pulumi.Input<String>? cpusetMems;
+  final pulumi.Input<String?>? cpusetMems;
   /// Automatically load images to the Docker Engine image store. Defaults to `false`
-  final pulumi.Input<bool>? defaultLoad;
+  final pulumi.Input<bool?>? defaultLoad;
   /// Sets environment variables in the container.
-  final pulumi.Input<Map<String, String>>? env;
+  final pulumi.Input<Map<String, String>?>? env;
   /// Sets the BuildKit image to use for the container.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Sets the amount of memory the container can use.
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
   /// Sets the memory swap limit for the container.
-  final pulumi.Input<String>? memorySwap;
+  final pulumi.Input<String?>? memorySwap;
   /// Sets the network mode for the container.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Sets the container's restart policy.
-  final pulumi.Input<String>? restartPolicy;
+  final pulumi.Input<String?>? restartPolicy;
 
   /// Creates a new [BuildxBuilderDockerContainer].
   /// [cgroupParent] Sets the cgroup parent of the container if Docker is using the "cgroupfs" driver.

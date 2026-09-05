@@ -26,7 +26,7 @@ class ContainerDeviceReadIop {
   factory ContainerDeviceReadIop.fromMap(Map<String, dynamic> map) {
     return ContainerDeviceReadIop(
       path: pulumi.Input.fromValue(map['path'] as String),
-      rate: pulumi.Input.fromValue(map['rate'] as int),
+      rate: pulumi.Input.fromValue((map['rate'] as num).toInt()),
     );
   }
 }

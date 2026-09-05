@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuildxBuilderKubernetesQemu {
   /// Sets the QEMU emulation image.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Install QEMU emulation for multi-platform support.
-  final pulumi.Input<bool>? install;
+  final pulumi.Input<bool?>? install;
 
   /// Creates a new [BuildxBuilderKubernetesQemu].
   /// [image] Sets the QEMU emulation image.

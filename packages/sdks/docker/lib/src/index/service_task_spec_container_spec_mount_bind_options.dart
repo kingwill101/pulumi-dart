@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecContainerSpecMountBindOptions {
   /// Bind propagation refers to whether or not mounts created within a given bind-mount or named volume can be propagated to replicas of that mount. See the [docs](https://docs.docker.com/storage/bind-mounts/#configure-bind-propagation) for details. Defaults to `rprivate`
-  final pulumi.Input<String>? propagation;
+  final pulumi.Input<String?>? propagation;
 
   /// Creates a new [ServiceTaskSpecContainerSpecMountBindOptions].
   /// [propagation] Bind propagation refers to whether or not mounts created within a given bind-mount or named volume can be propagated to replicas of that mount. See the [docs](https://docs.docker.com/storage/bind-mounts/#configure-bind-propagation) for details. Defaults to `rprivate`

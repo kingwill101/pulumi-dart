@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_args.dart';
+import 'network_ipam_config.dart';
+import 'network_label.dart';
 import 'network_state.dart';
 
 /// &lt;!-- Bug: Type and Name are switched --&gt;
@@ -242,7 +244,7 @@ class Network extends pulumi.CustomResource {
   /// Whether the network is internal.
   late final pulumi.Output<bool> internal;
   /// The IPAM configuration options
-  late final pulumi.Output<List<Map<String, dynamic>>> ipamConfigs;
+  late final pulumi.Output<List<NetworkIpamConfig>> ipamConfigs;
   /// Driver used by the custom IP scheme of the network. Defaults to `default`
   late final pulumi.Output<String?> ipamDriver;
   /// Provide explicit options to the IPAM driver. Valid options vary with `ipamDriver` and refer to that driver's documentation for more details.
@@ -250,7 +252,7 @@ class Network extends pulumi.CustomResource {
   /// Enable IPv6 networking. Defaults to `false`.
   late final pulumi.Output<bool?> ipv6;
   /// User-defined key/value metadata
-  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+  late final pulumi.Output<List<NetworkLabel>?> labels;
   /// The name of the Docker network.
   late final pulumi.Output<String> name;
   /// Only available with bridge networks. See [bridge options docs](https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options) for more details.
@@ -270,19 +272,19 @@ class Network extends pulumi.CustomResource {
           'docker:index/network:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
         ) {
     attachable = registerOutput<bool?>('attachable');
     driver = registerOutput<String>('driver');
     ingress = registerOutput<bool?>('ingress');
     internal = registerOutput<bool>('internal');
-    ipamConfigs = registerOutput<List<Map<String, dynamic>>>('ipamConfigs');
+    ipamConfigs = registerOutput<List<NetworkIpamConfig>>('ipamConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkIpamConfig>(guardedValue, (value) => NetworkIpamConfig.fromMap((value as Map).cast<String, dynamic>())); });
     ipamDriver = registerOutput<String?>('ipamDriver');
-    ipamOptions = registerOutput<Map<String, String>?>('ipamOptions');
+    ipamOptions = registerOutput<Map<String, String>?>('ipamOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ipv6 = registerOutput<bool?>('ipv6');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    labels = registerOutput<List<NetworkLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkLabel>(guardedValue, (value) => NetworkLabel.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    this.options = registerOutput<Map<String, String>>('options');
+    this.options = registerOutput<Map<String, String>>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     scope = registerOutput<String>('scope');
   }
 
@@ -291,11 +293,12 @@ class Network extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Network._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -313,13 +316,36 @@ class Network extends pulumi.CustomResource {
     driver = registerOutput<String>('driver');
     ingress = registerOutput<bool?>('ingress');
     internal = registerOutput<bool>('internal');
-    ipamConfigs = registerOutput<List<Map<String, dynamic>>>('ipamConfigs');
+    ipamConfigs = registerOutput<List<NetworkIpamConfig>>('ipamConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkIpamConfig>(guardedValue, (value) => NetworkIpamConfig.fromMap((value as Map).cast<String, dynamic>())); });
     ipamDriver = registerOutput<String?>('ipamDriver');
-    ipamOptions = registerOutput<Map<String, String>?>('ipamOptions');
+    ipamOptions = registerOutput<Map<String, String>?>('ipamOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ipv6 = registerOutput<bool?>('ipv6');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    labels = registerOutput<List<NetworkLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkLabel>(guardedValue, (value) => NetworkLabel.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    this.options = registerOutput<Map<String, String>>('options');
+    this.options = registerOutput<Map<String, String>>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    scope = registerOutput<String>('scope');
+  }
+
+  /// Creates a typed reference to an existing [Network] resource.
+  Network.reference(String urn)
+    : super(
+        'docker:index/network:Network',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attachable = registerOutput<bool?>('attachable');
+    driver = registerOutput<String>('driver');
+    ingress = registerOutput<bool?>('ingress');
+    internal = registerOutput<bool>('internal');
+    ipamConfigs = registerOutput<List<NetworkIpamConfig>>('ipamConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkIpamConfig>(guardedValue, (value) => NetworkIpamConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    ipamDriver = registerOutput<String?>('ipamDriver');
+    ipamOptions = registerOutput<Map<String, String>?>('ipamOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ipv6 = registerOutput<bool?>('ipv6');
+    labels = registerOutput<List<NetworkLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkLabel>(guardedValue, (value) => NetworkLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    this.options = registerOutput<Map<String, String>>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     scope = registerOutput<String>('scope');
   }
 }

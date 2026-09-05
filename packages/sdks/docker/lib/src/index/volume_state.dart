@@ -7,17 +7,17 @@ import 'volume_label.dart';
 /// Input properties used for looking up and filtering Volume resources.
 class VolumeState {
   /// Cluster-specific options for volume creation. Only works if the Docker daemon is running in swarm mode and is the swarm manager.
-  final pulumi.Input<VolumeCluster>? cluster;
+  final pulumi.Input<VolumeCluster?>? cluster;
   /// Driver type for the volume. Defaults to `local`.
-  final pulumi.Input<String>? driver;
+  final pulumi.Input<String?>? driver;
   /// Options specific to the driver.
-  final pulumi.Input<Map<String, String>>? driverOpts;
+  final pulumi.Input<Map<String, String>?>? driverOpts;
   /// User-defined key/value metadata
-  final pulumi.Input<List<VolumeLabel>>? labels;
+  final pulumi.Input<List<VolumeLabel>?>? labels;
   /// The mountpoint of the volume.
-  final pulumi.Input<String>? mountpoint;
+  final pulumi.Input<String?>? mountpoint;
   /// The name of the Docker volume (will be generated if not provided).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [VolumeState].
   /// [cluster] Cluster-specific options for volume creation. Only works if the Docker daemon is running in swarm mode and is the swarm manager.

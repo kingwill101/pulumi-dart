@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a Docker container registry
 class Registry {
   /// The password to authenticate to the registry. Does not cause image rebuild when changed.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The URL of the Docker registry server
-  final pulumi.Input<String>? server;
+  final pulumi.Input<String?>? server;
   /// The username to authenticate to the registry. Does not cause image rebuild when changed.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [Registry].
   /// [password] The password to authenticate to the registry. Does not cause image rebuild when changed.

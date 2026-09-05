@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTaskSpecNetworksAdvanced {
   /// The network aliases of the container in the specific network.
-  final pulumi.Input<List<String>>? aliases;
+  final pulumi.Input<List<String>?>? aliases;
   /// An array of driver options for the network, e.g. `opts1=value`
-  final pulumi.Input<List<String>>? driverOpts;
+  final pulumi.Input<List<String>?>? driverOpts;
   /// The id of the docker network to use. Please use `docker_network.id`. Using the name attribute of the docker network will lead to constant replacements.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Deprecated attribute. The name/id of the docker network. Conflicts with `id` attribute.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ServiceTaskSpecNetworksAdvanced].
   /// [aliases] The network aliases of the container in the specific network.

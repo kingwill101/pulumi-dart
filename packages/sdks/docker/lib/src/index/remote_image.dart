@@ -481,7 +481,7 @@ class RemoteImage extends pulumi.CustomResource {
           'docker:index/remoteImage:RemoteImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
         ) {
     build = registerOutput<RemoteImageBuild?>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemoteImageBuild.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forceRemove = registerOutput<bool?>('forceRemove');
@@ -489,9 +489,9 @@ class RemoteImage extends pulumi.CustomResource {
     keepLocally = registerOutput<bool?>('keepLocally');
     this.name = registerOutput<String>('name');
     platform = registerOutput<String?>('platform');
-    pullTriggers = registerOutput<List<String>?>('pullTriggers');
+    pullTriggers = registerOutput<List<String>?>('pullTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     repoDigest = registerOutput<String>('repoDigest');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RemoteImage] resource's state with the given [name] and [id].
@@ -499,11 +499,12 @@ class RemoteImage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RemoteImageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RemoteImage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -523,8 +524,28 @@ class RemoteImage extends pulumi.CustomResource {
     keepLocally = registerOutput<bool?>('keepLocally');
     this.name = registerOutput<String>('name');
     platform = registerOutput<String?>('platform');
-    pullTriggers = registerOutput<List<String>?>('pullTriggers');
+    pullTriggers = registerOutput<List<String>?>('pullTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     repoDigest = registerOutput<String>('repoDigest');
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RemoteImage] resource.
+  RemoteImage.reference(String urn)
+    : super(
+        'docker:index/remoteImage:RemoteImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    build = registerOutput<RemoteImageBuild?>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemoteImageBuild.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    forceRemove = registerOutput<bool?>('forceRemove');
+    imageId = registerOutput<String>('imageId');
+    keepLocally = registerOutput<bool?>('keepLocally');
+    this.name = registerOutput<String>('name');
+    platform = registerOutput<String?>('platform');
+    pullTriggers = registerOutput<List<String>?>('pullTriggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    repoDigest = registerOutput<String>('repoDigest');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

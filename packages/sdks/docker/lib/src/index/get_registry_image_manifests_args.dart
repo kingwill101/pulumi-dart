@@ -9,9 +9,9 @@ import 'get_registry_image_manifests_auth_config.dart';
 /// {@macro pulumi_index_get_registry_image_manifests_get_registry_image_manifests_args_doc}
 class GetRegistryImageManifestsArgs {
   /// Authentication configuration for the Docker registry. It is only used for this resource.
-  final pulumi.Input<GetRegistryImageManifestsAuthConfig>? authConfig;
+  final pulumi.Input<GetRegistryImageManifestsAuthConfig?>? authConfig;
   /// If `true`, the verification of TLS certificates of the server/registry is disabled. Defaults to `false`
-  final pulumi.Input<bool>? insecureSkipVerify;
+  final pulumi.Input<bool?>? insecureSkipVerify;
   /// The name of the Docker image, including any tags. e.g. `alpine:latest`
   final pulumi.Input<String> name;
 

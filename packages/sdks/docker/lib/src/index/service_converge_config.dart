@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceConvergeConfig {
   /// The interval to check if the desired state is reached `(ms|s)`. Defaults to `7s`.
-  final pulumi.Input<String>? delay;
+  final pulumi.Input<String?>? delay;
   /// The timeout of the service to reach the desired state `(s|m)`. Defaults to `3m`
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [ServiceConvergeConfig].
   /// [delay] The interval to check if the desired state is reached `(ms|s)`. Defaults to `7s`.

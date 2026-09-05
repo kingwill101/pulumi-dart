@@ -32,7 +32,7 @@ class ProviderProvider extends pulumi.ProviderResource {
           'docker',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.2.0').merge(options),
         ) {
     caMaterial = registerOutput<String?>('caMaterial');
     certMaterial = registerOutput<String?>('certMaterial');

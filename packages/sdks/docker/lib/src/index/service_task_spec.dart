@@ -12,19 +12,19 @@ class ServiceTaskSpec {
   /// The spec for each container
   final pulumi.Input<ServiceTaskSpecContainerSpec> containerSpec;
   /// A counter that triggers an update even if no relevant parameters have been changed. See the [spec](https://github.com/docker/swarmkit/blob/master/api/specs.proto#L126).
-  final pulumi.Input<int>? forceUpdate;
+  final pulumi.Input<int?>? forceUpdate;
   /// Specifies the log driver to use for tasks created from this spec. If not present, the default one for the swarm will be used, finally falling back to the engine default if not specified
-  final pulumi.Input<ServiceTaskSpecLogDriver>? logDriver;
+  final pulumi.Input<ServiceTaskSpecLogDriver?>? logDriver;
   /// The networks the container is attached to
-  final pulumi.Input<List<ServiceTaskSpecNetworksAdvanced>>? networksAdvanceds;
+  final pulumi.Input<List<ServiceTaskSpecNetworksAdvanced>?>? networksAdvanceds;
   /// The placement preferences
-  final pulumi.Input<ServiceTaskSpecPlacement>? placement;
+  final pulumi.Input<ServiceTaskSpecPlacement?>? placement;
   /// Resource requirements which apply to each individual container created as part of the service
-  final pulumi.Input<ServiceTaskSpecResources>? resources;
+  final pulumi.Input<ServiceTaskSpecResources?>? resources;
   /// Specification for the restart policy which applies to containers created as part of this service.
-  final pulumi.Input<ServiceTaskSpecRestartPolicy>? restartPolicy;
+  final pulumi.Input<ServiceTaskSpecRestartPolicy?>? restartPolicy;
   /// Runtime is the type of runtime specified for the task executor. See the [types](https://github.com/moby/moby/blob/master/api/types/swarm/runtime.go).
-  final pulumi.Input<String>? runtime;
+  final pulumi.Input<String?>? runtime;
 
   /// Creates a new [ServiceTaskSpec].
   /// [containerSpec] The spec for each container
@@ -62,7 +62,7 @@ class ServiceTaskSpec {
   factory ServiceTaskSpec.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpec(
       containerSpec: pulumi.Input.fromValue(ServiceTaskSpecContainerSpec.fromMap((map['containerSpec']! as Map).cast<String, dynamic>())),
-      forceUpdate: (() { final guardedValue = map['forceUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      forceUpdate: (() { final guardedValue = map['forceUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       logDriver: (() { final guardedValue = map['logDriver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTaskSpecLogDriver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networksAdvanceds: (() { final guardedValue = map['networksAdvanceds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTaskSpecNetworksAdvanced>(guardedValue, (value) => ServiceTaskSpecNetworksAdvanced.fromMap((value as Map).cast<String, dynamic>()))); })(),
       placement: (() { final guardedValue = map['placement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTaskSpecPlacement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

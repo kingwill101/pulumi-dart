@@ -6,9 +6,9 @@ import 'service_task_spec_resources_reservation.dart';
 
 class ServiceTaskSpecResources {
   /// Describes the resources which can be advertised by a node and requested by a task
-  final pulumi.Input<ServiceTaskSpecResourcesLimits>? limits;
+  final pulumi.Input<ServiceTaskSpecResourcesLimits?>? limits;
   /// An object describing the resources which can be advertised by a node and requested by a task
-  final pulumi.Input<ServiceTaskSpecResourcesReservation>? reservation;
+  final pulumi.Input<ServiceTaskSpecResourcesReservation?>? reservation;
 
   /// Creates a new [ServiceTaskSpecResources].
   /// [limits] Describes the resources which can be advertised by a node and requested by a task
