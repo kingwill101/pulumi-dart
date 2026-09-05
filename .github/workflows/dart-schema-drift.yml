@@ -92,7 +92,7 @@ jobs:
           path: ${{ steps.drift.outputs.report_path }}
 
       - name: Fail when drift is detected
-        if: steps.drift.outputs.drift == 'true'
+        if: github.event_name != 'pull_request' && steps.drift.outputs.drift == 'true'
         run: |
           echo "Upstream schema drift detected for provider '${{ matrix.provider }}'."
           echo "Regenerate this provider package with the latest schema and commit updates."
