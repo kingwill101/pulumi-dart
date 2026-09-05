@@ -37,7 +37,7 @@ class ResourceArgs {
     return ResourceArgs(
       boolean: (() { final guardedValue = map['boolean']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       float: (() { final guardedValue = map['float']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      integer: (() { final guardedValue = map['integer']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      integer: (() { final guardedValue = map['integer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       string_: (() { final guardedValue = map['string']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

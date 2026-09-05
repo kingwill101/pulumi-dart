@@ -327,7 +327,7 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	assert.NotContains(t, content, "size: map['size'] as int")
 	assert.Contains(t, content, "WidgetArgs? args")
 	assert.Contains(t, content, "args?.toMap()")
-	assert.Contains(t, content, "size: pulumi.Input.fromValue((map['size'] as num).toInt())")
+	assert.Contains(t, content, "final integer = number.toInt(); if (number != integer)")
 	assert.Contains(t, content, "label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),")
 
 	assert.Contains(t, content, "late final pulumi.Output<String> arn;")

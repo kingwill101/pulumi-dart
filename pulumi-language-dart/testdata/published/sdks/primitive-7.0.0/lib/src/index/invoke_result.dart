@@ -42,7 +42,7 @@ class InvokeResult {
       boolean: (() { final guardedValue = map['boolean']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       booleanMap: (() { final guardedValue = map['booleanMap']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); })(),
       float: (() { final guardedValue = map['float']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
-      integer: (() { final guardedValue = map['integer']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      integer: (() { final guardedValue = map['integer']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       numberArray: (() { final guardedValue = map['numberArray']; if (guardedValue == null) return null; return (guardedValue as List).cast<double>(); })(),
       string_: (() { final guardedValue = map['string']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
