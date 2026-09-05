@@ -6,6 +6,7 @@ import 'package:test/test.dart';
 import 'package:repodoc/repodoc.dart';
 import 'package:repodoc/src/commands/schema/check_service.dart';
 import 'package:repodoc/src/commands/packages/update_service.dart';
+import 'package:repodoc/src/commands/packages/generate_service.dart';
 import 'package:repodoc/src/commands/packages/remove_service.dart';
 
 void main() {
@@ -184,4 +185,24 @@ void main() {
       expect(providerPackageVersion('9.35.1'), '9.35.1+1');
     },
   );
+
+  test('provider regeneration prepends and preserves changelog history', () {
+    final root = Directory.systemTemp.createTempSync('repodoc-changelog-');
+    addTearDown(() => root.deleteSync(recursive: true));
+    final changelog = File('${root.path}/CHANGELOG.md');
+    const previous = '''# Changelog
+
+All notable changes to this package will be documented in this file.
+
+## 1.0.0+1
+
+- Previous release.
+''';
+
+    prependChangelogRelease(changelog, version: '1.1.0+1', previous: previous);
+
+    expect(changelog.readAsStringSync(), contains('## 1.1.0+1'));
+    expect(changelog.readAsStringSync(), contains('## 1.0.0+1'));
+    expect(changelog.readAsStringSync(), contains('- Previous release.'));
+  });
 }

@@ -22,7 +22,6 @@ concurrency:
 
 jobs:
   publish:
-    if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'automation/provider-')
     uses: dart-lang/ecosystem/.github/workflows/publish.yaml@main
     with:
       sdk: '3.11.0'
